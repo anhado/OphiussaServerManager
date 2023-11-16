@@ -266,5 +266,20 @@ namespace OphiussaServerManager.Forms
         {
             tbMOTDInterval.Enabled = chkEnableInterval.Checked;
         }
+
+        private void checkBox1_CheckedChanged_1(object sender, EventArgs e)
+        {
+            tbIdleTimeout.Enabled = chkEnableIdleTimeout.Checked;
+        }
+
+        private void tbIdleTimeout_Scroll(object sender, EventArgs e)
+        {
+            txtIdleTimeout.Text = tbIdleTimeout.Value.ToString();
+        }
+
+        private void tbMaxPlayers_Scroll(object sender, EventArgs e)
+        {
+            txtMaxPlayers.Text = tbMaxPlayers.Value.ToString();
+        }
     }
 }

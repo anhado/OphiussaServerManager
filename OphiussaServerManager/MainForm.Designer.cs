@@ -44,7 +44,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.label1.BackColor = System.Drawing.Color.SteelBlue;
             this.label1.ForeColor = System.Drawing.Color.Transparent;
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
@@ -73,7 +73,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.label2.BackColor = System.Drawing.Color.SteelBlue;
             this.label2.ForeColor = System.Drawing.Color.Transparent;
             this.label2.Location = new System.Drawing.Point(12, 35);
             this.label2.Name = "label2";
@@ -83,7 +83,7 @@
             // 
             // label3
             // 
-            this.label3.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.label3.BackColor = System.Drawing.Color.SteelBlue;
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label3.Dock = System.Windows.Forms.DockStyle.Top;
             this.label3.Location = new System.Drawing.Point(0, 0);
@@ -93,19 +93,21 @@
             // 
             // txtVersion
             // 
-            this.txtVersion.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.txtVersion.BackColor = System.Drawing.Color.SteelBlue;
+            this.txtVersion.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtVersion.ForeColor = System.Drawing.Color.Transparent;
             this.txtVersion.Location = new System.Drawing.Point(84, 58);
             this.txtVersion.Name = "txtVersion";
             this.txtVersion.ReadOnly = true;
-            this.txtVersion.Size = new System.Drawing.Size(100, 20);
+            this.txtVersion.Size = new System.Drawing.Size(100, 13);
             this.txtVersion.TabIndex = 6;
+            this.txtVersion.TabStop = false;
             this.txtVersion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.label4.BackColor = System.Drawing.Color.SteelBlue;
             this.label4.ForeColor = System.Drawing.Color.Transparent;
             this.label4.Location = new System.Drawing.Point(12, 61);
             this.label4.Name = "label4";
