@@ -35,16 +35,16 @@ namespace OphiussaServerManager.Forms
             string fileName = "config.json";
             if (!System.IO.File.Exists("config.json"))
             {
-                Classes.Settings s = new Classes.Settings();
-                string jsonString = JsonConvert.SerializeObject(s);
+                Models.Settings s = new Models.Settings();
+                string jsonString = JsonConvert.SerializeObject(s, Formatting.Indented);
                 File.WriteAllText(fileName, jsonString);
             }
 
-            Classes.Settings settings = JsonConvert.DeserializeObject<Classes.Settings>(File.ReadAllText(fileName));
+            Models.Settings settings = JsonConvert.DeserializeObject<Models.Settings>(File.ReadAllText(fileName));
             LoadSettings(settings);
         }
 
-        public void LoadSettings(Classes.Settings sett)
+        public void LoadSettings(Models.Settings sett)
         {
             chkUpdateOnStart.Checked = sett.UpdateSteamCMDOnStartup;
             txtDataFolder.Text = sett.DataFolder;
@@ -80,7 +80,7 @@ namespace OphiussaServerManager.Forms
         {
 
             string fileName = "config.json";
-            Classes.Settings sett = new Classes.Settings();
+            Models.Settings sett = new Models.Settings();
             sett.UpdateSteamCMDOnStartup = chkUpdateOnStart.Checked;
             sett.DataFolder = txtDataFolder.Text;
             sett.DefaultInstallationFolder = txtInstallFolder.Text;
@@ -105,7 +105,7 @@ namespace OphiussaServerManager.Forms
             sett.Message2 = txtMessage2.Text;
             sett.CancelMessage = txtCancelMessage.Text;
 
-            string jsonString = JsonConvert.SerializeObject(sett);
+            string jsonString = JsonConvert.SerializeObject(sett, Formatting.Indented);
             File.WriteAllText(fileName, jsonString);
 
             if (!Directory.Exists(txtDataFolder.Text))

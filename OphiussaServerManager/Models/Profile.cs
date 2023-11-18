@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using OphiussaServerManager.SupportedServers;
+using OphiussaServerManager.Models.SupportedServers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OphiussaServerManager.Profiles
+namespace OphiussaServerManager.Models.Profiles
 {
     public class Profile
     {
@@ -22,7 +22,7 @@ namespace OphiussaServerManager.Profiles
         [JsonProperty("Type")]
         public SupportedServersType Type { get; set; }
         [JsonProperty("Configuration")]
-        public ArkProfile Configuration { get; set; }
+        public ArkProfile ARKConfiguration { get; set; }
 
         public Profile() { }
 
@@ -34,12 +34,12 @@ namespace OphiussaServerManager.Profiles
             switch (type.ServerType)
             {
                 case EnumServerType.ArkSurviveEvolved:
-                    this.Configuration = new ArkProfile();
-                    this.Configuration.LoadNewArkProfile(key);
+                    this.ARKConfiguration = new ArkProfile();
+                    this.ARKConfiguration.LoadNewArkProfile(key);
                     break;
                 case EnumServerType.ArkSurviveAscended:
-                    this.Configuration = new ArkProfile();
-                    this.Configuration.LoadNewArkProfile(key);
+                    this.ARKConfiguration = new ArkProfile();
+                    this.ARKConfiguration.LoadNewArkProfile(key);
                     break;
             }
             LoadProfile();
@@ -50,41 +50,59 @@ namespace OphiussaServerManager.Profiles
             this.Key = key;
             this.Name = name;
             this.Type = type;
-            this.Configuration = configuration;
+            this.ARKConfiguration = configuration;
             LoadProfile(false);
         }
 
         public void SaveProfile()
         {
             string fileName = "config.json";
-            Classes.Settings settings = JsonConvert.DeserializeObject<Classes.Settings>(File.ReadAllText(fileName));
+            Settings settings = JsonConvert.DeserializeObject<Settings>(File.ReadAllText(fileName));
             string dir = settings.DataFolder + "Profiles\\";
             if (!Directory.Exists(dir))
             {
                 Directory.CreateDirectory(dir);
             }
 
-            string jsonString = JsonConvert.SerializeObject(this);
+            string jsonString = JsonConvert.SerializeObject(this, Formatting.Indented);
             File.WriteAllText(dir + this.Key + ".json", jsonString);
         }
 
         public void LoadProfile(bool readFileDisk = true)
         {
             string fileName = "config.json";
-            Classes.Settings settings = JsonConvert.DeserializeObject<Classes.Settings>(File.ReadAllText(fileName));
+            Settings settings = JsonConvert.DeserializeObject<Settings>(File.ReadAllText(fileName));
             string dir = settings.DataFolder + "Profiles\\";
             if (!Directory.Exists(dir))
             {
                 Directory.CreateDirectory(dir);
-                string jsonString = JsonConvert.SerializeObject(this);
+                string jsonString = JsonConvert.SerializeObject(this, Formatting.Indented);
                 File.WriteAllText(dir + this.Key + ".json", jsonString);
             }
             if (File.Exists(dir + this.Key + ".json") && readFileDisk)
             {
                 Profile p = JsonConvert.DeserializeObject<Profile>(File.ReadAllText(dir + this.Key + ".json"));
 
-                this.Configuration = p.Configuration;
+                this.ARKConfiguration = p.ARKConfiguration;
             }
         }
+
+        public string GetProfileSaveGamesPath(Profile profile) => profile.GetProfileSaveGamesPath(profile?.InstallLocation);
+
+        public string GetProfileSaveGamesPath(string installDirectory) => Path.Combine(installDirectory ?? string.Empty, this.Type.SavedRelativePath, this.Type.SaveGamesRelativePath);
+
+        public string GetProfileSavePath(Profile profile) => profile.GetProfileSavePath(profile?.InstallLocation, profile?.ARKConfiguration.Administration.AlternateSaveDirectoryName);
+
+        public string GetProfileSavePath(
+          string installDirectory,
+          string altSaveDirectoryName)
+        {
+            if (!string.IsNullOrWhiteSpace(altSaveDirectoryName))
+            {
+                return Path.Combine(installDirectory ?? string.Empty, this.Type.SavedRelativePath, altSaveDirectoryName);
+            }
+            return Path.Combine(installDirectory ?? string.Empty, this.Type.SavedFilesRelativePath);
+        }
     }
+
 }

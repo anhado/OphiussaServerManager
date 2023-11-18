@@ -1,4 +1,4 @@
-﻿using OphiussaServerManager.SupportedServers;
+﻿using OphiussaServerManager.Models.SupportedServers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -77,7 +77,7 @@ namespace OphiussaServerManager.Forms
 
         private void FrmServerTypeSelection_Load(object sender, EventArgs e)
         {
-            cboServerType.DataSource = SupportedServers.SupportedServers.ServerTypeList;
+            cboServerType.DataSource = SupportedServers.ServerTypeList;
             cboServerType.ValueMember = "KeyName";
             cboServerType.DisplayMember = "ServerTypeDescription";
             txtDir.Text = MainForm.Settings.DefaultInstallationFolder;

@@ -11,7 +11,7 @@ using System.ComponentModel;
 using System.IO.Compression;
 using System.Diagnostics;
 using System.Windows.Forms;
-using OphiussaServerManager.Profiles;
+using OphiussaServerManager.Models.Profiles;
 
 namespace OphiussaServerManager.Helpers
 {
@@ -70,17 +70,32 @@ namespace OphiussaServerManager.Helpers
 
         internal static string GetPublicIp()
         {
+            int retrys = 0;
             String address = "";
-            WebRequest request = WebRequest.Create("http://checkip.dyndns.org/");
-            using (WebResponse response = request.GetResponse())
-            using (StreamReader stream = new StreamReader(response.GetResponseStream()))
-            {
-                address = stream.ReadToEnd();
-            }
 
-            int first = address.IndexOf("Address: ") + 9;
-            int last = address.LastIndexOf("</body>");
-            address = address.Substring(first, last - first);
+            while (retrys <= 5)
+            {
+                try
+                {
+                    WebRequest request = WebRequest.Create("http://checkip.dyndns.org/");
+                    using (WebResponse response = request.GetResponse())
+                    using (StreamReader stream = new StreamReader(response.GetResponseStream()))
+                    {
+                        address = stream.ReadToEnd();
+                    }
+
+                    int first = address.IndexOf("Address: ") + 9;
+                    int last = address.LastIndexOf("</body>");
+                    address = address.Substring(first, last - first);
+
+                    retrys = 99;
+                }
+                catch (Exception ex)
+                {
+                    retrys++;
+                    address = ex.Message;
+                }
+            }
 
             return address;
         }

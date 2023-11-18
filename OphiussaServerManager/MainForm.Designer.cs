@@ -60,6 +60,7 @@
             this.txtPublicIP.Size = new System.Drawing.Size(100, 20);
             this.txtPublicIP.TabIndex = 1;
             this.txtPublicIP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtPublicIP.TextChanged += new System.EventHandler(this.txtPublicIP_TextChanged);
             // 
             // txtLocalIP
             // 
@@ -69,6 +70,7 @@
             this.txtLocalIP.Size = new System.Drawing.Size(100, 20);
             this.txtLocalIP.TabIndex = 3;
             this.txtLocalIP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtLocalIP.TextChanged += new System.EventHandler(this.txtLocalIP_TextChanged);
             // 
             // label2
             // 
@@ -129,6 +131,7 @@
             // 
             // NewTab
             // 
+            this.NewTab.ForeColor = System.Drawing.Color.IndianRed;
             this.NewTab.Location = new System.Drawing.Point(4, 22);
             this.NewTab.Name = "NewTab";
             this.NewTab.Padding = new System.Windows.Forms.Padding(3);

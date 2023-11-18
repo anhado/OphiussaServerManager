@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OphiussaServerManager.SupportedServers
+namespace OphiussaServerManager.Models.SupportedServers
 {
     public enum EnumServerType
     {
@@ -17,8 +17,11 @@ namespace OphiussaServerManager.SupportedServers
         public string KeyName { get; set; }
         public string ServerTypeDescription { get; set; }
         public EnumServerType ServerType { get; set; }
-
         public string SteamAppID { get; set; }
+        public string SavedRelativePath { get; set; }
+        public string SaveGamesRelativePath { get; set; }
+        public string SavedFilesRelativePath { get; set; }
+
     }
 
 
@@ -28,15 +31,30 @@ namespace OphiussaServerManager.SupportedServers
         public string Description { get; set; }
     }
 
-    public static  class SupportedServers
+    public static class SupportedServers
     {
         public static List<SupportedServersType> ServerTypeList
         {
             get
             {
                 return new List<SupportedServersType>() {
-                    new SupportedServersType() {KeyName="ASE",ServerTypeDescription="Ark Survival Evolved",ServerType =EnumServerType.ArkSurviveEvolved,SteamAppID="376030" },
-                    new SupportedServersType() {KeyName="ASA",ServerTypeDescription="Ark Survival Ascended",ServerType =EnumServerType.ArkSurviveAscended,SteamAppID="2430930" }
+                    new SupportedServersType() {
+                        KeyName="ASE",
+                        ServerTypeDescription="Ark Survival Evolved",
+                        ServerType =EnumServerType.ArkSurviveEvolved,
+                        SteamAppID="376030",
+                        SaveGamesRelativePath="Saved\\SavedArks\\TheIsland_WP",
+                        SavedFilesRelativePath="Saved\\SavedArks\\TheIsland_WP",
+                        SavedRelativePath="Saved\\SavedArks\\TheIsland_WP"
+                    },
+                    new SupportedServersType() {
+                        KeyName="ASA",
+                        ServerTypeDescription="Ark Survival Ascended",
+                        ServerType=EnumServerType.ArkSurviveAscended,
+                        SteamAppID="2430930",
+                        SaveGamesRelativePath="Saved\\SavedArks\\TheIsland_WP",
+                        SavedFilesRelativePath="Saved\\SavedArks\\TheIsland_WP",
+                        SavedRelativePath="Saved\\SavedArks\\TheIsland_WP" }
                 };
             }
         }
@@ -61,7 +79,7 @@ namespace OphiussaServerManager.SupportedServers
                         new MapList(){Key="LostIsland" ,Description="Lost Island" },
                         new MapList(){Key="Fjordur" ,Description="Fjordur" }//,
                         //new MapList(){Key="PGARK" ,Description="Procedurally Generated Maps" }
-                    }; 
+                    };
                 case EnumServerType.ArkSurviveAscended:
                     return new List<MapList>()
                     {

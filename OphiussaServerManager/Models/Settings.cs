@@ -7,10 +7,13 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OphiussaServerManager.Classes
+namespace OphiussaServerManager.Models
 {
     public class Settings
     {
+        [JsonIgnore]
+        public string DefaultSteamKey { get { return "4DF03576EDA7C3350237D3E547E9CE3C"; } }
+        public string SteamKey { get; set; }
         public bool UpdateSteamCMDOnStartup { get; set; }
         public string DataFolder { get; set; }
         public string DefaultInstallationFolder { get; set; }
@@ -67,7 +70,7 @@ namespace OphiussaServerManager.Classes
         public void SaveSettings()
         {
             string fileName = "config.json";
-            string jsonString = JsonConvert.SerializeObject(this);
+            string jsonString = JsonConvert.SerializeObject(this, Formatting.Indented);
             File.WriteAllText(fileName, jsonString);
         }
     }

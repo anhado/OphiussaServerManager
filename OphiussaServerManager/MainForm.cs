@@ -1,8 +1,9 @@
 ﻿using Newtonsoft.Json;
 using OphiussaServerManager.Forms;
 using OphiussaServerManager.Helpers;
-using OphiussaServerManager.Profiles;
-using OphiussaServerManager.SupportedServers;
+using OphiussaServerManager.Models;
+using OphiussaServerManager.Models.Profiles;
+using OphiussaServerManager.Models.SupportedServers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,31 +20,39 @@ namespace OphiussaServerManager
 {
     public partial class MainForm : Form
     {
-        List<Profile> Profiles = new List<Profile>();
+        Dictionary<string, Profile> Profiles = new Dictionary<string, Profile>();
+        Dictionary<string, LinkProfileForm> linkProfileForms = new Dictionary<string, LinkProfileForm>();
+        public static Models.Settings Settings;
 
-        public static Classes.Settings Settings;
+        public static string PublicIP { get; set; }
+        public static string LocaIP { get; set; }
+
         public MainForm()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private async void Form1_Load(object sender, EventArgs e)
         {
 
             if (!File.Exists("config.json"))
             {
-                Settings settings = new Settings();
+                Forms.Settings settings = new Forms.Settings();
                 settings.ShowDialog();
             }
-            Settings = JsonConvert.DeserializeObject<Classes.Settings>(File.ReadAllText("config.json"));
-            txtLocalIP.Text = NetworkTools.GetHostIp();
-            txtPublicIP.Text = NetworkTools.GetPublicIp();
+            Settings = JsonConvert.DeserializeObject<Models.Settings>(File.ReadAllText("config.json"));
+
+
+
             if (Settings.UpdateSteamCMDOnStartup) NetworkTools.DownloadSteamCMD();
             System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
             System.Diagnostics.FileVersionInfo fvi = System.Diagnostics.FileVersionInfo.GetVersionInfo(assembly.Location);
             txtVersion.Text = fvi.FileVersion;
 
             LoadProfiles();
+
+            txtLocalIP.Text = await Task.Run(() => NetworkTools.GetHostIp());
+            txtPublicIP.Text = await Task.Run(() => NetworkTools.GetPublicIp());
         }
 
         private void LoadProfiles()
@@ -129,12 +138,13 @@ namespace OphiussaServerManager
                     prf = p;
                     tab.Text = p.Name;
                 }
-                Profiles.Add(prf);
+                Profiles.Add(prf.Key, prf);
 
                 FrmArk frm = new FrmArk();
                 frm.LoadSettings(prf, tab);
                 addform(tab, frm);
 
+                linkProfileForms.Add(prf.Key, new LinkProfileForm() { Form = frm, Profile = prf, Tab = tab });
                 tabControl1.SelectTab(index);
 
             }
@@ -164,8 +174,18 @@ namespace OphiussaServerManager
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Settings f = new Settings();
+            Forms.Settings f = new Forms.Settings();
             f.Show();
+        }
+
+        private void txtPublicIP_TextChanged(object sender, EventArgs e)
+        {
+            PublicIP = txtPublicIP.Text;
+        }
+
+        private void txtLocalIP_TextChanged(object sender, EventArgs e)
+        {
+            LocaIP = txtLocalIP.Text;
         }
     }
 }
