@@ -22,4 +22,11 @@ namespace OphiussaServerManager.Common.Models
         public string Name { get; set; }
         public string SteamID { get; set; }
     }
+
+    public class ConfigFile
+    {
+        public string Property { get; set; }
+        public string Value { get; set; }
+
+    }
 }

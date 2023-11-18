@@ -463,7 +463,6 @@
             // chkTribeLogDestroyedEnemyStructures
             // 
             this.chkTribeLogDestroyedEnemyStructures.AutoSize = true;
-            this.chkTribeLogDestroyedEnemyStructures.Enabled = false;
             this.chkTribeLogDestroyedEnemyStructures.Location = new System.Drawing.Point(321, 97);
             this.chkTribeLogDestroyedEnemyStructures.Name = "chkTribeLogDestroyedEnemyStructures";
             this.chkTribeLogDestroyedEnemyStructures.Size = new System.Drawing.Size(235, 19);
@@ -513,7 +512,6 @@
             // chkAllowHideDamageSourceFromLogs
             // 
             this.chkAllowHideDamageSourceFromLogs.AutoSize = true;
-            this.chkAllowHideDamageSourceFromLogs.Enabled = false;
             this.chkAllowHideDamageSourceFromLogs.Location = new System.Drawing.Point(5, 97);
             this.chkAllowHideDamageSourceFromLogs.Name = "chkAllowHideDamageSourceFromLogs";
             this.chkAllowHideDamageSourceFromLogs.Size = new System.Drawing.Size(239, 19);

@@ -7,9 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OphiussaServerManager.Common.Ini;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace OphiussaServerManager.Common.Models.Profiles
 {
+
     public class ArkProfile
     {
         public Administration Administration { get; set; }
@@ -94,15 +96,55 @@ namespace OphiussaServerManager.Common.Models.Profiles
 
         }
 
-        public void LoadGameINI(Profile prf)
+        public ArkProfile LoadGameINI(Profile prf)
         {
 
             SystemIniFile systemIniFile = new SystemIniFile(prf.InstallLocation);
 
-            var asd = systemIniFile.ReadSection(IniFiles.GameUserSettings, "/Game/PrimalEarth/CoreBlueprints/TestGameMode.TestGameMode_C");
+            //var tmpGUS = 
+
+            List<ConfigFile> GUSSS = systemIniFile.ReadSection(IniFiles.GameUserSettings, "ServerSettings").ToListConfigFile();
+            List<ConfigFile> GUSScalabilityGroups = systemIniFile.ReadSection(IniFiles.GameUserSettings, "ScalabilityGroups").ToListConfigFile();
+            List<ConfigFile> GUSShooterGameUserSettings = systemIniFile.ReadSection(IniFiles.GameUserSettings, "/Script/ShooterGame.ShooterGameUserSettings").ToListConfigFile();
+            List<ConfigFile> GUSGameUserSettings = systemIniFile.ReadSection(IniFiles.GameUserSettings, "GameUserSettings").ToListConfigFile();
+            List<ConfigFile> GUSSessionSettings = systemIniFile.ReadSection(IniFiles.GameUserSettings, "SessionSettings").ToListConfigFile();
+            List<ConfigFile> GUSGameSession = systemIniFile.ReadSection(IniFiles.GameUserSettings, "GameSession").ToListConfigFile();
+            List<ConfigFile> GUSMessageOfTheDay = systemIniFile.ReadSection(IniFiles.GameUserSettings, "MessageOfTheDay").ToListConfigFile();
+            List<ConfigFile> GUSTestGameMode_C = systemIniFile.ReadSection(IniFiles.GameUserSettings, "/Game/PrimalEarth/CoreBlueprints/TestGameMode.TestGameMode_C").ToListConfigFile();
+
+            //List <ConfigFile> GUS = tmpGUS.Select(val =>
+            //{
+            //    ConfigFile c = new ConfigFile();
+            //    int firstIndex = val.IndexOf("=");
+            //    c.Value = val.Substring(0, firstIndex);
+            //    c.Property = val.Substring(firstIndex + 1);
+            //    return c;
+            //}).ToList();
+
+            this.Administration.LogAdminCommandsToPublic = GUSSS.GetBool("AdminLogging");
+            this.Administration.AllowHideDamageSourceFromLogs = GUSSS.GetBool("AllowHideDamageSourceFromLogs");
+            this.Administration.TribeLogDestroyedEnemyStructures = GUSSS.GetBool("TribeLogDestroyedEnemyStructures");
+            this.Administration.IdleTimout = GUSSS.GetInt("KickIdlePlayersPeriod", 3600);
+            if (prf.Type.ServerType == SupportedServers.EnumServerType.ArkSurviveEvolved)
+                this.Administration.MaxPlayers = GUSSS.GetInt("MaxPlayers", 70);
+            if (prf.Type.ServerType == SupportedServers.EnumServerType.ArkSurviveAscended)
+                this.Administration.MaxPlayers = GUSGameSession.GetInt("MaxPlayers", 70);
+            this.Administration.UseRCON = GUSSS.GetBool("RCONEnabled");
+            this.Administration.RCONPort = GUSSS.GetInt("RCONPort", 32330).ToString();
+            this.Administration.RCONServerLogBuffer = GUSSS.GetInt("RCONServerGameLogBuffer", 600);
+            this.Administration.ServerAdminPassword = GUSSS.GetString("ServerAdminPassword", System.Web.Security.Membership.GeneratePassword(10, 6));
+            this.Administration.EnableServerAdminLogs = GUSSS.GetBool("servergamelog", true);
+            this.Administration.ServerPassword = GUSSS.GetString("ServerPassword");
+            this.Administration.ServerSpectatorPassword = GUSSS.GetString("SpectatorPassword", System.Web.Security.Membership.GeneratePassword(10, 6));
+            this.Administration.ServerName = GUSSessionSettings.GetString("SessionName", "New Server");
+            this.Administration.ServerPort = GUSSessionSettings.GetString("Port", "7777");
+            this.Administration.PeerPort = (int.Parse(GUSSessionSettings.GetString("Port", "7777")) + 1).ToString();
+            this.Administration.QueryPort = GUSSessionSettings.GetString("QueryPort", "27015");
+            this.Administration.MOD = GUSMessageOfTheDay.GetString("Message");
+            this.Administration.MODDuration = GUSMessageOfTheDay.GetInt("Duration", 20);
             //systemIniFile.w
 
-            string x = "";
+            return this;
         }
 
         public string GetCommandLinesArguments(Settings settings, Profile prf, string PublicIP)
@@ -144,7 +186,7 @@ namespace OphiussaServerManager.Common.Models.Profiles
             if (this.Administration.DisablePlayerMovePhysics) hifenArgs.Add(" -nocombineclientmoves");
             if (this.Administration.NoDinos) hifenArgs.Add(" -nodinos");
             if (this.Administration.NoHandDetection) hifenArgs.Add(" -NoHangDetection");
-            if (this.Administration.LogAdminCommandsToPublic) hifenArgs.Add(" -NotifyAdminCommandsInChat");
+            if (this.Administration.LogAdminCommandsToAdmins) hifenArgs.Add(" -NotifyAdminCommandsInChat");
             if (this.Administration.NoUnderMeshChecking) hifenArgs.Add(" -noundermeshchecking");
             if (this.Administration.NoUnderMeshKilling) hifenArgs.Add(" -noundermeshkilling");
             //if (this.Administration.PVEDisallowTribeWar) hifenArgs.Add(" -pvedisallowtribewar");
@@ -165,8 +207,10 @@ namespace OphiussaServerManager.Common.Models.Profiles
             //if (this.Administration.UseStructureStasisGrid) hifenArgs.Add($" -UseStructureStasisGrid");
             if (this.Administration.EnableVivox) hifenArgs.Add($" -UseVivox");
             //if (this.Administration.webalarm) hifenArgs.Add($" -webalarm");
-            //if (prf.Type.ServerType == SupportedServers.EnumServerType.ArkSurviveAscended)
-            //    if (this.Administration.WinLiveMaxPlayers) hifenArgs.Add($" -WinLiveMaxPlayers");
+            if (prf.Type.ServerType == SupportedServers.EnumServerType.ArkSurviveAscended)
+                if (this.Administration.MaxPlayers != 0) hifenArgs.Add($" -WinLiveMaxPlayers={this.Administration.MaxPlayers}");
+            if (prf.Type.ServerType == SupportedServers.EnumServerType.ArkSurviveEvolved)
+                if (this.Administration.MaxPlayers != 0) hifenArgs.Add($" -MaxPlayers={this.Administration.MaxPlayers}");
             if (prf.Type.ServerType == SupportedServers.EnumServerType.ArkSurviveEvolved)
                 if (this.Administration.ClusterDirectoryOverride) hifenArgs.Add($" -ClusterDirOverride=\"{settings.DataFolder}\"");
             if (prf.Type.ServerType == SupportedServers.EnumServerType.ArkSurviveEvolved)
@@ -180,9 +224,6 @@ namespace OphiussaServerManager.Common.Models.Profiles
 
             InterrogationArgs.Add($"?Port={this.Administration.ServerPort}");
             InterrogationArgs.Add($"?QueryPort={this.Administration.QueryPort}");
-
-            if (prf.Type.ServerType == SupportedServers.EnumServerType.ArkSurviveAscended)
-                if (this.Administration.MaxPlayers != 0) hifenArgs.Add($" -MaxPlayers={this.Administration.MaxPlayers}");
 
             hifenArgs.Add($" -nosteamclient");
             hifenArgs.Add($" -game");

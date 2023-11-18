@@ -89,6 +89,7 @@ namespace OphiussaServerManager.Forms
             txtTotalConversion.Text = profile.ARKConfiguration.Administration.TotalConversionID;
             tbAutoSavePeriod.Value = profile.ARKConfiguration.Administration.AutoSavePeriod;
             txtAutoSavePeriod.Text = tbAutoSavePeriod.Value.ToString();
+            txtMOTD.Text = profile.ARKConfiguration.Administration.MOD;
             tbMOTDDuration.Value = profile.ARKConfiguration.Administration.MODDuration;
             tbMOTDInterval.Value = profile.ARKConfiguration.Administration.MODInterval;
             chkEnableInterval.Checked = profile.ARKConfiguration.Administration.EnableInterval;
@@ -129,7 +130,7 @@ namespace OphiussaServerManager.Forms
             txtClusterID.Text = profile.ARKConfiguration.Administration.ClusterID;
             chkClusterOverride.Checked = profile.ARKConfiguration.Administration.ClusterDirectoryOverride;
 
-            cboPriority.SelectedValue = profile.ARKConfiguration.Administration.CPUPriority;//TODO
+            cboPriority.SelectedText = profile.ARKConfiguration.Administration.CPUPriority.ToString();//TODO
 
             txtAffinity.Text = profile.ARKConfiguration.Administration.CPUAffinity;//TODO
 
@@ -184,7 +185,7 @@ namespace OphiussaServerManager.Forms
 
             txtCommand.Text = profile.ARKConfiguration.GetCommandLinesArguments(MainForm.Settings, profile, MainForm.LocaIP);
 
-            profile.ARKConfiguration.LoadGameINI(profile);
+            //profile.ARKConfiguration.LoadGameINI(profile);
         }
 
         private string GetBuild()
@@ -260,22 +261,29 @@ namespace OphiussaServerManager.Forms
         {
             LoadDefaultFieldValues();
 
-
-            string dir = MainForm.Settings.DataFolder + "Profiles\\";
-            if (!Directory.Exists(dir))
+            if (MessageBox.Show("Do you want reload from Server Config Files?", "Reload Option", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
-                return;
+                profile.ARKConfiguration = profile.ARKConfiguration.LoadGameINI(profile);
+                LoadSettings(profile, this.tab);
             }
-
-            string[] files = System.IO.Directory.GetFiles(dir);
-
-            foreach (string file in files)
+            else
             {
-                Profile p = JsonConvert.DeserializeObject<Profile>(File.ReadAllText(file));
-                if (p.Key == this.profile.Key)
+                string dir = MainForm.Settings.DataFolder + "Profiles\\";
+                if (!Directory.Exists(dir))
                 {
-                    LoadSettings(p, this.tab);
-                    break;
+                    return;
+                }
+
+                string[] files = System.IO.Directory.GetFiles(dir);
+
+                foreach (string file in files)
+                {
+                    Profile p = JsonConvert.DeserializeObject<Profile>(File.ReadAllText(file));
+                    if (p.Key == this.profile.Key)
+                    {
+                        LoadSettings(p, this.tab);
+                        break;
+                    }
                 }
             }
         }

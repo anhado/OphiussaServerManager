@@ -451,5 +451,10 @@ namespace OphiussaServerManager.Forms
 
             }
         }
+
+        private void viewLogsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

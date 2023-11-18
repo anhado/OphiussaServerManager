@@ -52,17 +52,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.lbPlayers = new System.Windows.Forms.ListBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.txtChat = new System.Windows.Forms.RichTextBox();
-            this.timerPlayers = new System.Windows.Forms.Timer(this.components);
-            this.timersChat = new System.Windows.Forms.Timer(this.components);
-            this.txtProfiles = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.txtInvalid = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.txtProfiles = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lbPlayers = new System.Windows.Forms.ListBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.chatToPlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.renamePlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -73,13 +67,19 @@
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.copyIDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyPlayerIDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.txtChat = new System.Windows.Forms.RichTextBox();
+            this.timerPlayers = new System.Windows.Forms.Timer(this.components);
+            this.timersChat = new System.Windows.Forms.Timer(this.components);
             this.timerConnection = new System.Windows.Forms.Timer(this.components);
             this.timerUpdatePlayersFromDisk = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -112,21 +112,22 @@
             // viewLogsToolStripMenuItem
             // 
             this.viewLogsToolStripMenuItem.Name = "viewLogsToolStripMenuItem";
-            this.viewLogsToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.viewLogsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.viewLogsToolStripMenuItem.Text = "View Logs...";
+            this.viewLogsToolStripMenuItem.Click += new System.EventHandler(this.viewLogsToolStripMenuItem_Click);
             // 
             // clearLogsToolStripMenuItem
             // 
             this.clearLogsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.confirmToolStripMenuItem});
             this.clearLogsToolStripMenuItem.Name = "clearLogsToolStripMenuItem";
-            this.clearLogsToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.clearLogsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.clearLogsToolStripMenuItem.Text = "Clear Logs";
             // 
             // confirmToolStripMenuItem
             // 
             this.confirmToolStripMenuItem.Name = "confirmToolStripMenuItem";
-            this.confirmToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.confirmToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.confirmToolStripMenuItem.Text = "Confirm";
             // 
             // consoleToolStripMenuItem
@@ -282,66 +283,24 @@
             this.panel2.Size = new System.Drawing.Size(194, 389);
             this.panel2.TabIndex = 2;
             // 
-            // lbPlayers
+            // txtInvalid
             // 
-            this.lbPlayers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbPlayers.ContextMenuStrip = this.contextMenuStrip1;
-            this.lbPlayers.FormattingEnabled = true;
-            this.lbPlayers.Location = new System.Drawing.Point(6, 81);
-            this.lbPlayers.MultiColumn = true;
-            this.lbPlayers.Name = "lbPlayers";
-            this.lbPlayers.Size = new System.Drawing.Size(182, 303);
-            this.lbPlayers.TabIndex = 4;
+            this.txtInvalid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtInvalid.Enabled = false;
+            this.txtInvalid.Location = new System.Drawing.Point(49, 55);
+            this.txtInvalid.Name = "txtInvalid";
+            this.txtInvalid.Size = new System.Drawing.Size(139, 20);
+            this.txtInvalid.TabIndex = 8;
             // 
-            // textBox2
+            // label4
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(37, 3);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(151, 20);
-            this.textBox2.TabIndex = 3;
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(2, 3);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Filter";
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.txtChat);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 27);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(606, 389);
-            this.panel3.TabIndex = 3;
-            // 
-            // txtChat
-            // 
-            this.txtChat.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtChat.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtChat.Location = new System.Drawing.Point(0, 0);
-            this.txtChat.Name = "txtChat";
-            this.txtChat.Size = new System.Drawing.Size(606, 389);
-            this.txtChat.TabIndex = 0;
-            this.txtChat.Text = "";
-            // 
-            // timerPlayers
-            // 
-            this.timerPlayers.Enabled = true;
-            this.timerPlayers.Interval = 5000;
-            this.timerPlayers.Tick += new System.EventHandler(this.timerPlayers_Tick);
-            // 
-            // timersChat
-            // 
-            this.timersChat.Enabled = true;
-            this.timersChat.Interval = 1000;
-            this.timersChat.Tick += new System.EventHandler(this.timersChat_Tick);
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 58);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(38, 13);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Invalid";
             // 
             // txtProfiles
             // 
@@ -363,24 +322,17 @@
             this.label3.Text = "Profiles";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
-            // txtInvalid
+            // lbPlayers
             // 
-            this.txtInvalid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtInvalid.Enabled = false;
-            this.txtInvalid.Location = new System.Drawing.Point(49, 55);
-            this.txtInvalid.Name = "txtInvalid";
-            this.txtInvalid.Size = new System.Drawing.Size(139, 20);
-            this.txtInvalid.TabIndex = 8;
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 58);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(38, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Invalid";
+            this.lbPlayers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbPlayers.ContextMenuStrip = this.contextMenuStrip1;
+            this.lbPlayers.FormattingEnabled = true;
+            this.lbPlayers.Location = new System.Drawing.Point(6, 81);
+            this.lbPlayers.MultiColumn = true;
+            this.lbPlayers.Name = "lbPlayers";
+            this.lbPlayers.Size = new System.Drawing.Size(182, 303);
+            this.lbPlayers.TabIndex = 4;
             // 
             // contextMenuStrip1
             // 
@@ -456,6 +408,55 @@
             this.copyPlayerIDToolStripMenuItem.Text = "Copy Player ID";
             this.copyPlayerIDToolStripMenuItem.Click += new System.EventHandler(this.copyPlayerIDToolStripMenuItem_Click);
             // 
+            // textBox2
+            // 
+            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox2.Location = new System.Drawing.Point(37, 3);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(151, 20);
+            this.textBox2.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(2, 3);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(29, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Filter";
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.txtChat);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 27);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(606, 389);
+            this.panel3.TabIndex = 3;
+            // 
+            // txtChat
+            // 
+            this.txtChat.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtChat.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtChat.Location = new System.Drawing.Point(0, 0);
+            this.txtChat.Name = "txtChat";
+            this.txtChat.Size = new System.Drawing.Size(606, 389);
+            this.txtChat.TabIndex = 0;
+            this.txtChat.Text = "";
+            // 
+            // timerPlayers
+            // 
+            this.timerPlayers.Enabled = true;
+            this.timerPlayers.Interval = 5000;
+            this.timerPlayers.Tick += new System.EventHandler(this.timerPlayers_Tick);
+            // 
+            // timersChat
+            // 
+            this.timersChat.Enabled = true;
+            this.timersChat.Interval = 1000;
+            this.timersChat.Tick += new System.EventHandler(this.timersChat_Tick);
+            // 
             // timerConnection
             // 
             this.timerConnection.Enabled = true;
@@ -489,8 +490,8 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

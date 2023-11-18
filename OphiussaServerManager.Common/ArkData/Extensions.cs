@@ -8,27 +8,6 @@ namespace OphiussaServerManager.Common
     public static class Extensions
     {
 
-        public static void AppendTextWithTimeStamp(this RichTextBox box, string text, Color color)
-        {
-            text = "[" + DateTime.Now.ToString("u") + "] " + text + "\n";
-            box.SelectionStart = box.TextLength;
-            box.SelectionLength = 0;
-
-            box.SelectionColor = color;
-            box.AppendText(text);
-            box.SelectionColor = box.ForeColor;
-        }
-        public static void AppendText(this RichTextBox box, string text, Color color)
-        {
-            text = text + "\n";
-            box.SelectionStart = box.TextLength;
-            box.SelectionLength = 0;
-
-            box.SelectionColor = color;
-            box.AppendText(text);
-            box.SelectionColor = box.ForeColor;
-        }
-
         private static readonly int[] Empty = new int[0];
 
         public static int LocateFirst(this byte[] self, byte[] candidate, int offset = 0)

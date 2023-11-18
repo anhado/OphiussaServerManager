@@ -68,7 +68,7 @@ namespace OphiussaServerManager.Common
             }
             return ret;
         }
-
+        
         public static string GetPublicIp()
         {
             int retrys = 0;
@@ -99,6 +99,12 @@ namespace OphiussaServerManager.Common
             }
 
             return address;
+
+            //var discoverer = new NatDiscoverer();
+            //var device = await discoverer.DiscoverDeviceAsync();
+            //var ip = await device.GetExternalIPAsync();
+
+            //return ip.ToString();
         }
 
         public static void DownloadSteamCMD()

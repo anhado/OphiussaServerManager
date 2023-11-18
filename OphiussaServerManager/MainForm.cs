@@ -15,6 +15,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Net.Sockets; 
+using Open.Nat;
 
 namespace OphiussaServerManager
 {
@@ -52,7 +54,12 @@ namespace OphiussaServerManager
             LoadProfiles();
 
             txtLocalIP.Text = await Task.Run(() => Common.NetworkTools.GetHostIp());
-            txtPublicIP.Text = await Task.Run(() => Common.NetworkTools.GetPublicIp());
+
+            var discoverer = new NatDiscoverer();
+            var device = await discoverer.DiscoverDeviceAsync();
+            var ip = await device.GetExternalIPAsync();
+            
+            txtPublicIP.Text = ip.ToString();
         }
 
         private void LoadProfiles()
@@ -187,5 +194,26 @@ namespace OphiussaServerManager
         {
             LocaIP = txtLocalIP.Text;
         }
+
+        private async void btRefreshIP_Click(object sender, EventArgs e)
+        {
+
+
+            var discoverer = new NatDiscoverer();
+            var device = await discoverer.DiscoverDeviceAsync();
+            var ip = await device.GetExternalIPAsync();
+            txtPublicIP.Text = ip.ToString();
+            Console.WriteLine("The external IP Address is: {0} ", ip);
+
+            // var xxx = await device.GetAllMappingsAsync();
+
+            // await device.CreatePortMapAsync(new Mapping(Protocol.TcpUpd, 1600, 1700, "The mapping name"));
+            // await device.CreatePortMapAsync(new Mapping(Protocol.Tcp, 1601, 1701, "The mapping name"));
+            // await device.CreatePortMapAsync(new Mapping(Protocol.Udp, 1600, 1700, "The mapping name"));
+            // await device.CreatePortMapAsync(new Mapping(Protocol.Udp, 1601, 1701, "The mapping name"));
+
+
+
+        } 
     }
 }

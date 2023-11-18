@@ -229,6 +229,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Open.NAT\Open.Nat\Open.Nat.csproj">
+      <Project>{FDEACF87-8877-45D8-AD9F-AEE32A100544}</Project>
+      <Name>Open.Nat</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MakarovDev.ExpandCollapsePanel\MakarovDev.ExpandCollapsePanel.csproj">
       <Project>{be76a6fe-225f-4287-9ca0-231f5af4cdc1}</Project>
       <Name>MakarovDev.ExpandCollapsePanel</Name>

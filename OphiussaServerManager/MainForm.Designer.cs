@@ -38,6 +38,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.NewTab = new System.Windows.Forms.TabPage();
             this.button1 = new System.Windows.Forms.Button();
+            this.btRefreshIP = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -150,11 +151,22 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // btRefreshIP
+            // 
+            this.btRefreshIP.Location = new System.Drawing.Point(190, 4);
+            this.btRefreshIP.Name = "btRefreshIP";
+            this.btRefreshIP.Size = new System.Drawing.Size(75, 23);
+            this.btRefreshIP.TabIndex = 9;
+            this.btRefreshIP.Text = "Refresh";
+            this.btRefreshIP.UseVisualStyleBackColor = true;
+            this.btRefreshIP.Click += new System.EventHandler(this.btRefreshIP_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 613);
+            this.Controls.Add(this.btRefreshIP);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.txtVersion);
@@ -186,6 +198,7 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage NewTab;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btRefreshIP;
     }
 }
 
