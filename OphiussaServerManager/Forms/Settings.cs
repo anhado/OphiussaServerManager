@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using OphiussaServerManager.Helpers;
+using OphiussaServerManager.Common.Helpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -35,16 +35,16 @@ namespace OphiussaServerManager.Forms
             string fileName = "config.json";
             if (!System.IO.File.Exists("config.json"))
             {
-                Models.Settings s = new Models.Settings();
+                Common.Models.Settings s = new Common.Models.Settings();
                 string jsonString = JsonConvert.SerializeObject(s, Formatting.Indented);
                 File.WriteAllText(fileName, jsonString);
             }
 
-            Models.Settings settings = JsonConvert.DeserializeObject<Models.Settings>(File.ReadAllText(fileName));
+            Common.Models.Settings settings = JsonConvert.DeserializeObject<Common.Models.Settings>(File.ReadAllText(fileName));
             LoadSettings(settings);
         }
 
-        public void LoadSettings(Models.Settings sett)
+        public void LoadSettings(Common.Models.Settings sett)
         {
             chkUpdateOnStart.Checked = sett.UpdateSteamCMDOnStartup;
             txtDataFolder.Text = sett.DataFolder;
@@ -80,7 +80,7 @@ namespace OphiussaServerManager.Forms
         {
 
             string fileName = "config.json";
-            Models.Settings sett = new Models.Settings();
+            Common.Models.Settings sett = new Common.Models.Settings();
             sett.UpdateSteamCMDOnStartup = chkUpdateOnStart.Checked;
             sett.DataFolder = txtDataFolder.Text;
             sett.DefaultInstallationFolder = txtInstallFolder.Text;
@@ -158,7 +158,7 @@ namespace OphiussaServerManager.Forms
 
         private void button5_Click(object sender, EventArgs e)
         {
-            NetworkTools.DownloadSteamCMD();
+            Common.NetworkTools.DownloadSteamCMD();
 
         }
 

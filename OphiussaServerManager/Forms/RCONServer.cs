@@ -1,11 +1,11 @@
-﻿using ArkData;
+﻿using OphiussaServerManager.Common;
 using CoreRCON;
 using CoreRCON.Parsers.Standard;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
-using OphiussaServerManager.Helpers;
-using OphiussaServerManager.Models;
-using OphiussaServerManager.Models.Profiles;
+using OphiussaServerManager.Common.Helpers;
+using OphiussaServerManager.Common.Models;
+using OphiussaServerManager.Common.Models.Profiles;
 using SSQLib;
 using System;
 using System.Collections.Concurrent;
@@ -30,7 +30,7 @@ namespace OphiussaServerManager.Forms
         RCON rcon;
         bool isConnected = false;
         List<PlayerList> playerLists = new List<PlayerList>();
-        private readonly ConcurrentDictionary<string, Models.PlayerInfo> _players = new ConcurrentDictionary<string, Models.PlayerInfo>();
+        private readonly ConcurrentDictionary<string, OphiussaServerManager.Common.Models.PlayerInfo> _players = new ConcurrentDictionary<string, OphiussaServerManager.Common.Models.PlayerInfo>();
         private PlayerListParameters _playerListParameters;
 
         public RCONServer(Profile profile)
@@ -94,7 +94,7 @@ namespace OphiussaServerManager.Forms
                     string playerId = player.PlayerId;
                     if (!string.IsNullOrWhiteSpace(playerId))
                     {
-                        Models.PlayerInfo playerInfo;
+                        Common.Models.PlayerInfo playerInfo;
                         this._players.TryGetValue(playerId, out playerInfo);
                         playerInfo?.UpdatePlatformData(player);
                     }
@@ -103,7 +103,8 @@ namespace OphiussaServerManager.Forms
 
             try
             {
-                DateTime dateTime = await dataContainer.LoadSteamAsync(SteamUtils.SteamWebApiKey, 60);
+                SteamUtils steam = new SteamUtils(MainForm.Settings);
+                DateTime dateTime = await dataContainer.LoadSteamAsync(steam.SteamWebApiKey, 60);
             }
             catch (Exception ex)
             {
@@ -120,13 +121,13 @@ namespace OphiussaServerManager.Forms
                     string key = playerData.PlayerId;
                     if (!string.IsNullOrWhiteSpace(key))
                     {
-                        Models.PlayerInfo addValue = new Models.PlayerInfo()
+                        Common.Models.PlayerInfo addValue = new Common.Models.PlayerInfo()
                         {
                             PlayerId = playerData.PlayerId,
                             PlayerName = playerData.PlayerName,
                             IsValid = true
                         };
-                        this._players.AddOrUpdate(key, addValue, (Func<string, Models.PlayerInfo, Models.PlayerInfo>)((k, v) =>
+                        this._players.AddOrUpdate(key, addValue, (Func<string, Common.Models.PlayerInfo, Common.Models.PlayerInfo>)((k, v) =>
                         {
                             v.PlayerName = playerData.PlayerName;
                             v.IsValid = true;
@@ -138,13 +139,13 @@ namespace OphiussaServerManager.Forms
                         key = Path.GetFileNameWithoutExtension(playerData.Filename);
                         if (!string.IsNullOrWhiteSpace(key))
                         {
-                            Models.PlayerInfo addValue = new Models.PlayerInfo()
+                            Common.Models.PlayerInfo addValue = new Common.Models.PlayerInfo()
                             {
                                 PlayerId = key,
                                 PlayerName = "< corrupted profile >",
                                 IsValid = false
                             };
-                            this._players.AddOrUpdate(key, addValue, (Func<string, Models.PlayerInfo, Models.PlayerInfo>)((k, v) =>
+                            this._players.AddOrUpdate(key, addValue, (Func<string, Common.Models.PlayerInfo, Common.Models.PlayerInfo>)((k, v) =>
                             {
                                 v.PlayerName = "< corrupted profile >";
                                 v.IsValid = false;
@@ -158,13 +159,13 @@ namespace OphiussaServerManager.Forms
                             //this._debugLogger?.Debug("UpdatePlayerDetailsAsync - Error: corrupted profile.\r\n" + playerData.Filename + ".");
                         }
                     }
-                    Models.PlayerInfo player;
+                    Common.Models.PlayerInfo player;
                     if (!this._players.TryGetValue(key, out player) || player == null)
                         return;
                     player.UpdateData(playerData);
                     await TaskUtils.RunOnUIThreadAsync((Action)(() =>
                     {
-                        Models.PlayerInfo playerInfo3 = player;
+                        Common.Models.PlayerInfo playerInfo3 = player;
                         PlayerListParameters playerListParameters3 = this._playerListParameters;
                         bool? nullable4;
                         if (playerListParameters3 == null)
@@ -197,7 +198,7 @@ namespace OphiussaServerManager.Forms
                         bool? nullable5 = nullable4;
                         int num3 = nullable5.GetValueOrDefault() ? 1 : 0;
                         playerInfo3.IsAdmin = num3 != 0;
-                        Models.PlayerInfo playerInfo4 = player;
+                        Common.Models.PlayerInfo playerInfo4 = player;
                         PlayerListParameters playerListParameters4 = this._playerListParameters;
                         bool? nullable6;
                         if (playerListParameters4 == null)

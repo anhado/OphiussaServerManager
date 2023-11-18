@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtBuild = new System.Windows.Forms.TextBox();
             this.label35 = new System.Windows.Forms.Label();
@@ -50,7 +51,19 @@
             this.label1 = new System.Windows.Forms.Label();
             this.expandCollapsePanel2 = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
             this.expandCollapsePanel1 = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.chkTribeLogDestroyedEnemyStructures = new System.Windows.Forms.CheckBox();
+            this.chkLogAdminCommandstoAdmins = new System.Windows.Forms.CheckBox();
+            this.chkLogAdminCommandsToPublic = new System.Windows.Forms.CheckBox();
+            this.txtMaximumTribeLogs = new System.Windows.Forms.TextBox();
+            this.label36 = new System.Windows.Forms.Label();
+            this.chkAllowHideDamageSourceFromLogs = new System.Windows.Forms.CheckBox();
+            this.chkServerRCONOutputTribeLogs = new System.Windows.Forms.CheckBox();
+            this.chkServerAdminLogsIncludeTribeLogs = new System.Windows.Forms.CheckBox();
+            this.chkEnableServerAdminLogs = new System.Windows.Forms.CheckBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.txtCommand = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.txtAffinity = new System.Windows.Forms.TextBox();
             this.label34 = new System.Windows.Forms.Label();
@@ -154,20 +167,10 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtServerName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.chkEnableServerAdminLogs = new System.Windows.Forms.CheckBox();
-            this.chkServerAdminLogsIncludeTribeLogs = new System.Windows.Forms.CheckBox();
-            this.chkServerRCONOutputTribeLogs = new System.Windows.Forms.CheckBox();
-            this.chkAllowHideDamageSourceFromLogs = new System.Windows.Forms.CheckBox();
-            this.label36 = new System.Windows.Forms.Label();
-            this.txtMaximumTribeLogs = new System.Windows.Forms.TextBox();
-            this.chkLogAdminCommandsToPublic = new System.Windows.Forms.CheckBox();
-            this.chkLogAdminCommandstoAdmins = new System.Windows.Forms.CheckBox();
-            this.chkTribeLogDestroyedEnemyStructures = new System.Windows.Forms.CheckBox();
-            this.txtCommand = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.timerGetProcess = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.expandCollapsePanel1.SuspendLayout();
+            this.groupBox10.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -184,7 +187,6 @@
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBox10.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -297,6 +299,7 @@
             this.btStart.TabIndex = 10;
             this.btStart.Text = "Start";
             this.btStart.UseVisualStyleBackColor = true;
+            this.btStart.Click += new System.EventHandler(this.btStart_Click);
             // 
             // btUpdate
             // 
@@ -436,6 +439,119 @@
             this.expandCollapsePanel1.Text = "Administration";
             this.expandCollapsePanel1.UseAnimation = false;
             // 
+            // groupBox10
+            // 
+            this.groupBox10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox10.Controls.Add(this.chkTribeLogDestroyedEnemyStructures);
+            this.groupBox10.Controls.Add(this.chkLogAdminCommandstoAdmins);
+            this.groupBox10.Controls.Add(this.chkLogAdminCommandsToPublic);
+            this.groupBox10.Controls.Add(this.txtMaximumTribeLogs);
+            this.groupBox10.Controls.Add(this.label36);
+            this.groupBox10.Controls.Add(this.chkAllowHideDamageSourceFromLogs);
+            this.groupBox10.Controls.Add(this.chkServerRCONOutputTribeLogs);
+            this.groupBox10.Controls.Add(this.chkServerAdminLogsIncludeTribeLogs);
+            this.groupBox10.Controls.Add(this.chkEnableServerAdminLogs);
+            this.groupBox10.ForeColor = System.Drawing.Color.SteelBlue;
+            this.groupBox10.Location = new System.Drawing.Point(11, 1477);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(708, 127);
+            this.groupBox10.TabIndex = 23;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "Server Log Options";
+            // 
+            // chkTribeLogDestroyedEnemyStructures
+            // 
+            this.chkTribeLogDestroyedEnemyStructures.AutoSize = true;
+            this.chkTribeLogDestroyedEnemyStructures.Enabled = false;
+            this.chkTribeLogDestroyedEnemyStructures.Location = new System.Drawing.Point(321, 97);
+            this.chkTribeLogDestroyedEnemyStructures.Name = "chkTribeLogDestroyedEnemyStructures";
+            this.chkTribeLogDestroyedEnemyStructures.Size = new System.Drawing.Size(235, 19);
+            this.chkTribeLogDestroyedEnemyStructures.TabIndex = 73;
+            this.chkTribeLogDestroyedEnemyStructures.Text = "Tribe Log Destroyed Enemy Structures";
+            this.chkTribeLogDestroyedEnemyStructures.UseVisualStyleBackColor = true;
+            // 
+            // chkLogAdminCommandstoAdmins
+            // 
+            this.chkLogAdminCommandstoAdmins.AutoSize = true;
+            this.chkLogAdminCommandstoAdmins.Enabled = false;
+            this.chkLogAdminCommandstoAdmins.Location = new System.Drawing.Point(321, 72);
+            this.chkLogAdminCommandstoAdmins.Name = "chkLogAdminCommandstoAdmins";
+            this.chkLogAdminCommandstoAdmins.Size = new System.Drawing.Size(269, 19);
+            this.chkLogAdminCommandstoAdmins.TabIndex = 72;
+            this.chkLogAdminCommandstoAdmins.Text = "Log Admin Commands to Chat(Admins Only)";
+            this.chkLogAdminCommandstoAdmins.UseVisualStyleBackColor = true;
+            // 
+            // chkLogAdminCommandsToPublic
+            // 
+            this.chkLogAdminCommandsToPublic.AutoSize = true;
+            this.chkLogAdminCommandsToPublic.Location = new System.Drawing.Point(321, 47);
+            this.chkLogAdminCommandsToPublic.Name = "chkLogAdminCommandsToPublic";
+            this.chkLogAdminCommandsToPublic.Size = new System.Drawing.Size(234, 19);
+            this.chkLogAdminCommandsToPublic.TabIndex = 71;
+            this.chkLogAdminCommandsToPublic.Text = "Log Admin Commands to Chat(public)";
+            this.chkLogAdminCommandsToPublic.UseVisualStyleBackColor = true;
+            // 
+            // txtMaximumTribeLogs
+            // 
+            this.txtMaximumTribeLogs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtMaximumTribeLogs.Location = new System.Drawing.Point(453, 20);
+            this.txtMaximumTribeLogs.Name = "txtMaximumTribeLogs";
+            this.txtMaximumTribeLogs.Size = new System.Drawing.Size(92, 21);
+            this.txtMaximumTribeLogs.TabIndex = 70;
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(323, 23);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(124, 15);
+            this.label36.TabIndex = 69;
+            this.label36.Text = "Maximum Tribe Logs";
+            // 
+            // chkAllowHideDamageSourceFromLogs
+            // 
+            this.chkAllowHideDamageSourceFromLogs.AutoSize = true;
+            this.chkAllowHideDamageSourceFromLogs.Enabled = false;
+            this.chkAllowHideDamageSourceFromLogs.Location = new System.Drawing.Point(5, 97);
+            this.chkAllowHideDamageSourceFromLogs.Name = "chkAllowHideDamageSourceFromLogs";
+            this.chkAllowHideDamageSourceFromLogs.Size = new System.Drawing.Size(239, 19);
+            this.chkAllowHideDamageSourceFromLogs.TabIndex = 51;
+            this.chkAllowHideDamageSourceFromLogs.Text = "Allow Hide Damage Source From Logs";
+            this.chkAllowHideDamageSourceFromLogs.UseVisualStyleBackColor = true;
+            // 
+            // chkServerRCONOutputTribeLogs
+            // 
+            this.chkServerRCONOutputTribeLogs.AutoSize = true;
+            this.chkServerRCONOutputTribeLogs.Location = new System.Drawing.Point(5, 72);
+            this.chkServerRCONOutputTribeLogs.Name = "chkServerRCONOutputTribeLogs";
+            this.chkServerRCONOutputTribeLogs.Size = new System.Drawing.Size(199, 19);
+            this.chkServerRCONOutputTribeLogs.TabIndex = 50;
+            this.chkServerRCONOutputTribeLogs.Text = "Server RCON Output Tribe Logs";
+            this.chkServerRCONOutputTribeLogs.UseVisualStyleBackColor = true;
+            // 
+            // chkServerAdminLogsIncludeTribeLogs
+            // 
+            this.chkServerAdminLogsIncludeTribeLogs.AutoSize = true;
+            this.chkServerAdminLogsIncludeTribeLogs.Location = new System.Drawing.Point(5, 47);
+            this.chkServerAdminLogsIncludeTribeLogs.Name = "chkServerAdminLogsIncludeTribeLogs";
+            this.chkServerAdminLogsIncludeTribeLogs.Size = new System.Drawing.Size(233, 19);
+            this.chkServerAdminLogsIncludeTribeLogs.TabIndex = 49;
+            this.chkServerAdminLogsIncludeTribeLogs.Text = "Server Admin Logs Include Tribe Logs";
+            this.chkServerAdminLogsIncludeTribeLogs.UseVisualStyleBackColor = true;
+            this.chkServerAdminLogsIncludeTribeLogs.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            // 
+            // chkEnableServerAdminLogs
+            // 
+            this.chkEnableServerAdminLogs.AutoSize = true;
+            this.chkEnableServerAdminLogs.Location = new System.Drawing.Point(5, 22);
+            this.chkEnableServerAdminLogs.Name = "chkEnableServerAdminLogs";
+            this.chkEnableServerAdminLogs.Size = new System.Drawing.Size(171, 19);
+            this.chkEnableServerAdminLogs.TabIndex = 48;
+            this.chkEnableServerAdminLogs.Text = "Enable Server Admin Logs";
+            this.chkEnableServerAdminLogs.UseVisualStyleBackColor = true;
+            // 
             // groupBox9
             // 
             this.groupBox9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -454,6 +570,28 @@
             this.groupBox9.TabIndex = 22;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Command Line";
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Location = new System.Drawing.Point(635, 46);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(61, 23);
+            this.button2.TabIndex = 72;
+            this.button2.Text = "Refresh";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // txtCommand
+            // 
+            this.txtCommand.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCommand.Enabled = false;
+            this.txtCommand.Location = new System.Drawing.Point(5, 46);
+            this.txtCommand.Multiline = true;
+            this.txtCommand.Name = "txtCommand";
+            this.txtCommand.Size = new System.Drawing.Size(625, 72);
+            this.txtCommand.TabIndex = 71;
             // 
             // button1
             // 
@@ -1568,139 +1706,10 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "Server Name";
             // 
-            // groupBox10
+            // timerGetProcess
             // 
-            this.groupBox10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox10.Controls.Add(this.chkTribeLogDestroyedEnemyStructures);
-            this.groupBox10.Controls.Add(this.chkLogAdminCommandstoAdmins);
-            this.groupBox10.Controls.Add(this.chkLogAdminCommandsToPublic);
-            this.groupBox10.Controls.Add(this.txtMaximumTribeLogs);
-            this.groupBox10.Controls.Add(this.label36);
-            this.groupBox10.Controls.Add(this.chkAllowHideDamageSourceFromLogs);
-            this.groupBox10.Controls.Add(this.chkServerRCONOutputTribeLogs);
-            this.groupBox10.Controls.Add(this.chkServerAdminLogsIncludeTribeLogs);
-            this.groupBox10.Controls.Add(this.chkEnableServerAdminLogs);
-            this.groupBox10.ForeColor = System.Drawing.Color.SteelBlue;
-            this.groupBox10.Location = new System.Drawing.Point(11, 1477);
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(708, 127);
-            this.groupBox10.TabIndex = 23;
-            this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "Server Log Options";
-            // 
-            // chkEnableServerAdminLogs
-            // 
-            this.chkEnableServerAdminLogs.AutoSize = true;
-            this.chkEnableServerAdminLogs.Location = new System.Drawing.Point(5, 22);
-            this.chkEnableServerAdminLogs.Name = "chkEnableServerAdminLogs";
-            this.chkEnableServerAdminLogs.Size = new System.Drawing.Size(171, 19);
-            this.chkEnableServerAdminLogs.TabIndex = 48;
-            this.chkEnableServerAdminLogs.Text = "Enable Server Admin Logs";
-            this.chkEnableServerAdminLogs.UseVisualStyleBackColor = true;
-            // 
-            // chkServerAdminLogsIncludeTribeLogs
-            // 
-            this.chkServerAdminLogsIncludeTribeLogs.AutoSize = true;
-            this.chkServerAdminLogsIncludeTribeLogs.Location = new System.Drawing.Point(5, 47);
-            this.chkServerAdminLogsIncludeTribeLogs.Name = "chkServerAdminLogsIncludeTribeLogs";
-            this.chkServerAdminLogsIncludeTribeLogs.Size = new System.Drawing.Size(233, 19);
-            this.chkServerAdminLogsIncludeTribeLogs.TabIndex = 49;
-            this.chkServerAdminLogsIncludeTribeLogs.Text = "Server Admin Logs Include Tribe Logs";
-            this.chkServerAdminLogsIncludeTribeLogs.UseVisualStyleBackColor = true;
-            this.chkServerAdminLogsIncludeTribeLogs.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
-            // 
-            // chkServerRCONOutputTribeLogs
-            // 
-            this.chkServerRCONOutputTribeLogs.AutoSize = true;
-            this.chkServerRCONOutputTribeLogs.Location = new System.Drawing.Point(5, 72);
-            this.chkServerRCONOutputTribeLogs.Name = "chkServerRCONOutputTribeLogs";
-            this.chkServerRCONOutputTribeLogs.Size = new System.Drawing.Size(199, 19);
-            this.chkServerRCONOutputTribeLogs.TabIndex = 50;
-            this.chkServerRCONOutputTribeLogs.Text = "Server RCON Output Tribe Logs";
-            this.chkServerRCONOutputTribeLogs.UseVisualStyleBackColor = true;
-            // 
-            // chkAllowHideDamageSourceFromLogs
-            // 
-            this.chkAllowHideDamageSourceFromLogs.AutoSize = true;
-            this.chkAllowHideDamageSourceFromLogs.Enabled = false;
-            this.chkAllowHideDamageSourceFromLogs.Location = new System.Drawing.Point(5, 97);
-            this.chkAllowHideDamageSourceFromLogs.Name = "chkAllowHideDamageSourceFromLogs";
-            this.chkAllowHideDamageSourceFromLogs.Size = new System.Drawing.Size(239, 19);
-            this.chkAllowHideDamageSourceFromLogs.TabIndex = 51;
-            this.chkAllowHideDamageSourceFromLogs.Text = "Allow Hide Damage Source From Logs";
-            this.chkAllowHideDamageSourceFromLogs.UseVisualStyleBackColor = true;
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(323, 23);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(124, 15);
-            this.label36.TabIndex = 69;
-            this.label36.Text = "Maximum Tribe Logs";
-            // 
-            // txtMaximumTribeLogs
-            // 
-            this.txtMaximumTribeLogs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMaximumTribeLogs.Location = new System.Drawing.Point(453, 20);
-            this.txtMaximumTribeLogs.Name = "txtMaximumTribeLogs";
-            this.txtMaximumTribeLogs.Size = new System.Drawing.Size(92, 21);
-            this.txtMaximumTribeLogs.TabIndex = 70;
-            // 
-            // chkLogAdminCommandsToPublic
-            // 
-            this.chkLogAdminCommandsToPublic.AutoSize = true;
-            this.chkLogAdminCommandsToPublic.Location = new System.Drawing.Point(321, 47);
-            this.chkLogAdminCommandsToPublic.Name = "chkLogAdminCommandsToPublic";
-            this.chkLogAdminCommandsToPublic.Size = new System.Drawing.Size(234, 19);
-            this.chkLogAdminCommandsToPublic.TabIndex = 71;
-            this.chkLogAdminCommandsToPublic.Text = "Log Admin Commands to Chat(public)";
-            this.chkLogAdminCommandsToPublic.UseVisualStyleBackColor = true;
-            // 
-            // chkLogAdminCommandstoAdmins
-            // 
-            this.chkLogAdminCommandstoAdmins.AutoSize = true;
-            this.chkLogAdminCommandstoAdmins.Enabled = false;
-            this.chkLogAdminCommandstoAdmins.Location = new System.Drawing.Point(321, 72);
-            this.chkLogAdminCommandstoAdmins.Name = "chkLogAdminCommandstoAdmins";
-            this.chkLogAdminCommandstoAdmins.Size = new System.Drawing.Size(269, 19);
-            this.chkLogAdminCommandstoAdmins.TabIndex = 72;
-            this.chkLogAdminCommandstoAdmins.Text = "Log Admin Commands to Chat(Admins Only)";
-            this.chkLogAdminCommandstoAdmins.UseVisualStyleBackColor = true;
-            // 
-            // chkTribeLogDestroyedEnemyStructures
-            // 
-            this.chkTribeLogDestroyedEnemyStructures.AutoSize = true;
-            this.chkTribeLogDestroyedEnemyStructures.Enabled = false;
-            this.chkTribeLogDestroyedEnemyStructures.Location = new System.Drawing.Point(321, 97);
-            this.chkTribeLogDestroyedEnemyStructures.Name = "chkTribeLogDestroyedEnemyStructures";
-            this.chkTribeLogDestroyedEnemyStructures.Size = new System.Drawing.Size(235, 19);
-            this.chkTribeLogDestroyedEnemyStructures.TabIndex = 73;
-            this.chkTribeLogDestroyedEnemyStructures.Text = "Tribe Log Destroyed Enemy Structures";
-            this.chkTribeLogDestroyedEnemyStructures.UseVisualStyleBackColor = true;
-            // 
-            // txtCommand
-            // 
-            this.txtCommand.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCommand.Enabled = false;
-            this.txtCommand.Location = new System.Drawing.Point(5, 46);
-            this.txtCommand.Multiline = true;
-            this.txtCommand.Name = "txtCommand";
-            this.txtCommand.Size = new System.Drawing.Size(625, 72);
-            this.txtCommand.TabIndex = 71;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(635, 46);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(61, 23);
-            this.button2.TabIndex = 72;
-            this.button2.Text = "Refresh";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.timerGetProcess.Enabled = true;
+            this.timerGetProcess.Tick += new System.EventHandler(this.timerGetProcess_Tick);
             // 
             // FrmArk
             // 
@@ -1719,6 +1728,8 @@
             this.panel1.PerformLayout();
             this.expandCollapsePanel1.ResumeLayout(false);
             this.expandCollapsePanel1.PerformLayout();
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
             this.groupBox8.ResumeLayout(false);
@@ -1744,8 +1755,6 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox10.ResumeLayout(false);
-            this.groupBox10.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1890,5 +1899,6 @@
         private System.Windows.Forms.CheckBox chkTribeLogDestroyedEnemyStructures;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox txtCommand;
+        private System.Windows.Forms.Timer timerGetProcess;
     }
 }

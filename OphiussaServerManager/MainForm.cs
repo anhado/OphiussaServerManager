@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
 using OphiussaServerManager.Forms;
-using OphiussaServerManager.Helpers;
-using OphiussaServerManager.Models;
-using OphiussaServerManager.Models.Profiles;
-using OphiussaServerManager.Models.SupportedServers;
+using OphiussaServerManager.Common.Helpers;
+using OphiussaServerManager.Common.Models;
+using OphiussaServerManager.Common.Models.Profiles;
+using OphiussaServerManager.Common.Models.SupportedServers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,7 +22,7 @@ namespace OphiussaServerManager
     {
         Dictionary<string, Profile> Profiles = new Dictionary<string, Profile>();
         Dictionary<string, LinkProfileForm> linkProfileForms = new Dictionary<string, LinkProfileForm>();
-        public static Models.Settings Settings;
+        public static Common.Models.Settings Settings;
 
         public static string PublicIP { get; set; }
         public static string LocaIP { get; set; }
@@ -40,19 +40,19 @@ namespace OphiussaServerManager
                 Forms.Settings settings = new Forms.Settings();
                 settings.ShowDialog();
             }
-            Settings = JsonConvert.DeserializeObject<Models.Settings>(File.ReadAllText("config.json"));
+            Settings = JsonConvert.DeserializeObject<Common.Models.Settings>(File.ReadAllText("config.json"));
 
 
 
-            if (Settings.UpdateSteamCMDOnStartup) NetworkTools.DownloadSteamCMD();
+            if (Settings.UpdateSteamCMDOnStartup) Common.NetworkTools.DownloadSteamCMD();
             System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
             System.Diagnostics.FileVersionInfo fvi = System.Diagnostics.FileVersionInfo.GetVersionInfo(assembly.Location);
             txtVersion.Text = fvi.FileVersion;
 
             LoadProfiles();
 
-            txtLocalIP.Text = await Task.Run(() => NetworkTools.GetHostIp());
-            txtPublicIP.Text = await Task.Run(() => NetworkTools.GetPublicIp());
+            txtLocalIP.Text = await Task.Run(() => Common.NetworkTools.GetHostIp());
+            txtPublicIP.Text = await Task.Run(() => Common.NetworkTools.GetPublicIp());
         }
 
         private void LoadProfiles()

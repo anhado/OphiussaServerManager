@@ -1,7 +1,9 @@
 ﻿using Newtonsoft.Json;
+using OphiussaServerManager.Helpers;
 using OphiussaServerManager.Models.SupportedServers;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -43,6 +45,27 @@ namespace OphiussaServerManager.Models.Profiles
                     break;
             }
             LoadProfile();
+        }
+
+
+        public Process GetExeProcess()
+        { 
+            string ClientFile = Path.Combine(this.InstallLocation, Type.ExecutablePath);
+            if (string.IsNullOrWhiteSpace(ClientFile) || !System.IO.File.Exists(ClientFile))
+                return (Process)null;
+            string a = IOUtils.NormalizePath(ClientFile);
+            Process[] processesByName = Process.GetProcessesByName(Type.ProcessName);
+            Process steamProcess = (Process)null;
+            foreach (Process process in processesByName)
+            {
+                string mainModuleFilepath = ProcessUtils.GetMainModuleFilepath(process.Id);
+                if (string.Equals(a, mainModuleFilepath, StringComparison.OrdinalIgnoreCase))
+                {
+                    steamProcess = process;
+                    break;
+                }
+            }
+            return steamProcess;
         }
 
         public Profile(string key, string name, SupportedServersType type, dynamic configuration)

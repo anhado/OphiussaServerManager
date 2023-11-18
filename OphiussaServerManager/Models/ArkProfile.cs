@@ -1,10 +1,13 @@
 ﻿using OphiussaServerManager.Helpers;
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Shapes;
+using OphiussaServerManager.Ini;
 
 namespace OphiussaServerManager.Models.Profiles
 {
@@ -74,7 +77,7 @@ namespace OphiussaServerManager.Models.Profiles
             this.Administration.ClusterID = "";
             this.Administration.ClusterDirectoryOverride = false;
             this.Administration.CPUPriority = ProcessPriorityClass.Normal;
-            this.Administration.CPUAffinity = "All"; 
+            this.Administration.CPUAffinity = "All";
 
             this.Administration.EnableServerAdminLogs = true;
             this.Administration.ServerAdminLogsIncludeTribeLogs = true;
@@ -90,6 +93,17 @@ namespace OphiussaServerManager.Models.Profiles
         public void LoadNewArkProfile(string key)
         {
 
+        }
+
+        public void LoadGameINI(Profile prf)
+        {
+
+            SystemIniFile systemIniFile = new SystemIniFile(prf.InstallLocation);
+
+            var asd = systemIniFile.ReadSection(IniFiles.GameUserSettings, "/Game/PrimalEarth/CoreBlueprints/TestGameMode.TestGameMode_C");
+            //systemIniFile.w
+
+            string x = "";
         }
 
         public string GetCommandLinesArguments(Profile prf)
@@ -118,7 +132,7 @@ namespace OphiussaServerManager.Models.Profiles
             //if (this.Administration.ForceAllowCaveFlyers) hifenArgs.Add(" -ForceAllowCaveFlyers");
             if (this.Administration.EnableAutoForceRespawnDinos) hifenArgs.Add(" -ForceRespawnDinos");
             if (prf.Type.ServerType == SupportedServers.EnumServerType.ArkSurviveAscended)
-                if (this.Administration.ModIDs.Count > 0) hifenArgs.Add($" -mods={string.Join(",", this.Administration.ModIDs.ToArray())}");
+                if (this.Administration.ModIDs.Count > 0 && string.Join(",", this.Administration.ModIDs.ToArray()) != "") hifenArgs.Add($" -mods={string.Join(",", this.Administration.ModIDs.ToArray())}");
             //if (this.Administration.imprintlimit) hifenArgs.Add(" -imprintlimit=101");
             if (this.Administration.DisableVAC) hifenArgs.Add(" -insecure");
             //if (this.Administration.MapModID) hifenArgs.Add(" -MapModID=<ModID>");//Dont Use This

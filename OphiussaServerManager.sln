@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OphiussaServerManager", "Op
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MakarovDev.ExpandCollapsePanel", "MakarovDev.ExpandCollapsePanel\MakarovDev.ExpandCollapsePanel.csproj", "{BE76A6FE-225F-4287-9CA0-231F5AF4CDC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArkData", "ArkData\ArkData.csproj", "{D7E3AF72-3E68-4364-9805-4BCB7E1B1A8C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OphiussaServerManager.Common", "OphiussaServerManager.Common\OphiussaServerManager.Common.csproj", "{9CBA1CBF-F015-48D2-8754-67E1377EE7A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,14 +33,14 @@ Global
 		{BE76A6FE-225F-4287-9CA0-231F5AF4CDC1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BE76A6FE-225F-4287-9CA0-231F5AF4CDC1}.Release|x64.ActiveCfg = Release|Any CPU
 		{BE76A6FE-225F-4287-9CA0-231F5AF4CDC1}.Release|x64.Build.0 = Release|Any CPU
-		{D7E3AF72-3E68-4364-9805-4BCB7E1B1A8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D7E3AF72-3E68-4364-9805-4BCB7E1B1A8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D7E3AF72-3E68-4364-9805-4BCB7E1B1A8C}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{D7E3AF72-3E68-4364-9805-4BCB7E1B1A8C}.Debug|x64.Build.0 = Debug|Any CPU
-		{D7E3AF72-3E68-4364-9805-4BCB7E1B1A8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D7E3AF72-3E68-4364-9805-4BCB7E1B1A8C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D7E3AF72-3E68-4364-9805-4BCB7E1B1A8C}.Release|x64.ActiveCfg = Release|Any CPU
-		{D7E3AF72-3E68-4364-9805-4BCB7E1B1A8C}.Release|x64.Build.0 = Release|Any CPU
+		{9CBA1CBF-F015-48D2-8754-67E1377EE7A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CBA1CBF-F015-48D2-8754-67E1377EE7A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CBA1CBF-F015-48D2-8754-67E1377EE7A0}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9CBA1CBF-F015-48D2-8754-67E1377EE7A0}.Debug|x64.Build.0 = Debug|Any CPU
+		{9CBA1CBF-F015-48D2-8754-67E1377EE7A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CBA1CBF-F015-48D2-8754-67E1377EE7A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CBA1CBF-F015-48D2-8754-67E1377EE7A0}.Release|x64.ActiveCfg = Release|Any CPU
+		{9CBA1CBF-F015-48D2-8754-67E1377EE7A0}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,5 @@
-﻿using OphiussaServerManager.Models.SupportedServers;
+﻿using OphiussaServerManager.Common;
+using OphiussaServerManager.Common.Models.SupportedServers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

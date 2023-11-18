@@ -156,54 +156,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArkData\DataContainer.cs" />
-    <Compile Include="ArkData\DataFileDetails.cs" />
-    <Compile Include="ArkData\Extensions.cs" />
-    <Compile Include="ArkData\Helpers.cs" />
-    <Compile Include="ArkData\Models\SteamBan.cs" />
-    <Compile Include="ArkData\Models\SteamPlayerResponse.cs" />
-    <Compile Include="ArkData\Models\SteamProfile.cs" />
-    <Compile Include="ArkData\Models\SteamResponse.cs" />
-    <Compile Include="ArkData\Parser.cs" />
-    <Compile Include="ArkData\PlayerData.cs" />
-    <Compile Include="ArkData\SSQLib\Packet.cs" />
-    <Compile Include="ArkData\SSQLib\PlayerInfo.cs" />
-    <Compile Include="ArkData\SSQLib\ServerInfo.cs" />
-    <Compile Include="ArkData\SSQLib\SocketUtils.cs" />
-    <Compile Include="ArkData\SSQLib\SSQL.cs" />
-    <Compile Include="ArkData\SSQLib\SSQLServerException.cs" />
-    <Compile Include="ArkData\TribeData.cs" />
-    <Compile Include="Helpers\IOUtils.cs" />
-    <Compile Include="Helpers\JsonUtils.cs" />
-    <Compile Include="Helpers\ProcessUtils.cs" />
-    <Compile Include="Helpers\SteamUtils.cs" />
-    <Compile Include="Helpers\TaskUtils.cs" />
-    <Compile Include="Models\ArkProfile.cs" />
-    <Compile Include="Models\PlayerInfo.cs" />
-    <Compile Include="Models\PlayerListParameters.cs" />
-    <Compile Include="Models\Profile.cs" />
-    <Compile Include="Models\Steam\PublishedFileDetail.cs" />
-    <Compile Include="Models\Steam\PublishedFileDetailsResponse.cs" />
-    <Compile Include="Models\Steam\PublishedFileDetailsResult.cs" />
-    <Compile Include="Models\Settings.cs" />
-    <Compile Include="Models\DefaultModels.cs" />
-    <Compile Include="Models\Steam\SteamCmdAppManifest.cs" />
-    <Compile Include="Models\Steam\SteamCmdAppWorkshop.cs" />
-    <Compile Include="Models\Steam\SteamCmdManifestDetailsResult.cs" />
-    <Compile Include="Models\Steam\SteamCmdManifestUserConfig.cs" />
-    <Compile Include="Models\Steam\SteamCmdWorkshopDetailsResult.cs" />
-    <Compile Include="Models\Steam\SteamCmdWorkshopItemDetails.cs" />
-    <Compile Include="Models\Steam\SteamCmdWorkshopItemsInstalled.cs" />
-    <Compile Include="Models\Steam\SteamUserDetail.cs" />
-    <Compile Include="Models\Steam\SteamUserDetailResponse.cs" />
-    <Compile Include="Models\Steam\SteamUserDetailResult.cs" />
-    <Compile Include="Models\SupportedServers.cs" /> 
     <Compile Include="Forms\FrmArk.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FrmArk.Designer.cs">
       <DependentUpon>FrmArk.cs</DependentUpon>
-    </Compile> 
+    </Compile>
     <Compile Include="Forms\FrmServerTypeSelection.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -222,18 +180,12 @@
     <Compile Include="Forms\Settings.Designer.cs">
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\Extensions.cs" />
-    <Compile Include="Helpers\Utils.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\NetworkTools.cs" />
-    <Compile Include="Models\Steam\WorkshopFileDetail.cs" />
-    <Compile Include="Models\Steam\WorkshopFileDetailResponse.cs" />
-    <Compile Include="Models\Steam\WorkshopFileDetailResult.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\FrmArk.resx">
@@ -277,14 +229,18 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\Collapse.png" />
-    <Content Include="Resources\Expand.png" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\MakarovDev.ExpandCollapsePanel\MakarovDev.ExpandCollapsePanel.csproj">
       <Project>{be76a6fe-225f-4287-9ca0-231f5af4cdc1}</Project>
       <Name>MakarovDev.ExpandCollapsePanel</Name>
     </ProjectReference>
+    <ProjectReference Include="..\OphiussaServerManager.Common\OphiussaServerManager.Common.csproj">
+      <Project>{9cba1cbf-f015-48d2-8754-67e1377ee7a0}</Project>
+      <Name>OphiussaServerManager.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Collapse.png" />
+    <Content Include="Resources\Expand.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

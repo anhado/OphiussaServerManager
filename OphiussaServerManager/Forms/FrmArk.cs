@@ -2,9 +2,10 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using NLog.Fluent;
-using OphiussaServerManager.Helpers;
-using OphiussaServerManager.Models.Profiles;
-using OphiussaServerManager.Models.SupportedServers;
+using OphiussaServerManager.Common;
+using OphiussaServerManager.Common.Helpers;
+using OphiussaServerManager.Common.Models.Profiles;
+using OphiussaServerManager.Common.Models.SupportedServers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,16 +21,12 @@ using System.Windows.Forms;
 
 namespace OphiussaServerManager.Forms
 {
-    class Priority
-    {
-
-    }
-
     public partial class FrmArk : Form
     {
         Profile profile;
         TabPage tab;
         bool isInstalled = false;
+        bool isRunning = false;
         public FrmArk()
         {
             InitializeComponent();
@@ -95,7 +92,7 @@ namespace OphiussaServerManager.Forms
             tbMOTDDuration.Value = profile.ARKConfiguration.Administration.MODDuration;
             tbMOTDInterval.Value = profile.ARKConfiguration.Administration.MODInterval;
             chkEnableInterval.Checked = profile.ARKConfiguration.Administration.EnableInterval;
-             
+
             tbMaxPlayers.Value = profile.ARKConfiguration.Administration.MaxPlayers;
             chkEnableIdleTimeout.Checked = profile.ARKConfiguration.Administration.EnablIdleTimeOut;
             tbIdleTimeout.Value = profile.ARKConfiguration.Administration.IdleTimout;
@@ -133,7 +130,7 @@ namespace OphiussaServerManager.Forms
             chkClusterOverride.Checked = profile.ARKConfiguration.Administration.ClusterDirectoryOverride;
 
             cboPriority.SelectedValue = profile.ARKConfiguration.Administration.CPUPriority;//TODO
-              
+
             txtAffinity.Text = profile.ARKConfiguration.Administration.CPUAffinity;//TODO
 
             chkEnableServerAdminLogs.Checked = profile.ARKConfiguration.Administration.EnableServerAdminLogs;
@@ -185,7 +182,9 @@ namespace OphiussaServerManager.Forms
             txtVersion.Text = GetVersion();
             txtBuild.Text = GetBuild();
 
-            txtCommand.Text = profile.ARKConfiguration.GetCommandLinesArguments(profile);
+            txtCommand.Text = profile.ARKConfiguration.GetCommandLinesArguments(MainForm.Settings, profile, MainForm.LocaIP);
+
+            profile.ARKConfiguration.LoadGameINI(profile);
         }
 
         private string GetBuild()
@@ -432,7 +431,7 @@ namespace OphiussaServerManager.Forms
 
         private void button2_Click(object sender, EventArgs e)
         {
-            txtCommand.Text = profile.ARKConfiguration.GetCommandLinesArguments(profile);
+            txtCommand.Text = profile.ARKConfiguration.GetCommandLinesArguments(MainForm.Settings, profile, MainForm.LocaIP);
         }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
@@ -443,6 +442,26 @@ namespace OphiussaServerManager.Forms
         private void chkUseBanUrl_CheckedChanged(object sender, EventArgs e)
         {
             txtBanUrl.Enabled = chkUseBanUrl.Checked;
+        }
+
+        private void btStart_Click(object sender, EventArgs e)
+        {
+            Utils.ExecuteAsAdmin(Path.Combine(profile.InstallLocation, profile.Type.ExecutablePath), profile.ARKConfiguration.GetCommandLinesArguments(MainForm.Settings, profile, MainForm.LocaIP), false);
+        }
+
+        private void timerGetProcess_Tick(object sender, EventArgs e)
+        {
+            Process process = profile.GetExeProcess();
+            if (process != null)
+            {
+                isRunning = true;
+                btStart.Text = "Stop";
+            }
+            else
+            {
+                isRunning = false;
+                btStart.Text = "Start";
+            }
         }
     }
 }
