@@ -95,9 +95,7 @@ namespace OphiussaServerManager.Forms
             tbMOTDDuration.Value = profile.ARKConfiguration.Administration.MODDuration;
             tbMOTDInterval.Value = profile.ARKConfiguration.Administration.MODInterval;
             chkEnableInterval.Checked = profile.ARKConfiguration.Administration.EnableInterval;
-
-
-
+             
             tbMaxPlayers.Value = profile.ARKConfiguration.Administration.MaxPlayers;
             chkEnableIdleTimeout.Checked = profile.ARKConfiguration.Administration.EnablIdleTimeOut;
             tbIdleTimeout.Value = profile.ARKConfiguration.Administration.IdleTimout;
@@ -133,6 +131,10 @@ namespace OphiussaServerManager.Forms
             txtAltSaveDirectory.Text = profile.ARKConfiguration.Administration.AlternateSaveDirectoryName;
             txtClusterID.Text = profile.ARKConfiguration.Administration.ClusterID;
             chkClusterOverride.Checked = profile.ARKConfiguration.Administration.ClusterDirectoryOverride;
+
+            cboPriority.SelectedValue = profile.ARKConfiguration.Administration.CPUPriority;//TODO
+              
+            txtAffinity.Text = profile.ARKConfiguration.Administration.CPUAffinity;//TODO
 
             chkEnableServerAdminLogs.Checked = profile.ARKConfiguration.Administration.EnableServerAdminLogs;
             chkServerAdminLogsIncludeTribeLogs.Checked = profile.ARKConfiguration.Administration.ServerAdminLogsIncludeTribeLogs;
@@ -354,7 +356,7 @@ namespace OphiussaServerManager.Forms
             profile.ARKConfiguration.Administration.AlternateSaveDirectoryName = txtAltSaveDirectory.Text;
             profile.ARKConfiguration.Administration.ClusterID = txtClusterID.Text;
             profile.ARKConfiguration.Administration.ClusterDirectoryOverride = chkClusterOverride.Checked;
-            profile.ARKConfiguration.Administration.CPUPriority = ProcessPriorityClass.Normal;//TODO
+            profile.ARKConfiguration.Administration.CPUPriority = (ProcessPriorityClass)cboPriority.SelectedValue;//TODO
             profile.ARKConfiguration.Administration.CPUAffinity = "All";//TODO
 
 
@@ -439,7 +441,7 @@ namespace OphiussaServerManager.Forms
         }
 
         private void chkUseBanUrl_CheckedChanged(object sender, EventArgs e)
-        { 
+        {
             txtBanUrl.Enabled = chkUseBanUrl.Checked;
         }
     }

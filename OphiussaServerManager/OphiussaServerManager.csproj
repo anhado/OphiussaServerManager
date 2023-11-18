@@ -197,11 +197,13 @@
     <Compile Include="Models\Steam\SteamUserDetail.cs" />
     <Compile Include="Models\Steam\SteamUserDetailResponse.cs" />
     <Compile Include="Models\Steam\SteamUserDetailResult.cs" />
-    <Compile Include="Models\SupportedServers.cs" />
-    <Compile Include="Forms\FrmArk.cs" />
+    <Compile Include="Models\SupportedServers.cs" /> 
+    <Compile Include="Forms\FrmArk.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\FrmArk.Designer.cs">
       <DependentUpon>FrmArk.cs</DependentUpon>
-    </Compile>
+    </Compile> 
     <Compile Include="Forms\FrmServerTypeSelection.cs">
       <SubType>Form</SubType>
     </Compile>
