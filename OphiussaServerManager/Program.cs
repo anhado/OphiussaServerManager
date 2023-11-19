@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OphiussaServerManager.Forms;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,9 +15,19 @@ namespace OphiussaServerManager
         [STAThread]
         static void Main()
         {
+            string[] args = Environment.GetCommandLineArgs();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            if (Array.IndexOf(args, "-monitor") >= 0)
+            {
+                Application.Run(new FrmServerMonitor());
+            }
+            else
+            {
+                Application.Run(new MainForm());
+            }
+
         }
     }
 }

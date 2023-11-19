@@ -24,7 +24,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace OphiussaServerManager.Forms
 {
-    public partial class RCONServer : Form
+    public partial class FrmRCONServer : Form
     {
         private Profile profile { get; set; }
         RCON rcon;
@@ -33,7 +33,7 @@ namespace OphiussaServerManager.Forms
         private readonly ConcurrentDictionary<string, OphiussaServerManager.Common.Models.PlayerInfo> _players = new ConcurrentDictionary<string, OphiussaServerManager.Common.Models.PlayerInfo>();
         private PlayerListParameters _playerListParameters;
 
-        public RCONServer(Profile profile)
+        public FrmRCONServer(Profile profile)
         {
             this.profile = profile;
 

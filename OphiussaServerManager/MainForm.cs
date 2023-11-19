@@ -15,7 +15,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using System.Net.Sockets; 
+using System.Net.Sockets;
 using Open.Nat;
 
 namespace OphiussaServerManager
@@ -39,7 +39,7 @@ namespace OphiussaServerManager
 
             if (!File.Exists("config.json"))
             {
-                Forms.Settings settings = new Forms.Settings();
+                Forms.FrmSettings settings = new Forms.FrmSettings();
                 settings.ShowDialog();
             }
             Settings = JsonConvert.DeserializeObject<Common.Models.Settings>(File.ReadAllText("config.json"));
@@ -58,7 +58,7 @@ namespace OphiussaServerManager
             var discoverer = new NatDiscoverer();
             var device = await discoverer.DiscoverDeviceAsync();
             var ip = await device.GetExternalIPAsync();
-            
+
             txtPublicIP.Text = ip.ToString();
         }
 
@@ -96,32 +96,38 @@ namespace OphiussaServerManager
         private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
         {
 
+            if (e.TabPage == NewTab)
+            { 
+                e.Cancel = true;
+                Guid guid = Guid.NewGuid();
+                if (tabControl1.SelectedTab == NewTab)
+                {
+
+                    FrmServerTypeSelection frm = new FrmServerTypeSelection();
+                    frm.TotalPageCount = tabControl1.TabPages.Count;
+                    frm.AddNewTabPage += (newServer) =>
+                    {
+
+                        switch (newServer.serversType.ServerType)
+                        {
+                            case EnumServerType.ArkSurviveEvolved:
+                            case EnumServerType.ArkSurviveAscended:
+                                AddNewArkServer(guid.ToString(), newServer.serversType, newServer.installDir, null);
+                                break;
+                            default:
+                                break;
+                        }
+
+                    };
+                    frm.ShowDialog();
+
+                }
+            }
         }
 
         private void tabControl1_Click(object sender, EventArgs e)
         {
-            Guid guid = Guid.NewGuid();
-            if (tabControl1.SelectedTab == NewTab)
-            {
-                FrmServerTypeSelection frm = new FrmServerTypeSelection();
-                frm.TotalPageCount = tabControl1.TabPages.Count;
-                frm.AddNewTabPage += (newServer) =>
-                {
-
-                    switch (newServer.serversType.ServerType)
-                    {
-                        case EnumServerType.ArkSurviveEvolved:
-                        case EnumServerType.ArkSurviveAscended:
-                            AddNewArkServer(guid.ToString(), newServer.serversType, newServer.installDir, null);
-                            break;
-                        default:
-                            break;
-                    }
-
-                };
-                frm.ShowDialog();
-
-            }
+            
         }
 
         void AddNewArkServer(string guid, SupportedServersType serverType, string InstallLocation, Profile p)
@@ -181,7 +187,7 @@ namespace OphiussaServerManager
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Forms.Settings f = new Forms.Settings();
+            Forms.FrmSettings f = new Forms.FrmSettings();
             f.Show();
         }
 
@@ -214,6 +220,12 @@ namespace OphiussaServerManager
 
 
 
-        } 
+        }
+
+        private void btMonitor_Click(object sender, EventArgs e)
+        {
+            FrmServerMonitor monitor = new FrmServerMonitor();
+            monitor.Show();
+        }
     }
 }

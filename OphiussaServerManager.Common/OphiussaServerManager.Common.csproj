@@ -151,7 +151,9 @@
     <Compile Include="Helpers\TaskUtils.cs" />
     <Compile Include="Helpers\Utils.cs" />
     <Compile Include="Models\ArkProfile.cs" />
+    <Compile Include="Models\AutoManageSettings.cs" />
     <Compile Include="Models\DefaultModels.cs" />
+    <Compile Include="Models\MonitorGrid.cs" />
     <Compile Include="Models\PlayerInfo.cs" />
     <Compile Include="Models\PlayerListParameters.cs" />
     <Compile Include="Models\Profile.cs" />

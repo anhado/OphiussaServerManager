@@ -1,6 +1,6 @@
 ﻿namespace OphiussaServerManager.Forms
 {
-    partial class RCONServer
+    partial class FrmRCONServer
     {
         /// <summary>
         /// Required designer variable.
@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRCONServer));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewLogsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -112,7 +113,7 @@
             // viewLogsToolStripMenuItem
             // 
             this.viewLogsToolStripMenuItem.Name = "viewLogsToolStripMenuItem";
-            this.viewLogsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.viewLogsToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.viewLogsToolStripMenuItem.Text = "View Logs...";
             this.viewLogsToolStripMenuItem.Click += new System.EventHandler(this.viewLogsToolStripMenuItem_Click);
             // 
@@ -121,13 +122,13 @@
             this.clearLogsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.confirmToolStripMenuItem});
             this.clearLogsToolStripMenuItem.Name = "clearLogsToolStripMenuItem";
-            this.clearLogsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clearLogsToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.clearLogsToolStripMenuItem.Text = "Clear Logs";
             // 
             // confirmToolStripMenuItem
             // 
             this.confirmToolStripMenuItem.Name = "confirmToolStripMenuItem";
-            this.confirmToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.confirmToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.confirmToolStripMenuItem.Text = "Confirm";
             // 
             // consoleToolStripMenuItem
@@ -184,6 +185,7 @@
             // lblPlayers
             // 
             this.lblPlayers.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.lblPlayers.Enabled = false;
             this.lblPlayers.Name = "lblPlayers";
             this.lblPlayers.Size = new System.Drawing.Size(81, 23);
             this.lblPlayers.Text = "PlayersDesc";
@@ -191,6 +193,7 @@
             // playersToolStripMenuItem
             // 
             this.playersToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.playersToolStripMenuItem.Enabled = false;
             this.playersToolStripMenuItem.Name = "playersToolStripMenuItem";
             this.playersToolStripMenuItem.Size = new System.Drawing.Size(56, 23);
             this.playersToolStripMenuItem.Text = "Players";
@@ -206,6 +209,7 @@
             // statusToolStripMenuItem
             // 
             this.statusToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.statusToolStripMenuItem.Enabled = false;
             this.statusToolStripMenuItem.Name = "statusToolStripMenuItem";
             this.statusToolStripMenuItem.Size = new System.Drawing.Size(54, 23);
             this.statusToolStripMenuItem.Text = "Status:";
@@ -220,6 +224,7 @@
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripMenuItem1.Enabled = false;
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(93, 23);
             this.toolStripMenuItem1.Text = "Admin Name:";
@@ -469,7 +474,7 @@
             this.timerUpdatePlayersFromDisk.Interval = 10000;
             this.timerUpdatePlayersFromDisk.Tick += new System.EventHandler(this.timerUpdatePlayersFromDisk_Tick);
             // 
-            // RCONServer
+            // FrmRCONServer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -479,8 +484,9 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.ForeColor = System.Drawing.Color.SteelBlue;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "RCONServer";
+            this.Name = "FrmRCONServer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RCON";
             this.Load += new System.EventHandler(this.RCONServer_Load);

@@ -1,6 +1,6 @@
 ﻿namespace OphiussaServerManager.Forms
 {
-    partial class Settings
+    partial class FrmSettings
     {
         /// <summary>
         /// Required designer variable.

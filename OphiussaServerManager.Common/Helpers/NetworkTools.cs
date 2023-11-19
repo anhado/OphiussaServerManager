@@ -12,6 +12,7 @@ using System.IO.Compression;
 using System.Diagnostics;
 using OphiussaServerManager.Common.Models.Profiles;
 using OphiussaServerManager.Common.Models;
+using Newtonsoft.Json;
 
 namespace OphiussaServerManager.Common
 {
@@ -24,7 +25,15 @@ namespace OphiussaServerManager.Common
 
     public class NetworkTools
     {
-        public static Settings Settings { get; set; }
+        public static Settings Settings
+        {
+            get
+            { 
+                var NSettings = JsonConvert.DeserializeObject<Common.Models.Settings>(File.ReadAllText("config.json"));
+
+                return NSettings;
+            }
+        }
         public static string GetHostIp()
         {
             string IPAddress = "";
@@ -68,7 +77,7 @@ namespace OphiussaServerManager.Common
             }
             return ret;
         }
-        
+
         public static string GetPublicIp()
         {
             int retrys = 0;

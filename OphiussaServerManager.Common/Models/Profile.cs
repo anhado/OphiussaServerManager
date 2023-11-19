@@ -24,7 +24,24 @@ namespace OphiussaServerManager.Common.Models.Profiles
         [JsonProperty("Type")]
         public SupportedServersType Type { get; set; }
         [JsonProperty("Configuration")]
-        public ArkProfile ARKConfiguration { get; set; }
+        public ArkProfile ARKConfiguration { get; set; } =  new ArkProfile();
+        public AutoManageSettings AutoManageSettings { get; set; } =  new AutoManageSettings();
+
+        public bool IsInstalled
+        {
+            get
+            {
+                return false;
+            }
+        }
+        public bool IsRunning
+        {
+            get
+            {
+                return false;
+            }
+        }
+
 
         public Profile() { }
 
@@ -47,9 +64,40 @@ namespace OphiussaServerManager.Common.Models.Profiles
             LoadProfile();
         }
 
+        public string GetBuild()
+        {
+            //TODO:change Later to use the ArkConfiguration
+            string fileName = "appmanifest_2430930.acf";
+            if (this.Type.ServerType == EnumServerType.ArkSurviveEvolved) fileName = "appmanifest_376030.acf";
+            if (!File.Exists(Path.Combine(this.InstallLocation, "steamapps", fileName))) return "";
+
+            string[] content = File.ReadAllText(Path.Combine(this.InstallLocation, "steamapps", fileName)).Split('\n');
+
+            foreach (var item in content)
+            {
+                string[] t = item.Split('\t');
+
+                if (item.Contains("buildid"))
+                {
+                    return t[3].Replace("\"", "");
+                }
+
+            }
+            return System.IO.File.ReadAllText(Path.Combine(this.InstallLocation, "steamapps", "appmanifest_2430930.acf"));
+        }
+
+        public string GetVersion()
+        {
+            //TODO:change Later to use the ArkConfiguration
+            if (!File.Exists(Path.Combine(this.InstallLocation, "version.txt"))) return "";
+
+
+
+            return System.IO.File.ReadAllText(Path.Combine(this.InstallLocation, "version.txt"));
+        }
 
         public Process GetExeProcess()
-        { 
+        {
             string ClientFile = Path.Combine(this.InstallLocation, Type.ExecutablePath);
             if (string.IsNullOrWhiteSpace(ClientFile) || !System.IO.File.Exists(ClientFile))
                 return (Process)null;

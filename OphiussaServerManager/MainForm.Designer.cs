@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.label1 = new System.Windows.Forms.Label();
             this.txtPublicIP = new System.Windows.Forms.TextBox();
             this.txtLocalIP = new System.Windows.Forms.TextBox();
@@ -39,6 +40,7 @@
             this.NewTab = new System.Windows.Forms.TabPage();
             this.button1 = new System.Windows.Forms.Button();
             this.btRefreshIP = new System.Windows.Forms.Button();
+            this.btMonitor = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -161,11 +163,22 @@
             this.btRefreshIP.UseVisualStyleBackColor = true;
             this.btRefreshIP.Click += new System.EventHandler(this.btRefreshIP_Click);
             // 
+            // btMonitor
+            // 
+            this.btMonitor.Location = new System.Drawing.Point(315, 6);
+            this.btMonitor.Name = "btMonitor";
+            this.btMonitor.Size = new System.Drawing.Size(193, 23);
+            this.btMonitor.TabIndex = 10;
+            this.btMonitor.Text = "Server Monitor";
+            this.btMonitor.UseVisualStyleBackColor = true;
+            this.btMonitor.Click += new System.EventHandler(this.btMonitor_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 613);
+            this.Controls.Add(this.btMonitor);
             this.Controls.Add(this.btRefreshIP);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.tabControl1);
@@ -176,6 +189,7 @@
             this.Controls.Add(this.txtPublicIP);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label3);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ophiussa Server Manager";
@@ -199,6 +213,7 @@
         private System.Windows.Forms.TabPage NewTab;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btRefreshIP;
+        private System.Windows.Forms.Button btMonitor;
     }
 }
 

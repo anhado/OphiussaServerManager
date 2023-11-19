@@ -21,73 +21,73 @@ namespace OphiussaServerManager.Common.Models.Profiles
         public ArkProfile()
         {
             this.Administration = new Administration();
-            this.Administration.ServerName = "New Server";
-            this.Administration.ServerPassword = System.Web.Security.Membership.GeneratePassword(10, 6);
-            this.Administration.ServerAdminPassword = System.Web.Security.Membership.GeneratePassword(10, 6);
-            this.Administration.ServerSpectatorPassword = "";
-            this.Administration.LocalIP = NetworkTools.GetHostIp();
-            this.Administration.ServerPort = "7777";
-            this.Administration.PeerPort = "7778";
-            this.Administration.QueryPort = "27015";
-            this.Administration.UseRCON = false;
-            this.Administration.RCONPort = "32330";
-            this.Administration.RCONServerLogBuffer = 600;
-            this.Administration.MapName = "";
-            this.Administration.TotalConversionID = "";
-            this.Administration.ModIDs = new List<string>();
-            this.Administration.AutoSavePeriod = 15;
-            this.Administration.MOD = "";
-            this.Administration.MODDuration = 20;
-            this.Administration.EnableInterval = true;
-            this.Administration.MODInterval = 60;
-            this.Administration.Branch = "Live";
+            //this.Administration.ServerName = "New Server";
+            //this.Administration.ServerPassword = System.Web.Security.Membership.GeneratePassword(10, 6);
+            //this.Administration.ServerAdminPassword = System.Web.Security.Membership.GeneratePassword(10, 6);
+            //this.Administration.ServerSpectatorPassword = "";
+            //this.Administration.LocalIP = NetworkTools.GetHostIp();
+            //this.Administration.ServerPort = "7777";
+            //this.Administration.PeerPort = "7778";
+            //this.Administration.QueryPort = "27015";
+            //this.Administration.UseRCON = false;
+            //this.Administration.RCONPort = "32330";
+            //this.Administration.RCONServerLogBuffer = 600;
+            //this.Administration.MapName = "";
+            //this.Administration.TotalConversionID = "";
+            //this.Administration.ModIDs = new List<string>();
+            //this.Administration.AutoSavePeriod = 15;
+            //this.Administration.MOD = "";
+            //this.Administration.MODDuration = 20;
+            //this.Administration.EnableInterval = true;
+            //this.Administration.MODInterval = 60;
+            //this.Administration.Branch = "Live";
 
-            this.Administration.MaxPlayers = 70;
-            this.Administration.EnablIdleTimeOut = true;
-            this.Administration.IdleTimout = 3600;
-            this.Administration.UseBanListUrl = false;
-            this.Administration.BanListUrl = "http://arkdedicated.com/banlist.txt";
-            this.Administration.DisableVAC = false;
-            this.Administration.EnableBattleEye = false;
-            this.Administration.DisablePlayerMovePhysics = false;
-            this.Administration.OutputLogToConsole = true;
-            this.Administration.UseAllCores = false;
-            this.Administration.UseCache = false;
-            this.Administration.NoHandDetection = false;
-            this.Administration.NoDinos = false;
-            this.Administration.NoUnderMeshChecking = false;
-            this.Administration.NoUnderMeshKilling = false;
-            this.Administration.EnableVivox = false;
-            this.Administration.AllowSharedConnections = true;
-            this.Administration.RespawnDinosOnStartUp = false;
-            this.Administration.EnableAutoForceRespawnDinos = false;
-            this.Administration.AutoForceRespawnDinosInterval = 24;
-            this.Administration.DisableAntiSpeedHackDetection = false;
-            this.Administration.AntiSpeedHackBias = 1;
-            this.Administration.ForceDirectX10 = false;
-            this.Administration.ForceLowMemory = false;
-            this.Administration.ForceNoManSky = false;
-            this.Administration.UseNoMemoryBias = false;
-            this.Administration.StasisKeepController = false;
-            this.Administration.ServerAllowAnsel = false;
-            this.Administration.StructureMemoryOptimizations = false;
-            this.Administration.EnableCrossPlay = false;
-            this.Administration.EnablePublicIPForEpic = false;
-            this.Administration.EpicStorePlayersOnly = false;
-            this.Administration.AlternateSaveDirectoryName = "";
-            this.Administration.ClusterID = "";
-            this.Administration.ClusterDirectoryOverride = false;
-            this.Administration.CPUPriority = ProcessPriorityClass.Normal;
-            this.Administration.CPUAffinity = "All";
+            //this.Administration.MaxPlayers = 70;
+            //this.Administration.EnablIdleTimeOut = true;
+            //this.Administration.IdleTimout = 3600;
+            //this.Administration.UseBanListUrl = false;
+            //this.Administration.BanListUrl = "http://arkdedicated.com/banlist.txt";
+            //this.Administration.DisableVAC = false;
+            //this.Administration.EnableBattleEye = false;
+            //this.Administration.DisablePlayerMovePhysics = false;
+            //this.Administration.OutputLogToConsole = true;
+            //this.Administration.UseAllCores = false;
+            //this.Administration.UseCache = false;
+            //this.Administration.NoHandDetection = false;
+            //this.Administration.NoDinos = false;
+            //this.Administration.NoUnderMeshChecking = false;
+            //this.Administration.NoUnderMeshKilling = false;
+            //this.Administration.EnableVivox = false;
+            //this.Administration.AllowSharedConnections = true;
+            //this.Administration.RespawnDinosOnStartUp = false;
+            //this.Administration.EnableAutoForceRespawnDinos = false;
+            //this.Administration.AutoForceRespawnDinosInterval = 24;
+            //this.Administration.DisableAntiSpeedHackDetection = false;
+            //this.Administration.AntiSpeedHackBias = 1;
+            //this.Administration.ForceDirectX10 = false;
+            //this.Administration.ForceLowMemory = false;
+            //this.Administration.ForceNoManSky = false;
+            //this.Administration.UseNoMemoryBias = false;
+            //this.Administration.StasisKeepController = false;
+            //this.Administration.ServerAllowAnsel = false;
+            //this.Administration.StructureMemoryOptimizations = false;
+            //this.Administration.EnableCrossPlay = false;
+            //this.Administration.EnablePublicIPForEpic = false;
+            //this.Administration.EpicStorePlayersOnly = false;
+            //this.Administration.AlternateSaveDirectoryName = "";
+            //this.Administration.ClusterID = "";
+            //this.Administration.ClusterDirectoryOverride = false;
+            //this.Administration.CPUPriority = ProcessPriorityClass.Normal;
+            //this.Administration.CPUAffinity = "All";
 
-            this.Administration.EnableServerAdminLogs = true;
-            this.Administration.ServerAdminLogsIncludeTribeLogs = true;
-            this.Administration.ServerRCONOutputTribeLogs = true;
-            this.Administration.AllowHideDamageSourceFromLogs = true;
-            this.Administration.MaximumTribeLogs = "100";
-            this.Administration.LogAdminCommandsToPublic = false;
-            this.Administration.LogAdminCommandsToAdmins = false;
-            this.Administration.TribeLogDestroyedEnemyStructures = true;
+            //this.Administration.EnableServerAdminLogs = true;
+            //this.Administration.ServerAdminLogsIncludeTribeLogs = true;
+            //this.Administration.ServerRCONOutputTribeLogs = true;
+            //this.Administration.AllowHideDamageSourceFromLogs = true;
+            //this.Administration.MaximumTribeLogs = "100";
+            //this.Administration.LogAdminCommandsToPublic = false;
+            //this.Administration.LogAdminCommandsToAdmins = false;
+            //this.Administration.TribeLogDestroyedEnemyStructures = true;
 
         }
 
@@ -246,70 +246,70 @@ namespace OphiussaServerManager.Common.Models.Profiles
     }
     public class Administration
     {
-        public string ServerName { get; set; }
-        public string ServerPassword { get; set; }
-        public string ServerAdminPassword { get; set; }
-        public string ServerSpectatorPassword { get; set; }
-        public string LocalIP { get; set; }
-        public string ServerPort { get; set; }
-        public string PeerPort { get; set; }
-        public string QueryPort { get; set; }
-        public bool UseRCON { get; set; }
-        public string RCONPort { get; set; }
-        public int RCONServerLogBuffer { get; set; }
-        public string MapName { get; set; }
-        public string TotalConversionID { get; set; }
-        public List<string> ModIDs { get; set; }
-        public int AutoSavePeriod { get; set; }
-        public string MOD { get; set; }
-        public int MODDuration { get; set; }
-        public bool EnableInterval { get; set; }
-        public int MODInterval { get; set; }
-        public string Branch { get; set; }
-        public int MaxPlayers { get; set; }
-        public bool EnablIdleTimeOut { get; set; }
-        public int IdleTimout { get; set; }
-        public bool UseBanListUrl { get; set; }
-        public string BanListUrl { get; set; }
-        public bool DisableVAC { get; set; }
-        public bool EnableBattleEye { get; set; }
-        public bool DisablePlayerMovePhysics { get; set; }
-        public bool OutputLogToConsole { get; set; }
-        public bool UseAllCores { get; set; }
-        public bool UseCache { get; set; }
-        public bool NoHandDetection { get; set; }
-        public bool NoDinos { get; set; }
-        public bool NoUnderMeshChecking { get; set; }
-        public bool NoUnderMeshKilling { get; set; }
-        public bool EnableVivox { get; set; }
-        public bool AllowSharedConnections { get; set; }
-        public bool RespawnDinosOnStartUp { get; set; }
-        public bool EnableAutoForceRespawnDinos { get; set; }
-        public int AutoForceRespawnDinosInterval { get; set; }
-        public bool DisableAntiSpeedHackDetection { get; set; }
-        public int AntiSpeedHackBias { get; set; }
-        public bool ForceDirectX10 { get; set; }
-        public bool ForceLowMemory { get; set; }
-        public bool ForceNoManSky { get; set; }
-        public bool UseNoMemoryBias { get; set; }
-        public bool StasisKeepController { get; set; }
-        public bool ServerAllowAnsel { get; set; }
-        public bool StructureMemoryOptimizations { get; set; }
-        public bool EnableCrossPlay { get; set; }
-        public bool EnablePublicIPForEpic { get; set; }
-        public bool EpicStorePlayersOnly { get; set; }
-        public string AlternateSaveDirectoryName { get; set; }
-        public string ClusterID { get; set; }
-        public bool ClusterDirectoryOverride { get; set; }
-        public ProcessPriorityClass CPUPriority { get; set; }
-        public string CPUAffinity { get; set; }
-        public bool EnableServerAdminLogs { get; set; }
-        public bool ServerAdminLogsIncludeTribeLogs { get; set; }
-        public bool ServerRCONOutputTribeLogs { get; set; }
-        public bool AllowHideDamageSourceFromLogs { get; set; }
-        public string MaximumTribeLogs { get; set; }
-        public bool LogAdminCommandsToPublic { get; set; }
-        public bool LogAdminCommandsToAdmins { get; set; }
-        public bool TribeLogDestroyedEnemyStructures { get; set; }
+        public string ServerName { get; set; } = "New Server";
+        public string ServerPassword { get; set; } = System.Web.Security.Membership.GeneratePassword(10, 6);
+        public string ServerAdminPassword { get; set; } = System.Web.Security.Membership.GeneratePassword(10, 6);
+        public string ServerSpectatorPassword { get; set; } = "";
+        public string LocalIP { get; set; } = NetworkTools.GetHostIp();
+        public string ServerPort { get; set; } = "7777";
+        public string PeerPort { get; set; } = "7778";
+        public string QueryPort { get; set; } = "27015";
+        public bool UseRCON { get; set; } = false;
+        public string RCONPort { get; set; } = "32330";
+        public int RCONServerLogBuffer { get; set; } = 600;
+        public string MapName { get; set; } = "";
+        public string TotalConversionID { get; set; } = "";
+        public List<string> ModIDs { get; set; } = new List<string>();
+        public int AutoSavePeriod { get; set; } = 15;
+        public string MOD { get; set; } = "";
+        public int MODDuration { get; set; } = 20;
+        public bool EnableInterval { get; set; } = true;
+        public int MODInterval { get; set; } = 60;
+        public string Branch { get; set; } = "Live";
+        public int MaxPlayers { get; set; } = 70;
+        public bool EnablIdleTimeOut { get; set; } = true;
+        public int IdleTimout { get; set; } = 3600;
+        public bool UseBanListUrl { get; set; } = false;
+        public string BanListUrl { get; set; } = "http://arkdedicated.com/banlist.txt";
+        public bool DisableVAC { get; set; } = false;
+        public bool EnableBattleEye { get; set; } = false;
+        public bool DisablePlayerMovePhysics { get; set; } = false;
+        public bool OutputLogToConsole { get; set; } = true;
+        public bool UseAllCores { get; set; } = false;
+        public bool UseCache { get; set; } = false;
+        public bool NoHandDetection { get; set; } = false;
+        public bool NoDinos { get; set; } = false;
+        public bool NoUnderMeshChecking { get; set; } = false;
+        public bool NoUnderMeshKilling { get; set; } = false;
+        public bool EnableVivox { get; set; } = false;
+        public bool AllowSharedConnections { get; set; } = true;
+        public bool RespawnDinosOnStartUp { get; set; } = false;
+        public bool EnableAutoForceRespawnDinos { get; set; } = false;
+        public int AutoForceRespawnDinosInterval { get; set; } = 24;
+        public bool DisableAntiSpeedHackDetection { get; set; } = false;
+        public int AntiSpeedHackBias { get; set; } = 1;
+        public bool ForceDirectX10 { get; set; } = false;
+        public bool ForceLowMemory { get; set; } = false;
+        public bool ForceNoManSky { get; set; } = false;
+        public bool UseNoMemoryBias { get; set; } = false;
+        public bool StasisKeepController { get; set; } = false;
+        public bool ServerAllowAnsel { get; set; } = false;
+        public bool StructureMemoryOptimizations { get; set; } = false;
+        public bool EnableCrossPlay { get; set; } = false;
+        public bool EnablePublicIPForEpic { get; set; } = false;
+        public bool EpicStorePlayersOnly { get; set; } = false;
+        public string AlternateSaveDirectoryName { get; set; } = "";
+        public string ClusterID { get; set; } = "";
+        public bool ClusterDirectoryOverride { get; set; } = false;
+        public ProcessPriorityClass CPUPriority { get; set; } = ProcessPriorityClass.Normal;
+        public string CPUAffinity { get; set; } = "All";
+        public bool EnableServerAdminLogs { get; set; } = true;
+        public bool ServerAdminLogsIncludeTribeLogs { get; set; } = true;
+        public bool ServerRCONOutputTribeLogs { get; set; } = true;
+        public bool AllowHideDamageSourceFromLogs { get; set; } = true;
+        public int MaximumTribeLogs { get; set; } = 100;
+        public bool LogAdminCommandsToPublic { get; set; } = false;
+        public bool LogAdminCommandsToAdmins { get; set; } = false;
+        public bool TribeLogDestroyedEnemyStructures { get; set; } = true;
     }
 }

@@ -55,6 +55,9 @@
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Elegantthemes-Softies-Tools.256.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="CoreRCON, Version=5.2.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\CoreRCON.5.2.1\lib\netstandard2.0\CoreRCON.dll</HintPath>
@@ -100,6 +103,9 @@
     </Reference>
     <Reference Include="Microsoft.Extensions.Primitives, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.Primitives.8.0.0\lib\net462\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Win32.TaskScheduler, Version=2.10.1.0, Culture=neutral, PublicKeyToken=e25603a88b3aa7da, processorArchitecture=MSIL">
+      <HintPath>..\packages\TaskScheduler.2.10.1\lib\net452\Microsoft.Win32.TaskScheduler.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -162,23 +168,35 @@
     <Compile Include="Forms\FrmArk.Designer.cs">
       <DependentUpon>FrmArk.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmModManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmModManager.Designer.cs">
+      <DependentUpon>FrmModManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmServerTypeSelection.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FrmServerTypeSelection.Designer.cs">
       <DependentUpon>FrmServerTypeSelection.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\RCONServer.cs">
+    <Compile Include="Forms\FrmRCONServer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\RCONServer.Designer.cs">
-      <DependentUpon>RCONServer.cs</DependentUpon>
+    <Compile Include="Forms\FrmRCONServer.Designer.cs">
+      <DependentUpon>FrmRCONServer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Settings.cs">
+    <Compile Include="Forms\FrmServerMonitor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Settings.Designer.cs">
-      <DependentUpon>Settings.cs</DependentUpon>
+    <Compile Include="Forms\FrmServerMonitor.Designer.cs">
+      <DependentUpon>FrmServerMonitor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmSettings.Designer.cs">
+      <DependentUpon>FrmSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -191,14 +209,20 @@
     <EmbeddedResource Include="Forms\FrmArk.resx">
       <DependentUpon>FrmArk.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmModManager.resx">
+      <DependentUpon>FrmModManager.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmServerTypeSelection.resx">
       <DependentUpon>FrmServerTypeSelection.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\RCONServer.resx">
-      <DependentUpon>RCONServer.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FrmRCONServer.resx">
+      <DependentUpon>FrmRCONServer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Settings.resx">
-      <DependentUpon>Settings.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FrmServerMonitor.resx">
+      <DependentUpon>FrmServerMonitor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmSettings.resx">
+      <DependentUpon>FrmSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -215,6 +239,7 @@
     </Compile>
     <None Include="app.manifest" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\OphiussaServerManager.Common.Models.MonitorGrid.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -243,6 +268,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Elegantthemes-Softies-Tools.256.ico" />
     <Content Include="Resources\Collapse.png" />
     <Content Include="Resources\Expand.png" />
   </ItemGroup>

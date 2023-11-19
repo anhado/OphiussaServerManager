@@ -23,6 +23,9 @@ namespace OphiussaServerManager.Common.Models.SupportedServers
         public string SavedFilesRelativePath { get; set; }
         public string ExecutablePath { get; set; }
         public string ProcessName { get; set; }
+        public int AppID { get; set; }
+        public bool UseSteamWorkShop { get; set; }
+        public bool UseCurseForgeMods { get; set; }
 
     }
 
@@ -49,7 +52,10 @@ namespace OphiussaServerManager.Common.Models.SupportedServers
                         SavedFilesRelativePath="Saved\\SavedArks\\TheIsland_WP",
                         SavedRelativePath="Saved\\SavedArks\\TheIsland_WP",
                         ExecutablePath="ShooterGame\\Binaries\\Win64\\ShooterGameServer.exe",
-                        ProcessName="ShooterGameServer"
+                        ProcessName="ShooterGameServer",
+                        AppID = 346110,
+                        UseSteamWorkShop=true,
+                        UseCurseForgeMods=false
                     },
                     new SupportedServersType() {
                         KeyName="ASA",
@@ -60,7 +66,11 @@ namespace OphiussaServerManager.Common.Models.SupportedServers
                         SavedFilesRelativePath="Saved\\SavedArks\\TheIsland_WP",
                         SavedRelativePath="Saved\\SavedArks\\TheIsland_WP",
                         ExecutablePath="ShooterGame\\Binaries\\Win64\\ArkAscendedServer.exe",
-                        ProcessName="ArkAscendedServer" }
+                        ProcessName="ArkAscendedServer",
+                        AppID = 83374,
+                        UseSteamWorkShop=true,
+                        UseCurseForgeMods=false
+                    }
                 };
             }
         }

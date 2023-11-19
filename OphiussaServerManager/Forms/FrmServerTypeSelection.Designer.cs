@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmServerTypeSelection));
             this.label1 = new System.Windows.Forms.Label();
             this.cboServerType = new System.Windows.Forms.ComboBox();
             this.btAdd = new System.Windows.Forms.Button();
@@ -146,7 +147,9 @@
             this.Controls.Add(this.btAdd);
             this.Controls.Add(this.cboServerType);
             this.Controls.Add(this.label1);
+            this.ForeColor = System.Drawing.Color.SteelBlue;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmServerTypeSelection";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Server Type Selection";

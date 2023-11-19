@@ -141,7 +141,41 @@ namespace OphiussaServerManager.Forms
             chkLogAdminCommandsToPublic.Checked = profile.ARKConfiguration.Administration.LogAdminCommandsToPublic;
             chkLogAdminCommandstoAdmins.Checked = profile.ARKConfiguration.Administration.LogAdminCommandsToAdmins;
             chkTribeLogDestroyedEnemyStructures.Checked = profile.ARKConfiguration.Administration.TribeLogDestroyedEnemyStructures;
-            txtMaximumTribeLogs.Text = profile.ARKConfiguration.Administration.MaximumTribeLogs;
+            txtMaximumTribeLogs.Text = profile.ARKConfiguration.Administration.MaximumTribeLogs.ToString();
+
+            chkAutoStart.Checked = profile.AutoManageSettings.AutoStartServer;
+            rbOnBoot.Checked = profile.AutoManageSettings.AutoStartOn == Common.Models.AutoStart.onBoot;
+            rbOnLogin.Checked = profile.AutoManageSettings.AutoStartOn == Common.Models.AutoStart.onLogin;
+
+            chkShutdown1.Checked = profile.AutoManageSettings.ShutdownServer1;
+            txtShutdow1.Text = profile.AutoManageSettings.ShutdownServer1Hour;
+            chkSun1.Checked = profile.AutoManageSettings.ShutdownServer1Sunday;
+            chkMon1.Checked = profile.AutoManageSettings.ShutdownServer1Monday;
+            chkTue1.Checked = profile.AutoManageSettings.ShutdownServer1Tuesday;
+            chkWed1.Checked = profile.AutoManageSettings.ShutdownServer1Wednesday;
+            chkThu1.Checked = profile.AutoManageSettings.ShutdownServer1Thu;
+            chkFri1.Checked = profile.AutoManageSettings.ShutdownServer1Friday;
+            chkSat1.Checked = profile.AutoManageSettings.ShutdownServer1Saturday;
+            chkUpdate1.Checked = profile.AutoManageSettings.ShutdownServer1PerformUpdate;
+            chkRestart1.Checked = profile.AutoManageSettings.ShutdownServer1Restart;
+
+            chkShutdown2.Checked = profile.AutoManageSettings.ShutdownServer2;
+            txtShutdow2.Text = profile.AutoManageSettings.ShutdownServer2Hour;
+            chkSun2.Checked = profile.AutoManageSettings.ShutdownServer2Sunday;
+            chkMon2.Checked = profile.AutoManageSettings.ShutdownServer2Monday;
+            chkTue2.Checked = profile.AutoManageSettings.ShutdownServer2Tuesday;
+            chkWed2.Checked = profile.AutoManageSettings.ShutdownServer2Wednesday;
+            chkThu2.Checked = profile.AutoManageSettings.ShutdownServer2Thu;
+            chkFri2.Checked = profile.AutoManageSettings.ShutdownServer2Friday;
+            chkSat2.Checked = profile.AutoManageSettings.ShutdownServer2Saturday;
+            chkUpdate2.Checked = profile.AutoManageSettings.ShutdownServer2PerformUpdate;
+            chkRestart2.Checked = profile.AutoManageSettings.ShutdownServer2Restart;
+
+
+            chkIncludeAutoBackup.Checked = profile.AutoManageSettings.IncludeInAutoBackup ;
+            chkAutoUpdate.Checked = profile.AutoManageSettings.IncludeInAutoUpdate ;
+            chkRestartIfShutdown.Checked = profile.AutoManageSettings.AutoStartServer ;
+
 
             #region Validations 
 
@@ -180,42 +214,12 @@ namespace OphiussaServerManager.Forms
 
             #endregion
 
-            txtVersion.Text = GetVersion();
-            txtBuild.Text = GetBuild();
+            txtVersion.Text = profile.GetVersion();
+            txtBuild.Text = profile.GetBuild();
 
             txtCommand.Text = profile.ARKConfiguration.GetCommandLinesArguments(MainForm.Settings, profile, MainForm.LocaIP);
 
             //profile.ARKConfiguration.LoadGameINI(profile);
-        }
-
-        private string GetBuild()
-        {
-            string fileName = "appmanifest_2430930.acf";
-            if (profile.Type.ServerType == EnumServerType.ArkSurviveEvolved) fileName = "appmanifest_376030.acf";
-            if (!File.Exists(Path.Combine(txtLocation.Text, "steamapps", fileName))) return "";
-
-            string[] content = File.ReadAllText(Path.Combine(txtLocation.Text, "steamapps", fileName)).Split('\n');
-
-            foreach (var item in content)
-            {
-                string[] t = item.Split('\t');
-
-                if (item.Contains("buildid"))
-                {
-                    return t[3].Replace("\"", "");
-                }
-
-            }
-            return System.IO.File.ReadAllText(Path.Combine(txtLocation.Text, "steamapps", "appmanifest_2430930.acf"));
-        }
-
-        private string GetVersion()
-        {
-            if (!File.Exists(Path.Combine(txtLocation.Text, "version.txt"))) return "";
-
-
-
-            return System.IO.File.ReadAllText(Path.Combine(txtLocation.Text, "version.txt"));
         }
 
         private void txtProfileName_Validated(object sender, EventArgs e)
@@ -300,6 +304,12 @@ namespace OphiussaServerManager.Forms
         private void btSave_Click(object sender, EventArgs e)
         {
             SaveProfile();
+            CreateWindowsTasks();
+        }
+
+        private void CreateWindowsTasks()
+        {
+            throw new NotImplementedException();
         }
 
         private void SaveProfile()
@@ -374,10 +384,43 @@ namespace OphiussaServerManager.Forms
             profile.ARKConfiguration.Administration.LogAdminCommandsToPublic = chkLogAdminCommandsToPublic.Checked;
             profile.ARKConfiguration.Administration.LogAdminCommandsToAdmins = chkLogAdminCommandstoAdmins.Checked;
             profile.ARKConfiguration.Administration.TribeLogDestroyedEnemyStructures = chkTribeLogDestroyedEnemyStructures.Checked;
-            profile.ARKConfiguration.Administration.MaximumTribeLogs = txtMaximumTribeLogs.Text;
+            profile.ARKConfiguration.Administration.MaximumTribeLogs = int.Parse(txtMaximumTribeLogs.Text);
 
+
+            profile.AutoManageSettings.AutoStartServer = chkAutoStart.Checked;
+            profile.AutoManageSettings.AutoStartOn = rbOnBoot.Checked ? Common.Models.AutoStart.onBoot : Common.Models.AutoStart.onLogin;
+
+            profile.AutoManageSettings.ShutdownServer1 = chkShutdown1.Checked;
+            profile.AutoManageSettings.ShutdownServer1Hour = txtShutdow1.Text;
+            profile.AutoManageSettings.ShutdownServer1Sunday = chkSun1.Checked;
+            profile.AutoManageSettings.ShutdownServer1Monday = chkMon1.Checked;
+            profile.AutoManageSettings.ShutdownServer1Tuesday = chkTue1.Checked;
+            profile.AutoManageSettings.ShutdownServer1Wednesday = chkWed1.Checked;
+            profile.AutoManageSettings.ShutdownServer1Thu = chkThu1.Checked;
+            profile.AutoManageSettings.ShutdownServer1Friday = chkFri1.Checked;
+            profile.AutoManageSettings.ShutdownServer1Saturday = chkSat1.Checked;
+            profile.AutoManageSettings.ShutdownServer1PerformUpdate = chkUpdate1.Checked;
+            profile.AutoManageSettings.ShutdownServer1Restart = chkRestart1.Checked;
+
+            profile.AutoManageSettings.ShutdownServer2 = chkShutdown2.Checked;
+            profile.AutoManageSettings.ShutdownServer2Hour = txtShutdow2.Text;
+            profile.AutoManageSettings.ShutdownServer2Sunday = chkSun2.Checked;
+            profile.AutoManageSettings.ShutdownServer2Monday = chkMon2.Checked;
+            profile.AutoManageSettings.ShutdownServer2Tuesday = chkTue2.Checked;
+            profile.AutoManageSettings.ShutdownServer2Wednesday = chkWed2.Checked;
+            profile.AutoManageSettings.ShutdownServer2Thu = chkThu2.Checked;
+            profile.AutoManageSettings.ShutdownServer2Friday = chkFri2.Checked;
+            profile.AutoManageSettings.ShutdownServer2Saturday = chkSat2.Checked;
+            profile.AutoManageSettings.ShutdownServer2PerformUpdate = chkUpdate2.Checked;
+            profile.AutoManageSettings.ShutdownServer2Restart = chkRestart2.Checked;
+
+            profile.AutoManageSettings.IncludeInAutoBackup = chkIncludeAutoBackup.Checked;
+            profile.AutoManageSettings.IncludeInAutoUpdate = chkAutoUpdate.Checked;
+            profile.AutoManageSettings.AutoStartServer = chkRestartIfShutdown.Checked;
 
             profile.SaveProfile();
+
+            LoadSettings(profile, this.tab);
         }
 
         private void chkEnableRCON_CheckedChanged(object sender, EventArgs e)
@@ -433,7 +476,7 @@ namespace OphiussaServerManager.Forms
 
         private void btRCON_Click(object sender, EventArgs e)
         {
-            RCONServer frm = new RCONServer(profile);
+            FrmRCONServer frm = new FrmRCONServer(profile);
             frm.Show();
         }
 
@@ -470,6 +513,40 @@ namespace OphiussaServerManager.Forms
                 isRunning = false;
                 btStart.Text = "Start";
             }
+        }
+
+        private void checkBox1_CheckedChanged_2(object sender, EventArgs e)
+        {
+            rbOnBoot.Enabled = chkAutoStart.Checked;
+            rbOnLogin.Enabled = chkAutoStart.Checked;
+        }
+
+        private void chkShutdown1_CheckedChanged(object sender, EventArgs e)
+        {
+            txtShutdow1.Enabled = chkShutdown1.Checked;
+            chkSun1.Enabled = chkShutdown1.Checked;
+            chkMon1.Enabled = chkShutdown1.Checked;
+            chkTue1.Enabled = chkShutdown1.Checked;
+            chkWed1.Enabled = chkShutdown1.Checked;
+            chkThu1.Enabled = chkShutdown1.Checked;
+            chkFri1.Enabled = chkShutdown1.Checked;
+            chkSat1.Enabled = chkShutdown1.Checked;
+            chkUpdate1.Enabled = chkShutdown1.Checked;
+            chkRestart1.Enabled = chkShutdown1.Checked;
+        }
+
+        private void chkShutdown2_CheckedChanged(object sender, EventArgs e)
+        {
+            txtShutdow2.Enabled = chkShutdown2.Checked;
+            chkSun2.Enabled = chkShutdown2.Checked;
+            chkMon2.Enabled = chkShutdown2.Checked;
+            chkTue2.Enabled = chkShutdown2.Checked;
+            chkWed2.Enabled = chkShutdown2.Checked;
+            chkThu2.Enabled = chkShutdown2.Checked;
+            chkFri2.Enabled = chkShutdown2.Checked;
+            chkSat2.Enabled = chkShutdown2.Checked;
+            chkUpdate2.Enabled = chkShutdown2.Checked;
+            chkRestart2.Enabled = chkShutdown2.Checked;
         }
     }
 }

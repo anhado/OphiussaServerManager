@@ -13,9 +13,9 @@ using System.Windows.Forms;
 
 namespace OphiussaServerManager.Forms
 {
-    public partial class Settings : Form
+    public partial class FrmSettings : Form
     {
-        public Settings()
+        public FrmSettings()
         {
             InitializeComponent();
         }

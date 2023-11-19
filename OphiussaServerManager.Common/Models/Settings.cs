@@ -13,6 +13,7 @@ namespace OphiussaServerManager.Common.Models
     {
         [JsonIgnore]
         public string DefaultSteamKey { get { return "4DF03576EDA7C3350237D3E547E9CE3C"; } }
+        public string DefaultCurseForgeKey { get { return "$2a$10$eKu6i/S1ipKbGYxiDGGjnO4BjVuBJCoTaw7DNg.6Qqf5y./9tQDIq"; } }
         public string SteamKey { get; set; }
         public bool UpdateSteamCMDOnStartup { get; set; }
         public string DataFolder { get; set; }
