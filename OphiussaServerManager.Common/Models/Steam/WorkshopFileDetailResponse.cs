@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 
 namespace OphiussaServerManager.Common.Models
-{
+{  
     public class WorkshopFileDetailResponse
     {
         public DateTime cached = DateTime.UtcNow;

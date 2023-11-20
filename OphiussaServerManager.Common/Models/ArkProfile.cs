@@ -20,74 +20,7 @@ namespace OphiussaServerManager.Common.Models.Profiles
 
         public ArkProfile()
         {
-            this.Administration = new Administration();
-            //this.Administration.ServerName = "New Server";
-            //this.Administration.ServerPassword = System.Web.Security.Membership.GeneratePassword(10, 6);
-            //this.Administration.ServerAdminPassword = System.Web.Security.Membership.GeneratePassword(10, 6);
-            //this.Administration.ServerSpectatorPassword = "";
-            //this.Administration.LocalIP = NetworkTools.GetHostIp();
-            //this.Administration.ServerPort = "7777";
-            //this.Administration.PeerPort = "7778";
-            //this.Administration.QueryPort = "27015";
-            //this.Administration.UseRCON = false;
-            //this.Administration.RCONPort = "32330";
-            //this.Administration.RCONServerLogBuffer = 600;
-            //this.Administration.MapName = "";
-            //this.Administration.TotalConversionID = "";
-            //this.Administration.ModIDs = new List<string>();
-            //this.Administration.AutoSavePeriod = 15;
-            //this.Administration.MOD = "";
-            //this.Administration.MODDuration = 20;
-            //this.Administration.EnableInterval = true;
-            //this.Administration.MODInterval = 60;
-            //this.Administration.Branch = "Live";
-
-            //this.Administration.MaxPlayers = 70;
-            //this.Administration.EnablIdleTimeOut = true;
-            //this.Administration.IdleTimout = 3600;
-            //this.Administration.UseBanListUrl = false;
-            //this.Administration.BanListUrl = "http://arkdedicated.com/banlist.txt";
-            //this.Administration.DisableVAC = false;
-            //this.Administration.EnableBattleEye = false;
-            //this.Administration.DisablePlayerMovePhysics = false;
-            //this.Administration.OutputLogToConsole = true;
-            //this.Administration.UseAllCores = false;
-            //this.Administration.UseCache = false;
-            //this.Administration.NoHandDetection = false;
-            //this.Administration.NoDinos = false;
-            //this.Administration.NoUnderMeshChecking = false;
-            //this.Administration.NoUnderMeshKilling = false;
-            //this.Administration.EnableVivox = false;
-            //this.Administration.AllowSharedConnections = true;
-            //this.Administration.RespawnDinosOnStartUp = false;
-            //this.Administration.EnableAutoForceRespawnDinos = false;
-            //this.Administration.AutoForceRespawnDinosInterval = 24;
-            //this.Administration.DisableAntiSpeedHackDetection = false;
-            //this.Administration.AntiSpeedHackBias = 1;
-            //this.Administration.ForceDirectX10 = false;
-            //this.Administration.ForceLowMemory = false;
-            //this.Administration.ForceNoManSky = false;
-            //this.Administration.UseNoMemoryBias = false;
-            //this.Administration.StasisKeepController = false;
-            //this.Administration.ServerAllowAnsel = false;
-            //this.Administration.StructureMemoryOptimizations = false;
-            //this.Administration.EnableCrossPlay = false;
-            //this.Administration.EnablePublicIPForEpic = false;
-            //this.Administration.EpicStorePlayersOnly = false;
-            //this.Administration.AlternateSaveDirectoryName = "";
-            //this.Administration.ClusterID = "";
-            //this.Administration.ClusterDirectoryOverride = false;
-            //this.Administration.CPUPriority = ProcessPriorityClass.Normal;
-            //this.Administration.CPUAffinity = "All";
-
-            //this.Administration.EnableServerAdminLogs = true;
-            //this.Administration.ServerAdminLogsIncludeTribeLogs = true;
-            //this.Administration.ServerRCONOutputTribeLogs = true;
-            //this.Administration.AllowHideDamageSourceFromLogs = true;
-            //this.Administration.MaximumTribeLogs = "100";
-            //this.Administration.LogAdminCommandsToPublic = false;
-            //this.Administration.LogAdminCommandsToAdmins = false;
-            //this.Administration.TribeLogDestroyedEnemyStructures = true;
+            this.Administration = new Administration(); 
 
         }
 

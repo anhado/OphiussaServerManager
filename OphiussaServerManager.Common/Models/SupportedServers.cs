@@ -24,11 +24,14 @@ namespace OphiussaServerManager.Common.Models.SupportedServers
         public string ExecutablePath { get; set; }
         public string ProcessName { get; set; }
         public int AppID { get; set; }
-        public bool UseSteamWorkShop { get; set; }
-        public bool UseCurseForgeMods { get; set; }
-
+        public ModSource ModsSource { get; set; }  
     }
 
+    public enum ModSource
+    {
+        SteamWorkshop,
+        CurseForge
+    }
 
     public class MapList
     {
@@ -48,28 +51,26 @@ namespace OphiussaServerManager.Common.Models.SupportedServers
                         ServerTypeDescription="Ark Survival Evolved",
                         ServerType =EnumServerType.ArkSurviveEvolved,
                         SteamAppID="376030",
-                        SaveGamesRelativePath="Saved\\SavedArks\\TheIsland_WP",
-                        SavedFilesRelativePath="Saved\\SavedArks\\TheIsland_WP",
-                        SavedRelativePath="Saved\\SavedArks\\TheIsland_WP",
+                        SaveGamesRelativePath="Saved\\SavedArks\\",
+                        SavedFilesRelativePath="Saved\\SavedArks\\",
+                        SavedRelativePath="Saved\\SavedArks\\",
                         ExecutablePath="ShooterGame\\Binaries\\Win64\\ShooterGameServer.exe",
                         ProcessName="ShooterGameServer",
                         AppID = 346110,
-                        UseSteamWorkShop=true,
-                        UseCurseForgeMods=false
+                        ModsSource = ModSource.SteamWorkshop
                     },
                     new SupportedServersType() {
                         KeyName="ASA",
                         ServerTypeDescription="Ark Survival Ascended",
                         ServerType=EnumServerType.ArkSurviveAscended,
                         SteamAppID="2430930",
-                        SaveGamesRelativePath="Saved\\SavedArks\\TheIsland_WP",
-                        SavedFilesRelativePath="Saved\\SavedArks\\TheIsland_WP",
-                        SavedRelativePath="Saved\\SavedArks\\TheIsland_WP",
+                        SaveGamesRelativePath="Saved\\SavedArks\\{map}",
+                        SavedFilesRelativePath="Saved\\SavedArks\\{map}",
+                        SavedRelativePath="Saved\\SavedArks\\{map}",
                         ExecutablePath="ShooterGame\\Binaries\\Win64\\ArkAscendedServer.exe",
                         ProcessName="ArkAscendedServer",
                         AppID = 83374,
-                        UseSteamWorkShop=true,
-                        UseCurseForgeMods=false
+                        ModsSource = ModSource.CurseForge
                     }
                 };
             }

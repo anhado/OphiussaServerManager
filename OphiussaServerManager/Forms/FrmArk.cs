@@ -1,4 +1,5 @@
 ﻿using CoreRCON;
+using Microsoft.Win32.TaskScheduler;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using NLog.Fluent;
@@ -18,6 +19,8 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Win32.TaskScheduler;
+using System.Reflection;
 
 namespace OphiussaServerManager.Forms
 {
@@ -172,9 +175,9 @@ namespace OphiussaServerManager.Forms
             chkRestart2.Checked = profile.AutoManageSettings.ShutdownServer2Restart;
 
 
-            chkIncludeAutoBackup.Checked = profile.AutoManageSettings.IncludeInAutoBackup ;
-            chkAutoUpdate.Checked = profile.AutoManageSettings.IncludeInAutoUpdate ;
-            chkRestartIfShutdown.Checked = profile.AutoManageSettings.AutoStartServer ;
+            chkIncludeAutoBackup.Checked = profile.AutoManageSettings.IncludeInAutoBackup;
+            chkAutoUpdate.Checked = profile.AutoManageSettings.IncludeInAutoUpdate;
+            chkRestartIfShutdown.Checked = profile.AutoManageSettings.AutoStartServer;
 
 
             #region Validations 
@@ -192,7 +195,7 @@ namespace OphiussaServerManager.Forms
             }
             else
             {
-                if (Utils.IsAValidFolder(txtLocation.Text, new List<string> { "Engine", "ShooterGame", "steamapps" }))
+                if (Common.Utils.IsAValidFolder(txtLocation.Text, new List<string> { "Engine", "ShooterGame", "steamapps" }))
                 {
                     btUpdate.Text = "Update/Verify";
                     isInstalled = true;
@@ -294,7 +297,7 @@ namespace OphiussaServerManager.Forms
 
         private void btChooseFolder_Click(object sender, EventArgs e)
         {
-            if (!Utils.IsAValidFolder(txtLocation.Text, new List<string> { "Engine", "ShooterGame", "steamapps" }))
+            if (!Common.Utils.IsAValidFolder(txtLocation.Text, new List<string> { "Engine", "ShooterGame", "steamapps" }))
             {
                 MessageBox.Show("This is not a valid Ark Folder");
                 return;
@@ -309,7 +312,192 @@ namespace OphiussaServerManager.Forms
 
         private void CreateWindowsTasks()
         {
-            throw new NotImplementedException();
+            #region AutoStartServer
+            if (profile.AutoManageSettings.AutoStartServer)
+            {
+                string fileName = MainForm.Settings.DataFolder + $"StartServer\\Run_{profile.Key.Replace("-", "")}.cmd";
+                string taskName = "OphiussaServerManager\\AutoStart_" + profile.Key;
+                Microsoft.Win32.TaskScheduler.Task task = TaskService.Instance.GetTask(taskName);
+                if (task != null)
+                {
+                    task.Definition.Triggers.Clear();
+                    if (profile.AutoManageSettings.AutoStartOn == Common.Models.AutoStart.onBoot)
+                    {
+                        BootTrigger bt1 = new BootTrigger { Delay = TimeSpan.FromMinutes(1) };
+                        task.Definition.Triggers.Add(bt1);
+                    }
+                    else
+                    {
+                        LogonTrigger lt1 = new LogonTrigger { Delay = TimeSpan.FromMinutes(1) };
+                        task.Definition.Triggers.Add(lt1);
+                    }
+
+                    task.Definition.Principal.RunLevel = TaskRunLevel.Highest;
+                    task.RegisterChanges();
+                }
+                else
+                {
+                    TaskDefinition td = TaskService.Instance.NewTask();
+                    td.RegistrationInfo.Description = "Server Auto-Start - " + profile.Name;
+                    td.Principal.LogonType = TaskLogonType.InteractiveToken;
+                    if (profile.AutoManageSettings.AutoStartOn == Common.Models.AutoStart.onBoot)
+                    {
+                        BootTrigger bt1 = new BootTrigger { Delay = TimeSpan.FromMinutes(1) };
+                        td.Triggers.Add(bt1);
+                    }
+                    else
+                    {
+                        LogonTrigger lt1 = new LogonTrigger { Delay = TimeSpan.FromMinutes(1) };
+                        td.Triggers.Add(lt1);
+                    }
+                    td.Actions.Add(fileName);
+                    td.Principal.RunLevel = TaskRunLevel.Highest;
+                    TaskService.Instance.RootFolder.RegisterTaskDefinition(taskName, td);
+                }
+            }
+            else
+            {
+                string taskName = "OphiussaServerManager\\AutoStart_" + profile.Key;
+                Microsoft.Win32.TaskScheduler.Task task = TaskService.Instance.GetTask(taskName);
+                if (task != null)
+                {
+                    TaskService.Instance.RootFolder.DeleteTask(taskName);
+                }
+            }
+            #endregion
+            #region Shutdown 1
+            if (profile.AutoManageSettings.ShutdownServer1)
+            {
+                string fileName = Assembly.GetExecutingAssembly().Location;
+                string taskName = "OphiussaServerManager\\AutoShutDown1_" + profile.Key;
+                Microsoft.Win32.TaskScheduler.Task task = TaskService.Instance.GetTask(taskName);
+                if (task != null)
+                {
+                    task.Definition.Triggers.Clear();
+
+                    DaysOfTheWeek daysofweek = 0;
+
+                    if (profile.AutoManageSettings.ShutdownServer1Monday) daysofweek += 2;
+                    if (profile.AutoManageSettings.ShutdownServer1Tuesday) daysofweek += 4;
+                    if (profile.AutoManageSettings.ShutdownServer1Wednesday) daysofweek += 8;
+                    if (profile.AutoManageSettings.ShutdownServer1Thu) daysofweek += 16;
+                    if (profile.AutoManageSettings.ShutdownServer1Friday) daysofweek += 32;
+                    if (profile.AutoManageSettings.ShutdownServer1Saturday) daysofweek += 64;
+                    if (profile.AutoManageSettings.ShutdownServer1Sunday) daysofweek += 1;
+                    WeeklyTrigger tt = new WeeklyTrigger();
+
+                    int hour = Int16.Parse(profile.AutoManageSettings.ShutdownServer1Hour.Split(':')[0]);
+                    int minute = Int16.Parse(profile.AutoManageSettings.ShutdownServer1Hour.Split(':')[1]);
+                    tt.StartBoundary = DateTime.Today + TimeSpan.FromHours(hour) + TimeSpan.FromMinutes(minute);
+                    tt.DaysOfWeek = daysofweek;
+                    task.Definition.Triggers.Add(tt);
+                    task.Definition.Principal.RunLevel = TaskRunLevel.Highest;
+                    task.RegisterChanges();
+                }
+                else
+                {
+                    TaskDefinition td = TaskService.Instance.NewTask();
+                    td.RegistrationInfo.Description = "Server Auto-ShutDown 1 - " + profile.Name;
+                    td.Principal.LogonType = TaskLogonType.InteractiveToken;
+
+                    DaysOfTheWeek daysofweek = 0;
+
+                    if (profile.AutoManageSettings.ShutdownServer1Monday) daysofweek += 2;
+                    if (profile.AutoManageSettings.ShutdownServer1Tuesday) daysofweek += 4;
+                    if (profile.AutoManageSettings.ShutdownServer1Wednesday) daysofweek += 8;
+                    if (profile.AutoManageSettings.ShutdownServer1Thu) daysofweek += 16;
+                    if (profile.AutoManageSettings.ShutdownServer1Friday) daysofweek += 32;
+                    if (profile.AutoManageSettings.ShutdownServer1Saturday) daysofweek += 64;
+                    if (profile.AutoManageSettings.ShutdownServer1Sunday) daysofweek += 1;
+                    WeeklyTrigger tt = new WeeklyTrigger();
+
+                    int hour = Int16.Parse(profile.AutoManageSettings.ShutdownServer1Hour.Split(':')[0]);
+                    int minute = Int16.Parse(profile.AutoManageSettings.ShutdownServer1Hour.Split(':')[1]);
+                    tt.StartBoundary = DateTime.Today + TimeSpan.FromHours(hour) + TimeSpan.FromMinutes(minute);
+                    tt.DaysOfWeek = daysofweek;
+                    td.Triggers.Add(tt);
+                    td.Actions.Add(fileName," -as" + profile.Key);
+                    td.Principal.RunLevel = TaskRunLevel.Highest;
+                    TaskService.Instance.RootFolder.RegisterTaskDefinition(taskName, td);
+                }
+            }
+            else
+            {
+                string taskName = "OphiussaServerManager\\AutoShutDown1_" + profile.Key;
+                Microsoft.Win32.TaskScheduler.Task task = TaskService.Instance.GetTask(taskName);
+                if (task != null)
+                {
+                    TaskService.Instance.RootFolder.DeleteTask(taskName);
+                }
+            }
+            #endregion
+
+            #region Shutdown 2
+            if (profile.AutoManageSettings.ShutdownServer2)
+            {
+                string fileName = Assembly.GetExecutingAssembly().Location;
+                string taskName = "OphiussaServerManager\\AutoShutDown2_" + profile.Key;
+                Microsoft.Win32.TaskScheduler.Task task = TaskService.Instance.GetTask(taskName);
+                if (task != null)
+                {
+                    task.Definition.Triggers.Clear();
+
+                    DaysOfTheWeek daysofweek = 0;
+
+                    if (profile.AutoManageSettings.ShutdownServer2Monday) daysofweek += 2;
+                    if (profile.AutoManageSettings.ShutdownServer2Tuesday) daysofweek += 4;
+                    if (profile.AutoManageSettings.ShutdownServer2Wednesday) daysofweek += 8;
+                    if (profile.AutoManageSettings.ShutdownServer2Thu) daysofweek += 16;
+                    if (profile.AutoManageSettings.ShutdownServer2Friday) daysofweek += 32;
+                    if (profile.AutoManageSettings.ShutdownServer2Saturday) daysofweek += 64;
+                    if (profile.AutoManageSettings.ShutdownServer2Sunday) daysofweek += 1;
+                    WeeklyTrigger tt = new WeeklyTrigger();
+
+                    int hour = Int16.Parse(profile.AutoManageSettings.ShutdownServer1Hour.Split(':')[0]);
+                    int minute = Int16.Parse(profile.AutoManageSettings.ShutdownServer1Hour.Split(':')[1]);
+                    tt.StartBoundary = DateTime.Today + TimeSpan.FromHours(hour) + TimeSpan.FromMinutes(minute);
+                    tt.DaysOfWeek = daysofweek;
+                    task.Definition.Triggers.Add(tt);
+                    task.Definition.Principal.RunLevel = TaskRunLevel.Highest;
+                    task.RegisterChanges();
+                }
+                else
+                {
+                    TaskDefinition td = TaskService.Instance.NewTask();
+                    td.RegistrationInfo.Description = "Server Auto-ShutDown 2 - " + profile.Name;
+                    td.Principal.LogonType = TaskLogonType.InteractiveToken;
+
+                    DaysOfTheWeek daysofweek = 0;
+
+                    if (profile.AutoManageSettings.ShutdownServer2Monday) daysofweek += 2;
+                    if (profile.AutoManageSettings.ShutdownServer2Tuesday) daysofweek += 4;
+                    if (profile.AutoManageSettings.ShutdownServer2Wednesday) daysofweek += 8;
+                    if (profile.AutoManageSettings.ShutdownServer2Thu) daysofweek += 16;
+                    if (profile.AutoManageSettings.ShutdownServer2Friday) daysofweek += 32;
+                    if (profile.AutoManageSettings.ShutdownServer2Saturday) daysofweek += 64;
+                    if (profile.AutoManageSettings.ShutdownServer2Sunday) daysofweek += 1;
+                    WeeklyTrigger tt = new WeeklyTrigger();
+
+                    int hour = Int16.Parse(profile.AutoManageSettings.ShutdownServer1Hour.Split(':')[0]);
+                    int minute = Int16.Parse(profile.AutoManageSettings.ShutdownServer1Hour.Split(':')[1]);
+                    tt.StartBoundary = DateTime.Today + TimeSpan.FromHours(hour) + TimeSpan.FromMinutes(minute);
+                    tt.DaysOfWeek = daysofweek;
+                    td.Triggers.Add(tt);
+                    td.Actions.Add(fileName, " -as" + profile.Key);
+                    td.Principal.RunLevel = TaskRunLevel.Highest;
+                    TaskService.Instance.RootFolder.RegisterTaskDefinition(taskName, td);
+                }
+            }
+            else
+            {
+                string taskName = "OphiussaServerManager\\AutoShutDown2_" + profile.Key;
+                Microsoft.Win32.TaskScheduler.Task task = TaskService.Instance.GetTask(taskName);
+                if (task != null)
+                {
+                    TaskService.Instance.RootFolder.DeleteTask(taskName);
+                }
+            }
+            #endregion
         }
 
         private void SaveProfile()
@@ -416,9 +604,11 @@ namespace OphiussaServerManager.Forms
 
             profile.AutoManageSettings.IncludeInAutoBackup = chkIncludeAutoBackup.Checked;
             profile.AutoManageSettings.IncludeInAutoUpdate = chkAutoUpdate.Checked;
-            profile.AutoManageSettings.AutoStartServer = chkRestartIfShutdown.Checked;
+            profile.AutoManageSettings.AutoStartServer = chkAutoStart.Checked;
 
             profile.SaveProfile();
+
+            File.WriteAllText(MainForm.Settings.DataFolder + $"StartServer\\Run_{profile.Key.Replace("-", "")}.cmd", $"start \"{profile.Name}\" /normal \"{profile.InstallLocation}ShooterGame\\Binaries\\Win64\\ShooterGameServer.exe\" {profile.ARKConfiguration.GetCommandLinesArguments(MainForm.Settings, profile, MainForm.PublicIP)}");
 
             LoadSettings(profile, this.tab);
         }
@@ -497,7 +687,7 @@ namespace OphiussaServerManager.Forms
 
         private void btStart_Click(object sender, EventArgs e)
         {
-            Utils.ExecuteAsAdmin(Path.Combine(profile.InstallLocation, profile.Type.ExecutablePath), profile.ARKConfiguration.GetCommandLinesArguments(MainForm.Settings, profile, MainForm.LocaIP), false);
+            Common.Utils.ExecuteAsAdmin(Path.Combine(profile.InstallLocation, profile.Type.ExecutablePath), profile.ARKConfiguration.GetCommandLinesArguments(MainForm.Settings, profile, MainForm.LocaIP), false);
         }
 
         private void timerGetProcess_Tick(object sender, EventArgs e)
@@ -547,6 +737,11 @@ namespace OphiussaServerManager.Forms
             chkSat2.Enabled = chkShutdown2.Checked;
             chkUpdate2.Enabled = chkShutdown2.Checked;
             chkRestart2.Enabled = chkShutdown2.Checked;
+        }
+
+        private void toolsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

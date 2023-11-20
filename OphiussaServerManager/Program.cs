@@ -1,7 +1,10 @@
-﻿using OphiussaServerManager.Forms;
+﻿using Newtonsoft.Json;
+using OphiussaServerManager.Forms;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -22,6 +25,14 @@ namespace OphiussaServerManager
             if (Array.IndexOf(args, "-monitor") >= 0)
             {
                 Application.Run(new FrmServerMonitor());
+            }
+            else if (Array.IndexOf(args, "-au") >= 0)
+            {
+                ServerTools.UpdateServer();
+            }
+            else if (Array.IndexOf(args, "-ab") >= 0)
+            { 
+                ServerTools.BackupServer();
             }
             else
             {

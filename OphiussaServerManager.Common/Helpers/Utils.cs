@@ -1,4 +1,5 @@
-﻿using OphiussaServerManager.Common.Ini;
+﻿using OphiussaServerManager.Common.Helpers;
+using OphiussaServerManager.Common.Ini;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,6 +8,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,7 +17,7 @@ namespace OphiussaServerManager.Common
     public static class Utils
     {
         public const string DEFAULT_CULTURE_CODE = "en-US";
-        public static void ExecuteAsAdmin(string exeName, string parameters, bool wait = true)
+        public static void ExecuteAsAdmin(string exeName, string parameters, bool wait = true, bool noWindow = false)
         {
             try
             {
@@ -25,6 +27,11 @@ namespace OphiussaServerManager.Common
                 startInfo.Verb = "runas";
                 //MLHIDE
                 startInfo.Arguments = parameters;
+                if (noWindow)
+                {
+                    startInfo.UseShellExecute = false;
+                    startInfo.CreateNoWindow = noWindow;
+                }
                 startInfo.ErrorDialog = true;
 
                 Process process = System.Diagnostics.Process.Start(startInfo);
@@ -243,6 +250,73 @@ namespace OphiussaServerManager.Common
                 aggregateIniValue.InitializeFromINIValue(value);
             return true;
         }
-    }
 
+        public static List<FileInfo> CompareFolderContent(string pathA, string pathB)
+        {
+
+            // Create two identical or different temporary folders
+            // on a local drive and change these file paths.  
+
+            System.IO.DirectoryInfo dir1 = new System.IO.DirectoryInfo(pathA);
+            System.IO.DirectoryInfo dir2 = new System.IO.DirectoryInfo(pathB);
+
+            // Take a snapshot of the file system.  
+            IEnumerable<System.IO.FileInfo> list1 = dir1.GetFiles("*.*", System.IO.SearchOption.AllDirectories);
+            IEnumerable<System.IO.FileInfo> list2 = dir2.GetFiles("*.*", System.IO.SearchOption.AllDirectories);
+
+            var cacheFilesList = list2.ToList();
+            var InstallFilesList = list1.ToList();
+
+            var changedFiles = cacheFilesList.FindAll(f => CompareFiles(f, InstallFilesList) != null);
+
+            FileInfo CompareFiles(FileInfo f1, List<FileInfo> list)
+            {
+                if (f1.Name == "GameUserSettings.ini") return null;
+                string md5Cache = CalculateMD5(f1.FullName);
+                FileInfo f2 = list.Find(f => f.Name == f1.Name);
+                if (f2 == null) return f1;
+                string md5Installed = CalculateMD5(f2.FullName);
+                if (md5Installed != md5Cache) return f1;
+                else return null;
+            }
+
+            return changedFiles;
+        }
+
+        public static string CalculateMD5(string filename)
+        {
+            if (filename == null) return "";
+            using (var md5 = MD5.Create())
+            {
+                using (var stream = File.OpenRead(filename))
+                {
+                    var hash = md5.ComputeHash(stream);
+                    return BitConverter.ToString(hash).Replace("-", "").ToLowerInvariant();
+                }
+            }
+        }
+
+        public static Process GetProcessRunning(string ExecutablePath)
+        {
+            string ProcesseName = Path.GetFileNameWithoutExtension(ExecutablePath);
+            string ClientFile = ExecutablePath;
+            if (string.IsNullOrWhiteSpace(ClientFile) || !System.IO.File.Exists(ClientFile))
+                return (Process)null;
+            string a = IOUtils.NormalizePath(ClientFile);
+            Process[] processesByName = Process.GetProcessesByName(ProcesseName);
+            Process ProcessInfo = (Process)null;
+            foreach (Process process in processesByName)
+            {
+                string mainModuleFilepath = ProcessUtils.GetMainModuleFilepath(process.Id);
+                if (string.Equals(a, mainModuleFilepath, StringComparison.OrdinalIgnoreCase))
+                {
+                    ProcessInfo = process;
+                    break;
+                }
+            }
+            return ProcessInfo;
+        }
+
+
+    }
 }

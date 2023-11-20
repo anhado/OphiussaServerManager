@@ -17,6 +17,7 @@ using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Net.Sockets;
 using Open.Nat;
+using Microsoft.Win32.TaskScheduler;
 
 namespace OphiussaServerManager
 {
@@ -36,7 +37,11 @@ namespace OphiussaServerManager
 
         private async void Form1_Load(object sender, EventArgs e)
         {
-
+#if DEBUG
+            testsToolStripMenuItem.Visible = true;
+#else
+            testsToolStripMenuItem.Visible = false;
+#endif
             if (!File.Exists("config.json"))
             {
                 Forms.FrmSettings settings = new Forms.FrmSettings();
@@ -53,13 +58,16 @@ namespace OphiussaServerManager
 
             LoadProfiles();
 
-            txtLocalIP.Text = await Task.Run(() => Common.NetworkTools.GetHostIp());
+            txtLocalIP.Text = await System.Threading.Tasks.Task.Run(() => Common.NetworkTools.GetHostIp());
 
             var discoverer = new NatDiscoverer();
             var device = await discoverer.DiscoverDeviceAsync();
             var ip = await device.GetExternalIPAsync();
 
             txtPublicIP.Text = ip.ToString();
+
+            tabControl1.SelectedIndex = 0;
+
         }
 
         private void LoadProfiles()
@@ -97,7 +105,7 @@ namespace OphiussaServerManager
         {
 
             if (e.TabPage == NewTab)
-            { 
+            {
                 e.Cancel = true;
                 Guid guid = Guid.NewGuid();
                 if (tabControl1.SelectedTab == NewTab)
@@ -127,7 +135,7 @@ namespace OphiussaServerManager
 
         private void tabControl1_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         void AddNewArkServer(string guid, SupportedServersType serverType, string InstallLocation, Profile p)
@@ -203,8 +211,29 @@ namespace OphiussaServerManager
 
         private async void btRefreshIP_Click(object sender, EventArgs e)
         {
+        }
 
+        private void btMonitor_Click(object sender, EventArgs e)
+        {
+            FrmServerMonitor monitor = new FrmServerMonitor();
+            monitor.Show();
+        }
 
+        private void serverMonitorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmServerMonitor monitor = new FrmServerMonitor();
+            monitor.Show();
+        }
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            Forms.FrmSettings f = new Forms.FrmSettings();
+            f.Show();
+        }
+
+        private async void refreshPublicIPToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
             var discoverer = new NatDiscoverer();
             var device = await discoverer.DiscoverDeviceAsync();
             var ip = await device.GetExternalIPAsync();
@@ -219,13 +248,118 @@ namespace OphiussaServerManager
             // await device.CreatePortMapAsync(new Mapping(Protocol.Udp, 1601, 1701, "The mapping name"));
 
 
+        }
+
+        private async void refreshLocalIPToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            txtLocalIP.Text = await System.Threading.Tasks.Task.Run(() => Common.NetworkTools.GetHostIp());
 
         }
 
-        private void btMonitor_Click(object sender, EventArgs e)
+        private void exitToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            FrmServerMonitor monitor = new FrmServerMonitor();
-            monitor.Show();
+            Application.Exit();
+        }
+
+        private void timerCheckTask_Tick(object sender, EventArgs e)
+        {
+            var lTasks = TaskService.Instance.GetRunningTasks().ToList();
+
+            string taskName = "OphiussaServerManager\\AutoBackup_" + MainForm.Settings.GUID;
+            Microsoft.Win32.TaskScheduler.Task task = TaskService.Instance.GetTask(taskName);
+            if (task != null)
+            {
+                task.Definition.Principal.RunLevel = TaskRunLevel.Highest;
+                var x = lTasks.Find(xc => xc?.Name == "AutoBackup_" + MainForm.Settings.GUID);
+
+                if (x != null)
+                {
+                    lblAutoBackup.Text = "Is Running";
+                    lblAutoBackup.ForeColor = Color.GreenYellow;
+                    btRun1.Visible = false;
+                    btDisable1.Visible = false;
+                }
+                else
+                {
+                    lblAutoBackup.Text = "Ready";
+                    lblAutoBackup.ForeColor = Color.White;
+                    btRun1.Visible = true;
+                    btDisable1.Visible = true;
+                }
+            }
+            else
+            {
+                lblAutoBackup.Text = "Not Running";
+                lblAutoBackup.ForeColor = Color.White;
+                btRun1.Visible = false;
+                btDisable1.Visible = false;
+            }
+            string taskName2 = "OphiussaServerManager\\AutoUpdate_" + MainForm.Settings.GUID;
+
+            Microsoft.Win32.TaskScheduler.Task task2 = TaskService.Instance.GetTask(taskName2);
+            if (task2 != null)
+            {
+                var x = lTasks.Find(xc => xc?.Name == "AutoUpdate_" + MainForm.Settings.GUID);
+
+                if (x != null)
+                {
+                    lblAutoUpdate.Text = "Is Running";
+                    lblAutoUpdate.ForeColor = Color.GreenYellow;
+                    btRun2.Visible = false;
+                    btDisable2.Visible = false;
+                }
+                else
+                {
+                    lblAutoUpdate.Text = "Ready";
+                    lblAutoUpdate.ForeColor = Color.White;
+                    btRun2.Visible = true;
+                    btDisable2.Visible = true;
+                }
+            }
+            else
+            {
+                lblAutoUpdate.Text = "Not Running";
+                lblAutoUpdate.ForeColor = Color.White;
+                btRun2.Visible = false;
+                btDisable2.Visible = false;
+            }
+        }
+        private void updateSteamCMDToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Common.NetworkTools.DownloadSteamCMD();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        { 
+            string taskName2 = "OphiussaServerManager\\AutoBackup_" + MainForm.Settings.GUID;
+
+            Microsoft.Win32.TaskScheduler.Task task2 = TaskService.Instance.GetTask(taskName2);
+            if (task2 != null)
+            {
+                task2.Run();
+                btRun1.Visible = false;
+                btDisable1.Visible = false;
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+            string taskName = "OphiussaServerManager\\AutoUpdate_" + MainForm.Settings.GUID;
+
+            Microsoft.Win32.TaskScheduler.Task task = TaskService.Instance.GetTask(taskName);
+            if (task != null)
+            {
+                btRun2.Visible = false;
+                btDisable2.Visible = false;
+                task.Run();
+            }
+        }
+
+        private void testsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmTests frmTests = new FrmTests();
+            frmTests.Show();
         }
     }
 }

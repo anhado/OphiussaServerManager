@@ -28,7 +28,7 @@ namespace OphiussaServerManager.Common
         public static Settings Settings
         {
             get
-            { 
+            {
                 var NSettings = JsonConvert.DeserializeObject<Common.Models.Settings>(File.ReadAllText("config.json"));
 
                 return NSettings;
@@ -160,6 +160,11 @@ namespace OphiussaServerManager.Common
         {
             //profile.Type.SteamAppID G:\asmdata\SteamCMD\steamcmd.exe +force_install_dir G:\ASA\server\ +login anonymous +app_update 2430930 validate +quit
             Utils.ExecuteAsAdmin(Path.Combine(Settings.SteamCMDLocation, "steamcmd.exe"), $" +force_install_dir {profile.InstallLocation} +login anonymous +app_update {profile.Type.SteamAppID} validate +quit");
+        }
+        public static void UpdateCacheFolder(CacheServerTypes serverType)
+        {
+            //profile.Type.SteamAppID G:\asmdata\SteamCMD\steamcmd.exe +force_install_dir G:\ASA\server\ +login anonymous +app_update 2430930 validate +quit
+            Utils.ExecuteAsAdmin(Path.Combine(Settings.SteamCMDLocation, "steamcmd.exe"), $" +force_install_dir {serverType.InstallCacheFolder} +login anonymous +app_update {serverType.Type.SteamAppID} validate +quit",true,true);
         }
     }
 }

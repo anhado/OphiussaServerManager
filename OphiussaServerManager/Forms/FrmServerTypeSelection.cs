@@ -56,7 +56,7 @@ namespace OphiussaServerManager.Forms
                     case EnumServerType.ArkSurviveEvolved:
                     case EnumServerType.ArkSurviveAscended:
 
-                        if (!Utils.IsAValidFolder(dir, new List<string> { "Engine", "ShooterGame", "steamapps" }))
+                        if (!Common.Utils.IsAValidFolder(dir, new List<string> { "Engine", "ShooterGame", "steamapps" }))
                         {
                             MessageBox.Show("This is not a valid Ark Folder");
                             return false;

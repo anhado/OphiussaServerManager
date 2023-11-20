@@ -24,13 +24,20 @@ namespace OphiussaServerManager.Common.Models.Profiles
         [JsonProperty("Type")]
         public SupportedServersType Type { get; set; }
         [JsonProperty("Configuration")]
-        public ArkProfile ARKConfiguration { get; set; } =  new ArkProfile();
-        public AutoManageSettings AutoManageSettings { get; set; } =  new AutoManageSettings();
+        public ArkProfile ARKConfiguration { get; set; } = new ArkProfile();
+        public AutoManageSettings AutoManageSettings { get; set; } = new AutoManageSettings();
 
         public bool IsInstalled
         {
             get
             {
+                switch (Type.ServerType)
+                {
+                    case EnumServerType.ArkSurviveEvolved:
+                    case EnumServerType.ArkSurviveAscended:
+                        if (!Utils.IsAValidFolder(InstallLocation, new List<string> { "Engine", "ShooterGame", "steamapps" })) return true;
+                        break;
+                }
                 return false;
             }
         }
@@ -38,7 +45,7 @@ namespace OphiussaServerManager.Common.Models.Profiles
         {
             get
             {
-                return false;
+                return Utils.GetProcessRunning(Path.Combine(InstallLocation, Type.ExecutablePath)) != null;
             }
         }
 
@@ -83,7 +90,7 @@ namespace OphiussaServerManager.Common.Models.Profiles
                 }
 
             }
-            return System.IO.File.ReadAllText(Path.Combine(this.InstallLocation, "steamapps", "appmanifest_2430930.acf"));
+            return System.IO.File.ReadAllText(Path.Combine(this.InstallLocation, "steamapps", fileName));
         }
 
         public string GetVersion()
