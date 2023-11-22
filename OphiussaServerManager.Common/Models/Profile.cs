@@ -73,9 +73,7 @@ namespace OphiussaServerManager.Common.Models.Profiles
 
         public string GetBuild()
         {
-            //TODO:change Later to use the ArkConfiguration
-            string fileName = "appmanifest_2430930.acf";
-            if (this.Type.ServerType == EnumServerType.ArkSurviveEvolved) fileName = "appmanifest_376030.acf";
+            string fileName = this.Type.ManifestFileName;
             if (!File.Exists(Path.Combine(this.InstallLocation, "steamapps", fileName))) return "";
 
             string[] content = File.ReadAllText(Path.Combine(this.InstallLocation, "steamapps", fileName)).Split('\n');
@@ -95,10 +93,7 @@ namespace OphiussaServerManager.Common.Models.Profiles
 
         public string GetVersion()
         {
-            //TODO:change Later to use the ArkConfiguration
             if (!File.Exists(Path.Combine(this.InstallLocation, "version.txt"))) return "";
-
-
 
             return System.IO.File.ReadAllText(Path.Combine(this.InstallLocation, "version.txt"));
         }
@@ -164,17 +159,28 @@ namespace OphiussaServerManager.Common.Models.Profiles
                 this.ARKConfiguration = p.ARKConfiguration;
             }
         }
-
+        //TODO:FIX THIS FOR ASA BECAUSE USE THE MAP NAME IN FOLDER
         public string GetProfileSaveGamesPath(Profile profile) => profile.GetProfileSaveGamesPath(profile?.InstallLocation);
 
         public string GetProfileSaveGamesPath(string installDirectory) => Path.Combine(installDirectory ?? string.Empty, this.Type.SavedRelativePath, this.Type.SaveGamesRelativePath);
 
-        public string GetProfileSavePath(Profile profile) => profile.GetProfileSavePath(profile?.InstallLocation, profile?.ARKConfiguration.Administration.AlternateSaveDirectoryName);
+        public string GetProfileSavePath(Profile profile) => profile.GetProfileSavePath(profile, profile?.InstallLocation, profile?.ARKConfiguration.Administration.AlternateSaveDirectoryName);
 
         public string GetProfileSavePath(
+          Profile profile,
           string installDirectory,
           string altSaveDirectoryName)
         {
+            switch (profile.Type.ServerType)
+            {
+                case EnumServerType.ArkSurviveAscended:
+
+                    if (!string.IsNullOrWhiteSpace(altSaveDirectoryName))
+                    {
+                        return Path.Combine(installDirectory ?? string.Empty, this.Type.SavedRelativePath, altSaveDirectoryName, profile.ARKConfiguration.Administration.MapName);
+                    }
+                    return Path.Combine(installDirectory ?? string.Empty, this.Type.SavedFilesRelativePath, profile.ARKConfiguration.Administration.MapName);
+            }
             if (!string.IsNullOrWhiteSpace(altSaveDirectoryName))
             {
                 return Path.Combine(installDirectory ?? string.Empty, this.Type.SavedRelativePath, altSaveDirectoryName);

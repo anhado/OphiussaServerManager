@@ -48,8 +48,7 @@ namespace OphiussaServerManager.Forms
                 {
                     MessageBox.Show("Selected folder dont exists");
                     return false;
-                }
-                //TODO:validate files in folder to check if is a correct folder 
+                } 
                 SupportedServersType type = (SupportedServersType)cboServerType.SelectedItem;
                 switch (type.ServerType)
                 {

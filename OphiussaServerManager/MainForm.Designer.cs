@@ -350,7 +350,7 @@
             // timerCheckTask
             // 
             this.timerCheckTask.Enabled = true;
-            this.timerCheckTask.Interval = 10;
+            this.timerCheckTask.Interval = 500;
             this.timerCheckTask.Tick += new System.EventHandler(this.timerCheckTask_Tick);
             // 
             // updateSteamCMDToolStripMenuItem

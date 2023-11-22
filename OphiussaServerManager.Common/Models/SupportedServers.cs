@@ -24,7 +24,8 @@ namespace OphiussaServerManager.Common.Models.SupportedServers
         public string ExecutablePath { get; set; }
         public string ProcessName { get; set; }
         public int AppID { get; set; }
-        public ModSource ModsSource { get; set; }  
+        public ModSource ModsSource { get; set; }
+        public string ManifestFileName { get; set; }
     }
 
     public enum ModSource
@@ -57,20 +58,22 @@ namespace OphiussaServerManager.Common.Models.SupportedServers
                         ExecutablePath="ShooterGame\\Binaries\\Win64\\ShooterGameServer.exe",
                         ProcessName="ShooterGameServer",
                         AppID = 346110,
-                        ModsSource = ModSource.SteamWorkshop
+                        ModsSource = ModSource.SteamWorkshop,
+                        ManifestFileName="appmanifest_376030.acf"
                     },
                     new SupportedServersType() {
                         KeyName="ASA",
                         ServerTypeDescription="Ark Survival Ascended",
                         ServerType=EnumServerType.ArkSurviveAscended,
                         SteamAppID="2430930",
-                        SaveGamesRelativePath="Saved\\SavedArks\\{map}",
-                        SavedFilesRelativePath="Saved\\SavedArks\\{map}",
-                        SavedRelativePath="Saved\\SavedArks\\{map}",
+                        SaveGamesRelativePath="Saved\\SavedArks\\",
+                        SavedFilesRelativePath="Saved\\SavedArks\\",
+                        SavedRelativePath="Saved\\SavedArks\\",
                         ExecutablePath="ShooterGame\\Binaries\\Win64\\ArkAscendedServer.exe",
                         ProcessName="ArkAscendedServer",
                         AppID = 83374,
-                        ModsSource = ModSource.CurseForge
+                        ModsSource = ModSource.CurseForge,
+                        ManifestFileName="appmanifest_2430930.acf"
                     }
                 };
             }

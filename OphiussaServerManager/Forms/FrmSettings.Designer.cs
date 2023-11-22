@@ -52,6 +52,10 @@
             this.label7 = new System.Windows.Forms.Label();
             this.chlPerformPlayer = new System.Windows.Forms.CheckBox();
             this.expandCollapsePanel3 = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
+            this.chkUseSmartCopy = new System.Windows.Forms.CheckBox();
+            this.txtBackupInterval = new System.Windows.Forms.MaskedTextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.chkEnableAutoBackup = new System.Windows.Forms.CheckBox();
             this.txtUpdateInterval = new System.Windows.Forms.MaskedTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.chkAutoUpdate = new System.Windows.Forms.CheckBox();
@@ -75,10 +79,14 @@
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.chkAnonymous = new System.Windows.Forms.CheckBox();
-            this.txtBackupInterval = new System.Windows.Forms.MaskedTextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.chkEnableAutoBackup = new System.Windows.Forms.CheckBox();
-            this.chkUseSmartCopy = new System.Windows.Forms.CheckBox();
+            this.expandCollapsePanel5 = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
+            this.chkEnableLogs = new System.Windows.Forms.CheckBox();
+            this.txtMaxDays = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtMaxFiles = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.expandCollapsePanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbGracePeriod)).BeginInit();
@@ -86,6 +94,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tbDeleteDays)).BeginInit();
             this.expandCollapsePanel2.SuspendLayout();
             this.expandCollapsePanel1.SuspendLayout();
+            this.expandCollapsePanel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -348,6 +357,49 @@
             this.expandCollapsePanel3.Text = "Backup && Update Settings";
             this.expandCollapsePanel3.UseAnimation = false;
             // 
+            // chkUseSmartCopy
+            // 
+            this.chkUseSmartCopy.AutoSize = true;
+            this.chkUseSmartCopy.Checked = true;
+            this.chkUseSmartCopy.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkUseSmartCopy.Location = new System.Drawing.Point(231, 193);
+            this.chkUseSmartCopy.Name = "chkUseSmartCopy";
+            this.chkUseSmartCopy.Size = new System.Drawing.Size(148, 19);
+            this.chkUseSmartCopy.TabIndex = 12;
+            this.chkUseSmartCopy.Text = "Use Smart cache copy";
+            this.chkUseSmartCopy.UseVisualStyleBackColor = true;
+            // 
+            // txtBackupInterval
+            // 
+            this.txtBackupInterval.Location = new System.Drawing.Point(116, 62);
+            this.txtBackupInterval.Mask = "00:00";
+            this.txtBackupInterval.Name = "txtBackupInterval";
+            this.txtBackupInterval.Size = new System.Drawing.Size(100, 21);
+            this.txtBackupInterval.TabIndex = 9;
+            this.txtBackupInterval.Text = "0100";
+            this.txtBackupInterval.ValidatingType = typeof(System.DateTime);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(11, 65);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(90, 15);
+            this.label13.TabIndex = 10;
+            this.label13.Text = "Backup Interval";
+            // 
+            // chkEnableAutoBackup
+            // 
+            this.chkEnableAutoBackup.AutoSize = true;
+            this.chkEnableAutoBackup.Checked = true;
+            this.chkEnableAutoBackup.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkEnableAutoBackup.Location = new System.Drawing.Point(11, 37);
+            this.chkEnableAutoBackup.Name = "chkEnableAutoBackup";
+            this.chkEnableAutoBackup.Size = new System.Drawing.Size(136, 19);
+            this.chkEnableAutoBackup.TabIndex = 11;
+            this.chkEnableAutoBackup.Text = "Enable Auto Backup";
+            this.chkEnableAutoBackup.UseVisualStyleBackColor = true;
+            // 
             // txtUpdateInterval
             // 
             this.txtUpdateInterval.Location = new System.Drawing.Point(116, 218);
@@ -597,55 +649,98 @@
             this.chkAnonymous.UseVisualStyleBackColor = true;
             this.chkAnonymous.CheckedChanged += new System.EventHandler(this.chkAnonymous_CheckedChanged);
             // 
-            // txtBackupInterval
+            // expandCollapsePanel5
             // 
-            this.txtBackupInterval.Location = new System.Drawing.Point(116, 62);
-            this.txtBackupInterval.Mask = "00:00";
-            this.txtBackupInterval.Name = "txtBackupInterval";
-            this.txtBackupInterval.Size = new System.Drawing.Size(100, 21);
-            this.txtBackupInterval.TabIndex = 9;
-            this.txtBackupInterval.Text = "0100";
-            this.txtBackupInterval.ValidatingType = typeof(System.DateTime);
+            this.expandCollapsePanel5.ButtonSize = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonSize.Normal;
+            this.expandCollapsePanel5.ButtonStyle = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonStyle.Circle;
+            this.expandCollapsePanel5.Controls.Add(this.label16);
+            this.expandCollapsePanel5.Controls.Add(this.txtMaxFiles);
+            this.expandCollapsePanel5.Controls.Add(this.label17);
+            this.expandCollapsePanel5.Controls.Add(this.label15);
+            this.expandCollapsePanel5.Controls.Add(this.txtMaxDays);
+            this.expandCollapsePanel5.Controls.Add(this.label14);
+            this.expandCollapsePanel5.Controls.Add(this.chkEnableLogs);
+            this.expandCollapsePanel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.expandCollapsePanel5.ExpandedHeight = 0;
+            this.expandCollapsePanel5.IsExpanded = true;
+            this.expandCollapsePanel5.Location = new System.Drawing.Point(0, 696);
+            this.expandCollapsePanel5.Name = "expandCollapsePanel5";
+            this.expandCollapsePanel5.Size = new System.Drawing.Size(800, 122);
+            this.expandCollapsePanel5.TabIndex = 5;
+            this.expandCollapsePanel5.Text = "Logging";
+            this.expandCollapsePanel5.UseAnimation = true;
             // 
-            // label13
+            // chkEnableLogs
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(11, 65);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(90, 15);
-            this.label13.TabIndex = 10;
-            this.label13.Text = "Backup Interval";
+            this.chkEnableLogs.AutoSize = true;
+            this.chkEnableLogs.Checked = true;
+            this.chkEnableLogs.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkEnableLogs.Location = new System.Drawing.Point(12, 46);
+            this.chkEnableLogs.Name = "chkEnableLogs";
+            this.chkEnableLogs.Size = new System.Drawing.Size(95, 19);
+            this.chkEnableLogs.TabIndex = 2;
+            this.chkEnableLogs.Text = "Enable Logs";
+            this.chkEnableLogs.UseVisualStyleBackColor = true;
             // 
-            // chkEnableAutoBackup
+            // txtMaxDays
             // 
-            this.chkEnableAutoBackup.AutoSize = true;
-            this.chkEnableAutoBackup.Checked = true;
-            this.chkEnableAutoBackup.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkEnableAutoBackup.Location = new System.Drawing.Point(11, 37);
-            this.chkEnableAutoBackup.Name = "chkEnableAutoBackup";
-            this.chkEnableAutoBackup.Size = new System.Drawing.Size(136, 19);
-            this.chkEnableAutoBackup.TabIndex = 11;
-            this.chkEnableAutoBackup.Text = "Enable Auto Backup";
-            this.chkEnableAutoBackup.UseVisualStyleBackColor = true;
+            this.txtMaxDays.Location = new System.Drawing.Point(140, 65);
+            this.txtMaxDays.Name = "txtMaxDays";
+            this.txtMaxDays.Size = new System.Drawing.Size(69, 20);
+            this.txtMaxDays.TabIndex = 16;
+            this.txtMaxDays.Text = "30";
             // 
-            // chkUseSmartCopy
+            // label14
             // 
-            this.chkUseSmartCopy.AutoSize = true;
-            this.chkUseSmartCopy.Checked = true;
-            this.chkUseSmartCopy.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkUseSmartCopy.Location = new System.Drawing.Point(231, 193);
-            this.chkUseSmartCopy.Name = "chkUseSmartCopy";
-            this.chkUseSmartCopy.Size = new System.Drawing.Size(148, 19);
-            this.chkUseSmartCopy.TabIndex = 12;
-            this.chkUseSmartCopy.Text = "Use Smart cache copy";
-            this.chkUseSmartCopy.UseVisualStyleBackColor = true;
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(12, 68);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(100, 15);
+            this.label14.TabIndex = 15;
+            this.label14.Text = "Delete Logs After";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(215, 68);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(32, 15);
+            this.label15.TabIndex = 17;
+            this.label15.Text = "days";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(215, 94);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(29, 15);
+            this.label16.TabIndex = 20;
+            this.label16.Text = "files";
+            // 
+            // txtMaxFiles
+            // 
+            this.txtMaxFiles.Location = new System.Drawing.Point(140, 91);
+            this.txtMaxFiles.Name = "txtMaxFiles";
+            this.txtMaxFiles.Size = new System.Drawing.Size(69, 20);
+            this.txtMaxFiles.TabIndex = 19;
+            this.txtMaxFiles.Text = "30";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(12, 94);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(122, 15);
+            this.label17.TabIndex = 18;
+            this.label17.Text = "Max Number of Logs";
             // 
             // FrmSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(800, 706);
+            this.ClientSize = new System.Drawing.Size(800, 902);
+            this.Controls.Add(this.expandCollapsePanel5);
             this.Controls.Add(this.expandCollapsePanel4);
             this.Controls.Add(this.expandCollapsePanel3);
             this.Controls.Add(this.expandCollapsePanel2);
@@ -671,6 +766,8 @@
             this.expandCollapsePanel2.PerformLayout();
             this.expandCollapsePanel1.ResumeLayout(false);
             this.expandCollapsePanel1.PerformLayout();
+            this.expandCollapsePanel5.ResumeLayout(false);
+            this.expandCollapsePanel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -728,5 +825,13 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.CheckBox chkEnableAutoBackup;
         private System.Windows.Forms.CheckBox chkUseSmartCopy;
+        private MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel expandCollapsePanel5;
+        private System.Windows.Forms.CheckBox chkEnableLogs;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox txtMaxFiles;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox txtMaxDays;
+        private System.Windows.Forms.Label label14;
     }
 }

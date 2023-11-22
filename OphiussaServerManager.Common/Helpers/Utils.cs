@@ -251,7 +251,7 @@ namespace OphiussaServerManager.Common
             return true;
         }
 
-        public static List<FileInfo> CompareFolderContent(string pathA, string pathB)
+        public static List<FileInfo> CompareFolderContent(string pathA, string pathB, List<string> ignorePaths)
         {
 
             // Create two identical or different temporary folders
@@ -270,8 +270,17 @@ namespace OphiussaServerManager.Common
             var changedFiles = cacheFilesList.FindAll(f => CompareFiles(f, InstallFilesList) != null);
 
             FileInfo CompareFiles(FileInfo f1, List<FileInfo> list)
-            {
-                if (f1.Name == "GameUserSettings.ini") return null;
+            { 
+                //TODO: IGNORE MANIFEST FILE
+                if (ignorePaths.Count > 0)
+                {
+                    string pathName = Path.GetDirectoryName(f1.FullName);
+                    foreach (var item in ignorePaths)
+                    {
+                        if (pathName.Contains(item)) return null;
+                    }
+
+                }
                 string md5Cache = CalculateMD5(f1.FullName);
                 FileInfo f2 = list.Find(f => f.Name == f1.Name);
                 if (f2 == null) return f1;

@@ -249,6 +249,9 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.manifest" />
+    <None Include="NLog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\OphiussaServerManager.Common.Models.MonitorGrid.datasource" />
     <None Include="Properties\Settings.settings">

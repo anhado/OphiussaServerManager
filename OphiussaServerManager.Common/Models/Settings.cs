@@ -45,6 +45,9 @@ namespace OphiussaServerManager.Common.Models
         public List<string> Branchs { get; set; } = new List<string>() { "Live" };
         public bool AutoBackup { get; set; } = true;
         public string BackupInterval { get; set; } = "0100";
+        public bool EnableLogs { get; set; } = true;
+        public int MaxLogsDays { get; set; } = 30;
+        public int MaxLogFiles { get; set; } = 30;
         public Settings()
         {
             FileInfo f = new FileInfo(Assembly.GetExecutingAssembly().FullName);

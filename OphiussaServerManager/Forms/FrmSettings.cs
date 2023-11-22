@@ -77,6 +77,9 @@ namespace OphiussaServerManager.Forms
             chkEnableAutoBackup.Checked = sett.AutoBackup;
             txtBackupInterval.Text = sett.BackupInterval;
             chkUseSmartCopy.Checked = sett.UseSmartCopy;
+            chkEnableLogs.Checked = sett.EnableLogs;
+            txtMaxDays.Text = sett.MaxLogsDays.ToString();
+            txtBackupInterval.Text = sett.MaxLogFiles.ToString();
 
             txtUserName.Enabled = !chkAnonymous.Checked;
             txtPassword.Enabled = !chkAnonymous.Checked;
@@ -271,7 +274,7 @@ namespace OphiussaServerManager.Forms
         }
 
         private void FrmSettings_FormClosing(object sender, FormClosingEventArgs e)
-        { 
+        {
             string fileName = "config.json";
             Common.Models.Settings sett = new Common.Models.Settings();
             sett.GUID = MainForm.Settings.GUID;
@@ -301,6 +304,10 @@ namespace OphiussaServerManager.Forms
             sett.AutoBackup = chkEnableAutoBackup.Checked;
             sett.BackupInterval = txtBackupInterval.Text;
             sett.UseSmartCopy = chkUseSmartCopy.Checked;
+
+            sett.EnableLogs = chkEnableLogs.Checked;
+            sett.MaxLogsDays = int.Parse(txtMaxDays.Text);
+            sett.MaxLogFiles = int.Parse(txtMaxFiles.Text);
 
             string jsonString = JsonConvert.SerializeObject(sett, Formatting.Indented);
             File.WriteAllText(fileName, jsonString);

@@ -21,6 +21,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Win32.TaskScheduler;
 using System.Reflection;
+using OphiussaServerManager.Tools.Update;
 
 namespace OphiussaServerManager.Forms
 {
@@ -416,7 +417,7 @@ namespace OphiussaServerManager.Forms
                     tt.StartBoundary = DateTime.Today + TimeSpan.FromHours(hour) + TimeSpan.FromMinutes(minute);
                     tt.DaysOfWeek = daysofweek;
                     td.Triggers.Add(tt);
-                    td.Actions.Add(fileName," -as" + profile.Key);
+                    td.Actions.Add(fileName, " -as" + profile.Key);
                     td.Principal.RunLevel = TaskRunLevel.Highest;
                     TaskService.Instance.RootFolder.RegisterTaskDefinition(taskName, td);
                 }
@@ -687,22 +688,34 @@ namespace OphiussaServerManager.Forms
 
         private void btStart_Click(object sender, EventArgs e)
         {
-            Common.Utils.ExecuteAsAdmin(Path.Combine(profile.InstallLocation, profile.Type.ExecutablePath), profile.ARKConfiguration.GetCommandLinesArguments(MainForm.Settings, profile, MainForm.LocaIP), false);
-        }
-
-        private void timerGetProcess_Tick(object sender, EventArgs e)
-        {
-            Process process = profile.GetExeProcess();
-            if (process != null)
+            if (profile.IsRunning)
             {
-                isRunning = true;
-                btStart.Text = "Stop";
+                AutoUpdate x = new AutoUpdate();
+                x.CloseServer(profile, MainForm.Settings);
             }
             else
             {
-                isRunning = false;
-                btStart.Text = "Start";
+                Common.Utils.ExecuteAsAdmin(Path.Combine(profile.InstallLocation, profile.Type.ExecutablePath), profile.ARKConfiguration.GetCommandLinesArguments(MainForm.Settings, profile, profile.ARKConfiguration.Administration.LocalIP), false);
             }
+        }
+
+
+        private void timerGetProcess_Tick(object sender, EventArgs e)
+        {
+            //System.Threading.Tasks.Task.Run(() =>
+            //{
+                Process process = profile.GetExeProcess();
+                if (process != null)
+                {
+                    isRunning = true;
+                    btStart.Text = "Stop";
+                }
+                else
+                {
+                    isRunning = false;
+                    btStart.Text = "Start";
+                }
+            //}).Start();
         }
 
         private void checkBox1_CheckedChanged_2(object sender, EventArgs e)

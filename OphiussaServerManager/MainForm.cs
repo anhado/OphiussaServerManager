@@ -18,6 +18,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Net.Sockets;
 using Open.Nat;
 using Microsoft.Win32.TaskScheduler;
+using NLog.Common;
 
 namespace OphiussaServerManager
 {
@@ -48,8 +49,7 @@ namespace OphiussaServerManager
                 settings.ShowDialog();
             }
             Settings = JsonConvert.DeserializeObject<Common.Models.Settings>(File.ReadAllText("config.json"));
-
-
+            OphiussaLogger.ReconfigureLogging(Settings);
 
             if (Settings.UpdateSteamCMDOnStartup) Common.NetworkTools.DownloadSteamCMD();
             System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
@@ -60,11 +60,18 @@ namespace OphiussaServerManager
 
             txtLocalIP.Text = await System.Threading.Tasks.Task.Run(() => Common.NetworkTools.GetHostIp());
 
-            var discoverer = new NatDiscoverer();
-            var device = await discoverer.DiscoverDeviceAsync();
-            var ip = await device.GetExternalIPAsync();
+            try
+            {
+                var discoverer = new NatDiscoverer();
+                var device = await discoverer.DiscoverDeviceAsync();
+                var ip = await device.GetExternalIPAsync();
+                txtPublicIP.Text = ip.ToString();
 
-            txtPublicIP.Text = ip.ToString();
+            }
+            catch (Exception ex)
+            {
+                OphiussaLogger.logger.Error(ex);
+            }
 
             tabControl1.SelectedIndex = 0;
 
@@ -234,20 +241,26 @@ namespace OphiussaServerManager
 
         private async void refreshPublicIPToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            var discoverer = new NatDiscoverer();
-            var device = await discoverer.DiscoverDeviceAsync();
-            var ip = await device.GetExternalIPAsync();
-            txtPublicIP.Text = ip.ToString();
-            Console.WriteLine("The external IP Address is: {0} ", ip);
+            try
+            {
+                var discoverer = new NatDiscoverer();
+                var device = await discoverer.DiscoverDeviceAsync();
+                var ip = await device.GetExternalIPAsync();
+                txtPublicIP.Text = ip.ToString();
+                Console.WriteLine("The external IP Address is: {0} ", ip);
 
-            // var xxx = await device.GetAllMappingsAsync();
+                // var xxx = await device.GetAllMappingsAsync();
 
-            // await device.CreatePortMapAsync(new Mapping(Protocol.TcpUpd, 1600, 1700, "The mapping name"));
-            // await device.CreatePortMapAsync(new Mapping(Protocol.Tcp, 1601, 1701, "The mapping name"));
-            // await device.CreatePortMapAsync(new Mapping(Protocol.Udp, 1600, 1700, "The mapping name"));
-            // await device.CreatePortMapAsync(new Mapping(Protocol.Udp, 1601, 1701, "The mapping name"));
-
-
+                // await device.CreatePortMapAsync(new Mapping(Protocol.TcpUpd, 1600, 1700, "The mapping name"));
+                // await device.CreatePortMapAsync(new Mapping(Protocol.Tcp, 1601, 1701, "The mapping name"));
+                // await device.CreatePortMapAsync(new Mapping(Protocol.Udp, 1600, 1700, "The mapping name"));
+                // await device.CreatePortMapAsync(new Mapping(Protocol.Udp, 1601, 1701, "The mapping name"));
+                 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private async void refreshLocalIPToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -263,6 +276,9 @@ namespace OphiussaServerManager
 
         private void timerCheckTask_Tick(object sender, EventArgs e)
         {
+
+            //System.Threading.Tasks.Task.Run(() => 
+            //{ 
             var lTasks = TaskService.Instance.GetRunningTasks().ToList();
 
             string taskName = "OphiussaServerManager\\AutoBackup_" + MainForm.Settings.GUID;
@@ -323,14 +339,18 @@ namespace OphiussaServerManager
                 btRun2.Visible = false;
                 btDisable2.Visible = false;
             }
+            //}).Wait();
+
+
         }
+
         private void updateSteamCMDToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Common.NetworkTools.DownloadSteamCMD();
         }
 
         private void button1_Click_1(object sender, EventArgs e)
-        { 
+        {
             string taskName2 = "OphiussaServerManager\\AutoBackup_" + MainForm.Settings.GUID;
 
             Microsoft.Win32.TaskScheduler.Task task2 = TaskService.Instance.GetTask(taskName2);

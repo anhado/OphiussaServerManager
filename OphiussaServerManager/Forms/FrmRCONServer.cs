@@ -75,7 +75,7 @@ namespace OphiussaServerManager.Forms
 
         private async void UpdatePlayerDetailsAsync()
         {
-            string profileSavePath = profile.GetProfileSavePath(this.profile.InstallLocation, this.profile.ARKConfiguration?.Administration.AlternateSaveDirectoryName);
+            string profileSavePath = profile.GetProfileSavePath(profile, this.profile.InstallLocation, this.profile.ARKConfiguration?.Administration.AlternateSaveDirectoryName);
             DataContainer dataContainer = (DataContainer)null;
             DateTime minValue = DateTime.MinValue;
 
@@ -155,8 +155,7 @@ namespace OphiussaServerManager.Forms
                         }
                         else
                         {
-                            //TODO:add logger
-                            //this._debugLogger?.Debug("UpdatePlayerDetailsAsync - Error: corrupted profile.\r\n" + playerData.Filename + ".");
+                            OphiussaLogger.logger.Debug("UpdatePlayerDetailsAsync - Error: corrupted profile.\r\n" + playerData.Filename + ".");
                         }
                     }
                     Common.Models.PlayerInfo player;
@@ -363,7 +362,7 @@ namespace OphiussaServerManager.Forms
                     lbPlayers.DataSource = playerLists;
                     lbPlayers.ValueMember = "SteamID";
                     lbPlayers.DisplayMember = "Name";
-                    //TODO
+                    //TODO: Dont remenber what
                     lblPlayers.Text = $"{lbPlayers.Items.Count}/{profile.ARKConfiguration.Administration.MaxPlayers}";
                 }
                 SetStatus(true);

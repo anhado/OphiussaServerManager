@@ -28,14 +28,26 @@ namespace OphiussaServerManager
             }
             else if (Array.IndexOf(args, "-au") >= 0)
             {
-                ServerTools.UpdateServer();
+                OphiussaLogger.ReconfigureLogging();
+                ServerTools.UpdateAllServer();
             }
             else if (Array.IndexOf(args, "-ab") >= 0)
-            { 
-                ServerTools.BackupServer();
-            }
-            else
             {
+                OphiussaLogger.ReconfigureLogging();
+                ServerTools.BackupServer();
+            } 
+            else
+            { 
+                foreach (string arg in args)
+                {
+                    if (arg.StartsWith("-as"))
+                    {
+                        OphiussaLogger.ReconfigureLogging();
+                        ServerTools.RestartSingleServer(arg.Substring(3));
+                        return;
+                    }
+                }
+
                 Application.Run(new MainForm());
             }
 

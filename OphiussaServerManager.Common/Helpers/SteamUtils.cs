@@ -195,12 +195,11 @@ namespace OphiussaServerManager.Common
 
         public  Process GetSteamProcess()
         {
-            //TODO:PlaceSettings
             string SteamClientFile = Path.Combine(_settings.SteamCMDLocation, "steamcmd.exe");
             if (string.IsNullOrWhiteSpace(SteamClientFile) || !System.IO.File.Exists(SteamClientFile))
                 return (Process)null;
             string a = IOUtils.NormalizePath(SteamClientFile);
-            Process[] processesByName = Process.GetProcessesByName("Steam");
+            Process[] processesByName = Process.GetProcessesByName(Path.GetFileNameWithoutExtension(SteamClientFile));
             Process steamProcess = (Process)null;
             foreach (Process process in processesByName)
             {

@@ -144,7 +144,7 @@
     <Compile Include="Helpers\INullableValue.cs" />
     <Compile Include="Helpers\IOUtils.cs" />
     <Compile Include="Helpers\JsonUtils.cs" />
-    <Compile Include="Helpers\Logger.cs" />
+    <Compile Include="Helpers\OphiussaLogger.cs" />
     <Compile Include="Helpers\NetworkTools.cs" />
     <Compile Include="Helpers\NullableValue.cs" />
     <Compile Include="Helpers\ProcessUtils.cs" />
