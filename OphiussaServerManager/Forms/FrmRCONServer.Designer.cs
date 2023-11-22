@@ -142,7 +142,7 @@
             // autoscrollToolStripMenuItem
             // 
             this.autoscrollToolStripMenuItem.Name = "autoscrollToolStripMenuItem";
-            this.autoscrollToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.autoscrollToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.autoscrollToolStripMenuItem.Text = "Auto-scroll";
             // 
             // serverToolStripMenuItem
@@ -159,28 +159,30 @@
             this.saveWorldToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.confirmToolStripMenuItem1});
             this.saveWorldToolStripMenuItem.Name = "saveWorldToolStripMenuItem";
-            this.saveWorldToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.saveWorldToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveWorldToolStripMenuItem.Text = "Save World";
             // 
             // confirmToolStripMenuItem1
             // 
             this.confirmToolStripMenuItem1.Name = "confirmToolStripMenuItem1";
-            this.confirmToolStripMenuItem1.Size = new System.Drawing.Size(118, 22);
+            this.confirmToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.confirmToolStripMenuItem1.Text = "Confirm";
+            this.confirmToolStripMenuItem1.Click += new System.EventHandler(this.confirmToolStripMenuItem1_Click);
             // 
             // destroyWildDinosToolStripMenuItem
             // 
             this.destroyWildDinosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.confirmToolStripMenuItem2});
             this.destroyWildDinosToolStripMenuItem.Name = "destroyWildDinosToolStripMenuItem";
-            this.destroyWildDinosToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.destroyWildDinosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.destroyWildDinosToolStripMenuItem.Text = "Destroy Wild Dinos";
             // 
             // confirmToolStripMenuItem2
             // 
             this.confirmToolStripMenuItem2.Name = "confirmToolStripMenuItem2";
-            this.confirmToolStripMenuItem2.Size = new System.Drawing.Size(118, 22);
+            this.confirmToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
             this.confirmToolStripMenuItem2.Text = "Confirm";
+            this.confirmToolStripMenuItem2.Click += new System.EventHandler(this.confirmToolStripMenuItem2_Click);
             // 
             // lblPlayers
             // 

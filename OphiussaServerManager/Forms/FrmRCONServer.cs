@@ -36,7 +36,6 @@ namespace OphiussaServerManager.Forms
         public FrmRCONServer(Profile profile)
         {
             this.profile = profile;
-
             InitializeComponent();
 
             InitConnection();
@@ -49,6 +48,7 @@ namespace OphiussaServerManager.Forms
             {
                 OphiussaLogger.logger.Error(ex);
             }
+            this.Text = "RCON - " + profile.Name;
 
         }
 
@@ -253,7 +253,7 @@ namespace OphiussaServerManager.Forms
         {
             try
             {
-                rcon = new RCON(IPAddress.Parse("192.168.1.250"), 31004, "bananasfrita123");
+                rcon = new RCON(IPAddress.Parse(profile.ARKConfiguration.Administration.LocalIP), ushort.Parse(profile.ARKConfiguration.Administration.RCONPort), profile.ARKConfiguration.Administration.ServerAdminPassword);
                 await rcon.ConnectAsync();
                 txtChat.AppendTextWithTimeStamp("Connection established.", Color.Orange); 
                 SetStatus(true);
@@ -459,6 +459,51 @@ namespace OphiussaServerManager.Forms
         private void viewLogsToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private async void confirmToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string respnose = await rcon.SendCommandAsync("SaveWorld");
+                if (respnose != "Server received, But no response!!")
+                {
+                    string[] response = respnose.Split('\r');
+                    foreach (var res in response)
+                    {
+                        txtChat.AppendTextWithTimeStamp(res.Replace("\n", ""), Color.Black);
+                    }
+                }
+                SetStatus(true);
+            }
+            catch (Exception ex)
+            {
+                OphiussaLogger.logger.Error(ex);
+                SetStatus(false);
+            }
+
+        }
+
+        private async void confirmToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string respnose = await rcon.SendCommandAsync("DestroyWildDinos");
+                if (respnose != "Server received, But no response!!")
+                {
+                    string[] response = respnose.Split('\r');
+                    foreach (var res in response)
+                    {
+                        txtChat.AppendTextWithTimeStamp(res.Replace("\n", ""), Color.Black);
+                    }
+                }
+                SetStatus(true);
+            }
+            catch (Exception ex)
+            {
+                OphiussaLogger.logger.Error(ex);
+                SetStatus(false);
+            }
         }
     }
 }
