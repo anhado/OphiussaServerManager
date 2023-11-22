@@ -71,6 +71,7 @@ namespace OphiussaServerManager
             catch (Exception ex)
             {
                 OphiussaLogger.logger.Error(ex);
+                OphiussaLogger.logger.Error(ex);
             }
 
             tabControl1.SelectedIndex = 0;
@@ -104,6 +105,7 @@ namespace OphiussaServerManager
             }
             catch (Exception e)
             {
+                OphiussaLogger.logger.Error(e);
                 MessageBox.Show($"LoadProfiles: {e.Message}");
             }
         }
@@ -178,6 +180,7 @@ namespace OphiussaServerManager
             }
             catch (Exception e)
             {
+                OphiussaLogger.logger.Error(e);
                 MessageBox.Show($"Error Adding tab {e.Message}");
             }
         }
@@ -255,10 +258,11 @@ namespace OphiussaServerManager
                 // await device.CreatePortMapAsync(new Mapping(Protocol.Tcp, 1601, 1701, "The mapping name"));
                 // await device.CreatePortMapAsync(new Mapping(Protocol.Udp, 1600, 1700, "The mapping name"));
                 // await device.CreatePortMapAsync(new Mapping(Protocol.Udp, 1601, 1701, "The mapping name"));
-                 
+
             }
             catch (Exception ex)
             {
+                OphiussaLogger.logger.Error(ex);
                 MessageBox.Show(ex.Message);
             }
         }
@@ -276,71 +280,84 @@ namespace OphiussaServerManager
 
         private void timerCheckTask_Tick(object sender, EventArgs e)
         {
-
-            //System.Threading.Tasks.Task.Run(() => 
-            //{ 
-            var lTasks = TaskService.Instance.GetRunningTasks().ToList();
-
-            string taskName = "OphiussaServerManager\\AutoBackup_" + MainForm.Settings.GUID;
-            Microsoft.Win32.TaskScheduler.Task task = TaskService.Instance.GetTask(taskName);
-            if (task != null)
+            try
             {
-                task.Definition.Principal.RunLevel = TaskRunLevel.Highest;
-                var x = lTasks.Find(xc => xc?.Name == "AutoBackup_" + MainForm.Settings.GUID);
+                timerCheckTask.Enabled = false;
+                //System.Threading.Tasks.Task.Run(() => 
+                //{ 
+                var lTasks = TaskService.Instance.GetRunningTasks().ToList();
 
-                if (x != null)
+                string taskName = "OphiussaServerManager\\AutoBackup_" + MainForm.Settings.GUID;
+                Microsoft.Win32.TaskScheduler.Task task = TaskService.Instance.GetTask(taskName);
+                if (task != null)
                 {
-                    lblAutoBackup.Text = "Is Running";
-                    lblAutoBackup.ForeColor = Color.GreenYellow;
+                    task.Definition.Principal.RunLevel = TaskRunLevel.Highest;
+                    var x = lTasks.Find(xc => xc?.Name == "AutoBackup_" + MainForm.Settings.GUID);
+
+                    if (x != null)
+                    {
+                        lblAutoBackup.Text = "Is Running";
+                        lblAutoBackup.ForeColor = Color.GreenYellow;
+                        btRun1.Visible = false;
+                        btDisable1.Visible = false;
+                    }
+                    else
+                    {
+                        lblAutoBackup.Text = "Ready";
+                        lblAutoBackup.ForeColor = Color.White;
+                        btRun1.Visible = true;
+                        btDisable1.Visible = true;
+                    }
+                }
+                else
+                {
+                    lblAutoBackup.Text = "Not Running";
+                    lblAutoBackup.ForeColor = Color.White;
                     btRun1.Visible = false;
                     btDisable1.Visible = false;
                 }
+                string taskName2 = "OphiussaServerManager\\AutoUpdate_" + MainForm.Settings.GUID;
+
+                Microsoft.Win32.TaskScheduler.Task task2 = TaskService.Instance.GetTask(taskName2);
+                if (task2 != null)
+                {
+                    var x = lTasks.Find(xc => xc?.Name == "AutoUpdate_" + MainForm.Settings.GUID);
+
+                    if (x != null)
+                    {
+                        lblAutoUpdate.Text = "Is Running";
+                        lblAutoUpdate.ForeColor = Color.GreenYellow;
+                        btRun2.Visible = false;
+                        btDisable2.Visible = false;
+                    }
+                    else
+                    {
+                        lblAutoUpdate.Text = "Ready";
+                        lblAutoUpdate.ForeColor = Color.White;
+                        btRun2.Visible = true;
+                        btDisable2.Visible = true;
+                    }
+                }
                 else
                 {
-                    lblAutoBackup.Text = "Ready";
-                    lblAutoBackup.ForeColor = Color.White;
-                    btRun1.Visible = true;
-                    btDisable1.Visible = true;
-                }
-            }
-            else
-            {
-                lblAutoBackup.Text = "Not Running";
-                lblAutoBackup.ForeColor = Color.White;
-                btRun1.Visible = false;
-                btDisable1.Visible = false;
-            }
-            string taskName2 = "OphiussaServerManager\\AutoUpdate_" + MainForm.Settings.GUID;
-
-            Microsoft.Win32.TaskScheduler.Task task2 = TaskService.Instance.GetTask(taskName2);
-            if (task2 != null)
-            {
-                var x = lTasks.Find(xc => xc?.Name == "AutoUpdate_" + MainForm.Settings.GUID);
-
-                if (x != null)
-                {
-                    lblAutoUpdate.Text = "Is Running";
-                    lblAutoUpdate.ForeColor = Color.GreenYellow;
+                    lblAutoUpdate.Text = "Not Running";
+                    lblAutoUpdate.ForeColor = Color.White;
                     btRun2.Visible = false;
                     btDisable2.Visible = false;
                 }
-                else
-                {
-                    lblAutoUpdate.Text = "Ready";
-                    lblAutoUpdate.ForeColor = Color.White;
-                    btRun2.Visible = true;
-                    btDisable2.Visible = true;
-                }
-            }
-            else
-            {
-                lblAutoUpdate.Text = "Not Running";
-                lblAutoUpdate.ForeColor = Color.White;
-                btRun2.Visible = false;
-                btDisable2.Visible = false;
-            }
-            //}).Wait();
+                //}).Wait();
 
+
+            }
+            catch (Exception ex)
+            {
+                OphiussaLogger.logger.Error(ex);
+                OphiussaLogger.logger.Error(ex);
+            }
+            finally
+            {
+                timerCheckTask.Enabled = true;
+            }
 
         }
 

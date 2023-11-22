@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using OphiussaServerManager;
+using System.Net;
 using System.Net.Sockets;
 
 namespace SSQLib
@@ -21,6 +22,7 @@ namespace SSQLib
             }
             catch (SocketException ex)
             {
+                OphiussaLogger.logger.Error(ex);
                 throw new SSQLServerException("Could not send packet to server {" + ex.Message + "}");
             }
             byte[] buffer = new byte[length];
@@ -31,6 +33,7 @@ namespace SSQLib
             }
             catch (SocketException ex)
             {
+                OphiussaLogger.logger.Error(ex);
                 throw new SSQLServerException("Could not receive packet from server {" + ex.Message + "}");
             }
             return buffer;
@@ -48,6 +51,7 @@ namespace SSQLib
             }
             catch (SocketException ex)
             {
+                OphiussaLogger.logger.Error(ex);
                 throw new SSQLServerException("Could not send packet to server {" + ex.Message + "}");
             }
             byte[] buffer = new byte[length];
@@ -58,6 +62,7 @@ namespace SSQLib
             }
             catch (SocketException ex)
             {
+                OphiussaLogger.logger.Error(ex);
                 throw new SSQLServerException("Could not receive packet from server {" + ex.Message + "}");
             }
             return buffer;

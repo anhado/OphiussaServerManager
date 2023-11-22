@@ -63,6 +63,7 @@ namespace OphiussaServerManager.Forms
             }
             catch (Exception e)
             {
+                OphiussaLogger.logger.Error(e);
                 MessageBox.Show("LoadDefaultFieldValues:" + e.Message);
             }
         }
@@ -625,7 +626,7 @@ namespace OphiussaServerManager.Forms
         {
             SaveProfile();
 
-            NetworkTools.InstallGame(profile);
+            ServerTools.RestartSingleServer(this.profile.Key, true);
 
             LoadSettings(this.profile, this.tab);
         }
@@ -702,8 +703,9 @@ namespace OphiussaServerManager.Forms
 
         private void timerGetProcess_Tick(object sender, EventArgs e)
         {
-            //System.Threading.Tasks.Task.Run(() =>
-            //{
+            try
+            {
+                timerGetProcess.Enabled = false;
                 Process process = profile.GetExeProcess();
                 if (process != null)
                 {
@@ -715,7 +717,14 @@ namespace OphiussaServerManager.Forms
                     isRunning = false;
                     btStart.Text = "Start";
                 }
-            //}).Start();
+                btUpdate.Enabled = !isRunning;
+
+            }
+            catch (Exception ex)
+            {
+                OphiussaLogger.logger.Error(ex);
+            }
+            finally { timerGetProcess.Enabled = true; }
         }
 
         private void checkBox1_CheckedChanged_2(object sender, EventArgs e)

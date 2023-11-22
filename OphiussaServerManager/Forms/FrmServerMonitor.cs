@@ -78,6 +78,7 @@ namespace OphiussaServerManager.Forms
             }
             catch (Exception e)
             {
+                OphiussaLogger.logger.Error(e);
                 MessageBox.Show($"LoadProfiles: {e.Message}");
             }
         }

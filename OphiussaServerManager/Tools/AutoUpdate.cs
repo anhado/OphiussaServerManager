@@ -67,7 +67,7 @@ namespace OphiussaServerManager.Tools.Update
             ProcessError?.Invoke(this, e);
         }
 
-        internal void RestartSingleServer(string profileKey)
+        internal void RestartSingleServer(string profileKey, bool restartOnlyToUpdate)
         {
             try
             {
@@ -82,23 +82,26 @@ namespace OphiussaServerManager.Tools.Update
                 Profile p = JsonConvert.DeserializeObject<Profile>(File.ReadAllText(System.IO.Path.Combine(dir, profileKey + ".json")));
 
                 List<Task> tasks = new List<Task>();
-                if (p.IsRunning)
+                if (!restartOnlyToUpdate)
                 {
-
-                    Task t = Task.Run(async () =>
+                    if (p.IsRunning)
                     {
-                        await CloseServer(p, Settings);
-                    });
 
-                    tasks.Add(t);
+                        Task t = Task.Run(async () =>
+                        {
+                            await CloseServer(p, Settings);
+                        });
 
-                    Task.WaitAll(tasks.ToArray());
-                }
+                        tasks.Add(t);
 
-                while (p.IsRunning)
-                {
-                    OphiussaLogger.logger.Debug("Server Still running");
-                    Thread.Sleep(5000);
+                        Task.WaitAll(tasks.ToArray());
+                    }
+
+                    while (p.IsRunning)
+                    {
+                        OphiussaLogger.logger.Debug("Server Still running");
+                        Thread.Sleep(5000);
+                    } 
                 }
 
                 var serverType = new CacheServerTypes()
@@ -123,7 +126,7 @@ namespace OphiussaServerManager.Tools.Update
                     UpdateServer(p, Settings, System.IO.Path.Combine(Settings.DataFolder, "cache", p.Type.KeyName), true);
                 }
 
-                if (p.AutoManageSettings.ShutdownServer1Restart)
+                if (p.AutoManageSettings.ShutdownServer1Restart && !restartOnlyToUpdate)
                 {
                     if (!p.IsRunning) Utils.ExecuteAsAdmin(System.IO.Path.Combine(p.InstallLocation, p.Type.ExecutablePath), p.ARKConfiguration.GetCommandLinesArguments(Settings, p, p.ARKConfiguration.Administration.LocalIP), false);
                 }
@@ -131,6 +134,7 @@ namespace OphiussaServerManager.Tools.Update
             }
             catch (Exception ex)
             {
+                OphiussaLogger.logger.Error(ex);
                 OnProcessError(new ProcessCopyEventArg() { Message = ex.Message, Sucessful = false });
             }
         }
@@ -195,6 +199,7 @@ namespace OphiussaServerManager.Tools.Update
             }
             catch (Exception ex)
             {
+                OphiussaLogger.logger.Error(ex);
                 OnProcessError(new ProcessCopyEventArg() { Message = ex.Message, Sucessful = false });
             }
         }
@@ -242,12 +247,23 @@ namespace OphiussaServerManager.Tools.Update
             if (Settings.UseSmartCopy)
             {
                 changedFiles = Utils.CompareFolderContent(p.InstallLocation, CacheFolder, new List<string> { "Saved", "genosl", "Privacy" });
+                if (currentServerBuild == currentCacheBuild && changedFiles.Count == 1)
+                {
+                    changedFiles = new List<FileInfo>();
+                }
             }
             else
             {
-                System.IO.DirectoryInfo dir1 = new System.IO.DirectoryInfo(CacheFolder);
-                // Take a snapshot of the file system.  
-                changedFiles = dir1.GetFiles("*.*", System.IO.SearchOption.AllDirectories).ToList();
+                if (currentServerBuild == currentCacheBuild)
+                {
+                    changedFiles = new List<FileInfo>();
+                }
+                else
+                {
+                    System.IO.DirectoryInfo dir1 = new System.IO.DirectoryInfo(CacheFolder);
+                    // Take a snapshot of the file system.  
+                    changedFiles = dir1.GetFiles("*.*", System.IO.SearchOption.AllDirectories).ToList();
+                }
             }
 
             if (changedFiles.Count == 0) OnProgressChanged(new ProcessEventArg() { Message = "No changed detected", IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0 });
@@ -378,6 +394,7 @@ namespace OphiussaServerManager.Tools.Update
                 }
                 catch (Exception ex)
                 {
+                    OphiussaLogger.logger.Error(ex);
                     throw ex;
                 }
             }

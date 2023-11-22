@@ -45,9 +45,9 @@ namespace OphiussaServerManager.Forms
             {
                 UpdatePlayerDetailsAsync();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                 
+                OphiussaLogger.logger.Error(ex);
             }
 
         }
@@ -69,6 +69,7 @@ namespace OphiussaServerManager.Forms
             }
             catch (Exception ex)
             {
+                OphiussaLogger.logger.Error(ex);
                 SetStatus(false);
             }
         }
@@ -85,6 +86,7 @@ namespace OphiussaServerManager.Forms
             }
             catch (Exception ex)
             {
+                OphiussaLogger.logger.Error(ex);
                 return;
             }
             await Task.Run((Action)(() =>
@@ -108,7 +110,7 @@ namespace OphiussaServerManager.Forms
             }
             catch (Exception ex)
             {
-                //this._errorLogger?.Error("UpdatePlayerDetailsAsync - Error: LoadSteamAsync. " + ex.Message + "\r\n" + ex.StackTrace);
+                OphiussaLogger.logger.Error(ex);
             }
 
             int invalid = 0;
@@ -258,6 +260,7 @@ namespace OphiussaServerManager.Forms
             }
             catch (Exception ex)
             {
+                OphiussaLogger.logger.Error(ex);
                 txtChat.AppendTextWithTimeStamp("Error:" + ex.Message, Color.Red);
                 SetStatus(false);
             }
@@ -369,6 +372,7 @@ namespace OphiussaServerManager.Forms
             }
             catch (Exception ex)
             {
+                OphiussaLogger.logger.Error(ex);
                 SetStatus(false);
             }
         }
@@ -390,6 +394,7 @@ namespace OphiussaServerManager.Forms
             }
             catch (Exception ex)
             {
+                OphiussaLogger.logger.Error(ex);
                 SetStatus(false);
             }
         }
@@ -445,9 +450,9 @@ namespace OphiussaServerManager.Forms
             {
                 UpdatePlayerDetailsAsync();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                OphiussaLogger.logger.Error(ex);
             }
         }
 

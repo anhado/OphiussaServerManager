@@ -27,6 +27,7 @@ namespace OphiussaServerManager.Common.Models.Profiles
         public ArkProfile ARKConfiguration { get; set; } = new ArkProfile();
         public AutoManageSettings AutoManageSettings { get; set; } = new AutoManageSettings();
 
+        [JsonIgnore]
         public bool IsInstalled
         {
             get
@@ -41,6 +42,8 @@ namespace OphiussaServerManager.Common.Models.Profiles
                 return false;
             }
         }
+
+        [JsonIgnore]
         public bool IsRunning
         {
             get

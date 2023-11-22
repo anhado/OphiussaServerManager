@@ -148,6 +148,7 @@ namespace OphiussaServerManager.Forms
                 }
                 catch (Exception ex)
                 {
+                    OphiussaLogger.logger.Error(ex);
                     MessageBox.Show(ex.Message);
                 }
             }
@@ -215,6 +216,7 @@ namespace OphiussaServerManager.Forms
                 }
                 catch (Exception ex)
                 {
+                    OphiussaLogger.logger.Error(ex);
                     MessageBox.Show(ex.Message);
                 }
             }

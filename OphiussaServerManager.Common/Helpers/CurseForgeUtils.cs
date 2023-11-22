@@ -26,8 +26,7 @@ namespace OphiussaServerManager.Common
         {
             _settings = settings;
         }
-        private const string KEYWORK_QUIT = "+quit";
-        private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
+        private const string KEYWORK_QUIT = "+quit"; 
 
         public CurseForgeFileDetailResponse GetCurseForgeModDetails(string appId)
         {
@@ -76,7 +75,7 @@ namespace OphiussaServerManager.Common
             }
             catch (Exception ex)
             {
-                CurseForgeUtils._logger.Error("GetSteamModDetails. " + ex.Message + "\r\n" + ex.StackTrace);
+                OphiussaLogger.logger.Error("GetSteamModDetails. " + ex.Message + "\r\n" + ex.StackTrace); 
                 return (CurseForgeFileDetailResponse)null;
             }
         }
@@ -134,7 +133,8 @@ namespace OphiussaServerManager.Common
             }
             catch (Exception ex)
             {
-                CurseForgeUtils._logger.Error("GetSteamModDetails. " + ex.Message + "\r\n" + ex.StackTrace);
+
+                OphiussaLogger.logger.Error("GetSteamModDetails. " + ex.Message + "\r\n" + ex.StackTrace);
                 return (CurseForgeFileDetailResponse)null;
             }
         } 

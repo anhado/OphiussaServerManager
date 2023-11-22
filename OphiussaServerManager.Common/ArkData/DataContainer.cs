@@ -116,6 +116,7 @@ namespace OphiussaServerManager.Common
             }
             catch (SSQLServerException ex)
             {
+                OphiussaLogger.logger.Error(ex);
                 //ServerException this was before
                 throw new Exception("The connection to the server failed. Please check the configured IP address and port.");
             }

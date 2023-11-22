@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OphiussaServerManager;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net;
@@ -20,6 +21,7 @@ namespace SSQLib
             }
             catch (SSQLServerException ex)
             {
+                OphiussaLogger.logger.Error(ex);
                 throw ex;
             }
             int num1 = 4;
@@ -125,6 +127,7 @@ namespace SSQLib
             }
             catch (SSQLServerException ex)
             {
+                OphiussaLogger.logger.Error(ex);
                 throw ex;
             }
             int num1 = 4;
@@ -176,6 +179,7 @@ namespace SSQLib
             }
             catch (SSQLServerException ex)
             {
+                OphiussaLogger.logger.Error(ex);
                 return (ArrayList)null;
             }
             int num11 = 4;
