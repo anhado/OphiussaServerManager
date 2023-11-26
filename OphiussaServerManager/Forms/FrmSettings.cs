@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32.TaskScheduler;
 using Newtonsoft.Json;
 using OphiussaServerManager.Common.Helpers;
+using OphiussaServerManager.Common.Models;
 using OphiussaServerManager.Common.Models.Profiles;
 using System;
 using System.Collections.Generic;
@@ -79,7 +80,7 @@ namespace OphiussaServerManager.Forms
             chkUseSmartCopy.Checked = sett.UseSmartCopy;
             chkEnableLogs.Checked = sett.EnableLogs;
             txtMaxDays.Text = sett.MaxLogsDays.ToString();
-            txtBackupInterval.Text = sett.MaxLogFiles.ToString();
+            txtMaxFiles.Text = sett.MaxLogFiles.ToString();
 
             txtUserName.Enabled = !chkAnonymous.Checked;
             txtPassword.Enabled = !chkAnonymous.Checked;
@@ -89,15 +90,15 @@ namespace OphiussaServerManager.Forms
         {
         }
 
-        private void CreateWindowsTaskS()
+        private void CreateWindowsTaskS(Settings settings)
         {
 
-            if (MainForm.Settings.AutoUpdate)
+            if (settings.AutoUpdate)
             {
                 try
                 {
                     string fileName = Assembly.GetExecutingAssembly().Location;
-                    string taskName = "OphiussaServerManager\\AutoUpdate_" + MainForm.Settings.GUID;
+                    string taskName = "OphiussaServerManager\\AutoUpdate_" + settings.GUID;
 
                     Microsoft.Win32.TaskScheduler.Task task = TaskService.Instance.GetTask(taskName);
                     if (task != null)
@@ -108,8 +109,8 @@ namespace OphiussaServerManager.Forms
                         TimeTrigger timeTrigger = new TimeTrigger();
                         timeTrigger.StartBoundary = DateTime.Now;
 
-                        int hour = Int16.Parse(MainForm.Settings.UpdateInterval.Split(':')[0]);
-                        int minute = Int16.Parse(MainForm.Settings.UpdateInterval.Split(':')[1]);
+                        int hour = Int16.Parse(settings.UpdateInterval.Split(':')[0]);
+                        int minute = Int16.Parse(settings.UpdateInterval.Split(':')[1]);
                         timeTrigger.StartBoundary = DateTime.Now.Date;
                         timeTrigger.Repetition.Interval = TimeSpan.FromHours(hour) + TimeSpan.FromMinutes(minute);
                         timeTrigger.Repetition.Duration = TimeSpan.Zero;
@@ -127,8 +128,8 @@ namespace OphiussaServerManager.Forms
                         TimeTrigger timeTrigger = new TimeTrigger();
                         timeTrigger.StartBoundary = DateTime.Now;
 
-                        int hour = Int16.Parse(MainForm.Settings.UpdateInterval.Split(':')[0]);
-                        int minute = Int16.Parse(MainForm.Settings.UpdateInterval.Split(':')[1]);
+                        int hour = Int16.Parse(settings.UpdateInterval.Split(':')[0]);
+                        int minute = Int16.Parse(settings.UpdateInterval.Split(':')[1]);
                         timeTrigger.StartBoundary = DateTime.Now.Date;
                         timeTrigger.Repetition.Interval = TimeSpan.FromHours(hour) + TimeSpan.FromMinutes(minute);
                         timeTrigger.Repetition.Duration = TimeSpan.Zero;
@@ -140,8 +141,8 @@ namespace OphiussaServerManager.Forms
 
                     }
 
-                    int hour1 = Int16.Parse(MainForm.Settings.UpdateInterval.Split(':')[0]);
-                    int minute1 = Int16.Parse(MainForm.Settings.UpdateInterval.Split(':')[1]);
+                    int hour1 = Int16.Parse(settings.UpdateInterval.Split(':')[0]);
+                    int minute1 = Int16.Parse(settings.UpdateInterval.Split(':')[1]);
                     TimeSpan ts = TimeSpan.FromHours(hour1) + TimeSpan.FromMinutes(minute1);
 
                     MessageBox.Show("Auto update will run every " + ts.TotalMinutes + " minutes");
@@ -154,19 +155,19 @@ namespace OphiussaServerManager.Forms
             }
             else
             {
-                string taskName = "OphiussaServerManager\\AutoUpdate_" + MainForm.Settings.GUID;
+                string taskName = "OphiussaServerManager\\AutoUpdate_" + settings.GUID;
                 Microsoft.Win32.TaskScheduler.Task task = TaskService.Instance.GetTask(taskName);
                 if (task != null)
                 {
                     TaskService.Instance.RootFolder.DeleteTask(taskName);
                 }
             }
-            if (MainForm.Settings.AutoBackup)
+            if (settings.AutoBackup)
             {
                 try
                 {
                     string fileName = Assembly.GetExecutingAssembly().Location;
-                    string taskName = "OphiussaServerManager\\AutoBackup_" + MainForm.Settings.GUID;
+                    string taskName = "OphiussaServerManager\\AutoBackup_" + settings.GUID;
 
                     Microsoft.Win32.TaskScheduler.Task task = TaskService.Instance.GetTask(taskName);
                     if (task != null)
@@ -177,8 +178,8 @@ namespace OphiussaServerManager.Forms
                         TimeTrigger timeTrigger = new TimeTrigger();
                         timeTrigger.StartBoundary = DateTime.Now;
 
-                        int hour = Int16.Parse(MainForm.Settings.BackupInterval.Split(':')[0]);
-                        int minute = Int16.Parse(MainForm.Settings.BackupInterval.Split(':')[1]);
+                        int hour = Int16.Parse(settings.BackupInterval.Split(':')[0]);
+                        int minute = Int16.Parse(settings.BackupInterval.Split(':')[1]);
                         timeTrigger.StartBoundary = DateTime.Now.Date;
                         timeTrigger.Repetition.Interval = TimeSpan.FromHours(hour) + TimeSpan.FromMinutes(minute);
                         timeTrigger.Repetition.Duration = TimeSpan.Zero;
@@ -196,8 +197,8 @@ namespace OphiussaServerManager.Forms
                         TimeTrigger timeTrigger = new TimeTrigger();
                         timeTrigger.StartBoundary = DateTime.Now;
 
-                        int hour = Int16.Parse(MainForm.Settings.BackupInterval.Split(':')[0]);
-                        int minute = Int16.Parse(MainForm.Settings.BackupInterval.Split(':')[1]);
+                        int hour = Int16.Parse(settings.BackupInterval.Split(':')[0]);
+                        int minute = Int16.Parse(settings.BackupInterval.Split(':')[1]);
                         timeTrigger.StartBoundary = DateTime.Now.Date;
                         timeTrigger.Repetition.Interval = TimeSpan.FromHours(hour) + TimeSpan.FromMinutes(minute);
                         timeTrigger.Repetition.Duration = TimeSpan.Zero;
@@ -208,8 +209,8 @@ namespace OphiussaServerManager.Forms
                         TaskService.Instance.RootFolder.RegisterTaskDefinition(taskName, td);
 
                     }
-                    int hour1 = Int16.Parse(MainForm.Settings.BackupInterval.Split(':')[0]);
-                    int minute1 = Int16.Parse(MainForm.Settings.BackupInterval.Split(':')[1]);
+                    int hour1 = Int16.Parse(settings.BackupInterval.Split(':')[0]);
+                    int minute1 = Int16.Parse(settings.BackupInterval.Split(':')[1]);
                     TimeSpan ts = TimeSpan.FromHours(hour1) + TimeSpan.FromMinutes(minute1);
 
                     MessageBox.Show("Auto Backup will run every " + ts.TotalMinutes + " minutes");
@@ -222,7 +223,7 @@ namespace OphiussaServerManager.Forms
             }
             else
             {
-                string taskName = "OphiussaServerManager\\AutoBackup_" + MainForm.Settings.GUID;
+                string taskName = "OphiussaServerManager\\AutoBackup_" + settings.GUID;
                 Microsoft.Win32.TaskScheduler.Task task = TaskService.Instance.GetTask(taskName);
                 if (task != null)
                 {
@@ -334,7 +335,7 @@ namespace OphiussaServerManager.Forms
             {
                 Directory.CreateDirectory(txtSteamCmd.Text);
             }
-            CreateWindowsTaskS();
+            CreateWindowsTaskS(sett);
         }
     }
 }

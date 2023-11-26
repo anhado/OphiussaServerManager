@@ -142,6 +142,14 @@ namespace OphiussaServerManager.Common.Models.Profiles
 
             string jsonString = JsonConvert.SerializeObject(this, Formatting.Indented);
             File.WriteAllText(dir + this.Key + ".json", jsonString);
+
+            switch (this.Type.ServerType)
+            {
+                case EnumServerType.ArkSurviveEvolved: 
+                case EnumServerType.ArkSurviveAscended:
+                    ARKConfiguration.SaveGameINI(this);
+                    break; 
+            }
         }
 
         public void LoadProfile(bool readFileDisk = true)

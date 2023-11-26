@@ -66,7 +66,7 @@ namespace OphiussaServerManager.Common
 
                     foreach (UnicastIPAddressInformation addr in ipProps.UnicastAddresses)
                     {
-                        if (addr.PrefixOrigin == PrefixOrigin.Dhcp)
+                        if (addr.PrefixOrigin == PrefixOrigin.Dhcp && addr.PrefixOrigin == PrefixOrigin.Manual)
                         {
                             Console.WriteLine(" " + addr.Address.ToString());
                             ret.Add(new IpList() { IP = addr.Address.ToString(), Description = $"({addr.Address.ToString()})" + netInterface.Description });
@@ -164,7 +164,7 @@ namespace OphiussaServerManager.Common
         public static void UpdateCacheFolder(CacheServerTypes serverType)
         {
             //profile.Type.SteamAppID G:\asmdata\SteamCMD\steamcmd.exe +force_install_dir G:\ASA\server\ +login anonymous +app_update 2430930 validate +quit
-            Utils.ExecuteAsAdmin(Path.Combine(Settings.SteamCMDLocation, "steamcmd.exe"), $" +force_install_dir {serverType.InstallCacheFolder} +login anonymous +app_update {serverType.Type.SteamAppID} validate +quit",true,true);
+            Utils.ExecuteAsAdmin(Path.Combine(Settings.SteamCMDLocation, "steamcmd.exe"), $" +force_install_dir {serverType.InstallCacheFolder} +login anonymous +app_update {serverType.Type.SteamAppID} validate +quit", true, true);
         }
     }
 }

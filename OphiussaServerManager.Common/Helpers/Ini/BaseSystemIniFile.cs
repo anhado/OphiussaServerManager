@@ -215,7 +215,7 @@ namespace OphiussaServerManager.Common.Ini
                                 {
                                     if (str.IsEmpty<char>())
                                     //if (str.IsEmpty<char>())
-                                        {
+                                    {
                                         str = "\"\"";
                                     }
                                     else
@@ -264,8 +264,14 @@ namespace OphiussaServerManager.Common.Ini
         public IEnumerable<string> ReadSection(Enum iniFile, Enum section) => this.ReadSection(iniFile, this.SectionNames[section]);
 
         public IEnumerable<string> ReadSection(Enum iniFile, string sectionName) => IniFileUtils.ReadSection(Path.Combine(this.BasePath, this.FileNames[iniFile]), sectionName);
-         
 
+
+        public List<IniSection> GetAllSections(Enum iniFile)
+        {
+
+            IniFile ini = IniFileUtils.ReadFromFile(Path.Combine(this.BasePath, this.FileNames[iniFile]));
+            return ini.Sections;
+        }
         public void WriteSection(Enum iniFile, Enum section, IEnumerable<string> values) => this.WriteSection(iniFile, this.SectionNames[section], values);
 
         public void WriteSection(Enum iniFile, string sectionName, IEnumerable<string> values) => IniFileUtils.WriteSection(Path.Combine(this.BasePath, this.FileNames[iniFile]), sectionName, values);

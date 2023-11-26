@@ -25,8 +25,8 @@ namespace OphiussaServerManager.Common.Models
 
     public class ConfigFile
     {
-        public string Property { get; set; }
-        public string Value { get; set; }
+        public string PropertyValue { get; set; }
+        public string PropertyName { get; set; }
 
     }
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OphiussaServerManager.Common.Ini;
 using static System.Net.Mime.MediaTypeNames;
+using static System.Net.WebRequestMethods;
 
 namespace OphiussaServerManager.Common.Models.Profiles
 {
@@ -20,7 +21,7 @@ namespace OphiussaServerManager.Common.Models.Profiles
 
         public ArkProfile()
         {
-            this.Administration = new Administration(); 
+            this.Administration = new Administration();
 
         }
 
@@ -34,50 +35,76 @@ namespace OphiussaServerManager.Common.Models.Profiles
 
             SystemIniFile systemIniFile = new SystemIniFile(prf.InstallLocation);
 
-            //var tmpGUS = 
+            this.Administration.LogAdminCommandsToPublic = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings).ReadBoolValue("AdminLogging", this.Administration.LogAdminCommandsToPublic);
+            this.Administration.AllowHideDamageSourceFromLogs = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings).ReadBoolValue("AllowHideDamageSourceFromLogs", this.Administration.AllowHideDamageSourceFromLogs);
+            this.Administration.TribeLogDestroyedEnemyStructures = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings).ReadBoolValue("TribeLogDestroyedEnemyStructures", this.Administration.TribeLogDestroyedEnemyStructures);
+            this.Administration.IdleTimout = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings).ReadIntValue("KickIdlePlayersPeriod", this.Administration.IdleTimout);
 
-            List<ConfigFile> GUSSS = systemIniFile.ReadSection(IniFiles.GameUserSettings, "ServerSettings").ToListConfigFile();
-            List<ConfigFile> GUSScalabilityGroups = systemIniFile.ReadSection(IniFiles.GameUserSettings, "ScalabilityGroups").ToListConfigFile();
-            List<ConfigFile> GUSShooterGameUserSettings = systemIniFile.ReadSection(IniFiles.GameUserSettings, "/Script/ShooterGame.ShooterGameUserSettings").ToListConfigFile();
-            List<ConfigFile> GUSGameUserSettings = systemIniFile.ReadSection(IniFiles.GameUserSettings, "GameUserSettings").ToListConfigFile();
-            List<ConfigFile> GUSSessionSettings = systemIniFile.ReadSection(IniFiles.GameUserSettings, "SessionSettings").ToListConfigFile();
-            List<ConfigFile> GUSGameSession = systemIniFile.ReadSection(IniFiles.GameUserSettings, "GameSession").ToListConfigFile();
-            List<ConfigFile> GUSMessageOfTheDay = systemIniFile.ReadSection(IniFiles.GameUserSettings, "MessageOfTheDay").ToListConfigFile();
-            List<ConfigFile> GUSTestGameMode_C = systemIniFile.ReadSection(IniFiles.GameUserSettings, "/Game/PrimalEarth/CoreBlueprints/TestGameMode.TestGameMode_C").ToListConfigFile();
-
-            //List <ConfigFile> GUS = tmpGUS.Select(val =>
-            //{
-            //    ConfigFile c = new ConfigFile();
-            //    int firstIndex = val.IndexOf("=");
-            //    c.Value = val.Substring(0, firstIndex);
-            //    c.Property = val.Substring(firstIndex + 1);
-            //    return c;
-            //}).ToList();
-
-            this.Administration.LogAdminCommandsToPublic = GUSSS.GetBool("AdminLogging");
-            this.Administration.AllowHideDamageSourceFromLogs = GUSSS.GetBool("AllowHideDamageSourceFromLogs");
-            this.Administration.TribeLogDestroyedEnemyStructures = GUSSS.GetBool("TribeLogDestroyedEnemyStructures");
-            this.Administration.IdleTimout = GUSSS.GetInt("KickIdlePlayersPeriod", 3600);
             if (prf.Type.ServerType == SupportedServers.EnumServerType.ArkSurviveEvolved)
-                this.Administration.MaxPlayers = GUSSS.GetInt("MaxPlayers", 70);
+                this.Administration.IdleTimout = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings).ReadIntValue("MaxPlayers", this.Administration.IdleTimout);
+
             if (prf.Type.ServerType == SupportedServers.EnumServerType.ArkSurviveAscended)
-                this.Administration.MaxPlayers = GUSGameSession.GetInt("MaxPlayers", 70);
-            this.Administration.UseRCON = GUSSS.GetBool("RCONEnabled");
-            this.Administration.RCONPort = GUSSS.GetInt("RCONPort", 32330).ToString();
-            this.Administration.RCONServerLogBuffer = GUSSS.GetInt("RCONServerGameLogBuffer", 600);
-            this.Administration.ServerAdminPassword = GUSSS.GetString("ServerAdminPassword", System.Web.Security.Membership.GeneratePassword(10, 6));
-            this.Administration.EnableServerAdminLogs = GUSSS.GetBool("servergamelog", true);
-            this.Administration.ServerPassword = GUSSS.GetString("ServerPassword");
-            this.Administration.ServerSpectatorPassword = GUSSS.GetString("SpectatorPassword", System.Web.Security.Membership.GeneratePassword(10, 6));
-            this.Administration.ServerName = GUSSessionSettings.GetString("SessionName", "New Server");
-            this.Administration.ServerPort = GUSSessionSettings.GetString("Port", "7777");
-            this.Administration.PeerPort = (int.Parse(GUSSessionSettings.GetString("Port", "7777")) + 1).ToString();
-            this.Administration.QueryPort = GUSSessionSettings.GetString("QueryPort", "27015");
-            this.Administration.MOD = GUSMessageOfTheDay.GetString("Message");
-            this.Administration.MODDuration = GUSMessageOfTheDay.GetInt("Duration", 20);
-            //systemIniFile.w
+                this.Administration.IdleTimout = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GUS_GameSession).ReadIntValue("MaxPlayers", this.Administration.IdleTimout);
+
+            this.Administration.UseRCON = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings).ReadBoolValue("RCONEnabled", this.Administration.UseRCON);
+            this.Administration.RCONPort = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings).ReadStringValue("RCONPort", this.Administration.RCONPort);
+            this.Administration.RCONServerLogBuffer = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings).ReadIntValue("RCONServerGameLogBuffer", this.Administration.RCONServerLogBuffer);
+            this.Administration.ServerAdminPassword = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings).ReadStringValue("ServerAdminPassword", this.Administration.ServerAdminPassword);
+            this.Administration.EnableServerAdminLogs = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings).ReadBoolValue("servergamelog", this.Administration.EnableServerAdminLogs);
+            this.Administration.ServerPassword = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings).ReadStringValue("ServerPassword", this.Administration.ServerPassword);
+            this.Administration.ServerSpectatorPassword = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings).ReadStringValue("SpectatorPassword", this.Administration.ServerSpectatorPassword);
+            this.Administration.ServerName = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GUS_SessionSettings).ReadStringValue("SessionName", this.Administration.ServerName);
+            this.Administration.ServerPort = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GUS_SessionSettings).ReadStringValue("Port", this.Administration.ServerPort);
+            this.Administration.PeerPort = (systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GUS_SessionSettings).ReadIntValue("Port", int.Parse(this.Administration.ServerPort)) + 1).ToString();
+            this.Administration.QueryPort = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GUS_SessionSettings).ReadStringValue("QueryPort", this.Administration.QueryPort);
+            this.Administration.MOD = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GUS_MessageOfTheDay).ReadStringValue("Message", this.Administration.MOD);
+            this.Administration.MODDuration = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GUS_MessageOfTheDay).ReadIntValue("Duration", this.Administration.MODDuration);
 
             return this;
+        }
+
+        internal void SaveGameINI(Profile profile)
+        {
+            SystemIniFile systemIniFile = new SystemIniFile(profile.InstallLocation);
+             
+            List<IniSection> iniSections = systemIniFile.GetAllSections(IniFiles.GameUserSettings);
+            List<string> listSectionNames = new List<string>();
+            Dictionary<string, List<ConfigFile>> keyValuePairs = new Dictionary<string, List<ConfigFile>>();
+
+            foreach (var section in iniSections)
+            {
+                keyValuePairs.Add(section.SectionName, systemIniFile.ReadSection(IniFiles.GameUserSettings, section.SectionName).ToListConfigFile());
+                listSectionNames.Add(section.SectionName);
+            }
+             
+            keyValuePairs["ServerSettings"].WriteBoolValue("AdminLogging", this.Administration.LogAdminCommandsToPublic); 
+            keyValuePairs["ServerSettings"].WriteBoolValue("AllowHideDamageSourceFromLogs", this.Administration.AllowHideDamageSourceFromLogs); 
+            keyValuePairs["ServerSettings"].WriteBoolValue("TribeLogDestroyedEnemyStructures", this.Administration.TribeLogDestroyedEnemyStructures); 
+            keyValuePairs["ServerSettings"].WriteIntValue("KickIdlePlayersPeriod", this.Administration.IdleTimout);
+
+            if (profile.Type.ServerType == SupportedServers.EnumServerType.ArkSurviveEvolved) 
+                keyValuePairs["ServerSettings"].WriteIntValue("MaxPlayers", this.Administration.MaxPlayers);
+
+            if (profile.Type.ServerType == SupportedServers.EnumServerType.ArkSurviveAscended) 
+                keyValuePairs["/Script/Engine.GameSession"].WriteIntValue("MaxPlayers", this.Administration.MaxPlayers);
+             
+            keyValuePairs["ServerSettings"].WriteBoolValue("RCONEnabled", this.Administration.UseRCON); 
+            keyValuePairs["ServerSettings"].WriteStringValue("RCONPort", this.Administration.RCONPort); 
+            keyValuePairs["ServerSettings"].WriteIntValue("RCONServerGameLogBuffer", this.Administration.RCONServerLogBuffer); 
+            keyValuePairs["ServerSettings"].WriteStringValue("ServerAdminPassword", this.Administration.ServerAdminPassword); 
+            keyValuePairs["ServerSettings"].WriteBoolValue("servergamelog", this.Administration.EnableServerAdminLogs); 
+            keyValuePairs["ServerSettings"].WriteStringValue("ServerPassword", this.Administration.ServerPassword); 
+            keyValuePairs["ServerSettings"].WriteStringValue("SpectatorPassword", this.Administration.ServerSpectatorPassword); 
+            keyValuePairs["SessionSettings"].WriteStringValue("SessionName", this.Administration.ServerName); 
+            keyValuePairs["SessionSettings"].WriteStringValue("Port", this.Administration.ServerPort); 
+            keyValuePairs["SessionSettings"].WriteStringValue("QueryPort", this.Administration.QueryPort); 
+            keyValuePairs["MessageOfTheDay"].WriteStringValue("Message", this.Administration.MOD); 
+            keyValuePairs["MessageOfTheDay"].WriteIntValue("Duration", this.Administration.MODDuration);
+
+            foreach (var section in keyValuePairs)
+            {
+                systemIniFile.WriteSection(IniFiles.GameUserSettings, section.Key, section.Value.ToEnumerableConfigFile());
+            } 
         }
 
         public string GetCommandLinesArguments(Settings settings, Profile prf, string PublicIP)

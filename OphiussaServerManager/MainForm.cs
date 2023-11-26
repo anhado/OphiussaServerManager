@@ -65,15 +65,24 @@ namespace OphiussaServerManager
                 var discoverer = new NatDiscoverer();
                 var device = await discoverer.DiscoverDeviceAsync();
                 var ip = await device.GetExternalIPAsync();
-                txtPublicIP.Text = ip.ToString();
-
+                txtPublicIP.Text = ip.ToString(); 
+            }
+            catch (Exception ex)
+            {
+                OphiussaLogger.logger.Error(ex); 
+            }
+            try
+            {
+                if(txtPublicIP.Text == "")
+                {
+                    txtLocalIP.Text = await System.Threading.Tasks.Task.Run(() => Common.NetworkTools.GetPublicIp());
+                }
             }
             catch (Exception ex)
             {
                 OphiussaLogger.logger.Error(ex);
-                OphiussaLogger.logger.Error(ex);
             }
-
+            timerCheckTask.Enabled = true;
             tabControl1.SelectedIndex = 0;
 
         }

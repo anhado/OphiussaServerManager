@@ -41,15 +41,18 @@
             this.NewTab = new System.Windows.Forms.TabPage();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.refreshPublicIPToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.refreshLocalIPToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.updateSteamCMDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+            this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.serverMonitorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.routingFirewallToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.refreshPublicIPToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.refreshLocalIPToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
-            this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.testsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.lblAutoBackup = new System.Windows.Forms.Label();
@@ -59,9 +62,6 @@
             this.btRun2 = new System.Windows.Forms.Button();
             this.lblAutoUpdate = new System.Windows.Forms.Label();
             this.timerCheckTask = new System.Windows.Forms.Timer(this.components);
-            this.updateSteamCMDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-            this.testsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -190,6 +190,44 @@
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.toolsToolStripMenuItem.Text = "Tools";
             // 
+            // refreshPublicIPToolStripMenuItem1
+            // 
+            this.refreshPublicIPToolStripMenuItem1.Name = "refreshPublicIPToolStripMenuItem1";
+            this.refreshPublicIPToolStripMenuItem1.Size = new System.Drawing.Size(175, 22);
+            this.refreshPublicIPToolStripMenuItem1.Text = "Refresh Public IP";
+            this.refreshPublicIPToolStripMenuItem1.Click += new System.EventHandler(this.refreshPublicIPToolStripMenuItem1_Click);
+            // 
+            // refreshLocalIPToolStripMenuItem1
+            // 
+            this.refreshLocalIPToolStripMenuItem1.Name = "refreshLocalIPToolStripMenuItem1";
+            this.refreshLocalIPToolStripMenuItem1.Size = new System.Drawing.Size(175, 22);
+            this.refreshLocalIPToolStripMenuItem1.Text = "Refresh Local IP";
+            this.refreshLocalIPToolStripMenuItem1.Click += new System.EventHandler(this.refreshLocalIPToolStripMenuItem1_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(172, 6);
+            // 
+            // updateSteamCMDToolStripMenuItem
+            // 
+            this.updateSteamCMDToolStripMenuItem.Name = "updateSteamCMDToolStripMenuItem";
+            this.updateSteamCMDToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.updateSteamCMDToolStripMenuItem.Text = "Update SteamCMD";
+            this.updateSteamCMDToolStripMenuItem.Click += new System.EventHandler(this.updateSteamCMDToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(172, 6);
+            // 
+            // exitToolStripMenuItem1
+            // 
+            this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
+            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(175, 22);
+            this.exitToolStripMenuItem1.Text = "Exit";
+            this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
+            // 
             // serverMonitorToolStripMenuItem
             // 
             this.serverMonitorToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -212,46 +250,27 @@
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(135, 6);
             // 
             // routingFirewallToolStripMenuItem
             // 
             this.routingFirewallToolStripMenuItem.Name = "routingFirewallToolStripMenuItem";
-            this.routingFirewallToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.routingFirewallToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.routingFirewallToolStripMenuItem.Text = "Port Foward";
             // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
-            // refreshPublicIPToolStripMenuItem1
+            // testsToolStripMenuItem
             // 
-            this.refreshPublicIPToolStripMenuItem1.Name = "refreshPublicIPToolStripMenuItem1";
-            this.refreshPublicIPToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.refreshPublicIPToolStripMenuItem1.Text = "Refresh Public IP";
-            this.refreshPublicIPToolStripMenuItem1.Click += new System.EventHandler(this.refreshPublicIPToolStripMenuItem1_Click);
-            // 
-            // refreshLocalIPToolStripMenuItem1
-            // 
-            this.refreshLocalIPToolStripMenuItem1.Name = "refreshLocalIPToolStripMenuItem1";
-            this.refreshLocalIPToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.refreshLocalIPToolStripMenuItem1.Text = "Refresh Local IP";
-            this.refreshLocalIPToolStripMenuItem1.Click += new System.EventHandler(this.refreshLocalIPToolStripMenuItem1_Click);
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(177, 6);
-            // 
-            // exitToolStripMenuItem1
-            // 
-            this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
-            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.exitToolStripMenuItem1.Text = "Exit";
-            this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
+            this.testsToolStripMenuItem.Name = "testsToolStripMenuItem";
+            this.testsToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.testsToolStripMenuItem.Text = "Tests";
+            this.testsToolStripMenuItem.Click += new System.EventHandler(this.testsToolStripMenuItem_Click);
             // 
             // label5
             // 
@@ -349,28 +368,8 @@
             // 
             // timerCheckTask
             // 
-            this.timerCheckTask.Enabled = true;
             this.timerCheckTask.Interval = 500;
             this.timerCheckTask.Tick += new System.EventHandler(this.timerCheckTask_Tick);
-            // 
-            // updateSteamCMDToolStripMenuItem
-            // 
-            this.updateSteamCMDToolStripMenuItem.Name = "updateSteamCMDToolStripMenuItem";
-            this.updateSteamCMDToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.updateSteamCMDToolStripMenuItem.Text = "Update SteamCMD";
-            this.updateSteamCMDToolStripMenuItem.Click += new System.EventHandler(this.updateSteamCMDToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
-            // 
-            // testsToolStripMenuItem
-            // 
-            this.testsToolStripMenuItem.Name = "testsToolStripMenuItem";
-            this.testsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.testsToolStripMenuItem.Text = "Tests";
-            this.testsToolStripMenuItem.Click += new System.EventHandler(this.testsToolStripMenuItem_Click);
             // 
             // MainForm
             // 

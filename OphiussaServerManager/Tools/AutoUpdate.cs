@@ -101,7 +101,7 @@ namespace OphiussaServerManager.Tools.Update
                     {
                         OphiussaLogger.logger.Debug("Server Still running");
                         Thread.Sleep(5000);
-                    } 
+                    }
                 }
 
                 var serverType = new CacheServerTypes()
@@ -371,24 +371,28 @@ namespace OphiussaServerManager.Tools.Update
                     await rcon.ConnectAsync();
 
 
-                    string respnose = await rcon.SendCommandAsync("ListPlayers");
-                    if (respnose != "No Players Connected")
+                    if (settings.PerformOnlinePlayerCheck)
                     {
-                        //validate server have players 
-                        await rcon.SendCommandAsync($"Broadcast {settings.Message1.Replace("{minutes}", "15")}");
-                        OnProgressChanged(new ProcessEventArg() { Message = settings.Message1.Replace("{minutes}", "15"), IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
-                        Thread.Sleep(900000);
-                        await rcon.SendCommandAsync($"Broadcast {settings.Message1.Replace("{minutes}", "10")}");
-                        OnProgressChanged(new ProcessEventArg() { Message = settings.Message1.Replace("{minutes}", "10"), IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
-                        Thread.Sleep(600000);
-                        await rcon.SendCommandAsync($"Broadcast {settings.Message1.Replace("{minutes}", "5")}");
-                        OnProgressChanged(new ProcessEventArg() { Message = settings.Message1.Replace("{minutes}", "5"), IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
-                        Thread.Sleep(240000);
-                        await rcon.SendCommandAsync($"Broadcast {settings.Message1.Replace("{minutes}", "1")}");
-                        OnProgressChanged(new ProcessEventArg() { Message = settings.Message1.Replace("{minutes}", "1"), IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
-                        Thread.Sleep(60000);
+
+                        string respnose = await rcon.SendCommandAsync("ListPlayers");
+                        if (respnose != "No Players Connected")
+                        {
+                            //validate server have players 
+                            if(settings.SendShutdowMessages) await rcon.SendCommandAsync($"Broadcast {settings.Message1.Replace("{minutes}", "15")}");
+                            OnProgressChanged(new ProcessEventArg() { Message = settings.Message1.Replace("{minutes}", "15"), IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
+                            Thread.Sleep(900000);
+                            if (settings.SendShutdowMessages) await rcon.SendCommandAsync($"Broadcast {settings.Message1.Replace("{minutes}", "10")}");
+                            OnProgressChanged(new ProcessEventArg() { Message = settings.Message1.Replace("{minutes}", "10"), IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
+                            Thread.Sleep(600000);
+                            if (settings.SendShutdowMessages) await rcon.SendCommandAsync($"Broadcast {settings.Message1.Replace("{minutes}", "5")}");
+                            OnProgressChanged(new ProcessEventArg() { Message = settings.Message1.Replace("{minutes}", "5"), IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
+                            Thread.Sleep(240000);
+                            if (settings.SendShutdowMessages) await rcon.SendCommandAsync($"Broadcast {settings.Message1.Replace("{minutes}", "1")}");
+                            OnProgressChanged(new ProcessEventArg() { Message = settings.Message1.Replace("{minutes}", "1"), IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
+                            Thread.Sleep(60000);
+                        }
                     }
-                    await rcon.SendCommandAsync($"Broadcast {settings.Message2}");
+                    if (settings.SendShutdowMessages) await rcon.SendCommandAsync($"Broadcast {settings.Message2}");
                     OnProgressChanged(new ProcessEventArg() { Message = settings.Message2, IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
                     await rcon.SendCommandAsync($"DoExit");
                 }
