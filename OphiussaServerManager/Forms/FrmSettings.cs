@@ -280,7 +280,15 @@ namespace OphiussaServerManager.Forms
         {
             string fileName = "config.json";
             Common.Models.Settings sett = new Common.Models.Settings();
-            sett.GUID = MainForm.Settings.GUID;
+            if (MainForm.Settings==null)
+            {
+                Guid guid = Guid.NewGuid();
+                sett.GUID = guid.ToString();
+            }
+            else
+            {
+                sett.GUID = MainForm.Settings.GUID;
+            }
             sett.UpdateSteamCMDOnStartup = chkUpdateOnStart.Checked;
             sett.DataFolder = txtDataFolder.Text;
             sett.DefaultInstallationFolder = txtInstallFolder.Text;

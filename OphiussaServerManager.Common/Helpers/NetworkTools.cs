@@ -66,7 +66,7 @@ namespace OphiussaServerManager.Common
 
                     foreach (UnicastIPAddressInformation addr in ipProps.UnicastAddresses)
                     {
-                        if (addr.PrefixOrigin == PrefixOrigin.Dhcp && addr.PrefixOrigin == PrefixOrigin.Manual)
+                        if (addr.PrefixOrigin == PrefixOrigin.Dhcp || addr.PrefixOrigin == PrefixOrigin.Manual)
                         {
                             Console.WriteLine(" " + addr.Address.ToString());
                             ret.Add(new IpList() { IP = addr.Address.ToString(), Description = $"({addr.Address.ToString()})" + netInterface.Description });

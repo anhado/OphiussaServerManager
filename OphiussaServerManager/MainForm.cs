@@ -65,17 +65,17 @@ namespace OphiussaServerManager
                 var discoverer = new NatDiscoverer();
                 var device = await discoverer.DiscoverDeviceAsync();
                 var ip = await device.GetExternalIPAsync();
-                txtPublicIP.Text = ip.ToString(); 
+                txtPublicIP.Text = ip.ToString();
             }
             catch (Exception ex)
             {
-                OphiussaLogger.logger.Error(ex); 
+                OphiussaLogger.logger.Error(ex);
             }
             try
             {
-                if(txtPublicIP.Text == "")
+                if (txtPublicIP.Text == "")
                 {
-                    txtLocalIP.Text = await System.Threading.Tasks.Task.Run(() => Common.NetworkTools.GetPublicIp());
+                    txtPublicIP.Text = await System.Threading.Tasks.Task.Run(() => Common.NetworkTools.GetPublicIp());
                 }
             }
             catch (Exception ex)
@@ -153,7 +153,33 @@ namespace OphiussaServerManager
 
         private void tabControl1_Click(object sender, EventArgs e)
         {
+            if (tabControl1.TabCount == 1)
+            {
+                Guid guid = Guid.NewGuid();
+                if (tabControl1.SelectedTab == NewTab)
+                {
 
+                    FrmServerTypeSelection frm = new FrmServerTypeSelection();
+                    frm.TotalPageCount = tabControl1.TabPages.Count;
+                    frm.AddNewTabPage += (newServer) =>
+                    {
+
+                        switch (newServer.serversType.ServerType)
+                        {
+                            case EnumServerType.ArkSurviveEvolved:
+                            case EnumServerType.ArkSurviveAscended:
+                                AddNewArkServer(guid.ToString(), newServer.serversType, newServer.installDir, null);
+                                break;
+                            default:
+                                break;
+                        }
+
+                    };
+                    frm.ShowDialog();
+
+                }
+            }
+             
         }
 
         void AddNewArkServer(string guid, SupportedServersType serverType, string InstallLocation, Profile p)
