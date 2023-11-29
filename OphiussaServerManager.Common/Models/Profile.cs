@@ -36,7 +36,7 @@ namespace OphiussaServerManager.Common.Models.Profiles
                 {
                     case EnumServerType.ArkSurviveEvolved:
                     case EnumServerType.ArkSurviveAscended:
-                        if (!Utils.IsAValidFolder(InstallLocation, new List<string> { "Engine", "ShooterGame", "steamapps" })) return true;
+                        if (Utils.IsAValidFolder(InstallLocation, new List<string> { "Engine", "ShooterGame", "steamapps" })) return true;
                         break;
                 }
                 return false;

@@ -1,27 +1,16 @@
-﻿using CoreRCON;
-using Microsoft.Win32.TaskScheduler;
+﻿using Microsoft.Win32.TaskScheduler;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using NLog.Fluent;
 using OphiussaServerManager.Common;
-using OphiussaServerManager.Common.Helpers;
 using OphiussaServerManager.Common.Models.Profiles;
 using OphiussaServerManager.Common.Models.SupportedServers;
+using OphiussaServerManager.Tools.Update;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Microsoft.Win32.TaskScheduler;
 using System.Reflection;
-using OphiussaServerManager.Tools.Update;
+using System.Windows.Forms;
 
 namespace OphiussaServerManager.Forms
 {
@@ -455,8 +444,8 @@ namespace OphiussaServerManager.Forms
                     if (profile.AutoManageSettings.ShutdownServer2Sunday) daysofweek += 1;
                     WeeklyTrigger tt = new WeeklyTrigger();
 
-                    int hour = Int16.Parse(profile.AutoManageSettings.ShutdownServer1Hour.Split(':')[0]);
-                    int minute = Int16.Parse(profile.AutoManageSettings.ShutdownServer1Hour.Split(':')[1]);
+                    int hour = Int16.Parse(profile.AutoManageSettings.ShutdownServer2Hour.Split(':')[0]);
+                    int minute = Int16.Parse(profile.AutoManageSettings.ShutdownServer2Hour.Split(':')[1]);
                     tt.StartBoundary = DateTime.Today + TimeSpan.FromHours(hour) + TimeSpan.FromMinutes(minute);
                     tt.DaysOfWeek = daysofweek;
                     task.Definition.Triggers.Add(tt);
@@ -480,8 +469,8 @@ namespace OphiussaServerManager.Forms
                     if (profile.AutoManageSettings.ShutdownServer2Sunday) daysofweek += 1;
                     WeeklyTrigger tt = new WeeklyTrigger();
 
-                    int hour = Int16.Parse(profile.AutoManageSettings.ShutdownServer1Hour.Split(':')[0]);
-                    int minute = Int16.Parse(profile.AutoManageSettings.ShutdownServer1Hour.Split(':')[1]);
+                    int hour = Int16.Parse(profile.AutoManageSettings.ShutdownServer2Hour.Split(':')[0]);
+                    int minute = Int16.Parse(profile.AutoManageSettings.ShutdownServer2Hour.Split(':')[1]);
                     tt.StartBoundary = DateTime.Today + TimeSpan.FromHours(hour) + TimeSpan.FromMinutes(minute);
                     tt.DaysOfWeek = daysofweek;
                     td.Triggers.Add(tt);
