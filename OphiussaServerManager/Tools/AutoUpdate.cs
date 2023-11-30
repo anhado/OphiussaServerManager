@@ -72,7 +72,7 @@ namespace OphiussaServerManager.Tools.Update
             try
             {
                 OnProcessStarted(new ProcessCopyEventArg() { Message = "Process Started for server " + profileKey });
-                Common.Models.Settings Settings = JsonConvert.DeserializeObject<Common.Models.Settings>(File.ReadAllText("config.json"));
+                Common.Models.Settings Settings = JsonConvert.DeserializeObject<Common.Models.Settings>(File.ReadAllText(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json")));
                 string dir = Settings.DataFolder + "Profiles\\";
                 if (!Directory.Exists(dir))
                 {
@@ -143,7 +143,7 @@ namespace OphiussaServerManager.Tools.Update
             try
             {
                 OnProcessStarted(new ProcessCopyEventArg() { Message = "Process Started" });
-                Common.Models.Settings Settings = JsonConvert.DeserializeObject<Common.Models.Settings>(File.ReadAllText("config.json"));
+                Common.Models.Settings Settings = JsonConvert.DeserializeObject<Common.Models.Settings>(File.ReadAllText(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json")));
                 string dir = Settings.DataFolder + "Profiles\\";
                 if (!Directory.Exists(dir))
                 {

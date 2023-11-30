@@ -132,7 +132,7 @@ namespace OphiussaServerManager.Common.Models.Profiles
 
         public void SaveProfile()
         {
-            string fileName = "config.json";
+            string fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json");
             Settings settings = JsonConvert.DeserializeObject<Settings>(File.ReadAllText(fileName));
             string dir = settings.DataFolder + "Profiles\\";
             if (!Directory.Exists(dir))
@@ -154,7 +154,7 @@ namespace OphiussaServerManager.Common.Models.Profiles
 
         public void LoadProfile(bool readFileDisk = true)
         {
-            string fileName = "config.json";
+            string fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json");
             Settings settings = JsonConvert.DeserializeObject<Settings>(File.ReadAllText(fileName));
             string dir = settings.DataFolder + "Profiles\\";
             if (!Directory.Exists(dir))

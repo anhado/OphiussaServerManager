@@ -26,12 +26,12 @@ namespace OphiussaServerManager.Forms
 
         private void ServerMonitor_Load(object sender, EventArgs e)
         {
-            if (!File.Exists("config.json"))
+            if (!File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json")))
             {
                 Forms.FrmSettings settings = new Forms.FrmSettings();
                 settings.ShowDialog();
             }
-            Settings = JsonConvert.DeserializeObject<Common.Models.Settings>(File.ReadAllText("config.json"));
+            Settings = JsonConvert.DeserializeObject<Common.Models.Settings>(File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json")));
             LoadProfiles();
         }
 

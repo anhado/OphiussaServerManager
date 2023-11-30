@@ -18,39 +18,48 @@ namespace OphiussaServerManager
         [STAThread]
         static void Main()
         {
-            string[] args = Environment.GetCommandLineArgs();
+            try
+            {
+                string[] args = Environment.GetCommandLineArgs();
 
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            if (Array.IndexOf(args, "-monitor") >= 0)
-            {
-                Application.Run(new FrmServerMonitor());
-            }
-            else if (Array.IndexOf(args, "-au") >= 0)
-            {
-                OphiussaLogger.ReconfigureLogging();
-                ServerTools.UpdateAllServer();
-            }
-            else if (Array.IndexOf(args, "-ab") >= 0)
-            {
-                OphiussaLogger.ReconfigureLogging();
-                ServerTools.BackupServer();
-            } 
-            else
-            { 
-                foreach (string arg in args)
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                if (Array.IndexOf(args, "-monitor") >= 0)
                 {
-                    if (arg.StartsWith("-as"))
+                    Application.Run(new FrmServerMonitor());
+                }
+                else if (Array.IndexOf(args, "-au") >= 0)
+                {
+                    OphiussaLogger.ReconfigureLogging();
+                    ServerTools.UpdateAllServer();
+                }
+                else if (Array.IndexOf(args, "-ab") >= 0)
+                {
+                    OphiussaLogger.ReconfigureLogging();
+                    ServerTools.BackupServer();
+                }
+                else
+                {
+                    foreach (string arg in args)
                     {
-                        OphiussaLogger.ReconfigureLogging();
-                        ServerTools.RestartSingleServer(arg.Substring(3));
-                        return;
+                        if (arg.StartsWith("-as"))
+                        {
+                            OphiussaLogger.ReconfigureLogging();
+                            ServerTools.RestartSingleServer(arg.Substring(3));
+                            return;
+                        }
                     }
+
+                    Application.Run(new MainForm());
                 }
 
-                Application.Run(new MainForm());
             }
-
+            catch (Exception ex)
+            {
+                string tmpFile = Path.GetTempFileName();
+                if (!File.Exists(tmpFile)) File.Create(tmpFile);
+                File.AppendAllText(tmpFile, "error:" + ex.Message);
+            }
         }
     }
 }

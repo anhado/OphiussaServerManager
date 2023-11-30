@@ -29,7 +29,7 @@ namespace OphiussaServerManager.Common
         {
             get
             {
-                var NSettings = JsonConvert.DeserializeObject<Common.Models.Settings>(File.ReadAllText("config.json"));
+                var NSettings = JsonConvert.DeserializeObject<Common.Models.Settings>(File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json")));
 
                 return NSettings;
             }

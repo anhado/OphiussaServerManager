@@ -36,8 +36,8 @@ namespace OphiussaServerManager.Forms
 
         private void Settings_Load(object sender, EventArgs e)
         {
-            string fileName = "config.json";
-            if (!System.IO.File.Exists("config.json"))
+            string fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json");
+            if (!System.IO.File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json")))
             {
                 Common.Models.Settings s = new Common.Models.Settings();
                 string jsonString = JsonConvert.SerializeObject(s, Formatting.Indented);
@@ -278,7 +278,7 @@ namespace OphiussaServerManager.Forms
 
         private void FrmSettings_FormClosing(object sender, FormClosingEventArgs e)
         {
-            string fileName = "config.json";
+            string fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json");
             Common.Models.Settings sett = new Common.Models.Settings();
             if (MainForm.Settings==null)
             {

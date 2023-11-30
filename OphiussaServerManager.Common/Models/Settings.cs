@@ -61,7 +61,7 @@ namespace OphiussaServerManager.Common.Models
 
         public void SaveSettings()
         {
-            string fileName = "config.json";
+            string fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json");
             string jsonString = JsonConvert.SerializeObject(this, Formatting.Indented);
             File.WriteAllText(fileName, jsonString);
         }
