@@ -342,6 +342,7 @@ namespace OphiussaServerManager.Forms
         {
             try
             {
+                timerPlayers.Enabled = false;
                 playerLists.Clear();
                 string respnose = await rcon.SendCommandAsync("ListPlayers");
                 if (respnose == "No Players Connected")
@@ -362,10 +363,17 @@ namespace OphiussaServerManager.Forms
                             playerLists.Add(new PlayerList() { PlayerNum = data[0], Name = data[1], SteamID = data[2] });
                         }
                     }
-                    lbPlayers.DataSource = playerLists;
+
+                    //lbPlayers.Items.Clear();
+                    List<exListBoxItem> l =  new List<exListBoxItem>();
+                    foreach (var player in playerLists)
+                    {
+                        l.Add(new exListBoxItem(player.PlayerNum, player.Name, "Steam ID:" + player.SteamID));
+                    }
+                    lbPlayers.DataSource = l;
                     lbPlayers.ValueMember = "SteamID";
                     lbPlayers.DisplayMember = "Name";
-                    //TODO: Dont remenber what
+                    //TODO: link to players from disk files
                     lblPlayers.Text = $"{lbPlayers.Items.Count}/{profile.ARKConfiguration.Administration.MaxPlayers}";
                 }
                 SetStatus(true);
@@ -375,6 +383,7 @@ namespace OphiussaServerManager.Forms
                 OphiussaLogger.logger.Error(ex);
                 SetStatus(false);
             }
+            timerPlayers.Enabled = true;
         }
 
         private async void timersChat_Tick(object sender, EventArgs e)

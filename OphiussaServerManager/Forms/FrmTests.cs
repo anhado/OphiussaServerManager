@@ -7,7 +7,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Windows.Controls;
+using System.Windows.Forms; 
 
 namespace OphiussaServerManager.Forms
 {
@@ -35,6 +36,18 @@ namespace OphiussaServerManager.Forms
             //var s = curseForgeUtils.GetCurseForgeModDetails("83374");
 
             var s = curseForgeUtils.GetCurseForgeModDetails(textBox2.Text.Split(',').ToList());
+        }
+
+        private void FrmTests_Load(object sender, EventArgs e)
+        {
+
+            exListBox1.Items.Add(new exListBoxItem("14", "John, the Tester", @"First details text is used to check it out, if text fits correctly the bounds of an item.
+As you can see, everything fits nicely.
+If it's shown correctly, that's should be last line, that you see.
+If you can see this line, it looks like it overlaps something and there's a bug in the code.
+"));
+            exListBox1.Items.Add(new exListBoxItem("99", "Bill", "phone +345645464\n fax +6546546546\n email email@email.com"));
+            exListBox1.Items.Add(new exListBoxItem("71", "Peter", "ICQ 56465464\n msn hot@hotmail.com\n phone +5465464654"));
         }
     }
 }

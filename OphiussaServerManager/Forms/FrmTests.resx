@@ -120,6 +120,9 @@
   <data name="textBox1.Text" xml:space="preserve">
     <value>1373744537,1523045986,2110243671,1729386191,2784648743,731604991,2566418613,1931415003,1565015734,1404697612,1609138312,924933745,755218392,924619115,2693727499,821530042,2966963870,2307661303,1855090942,2044129379</value>
   </data>
+  <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

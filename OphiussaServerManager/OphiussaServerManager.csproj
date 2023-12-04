@@ -162,6 +162,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\exListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\exListBox.Designer.cs">
+      <DependentUpon>exListBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmArk.cs">
       <SubType>Form</SubType>
     </Compile>

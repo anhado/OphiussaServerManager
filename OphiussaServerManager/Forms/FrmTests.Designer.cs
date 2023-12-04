@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmTests));
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -35,6 +36,18 @@
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.exListBox1 = new OphiussaServerManager.exListBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.chatToPlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.renamePlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.renameTribeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.viewProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewTribeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+            this.copyIDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyPlayerIDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -92,11 +105,90 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // exListBox1
+            // 
+            this.exListBox1.ContextMenuStrip = this.contextMenuStrip1;
+            this.exListBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.exListBox1.FormattingEnabled = true;
+            this.exListBox1.ItemHeight = 66;
+            this.exListBox1.Location = new System.Drawing.Point(15, 70);
+            this.exListBox1.Name = "exListBox1";
+            this.exListBox1.Size = new System.Drawing.Size(767, 368);
+            this.exListBox1.TabIndex = 6;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.chatToPlayerToolStripMenuItem,
+            this.renamePlayerToolStripMenuItem,
+            this.renameTribeToolStripMenuItem,
+            this.toolStripMenuItem2,
+            this.viewProfileToolStripMenuItem,
+            this.viewTribeToolStripMenuItem,
+            this.toolStripMenuItem3,
+            this.copyIDToolStripMenuItem,
+            this.copyPlayerIDToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 170);
+            // 
+            // chatToPlayerToolStripMenuItem
+            // 
+            this.chatToPlayerToolStripMenuItem.Name = "chatToPlayerToolStripMenuItem";
+            this.chatToPlayerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.chatToPlayerToolStripMenuItem.Text = "Chat To Player";
+            // 
+            // renamePlayerToolStripMenuItem
+            // 
+            this.renamePlayerToolStripMenuItem.Name = "renamePlayerToolStripMenuItem";
+            this.renamePlayerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.renamePlayerToolStripMenuItem.Text = "Rename Player";
+            // 
+            // renameTribeToolStripMenuItem
+            // 
+            this.renameTribeToolStripMenuItem.Name = "renameTribeToolStripMenuItem";
+            this.renameTribeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.renameTribeToolStripMenuItem.Text = "Rename Tribe";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(149, 6);
+            // 
+            // viewProfileToolStripMenuItem
+            // 
+            this.viewProfileToolStripMenuItem.Name = "viewProfileToolStripMenuItem";
+            this.viewProfileToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.viewProfileToolStripMenuItem.Text = "View Profile";
+            // 
+            // viewTribeToolStripMenuItem
+            // 
+            this.viewTribeToolStripMenuItem.Name = "viewTribeToolStripMenuItem";
+            this.viewTribeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.viewTribeToolStripMenuItem.Text = "View Tribe";
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(149, 6);
+            // 
+            // copyIDToolStripMenuItem
+            // 
+            this.copyIDToolStripMenuItem.Name = "copyIDToolStripMenuItem";
+            this.copyIDToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.copyIDToolStripMenuItem.Text = "Copy ID";
+            // 
+            // copyPlayerIDToolStripMenuItem
+            // 
+            this.copyPlayerIDToolStripMenuItem.Name = "copyPlayerIDToolStripMenuItem";
+            this.copyPlayerIDToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.copyPlayerIDToolStripMenuItem.Text = "Copy Player ID";
+            // 
             // FrmTests
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.exListBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox2);
@@ -106,6 +198,8 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmTests";
             this.Text = "Test Form";
+            this.Load += new System.EventHandler(this.FrmTests_Load);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -119,5 +213,16 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private exListBox exListBox1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem chatToPlayerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem renamePlayerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem renameTribeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem viewProfileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem viewTribeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem copyIDToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem copyPlayerIDToolStripMenuItem;
     }
 }

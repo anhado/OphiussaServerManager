@@ -57,7 +57,7 @@ namespace OphiussaServerManager.Common.Helpers
         }
 
         public static void WriteBoolValue(this List<ConfigFile> settings, string ParamName, bool value)
-        { 
+        {
             ConfigFile config = settings.FirstOrDefault(x => x.PropertyName == ParamName);
 
             if (config != null)
@@ -67,7 +67,7 @@ namespace OphiussaServerManager.Common.Helpers
             else
             {
                 settings.Add(new ConfigFile() { PropertyName = ParamName, PropertyValue = value ? "True" : "False" });
-            } 
+            }
         }
 
         public static void WriteStringValue(this List<ConfigFile> settings, string ParamName, string value)
@@ -80,7 +80,7 @@ namespace OphiussaServerManager.Common.Helpers
             }
             else
             {
-                settings.Add(new ConfigFile() { PropertyName = ParamName, PropertyValue = value});
+                settings.Add(new ConfigFile() { PropertyName = ParamName, PropertyValue = value });
             }
         }
 
@@ -182,13 +182,21 @@ namespace OphiussaServerManager.Common.Helpers
 
         public static void AppendTextWithTimeStamp(this RichTextBox box, string text, Color color)
         {
-            text = "[" + DateTime.Now.ToString("u") + "] " + text + "\n";
-            box.SelectionStart = box.TextLength;
-            box.SelectionLength = 0;
+            try
+            {
 
-            box.SelectionColor = color;
-            box.AppendText(text);
-            box.SelectionColor = box.ForeColor;
+                text = "[" + DateTime.Now.ToString("u") + "] " + text + "\n";
+                box.SelectionStart = box.TextLength;
+                box.SelectionLength = 0;
+
+                box.SelectionColor = color;
+                box.AppendText(text);
+                box.SelectionColor = box.ForeColor;
+            }
+            catch (Exception)
+            {
+
+            }
         }
         public static void AppendText(this RichTextBox box, string text, Color color)
         {

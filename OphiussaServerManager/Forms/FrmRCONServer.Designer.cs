@@ -57,7 +57,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtProfiles = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.lbPlayers = new System.Windows.Forms.ListBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.chatToPlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.renamePlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -76,6 +75,7 @@
             this.timersChat = new System.Windows.Forms.Timer(this.components);
             this.timerConnection = new System.Windows.Forms.Timer(this.components);
             this.timerUpdatePlayersFromDisk = new System.Windows.Forms.Timer(this.components);
+            this.lbPlayers = new OphiussaServerManager.exListBox();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -142,7 +142,7 @@
             // autoscrollToolStripMenuItem
             // 
             this.autoscrollToolStripMenuItem.Name = "autoscrollToolStripMenuItem";
-            this.autoscrollToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.autoscrollToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.autoscrollToolStripMenuItem.Text = "Auto-scroll";
             // 
             // serverToolStripMenuItem
@@ -159,13 +159,13 @@
             this.saveWorldToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.confirmToolStripMenuItem1});
             this.saveWorldToolStripMenuItem.Name = "saveWorldToolStripMenuItem";
-            this.saveWorldToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveWorldToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.saveWorldToolStripMenuItem.Text = "Save World";
             // 
             // confirmToolStripMenuItem1
             // 
             this.confirmToolStripMenuItem1.Name = "confirmToolStripMenuItem1";
-            this.confirmToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.confirmToolStripMenuItem1.Size = new System.Drawing.Size(118, 22);
             this.confirmToolStripMenuItem1.Text = "Confirm";
             this.confirmToolStripMenuItem1.Click += new System.EventHandler(this.confirmToolStripMenuItem1_Click);
             // 
@@ -174,13 +174,13 @@
             this.destroyWildDinosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.confirmToolStripMenuItem2});
             this.destroyWildDinosToolStripMenuItem.Name = "destroyWildDinosToolStripMenuItem";
-            this.destroyWildDinosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.destroyWildDinosToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.destroyWildDinosToolStripMenuItem.Text = "Destroy Wild Dinos";
             // 
             // confirmToolStripMenuItem2
             // 
             this.confirmToolStripMenuItem2.Name = "confirmToolStripMenuItem2";
-            this.confirmToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.confirmToolStripMenuItem2.Size = new System.Drawing.Size(118, 22);
             this.confirmToolStripMenuItem2.Text = "Confirm";
             this.confirmToolStripMenuItem2.Click += new System.EventHandler(this.confirmToolStripMenuItem2_Click);
             // 
@@ -277,11 +277,11 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.lbPlayers);
             this.panel2.Controls.Add(this.txtInvalid);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.txtProfiles);
             this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.lbPlayers);
             this.panel2.Controls.Add(this.textBox2);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
@@ -328,18 +328,6 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Profiles";
             this.label3.Click += new System.EventHandler(this.label3_Click);
-            // 
-            // lbPlayers
-            // 
-            this.lbPlayers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbPlayers.ContextMenuStrip = this.contextMenuStrip1;
-            this.lbPlayers.FormattingEnabled = true;
-            this.lbPlayers.Location = new System.Drawing.Point(6, 81);
-            this.lbPlayers.MultiColumn = true;
-            this.lbPlayers.Name = "lbPlayers";
-            this.lbPlayers.Size = new System.Drawing.Size(182, 303);
-            this.lbPlayers.TabIndex = 4;
             // 
             // contextMenuStrip1
             // 
@@ -476,6 +464,17 @@
             this.timerUpdatePlayersFromDisk.Interval = 10000;
             this.timerUpdatePlayersFromDisk.Tick += new System.EventHandler(this.timerUpdatePlayersFromDisk_Tick);
             // 
+            // lbPlayers
+            // 
+            this.lbPlayers.ContextMenuStrip = this.contextMenuStrip1;
+            this.lbPlayers.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.lbPlayers.FormattingEnabled = true;
+            this.lbPlayers.ItemHeight = 66;
+            this.lbPlayers.Location = new System.Drawing.Point(6, 81);
+            this.lbPlayers.Name = "lbPlayers";
+            this.lbPlayers.Size = new System.Drawing.Size(182, 303);
+            this.lbPlayers.TabIndex = 9;
+            // 
             // FrmRCONServer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -526,7 +525,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ListBox lbPlayers;
         private System.Windows.Forms.ToolStripMenuItem lblPlayers;
         private System.Windows.Forms.ToolStripMenuItem playersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lblStatus;
@@ -553,5 +551,6 @@
         private System.Windows.Forms.ToolStripMenuItem copyPlayerIDToolStripMenuItem;
         private System.Windows.Forms.Timer timerConnection;
         private System.Windows.Forms.Timer timerUpdatePlayersFromDisk;
+        private exListBox lbPlayers;
     }
 }
