@@ -19,6 +19,7 @@ using System.Net.Sockets;
 using Open.Nat;
 using Microsoft.Win32.TaskScheduler;
 using NLog.Common;
+using System.Diagnostics;
 
 namespace OphiussaServerManager
 {
@@ -327,6 +328,7 @@ namespace OphiussaServerManager
                 if (task != null)
                 {
                     task.Definition.Principal.RunLevel = TaskRunLevel.Highest;
+                    task.Definition.Settings.Priority = ProcessPriorityClass.Normal;
                     var x = lTasks.Find(xc => xc?.Name == "AutoBackup_" + MainForm.Settings.GUID);
 
                     if (x != null)

@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CoreRCON, Version=5.2.1.0, Culture=neutral, processorArchitecture=MSIL">
@@ -127,6 +129,7 @@
     <Compile Include="ArkData\SSQLib\SSQL.cs" />
     <Compile Include="ArkData\SSQLib\SSQLServerException.cs" />
     <Compile Include="ArkData\TribeData.cs" />
+    <Compile Include="Helpers\FileComparer.cs" />
     <Compile Include="Helpers\Ini\AggregateIniValue.cs" />
     <Compile Include="Helpers\Extensions.cs" />
     <Compile Include="Helpers\Ini\AggregateIniValueEntryAttribute.cs" />
@@ -149,6 +152,9 @@
     <Compile Include="Helpers\NullableValue.cs" />
     <Compile Include="Helpers\ProcessUtils.cs" />
     <Compile Include="Helpers\CurseForgeUtils.cs" />
+    <Compile Include="Helpers\ReadFileInChunksAndCompareVector.cs" />
+    <Compile Include="Helpers\ReadIntoByteBufferInChunks.cs" />
+    <Compile Include="Helpers\ReadWholeFileAtOnce.cs" />
     <Compile Include="Helpers\SteamUtils.cs" />
     <Compile Include="Helpers\TaskUtils.cs" />
     <Compile Include="Helpers\Utils.cs" />

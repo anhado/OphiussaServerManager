@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -117,6 +118,7 @@ namespace OphiussaServerManager.Forms
                         timeTrigger.Repetition.StopAtDurationEnd = false;
                         task.Definition.Triggers.Add(timeTrigger);
                         task.Definition.Principal.RunLevel = TaskRunLevel.Highest;
+                        task.Definition.Settings.Priority = ProcessPriorityClass.Normal;
                         task.RegisterChanges();
                     }
                     else
@@ -137,6 +139,7 @@ namespace OphiussaServerManager.Forms
                         td.Triggers.Add(timeTrigger);
                         td.Actions.Add(fileName, " -au");
                         td.Principal.RunLevel = TaskRunLevel.Highest;
+                        td.Settings.Priority = ProcessPriorityClass.Normal;
                         TaskService.Instance.RootFolder.RegisterTaskDefinition(taskName, td);
 
                     }
@@ -186,6 +189,7 @@ namespace OphiussaServerManager.Forms
                         timeTrigger.Repetition.StopAtDurationEnd = false;
                         task.Definition.Triggers.Add(timeTrigger);
                         task.Definition.Principal.RunLevel = TaskRunLevel.Highest;
+                        task.Definition.Settings.Priority = ProcessPriorityClass.Normal;
                         task.RegisterChanges();
                     }
                     else
@@ -206,6 +210,7 @@ namespace OphiussaServerManager.Forms
                         td.Triggers.Add(timeTrigger);
                         td.Actions.Add(fileName, " -ab");
                         td.Principal.RunLevel = TaskRunLevel.Highest;
+                        td.Settings.Priority = ProcessPriorityClass.Normal;
                         TaskService.Instance.RootFolder.RegisterTaskDefinition(taskName, td);
 
                     }

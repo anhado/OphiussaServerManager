@@ -66,6 +66,7 @@ namespace OphiussaServerManager.Forms
             tab.Text = txtProfileName.Text;
             txtServerType.Text = profile.Type.ServerTypeDescription;
             txtLocation.Text = profile.InstallLocation;
+            chkUseApi.Checked = profile.ARKConfiguration.Administration.UseServerAPI;
             txtServerName.Text = profile.ARKConfiguration.Administration.ServerName;
             txtServerPWD.Text = profile.ARKConfiguration.Administration.ServerPassword;
             txtAdminPass.Text = profile.ARKConfiguration.Administration.ServerAdminPassword;
@@ -324,6 +325,7 @@ namespace OphiussaServerManager.Forms
                     }
 
                     task.Definition.Principal.RunLevel = TaskRunLevel.Highest;
+                    task.Definition.Settings.Priority = ProcessPriorityClass.Normal;
                     task.RegisterChanges();
                 }
                 else
@@ -343,6 +345,7 @@ namespace OphiussaServerManager.Forms
                     }
                     td.Actions.Add(fileName);
                     td.Principal.RunLevel = TaskRunLevel.Highest;
+                    td.Settings.Priority = ProcessPriorityClass.Normal;
                     TaskService.Instance.RootFolder.RegisterTaskDefinition(taskName, td);
                 }
             }
@@ -362,9 +365,10 @@ namespace OphiussaServerManager.Forms
                 string fileName = Assembly.GetExecutingAssembly().Location;
                 string taskName = "OphiussaServerManager\\AutoShutDown1_" + profile.Key;
                 Microsoft.Win32.TaskScheduler.Task task = TaskService.Instance.GetTask(taskName);
+                
                 if (task != null)
                 {
-                    task.Definition.Triggers.Clear();
+                    task.Definition.Triggers.Clear(); 
 
                     DaysOfTheWeek daysofweek = 0;
 
@@ -383,6 +387,7 @@ namespace OphiussaServerManager.Forms
                     tt.DaysOfWeek = daysofweek;
                     task.Definition.Triggers.Add(tt);
                     task.Definition.Principal.RunLevel = TaskRunLevel.Highest;
+                    task.Definition.Settings.Priority = ProcessPriorityClass.Normal;
                     task.RegisterChanges();
                 }
                 else
@@ -390,7 +395,6 @@ namespace OphiussaServerManager.Forms
                     TaskDefinition td = TaskService.Instance.NewTask();
                     td.RegistrationInfo.Description = "Server Auto-ShutDown 1 - " + profile.Name;
                     td.Principal.LogonType = TaskLogonType.InteractiveToken;
-
                     DaysOfTheWeek daysofweek = 0;
 
                     if (profile.AutoManageSettings.ShutdownServer1Monday) daysofweek += 2;
@@ -409,6 +413,8 @@ namespace OphiussaServerManager.Forms
                     td.Triggers.Add(tt);
                     td.Actions.Add(fileName, " -as" + profile.Key);
                     td.Principal.RunLevel = TaskRunLevel.Highest;
+                    td.Settings.Priority = ProcessPriorityClass.Normal;
+
                     TaskService.Instance.RootFolder.RegisterTaskDefinition(taskName, td);
                 }
             }
@@ -450,6 +456,7 @@ namespace OphiussaServerManager.Forms
                     tt.DaysOfWeek = daysofweek;
                     task.Definition.Triggers.Add(tt);
                     task.Definition.Principal.RunLevel = TaskRunLevel.Highest;
+                    task.Definition.Settings.Priority = ProcessPriorityClass.Normal;
                     task.RegisterChanges();
                 }
                 else
@@ -476,6 +483,7 @@ namespace OphiussaServerManager.Forms
                     td.Triggers.Add(tt);
                     td.Actions.Add(fileName, " -as" + profile.Key);
                     td.Principal.RunLevel = TaskRunLevel.Highest;
+                    td.Settings.Priority = ProcessPriorityClass.Normal;
                     TaskService.Instance.RootFolder.RegisterTaskDefinition(taskName, td);
                 }
             }
@@ -497,6 +505,7 @@ namespace OphiussaServerManager.Forms
 
             profile.Name = txtProfileName.Text;
             profile.InstallLocation = txtLocation.Text;
+            profile.ARKConfiguration.Administration.UseServerAPI = chkUseApi.Checked;
             profile.ARKConfiguration.Administration.ServerName = txtServerName.Text;
             profile.ARKConfiguration.Administration.ServerPassword = txtServerPWD.Text;
             profile.ARKConfiguration.Administration.ServerAdminPassword = txtAdminPass.Text;
@@ -676,16 +685,24 @@ namespace OphiussaServerManager.Forms
             txtBanUrl.Enabled = chkUseBanUrl.Checked;
         }
 
-        private void btStart_Click(object sender, EventArgs e)
+        private async void btStart_Click(object sender, EventArgs e)
         {
-            if (profile.IsRunning)
+            try
             {
-                AutoUpdate x = new AutoUpdate();
-                x.CloseServer(profile, MainForm.Settings);
+                if (profile.IsRunning)
+                {
+                    AutoUpdate x = new AutoUpdate();
+                    await x.CloseServer(profile, MainForm.Settings);
+                }
+                else
+                {
+                    Common.Utils.ExecuteAsAdmin(Path.Combine(profile.InstallLocation, profile.ARKConfiguration.Administration.UseServerAPI && profile.Type.ExecutablePathAPI != "" ? profile.Type.ExecutablePathAPI : profile.Type.ExecutablePath), profile.ARKConfiguration.GetCommandLinesArguments(MainForm.Settings, profile, profile.ARKConfiguration.Administration.LocalIP), false);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                Common.Utils.ExecuteAsAdmin(Path.Combine(profile.InstallLocation, profile.Type.ExecutablePath), profile.ARKConfiguration.GetCommandLinesArguments(MainForm.Settings, profile, profile.ARKConfiguration.Administration.LocalIP), false);
+                OphiussaLogger.logger.Error(ex);
+                MessageBox.Show(ex.Message);
             }
         }
 

@@ -7,10 +7,12 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Numerics;
 using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Documents;
 
 namespace OphiussaServerManager.Common
 {
@@ -25,6 +27,7 @@ namespace OphiussaServerManager.Common
                 startInfo.UseShellExecute = true;
                 startInfo.FileName = exeName;
                 startInfo.Verb = "runas";
+                
                 //MLHIDE
                 startInfo.Arguments = parameters;
                 if (noWindow)
@@ -35,6 +38,7 @@ namespace OphiussaServerManager.Common
                 startInfo.ErrorDialog = true;
 
                 Process process = System.Diagnostics.Process.Start(startInfo);
+                process.PriorityClass = ProcessPriorityClass.Normal;
                 if (wait) process.WaitForExit();
             }
             catch (Win32Exception ex)
@@ -256,7 +260,9 @@ namespace OphiussaServerManager.Common
 
             // Create two identical or different temporary folders
             // on a local drive and change these file paths.  
+            Stopwatch sw = new Stopwatch();
 
+            sw.Start();
             System.IO.DirectoryInfo dir1 = new System.IO.DirectoryInfo(pathA);
             System.IO.DirectoryInfo dir2 = new System.IO.DirectoryInfo(pathB);
 
@@ -267,10 +273,20 @@ namespace OphiussaServerManager.Common
             var cacheFilesList = list2.ToList();
             var InstallFilesList = list1.ToList();
 
-            var changedFiles = cacheFilesList.FindAll(f => CompareFiles(f, InstallFilesList) != null);
+            Console.WriteLine("Elapsed={0}", sw.Elapsed);
+            sw.Restart();
 
-            FileInfo CompareFiles(FileInfo f1, List<FileInfo> list)
-            { 
+            Console.WriteLine("Elapsed={0}", sw.Elapsed);
+            sw.Restart(); 
+
+            var changedFiles = cacheFilesList.FindAll(f => CompareFiles(f, InstallFilesList.Find(f2 => f2.Name == f.Name)) != null);
+
+            Console.WriteLine("Elapsed={0}", sw.Elapsed);
+            sw.Restart();
+
+            FileInfo CompareFiles(FileInfo f1, FileInfo f2)
+            {
+                if (f2 == null) return f1;
                 //TODO: IGNORE MANIFEST FILE
                 if (ignorePaths.Count > 0)
                 {
@@ -281,14 +297,18 @@ namespace OphiussaServerManager.Common
                     }
 
                 }
-                string md5Cache = CalculateMD5(f1.FullName);
-                FileInfo f2 = list.Find(f => f.Name == f1.Name);
-                if (f2 == null) return f1;
-                string md5Installed = CalculateMD5(f2.FullName);
-                if (md5Installed != md5Cache) return f1;
+                //FileInfo f2 = list.Find(f => f.Name == f1.Name);
+                //ReadWholeFileAtOnce x = new ReadWholeFileAtOnce(f1.FullName,f2.FullName);
+                ReadFileInChunksAndCompareVector x = new ReadFileInChunksAndCompareVector(f1.FullName, f2.FullName, Vector<byte>.Count);
+                if (!x.Compare()) return f1;
                 else return null;
-            }
-
+                //string md5Cache = CalculateMD5(f1.FullName);
+                //string md5Installed = CalculateMD5(f2.FullName);
+                //if (md5Installed != md5Cache) return f1;
+                //else return null;
+            } 
+            sw.Stop();
+            Console.WriteLine("Elapsed={0}", sw.Elapsed);
             return changedFiles;
         }
 
@@ -299,8 +319,9 @@ namespace OphiussaServerManager.Common
             {
                 using (var stream = File.OpenRead(filename))
                 {
-                    var hash = md5.ComputeHash(stream);
-                    return BitConverter.ToString(hash).Replace("-", "").ToLowerInvariant();
+                    //var hash = md5.ComputeHash(stream);
+                    //return BitConverter.ToString(hash).Replace("-", "").ToLowerInvariant();
+                    return Encoding.Default.GetString(md5.ComputeHash(stream));
                 }
             }
         }

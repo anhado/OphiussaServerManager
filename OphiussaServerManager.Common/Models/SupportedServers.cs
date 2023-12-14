@@ -22,6 +22,7 @@ namespace OphiussaServerManager.Common.Models.SupportedServers
         public string SaveGamesRelativePath { get; set; }
         public string SavedFilesRelativePath { get; set; }
         public string ExecutablePath { get; set; }
+        public string ExecutablePathAPI { get; set; }
         public string ProcessName { get; set; }
         public int AppID { get; set; }
         public ModSource ModsSource { get; set; }
@@ -56,6 +57,7 @@ namespace OphiussaServerManager.Common.Models.SupportedServers
                         SavedFilesRelativePath="Saved\\SavedArks\\",
                         SavedRelativePath="Saved\\SavedArks\\",
                         ExecutablePath="ShooterGame\\Binaries\\Win64\\ShooterGameServer.exe",
+                        ExecutablePathAPI="",
                         ProcessName="ShooterGameServer",
                         AppID = 346110,
                         ModsSource = ModSource.SteamWorkshop,
@@ -70,6 +72,7 @@ namespace OphiussaServerManager.Common.Models.SupportedServers
                         SavedFilesRelativePath="Saved\\SavedArks\\",
                         SavedRelativePath="Saved\\SavedArks\\",
                         ExecutablePath="ShooterGame\\Binaries\\Win64\\ArkAscendedServer.exe",
+                        ExecutablePathAPI="ShooterGame\\Binaries\\Win64\\AsaApiLoader.exe",
                         ProcessName="ArkAscendedServer",
                         AppID = 83374,
                         ModsSource = ModSource.CurseForge,

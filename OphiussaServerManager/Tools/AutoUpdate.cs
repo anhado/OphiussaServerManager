@@ -1,5 +1,6 @@
 ﻿using CoreRCON;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using NLog;
 using OphiussaServerManager.Common;
 using OphiussaServerManager.Common.Models;
@@ -13,6 +14,7 @@ using System.IO;
 using System.Linq;
 using System.Management;
 using System.Net;
+using System.Numerics;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -121,14 +123,13 @@ namespace OphiussaServerManager.Tools.Update
                     tasks.Add(t1);
 
                     Task.WaitAll(tasks.ToArray());
-
-
+                     
                     UpdateServer(p, Settings, System.IO.Path.Combine(Settings.DataFolder, "cache", p.Type.KeyName), true);
                 }
 
                 if (p.AutoManageSettings.ShutdownServer1Restart && !restartOnlyToUpdate)
                 {
-                    if (!p.IsRunning) Utils.ExecuteAsAdmin(System.IO.Path.Combine(p.InstallLocation, p.Type.ExecutablePath), p.ARKConfiguration.GetCommandLinesArguments(Settings, p, p.ARKConfiguration.Administration.LocalIP), false);
+                    if (!p.IsRunning) Utils.ExecuteAsAdmin(System.IO.Path.Combine(p.InstallLocation, p.ARKConfiguration.Administration.UseServerAPI && p.Type.ExecutablePathAPI != "" ? p.Type.ExecutablePathAPI : p.Type.ExecutablePath), p.ARKConfiguration.GetCommandLinesArguments(Settings, p, p.ARKConfiguration.Administration.LocalIP), false);
                 }
 
             }
@@ -339,11 +340,11 @@ namespace OphiussaServerManager.Tools.Update
                 }
                 OnProgressChanged(new ProcessEventArg() { Message = $"Server {p.Name} updated", IsStarting = false, ProcessedFileCount = changedFiles.Count, Sucessful = true, TotalFiles = changedFiles.Count, SendToDiscord = true });
 
-                if (!DontStartServer) if (IsRunning || p.AutoManageSettings.AutoStartServer) Utils.ExecuteAsAdmin(System.IO.Path.Combine(p.InstallLocation, p.Type.ExecutablePath), p.ARKConfiguration.GetCommandLinesArguments(Settings, p, p.ARKConfiguration.Administration.LocalIP), false);
+                if (!DontStartServer) if (IsRunning || p.AutoManageSettings.AutoStartServer) Utils.ExecuteAsAdmin(System.IO.Path.Combine(p.InstallLocation, p.ARKConfiguration.Administration.UseServerAPI && p.Type.ExecutablePathAPI != "" ? p.Type.ExecutablePathAPI : p.Type.ExecutablePath), p.ARKConfiguration.GetCommandLinesArguments(Settings, p, p.ARKConfiguration.Administration.LocalIP), false);
             }
             else
             {
-                if (!DontStartServer) if (!p.IsRunning & p.AutoManageSettings.AutoStartServer) Utils.ExecuteAsAdmin(System.IO.Path.Combine(p.InstallLocation, p.Type.ExecutablePath), p.ARKConfiguration.GetCommandLinesArguments(Settings, p, p.ARKConfiguration.Administration.LocalIP), false);
+                if (!DontStartServer) if (!p.IsRunning & p.AutoManageSettings.AutoStartServer) Utils.ExecuteAsAdmin(System.IO.Path.Combine(p.InstallLocation, p.ARKConfiguration.Administration.UseServerAPI && p.Type.ExecutablePathAPI != "" ? p.Type.ExecutablePathAPI : p.Type.ExecutablePath), p.ARKConfiguration.GetCommandLinesArguments(Settings, p, p.ARKConfiguration.Administration.LocalIP), false);
             }
 
         }

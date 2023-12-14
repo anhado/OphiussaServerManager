@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmArk));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.chkUseApi = new System.Windows.Forms.CheckBox();
             this.txtBuild = new System.Windows.Forms.TextBox();
             this.label35 = new System.Windows.Forms.Label();
             this.txtVersion = new System.Windows.Forms.TextBox();
@@ -224,6 +225,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.chkUseApi);
             this.panel1.Controls.Add(this.txtBuild);
             this.panel1.Controls.Add(this.label35);
             this.panel1.Controls.Add(this.txtVersion);
@@ -248,6 +250,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(817, 147);
             this.panel1.TabIndex = 1;
+            // 
+            // chkUseApi
+            // 
+            this.chkUseApi.AutoSize = true;
+            this.chkUseApi.Location = new System.Drawing.Point(396, 115);
+            this.chkUseApi.Name = "chkUseApi";
+            this.chkUseApi.Size = new System.Drawing.Size(150, 17);
+            this.chkUseApi.TabIndex = 19;
+            this.chkUseApi.Text = "Use Server API(ASA Only)";
+            this.chkUseApi.UseVisualStyleBackColor = true;
             // 
             // txtBuild
             // 
@@ -2343,5 +2355,6 @@
         private System.Windows.Forms.CheckBox chkWed2;
         private System.Windows.Forms.CheckBox chkMon2;
         private System.Windows.Forms.CheckBox chkTue2;
+        private System.Windows.Forms.CheckBox chkUseApi;
     }
 }

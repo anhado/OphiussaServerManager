@@ -206,6 +206,7 @@ namespace OphiussaServerManager.Common.Models.Profiles
     }
     public class Administration
     {
+        public bool UseServerAPI { get; set; } = false;
         public string ServerName { get; set; } = "New Server";
         public string ServerPassword { get; set; } = System.Web.Security.Membership.GeneratePassword(10, 6);
         public string ServerAdminPassword { get; set; } = System.Web.Security.Membership.GeneratePassword(10, 6);
