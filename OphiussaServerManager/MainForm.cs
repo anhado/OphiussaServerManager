@@ -197,7 +197,7 @@ namespace OphiussaServerManager
                 {
                     prf = new Profile(guid, tabName, serverType);
                     prf.InstallLocation = InstallLocation;
-                    prf.SaveProfile();
+                    prf.SaveProfile(Settings);
                 }
                 else
                 {

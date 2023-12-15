@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32.TaskScheduler;
 using Newtonsoft.Json;
 using OphiussaServerManager.Common;
+using OphiussaServerManager.Common.Models;
 using OphiussaServerManager.Common.Models.Profiles;
 using OphiussaServerManager.Common.Models.SupportedServers;
 using OphiussaServerManager.Tools.Update;
@@ -27,7 +28,6 @@ namespace OphiussaServerManager.Forms
 
         private void FrmArk_Load(object sender, EventArgs e)
         {
-            LoadDefaultFieldValues();
         }
 
         private void LoadDefaultFieldValues()
@@ -61,6 +61,8 @@ namespace OphiussaServerManager.Forms
         {
             this.profile = profile;
             this.tab = tab;
+            LoadDefaultFieldValues();
+
             txtProfileID.Text = profile.Key;
             txtProfileName.Text = profile.Name;
             tab.Text = txtProfileName.Text;
@@ -125,9 +127,9 @@ namespace OphiussaServerManager.Forms
             txtClusterID.Text = profile.ARKConfiguration.Administration.ClusterID;
             chkClusterOverride.Checked = profile.ARKConfiguration.Administration.ClusterDirectoryOverride;
 
-            cboPriority.SelectedText = profile.ARKConfiguration.Administration.CPUPriority.ToString();//TODO
+            cboPriority.SelectedItem = profile.ARKConfiguration.Administration.CPUPriority;
 
-            txtAffinity.Text = profile.ARKConfiguration.Administration.CPUAffinity;//TODO
+            txtAffinity.Text = profile.ARKConfiguration.Administration.CPUAffinity;
 
             chkEnableServerAdminLogs.Checked = profile.ARKConfiguration.Administration.EnableServerAdminLogs;
             chkServerAdminLogsIncludeTribeLogs.Checked = profile.ARKConfiguration.Administration.ServerAdminLogsIncludeTribeLogs;
@@ -365,10 +367,10 @@ namespace OphiussaServerManager.Forms
                 string fileName = Assembly.GetExecutingAssembly().Location;
                 string taskName = "OphiussaServerManager\\AutoShutDown1_" + profile.Key;
                 Microsoft.Win32.TaskScheduler.Task task = TaskService.Instance.GetTask(taskName);
-                
+
                 if (task != null)
                 {
-                    task.Definition.Triggers.Clear(); 
+                    task.Definition.Triggers.Clear();
 
                     DaysOfTheWeek daysofweek = 0;
 
@@ -561,8 +563,7 @@ namespace OphiussaServerManager.Forms
             profile.ARKConfiguration.Administration.AlternateSaveDirectoryName = txtAltSaveDirectory.Text;
             profile.ARKConfiguration.Administration.ClusterID = txtClusterID.Text;
             profile.ARKConfiguration.Administration.ClusterDirectoryOverride = chkClusterOverride.Checked;
-            profile.ARKConfiguration.Administration.CPUPriority = (ProcessPriorityClass)cboPriority.SelectedValue;//TODO
-            profile.ARKConfiguration.Administration.CPUAffinity = "All";//TODO
+            profile.ARKConfiguration.Administration.CPUPriority = (ProcessPriorityClass)cboPriority.SelectedValue;
 
 
             profile.ARKConfiguration.Administration.EnableServerAdminLogs = chkEnableServerAdminLogs.Checked;
@@ -606,9 +607,7 @@ namespace OphiussaServerManager.Forms
             profile.AutoManageSettings.IncludeInAutoUpdate = chkAutoUpdate.Checked;
             profile.AutoManageSettings.AutoStartServer = chkAutoStart.Checked;
 
-            profile.SaveProfile();
-
-            File.WriteAllText(MainForm.Settings.DataFolder + $"StartServer\\Run_{profile.Key.Replace("-", "")}.cmd", $"start \"{profile.Name}\" /normal \"{profile.InstallLocation}ShooterGame\\Binaries\\Win64\\ShooterGameServer.exe\" {profile.ARKConfiguration.GetCommandLinesArguments(MainForm.Settings, profile, MainForm.PublicIP)}");
+            profile.SaveProfile(MainForm.Settings);
 
             LoadSettings(profile, this.tab);
         }
@@ -691,12 +690,13 @@ namespace OphiussaServerManager.Forms
             {
                 if (profile.IsRunning)
                 {
+                    //TODO: remove from here and place and use the profile closeserver
                     AutoUpdate x = new AutoUpdate();
                     await x.CloseServer(profile, MainForm.Settings);
                 }
                 else
                 {
-                    Common.Utils.ExecuteAsAdmin(Path.Combine(profile.InstallLocation, profile.ARKConfiguration.Administration.UseServerAPI && profile.Type.ExecutablePathAPI != "" ? profile.Type.ExecutablePathAPI : profile.Type.ExecutablePath), profile.ARKConfiguration.GetCommandLinesArguments(MainForm.Settings, profile, profile.ARKConfiguration.Administration.LocalIP), false);
+                    profile.StartServer(MainForm.Settings);
                 }
             }
             catch (Exception ex)
@@ -770,6 +770,18 @@ namespace OphiussaServerManager.Forms
         private void toolsToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btProcessorAffinity_Click(object sender, EventArgs e)
+        {
+            FrmProcessors frm = new FrmProcessors(profile.ARKConfiguration.Administration.CPUAffinity == "All", profile.ARKConfiguration.Administration.CPUAffinityList);
+            frm.updateCpuAffinity = (bool all, List<ProcessorAffinity> lst) =>
+            {
+                profile.ARKConfiguration.Administration.CPUAffinity = all ? "All" : string.Join(",", lst.FindAll(x=>x.Selected).Select(x => x.ProcessorNumber.ToString()));
+                profile.ARKConfiguration.Administration.CPUAffinityList = lst;
+                txtAffinity.Text = profile.ARKConfiguration.Administration.CPUAffinity;
+            };
+            frm.ShowDialog();
         }
     }
 }

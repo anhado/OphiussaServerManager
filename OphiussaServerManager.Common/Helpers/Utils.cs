@@ -27,7 +27,7 @@ namespace OphiussaServerManager.Common
                 startInfo.UseShellExecute = true;
                 startInfo.FileName = exeName;
                 startInfo.Verb = "runas";
-                
+
                 //MLHIDE
                 startInfo.Arguments = parameters;
                 if (noWindow)
@@ -277,7 +277,7 @@ namespace OphiussaServerManager.Common
             sw.Restart();
 
             Console.WriteLine("Elapsed={0}", sw.Elapsed);
-            sw.Restart(); 
+            sw.Restart();
 
             var changedFiles = cacheFilesList.FindAll(f => CompareFiles(f, InstallFilesList.Find(f2 => f2.Name == f.Name)) != null);
 
@@ -286,8 +286,7 @@ namespace OphiussaServerManager.Common
 
             FileInfo CompareFiles(FileInfo f1, FileInfo f2)
             {
-                if (f2 == null) return f1;
-                //TODO: IGNORE MANIFEST FILE
+                if (f2 == null) return f1; 
                 if (ignorePaths.Count > 0)
                 {
                     string pathName = Path.GetDirectoryName(f1.FullName);
@@ -296,17 +295,11 @@ namespace OphiussaServerManager.Common
                         if (pathName.Contains(item)) return null;
                     }
 
-                }
-                //FileInfo f2 = list.Find(f => f.Name == f1.Name);
-                //ReadWholeFileAtOnce x = new ReadWholeFileAtOnce(f1.FullName,f2.FullName);
+                } 
                 ReadFileInChunksAndCompareVector x = new ReadFileInChunksAndCompareVector(f1.FullName, f2.FullName, Vector<byte>.Count);
                 if (!x.Compare()) return f1;
-                else return null;
-                //string md5Cache = CalculateMD5(f1.FullName);
-                //string md5Installed = CalculateMD5(f2.FullName);
-                //if (md5Installed != md5Cache) return f1;
-                //else return null;
-            } 
+                else return null; 
+            }
             sw.Stop();
             Console.WriteLine("Elapsed={0}", sw.Elapsed);
             return changedFiles;
@@ -347,6 +340,41 @@ namespace OphiussaServerManager.Common
             return ProcessInfo;
         }
 
+        public static int GetProcessorCount()
+        {
+            return Environment.ProcessorCount;
+        }
+        public static string BinaryStringToHexString(string binary)
+        {
+            if (string.IsNullOrEmpty(binary))
+                return binary;
 
+            StringBuilder result = new StringBuilder(binary.Length / 8 + 1);
+
+            if (!isbin(binary)) throw new Exception("the string is not binary");
+
+            int mod4Len = binary.Length % 8;
+            if (mod4Len != 0)
+            {
+                // pad to length multiple of 8
+                binary = binary.PadLeft(((binary.Length / 8) + 1) * 8, '0');
+            }
+
+            for (int i = 0; i < binary.Length; i += 8)
+            {
+                string eightBits = binary.Substring(i, 8);
+                result.AppendFormat("{0:X2}", Convert.ToByte(eightBits, 2));
+            }
+
+            return result.ToString();
+
+            bool isbin(string s)
+            {
+                foreach (var c in s)
+                    if (c != '0' && c != '1')
+                        return false;
+                return true;
+            }
+        }
     }
 }

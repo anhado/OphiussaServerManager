@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using OphiussaServerManager.Common.Ini;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Net.WebRequestMethods;
+using System.Windows.Documents;
 
 namespace OphiussaServerManager.Common.Models.Profiles
 {
@@ -66,7 +67,7 @@ namespace OphiussaServerManager.Common.Models.Profiles
         internal void SaveGameINI(Profile profile)
         {
             SystemIniFile systemIniFile = new SystemIniFile(profile.InstallLocation);
-             
+
             List<IniSection> iniSections = systemIniFile.GetAllSections(IniFiles.GameUserSettings);
             List<string> listSectionNames = new List<string>();
             Dictionary<string, List<ConfigFile>> keyValuePairs = new Dictionary<string, List<ConfigFile>>();
@@ -76,35 +77,35 @@ namespace OphiussaServerManager.Common.Models.Profiles
                 keyValuePairs.Add(section.SectionName, systemIniFile.ReadSection(IniFiles.GameUserSettings, section.SectionName).ToListConfigFile());
                 listSectionNames.Add(section.SectionName);
             }
-             
-            keyValuePairs["ServerSettings"].WriteBoolValue("AdminLogging", this.Administration.LogAdminCommandsToPublic); 
-            keyValuePairs["ServerSettings"].WriteBoolValue("AllowHideDamageSourceFromLogs", this.Administration.AllowHideDamageSourceFromLogs); 
-            keyValuePairs["ServerSettings"].WriteBoolValue("TribeLogDestroyedEnemyStructures", this.Administration.TribeLogDestroyedEnemyStructures); 
+
+            keyValuePairs["ServerSettings"].WriteBoolValue("AdminLogging", this.Administration.LogAdminCommandsToPublic);
+            keyValuePairs["ServerSettings"].WriteBoolValue("AllowHideDamageSourceFromLogs", this.Administration.AllowHideDamageSourceFromLogs);
+            keyValuePairs["ServerSettings"].WriteBoolValue("TribeLogDestroyedEnemyStructures", this.Administration.TribeLogDestroyedEnemyStructures);
             keyValuePairs["ServerSettings"].WriteIntValue("KickIdlePlayersPeriod", this.Administration.IdleTimout);
 
-            if (profile.Type.ServerType == SupportedServers.EnumServerType.ArkSurviveEvolved) 
+            if (profile.Type.ServerType == SupportedServers.EnumServerType.ArkSurviveEvolved)
                 keyValuePairs["ServerSettings"].WriteIntValue("MaxPlayers", this.Administration.MaxPlayers);
 
-            if (profile.Type.ServerType == SupportedServers.EnumServerType.ArkSurviveAscended) 
+            if (profile.Type.ServerType == SupportedServers.EnumServerType.ArkSurviveAscended)
                 keyValuePairs["/Script/Engine.GameSession"].WriteIntValue("MaxPlayers", this.Administration.MaxPlayers);
-             
-            keyValuePairs["ServerSettings"].WriteBoolValue("RCONEnabled", this.Administration.UseRCON); 
-            keyValuePairs["ServerSettings"].WriteStringValue("RCONPort", this.Administration.RCONPort); 
-            keyValuePairs["ServerSettings"].WriteIntValue("RCONServerGameLogBuffer", this.Administration.RCONServerLogBuffer); 
-            keyValuePairs["ServerSettings"].WriteStringValue("ServerAdminPassword", this.Administration.ServerAdminPassword); 
-            keyValuePairs["ServerSettings"].WriteBoolValue("servergamelog", this.Administration.EnableServerAdminLogs); 
-            keyValuePairs["ServerSettings"].WriteStringValue("ServerPassword", this.Administration.ServerPassword); 
-            keyValuePairs["ServerSettings"].WriteStringValue("SpectatorPassword", this.Administration.ServerSpectatorPassword); 
-            keyValuePairs["SessionSettings"].WriteStringValue("SessionName", this.Administration.ServerName); 
-            keyValuePairs["SessionSettings"].WriteStringValue("Port", this.Administration.ServerPort); 
-            keyValuePairs["SessionSettings"].WriteStringValue("QueryPort", this.Administration.QueryPort); 
-            keyValuePairs["MessageOfTheDay"].WriteStringValue("Message", this.Administration.MOD); 
+
+            keyValuePairs["ServerSettings"].WriteBoolValue("RCONEnabled", this.Administration.UseRCON);
+            keyValuePairs["ServerSettings"].WriteStringValue("RCONPort", this.Administration.RCONPort);
+            keyValuePairs["ServerSettings"].WriteIntValue("RCONServerGameLogBuffer", this.Administration.RCONServerLogBuffer);
+            keyValuePairs["ServerSettings"].WriteStringValue("ServerAdminPassword", this.Administration.ServerAdminPassword);
+            keyValuePairs["ServerSettings"].WriteBoolValue("servergamelog", this.Administration.EnableServerAdminLogs);
+            keyValuePairs["ServerSettings"].WriteStringValue("ServerPassword", this.Administration.ServerPassword);
+            keyValuePairs["ServerSettings"].WriteStringValue("SpectatorPassword", this.Administration.ServerSpectatorPassword);
+            keyValuePairs["SessionSettings"].WriteStringValue("SessionName", this.Administration.ServerName);
+            keyValuePairs["SessionSettings"].WriteStringValue("Port", this.Administration.ServerPort);
+            keyValuePairs["SessionSettings"].WriteStringValue("QueryPort", this.Administration.QueryPort);
+            keyValuePairs["MessageOfTheDay"].WriteStringValue("Message", this.Administration.MOD);
             keyValuePairs["MessageOfTheDay"].WriteIntValue("Duration", this.Administration.MODDuration);
 
             foreach (var section in keyValuePairs)
             {
                 systemIniFile.WriteSection(IniFiles.GameUserSettings, section.Key, section.Value.ToEnumerableConfigFile());
-            } 
+            }
         }
 
         public string GetCommandLinesArguments(Settings settings, Profile prf, string PublicIP)
@@ -203,7 +204,27 @@ namespace OphiussaServerManager.Common.Models.Profiles
 
             return cmd;
         }
+        public string GetCPUAffinity()
+        {
+            List<ProcessorAffinity> lst = new List<ProcessorAffinity>();
+
+            for (int i = Utils.GetProcessorCount()-1; i >= 0; i--)
+            {
+                lst.Add(
+                    new ProcessorAffinity()
+                    {
+                        ProcessorNumber = i,
+                        Selected = this.Administration.CPUAffinity == "All" ? true : this.Administration.CPUAffinityList.DefaultIfEmpty(new ProcessorAffinity() { Selected = true, ProcessorNumber = i }).FirstOrDefault(x => x.ProcessorNumber == i).Selected
+                    }
+                    );
+            }
+            string bin = string.Join("", lst.Select(x => x.Selected ? "1" : "0"));
+            string hex = !bin.Contains("0") ? "" : "0" + Utils.BinaryStringToHexString(bin);
+            return hex;
+        }
     }
+
+
     public class Administration
     {
         public bool UseServerAPI { get; set; } = false;
@@ -264,6 +285,7 @@ namespace OphiussaServerManager.Common.Models.Profiles
         public bool ClusterDirectoryOverride { get; set; } = false;
         public ProcessPriorityClass CPUPriority { get; set; } = ProcessPriorityClass.Normal;
         public string CPUAffinity { get; set; } = "All";
+        public List<ProcessorAffinity> CPUAffinityList { get; set; } = new List<ProcessorAffinity>();
         public bool EnableServerAdminLogs { get; set; } = true;
         public bool ServerAdminLogsIncludeTribeLogs { get; set; } = true;
         public bool ServerRCONOutputTribeLogs { get; set; } = true;
@@ -272,5 +294,6 @@ namespace OphiussaServerManager.Common.Models.Profiles
         public bool LogAdminCommandsToPublic { get; set; } = false;
         public bool LogAdminCommandsToAdmins { get; set; } = false;
         public bool TribeLogDestroyedEnemyStructures { get; set; } = true;
+
     }
 }

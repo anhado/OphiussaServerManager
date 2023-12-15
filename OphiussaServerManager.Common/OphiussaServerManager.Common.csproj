@@ -168,6 +168,7 @@
     <Compile Include="Models\MonitorGrid.cs" />
     <Compile Include="Models\PlayerInfo.cs" />
     <Compile Include="Models\PlayerListParameters.cs" />
+    <Compile Include="Models\ProcessorAffinity.cs" />
     <Compile Include="Models\Profile.cs" />
     <Compile Include="Models\Settings.cs" />
     <Compile Include="Models\Steam\PublishedFileDetail.cs" />

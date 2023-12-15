@@ -96,7 +96,7 @@
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
             this.txtCommand = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btProcessorAffinity = new System.Windows.Forms.Button();
             this.txtAffinity = new System.Windows.Forms.TextBox();
             this.label34 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
@@ -984,7 +984,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox9.Controls.Add(this.button2);
             this.groupBox9.Controls.Add(this.txtCommand);
-            this.groupBox9.Controls.Add(this.button1);
+            this.groupBox9.Controls.Add(this.btProcessorAffinity);
             this.groupBox9.Controls.Add(this.txtAffinity);
             this.groupBox9.Controls.Add(this.label34);
             this.groupBox9.Controls.Add(this.label33);
@@ -1019,14 +1019,15 @@
             this.txtCommand.Size = new System.Drawing.Size(710, 72);
             this.txtCommand.TabIndex = 71;
             // 
-            // button1
+            // btProcessorAffinity
             // 
-            this.button1.Location = new System.Drawing.Point(513, 18);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(30, 23);
-            this.button1.TabIndex = 70;
-            this.button1.Text = "...";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btProcessorAffinity.Location = new System.Drawing.Point(513, 18);
+            this.btProcessorAffinity.Name = "btProcessorAffinity";
+            this.btProcessorAffinity.Size = new System.Drawing.Size(30, 23);
+            this.btProcessorAffinity.TabIndex = 70;
+            this.btProcessorAffinity.Text = "...";
+            this.btProcessorAffinity.UseVisualStyleBackColor = true;
+            this.btProcessorAffinity.Click += new System.EventHandler(this.btProcessorAffinity_Click);
             // 
             // txtAffinity
             // 
@@ -2310,7 +2311,7 @@
         private System.Windows.Forms.ComboBox cboPriority;
         private System.Windows.Forms.TextBox txtAffinity;
         private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btProcessorAffinity;
         private System.Windows.Forms.TextBox txtBuild;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.GroupBox groupBox10;

@@ -48,6 +48,11 @@ If you can see this line, it looks like it overlaps something and there's a bug 
 "));
             exListBox1.Items.Add(new exListBoxItem("99", "Bill", "phone +345645464\n fax +6546546546\n email email@email.com"));
             exListBox1.Items.Add(new exListBoxItem("71", "Peter", "ICQ 56465464\n msn hot@hotmail.com\n phone +5465464654"));
+
+            foreach (var item in new System.Management.ManagementObjectSearcher("Select * from Win32_ComputerSystem").Get())
+            {
+                Console.WriteLine("Number Of Logical Processors: {0}", item["NumberOfLogicalProcessors"]);
+            }
         }
     }
 }

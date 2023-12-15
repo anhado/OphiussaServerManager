@@ -22,22 +22,6 @@ using System.Windows.Shapes;
 
 namespace OphiussaServerManager.Tools.Update
 {
-    public class ProcessEventArg
-    {
-        public string Message { get; set; }
-        public int TotalFiles { get; set; }
-        public int ProcessedFileCount { get; set; }
-        public bool Sucessful { get; set; }
-        public bool IsStarting { get; set; }
-        public bool SendToDiscord { get; set; } = false;
-    }
-    public class ProcessCopyEventArg
-    {
-        public string Message { get; set; }
-        public bool Sucessful { get; set; }
-        public bool SendToDiscord { get; set; } = false;
-    }
-
     public class AutoUpdate
     {
 
@@ -46,11 +30,12 @@ namespace OphiussaServerManager.Tools.Update
         public event EventHandler<ProcessCopyEventArg> ProcessCompleted;
         public event EventHandler<ProcessCopyEventArg> ProcessError;
 
-        protected virtual void OnProgressChanged(ProcessEventArg e)
+        protected virtual bool OnProgressChanged(ProcessEventArg e)
         {
 
             OphiussaLogger.logger.Info(e.Message);
             ProgressChanged?.Invoke(this, e);
+            return true;
         }
         protected virtual void OnProcessCompleted(ProcessCopyEventArg e)
         {
@@ -123,13 +108,13 @@ namespace OphiussaServerManager.Tools.Update
                     tasks.Add(t1);
 
                     Task.WaitAll(tasks.ToArray());
-                     
+
                     UpdateServer(p, Settings, System.IO.Path.Combine(Settings.DataFolder, "cache", p.Type.KeyName), true);
                 }
 
                 if (p.AutoManageSettings.ShutdownServer1Restart && !restartOnlyToUpdate)
                 {
-                    if (!p.IsRunning) Utils.ExecuteAsAdmin(System.IO.Path.Combine(p.InstallLocation, p.ARKConfiguration.Administration.UseServerAPI && p.Type.ExecutablePathAPI != "" ? p.Type.ExecutablePathAPI : p.Type.ExecutablePath), p.ARKConfiguration.GetCommandLinesArguments(Settings, p, p.ARKConfiguration.Administration.LocalIP), false);
+                    if (!p.IsRunning) p.StartServer(Settings);
                 }
 
             }
@@ -159,10 +144,10 @@ namespace OphiussaServerManager.Tools.Update
                 foreach (string file in files)
                 {
                     Profile p = JsonConvert.DeserializeObject<Profile>(File.ReadAllText(file));
-                    if (p.AutoManageSettings.IncludeInAutoUpdate)
-                    {
-                        profiles.Add(p);
-                    }
+                    //if (p.AutoManageSettings.IncludeInAutoUpdate)
+                    //{
+                    profiles.Add(p);
+                    //}
                 }
                 foreach (var p in profiles)
                 {
@@ -192,8 +177,18 @@ namespace OphiussaServerManager.Tools.Update
 
                 foreach (var t in profiles)
                 {
-                    OphiussaLogger.logger.Info("Checking updated for server " + t.Name);
-                    UpdateServer(t, Settings, System.IO.Path.Combine(Settings.DataFolder, "cache", t.Type.KeyName), false);
+                    if (t.AutoManageSettings.IncludeInAutoUpdate)
+                    {
+                        OphiussaLogger.logger.Info("Checking updated for server " + t.Name);
+                        UpdateServer(t, Settings, System.IO.Path.Combine(Settings.DataFolder, "cache", t.Type.KeyName), false);
+                    }
+                    else if(t.AutoManageSettings.RestartIfShutdown)
+                    {
+                        if (!t.IsRunning)
+                        {
+                            t.StartServer(Settings);
+                        }
+                    }
                 }
                 OnProcessCompleted(new ProcessCopyEventArg() { Message = "Process Ended", Sucessful = true });
 
@@ -340,11 +335,11 @@ namespace OphiussaServerManager.Tools.Update
                 }
                 OnProgressChanged(new ProcessEventArg() { Message = $"Server {p.Name} updated", IsStarting = false, ProcessedFileCount = changedFiles.Count, Sucessful = true, TotalFiles = changedFiles.Count, SendToDiscord = true });
 
-                if (!DontStartServer) if (IsRunning || p.AutoManageSettings.AutoStartServer) Utils.ExecuteAsAdmin(System.IO.Path.Combine(p.InstallLocation, p.ARKConfiguration.Administration.UseServerAPI && p.Type.ExecutablePathAPI != "" ? p.Type.ExecutablePathAPI : p.Type.ExecutablePath), p.ARKConfiguration.GetCommandLinesArguments(Settings, p, p.ARKConfiguration.Administration.LocalIP), false);
+                if (!DontStartServer) if (IsRunning || p.AutoManageSettings.RestartIfShutdown) p.StartServer(Settings);
             }
             else
             {
-                if (!DontStartServer) if (!p.IsRunning & p.AutoManageSettings.AutoStartServer) Utils.ExecuteAsAdmin(System.IO.Path.Combine(p.InstallLocation, p.ARKConfiguration.Administration.UseServerAPI && p.Type.ExecutablePathAPI != "" ? p.Type.ExecutablePathAPI : p.Type.ExecutablePath), p.ARKConfiguration.GetCommandLinesArguments(Settings, p, p.ARKConfiguration.Administration.LocalIP), false);
+                if (!DontStartServer) if (!p.IsRunning & p.AutoManageSettings.RestartIfShutdown) p.StartServer(Settings);
             }
 
         }
@@ -352,63 +347,7 @@ namespace OphiussaServerManager.Tools.Update
         public async Task CloseServer(Profile p, Settings settings)
         {
             OphiussaLogger.logger.Info("Closing server " + p.Name);
-            switch (p.Type.ServerType)
-            {
-                case EnumServerType.ArkSurviveEvolved:
-                case EnumServerType.ArkSurviveAscended:
-                    await CloseServerArk(p, settings);
-                    break;
-            }
-        }
-
-        private async Task CloseServerArk(Profile p, Settings settings)
-        {
-            if (p.ARKConfiguration.Administration.UseRCON)
-            {
-                try
-                {
-
-                    RCON rcon = new RCON(IPAddress.Parse(p.ARKConfiguration.Administration.LocalIP), ushort.Parse(p.ARKConfiguration.Administration.RCONPort), p.ARKConfiguration.Administration.ServerAdminPassword);
-                    await rcon.ConnectAsync();
-
-
-                    if (settings.PerformOnlinePlayerCheck)
-                    {
-
-                        string respnose = await rcon.SendCommandAsync("ListPlayers");
-                        if (respnose != "No Players Connected")
-                        {
-                            //validate server have players 
-                            if(settings.SendShutdowMessages) await rcon.SendCommandAsync($"Broadcast {settings.Message1.Replace("{minutes}", "15")}");
-                            OnProgressChanged(new ProcessEventArg() { Message = settings.Message1.Replace("{minutes}", "15"), IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
-                            Thread.Sleep(900000);
-                            if (settings.SendShutdowMessages) await rcon.SendCommandAsync($"Broadcast {settings.Message1.Replace("{minutes}", "10")}");
-                            OnProgressChanged(new ProcessEventArg() { Message = settings.Message1.Replace("{minutes}", "10"), IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
-                            Thread.Sleep(600000);
-                            if (settings.SendShutdowMessages) await rcon.SendCommandAsync($"Broadcast {settings.Message1.Replace("{minutes}", "5")}");
-                            OnProgressChanged(new ProcessEventArg() { Message = settings.Message1.Replace("{minutes}", "5"), IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
-                            Thread.Sleep(240000);
-                            if (settings.SendShutdowMessages) await rcon.SendCommandAsync($"Broadcast {settings.Message1.Replace("{minutes}", "1")}");
-                            OnProgressChanged(new ProcessEventArg() { Message = settings.Message1.Replace("{minutes}", "1"), IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
-                            Thread.Sleep(60000);
-                        }
-                    }
-                    if (settings.SendShutdowMessages) await rcon.SendCommandAsync($"Broadcast {settings.Message2}");
-                    OnProgressChanged(new ProcessEventArg() { Message = settings.Message2, IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
-                    await rcon.SendCommandAsync($"DoExit");
-                }
-                catch (Exception ex)
-                {
-                    OphiussaLogger.logger.Error(ex);
-                    throw ex;
-                }
-            }
-            else
-            {
-                OnProgressChanged(new ProcessEventArg() { Message = "No RCON configured, server process will be killed", IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
-                Process pro = Utils.GetProcessRunning(System.IO.Path.Combine(p.InstallLocation, p.Type.ExecutablePath));
-                pro.Kill();
-            }
+            await p.CloseServer(settings, OnProgressChanged); 
         }
 
         public bool CheckSteamMods(Profile p, Settings Settings, string CacheFolder)

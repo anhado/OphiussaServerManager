@@ -36,7 +36,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.exListBox1 = new OphiussaServerManager.exListBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.chatToPlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.renamePlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,6 +46,7 @@
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.copyIDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyPlayerIDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exListBox1 = new OphiussaServerManager.exListBox();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -104,17 +104,6 @@
             this.button2.Text = "Get Info";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // exListBox1
-            // 
-            this.exListBox1.ContextMenuStrip = this.contextMenuStrip1;
-            this.exListBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.exListBox1.FormattingEnabled = true;
-            this.exListBox1.ItemHeight = 66;
-            this.exListBox1.Location = new System.Drawing.Point(15, 70);
-            this.exListBox1.Name = "exListBox1";
-            this.exListBox1.Size = new System.Drawing.Size(767, 368);
-            this.exListBox1.TabIndex = 6;
             // 
             // contextMenuStrip1
             // 
@@ -182,6 +171,17 @@
             this.copyPlayerIDToolStripMenuItem.Name = "copyPlayerIDToolStripMenuItem";
             this.copyPlayerIDToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.copyPlayerIDToolStripMenuItem.Text = "Copy Player ID";
+            // 
+            // exListBox1
+            // 
+            this.exListBox1.ContextMenuStrip = this.contextMenuStrip1;
+            this.exListBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.exListBox1.FormattingEnabled = true;
+            this.exListBox1.ItemHeight = 66;
+            this.exListBox1.Location = new System.Drawing.Point(15, 70);
+            this.exListBox1.Name = "exListBox1";
+            this.exListBox1.Size = new System.Drawing.Size(767, 170);
+            this.exListBox1.TabIndex = 6;
             // 
             // FrmTests
             // 

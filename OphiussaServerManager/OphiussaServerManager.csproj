@@ -180,6 +180,12 @@
     <Compile Include="Forms\FrmModManager.Designer.cs">
       <DependentUpon>FrmModManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmProcessors.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmProcessors.Designer.cs">
+      <DependentUpon>FrmProcessors.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmServerTypeSelection.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -226,6 +232,9 @@
     <EmbeddedResource Include="Forms\FrmModManager.resx">
       <DependentUpon>FrmModManager.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmProcessors.resx">
+      <DependentUpon>FrmProcessors.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmServerTypeSelection.resx">
       <DependentUpon>FrmServerTypeSelection.cs</DependentUpon>
     </EmbeddedResource>
@@ -260,6 +269,7 @@
     </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\OphiussaServerManager.Common.Models.MonitorGrid.datasource" />
+    <None Include="Properties\DataSources\OphiussaServerManager.Common.Models.ProcessorAffinity.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
