@@ -186,6 +186,12 @@
     <Compile Include="Forms\FrmProcessors.Designer.cs">
       <DependentUpon>FrmProcessors.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmProgress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmProgress.Designer.cs">
+      <DependentUpon>FrmProgress.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmServerTypeSelection.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -234,6 +240,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmProcessors.resx">
       <DependentUpon>FrmProcessors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmProgress.resx">
+      <DependentUpon>FrmProgress.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmServerTypeSelection.resx">
       <DependentUpon>FrmServerTypeSelection.cs</DependentUpon>

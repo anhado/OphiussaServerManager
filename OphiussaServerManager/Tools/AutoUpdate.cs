@@ -26,9 +26,9 @@ namespace OphiussaServerManager.Tools.Update
     {
 
         public event EventHandler<ProcessEventArg> ProgressChanged;
-        public event EventHandler<ProcessCopyEventArg> ProcessStarted;
-        public event EventHandler<ProcessCopyEventArg> ProcessCompleted;
-        public event EventHandler<ProcessCopyEventArg> ProcessError;
+        public event EventHandler<ProcessEventArg> ProcessStarted;
+        public event EventHandler<ProcessEventArg> ProcessCompleted;
+        public event EventHandler<ProcessEventArg> ProcessError;
 
         protected virtual bool OnProgressChanged(ProcessEventArg e)
         {
@@ -37,28 +37,84 @@ namespace OphiussaServerManager.Tools.Update
             ProgressChanged?.Invoke(this, e);
             return true;
         }
-        protected virtual void OnProcessCompleted(ProcessCopyEventArg e)
+        protected virtual void OnProcessCompleted(ProcessEventArg e)
         {
             OphiussaLogger.logger.Info(e.Message);
             ProcessCompleted?.Invoke(this, e);
         }
-        protected virtual void OnProcessStarted(ProcessCopyEventArg e)
+        protected virtual void OnProcessStarted(ProcessEventArg e)
         {
             OphiussaLogger.logger.Info(e.Message);
             ProcessStarted?.Invoke(this, e);
         }
-        protected virtual void OnProcessError(ProcessCopyEventArg e)
+        protected virtual void OnProcessError(ProcessEventArg e)
         {
             OphiussaLogger.logger.Info(e.Message);
             OphiussaLogger.logger.Error(e.Message);
             ProcessError?.Invoke(this, e);
         }
 
-        internal void RestartSingleServer(string profileKey, bool restartOnlyToUpdate)
+
+        internal void UpdateSingleServerManually(string profileKey, bool UpdateCacheFolder, bool StartInTheEnd)
         {
             try
             {
-                OnProcessStarted(new ProcessCopyEventArg() { Message = "Process Started for server " + profileKey });
+                OnProcessStarted(new ProcessEventArg() { Message = "Process Started for server " + profileKey, Sucessful = true });
+                Common.Models.Settings Settings = JsonConvert.DeserializeObject<Common.Models.Settings>(File.ReadAllText(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json")));
+                string dir = Settings.DataFolder + "Profiles\\";
+                if (!Directory.Exists(dir))
+                {
+                    return;
+                }
+
+                Profile p = JsonConvert.DeserializeObject<Profile>(File.ReadAllText(System.IO.Path.Combine(dir, profileKey + ".json")));
+
+                if (p.IsRunning) OnProcessError(new ProcessEventArg() { SendToDiscord = false, Sucessful = false, Message = "Cannot update the server while running" });
+
+                List<Task> tasks = new List<Task>();
+
+                var serverType = new CacheServerTypes()
+                {
+                    Type = p.Type,
+                    InstallCacheFolder = System.IO.Path.Combine(Settings.DataFolder, "cache", p.Type.KeyName)
+                };
+
+                if (UpdateCacheFolder)
+                {
+                    tasks = new List<Task>();
+                    Task t1 = Task.Run(() =>
+                    {
+                        OnProgressChanged(new ProcessEventArg() { Message = "Update cache folder for game " + p.Type.KeyName, IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
+
+                        NetworkTools.UpdateCacheFolder(serverType);
+                    });
+                    tasks.Add(t1);
+
+                    Task.WaitAll(tasks.ToArray());
+
+                }
+
+                UpdateServer(p, Settings, System.IO.Path.Combine(Settings.DataFolder, "cache", p.Type.KeyName), true);
+
+
+                if (StartInTheEnd)
+                {
+                    p.StartServer(Settings);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                OphiussaLogger.logger.Error(ex);
+                OnProcessError(new ProcessEventArg() { Message = ex.Message, Sucessful = false, isError = true });
+            }
+        }
+
+        internal void UpdateSingleServerJob1(string profileKey, bool restartOnlyToUpdate)
+        {
+            try
+            {
+                OnProcessStarted(new ProcessEventArg() { Message = "Process Started for server " + profileKey, Sucessful = true });
                 Common.Models.Settings Settings = JsonConvert.DeserializeObject<Common.Models.Settings>(File.ReadAllText(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json")));
                 string dir = Settings.DataFolder + "Profiles\\";
                 if (!Directory.Exists(dir))
@@ -86,7 +142,9 @@ namespace OphiussaServerManager.Tools.Update
 
                     while (p.IsRunning)
                     {
-                        OphiussaLogger.logger.Debug("Server Still running");
+
+                        OnProgressChanged(new ProcessEventArg() { Message = "Server Still running", IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
+
                         Thread.Sleep(5000);
                     }
                 }
@@ -102,7 +160,8 @@ namespace OphiussaServerManager.Tools.Update
                     tasks = new List<Task>();
                     Task t1 = Task.Run(() =>
                     {
-                        OphiussaLogger.logger.Info("Update cache folder for game " + p.Type.KeyName);
+                        OnProgressChanged(new ProcessEventArg() { Message = "Update cache folder for game " + p.Type.KeyName, IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
+
                         NetworkTools.UpdateCacheFolder(serverType);
                     });
                     tasks.Add(t1);
@@ -114,21 +173,28 @@ namespace OphiussaServerManager.Tools.Update
 
                 if (p.AutoManageSettings.ShutdownServer1Restart && !restartOnlyToUpdate)
                 {
-                    if (!p.IsRunning) p.StartServer(Settings);
+                    if (!p.IsRunning)
+                    {
+
+                        OnProgressChanged(new ProcessEventArg() { Message = "Starting server " + p.Type.KeyName, IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
+
+                        p.StartServer(Settings);
+
+                    }
                 }
 
             }
             catch (Exception ex)
             {
                 OphiussaLogger.logger.Error(ex);
-                OnProcessError(new ProcessCopyEventArg() { Message = ex.Message, Sucessful = false });
+                OnProcessError(new ProcessEventArg() { Message = ex.Message, Sucessful = false, isError = true });
             }
         }
         public void UpdateAllServers()
         {
             try
             {
-                OnProcessStarted(new ProcessCopyEventArg() { Message = "Process Started" });
+                OnProcessStarted(new ProcessEventArg() { Message = "Process Started", Sucessful = true });
                 Common.Models.Settings Settings = JsonConvert.DeserializeObject<Common.Models.Settings>(File.ReadAllText(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json")));
                 string dir = Settings.DataFolder + "Profiles\\";
                 if (!Directory.Exists(dir))
@@ -139,7 +205,8 @@ namespace OphiussaServerManager.Tools.Update
                 List<Profile> profiles = new List<Profile>();
                 List<CacheServerTypes> servers = new List<CacheServerTypes>();
 
-                OphiussaLogger.logger.Info("Loading Profiles");
+                OnProgressChanged(new ProcessEventArg() { Message = "Loading Profiles", IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
+
                 string[] files = Directory.GetFiles(dir);
                 foreach (string file in files)
                 {
@@ -167,7 +234,8 @@ namespace OphiussaServerManager.Tools.Update
                 {
                     Task t = Task.Run(() =>
                     {
-                        OphiussaLogger.logger.Info("Update cache folder for game " + p.Type.KeyName);
+                        OnProgressChanged(new ProcessEventArg() { Message = "Update cache folder for game " + p.Type.KeyName, IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
+
                         NetworkTools.UpdateCacheFolder(p);
                     });
                     tasks.Add(t);
@@ -179,24 +247,27 @@ namespace OphiussaServerManager.Tools.Update
                 {
                     if (t.AutoManageSettings.IncludeInAutoUpdate)
                     {
-                        OphiussaLogger.logger.Info("Checking updated for server " + t.Name);
+                        OnProgressChanged(new ProcessEventArg() { Message = "Checking updated for server " + t.Name, IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
+
                         UpdateServer(t, Settings, System.IO.Path.Combine(Settings.DataFolder, "cache", t.Type.KeyName), false);
                     }
-                    else if(t.AutoManageSettings.RestartIfShutdown)
+                    else if (t.AutoManageSettings.RestartIfShutdown)
                     {
                         if (!t.IsRunning)
                         {
+                            OnProgressChanged(new ProcessEventArg() { Message = "Starting server " + t.Name, IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
+
                             t.StartServer(Settings);
                         }
                     }
                 }
-                OnProcessCompleted(new ProcessCopyEventArg() { Message = "Process Ended", Sucessful = true });
+                OnProcessCompleted(new ProcessEventArg() { Message = "Process Ended", Sucessful = true });
 
             }
             catch (Exception ex)
             {
                 OphiussaLogger.logger.Error(ex);
-                OnProcessError(new ProcessCopyEventArg() { Message = ex.Message, Sucessful = false });
+                OnProcessError(new ProcessEventArg() { Message = ex.Message, Sucessful = false, isError = true });
             }
         }
 
@@ -228,8 +299,10 @@ namespace OphiussaServerManager.Tools.Update
             string currentServerBuild = p.GetBuild();
             string currentCacheBuild = GetCacheBuild(p, CacheFolder);
 
-            OphiussaLogger.logger.Info("Cache Build : " + currentCacheBuild);
-            OphiussaLogger.logger.Info("Server Build : " + currentServerBuild);
+
+            OnProgressChanged(new ProcessEventArg() { Message = "Cache Build : " + currentCacheBuild, IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
+            OnProgressChanged(new ProcessEventArg() { Message = "Server Build : " + currentServerBuild, IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
+
             //if (currentServerBuild == currentCacheBuild)
             //{
 
@@ -290,7 +363,7 @@ namespace OphiussaServerManager.Tools.Update
                 needToUpdate = true;
                 foreach (var item in curseForgeFileDetails)
                 {
-                    OphiussaLogger.logger.Info("Curse Mod changed:" + item.name);
+                    OnProgressChanged(new ProcessEventArg() { Message = "Curse Mod changed:" + item.name, IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
                 }
             }
             if (steamFileDetails.Count > 0)
@@ -298,7 +371,7 @@ namespace OphiussaServerManager.Tools.Update
                 needToUpdate = true;
                 foreach (var item in steamFileDetails)
                 {
-                    OphiussaLogger.logger.Info("Steam Mod changed:" + item.title);
+                    OnProgressChanged(new ProcessEventArg() { Message = "Steam Mod changed:" + item.title, IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
                 }
             }
             if (changedFiles.Count > 0) needToUpdate = true;
@@ -318,7 +391,7 @@ namespace OphiussaServerManager.Tools.Update
                     Task.WaitAll(t);
                     while (p.IsRunning)
                     {
-                        OphiussaLogger.logger.Debug("Server Still running");
+                        OnProgressChanged(new ProcessEventArg() { Message = "Server Still running", IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
                         Thread.Sleep(5000);
                     }
                 }
@@ -327,27 +400,34 @@ namespace OphiussaServerManager.Tools.Update
                 foreach (var file in changedFiles)
                 {
                     System.IO.File.Copy(file.FullName, file.FullName.Replace(CacheFolder, p.InstallLocation), true);
-
-                    OphiussaLogger.logger.Info("Server file changed:" + file.FullName);
-                    OnProgressChanged(new ProcessEventArg() { Message = $"Copying files {i}/{changedFiles.Count}", IsStarting = false, ProcessedFileCount = i, Sucessful = false, TotalFiles = changedFiles.Count });
+                    OnProgressChanged(new ProcessEventArg() { Message = $"Copying files {i}/{changedFiles.Count} => {file.FullName}", IsStarting = false, ProcessedFileCount = i, Sucessful = false, TotalFiles = changedFiles.Count });
 
                     i++;
                 }
                 OnProgressChanged(new ProcessEventArg() { Message = $"Server {p.Name} updated", IsStarting = false, ProcessedFileCount = changedFiles.Count, Sucessful = true, TotalFiles = changedFiles.Count, SendToDiscord = true });
 
-                if (!DontStartServer) if (IsRunning || p.AutoManageSettings.RestartIfShutdown) p.StartServer(Settings);
+                if (!DontStartServer) if (IsRunning || p.AutoManageSettings.RestartIfShutdown)
+                    {
+                        OnProgressChanged(new ProcessEventArg() { Message = "Starting server " + p.Name, IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
+                        p.StartServer(Settings);
+                    }
             }
             else
             {
-                if (!DontStartServer) if (!p.IsRunning & p.AutoManageSettings.RestartIfShutdown) p.StartServer(Settings);
+                if (!DontStartServer) if (!p.IsRunning & p.AutoManageSettings.RestartIfShutdown)
+                    {
+                        OnProgressChanged(new ProcessEventArg() { Message = "Starting server " + p.Name, IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
+                        p.StartServer(Settings);
+                    }
             }
 
         }
 
         public async Task CloseServer(Profile p, Settings settings)
         {
-            OphiussaLogger.logger.Info("Closing server " + p.Name);
-            await p.CloseServer(settings, OnProgressChanged); 
+            OnProgressChanged(new ProcessEventArg() { Message = "Closing server " + p.Name, IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
+
+            await p.CloseServer(settings, OnProgressChanged);
         }
 
         public bool CheckSteamMods(Profile p, Settings Settings, string CacheFolder)

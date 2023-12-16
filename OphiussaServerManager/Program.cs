@@ -45,9 +45,10 @@ namespace OphiussaServerManager
                         if (arg.StartsWith("-as"))
                         {
                             OphiussaLogger.ReconfigureLogging();
-                            ServerTools.RestartSingleServer(arg.Substring(3));
+                            ServerTools.UpdateSingleServerJob1(arg.Substring(3));
                             return;
                         }
+                        //TODO: prepare for restart 2
                     }
 
                     Application.Run(new MainForm());

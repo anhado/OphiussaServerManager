@@ -390,6 +390,7 @@ namespace OphiussaServerManager.Forms
         {
             try
             {
+                timersChat.Enabled = false;
                 string respnose = await rcon.SendCommandAsync("GetChat");
                 if (respnose != "Server received, But no response!!")
                 {
@@ -406,6 +407,7 @@ namespace OphiussaServerManager.Forms
                 OphiussaLogger.logger.Error(ex);
                 SetStatus(false);
             }
+            timersChat.Enabled = true;
         }
 
         private void label3_Click(object sender, EventArgs e)

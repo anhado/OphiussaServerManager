@@ -623,7 +623,8 @@ namespace OphiussaServerManager.Forms
         {
             SaveProfile();
 
-            ServerTools.RestartSingleServer(this.profile.Key, true);
+            FrmProgress frm = new FrmProgress(MainForm.Settings, profile);
+            frm.ShowDialog();
 
             LoadSettings(this.profile, this.tab);
         }
