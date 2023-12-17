@@ -190,6 +190,88 @@ namespace OphiussaServerManager.Tools.Update
                 OnProcessError(new ProcessEventArg() { Message = ex.Message, Sucessful = false, isError = true });
             }
         }
+
+        internal void UpdateSingleServerJob2(string profileKey, bool restartOnlyToUpdate)
+        {
+            try
+            {
+                OnProcessStarted(new ProcessEventArg() { Message = "Process Started for server " + profileKey, Sucessful = true });
+                Common.Models.Settings Settings = JsonConvert.DeserializeObject<Common.Models.Settings>(File.ReadAllText(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json")));
+                string dir = Settings.DataFolder + "Profiles\\";
+                if (!Directory.Exists(dir))
+                {
+                    return;
+                }
+
+                Profile p = JsonConvert.DeserializeObject<Profile>(File.ReadAllText(System.IO.Path.Combine(dir, profileKey + ".json")));
+
+                List<Task> tasks = new List<Task>();
+                if (!restartOnlyToUpdate)
+                {
+                    if (p.IsRunning)
+                    {
+
+                        Task t = Task.Run(async () =>
+                        {
+                            await CloseServer(p, Settings);
+                        });
+
+                        tasks.Add(t);
+
+                        Task.WaitAll(tasks.ToArray());
+                    }
+
+                    while (p.IsRunning)
+                    {
+
+                        OnProgressChanged(new ProcessEventArg() { Message = "Server Still running", IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
+
+                        Thread.Sleep(5000);
+                    }
+                }
+
+                var serverType = new CacheServerTypes()
+                {
+                    Type = p.Type,
+                    InstallCacheFolder = System.IO.Path.Combine(Settings.DataFolder, "cache", p.Type.KeyName)
+                };
+
+                if (p.AutoManageSettings.ShutdownServer2PerformUpdate)
+                {
+                    tasks = new List<Task>();
+                    Task t1 = Task.Run(() =>
+                    {
+                        OnProgressChanged(new ProcessEventArg() { Message = "Update cache folder for game " + p.Type.KeyName, IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
+
+                        NetworkTools.UpdateCacheFolder(serverType);
+                    });
+                    tasks.Add(t1);
+
+                    Task.WaitAll(tasks.ToArray());
+
+                    UpdateServer(p, Settings, System.IO.Path.Combine(Settings.DataFolder, "cache", p.Type.KeyName), true);
+                }
+
+                if (p.AutoManageSettings.ShutdownServer2Restart && !restartOnlyToUpdate)
+                {
+                    if (!p.IsRunning)
+                    {
+
+                        OnProgressChanged(new ProcessEventArg() { Message = "Starting server " + p.Type.KeyName, IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
+
+                        p.StartServer(Settings);
+
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                OphiussaLogger.logger.Error(ex);
+                OnProcessError(new ProcessEventArg() { Message = ex.Message, Sucessful = false, isError = true });
+            }
+        }
+
         public void UpdateAllServers()
         {
             try

@@ -22,6 +22,12 @@ namespace OphiussaServerManager
             autoUpdate.UpdateSingleServerJob1(ProfileKey, restartOnlyToUpdate);
         }
 
+        public static void UpdateSingleServerJob2(string ProfileKey, bool restartOnlyToUpdate = false)
+        {
+            AutoUpdate autoUpdate = new AutoUpdate();
+            autoUpdate.UpdateSingleServerJob2(ProfileKey, restartOnlyToUpdate);
+        }
+
         public static void BackupServer()
         {
 

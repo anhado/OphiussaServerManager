@@ -42,13 +42,18 @@ namespace OphiussaServerManager
                 {
                     foreach (string arg in args)
                     {
-                        if (arg.StartsWith("-as"))
+                        if (arg.StartsWith("-as1"))
                         {
                             OphiussaLogger.ReconfigureLogging();
                             ServerTools.UpdateSingleServerJob1(arg.Substring(3));
                             return;
                         }
-                        //TODO: prepare for restart 2
+                        if (arg.StartsWith("-as1"))
+                        {
+                            OphiussaLogger.ReconfigureLogging();
+                            ServerTools.UpdateSingleServerJob2(arg.Substring(3));
+                            return;
+                        }
                     }
 
                     Application.Run(new MainForm());

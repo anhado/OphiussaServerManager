@@ -286,7 +286,7 @@ namespace OphiussaServerManager.Common
 
             FileInfo CompareFiles(FileInfo f1, FileInfo f2)
             {
-                if (f2 == null) return f1; 
+                if (f2 == null) return f1;
                 if (ignorePaths.Count > 0)
                 {
                     string pathName = Path.GetDirectoryName(f1.FullName);
@@ -295,10 +295,15 @@ namespace OphiussaServerManager.Common
                         if (pathName.Contains(item)) return null;
                     }
 
-                } 
+                }
+
+                //if (f1.LastWriteTime >= f2.LastWriteTime) return f1;
+                //else return null;
+
+
                 ReadFileInChunksAndCompareVector x = new ReadFileInChunksAndCompareVector(f1.FullName, f2.FullName, Vector<byte>.Count);
                 if (!x.Compare()) return f1;
-                else return null; 
+                else return null;
             }
             sw.Stop();
             Console.WriteLine("Elapsed={0}", sw.Elapsed);

@@ -413,7 +413,7 @@ namespace OphiussaServerManager.Forms
                     tt.StartBoundary = DateTime.Today + TimeSpan.FromHours(hour) + TimeSpan.FromMinutes(minute);
                     tt.DaysOfWeek = daysofweek;
                     td.Triggers.Add(tt);
-                    td.Actions.Add(fileName, " -as" + profile.Key);
+                    td.Actions.Add(fileName, " -as1" + profile.Key);
                     td.Principal.RunLevel = TaskRunLevel.Highest;
                     td.Settings.Priority = ProcessPriorityClass.Normal;
 
@@ -483,7 +483,7 @@ namespace OphiussaServerManager.Forms
                     tt.StartBoundary = DateTime.Today + TimeSpan.FromHours(hour) + TimeSpan.FromMinutes(minute);
                     tt.DaysOfWeek = daysofweek;
                     td.Triggers.Add(tt);
-                    td.Actions.Add(fileName, " -as" + profile.Key);
+                    td.Actions.Add(fileName, " -as2" + profile.Key);
                     td.Principal.RunLevel = TaskRunLevel.Highest;
                     td.Settings.Priority = ProcessPriorityClass.Normal;
                     TaskService.Instance.RootFolder.RegisterTaskDefinition(taskName, td);
