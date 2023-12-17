@@ -95,8 +95,7 @@ namespace OphiussaServerManager.Forms
         {
             try
             {
-                btClose.Enabled = !IsUpdating;
-                btUpdate.Enabled = !IsUpdating;
+                panel1.Enabled = !IsUpdating; 
                 timer_updateBox.Enabled = false;
                 foreach (var item in myQueue)
                 {

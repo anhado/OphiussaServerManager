@@ -170,6 +170,7 @@
             this.cbBranch = new System.Windows.Forms.ComboBox();
             this.label22 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btMods = new System.Windows.Forms.Button();
             this.txtMods = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.txtTotalConversion = new System.Windows.Forms.ComboBox();
@@ -394,6 +395,7 @@
             this.btSave.Size = new System.Drawing.Size(75, 23);
             this.btSave.TabIndex = 5;
             this.btSave.Text = "Save";
+            this.btSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btSave.UseVisualStyleBackColor = true;
             this.btSave.Click += new System.EventHandler(this.btSave_Click);
             // 
@@ -1833,6 +1835,7 @@
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.btMods);
             this.groupBox3.Controls.Add(this.txtMods);
             this.groupBox3.Controls.Add(this.label15);
             this.groupBox3.Controls.Add(this.txtTotalConversion);
@@ -1847,13 +1850,24 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Maps and Mods";
             // 
+            // btMods
+            // 
+            this.btMods.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btMods.Location = new System.Drawing.Point(717, 45);
+            this.btMods.Name = "btMods";
+            this.btMods.Size = new System.Drawing.Size(49, 23);
+            this.btMods.TabIndex = 15;
+            this.btMods.Text = "...";
+            this.btMods.UseVisualStyleBackColor = true;
+            this.btMods.Click += new System.EventHandler(this.btMods_Click);
+            // 
             // txtMods
             // 
             this.txtMods.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtMods.Location = new System.Drawing.Point(183, 47);
             this.txtMods.Name = "txtMods";
-            this.txtMods.Size = new System.Drawing.Size(583, 21);
+            this.txtMods.Size = new System.Drawing.Size(532, 21);
             this.txtMods.TabIndex = 13;
             // 
             // label15
@@ -2357,5 +2371,6 @@
         private System.Windows.Forms.CheckBox chkMon2;
         private System.Windows.Forms.CheckBox chkTue2;
         private System.Windows.Forms.CheckBox chkUseApi;
+        private System.Windows.Forms.Button btMods;
     }
 }

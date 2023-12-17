@@ -13,6 +13,11 @@ using System.Diagnostics;
 using OphiussaServerManager.Common.Models.Profiles;
 using OphiussaServerManager.Common.Models;
 using Newtonsoft.Json;
+using Open.Nat;
+using System.Net.Sockets;
+using FirewallManager;
+using System.Web.Configuration;
+using NetFwTypeLib;
 
 namespace OphiussaServerManager.Common
 {
@@ -159,12 +164,104 @@ namespace OphiussaServerManager.Common
         public static void InstallGame(Profile profile)
         {
             //profile.Type.SteamAppID G:\asmdata\SteamCMD\steamcmd.exe +force_install_dir G:\ASA\server\ +login anonymous +app_update 2430930 validate +quit
-            Utils.ExecuteAsAdmin(Path.Combine(Settings.SteamCMDLocation, "steamcmd.exe"), $" +force_install_dir {profile.InstallLocation} +login anonymous +app_update {profile.Type.SteamAppID} validate +quit");
+            Utils.ExecuteAsAdmin(Path.Combine(Settings.SteamCMDLocation, "steamcmd.exe"), $" +force_install_dir {profile.InstallLocation} +login anonymous +app_update {profile.Type.SteamServerID} validate +quit");
         }
         public static void UpdateCacheFolder(CacheServerTypes serverType)
         {
             //profile.Type.SteamAppID G:\asmdata\SteamCMD\steamcmd.exe +force_install_dir G:\ASA\server\ +login anonymous +app_update 2430930 validate +quit
-            Utils.ExecuteAsAdmin(Path.Combine(Settings.SteamCMDLocation, "steamcmd.exe"), $" +force_install_dir {serverType.InstallCacheFolder} +login anonymous +app_update {serverType.Type.SteamAppID} validate +quit", true, true);
+            Utils.ExecuteAsAdmin(Path.Combine(Settings.SteamCMDLocation, "steamcmd.exe"), $" +force_install_dir {serverType.InstallCacheFolder} +login anonymous +app_update {serverType.Type.SteamServerID} validate +quit", true, true);
         }
+        public static void UpdateModCacheFolder(CacheServerTypes serverType)
+        {
+            //profile.Type.SteamAppID G:\asmdata\SteamCMD\steamcmd.exe +force_install_dir G:\ASA\server\ +login anonymous +workshop_download_item 2430930 731604991 validate +quit
+            Utils.ExecuteAsAdmin(Path.Combine(Settings.SteamCMDLocation, "steamcmd.exe"), $" +force_install_dir {Path.Combine(serverType.InstallCacheFolder)} +login anonymous +workshop_download_item {serverType.Type.SteamClientID} {serverType.ModId} validate +quit", true, true);
+        }
+
+        public static bool IsPortOpen(string name, int port)
+        {
+            try
+            {
+                FirewallCom fw = new FirewallCom();
+                var rules = fw.GetRules().ToList().FindAll(r => r.Name == name + " TCP");
+
+                bool find = false;
+                if (rules.Count > 0)
+                {
+
+                    rules.ForEach(r =>
+                    {
+                        if (r.RemotePorts.Contains(port.ToString()) || r.LocalPorts.Contains(port.ToString()))
+                        {
+                            find = true;
+                        }
+                    });
+                }
+                if (!find) return false;
+                rules = fw.GetRules().ToList().FindAll(r => r.Name == name + " UDP");
+
+                if (rules.Count > 0)
+                {
+
+                    rules.ForEach(r =>
+                    {
+                        if (r.RemotePorts.Contains(port.ToString()) || r.LocalPorts.Contains(port.ToString()))
+                        {
+                            find = true;
+                        }
+                    });
+                }
+
+                return find;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static void AddRule(Rule rule)
+        {
+            INetFwPolicy2 _firewallPolicy = (INetFwPolicy2)Activator.CreateInstance(Type.GetTypeFromProgID("HNetCfg.FwPolicy2")); ;
+
+            INetFwRule rule1 = ConvertRule((Func<INetFwRule>)(() =>
+                {
+                    // ISSUE: variable of a compiler-generated type
+                    INetFwRule instance = (INetFwRule)Activator.CreateInstance(Type.GetTypeFromProgID("HNetCfg.FWRule"));
+                    return instance;
+                }), rule);
+
+            _firewallPolicy.Rules.Add(rule1);
+        }
+
+        public static INetFwRule ConvertRule(Func<INetFwRule> func, Rule item)
+        {
+            // ISSUE: variable of a compiler-generated type
+            INetFwRule netFwRule1 = func();
+            netFwRule1.Action = Tools.Convert(item.Action);
+            netFwRule1.Protocol = (int)Tools.Convert(item.Protocol);
+            netFwRule1.ApplicationName = item.ApplicationName;
+            netFwRule1.Description = item.Description;
+            netFwRule1.Direction = Tools.Convert(item.Direction);
+            netFwRule1.EdgeTraversal = item.EdgeTraversal;
+            netFwRule1.Enabled = item.Enabled;
+            netFwRule1.Grouping = item.Grouping;
+            if (item.IcmpTypesAndCodes != null)
+                netFwRule1.IcmpTypesAndCodes = item.IcmpTypesAndCodes;
+            netFwRule1.InterfaceTypes = item.InterfaceTypes;
+            netFwRule1.Interfaces = item.Interfaces;
+            netFwRule1.LocalAddresses = item.LocalAddresses;
+            if (item.LocalPorts != null)
+                netFwRule1.LocalPorts = item.LocalPorts;
+            netFwRule1.Name = item.Name;
+            netFwRule1.Profiles = (int)Tools.Convert(item.Profiles);
+            netFwRule1.RemoteAddresses = item.RemoteAddresses;
+            if (item.RemotePorts != null)
+                netFwRule1.RemotePorts = item.RemotePorts;
+            netFwRule1.serviceName = item.ServiceName;
+            // ISSUE: variable of a compiler-generated type
+            INetFwRule netFwRule2 = netFwRule1;
+            return netFwRule2;
+        }
+
     }
 }

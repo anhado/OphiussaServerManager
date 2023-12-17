@@ -17,14 +17,15 @@ namespace OphiussaServerManager.Common.Models.SupportedServers
         public string KeyName { get; set; }
         public string ServerTypeDescription { get; set; }
         public EnumServerType ServerType { get; set; }
-        public string SteamAppID { get; set; }
+        public string SteamServerID { get; set; }
         public string SavedRelativePath { get; set; }
         public string SaveGamesRelativePath { get; set; }
         public string SavedFilesRelativePath { get; set; }
         public string ExecutablePath { get; set; }
         public string ExecutablePathAPI { get; set; }
         public string ProcessName { get; set; }
-        public int AppID { get; set; }
+        public int ModAppID { get; set; }
+        public int SteamClientID { get; set; }
         public ModSource ModsSource { get; set; }
         public string ManifestFileName { get; set; }
     }
@@ -52,14 +53,15 @@ namespace OphiussaServerManager.Common.Models.SupportedServers
                         KeyName="ASE",
                         ServerTypeDescription="Ark Survival Evolved",
                         ServerType =EnumServerType.ArkSurviveEvolved,
-                        SteamAppID="376030",
+                        SteamServerID="376030",
                         SaveGamesRelativePath="Saved\\SavedArks\\",
                         SavedFilesRelativePath="Saved\\SavedArks\\",
                         SavedRelativePath="Saved\\SavedArks\\",
                         ExecutablePath="ShooterGame\\Binaries\\Win64\\ShooterGameServer.exe",
                         ExecutablePathAPI="",
                         ProcessName="ShooterGameServer",
-                        AppID = 346110,
+                        ModAppID = 346110,
+                        SteamClientID =346110,
                         ModsSource = ModSource.SteamWorkshop,
                         ManifestFileName="appmanifest_376030.acf"
                     },
@@ -67,14 +69,15 @@ namespace OphiussaServerManager.Common.Models.SupportedServers
                         KeyName="ASA",
                         ServerTypeDescription="Ark Survival Ascended",
                         ServerType=EnumServerType.ArkSurviveAscended,
-                        SteamAppID="2430930",
+                        SteamServerID="2430930",
                         SaveGamesRelativePath="Saved\\SavedArks\\",
                         SavedFilesRelativePath="Saved\\SavedArks\\",
                         SavedRelativePath="Saved\\SavedArks\\",
                         ExecutablePath="ShooterGame\\Binaries\\Win64\\ArkAscendedServer.exe",
                         ExecutablePathAPI="ShooterGame\\Binaries\\Win64\\AsaApiLoader.exe",
                         ProcessName="ArkAscendedServer",
-                        AppID = 83374,
+                        ModAppID = 83374,
+                        SteamClientID =2399830,
                         ModsSource = ModSource.CurseForge,
                         ManifestFileName="appmanifest_2430930.acf"
                     }

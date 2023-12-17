@@ -180,7 +180,7 @@ namespace OphiussaServerManager
 
                 }
             }
-             
+
         }
 
         void AddNewArkServer(string guid, SupportedServersType serverType, string InstallLocation, Profile p)
@@ -287,13 +287,6 @@ namespace OphiussaServerManager
                 var ip = await device.GetExternalIPAsync();
                 txtPublicIP.Text = ip.ToString();
                 Console.WriteLine("The external IP Address is: {0} ", ip);
-
-                // var xxx = await device.GetAllMappingsAsync();
-
-                // await device.CreatePortMapAsync(new Mapping(Protocol.TcpUpd, 1600, 1700, "The mapping name"));
-                // await device.CreatePortMapAsync(new Mapping(Protocol.Tcp, 1601, 1701, "The mapping name"));
-                // await device.CreatePortMapAsync(new Mapping(Protocol.Udp, 1600, 1700, "The mapping name"));
-                // await device.CreatePortMapAsync(new Mapping(Protocol.Udp, 1601, 1701, "The mapping name"));
 
             }
             catch (Exception ex)
@@ -434,6 +427,12 @@ namespace OphiussaServerManager
         {
             FrmTests frmTests = new FrmTests();
             frmTests.Show();
+        }
+
+        private void routingFirewallToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmPortForward frmPortForward = new FrmPortForward();
+            frmPortForward.LoadPortFoward(Profiles);
         }
     }
 }

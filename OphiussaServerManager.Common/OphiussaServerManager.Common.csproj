@@ -36,6 +36,21 @@
     <Reference Include="CoreRCON, Version=5.2.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\CoreRCON.5.2.1\lib\netstandard2.0\CoreRCON.dll</HintPath>
     </Reference>
+    <Reference Include="FirewallManager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FirewallManager.1.0.2\lib\FirewallManager.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.NATUPNPLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FirewallManager.1.0.2\lib\Interop.NATUPNPLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Interop.NETCONLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FirewallManager.1.0.2\lib\Interop.NETCONLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Interop.NetFwTypeLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FirewallManager.1.0.2\lib\Interop.NetFwTypeLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.8.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
@@ -165,12 +180,15 @@
     <Compile Include="Models\Curseforge\CurseForgeFileDetailResult.cs" />
     <Compile Include="Models\Curseforge\CurseForgeFileDetail.cs" />
     <Compile Include="Models\DefaultModels.cs" />
+    <Compile Include="Models\ModListDetails.cs" />
     <Compile Include="Models\MonitorGrid.cs" />
     <Compile Include="Models\PlayerInfo.cs" />
     <Compile Include="Models\PlayerListParameters.cs" />
+    <Compile Include="Models\PortForwardGrid.cs" />
     <Compile Include="Models\ProcessorAffinity.cs" />
     <Compile Include="Models\Profile.cs" />
     <Compile Include="Models\Settings.cs" />
+    <Compile Include="Models\SortableBindingList.cs" />
     <Compile Include="Models\Steam\PublishedFileDetail.cs" />
     <Compile Include="Models\Steam\PublishedFileDetailsResponse.cs" />
     <Compile Include="Models\Steam\PublishedFileDetailsResult.cs" />
@@ -193,6 +211,12 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Open.NAT\Open.Nat\Open.Nat.csproj">
+      <Project>{FDEACF87-8877-45D8-AD9F-AEE32A100544}</Project>
+      <Name>Open.Nat</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -26,7 +26,7 @@ namespace OphiussaServerManager.Common
         {
             _settings = settings;
         }
-        private const string KEYWORK_QUIT = "+quit"; 
+        private const string KEYWORK_QUIT = "+quit";
 
         public CurseForgeFileDetailResponse GetCurseForgeModDetails(string appId)
         {
@@ -51,21 +51,26 @@ namespace OphiussaServerManager.Common
                     CurseForgeFileDetailResponse fileDetailResult = JsonUtils.Deserialize<CurseForgeFileDetailResponse>(new StreamReader(webRequest.GetResponse().GetResponseStream()).ReadToEnd());
                     if (fileDetailResult != null && fileDetailResult.data != null)
                     {
+                        if (fileDetailResult.data.FindAll(x => x.id == 932007).Count > 0)
+                        {
+                            int i = 0;
+                            var x = fileDetailResult.data.FindAll(x2 => x2.id == 932007);
+                        }
                         if (num1 == 0)
                         {
-                            num1 = 1;
+                            num1 = fileDetailResult.pagination.totalCount;
                             steamModDetails = fileDetailResult;
-                            if (steamModDetails.pagination.totalCount > 50)
-                            {
-                                int result;
-                                num1 = Math.DivRem(steamModDetails.pagination.totalCount, 50, out result);
-                                if (result > 0)
-                                    ++num1;
-                            }
+                            //if (steamModDetails.pagination.totalCount > 50)
+                            //{
+                            //    int result;
+                            //    num1 = Math.DivRem(steamModDetails.pagination.totalCount, 50, out result);
+                            //    if (result > 0)
+                            //        ++num1;
+                            //}
                         }
                         else if (fileDetailResult.data != null)
                             steamModDetails.data.AddRange((IEnumerable<CurseForgeFileDetail>)fileDetailResult.data);
-                        ++num2;
+                        num2 += fileDetailResult.pagination.pageSize;
                     }
                     else
                         break;
@@ -75,7 +80,7 @@ namespace OphiussaServerManager.Common
             }
             catch (Exception ex)
             {
-                OphiussaLogger.logger.Error("GetSteamModDetails. " + ex.Message + "\r\n" + ex.StackTrace); 
+                OphiussaLogger.logger.Error("GetSteamModDetails. " + ex.Message + "\r\n" + ex.StackTrace);
                 return (CurseForgeFileDetailResponse)null;
             }
         }
@@ -126,7 +131,7 @@ namespace OphiussaServerManager.Common
                                 steamModDetails.pagination.resultCount += fileDetailsResult.pagination.resultCount;
                                 steamModDetails.data.AddRange((IEnumerable<CurseForgeFileDetail>)fileDetailsResult.data);
                             }
-                        } 
+                        }
                     }
                 }
                 return steamModDetails ?? new CurseForgeFileDetailResponse();
@@ -137,8 +142,8 @@ namespace OphiussaServerManager.Common
                 OphiussaLogger.logger.Error("GetSteamModDetails. " + ex.Message + "\r\n" + ex.StackTrace);
                 return (CurseForgeFileDetailResponse)null;
             }
-        } 
+        }
         public string CurseForgeWebApiKey => !string.IsNullOrWhiteSpace(_settings.CurseForgeKey) ? _settings.CurseForgeKey : _settings.DefaultCurseForgeKey;
-         
+
     }
 }

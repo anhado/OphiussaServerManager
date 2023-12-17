@@ -62,6 +62,21 @@
     <Reference Include="CoreRCON, Version=5.2.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\CoreRCON.5.2.1\lib\netstandard2.0\CoreRCON.dll</HintPath>
     </Reference>
+    <Reference Include="FirewallManager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FirewallManager.1.0.2\lib\FirewallManager.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.NATUPNPLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FirewallManager.1.0.2\lib\Interop.NATUPNPLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Interop.NETCONLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FirewallManager.1.0.2\lib\Interop.NETCONLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Interop.NetFwTypeLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FirewallManager.1.0.2\lib\Interop.NetFwTypeLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.8.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
@@ -143,6 +158,7 @@
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
@@ -179,6 +195,18 @@
     </Compile>
     <Compile Include="Forms\FrmModManager.Designer.cs">
       <DependentUpon>FrmModManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmModManagerAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmModManagerAdd.Designer.cs">
+      <DependentUpon>FrmModManagerAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmPortForward.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmPortForward.Designer.cs">
+      <DependentUpon>FrmPortForward.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FrmProcessors.cs">
       <SubType>Form</SubType>
@@ -238,6 +266,12 @@
     <EmbeddedResource Include="Forms\FrmModManager.resx">
       <DependentUpon>FrmModManager.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmModManagerAdd.resx">
+      <DependentUpon>FrmModManagerAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmPortForward.resx">
+      <DependentUpon>FrmPortForward.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmProcessors.resx">
       <DependentUpon>FrmProcessors.cs</DependentUpon>
     </EmbeddedResource>
@@ -277,7 +311,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\OphiussaServerManager.Common.Models.ModListDetails.datasource" />
     <None Include="Properties\DataSources\OphiussaServerManager.Common.Models.MonitorGrid.datasource" />
+    <None Include="Properties\DataSources\OphiussaServerManager.Common.Models.PortForwardGrid.datasource" />
     <None Include="Properties\DataSources\OphiussaServerManager.Common.Models.ProcessorAffinity.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -308,8 +344,32 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Elegantthemes-Softies-Tools.256.ico" />
-    <Content Include="Resources\Collapse.png" />
-    <Content Include="Resources\Expand.png" />
+    <None Include="Resources\tool icon icon.png" />
+    <None Include="Resources\Monitor icon icon.png" />
+    <None Include="Resources\firewall icon icon.png" />
+    <None Include="Resources\ok icon icon.png" />
+    <None Include="Resources\add icon icon %281%29.png" />
+    <None Include="Resources\Filter icon icon.png" />
+    <None Include="Resources\refresh icon icon %285%29.png" />
+    <None Include="Resources\Add icon icon.png" />
+    <None Include="Resources\collapse icon icon.png" />
+    <None Include="Resources\expand icon icon.png" />
+    <None Include="Resources\Close icon icon.png" />
+    <None Include="Resources\refresh icon icon %284%29.png" />
+    <None Include="Resources\Refresh icon icon %282%29.png" />
+    <None Include="Resources\refresh icon icon %281%29.png" />
+    <None Include="Resources\Plus icon icon.png" />
+    <None Include="Resources\remove, cancel, delete icon icon.png" />
+    <None Include="Resources\redo icon icon.png" />
+    <None Include="Resources\tool, tools, settings, options, preferences icon icon.png" />
+    <None Include="Resources\preferences, options, setting, cog, gear, system, settings icon icon.png" />
+    <None Include="Resources\folder, close icon icon.png" />
+    <None Include="Resources\file, open, folder icon icon.png" />
+    <None Include="Resources\help, about, question icon icon.png" />
+    <None Include="Resources\copy, documents, clone, duplicate icon icon.png" />
+    <None Include="Resources\refresh icon icon.png" />
+    <None Include="Resources\down icon icon.png" />
+    <None Include="Resources\save, floppy, disk icon icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

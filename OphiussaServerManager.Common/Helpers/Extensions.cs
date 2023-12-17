@@ -2,6 +2,7 @@
 using OphiussaServerManager.Common.Models.Profiles;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data.SqlTypes;
 using System.Drawing;
 using System.Linq;
@@ -170,6 +171,15 @@ namespace OphiussaServerManager.Common.Helpers
             }
             return 0;
         }
+        public static ushort ToUShort(this string prop)
+        {
+            ushort val = 0;
+            if (ushort.TryParse(prop, out val))
+            {
+                return val;
+            }
+            return 0;
+        }
 
         public static string GetString(this List<ConfigFile> list, string PropertyName, string defaultValue = "")
         {
@@ -235,6 +245,27 @@ namespace OphiussaServerManager.Common.Helpers
                 }
             }
             return num == 1;
+        }
+
+        public static void AddRange<T>(this BindingSource list, IEnumerable<T> data)
+        {
+            if (list == null || data == null)
+            {
+                return;
+            }
+
+            foreach (T t in data)
+            {
+                list.Add(t);
+            }
+        }
+
+        public static DateTime UnixTimeStampToDateTime(this int unixTimeStamp)
+        {
+            // Unix timestamp is seconds past epoch
+            DateTime dateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+            dateTime = dateTime.AddSeconds(unixTimeStamp).ToLocalTime();
+            return dateTime;
         }
     }
 }

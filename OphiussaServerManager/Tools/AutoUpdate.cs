@@ -310,29 +310,36 @@ namespace OphiussaServerManager.Tools.Update
             //    return;
             //}
 
-
-            OnProgressChanged(new ProcessEventArg() { Message = "Comparing cache with production files", IsStarting = false, ProcessedFileCount = 0, Sucessful = false, TotalFiles = 0 });
             List<FileInfo> changedFiles = new List<FileInfo>();
-            if (Settings.UseSmartCopy)
+            if (currentServerBuild != currentCacheBuild)
             {
-                changedFiles = Utils.CompareFolderContent(p.InstallLocation, CacheFolder, new List<string> { "Saved", "genosl", "Privacy" });
-                if (currentServerBuild == currentCacheBuild && changedFiles.Count == 1)
+
+                OnProgressChanged(new ProcessEventArg() { Message = "Comparing cache with production files", IsStarting = false, ProcessedFileCount = 0, Sucessful = false, TotalFiles = 0 });
+                if (Settings.UseSmartCopy)
                 {
-                    changedFiles = new List<FileInfo>();
+                    changedFiles = Utils.CompareFolderContent(p.InstallLocation, CacheFolder, new List<string> { "Saved", "genosl", "Privacy" });
+                    if (currentServerBuild == currentCacheBuild && changedFiles.Count == 1)
+                    {
+                        changedFiles = new List<FileInfo>();
+                    }
+                }
+                else
+                {
+                    if (currentServerBuild == currentCacheBuild)
+                    {
+                        changedFiles = new List<FileInfo>();
+                    }
+                    else
+                    {
+                        System.IO.DirectoryInfo dir1 = new System.IO.DirectoryInfo(CacheFolder);
+                        // Take a snapshot of the file system.  
+                        changedFiles = dir1.GetFiles("*.*", System.IO.SearchOption.AllDirectories).ToList();
+                    }
                 }
             }
             else
             {
-                if (currentServerBuild == currentCacheBuild)
-                {
-                    changedFiles = new List<FileInfo>();
-                }
-                else
-                {
-                    System.IO.DirectoryInfo dir1 = new System.IO.DirectoryInfo(CacheFolder);
-                    // Take a snapshot of the file system.  
-                    changedFiles = dir1.GetFiles("*.*", System.IO.SearchOption.AllDirectories).ToList();
-                }
+                changedFiles = new List<FileInfo>();
             }
 
             if (changedFiles.Count == 0) OnProgressChanged(new ProcessEventArg() { Message = "No changed detected", IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0 });
@@ -341,14 +348,14 @@ namespace OphiussaServerManager.Tools.Update
             OnProgressChanged(new ProcessEventArg() { Message = $"Mod list check", IsStarting = true, ProcessedFileCount = 0, Sucessful = false, TotalFiles = 0 });
 
             List<CurseForgeFileDetail> curseForgeFileDetails = new List<CurseForgeFileDetail>();
-            List<WorkshopFileDetail> steamFileDetails = new List<WorkshopFileDetail>();
+            List<PublishedFileDetail> steamFileDetails = new List<PublishedFileDetail>();
 
             bool needToUpdate = false;
             switch (p.Type.ModsSource)
             {
                 case ModSource.SteamWorkshop:
-                    needToUpdate = CheckSteamMods(p, Settings, CacheFolder);
-                    if (needToUpdate) OnProgressChanged(new ProcessEventArg() { Message = "Detected mod Updates", IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
+                    steamFileDetails = CheckSteamMods(p, Settings, CacheFolder);
+                    if (steamFileDetails.Count > 0) OnProgressChanged(new ProcessEventArg() { Message = "Detected mod Updates", IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
                     else OnProgressChanged(new ProcessEventArg() { Message = "No mods changed", IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0 });
                     break;
                 case ModSource.CurseForge:
@@ -395,7 +402,9 @@ namespace OphiussaServerManager.Tools.Update
                         Thread.Sleep(5000);
                     }
                 }
-                //TODO:Update Steam Mods
+
+                UpdateSteamMods(Settings, p, steamFileDetails);
+
                 int i = 1;
                 foreach (var file in changedFiles)
                 {
@@ -423,6 +432,49 @@ namespace OphiussaServerManager.Tools.Update
 
         }
 
+        private void UpdateSteamMods(Settings settings, Profile p, List<PublishedFileDetail> steamFileDetails)
+        {
+            foreach (var mod in steamFileDetails)
+            {
+                OnProgressChanged(new ProcessEventArg() { Message = $"updating mod {mod.title}", IsStarting = false });
+
+                var serverType = new CacheServerTypes()
+                {
+                    Type = p.Type,
+                    InstallCacheFolder = System.IO.Path.Combine(settings.DataFolder, "cacheMods"),
+                    ModId = mod.publishedfileid
+                };
+
+                NetworkTools.UpdateModCacheFolder(serverType);
+
+
+                System.IO.DirectoryInfo dir1 = new System.IO.DirectoryInfo(System.IO.Path.Combine(serverType.InstallCacheFolder, $"steamapps\\workshop\\content\\{p.Type.SteamClientID}\\{mod.publishedfileid}"));
+                // Take a snapshot of the file system.  
+                var modFiles = dir1.GetFiles("*.*", System.IO.SearchOption.AllDirectories).ToList();
+
+                int i = 1;
+                foreach (var file in modFiles)
+                {
+                    string targetpath = file.FullName.Replace(System.IO.Path.Combine(serverType.InstallCacheFolder, $"steamapps\\workshop\\content\\{p.Type.SteamClientID}"), System.IO.Path.Combine(p.InstallLocation, "ShooterGame\\Content\\Mods"));
+
+                    FileInfo file1 = new FileInfo(targetpath);
+
+                    if (!Directory.Exists(file1.DirectoryName))
+                    {
+                        Directory.CreateDirectory(file1.DirectoryName);
+                    }
+                    System.IO.File.Copy(file.FullName, targetpath, true);
+                    //OnProgressChanged(new ProcessEventArg() { Message = $"Copying files {i}/{modFiles.Count} => {file.FullName}", IsStarting = false, ProcessedFileCount = i, Sucessful = false, TotalFiles = modFiles.Count });
+
+                    i++;
+                }
+
+                OnProgressChanged(new ProcessEventArg() { Message = $"updated mod {mod.title}", IsStarting = false, ProcessedFileCount = i, Sucessful = true, TotalFiles = modFiles.Count });
+
+            }
+
+        }
+
         public async Task CloseServer(Profile p, Settings settings)
         {
             OnProgressChanged(new ProcessEventArg() { Message = "Closing server " + p.Name, IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
@@ -430,9 +482,45 @@ namespace OphiussaServerManager.Tools.Update
             await p.CloseServer(settings, OnProgressChanged);
         }
 
-        public bool CheckSteamMods(Profile p, Settings Settings, string CacheFolder)
+        public List<PublishedFileDetail> CheckSteamMods(Profile p, Settings Settings, string CacheFolder)
         {
-            return false;
+            SteamUtils steamUtils = new SteamUtils(Settings);
+            PublishedFileDetailsResponse mods = steamUtils.GetSteamModDetails(p.ARKConfiguration.Administration.ModIDs.FindAll(x => x != ""));
+            bool isFirstRun = false;
+            string cache = System.IO.Path.Combine(Settings.DataFolder, "cache", "SteamModsCache", p.ARKConfiguration.Administration.Branch);
+            if (!Directory.Exists(cache))
+            {
+                Directory.CreateDirectory(cache);
+
+                string jsonString = JsonConvert.SerializeObject(mods, Formatting.Indented);
+                File.WriteAllText(System.IO.Path.Combine(cache, $"SteamModCache_{p.Key}.json"), jsonString);
+                isFirstRun = true;
+            }
+
+            PublishedFileDetailsResponse cachedmods = JsonConvert.DeserializeObject<PublishedFileDetailsResponse>(System.IO.File.ReadAllText(System.IO.Path.Combine(cache, $"SteamModCache_{p.Key}.json")));
+            List<PublishedFileDetail> changedMods = new List<PublishedFileDetail>();
+            if (isFirstRun)
+            {
+                changedMods = cachedmods.publishedfiledetails;
+            }
+            else
+            {
+                changedMods = cachedmods.publishedfiledetails.FindAll(m => CheckMod(m, mods) != null);
+
+                PublishedFileDetail CheckMod(PublishedFileDetail mod, PublishedFileDetailsResponse modList)
+                {
+                    PublishedFileDetail m = modList.publishedfiledetails.Find(mm => mm.publishedfileid == mod.publishedfileid);
+                    if (m == null) return null;
+                    if (m.time_updated != mod.time_updated) return mod;
+                    else return null;
+                }
+
+            }
+
+            string jsonString1 = JsonConvert.SerializeObject(mods, Formatting.Indented);
+            File.WriteAllText(System.IO.Path.Combine(cache, $"SteamModCache_{p.Key}.json"), jsonString1);
+
+            return changedMods;
         }
 
         public List<CurseForgeFileDetail> CheckSCurseForgeMods(Profile p, Settings Settings, string CacheFolder)

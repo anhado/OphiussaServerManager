@@ -10,5 +10,6 @@ namespace OphiussaServerManager.Common.Models
     {
         public string InstallCacheFolder { get; set; }
         public SupportedServers.SupportedServersType Type { get; set; }
+        public string ModId { get; set; }
     }
 }

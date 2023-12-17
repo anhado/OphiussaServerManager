@@ -778,11 +778,22 @@ namespace OphiussaServerManager.Forms
             FrmProcessors frm = new FrmProcessors(profile.ARKConfiguration.Administration.CPUAffinity == "All", profile.ARKConfiguration.Administration.CPUAffinityList);
             frm.updateCpuAffinity = (bool all, List<ProcessorAffinity> lst) =>
             {
-                profile.ARKConfiguration.Administration.CPUAffinity = all ? "All" : string.Join(",", lst.FindAll(x=>x.Selected).Select(x => x.ProcessorNumber.ToString()));
+                profile.ARKConfiguration.Administration.CPUAffinity = all ? "All" : string.Join(",", lst.FindAll(x => x.Selected).Select(x => x.ProcessorNumber.ToString()));
                 profile.ARKConfiguration.Administration.CPUAffinityList = lst;
                 txtAffinity.Text = profile.ARKConfiguration.Administration.CPUAffinity;
             };
             frm.ShowDialog();
+        }
+
+        private void btMods_Click(object sender, EventArgs e)
+        {
+            FrmModManager frm = new FrmModManager();
+            frm.updateModList = (List<ModListDetails> lst) =>
+            {
+                txtMods.Text = string.Join(",", lst.Select(x => x.ModID.ToString()).ToArray());
+            };
+
+            frm.LoadMods(ref profile, txtMods.Text, this);
         }
     }
 }

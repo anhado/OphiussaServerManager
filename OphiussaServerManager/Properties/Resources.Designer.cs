@@ -63,9 +63,9 @@ namespace OphiussaServerManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Collapse {
+        internal static System.Drawing.Bitmap Add_icon_icon {
             get {
-                object obj = ResourceManager.GetObject("Collapse", resourceCulture);
+                object obj = ResourceManager.GetObject("Add_icon_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,199 @@ namespace OphiussaServerManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Expand {
+        internal static System.Drawing.Bitmap add_icon_icon_16x16 {
             get {
-                object obj = ResourceManager.GetObject("Expand", resourceCulture);
+                object obj = ResourceManager.GetObject("add icon icon 16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Close_icon_icon {
+            get {
+                object obj = ResourceManager.GetObject("Close_icon_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap collapse_icon_icon {
+            get {
+                object obj = ResourceManager.GetObject("collapse_icon_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap copy__documents__clone__duplicate_icon_icon {
+            get {
+                object obj = ResourceManager.GetObject("copy, documents, clone, duplicate icon icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap down_icon_icon {
+            get {
+                object obj = ResourceManager.GetObject("down icon icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap expand_icon_icon {
+            get {
+                object obj = ResourceManager.GetObject("expand_icon_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap file__open__folder_icon_icon {
+            get {
+                object obj = ResourceManager.GetObject("file, open, folder icon icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Filter_icon_icon {
+            get {
+                object obj = ResourceManager.GetObject("Filter icon icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap firewall_icon_icon {
+            get {
+                object obj = ResourceManager.GetObject("firewall icon icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap folder__close_icon_icon {
+            get {
+                object obj = ResourceManager.GetObject("folder, close icon icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap help__about__question_icon_icon {
+            get {
+                object obj = ResourceManager.GetObject("help, about, question icon icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Monitor_icon_icon {
+            get {
+                object obj = ResourceManager.GetObject("Monitor icon icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ok_icon_icon {
+            get {
+                object obj = ResourceManager.GetObject("ok_icon_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap preferences__options__setting__cog__gear__system__settings_icon_icon {
+            get {
+                object obj = ResourceManager.GetObject("preferences, options, setting, cog, gear, system, settings icon icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Redo_Icon16x16 {
+            get {
+                object obj = ResourceManager.GetObject("Redo_Icon16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap refresh_icon_icon__4_ {
+            get {
+                object obj = ResourceManager.GetObject("refresh_icon_icon__4_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap remove__cancel__delete_icon_icon {
+            get {
+                object obj = ResourceManager.GetObject("remove, cancel, delete icon icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap save__floppy__disk_icon_icon {
+            get {
+                object obj = ResourceManager.GetObject("save, floppy, disk icon icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap tool__tools__settings__options__preferences_icon_icon {
+            get {
+                object obj = ResourceManager.GetObject("tool, tools, settings, options, preferences icon icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap tool_icon_icon {
+            get {
+                object obj = ResourceManager.GetObject("tool icon icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

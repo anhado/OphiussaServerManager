@@ -10,6 +10,7 @@ using OphiussaServerManager.Common.Ini;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Net.WebRequestMethods;
 using System.Windows.Documents;
+using Newtonsoft.Json.Linq;
 
 namespace OphiussaServerManager.Common.Models.Profiles
 {
@@ -101,6 +102,9 @@ namespace OphiussaServerManager.Common.Models.Profiles
             keyValuePairs["SessionSettings"].WriteStringValue("QueryPort", this.Administration.QueryPort);
             keyValuePairs["MessageOfTheDay"].WriteStringValue("Message", this.Administration.MOD);
             keyValuePairs["MessageOfTheDay"].WriteIntValue("Duration", this.Administration.MODDuration);
+             
+            if (profile.Type.ServerType == SupportedServers.EnumServerType.ArkSurviveEvolved)
+                keyValuePairs["ServerSettings"].WriteStringValue("ActiveMods", string.Join(",", profile.ARKConfiguration.Administration.ModIDs.ToArray()));
 
             foreach (var section in keyValuePairs)
             {
@@ -208,7 +212,7 @@ namespace OphiussaServerManager.Common.Models.Profiles
         {
             List<ProcessorAffinity> lst = new List<ProcessorAffinity>();
 
-            for (int i = Utils.GetProcessorCount()-1; i >= 0; i--)
+            for (int i = Utils.GetProcessorCount() - 1; i >= 0; i--)
             {
                 lst.Add(
                     new ProcessorAffinity()
