@@ -24,5 +24,9 @@ namespace OphiussaServerManager.Common.Models
         public ushort QueryPort { get; set; }
         public ushort RconPort { get; set; }
         public bool isOK { get; set; }
+        public bool UseServerPort { get; set; } = false;
+        public bool UsePeerPort { get; set; } = false;
+        public bool UseQueryPort { get; set; } = false;
+        public bool UseRconPort { get; set; } = false;
     }
 }

@@ -14,6 +14,7 @@ using FirewallManager;
 using System.Windows.Interop;
 using NetFwTypeLib;
 using System.Reflection;
+using System.Windows.Markup.Localizer;
 
 namespace OphiussaServerManager.Forms
 {
@@ -50,6 +51,11 @@ namespace OphiussaServerManager.Forms
                     bool FirewallQueryPort = false;
                     bool FirewallRconPort = false;
 
+                    bool UseServerPort = false;
+                    bool UsePeerPort = false;
+                    bool UseQueryPort = false;
+                    bool UseRconPort = false;
+
                     ushort vServerPort = 0;
                     ushort vPeerPort = 0;
                     ushort vQueryPort = 0;
@@ -61,19 +67,24 @@ namespace OphiussaServerManager.Forms
                         case Common.Models.SupportedServers.EnumServerType.ArkSurviveAscended:
                             serverName = profile.ARKConfiguration.Administration.ServerName;
 
+                            UseServerPort = true;
+                            UsePeerPort = true;
+                            UseQueryPort = true;
+                            UseRconPort = profile.ARKConfiguration.Administration.UseRCON;
+
                             serverMapping = await device.GetSpecificMappingAsync(Protocol.TcpUpd, profile.ARKConfiguration.Administration.ServerPort.ToInt());
                             peerMapping = await device.GetSpecificMappingAsync(Protocol.TcpUpd, profile.ARKConfiguration.Administration.PeerPort.ToInt());
                             QueryMapping = await device.GetSpecificMappingAsync(Protocol.TcpUpd, profile.ARKConfiguration.Administration.QueryPort.ToInt());
-                            RconMapping = await device.GetSpecificMappingAsync(Protocol.TcpUpd, profile.ARKConfiguration.Administration.RCONPort.ToInt());
+                            if (profile.ARKConfiguration.Administration.UseRCON) RconMapping = await device.GetSpecificMappingAsync(Protocol.TcpUpd, profile.ARKConfiguration.Administration.RCONPort.ToInt());
 
                             FirewallServerPort = NetworkTools.IsPortOpen(profile.Name, profile.ARKConfiguration.Administration.ServerPort.ToInt());
                             FirewallPeerPort = NetworkTools.IsPortOpen(profile.Name, profile.ARKConfiguration.Administration.PeerPort.ToInt());
                             FirewallQueryPort = NetworkTools.IsPortOpen(profile.Name, profile.ARKConfiguration.Administration.QueryPort.ToInt());
-                            FirewallRconPort = NetworkTools.IsPortOpen(profile.Name, profile.ARKConfiguration.Administration.RCONPort.ToInt());
+                            if (profile.ARKConfiguration.Administration.UseRCON) FirewallRconPort = NetworkTools.IsPortOpen(profile.Name, profile.ARKConfiguration.Administration.RCONPort.ToInt());
                             vServerPort = profile.ARKConfiguration.Administration.ServerPort.ToUShort();
                             vPeerPort = profile.ARKConfiguration.Administration.PeerPort.ToUShort();
                             vQueryPort = profile.ARKConfiguration.Administration.QueryPort.ToUShort();
-                            vRconPort = profile.ARKConfiguration.Administration.RCONPort.ToUShort();
+                            if (profile.ARKConfiguration.Administration.UseRCON) vRconPort = profile.ARKConfiguration.Administration.RCONPort.ToUShort();
                             break;
                     }
 
@@ -93,11 +104,31 @@ namespace OphiussaServerManager.Forms
                         PeerPort = vPeerPort,
                         QueryPort = vQueryPort,
                         RconPort = vRconPort,
-                        isOK = FirewallServerPort && FirewallPeerPort && FirewallQueryPort && FirewallRconPort && serverMapping != null && peerMapping != null && QueryMapping != null && RconMapping != null
+                        UseServerPort = UseServerPort,
+                        UsePeerPort = UsePeerPort,
+                        UseQueryPort = UseQueryPort,
+                        UseRconPort = UseRconPort,
+                        isOK = (UseServerPort ? FirewallServerPort : true)
+                            && (UsePeerPort ? FirewallPeerPort : true)
+                            && (UseQueryPort ? FirewallQueryPort : true)
+                            && (UseRconPort ? FirewallRconPort : true)
+                            && (UseServerPort ? serverMapping != null : true)
+                            && (UsePeerPort ? peerMapping != null : true)
+                            && (UseQueryPort ? QueryMapping != null : true)
+                            && (UseRconPort ? RconMapping != null : true)
+
                     });
+
                 }
 
-                base.ShowDialog();
+                base.Show();
+                //TODO:FIX THIS STUPID CODE, LAST LINE DONT REFRESH CORRECTLY, JUST A QUICK WORKAROUND
+                int index = portForwardGridBindingSource.Count - 1;
+                PortForwardGrid obj = (PortForwardGrid)this.portForwardGridBindingSource[index];
+                this.portForwardGridBindingSource.RemoveAt(index);
+                this.portForwardGridBindingSource.Insert(index, obj);
+                dataGridView1.Refresh();
+
             }
             catch (Exception ex)
             {
@@ -148,15 +179,33 @@ namespace OphiussaServerManager.Forms
 
                     var discoverer = new NatDiscoverer();
                     var device = await discoverer.DiscoverDeviceAsync();
-                    Mapping serverMapping = await device.GetSpecificMappingAsync(Protocol.TcpUpd, obj.ServerPort);
-                    Mapping peerMapping = await device.GetSpecificMappingAsync(Protocol.TcpUpd, obj.PeerPort);
-                    Mapping QueryMapping = await device.GetSpecificMappingAsync(Protocol.TcpUpd, obj.QueryPort);
-                    Mapping RconMapping = await device.GetSpecificMappingAsync(Protocol.TcpUpd, obj.RconPort);
 
-                    bool FirewallServerPort = NetworkTools.IsPortOpen(obj.Profile, obj.ServerPort);
-                    bool FirewallPeerPort = NetworkTools.IsPortOpen(obj.Profile, obj.PeerPort);
-                    bool FirewallQueryPort = NetworkTools.IsPortOpen(obj.Profile, obj.QueryPort);
-                    bool FirewallRconPort = NetworkTools.IsPortOpen(obj.Profile, obj.RconPort);
+                    Mapping serverMapping = null;
+                    Mapping peerMapping = null;
+                    Mapping QueryMapping = null;
+                    Mapping RconMapping = null;
+                    string serverName = string.Empty;
+                    bool FirewallServerPort = false;
+                    bool FirewallPeerPort = false;
+                    bool FirewallQueryPort = false;
+                    bool FirewallRconPort = false;
+
+
+                    ushort vServerPort = 0;
+                    ushort vPeerPort = 0;
+                    ushort vQueryPort = 0;
+                    ushort vRconPort = 0;
+
+
+                    if (obj.UseServerPort) serverMapping = await device.GetSpecificMappingAsync(Protocol.TcpUpd, obj.ServerPort);
+                    if (obj.UsePeerPort) peerMapping = await device.GetSpecificMappingAsync(Protocol.TcpUpd, obj.PeerPort);
+                    if (obj.UseQueryPort) QueryMapping = await device.GetSpecificMappingAsync(Protocol.TcpUpd, obj.QueryPort);
+                    if (obj.UseRconPort) RconMapping = await device.GetSpecificMappingAsync(Protocol.TcpUpd, obj.RconPort);
+
+                    if (obj.UseServerPort) FirewallServerPort = NetworkTools.IsPortOpen(obj.Profile, obj.ServerPort);
+                    if (obj.UsePeerPort) FirewallPeerPort = NetworkTools.IsPortOpen(obj.Profile, obj.PeerPort);
+                    if (obj.UseQueryPort) FirewallQueryPort = NetworkTools.IsPortOpen(obj.Profile, obj.QueryPort);
+                    if (obj.UseRconPort) FirewallRconPort = NetworkTools.IsPortOpen(obj.Profile, obj.RconPort);
 
                     obj.FirewallServerPort = FirewallServerPort ? new Bitmap(Properties.Resources.ok_icon_icon) : new Bitmap(Properties.Resources.Close_icon_icon);
                     obj.FirewallPeerPort = FirewallPeerPort ? new Bitmap(Properties.Resources.ok_icon_icon) : new Bitmap(Properties.Resources.Close_icon_icon);
@@ -166,7 +215,14 @@ namespace OphiussaServerManager.Forms
                     obj.RouterPeerPort = peerMapping != null ? new Bitmap(Properties.Resources.ok_icon_icon) : new Bitmap(Properties.Resources.Close_icon_icon);
                     obj.RouterQueryPort = QueryMapping != null ? new Bitmap(Properties.Resources.ok_icon_icon) : new Bitmap(Properties.Resources.Close_icon_icon);
                     obj.RouterRconPort = RconMapping != null ? new Bitmap(Properties.Resources.ok_icon_icon) : new Bitmap(Properties.Resources.Close_icon_icon);
-                    obj.isOK = FirewallServerPort && FirewallPeerPort && FirewallQueryPort && FirewallRconPort && serverMapping != null && peerMapping != null && QueryMapping != null && RconMapping != null;
+                    obj.isOK = (obj.UseServerPort ? FirewallServerPort : true)
+                            && (obj.UsePeerPort ? FirewallPeerPort : true)
+                            && (obj.UseQueryPort ? FirewallQueryPort : true)
+                            && (obj.UseRconPort ? FirewallRconPort : true)
+                            && (obj.UseServerPort ? serverMapping != null : true)
+                            && (obj.UsePeerPort ? peerMapping != null : true)
+                            && (obj.UseQueryPort ? QueryMapping != null : true)
+                            && (obj.UseRconPort ? RconMapping != null : true);
 
                     this.portForwardGridBindingSource.RemoveAt(index);
                     this.portForwardGridBindingSource.Insert(index, obj);
@@ -192,10 +248,10 @@ namespace OphiussaServerManager.Forms
                 Mapping QueryMapping = await device.GetSpecificMappingAsync(Protocol.TcpUpd, obj.QueryPort);
                 Mapping RconMapping = await device.GetSpecificMappingAsync(Protocol.TcpUpd, obj.RconPort);
 
-                if (serverMapping == null) await device.CreatePortMapAsync(new Mapping(Protocol.TcpUpd, obj.ServerPort, obj.ServerPort, obj.Profile));
-                if (peerMapping == null) await device.CreatePortMapAsync(new Mapping(Protocol.TcpUpd, obj.PeerPort, obj.PeerPort, obj.Profile));
-                if (QueryMapping == null) await device.CreatePortMapAsync(new Mapping(Protocol.TcpUpd, obj.QueryPort, obj.QueryPort, obj.Profile));
-                if (RconMapping == null) await device.CreatePortMapAsync(new Mapping(Protocol.TcpUpd, obj.RconPort, obj.RconPort, obj.Profile));
+                if (obj.UseServerPort) if (serverMapping == null) await device.CreatePortMapAsync(new Mapping(Protocol.TcpUpd, obj.ServerPort, obj.ServerPort, obj.Profile));
+                if (obj.UsePeerPort) if (peerMapping == null) await device.CreatePortMapAsync(new Mapping(Protocol.TcpUpd, obj.PeerPort, obj.PeerPort, obj.Profile));
+                if (obj.UseQueryPort) if (QueryMapping == null) await device.CreatePortMapAsync(new Mapping(Protocol.TcpUpd, obj.QueryPort, obj.QueryPort, obj.Profile));
+                if (obj.UseRconPort) if (RconMapping == null) await device.CreatePortMapAsync(new Mapping(Protocol.TcpUpd, obj.RconPort, obj.RconPort, obj.Profile));
                 MessageBox.Show("Mapping added/Updated");
             }
             catch (Exception ex)
@@ -218,10 +274,10 @@ namespace OphiussaServerManager.Forms
                 Mapping RconMapping = await device.GetSpecificMappingAsync(Protocol.TcpUpd, obj.RconPort);
 
 
-                if (serverMapping != null) await device.DeletePortMapAsync(new Mapping(Protocol.TcpUpd, obj.ServerPort, obj.ServerPort, obj.Profile));
-                if (peerMapping != null) await device.DeletePortMapAsync(new Mapping(Protocol.TcpUpd, obj.PeerPort, obj.PeerPort, obj.Profile));
-                if (QueryMapping != null) await device.DeletePortMapAsync(new Mapping(Protocol.TcpUpd, obj.QueryPort, obj.QueryPort, obj.Profile));
-                if (RconMapping != null) await device.DeletePortMapAsync(new Mapping(Protocol.TcpUpd, obj.RconPort, obj.RconPort, obj.Profile));
+                if (obj.UseServerPort) if (serverMapping != null) await device.DeletePortMapAsync(new Mapping(Protocol.TcpUpd, obj.ServerPort, obj.ServerPort, obj.Profile));
+                if (obj.UsePeerPort) if (peerMapping != null) await device.DeletePortMapAsync(new Mapping(Protocol.TcpUpd, obj.PeerPort, obj.PeerPort, obj.Profile));
+                if (obj.UseQueryPort) if (QueryMapping != null) await device.DeletePortMapAsync(new Mapping(Protocol.TcpUpd, obj.QueryPort, obj.QueryPort, obj.Profile));
+                if (obj.UseRconPort) if (RconMapping != null) await device.DeletePortMapAsync(new Mapping(Protocol.TcpUpd, obj.RconPort, obj.RconPort, obj.Profile));
                 MessageBox.Show("Mapping deleted");
             }
             catch (Exception ex)
@@ -248,6 +304,12 @@ namespace OphiussaServerManager.Forms
                     });
                 }
 
+                string ports = "";
+                if (obj.UseServerPort) ports = $"{obj.ServerPort}";
+                if (obj.UsePeerPort) ports += (ports != "" ? "," : "") + $"{obj.PeerPort}";
+                if (obj.UseQueryPort) ports += (ports != "" ? "," : "") + $"{obj.QueryPort}";
+                if (obj.UseRconPort) ports += (ports != "" ? "," : "") + $"{obj.RconPort}";
+
                 Rule rule = new Rule()
                 {
                     Action = FirewallManager.Action.Allow,
@@ -261,7 +323,7 @@ namespace OphiussaServerManager.Forms
                     EdgeTraversal = false,
                     LocalAddresses = "*",
                     RemoteAddresses = "*",
-                    LocalPorts = $"{obj.ServerPort},{obj.PeerPort},{obj.QueryPort},{obj.RconPort}",
+                    LocalPorts = ports,
                     Enabled = true
                 };
 
@@ -287,6 +349,12 @@ namespace OphiussaServerManager.Forms
                     });
                 }
 
+                string ports = "";
+                if (obj.UseServerPort) ports = $"{obj.ServerPort}";
+                if (obj.UsePeerPort) ports += (ports != "" ? "," : "") + $"{obj.PeerPort}";
+                if (obj.UseQueryPort) ports += (ports != "" ? "," : "") + $"{obj.QueryPort}";
+                if (obj.UseRconPort) ports += (ports != "" ? "," : "") + $"{obj.RconPort}";
+
                 Rule rule = new Rule()
                 {
                     Action = FirewallManager.Action.Allow,
@@ -300,7 +368,7 @@ namespace OphiussaServerManager.Forms
                     EdgeTraversal = false,
                     LocalAddresses = "*",
                     RemoteAddresses = "*",
-                    LocalPorts = $"{obj.ServerPort},{obj.PeerPort},{obj.QueryPort},{obj.RconPort}",
+                    LocalPorts = ports,
                     Enabled = true
                 };
 
