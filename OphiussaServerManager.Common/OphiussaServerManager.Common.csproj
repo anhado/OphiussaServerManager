@@ -187,6 +187,7 @@
     <Compile Include="Models\PortForwardGrid.cs" />
     <Compile Include="Models\ProcessorAffinity.cs" />
     <Compile Include="Models\Profile.cs" />
+    <Compile Include="Models\ResourceMonitor.cs" />
     <Compile Include="Models\Settings.cs" />
     <Compile Include="Models\SortableBindingList.cs" />
     <Compile Include="Models\Steam\PublishedFileDetail.cs" />

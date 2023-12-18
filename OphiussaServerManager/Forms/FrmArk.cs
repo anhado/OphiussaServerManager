@@ -11,6 +11,9 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Forms;
 
 namespace OphiussaServerManager.Forms
@@ -28,6 +31,8 @@ namespace OphiussaServerManager.Forms
 
         private void FrmArk_Load(object sender, EventArgs e)
         {
+            Thread thread = new Thread(new ThreadStart(isRunningProcess));
+            thread.Start();
         }
 
         private void LoadDefaultFieldValues()
@@ -65,7 +70,7 @@ namespace OphiussaServerManager.Forms
 
             txtProfileID.Text = profile.Key;
             txtProfileName.Text = profile.Name;
-            tab.Text = txtProfileName.Text;
+            tab.Text = txtProfileName.Text + "          ";
             txtServerType.Text = profile.Type.ServerTypeDescription;
             txtLocation.Text = profile.InstallLocation;
             chkUseApi.Checked = profile.ARKConfiguration.Administration.UseServerAPI;
@@ -221,7 +226,7 @@ namespace OphiussaServerManager.Forms
 
         private void txtProfileName_Validated(object sender, EventArgs e)
         {
-            tab.Text = txtProfileName.Text;
+            tab.Text = txtProfileName.Text + "          ";
         }
 
         private void textBox1_DoubleClick(object sender, EventArgs e)
@@ -300,8 +305,17 @@ namespace OphiussaServerManager.Forms
 
         private void btSave_Click(object sender, EventArgs e)
         {
-            SaveProfile();
-            CreateWindowsTasks();
+            try
+            {
+                SaveProfile();
+                CreateWindowsTasks();
+
+                MessageBox.Show("Profile Saved");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void CreateWindowsTasks()
@@ -707,23 +721,43 @@ namespace OphiussaServerManager.Forms
             }
         }
 
-
-        private void timerGetProcess_Tick(object sender, EventArgs e)
+        public void isRunningProcess()
         {
-            try
+            while (true)
             {
-                timerGetProcess.Enabled = false;
                 Process process = profile.GetExeProcess();
                 if (process != null)
                 {
                     isRunning = true;
-                    btStart.Text = "Stop";
                 }
                 else
                 {
                     isRunning = false;
-                    btStart.Text = "Start";
                 }
+
+            }
+        }
+
+        private async void timerGetProcess_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                timerGetProcess.Enabled = false;
+
+                //Process process = profile.GetExeProcess();
+                //if (process != null)
+                //{
+                //    if (isRunning) return;
+                //    isRunning = true;
+                //}
+                //else
+                //{
+                //    if (!isRunning) return;
+                //    isRunning = false;
+
+                //}
+                if (isRunning) btStart.Text = "Stop";
+                else btStart.Text = "Start";
                 btUpdate.Enabled = !isRunning;
 
             }

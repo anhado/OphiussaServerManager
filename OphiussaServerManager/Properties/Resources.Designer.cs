@@ -253,6 +253,17 @@ namespace OphiussaServerManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap speedometer__speed__dashboard__measure__board__device__gauge__widgets__value_icon_icon {
+            get {
+                object obj = ResourceManager.GetObject("speedometer, speed, dashboard, measure, board, device, gauge, widgets, value icon" +
+                        " icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap tool__tools__settings__options__preferences_icon_icon {
             get {
                 object obj = ResourceManager.GetObject("tool, tools, settings, options, preferences icon icon", resourceCulture);

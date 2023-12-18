@@ -119,6 +119,7 @@
     <Reference Include="Microsoft.Extensions.Primitives, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.Primitives.8.0.0\lib\net462\Microsoft.Extensions.Primitives.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.Win32.TaskScheduler, Version=2.10.1.0, Culture=neutral, PublicKeyToken=e25603a88b3aa7da, processorArchitecture=MSIL">
       <HintPath>..\packages\TaskScheduler.2.10.1\lib\net452\Microsoft.Win32.TaskScheduler.dll</HintPath>
     </Reference>
@@ -190,6 +191,12 @@
     <Compile Include="Forms\FrmArk.Designer.cs">
       <DependentUpon>FrmArk.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmDeleteProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmDeleteProfile.Designer.cs">
+      <DependentUpon>FrmDeleteProfile.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmModManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -250,6 +257,18 @@
     <Compile Include="Forms\FrmTests.Designer.cs">
       <DependentUpon>FrmTests.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmUsedResources.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmUsedResources.Designer.cs">
+      <DependentUpon>FrmUsedResources.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmUsedResourcesStatusWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmUsedResourcesStatusWindow.Designer.cs">
+      <DependentUpon>FrmUsedResourcesStatusWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -262,6 +281,9 @@
     <Compile Include="Tools\ServerTools.cs" />
     <EmbeddedResource Include="Forms\FrmArk.resx">
       <DependentUpon>FrmArk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmDeleteProfile.resx">
+      <DependentUpon>FrmDeleteProfile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmModManager.resx">
       <DependentUpon>FrmModManager.cs</DependentUpon>
@@ -292,6 +314,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmTests.resx">
       <DependentUpon>FrmTests.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmUsedResources.resx">
+      <DependentUpon>FrmUsedResources.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmUsedResourcesStatusWindow.resx">
+      <DependentUpon>FrmUsedResourcesStatusWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -344,6 +372,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Elegantthemes-Softies-Tools.256.ico" />
+    <None Include="Resources\speedometer, speed, dashboard, measure, board, device, gauge, widgets, value icon icon.png" />
     <None Include="Resources\tool icon icon.png" />
     <None Include="Resources\Monitor icon icon.png" />
     <None Include="Resources\firewall icon icon.png" />

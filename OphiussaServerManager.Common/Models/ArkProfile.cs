@@ -11,6 +11,7 @@ using static System.Net.Mime.MediaTypeNames;
 using static System.Net.WebRequestMethods;
 using System.Windows.Documents;
 using Newtonsoft.Json.Linq;
+using static System.Collections.Specialized.BitVector32;
 
 namespace OphiussaServerManager.Common.Models.Profiles
 {
@@ -79,6 +80,16 @@ namespace OphiussaServerManager.Common.Models.Profiles
                 listSectionNames.Add(section.SectionName);
             }
 
+            if (keyValuePairs.Count == 0) return;
+
+            if (!keyValuePairs.ContainsKey("MessageOfTheDay")) keyValuePairs.Add("MessageOfTheDay", systemIniFile.ReadSection(IniFiles.GameUserSettings, "MessageOfTheDay").ToListConfigFile());
+            if (!keyValuePairs.ContainsKey("ServerSettings")) keyValuePairs.Add("ServerSettings", systemIniFile.ReadSection(IniFiles.GameUserSettings, "ServerSettings").ToListConfigFile());
+            if (!keyValuePairs.ContainsKey("ScalabilityGroups")) keyValuePairs.Add("ScalabilityGroups", systemIniFile.ReadSection(IniFiles.GameUserSettings, "ScalabilityGroups").ToListConfigFile());
+            if (!keyValuePairs.ContainsKey("/Script/ShooterGame.ShooterGameUserSettings")) keyValuePairs.Add("/Script/ShooterGame.ShooterGameUserSettings", systemIniFile.ReadSection(IniFiles.GameUserSettings, "/Script/ShooterGame.ShooterGameUserSettings").ToListConfigFile());
+            if (!keyValuePairs.ContainsKey("/Script/Engine.GameUserSettings")) keyValuePairs.Add("/Script/Engine.GameUserSettings", systemIniFile.ReadSection(IniFiles.GameUserSettings, "/Script/Engine.GameUserSettings").ToListConfigFile());
+            if (!keyValuePairs.ContainsKey("SessionSettings")) keyValuePairs.Add("SessionSettings", systemIniFile.ReadSection(IniFiles.GameUserSettings, "SessionSettings").ToListConfigFile());
+            if (!keyValuePairs.ContainsKey("/Script/Engine.GameSession")) keyValuePairs.Add("/Script/Engine.GameSession", systemIniFile.ReadSection(IniFiles.GameUserSettings, "/Script/Engine.GameSession").ToListConfigFile());
+
             keyValuePairs["ServerSettings"].WriteBoolValue("AdminLogging", this.Administration.LogAdminCommandsToPublic);
             keyValuePairs["ServerSettings"].WriteBoolValue("AllowHideDamageSourceFromLogs", this.Administration.AllowHideDamageSourceFromLogs);
             keyValuePairs["ServerSettings"].WriteBoolValue("TribeLogDestroyedEnemyStructures", this.Administration.TribeLogDestroyedEnemyStructures);
@@ -102,7 +113,7 @@ namespace OphiussaServerManager.Common.Models.Profiles
             keyValuePairs["SessionSettings"].WriteStringValue("QueryPort", this.Administration.QueryPort);
             keyValuePairs["MessageOfTheDay"].WriteStringValue("Message", this.Administration.MOD);
             keyValuePairs["MessageOfTheDay"].WriteIntValue("Duration", this.Administration.MODDuration);
-             
+
             if (profile.Type.ServerType == SupportedServers.EnumServerType.ArkSurviveEvolved)
                 keyValuePairs["ServerSettings"].WriteStringValue("ActiveMods", string.Join(",", profile.ARKConfiguration.Administration.ModIDs.ToArray()));
 

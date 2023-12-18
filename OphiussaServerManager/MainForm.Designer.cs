@@ -53,6 +53,8 @@
             this.routingFirewallToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.perfomanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.lblAutoBackup = new System.Windows.Forms.Label();
@@ -146,13 +148,19 @@
             // 
             this.tabControl1.Controls.Add(this.NewTab);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
+            this.tabControl1.ItemSize = new System.Drawing.Size(32, 18);
             this.tabControl1.Location = new System.Drawing.Point(0, 107);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(800, 506);
             this.tabControl1.TabIndex = 7;
+            this.tabControl1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tabControl1_DrawItem);
             this.tabControl1.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl1_Selecting);
             this.tabControl1.Click += new System.EventHandler(this.tabControl1_Click);
+            this.tabControl1.MouseLeave += new System.EventHandler(this.tabControl1_MouseLeave);
+            this.tabControl1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.tabControl1_MouseMove);
+            this.tabControl1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.tabControl1_MouseUp);
             // 
             // NewTab
             // 
@@ -170,7 +178,9 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolsToolStripMenuItem,
             this.serverMonitorToolStripMenuItem,
-            this.settingsToolStripMenuItem1});
+            this.settingsToolStripMenuItem1,
+            this.toolStripMenuItem4,
+            this.perfomanceToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -195,7 +205,7 @@
             // 
             this.refreshPublicIPToolStripMenuItem1.Image = global::OphiussaServerManager.Properties.Resources.refresh_icon_icon__4_;
             this.refreshPublicIPToolStripMenuItem1.Name = "refreshPublicIPToolStripMenuItem1";
-            this.refreshPublicIPToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.refreshPublicIPToolStripMenuItem1.Size = new System.Drawing.Size(175, 22);
             this.refreshPublicIPToolStripMenuItem1.Text = "Refresh Public IP";
             this.refreshPublicIPToolStripMenuItem1.Click += new System.EventHandler(this.refreshPublicIPToolStripMenuItem1_Click);
             // 
@@ -203,33 +213,33 @@
             // 
             this.refreshLocalIPToolStripMenuItem1.Image = global::OphiussaServerManager.Properties.Resources.refresh_icon_icon__4_;
             this.refreshLocalIPToolStripMenuItem1.Name = "refreshLocalIPToolStripMenuItem1";
-            this.refreshLocalIPToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.refreshLocalIPToolStripMenuItem1.Size = new System.Drawing.Size(175, 22);
             this.refreshLocalIPToolStripMenuItem1.Text = "Refresh Local IP";
             this.refreshLocalIPToolStripMenuItem1.Click += new System.EventHandler(this.refreshLocalIPToolStripMenuItem1_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(172, 6);
             // 
             // updateSteamCMDToolStripMenuItem
             // 
             this.updateSteamCMDToolStripMenuItem.Image = global::OphiussaServerManager.Properties.Resources.down_icon_icon;
             this.updateSteamCMDToolStripMenuItem.Name = "updateSteamCMDToolStripMenuItem";
-            this.updateSteamCMDToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.updateSteamCMDToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.updateSteamCMDToolStripMenuItem.Text = "Update SteamCMD";
             this.updateSteamCMDToolStripMenuItem.Click += new System.EventHandler(this.updateSteamCMDToolStripMenuItem_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(172, 6);
             // 
             // exitToolStripMenuItem1
             // 
             this.exitToolStripMenuItem1.Image = global::OphiussaServerManager.Properties.Resources.Close_icon_icon;
             this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
-            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(175, 22);
             this.exitToolStripMenuItem1.Text = "Exit";
             this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
             // 
@@ -257,13 +267,13 @@
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(135, 6);
             // 
             // routingFirewallToolStripMenuItem
             // 
             this.routingFirewallToolStripMenuItem.Image = global::OphiussaServerManager.Properties.Resources.firewall_icon_icon;
             this.routingFirewallToolStripMenuItem.Name = "routingFirewallToolStripMenuItem";
-            this.routingFirewallToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.routingFirewallToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.routingFirewallToolStripMenuItem.Text = "Port Foward";
             this.routingFirewallToolStripMenuItem.Click += new System.EventHandler(this.routingFirewallToolStripMenuItem_Click);
             // 
@@ -271,16 +281,30 @@
             // 
             this.settingsToolStripMenuItem.Image = global::OphiussaServerManager.Properties.Resources.preferences__options__setting__cog__gear__system__settings_icon_icon;
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
             // testsToolStripMenuItem
             // 
             this.testsToolStripMenuItem.Name = "testsToolStripMenuItem";
-            this.testsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.testsToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.testsToolStripMenuItem.Text = "Tests";
             this.testsToolStripMenuItem.Click += new System.EventHandler(this.testsToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(12, 20);
+            // 
+            // perfomanceToolStripMenuItem
+            // 
+            this.perfomanceToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.perfomanceToolStripMenuItem.Image = global::OphiussaServerManager.Properties.Resources.speedometer__speed__dashboard__measure__board__device__gauge__widgets__value_icon_icon;
+            this.perfomanceToolStripMenuItem.Name = "perfomanceToolStripMenuItem";
+            this.perfomanceToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
+            this.perfomanceToolStripMenuItem.Text = "Perfomance";
+            this.perfomanceToolStripMenuItem.Click += new System.EventHandler(this.perfomanceToolStripMenuItem_Click);
             // 
             // label5
             // 
@@ -450,6 +474,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem updateSteamCMDToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem testsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem perfomanceToolStripMenuItem;
     }
 }
 

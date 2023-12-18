@@ -28,6 +28,7 @@ namespace OphiussaServerManager
         Dictionary<string, Profile> Profiles = new Dictionary<string, Profile>();
         Dictionary<string, LinkProfileForm> linkProfileForms = new Dictionary<string, LinkProfileForm>();
         public static Common.Models.Settings Settings;
+        private int HoverIndex = -1;
 
         public static string PublicIP { get; set; }
         public static string LocaIP { get; set; }
@@ -202,7 +203,7 @@ namespace OphiussaServerManager
                 else
                 {
                     prf = p;
-                    tab.Text = p.Name;
+                    tab.Text = p.Name + "          ";
                 }
                 Profiles.Add(prf.Key, prf);
 
@@ -433,6 +434,106 @@ namespace OphiussaServerManager
         {
             FrmPortForward frmPortForward = new FrmPortForward();
             frmPortForward.LoadPortFoward(Profiles);
+        }
+
+        private void perfomanceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmUsedResources frmUsedResources = new FrmUsedResources();
+            frmUsedResources.Show();
+        }
+
+        private void tabControl1_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            var g = e.Graphics;
+            var tp = tabControl1.TabPages[e.Index];
+
+            var rt = e.Bounds;
+            var rx = new Rectangle(rt.Right - 20, (rt.Y + (rt.Height - 12)) / 2 + 1, 12, 12);
+
+            if ((e.State & DrawItemState.Selected) != DrawItemState.Selected)
+            {
+                rx.Offset(0, 2);
+            }
+
+            rt.Inflate(-rx.Width, 0);
+            rt.Offset(-(rx.Width / 2), 0);
+            using (Font f = new Font("Marlett", 8f))
+            using (StringFormat sf = new StringFormat()
+            {
+                Alignment = StringAlignment.Center,
+                LineAlignment = StringAlignment.Center,
+                Trimming = StringTrimming.EllipsisCharacter,
+                FormatFlags = StringFormatFlags.NoWrap,
+            })
+            {
+                g.DrawString(tp.Text, tp.Font ?? Font, Brushes.Black, rt, sf);
+                if (tp.Text != "+") g.DrawString("r", f, HoverIndex == e.Index ? Brushes.Black : Brushes.Red, rx, sf);
+            }
+            tp.Tag = rx;
+        }
+
+        private void tabControl1_MouseMove(object sender, MouseEventArgs e)
+        {
+            for (int i = 0; i < tabControl1.TabCount; i++)
+            {
+                if (tabControl1.TabPages[i].Tag == null) continue;
+                var rx = (Rectangle)tabControl1.TabPages[i].Tag;
+
+                if (rx.Contains(e.Location))
+                {
+                    //To avoid the redundant calls. 
+                    if (HoverIndex != i)
+                    {
+                        HoverIndex = i;
+                        tabControl1.Invalidate();
+                    }
+                    return;
+                }
+            }
+
+            //To avoid the redundant calls.
+            if (HoverIndex != -1)
+            {
+                HoverIndex = -1;
+                tabControl1.Invalidate();
+            }
+        }
+
+        private void tabControl1_MouseLeave(object sender, EventArgs e)
+        {
+            if (HoverIndex != -1)
+            {
+                HoverIndex = -1;
+                tabControl1.Invalidate();
+            }
+        }
+
+        private void tabControl1_MouseUp(object sender, MouseEventArgs e)
+        {
+            for (int i = 0; i < tabControl1.TabCount; i++)
+            {
+                var rx = (Rectangle)tabControl1.TabPages[i].Tag;
+
+                if (rx.Contains(e.Location)) //changed e.Location to rx.Location
+                {
+                    if (MessageBox.Show("Do you want to delete this profile?", "DELETE PROFILE", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                    {
+
+                        foreach (var key in linkProfileForms.Keys)
+                        {
+                            if (linkProfileForms[key].Tab == tabControl1.TabPages[i])
+                            {
+                                FrmDeleteProfile frm = new FrmDeleteProfile();
+                                if (frm.OpenDeleteProfile(linkProfileForms[key].Profile) == DialogResult.OK)
+                                {
+                                    tabControl1.TabPages[i].Dispose();
+                                    return;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

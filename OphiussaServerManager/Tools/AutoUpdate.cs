@@ -490,6 +490,16 @@ namespace OphiussaServerManager.Tools.Update
                 int i = 1;
                 foreach (var file in changedFiles)
                 {
+
+                    string targetpath = file.FullName.Replace(CacheFolder, p.InstallLocation);
+
+                    FileInfo file1 = new FileInfo(targetpath);
+
+                    if (!Directory.Exists(file1.DirectoryName))
+                    {
+                        Directory.CreateDirectory(file1.DirectoryName);
+                    }
+
                     System.IO.File.Copy(file.FullName, file.FullName.Replace(CacheFolder, p.InstallLocation), true);
                     OnProgressChanged(new ProcessEventArg() { Message = $"Copying files {i}/{changedFiles.Count} => {file.FullName}", IsStarting = false, ProcessedFileCount = i, Sucessful = false, TotalFiles = changedFiles.Count });
 
@@ -574,10 +584,16 @@ namespace OphiussaServerManager.Tools.Update
             {
                 Directory.CreateDirectory(cache);
 
-                string jsonString = JsonConvert.SerializeObject(mods, Formatting.Indented);
-                File.WriteAllText(System.IO.Path.Combine(cache, $"SteamModCache_{p.Key}.json"), jsonString);
                 isFirstRun = true;
             }
+
+            FileInfo fileInfo = new FileInfo((System.IO.Path.Combine(cache, $"SteamModCache_{p.Key}.json")));
+            if (!fileInfo.Exists)
+            {
+                string jsonString = JsonConvert.SerializeObject(mods, Formatting.Indented);
+                File.WriteAllText(System.IO.Path.Combine(cache, $"SteamModCache_{p.Key}.json"), jsonString);
+            }
+
 
             PublishedFileDetailsResponse cachedmods = JsonConvert.DeserializeObject<PublishedFileDetailsResponse>(System.IO.File.ReadAllText(System.IO.Path.Combine(cache, $"SteamModCache_{p.Key}.json")));
             List<PublishedFileDetail> changedMods = new List<PublishedFileDetail>();
@@ -602,7 +618,7 @@ namespace OphiussaServerManager.Tools.Update
             string jsonString1 = JsonConvert.SerializeObject(mods, Formatting.Indented);
             File.WriteAllText(System.IO.Path.Combine(cache, $"SteamModCache_{p.Key}.json"), jsonString1);
 
-            return changedMods;
+            return changedMods ?? new List<PublishedFileDetail>();
         }
 
         public List<CurseForgeFileDetail> CheckSCurseForgeMods(Profile p, Settings Settings, string CacheFolder)
@@ -615,13 +631,18 @@ namespace OphiussaServerManager.Tools.Update
             {
                 Directory.CreateDirectory(cache);
 
+            }
+
+            FileInfo fileInfo = new FileInfo((System.IO.Path.Combine(cache, $"CurseForgeModCache_{p.Key}.json")));
+            if (!fileInfo.Exists)
+            {
                 string jsonString = JsonConvert.SerializeObject(mods, Formatting.Indented);
                 File.WriteAllText(System.IO.Path.Combine(cache, $"CurseForgeModCache_{p.Key}.json"), jsonString);
             }
 
             CurseForgeFileDetailResponse cachedmods = JsonConvert.DeserializeObject<CurseForgeFileDetailResponse>(System.IO.File.ReadAllText(System.IO.Path.Combine(cache, $"CurseForgeModCache_{p.Key}.json")));
 
-            List<CurseForgeFileDetail> changedMods = cachedmods.data.FindAll(m => CheckMod(m, mods) != null);
+            List<CurseForgeFileDetail> changedMods = cachedmods.data?.FindAll(m => CheckMod(m, mods) != null);
 
             CurseForgeFileDetail CheckMod(CurseForgeFileDetail mod, CurseForgeFileDetailResponse modList)
             {
@@ -634,7 +655,7 @@ namespace OphiussaServerManager.Tools.Update
             string jsonString1 = JsonConvert.SerializeObject(mods, Formatting.Indented);
             File.WriteAllText(System.IO.Path.Combine(cache, $"CurseForgeModCache_{p.Key}.json"), jsonString1);
 
-            return changedMods;
+            return changedMods ?? new List<CurseForgeFileDetail>();
         }
     }
 }

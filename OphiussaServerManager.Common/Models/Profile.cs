@@ -144,6 +144,11 @@ namespace OphiussaServerManager.Common.Models.Profiles
                 Directory.CreateDirectory(dir);
             }
 
+            if (!Directory.Exists(InstallLocation))
+            {
+                Directory.CreateDirectory(InstallLocation);
+            }
+
             string jsonString = JsonConvert.SerializeObject(this, Formatting.Indented);
             File.WriteAllText(dir + this.Key + ".json", jsonString);
 
@@ -151,7 +156,7 @@ namespace OphiussaServerManager.Common.Models.Profiles
             {
                 case EnumServerType.ArkSurviveEvolved:
                 case EnumServerType.ArkSurviveAscended:
-                    ARKConfiguration.SaveGameINI(this); 
+                    ARKConfiguration.SaveGameINI(this);
 
                     string priority = ARKConfiguration.Administration.CPUPriority.ToString().ToLower();
                     string affinity = ARKConfiguration.GetCPUAffinity();
