@@ -45,48 +45,56 @@ namespace OphiussaServerManager
 #else
             testsToolStripMenuItem.Visible = false;
 #endif
-            if (!File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json")))
-            {
-                Forms.FrmSettings settings = new Forms.FrmSettings();
-                settings.ShowDialog();
-            }
-            Settings = JsonConvert.DeserializeObject<Common.Models.Settings>(File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json")));
-            OphiussaLogger.ReconfigureLogging(Settings);
-
-            if (Settings.UpdateSteamCMDOnStartup) Common.NetworkTools.DownloadSteamCMD();
-            System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
-            System.Diagnostics.FileVersionInfo fvi = System.Diagnostics.FileVersionInfo.GetVersionInfo(assembly.Location);
-            txtVersion.Text = fvi.FileVersion;
-
-            LoadProfiles();
-
-            txtLocalIP.Text = await System.Threading.Tasks.Task.Run(() => Common.NetworkTools.GetHostIp());
-
             try
             {
-                var discoverer = new NatDiscoverer();
-                var device = await discoverer.DiscoverDeviceAsync();
-                var ip = await device.GetExternalIPAsync();
-                txtPublicIP.Text = ip.ToString();
-            }
-            catch (Exception ex)
-            {
-                OphiussaLogger.logger.Error(ex);
-            }
-            try
-            {
-                if (txtPublicIP.Text == "")
+                if (!File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json")))
                 {
-                    txtPublicIP.Text = await System.Threading.Tasks.Task.Run(() => Common.NetworkTools.GetPublicIp());
+                    Forms.FrmSettings settings = new Forms.FrmSettings();
+                    settings.ShowDialog();
                 }
+                Settings = JsonConvert.DeserializeObject<Common.Models.Settings>(File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json")));
+                OphiussaLogger.ReconfigureLogging(Settings);
+
+                if (Settings.UpdateSteamCMDOnStartup) Common.NetworkTools.DownloadSteamCMD();
+                System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
+                System.Diagnostics.FileVersionInfo fvi = System.Diagnostics.FileVersionInfo.GetVersionInfo(assembly.Location);
+                txtVersion.Text = fvi.FileVersion;
+
+                LoadProfiles();
+
+                txtLocalIP.Text = await System.Threading.Tasks.Task.Run(() => Common.NetworkTools.GetHostIp());
+
+                try
+                {
+                    var discoverer = new NatDiscoverer();
+                    var device = await discoverer.DiscoverDeviceAsync();
+                    var ip = await device.GetExternalIPAsync();
+                    txtPublicIP.Text = ip.ToString();
+                }
+                catch (Exception ex)
+                {
+                    OphiussaLogger.logger.Error(ex);
+                }
+                try
+                {
+                    if (txtPublicIP.Text == "")
+                    {
+                        txtPublicIP.Text = await System.Threading.Tasks.Task.Run(() => Common.NetworkTools.GetPublicIp());
+                    }
+                }
+                catch (Exception ex)
+                {
+                    OphiussaLogger.logger.Error(ex);
+                }
+                timerCheckTask.Enabled = true;
+                tabControl1.SelectedIndex = 0;
+
+
             }
             catch (Exception ex)
             {
-                OphiussaLogger.logger.Error(ex);
+                MessageBox.Show(ex.Message);
             }
-            timerCheckTask.Enabled = true;
-            tabControl1.SelectedIndex = 0;
-
         }
 
         private void LoadProfiles()
@@ -256,16 +264,6 @@ namespace OphiussaServerManager
             LocaIP = txtLocalIP.Text;
         }
 
-        private async void btRefreshIP_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void btMonitor_Click(object sender, EventArgs e)
-        {
-            FrmServerMonitor monitor = new FrmServerMonitor();
-            monitor.Show();
-        }
-
         private void serverMonitorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmServerMonitor monitor = new FrmServerMonitor();
@@ -394,7 +392,14 @@ namespace OphiussaServerManager
 
         private void updateSteamCMDToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Common.NetworkTools.DownloadSteamCMD();
+            try
+            {
+                Common.NetworkTools.DownloadSteamCMD();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void button1_Click_1(object sender, EventArgs e)

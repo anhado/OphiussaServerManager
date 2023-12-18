@@ -1,6 +1,7 @@
 ﻿using OphiussaServerManager.Common;
 using OphiussaServerManager.Common.Helpers;
 using OphiussaServerManager.Common.Models;
+using OphiussaServerManager.Tools;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -126,7 +127,8 @@ namespace OphiussaServerManager.Forms
                 }
 
                 if (!keepRunning) break;
-                if (!isResourMonitorRunning()) break;
+                if (!UsefullTools.isFormRunning("FrmUsedResources")) break;
+                if (!UsefullTools.isFormRunning("MainForm")) break;
                 Thread.Sleep(ResourceMonitor.Timer);
             }
         }
@@ -227,7 +229,8 @@ namespace OphiussaServerManager.Forms
                     }
                 }
                 ResourceMonitor.Usage = usage;
-                if (!isResourMonitorRunning()) break;
+                if (!UsefullTools.isFormRunning("FrmUsedResources")) break;
+                if (!UsefullTools.isFormRunning("MainForm")) break;
                 Thread.Sleep(ResourceMonitor.Timer);
             }
         }
@@ -360,21 +363,6 @@ namespace OphiussaServerManager.Forms
         private void FrmUsedResourcesStatusWindow_Load(object sender, EventArgs e)
         {
             LoadData();
-        }
-
-        private bool isResourMonitorRunning()
-        {
-            FormCollection fc = Application.OpenForms;
-
-            foreach (Form frm in fc)
-            {
-                //iterate through
-                if (frm.Name == "FrmUsedResources")
-                {
-                    return true;
-                }
-            }
-            return false;
         }
     }
 }

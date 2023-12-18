@@ -4,6 +4,7 @@ using OphiussaServerManager.Common;
 using OphiussaServerManager.Common.Models;
 using OphiussaServerManager.Common.Models.Profiles;
 using OphiussaServerManager.Common.Models.SupportedServers;
+using OphiussaServerManager.Tools;
 using OphiussaServerManager.Tools.Update;
 using System;
 using System.Collections.Generic;
@@ -755,11 +756,12 @@ namespace OphiussaServerManager.Forms
                     ProcessID = -1;
                     isRunning = false;
                 }
+                if (!UsefullTools.isFormRunning("MainForm")) break;
                 Thread.Sleep(timerGetProcess.Interval);
             }
         }
 
-        private async void timerGetProcess_Tick(object sender, EventArgs e)
+        private void timerGetProcess_Tick(object sender, EventArgs e)
         {
             try
             {

@@ -265,12 +265,6 @@ namespace OphiussaServerManager.Forms
             txtBackup.Text = folderBrowserDialog1.SelectedPath;
         }
 
-        private void button5_Click(object sender, EventArgs e)
-        {
-            Common.NetworkTools.DownloadSteamCMD();
-
-        }
-
         private void chkAnonymous_CheckedChanged(object sender, EventArgs e)
         {
             txtUserName.Enabled = !chkAnonymous.Checked;
@@ -285,7 +279,7 @@ namespace OphiussaServerManager.Forms
         {
             string fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json");
             Common.Models.Settings sett = new Common.Models.Settings();
-            if (MainForm.Settings==null)
+            if (MainForm.Settings == null)
             {
                 Guid guid = Guid.NewGuid();
                 sett.GUID = guid.ToString();

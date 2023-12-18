@@ -189,14 +189,7 @@ namespace OphiussaServerManager.Forms
                     bool FirewallPeerPort = false;
                     bool FirewallQueryPort = false;
                     bool FirewallRconPort = false;
-
-
-                    ushort vServerPort = 0;
-                    ushort vPeerPort = 0;
-                    ushort vQueryPort = 0;
-                    ushort vRconPort = 0;
-
-
+                     
                     if (obj.UseServerPort) serverMapping = await device.GetSpecificMappingAsync(Protocol.TcpUpd, obj.ServerPort);
                     if (obj.UsePeerPort) peerMapping = await device.GetSpecificMappingAsync(Protocol.TcpUpd, obj.PeerPort);
                     if (obj.UseQueryPort) QueryMapping = await device.GetSpecificMappingAsync(Protocol.TcpUpd, obj.QueryPort);
