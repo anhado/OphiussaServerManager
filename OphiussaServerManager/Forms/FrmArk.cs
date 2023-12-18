@@ -24,6 +24,8 @@ namespace OphiussaServerManager.Forms
         TabPage tab;
         bool isInstalled = false;
         bool isRunning = false;
+        int ProcessID = -1;
+
         public FrmArk()
         {
             InitializeComponent();
@@ -725,16 +727,35 @@ namespace OphiussaServerManager.Forms
         {
             while (true)
             {
-                Process process = profile.GetExeProcess();
+                Process process = null;
+
+                if (ProcessID == -1)
+                {
+                    process = profile.GetExeProcess();
+                }
+                else
+                {
+                    try
+                    {
+                        process = Process.GetProcessById(ProcessID);
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+                }
+
                 if (process != null)
                 {
+                    ProcessID = process.Id;
                     isRunning = true;
                 }
                 else
                 {
+                    ProcessID = -1;
                     isRunning = false;
                 }
-
+                Thread.Sleep(timerGetProcess.Interval);
             }
         }
 
