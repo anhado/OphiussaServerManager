@@ -40,21 +40,47 @@ namespace OphiussaServerManager.Forms
                 foreach (string key in profiles.Keys)
                 {
                     Profile profile = profiles[key];
+                    Mapping serverMapping = null;
+                    Mapping peerMapping = null;
+                    Mapping QueryMapping = null;
+                    Mapping RconMapping = null;
+                    string serverName = string.Empty;
+                    bool FirewallServerPort = false;
+                    bool FirewallPeerPort = false;
+                    bool FirewallQueryPort = false;
+                    bool FirewallRconPort = false;
 
-                    Mapping serverMapping = await device.GetSpecificMappingAsync(Protocol.TcpUpd, profile.ARKConfiguration.Administration.ServerPort.ToInt());
-                    Mapping peerMapping = await device.GetSpecificMappingAsync(Protocol.TcpUpd, profile.ARKConfiguration.Administration.PeerPort.ToInt());
-                    Mapping QueryMapping = await device.GetSpecificMappingAsync(Protocol.TcpUpd, profile.ARKConfiguration.Administration.QueryPort.ToInt());
-                    Mapping RconMapping = await device.GetSpecificMappingAsync(Protocol.TcpUpd, profile.ARKConfiguration.Administration.RCONPort.ToInt());
+                    ushort vServerPort = 0;
+                    ushort vPeerPort = 0;
+                    ushort vQueryPort = 0;
+                    ushort vRconPort = 0;
 
-                    bool FirewallServerPort = NetworkTools.IsPortOpen(profile.Name, profile.ARKConfiguration.Administration.ServerPort.ToInt());
-                    bool FirewallPeerPort = NetworkTools.IsPortOpen(profile.Name, profile.ARKConfiguration.Administration.PeerPort.ToInt());
-                    bool FirewallQueryPort = NetworkTools.IsPortOpen(profile.Name, profile.ARKConfiguration.Administration.QueryPort.ToInt());
-                    bool FirewallRconPort = NetworkTools.IsPortOpen(profile.Name, profile.ARKConfiguration.Administration.RCONPort.ToInt());
+                    switch (profile.Type.ServerType)
+                    {
+                        case Common.Models.SupportedServers.EnumServerType.ArkSurviveEvolved:
+                        case Common.Models.SupportedServers.EnumServerType.ArkSurviveAscended:
+                            serverName = profile.ARKConfiguration.Administration.ServerName;
+
+                            serverMapping = await device.GetSpecificMappingAsync(Protocol.TcpUpd, profile.ARKConfiguration.Administration.ServerPort.ToInt());
+                            peerMapping = await device.GetSpecificMappingAsync(Protocol.TcpUpd, profile.ARKConfiguration.Administration.PeerPort.ToInt());
+                            QueryMapping = await device.GetSpecificMappingAsync(Protocol.TcpUpd, profile.ARKConfiguration.Administration.QueryPort.ToInt());
+                            RconMapping = await device.GetSpecificMappingAsync(Protocol.TcpUpd, profile.ARKConfiguration.Administration.RCONPort.ToInt());
+
+                            FirewallServerPort = NetworkTools.IsPortOpen(profile.Name, profile.ARKConfiguration.Administration.ServerPort.ToInt());
+                            FirewallPeerPort = NetworkTools.IsPortOpen(profile.Name, profile.ARKConfiguration.Administration.PeerPort.ToInt());
+                            FirewallQueryPort = NetworkTools.IsPortOpen(profile.Name, profile.ARKConfiguration.Administration.QueryPort.ToInt());
+                            FirewallRconPort = NetworkTools.IsPortOpen(profile.Name, profile.ARKConfiguration.Administration.RCONPort.ToInt());
+                            vServerPort = profile.ARKConfiguration.Administration.ServerPort.ToUShort();
+                            vPeerPort = profile.ARKConfiguration.Administration.PeerPort.ToUShort();
+                            vQueryPort = profile.ARKConfiguration.Administration.QueryPort.ToUShort();
+                            vRconPort = profile.ARKConfiguration.Administration.RCONPort.ToUShort();
+                            break;
+                    }
 
                     portForwardGridBindingSource.Add(new PortForwardGrid()
                     {
                         Profile = profile.Name,
-                        ServerName = profile.ARKConfiguration.Administration.ServerName,
+                        ServerName = serverName,
                         FirewallServerPort = FirewallServerPort ? new Bitmap(Properties.Resources.ok_icon_icon) : new Bitmap(Properties.Resources.Close_icon_icon),
                         FirewallPeerPort = FirewallPeerPort ? new Bitmap(Properties.Resources.ok_icon_icon) : new Bitmap(Properties.Resources.Close_icon_icon),
                         FirewallQueryPort = FirewallQueryPort ? new Bitmap(Properties.Resources.ok_icon_icon) : new Bitmap(Properties.Resources.Close_icon_icon),
@@ -63,10 +89,10 @@ namespace OphiussaServerManager.Forms
                         RouterPeerPort = peerMapping != null ? new Bitmap(Properties.Resources.ok_icon_icon) : new Bitmap(Properties.Resources.Close_icon_icon),
                         RouterQueryPort = QueryMapping != null ? new Bitmap(Properties.Resources.ok_icon_icon) : new Bitmap(Properties.Resources.Close_icon_icon),
                         RouterRconPort = RconMapping != null ? new Bitmap(Properties.Resources.ok_icon_icon) : new Bitmap(Properties.Resources.Close_icon_icon),
-                        ServerPort = profile.ARKConfiguration.Administration.ServerPort.ToUShort(),
-                        PeerPort = profile.ARKConfiguration.Administration.PeerPort.ToUShort(),
-                        QueryPort = profile.ARKConfiguration.Administration.QueryPort.ToUShort(),
-                        RconPort = profile.ARKConfiguration.Administration.RCONPort.ToUShort(),
+                        ServerPort = vServerPort,
+                        PeerPort = vPeerPort,
+                        QueryPort = vQueryPort,
+                        RconPort = vRconPort,
                         isOK = FirewallServerPort && FirewallPeerPort && FirewallQueryPort && FirewallRconPort && serverMapping != null && peerMapping != null && QueryMapping != null && RconMapping != null
                     });
                 }

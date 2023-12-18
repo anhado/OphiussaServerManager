@@ -53,6 +53,7 @@
             // txtName
             // 
             this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtName.Enabled = false;
             this.txtName.Location = new System.Drawing.Point(85, 38);
             this.txtName.Name = "txtName";
             this.txtName.ReadOnly = true;
@@ -62,6 +63,7 @@
             // txtKey
             // 
             this.txtKey.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtKey.Enabled = false;
             this.txtKey.Location = new System.Drawing.Point(85, 12);
             this.txtKey.Name = "txtKey";
             this.txtKey.ReadOnly = true;
@@ -80,6 +82,7 @@
             // txtLocation
             // 
             this.txtLocation.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtLocation.Enabled = false;
             this.txtLocation.Location = new System.Drawing.Point(85, 64);
             this.txtLocation.Name = "txtLocation";
             this.txtLocation.ReadOnly = true;

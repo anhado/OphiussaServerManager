@@ -206,6 +206,7 @@ namespace OphiussaServerManager.Common.Models.Profiles
             hifenArgs.Add($" -server");
             hifenArgs.Add($" -log");
 
+            hifenArgs.Add($" -ForceAllowCaveFlyers");//Remove later
             //?AllowCrateSpawnsOnTopOfStructures=True 
             //-ForceAllowCaveFlyers
             //-NoTransferFromFiltering
