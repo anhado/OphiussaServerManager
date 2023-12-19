@@ -48,6 +48,86 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtProfileID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.fbd = new System.Windows.Forms.FolderBrowserDialog();
+            this.timerGetProcess = new System.Windows.Forms.Timer(this.components);
+            this.expandCollapsePanel4 = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.chkRestart2 = new System.Windows.Forms.CheckBox();
+            this.chkRestart1 = new System.Windows.Forms.CheckBox();
+            this.chkUpdate1 = new System.Windows.Forms.CheckBox();
+            this.chkUpdate2 = new System.Windows.Forms.CheckBox();
+            this.chkSat1 = new System.Windows.Forms.CheckBox();
+            this.chkFri1 = new System.Windows.Forms.CheckBox();
+            this.chkSat2 = new System.Windows.Forms.CheckBox();
+            this.chkThu1 = new System.Windows.Forms.CheckBox();
+            this.txtShutdow2 = new System.Windows.Forms.MaskedTextBox();
+            this.chkWed1 = new System.Windows.Forms.CheckBox();
+            this.chkFri2 = new System.Windows.Forms.CheckBox();
+            this.chkTue1 = new System.Windows.Forms.CheckBox();
+            this.chkShutdown2 = new System.Windows.Forms.CheckBox();
+            this.chkMon1 = new System.Windows.Forms.CheckBox();
+            this.chkThu2 = new System.Windows.Forms.CheckBox();
+            this.chkSun1 = new System.Windows.Forms.CheckBox();
+            this.chkSun2 = new System.Windows.Forms.CheckBox();
+            this.txtShutdow1 = new System.Windows.Forms.MaskedTextBox();
+            this.chkWed2 = new System.Windows.Forms.CheckBox();
+            this.chkRestartIfShutdown = new System.Windows.Forms.CheckBox();
+            this.chkMon2 = new System.Windows.Forms.CheckBox();
+            this.chkAutoUpdate = new System.Windows.Forms.CheckBox();
+            this.chkTue2 = new System.Windows.Forms.CheckBox();
+            this.chkIncludeAutoBackup = new System.Windows.Forms.CheckBox();
+            this.chkShutdown1 = new System.Windows.Forms.CheckBox();
+            this.rbOnLogin = new System.Windows.Forms.RadioButton();
+            this.rbOnBoot = new System.Windows.Forms.RadioButton();
+            this.chkAutoStart = new System.Windows.Forms.CheckBox();
+            this.expandCollapsePanel2 = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtSubBackups = new System.Windows.Forms.TextBox();
+            this.tbSubBackups = new System.Windows.Forms.TrackBar();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtFirstBackup = new System.Windows.Forms.TextBox();
+            this.tbFirstBackup = new System.Windows.Forms.TrackBar();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtBackupToKeep = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtLogLocation = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtAutoSavePeriod = new System.Windows.Forms.TextBox();
+            this.tbAutoSavePeriod = new System.Windows.Forms.TrackBar();
+            this.txtSaveLocation = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.expandCollapsePanel3 = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.rbPortalsNone = new System.Windows.Forms.RadioButton();
+            this.rbPortalsVeryHard = new System.Windows.Forms.RadioButton();
+            this.rbPortalsHard = new System.Windows.Forms.RadioButton();
+            this.rbPortalsCasual = new System.Windows.Forms.RadioButton();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.rbResourcesNone = new System.Windows.Forms.RadioButton();
+            this.rbResourcesMuchLess = new System.Windows.Forms.RadioButton();
+            this.rbResourcesMost = new System.Windows.Forms.RadioButton();
+            this.rbResourcesMuchMore = new System.Windows.Forms.RadioButton();
+            this.rbResourcesMore = new System.Windows.Forms.RadioButton();
+            this.rbResourcesLess = new System.Windows.Forms.RadioButton();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.rbDeathPenaltyCasual = new System.Windows.Forms.RadioButton();
+            this.rbDeathPenaltyHardCore = new System.Windows.Forms.RadioButton();
+            this.rbDeathPenaltyHard = new System.Windows.Forms.RadioButton();
+            this.rbDeathPenaltyEasy = new System.Windows.Forms.RadioButton();
+            this.rbDeathPenaltyVeryEasy = new System.Windows.Forms.RadioButton();
+            this.rbDeathPenaltyNone = new System.Windows.Forms.RadioButton();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.rbCombatVeryHard = new System.Windows.Forms.RadioButton();
+            this.rbCombatHard = new System.Windows.Forms.RadioButton();
+            this.rbCombatEasy = new System.Windows.Forms.RadioButton();
+            this.rbCombatVeryEasy = new System.Windows.Forms.RadioButton();
+            this.rbCombatNone = new System.Windows.Forms.RadioButton();
             this.expandCollapsePanel1 = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
@@ -89,87 +169,26 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.cbBranch = new System.Windows.Forms.ComboBox();
             this.label22 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtSaveLocation = new System.Windows.Forms.TextBox();
-            this.txtLogLocation = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label15 = new System.Windows.Forms.Label();
-            this.txtSubBackups = new System.Windows.Forms.TextBox();
-            this.tbSubBackups = new System.Windows.Forms.TrackBar();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtFirstBackup = new System.Windows.Forms.TextBox();
-            this.tbFirstBackup = new System.Windows.Forms.TrackBar();
-            this.label14 = new System.Windows.Forms.Label();
-            this.txtBackupToKeep = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.txtAutoSavePeriod = new System.Windows.Forms.TextBox();
-            this.tbAutoSavePeriod = new System.Windows.Forms.TrackBar();
-            this.label19 = new System.Windows.Forms.Label();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.rbCombatVeryHard = new System.Windows.Forms.RadioButton();
-            this.rbCombatHard = new System.Windows.Forms.RadioButton();
-            this.rbCombatEasy = new System.Windows.Forms.RadioButton();
-            this.rbCombatVeryEasy = new System.Windows.Forms.RadioButton();
-            this.rbCombatNone = new System.Windows.Forms.RadioButton();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.rbDeathPenaltyCasual = new System.Windows.Forms.RadioButton();
-            this.rbDeathPenaltyHardCore = new System.Windows.Forms.RadioButton();
-            this.rbDeathPenaltyHard = new System.Windows.Forms.RadioButton();
-            this.rbDeathPenaltyEasy = new System.Windows.Forms.RadioButton();
-            this.rbDeathPenaltyVeryEasy = new System.Windows.Forms.RadioButton();
-            this.rbDeathPenaltyNone = new System.Windows.Forms.RadioButton();
-            this.expandCollapsePanel3 = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.rbPortalsNone = new System.Windows.Forms.RadioButton();
-            this.rbPortalsVeryHard = new System.Windows.Forms.RadioButton();
-            this.rbPortalsHard = new System.Windows.Forms.RadioButton();
-            this.rbPortalsCasual = new System.Windows.Forms.RadioButton();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.rbResourcesNone = new System.Windows.Forms.RadioButton();
-            this.rbResourcesMuchLess = new System.Windows.Forms.RadioButton();
-            this.rbResourcesMost = new System.Windows.Forms.RadioButton();
-            this.rbResourcesMuchMore = new System.Windows.Forms.RadioButton();
-            this.rbResourcesMore = new System.Windows.Forms.RadioButton();
-            this.rbResourcesLess = new System.Windows.Forms.RadioButton();
-            this.expandCollapsePanel2 = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
-            this.expandCollapsePanel4 = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
-            this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.chkRestart2 = new System.Windows.Forms.CheckBox();
-            this.chkRestart1 = new System.Windows.Forms.CheckBox();
-            this.chkUpdate1 = new System.Windows.Forms.CheckBox();
-            this.chkUpdate2 = new System.Windows.Forms.CheckBox();
-            this.chkSat1 = new System.Windows.Forms.CheckBox();
-            this.chkFri1 = new System.Windows.Forms.CheckBox();
-            this.chkSat2 = new System.Windows.Forms.CheckBox();
-            this.chkThu1 = new System.Windows.Forms.CheckBox();
-            this.txtShutdow2 = new System.Windows.Forms.MaskedTextBox();
-            this.chkWed1 = new System.Windows.Forms.CheckBox();
-            this.chkFri2 = new System.Windows.Forms.CheckBox();
-            this.chkTue1 = new System.Windows.Forms.CheckBox();
-            this.chkShutdown2 = new System.Windows.Forms.CheckBox();
-            this.chkMon1 = new System.Windows.Forms.CheckBox();
-            this.chkThu2 = new System.Windows.Forms.CheckBox();
-            this.chkSun1 = new System.Windows.Forms.CheckBox();
-            this.chkSun2 = new System.Windows.Forms.CheckBox();
-            this.txtShutdow1 = new System.Windows.Forms.MaskedTextBox();
-            this.chkWed2 = new System.Windows.Forms.CheckBox();
-            this.chkRestartIfShutdown = new System.Windows.Forms.CheckBox();
-            this.chkMon2 = new System.Windows.Forms.CheckBox();
-            this.chkAutoUpdate = new System.Windows.Forms.CheckBox();
-            this.chkTue2 = new System.Windows.Forms.CheckBox();
-            this.chkIncludeAutoBackup = new System.Windows.Forms.CheckBox();
-            this.chkShutdown1 = new System.Windows.Forms.CheckBox();
-            this.rbOnLogin = new System.Windows.Forms.RadioButton();
-            this.rbOnBoot = new System.Windows.Forms.RadioButton();
-            this.chkAutoStart = new System.Windows.Forms.CheckBox();
-            this.fbd = new System.Windows.Forms.FolderBrowserDialog();
-            this.timerGetProcess = new System.Windows.Forms.Timer(this.components);
+            this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.rbRaidsDefault = new System.Windows.Forms.RadioButton();
+            this.rbRaidsMuchLess = new System.Windows.Forms.RadioButton();
+            this.rbRaidsMuchMore = new System.Windows.Forms.RadioButton();
+            this.rbRaidsMore = new System.Windows.Forms.RadioButton();
+            this.rbRaidsLess = new System.Windows.Forms.RadioButton();
+            this.rbRaidsNone = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
+            this.expandCollapsePanel4.SuspendLayout();
+            this.groupBox11.SuspendLayout();
+            this.expandCollapsePanel2.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbSubBackups)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbFirstBackup)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbAutoSavePeriod)).BeginInit();
+            this.expandCollapsePanel3.SuspendLayout();
+            this.groupBox9.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.expandCollapsePanel1.SuspendLayout();
             this.groupBox12.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -177,18 +196,7 @@
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbSubBackups)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbFirstBackup)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbAutoSavePeriod)).BeginInit();
-            this.groupBox6.SuspendLayout();
-            this.groupBox7.SuspendLayout();
-            this.expandCollapsePanel3.SuspendLayout();
-            this.groupBox9.SuspendLayout();
-            this.groupBox8.SuspendLayout();
-            this.expandCollapsePanel2.SuspendLayout();
-            this.expandCollapsePanel4.SuspendLayout();
-            this.groupBox11.SuspendLayout();
+            this.groupBox13.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -215,7 +223,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(783, 147);
+            this.panel1.Size = new System.Drawing.Size(800, 147);
             this.panel1.TabIndex = 2;
             // 
             // txtBuild
@@ -272,7 +280,7 @@
             // btRCON
             // 
             this.btRCON.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btRCON.Location = new System.Drawing.Point(694, 60);
+            this.btRCON.Location = new System.Drawing.Point(711, 60);
             this.btRCON.Name = "btRCON";
             this.btRCON.Size = new System.Drawing.Size(75, 23);
             this.btRCON.TabIndex = 11;
@@ -282,7 +290,7 @@
             // btStart
             // 
             this.btStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btStart.Location = new System.Drawing.Point(613, 60);
+            this.btStart.Location = new System.Drawing.Point(630, 60);
             this.btStart.Name = "btStart";
             this.btStart.Size = new System.Drawing.Size(75, 23);
             this.btStart.TabIndex = 10;
@@ -293,7 +301,7 @@
             // btUpdate
             // 
             this.btUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btUpdate.Location = new System.Drawing.Point(613, 34);
+            this.btUpdate.Location = new System.Drawing.Point(630, 34);
             this.btUpdate.Name = "btUpdate";
             this.btUpdate.Size = new System.Drawing.Size(156, 23);
             this.btUpdate.TabIndex = 9;
@@ -304,7 +312,7 @@
             // btChooseFolder
             // 
             this.btChooseFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btChooseFolder.Location = new System.Drawing.Point(577, 84);
+            this.btChooseFolder.Location = new System.Drawing.Point(594, 84);
             this.btChooseFolder.Name = "btChooseFolder";
             this.btChooseFolder.Size = new System.Drawing.Size(22, 23);
             this.btChooseFolder.TabIndex = 8;
@@ -318,7 +326,7 @@
             this.txtLocation.Location = new System.Drawing.Point(108, 86);
             this.txtLocation.Name = "txtLocation";
             this.txtLocation.ReadOnly = true;
-            this.txtLocation.Size = new System.Drawing.Size(461, 20);
+            this.txtLocation.Size = new System.Drawing.Size(478, 20);
             this.txtLocation.TabIndex = 7;
             // 
             // label3
@@ -333,7 +341,7 @@
             // btSave
             // 
             this.btSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btSave.Location = new System.Drawing.Point(694, 8);
+            this.btSave.Location = new System.Drawing.Point(711, 8);
             this.btSave.Name = "btSave";
             this.btSave.Size = new System.Drawing.Size(75, 23);
             this.btSave.TabIndex = 5;
@@ -345,7 +353,7 @@
             // btSync
             // 
             this.btSync.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btSync.Location = new System.Drawing.Point(613, 8);
+            this.btSync.Location = new System.Drawing.Point(630, 8);
             this.btSync.Name = "btSync";
             this.btSync.Size = new System.Drawing.Size(75, 23);
             this.btSync.TabIndex = 4;
@@ -358,7 +366,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtProfileName.Location = new System.Drawing.Point(108, 36);
             this.txtProfileName.Name = "txtProfileName";
-            this.txtProfileName.Size = new System.Drawing.Size(491, 20);
+            this.txtProfileName.Size = new System.Drawing.Size(508, 20);
             this.txtProfileName.TabIndex = 3;
             this.txtProfileName.Validated += new System.EventHandler(this.txtProfileName_Validated);
             // 
@@ -388,1019 +396,11 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Profile ID";
             // 
-            // expandCollapsePanel1
-            // 
-            this.expandCollapsePanel1.ButtonSize = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonSize.Small;
-            this.expandCollapsePanel1.ButtonStyle = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonStyle.Classic;
-            this.expandCollapsePanel1.Controls.Add(this.groupBox12);
-            this.expandCollapsePanel1.Controls.Add(this.groupBox3);
-            this.expandCollapsePanel1.Controls.Add(this.groupBox2);
-            this.expandCollapsePanel1.Controls.Add(this.groupBox1);
-            this.expandCollapsePanel1.Controls.Add(this.groupBox4);
-            this.expandCollapsePanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.expandCollapsePanel1.ExpandedHeight = 456;
-            this.expandCollapsePanel1.IsExpanded = true;
-            this.expandCollapsePanel1.Location = new System.Drawing.Point(0, 147);
-            this.expandCollapsePanel1.Name = "expandCollapsePanel1";
-            this.expandCollapsePanel1.Size = new System.Drawing.Size(783, 590);
-            this.expandCollapsePanel1.TabIndex = 3;
-            this.expandCollapsePanel1.Text = "Administration";
-            this.expandCollapsePanel1.UseAnimation = true;
-            // 
-            // groupBox12
-            // 
-            this.groupBox12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox12.Controls.Add(this.button2);
-            this.groupBox12.Controls.Add(this.txtCommand);
-            this.groupBox12.Controls.Add(this.btProcessorAffinity);
-            this.groupBox12.Controls.Add(this.txtAffinity);
-            this.groupBox12.Controls.Add(this.label34);
-            this.groupBox12.Controls.Add(this.label33);
-            this.groupBox12.Controls.Add(this.cboPriority);
-            this.groupBox12.ForeColor = System.Drawing.Color.SteelBlue;
-            this.groupBox12.Location = new System.Drawing.Point(4, 451);
-            this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(793, 127);
-            this.groupBox12.TabIndex = 23;
-            this.groupBox12.TabStop = false;
-            this.groupBox12.Text = "Command Line";
-            // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(720, 46);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(61, 23);
-            this.button2.TabIndex = 72;
-            this.button2.Text = "Refresh";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // txtCommand
-            // 
-            this.txtCommand.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCommand.Enabled = false;
-            this.txtCommand.Location = new System.Drawing.Point(5, 46);
-            this.txtCommand.Multiline = true;
-            this.txtCommand.Name = "txtCommand";
-            this.txtCommand.Size = new System.Drawing.Size(710, 72);
-            this.txtCommand.TabIndex = 71;
-            // 
-            // btProcessorAffinity
-            // 
-            this.btProcessorAffinity.Location = new System.Drawing.Point(513, 18);
-            this.btProcessorAffinity.Name = "btProcessorAffinity";
-            this.btProcessorAffinity.Size = new System.Drawing.Size(30, 23);
-            this.btProcessorAffinity.TabIndex = 70;
-            this.btProcessorAffinity.Text = "...";
-            this.btProcessorAffinity.UseVisualStyleBackColor = true;
-            this.btProcessorAffinity.Click += new System.EventHandler(this.btProcessorAffinity_Click);
-            // 
-            // txtAffinity
-            // 
-            this.txtAffinity.Enabled = false;
-            this.txtAffinity.Location = new System.Drawing.Point(299, 20);
-            this.txtAffinity.Name = "txtAffinity";
-            this.txtAffinity.Size = new System.Drawing.Size(208, 21);
-            this.txtAffinity.TabIndex = 69;
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(217, 22);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(76, 15);
-            this.label34.TabIndex = 68;
-            this.label34.Text = "Affinity - CPU";
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(4, 22);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(44, 15);
-            this.label33.TabIndex = 67;
-            this.label33.Text = "Priority";
-            // 
-            // cboPriority
-            // 
-            this.cboPriority.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboPriority.FormattingEnabled = true;
-            this.cboPriority.Location = new System.Drawing.Point(70, 19);
-            this.cboPriority.Name = "cboPriority";
-            this.cboPriority.Size = new System.Drawing.Size(132, 21);
-            this.cboPriority.TabIndex = 15;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox3.Controls.Add(this.groupBox10);
-            this.groupBox3.Controls.Add(this.txtWorldName);
-            this.groupBox3.Controls.Add(this.label23);
-            this.groupBox3.Controls.Add(this.label21);
-            this.groupBox3.Controls.Add(this.cLBKeys);
-            this.groupBox3.Controls.Add(this.txtInstanceID);
-            this.groupBox3.Controls.Add(this.label18);
-            this.groupBox3.Controls.Add(this.chkCrossplay);
-            this.groupBox3.Controls.Add(this.chkPublic);
-            this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
-            this.groupBox3.Location = new System.Drawing.Point(4, 272);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(776, 173);
-            this.groupBox3.TabIndex = 18;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Server Settings";
-            // 
-            // groupBox10
-            // 
-            this.groupBox10.Controls.Add(this.tbPresetHammer);
-            this.groupBox10.Controls.Add(this.tbPresetCasual);
-            this.groupBox10.Controls.Add(this.tbPresetImmersive);
-            this.groupBox10.Controls.Add(this.tbPresetHardcore);
-            this.groupBox10.Controls.Add(this.tbPresetHard);
-            this.groupBox10.Controls.Add(this.tbPresetEasy);
-            this.groupBox10.Controls.Add(this.tbPresetNormal);
-            this.groupBox10.ForeColor = System.Drawing.Color.SteelBlue;
-            this.groupBox10.Location = new System.Drawing.Point(8, 113);
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(671, 50);
-            this.groupBox10.TabIndex = 18;
-            this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "Preset";
-            // 
-            // tbPresetHammer
-            // 
-            this.tbPresetHammer.AutoSize = true;
-            this.tbPresetHammer.Location = new System.Drawing.Point(436, 22);
-            this.tbPresetHammer.Name = "tbPresetHammer";
-            this.tbPresetHammer.Size = new System.Drawing.Size(74, 19);
-            this.tbPresetHammer.TabIndex = 23;
-            this.tbPresetHammer.TabStop = true;
-            this.tbPresetHammer.Text = "Hammer";
-            this.tbPresetHammer.UseVisualStyleBackColor = true;
-            // 
-            // tbPresetCasual
-            // 
-            this.tbPresetCasual.AutoSize = true;
-            this.tbPresetCasual.Location = new System.Drawing.Point(78, 22);
-            this.tbPresetCasual.Name = "tbPresetCasual";
-            this.tbPresetCasual.Size = new System.Drawing.Size(63, 19);
-            this.tbPresetCasual.TabIndex = 22;
-            this.tbPresetCasual.TabStop = true;
-            this.tbPresetCasual.Text = "Casual";
-            this.tbPresetCasual.UseVisualStyleBackColor = true;
-            // 
-            // tbPresetImmersive
-            // 
-            this.tbPresetImmersive.AutoSize = true;
-            this.tbPresetImmersive.Location = new System.Drawing.Point(348, 22);
-            this.tbPresetImmersive.Name = "tbPresetImmersive";
-            this.tbPresetImmersive.Size = new System.Drawing.Size(82, 19);
-            this.tbPresetImmersive.TabIndex = 21;
-            this.tbPresetImmersive.TabStop = true;
-            this.tbPresetImmersive.Text = "Immersive";
-            this.tbPresetImmersive.UseVisualStyleBackColor = true;
-            // 
-            // tbPresetHardcore
-            // 
-            this.tbPresetHardcore.AutoSize = true;
-            this.tbPresetHardcore.Location = new System.Drawing.Point(266, 22);
-            this.tbPresetHardcore.Name = "tbPresetHardcore";
-            this.tbPresetHardcore.Size = new System.Drawing.Size(76, 19);
-            this.tbPresetHardcore.TabIndex = 20;
-            this.tbPresetHardcore.TabStop = true;
-            this.tbPresetHardcore.Text = "Hardcore";
-            this.tbPresetHardcore.UseVisualStyleBackColor = true;
-            // 
-            // tbPresetHard
-            // 
-            this.tbPresetHard.AutoSize = true;
-            this.tbPresetHard.Location = new System.Drawing.Point(208, 22);
-            this.tbPresetHard.Name = "tbPresetHard";
-            this.tbPresetHard.Size = new System.Drawing.Size(52, 19);
-            this.tbPresetHard.TabIndex = 19;
-            this.tbPresetHard.TabStop = true;
-            this.tbPresetHard.Text = "Hard";
-            this.tbPresetHard.UseVisualStyleBackColor = true;
-            // 
-            // tbPresetEasy
-            // 
-            this.tbPresetEasy.AutoSize = true;
-            this.tbPresetEasy.Location = new System.Drawing.Point(151, 22);
-            this.tbPresetEasy.Name = "tbPresetEasy";
-            this.tbPresetEasy.Size = new System.Drawing.Size(51, 19);
-            this.tbPresetEasy.TabIndex = 18;
-            this.tbPresetEasy.TabStop = true;
-            this.tbPresetEasy.Text = "Easy";
-            this.tbPresetEasy.UseVisualStyleBackColor = true;
-            // 
-            // tbPresetNormal
-            // 
-            this.tbPresetNormal.AutoSize = true;
-            this.tbPresetNormal.Location = new System.Drawing.Point(6, 22);
-            this.tbPresetNormal.Name = "tbPresetNormal";
-            this.tbPresetNormal.Size = new System.Drawing.Size(66, 19);
-            this.tbPresetNormal.TabIndex = 17;
-            this.tbPresetNormal.TabStop = true;
-            this.tbPresetNormal.Text = "Normal";
-            this.tbPresetNormal.UseVisualStyleBackColor = true;
-            // 
-            // txtWorldName
-            // 
-            this.txtWorldName.Location = new System.Drawing.Point(115, 87);
-            this.txtWorldName.Name = "txtWorldName";
-            this.txtWorldName.Size = new System.Drawing.Size(120, 21);
-            this.txtWorldName.TabIndex = 14;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(10, 90);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(76, 15);
-            this.label23.TabIndex = 13;
-            this.label23.Text = "World Name";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(257, 21);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(48, 15);
-            this.label21.TabIndex = 12;
-            this.label21.Text = "Set Key";
-            // 
-            // cLBKeys
-            // 
-            this.cLBKeys.FormattingEnabled = true;
-            this.cLBKeys.Items.AddRange(new object[] {
-            "No Build Cost",
-            "Player Events",
-            "Passive Mobs",
-            "No Map"});
-            this.cLBKeys.Location = new System.Drawing.Point(321, 21);
-            this.cLBKeys.Name = "cLBKeys";
-            this.cLBKeys.Size = new System.Drawing.Size(120, 84);
-            this.cLBKeys.TabIndex = 11;
-            // 
-            // txtInstanceID
-            // 
-            this.txtInstanceID.Location = new System.Drawing.Point(115, 64);
-            this.txtInstanceID.Name = "txtInstanceID";
-            this.txtInstanceID.Size = new System.Drawing.Size(121, 21);
-            this.txtInstanceID.TabIndex = 10;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(10, 67);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(66, 15);
-            this.label18.TabIndex = 9;
-            this.label18.Text = "Instance Id";
-            // 
-            // chkCrossplay
-            // 
-            this.chkCrossplay.AutoSize = true;
-            this.chkCrossplay.Location = new System.Drawing.Point(12, 45);
-            this.chkCrossplay.Name = "chkCrossplay";
-            this.chkCrossplay.Size = new System.Drawing.Size(79, 19);
-            this.chkCrossplay.TabIndex = 8;
-            this.chkCrossplay.Text = "Crossplay";
-            this.chkCrossplay.UseVisualStyleBackColor = true;
-            // 
-            // chkPublic
-            // 
-            this.chkPublic.AutoSize = true;
-            this.chkPublic.Location = new System.Drawing.Point(12, 20);
-            this.chkPublic.Name = "chkPublic";
-            this.chkPublic.Size = new System.Drawing.Size(60, 19);
-            this.chkPublic.TabIndex = 7;
-            this.chkPublic.Text = "Public";
-            this.chkPublic.UseVisualStyleBackColor = true;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox2.Controls.Add(this.txtLocalIP);
-            this.groupBox2.Controls.Add(this.txtPeerPort);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.txtServerPort);
-            this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.label12);
-            this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
-            this.groupBox2.Location = new System.Drawing.Point(4, 188);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(776, 78);
-            this.groupBox2.TabIndex = 17;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Networking";
-            // 
-            // txtLocalIP
-            // 
-            this.txtLocalIP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.txtLocalIP.FormattingEnabled = true;
-            this.txtLocalIP.Location = new System.Drawing.Point(115, 19);
-            this.txtLocalIP.Name = "txtLocalIP";
-            this.txtLocalIP.Size = new System.Drawing.Size(515, 21);
-            this.txtLocalIP.TabIndex = 12;
-            // 
-            // txtPeerPort
-            // 
-            this.txtPeerPort.Enabled = false;
-            this.txtPeerPort.Location = new System.Drawing.Point(321, 46);
-            this.txtPeerPort.Name = "txtPeerPort";
-            this.txtPeerPort.Size = new System.Drawing.Size(93, 21);
-            this.txtPeerPort.TabIndex = 9;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(257, 49);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(58, 15);
-            this.label10.TabIndex = 8;
-            this.label10.Text = "Peer Port";
-            // 
-            // txtServerPort
-            // 
-            this.txtServerPort.Location = new System.Drawing.Point(115, 46);
-            this.txtServerPort.Name = "txtServerPort";
-            this.txtServerPort.Size = new System.Drawing.Size(95, 21);
-            this.txtServerPort.TabIndex = 7;
-            this.txtServerPort.TextChanged += new System.EventHandler(this.txtServerPort_TextChanged);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(10, 49);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(67, 15);
-            this.label11.TabIndex = 6;
-            this.label11.Text = "Server Port";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(10, 23);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(51, 15);
-            this.label12.TabIndex = 4;
-            this.label12.Text = "Local IP";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox1.Controls.Add(this.txtServerPWD);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.txtServerName);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
-            this.groupBox1.Location = new System.Drawing.Point(4, 105);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(776, 77);
-            this.groupBox1.TabIndex = 16;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Name and Password";
-            // 
-            // txtServerPWD
-            // 
-            this.txtServerPWD.Location = new System.Drawing.Point(115, 46);
-            this.txtServerPWD.Name = "txtServerPWD";
-            this.txtServerPWD.PasswordChar = '*';
-            this.txtServerPWD.Size = new System.Drawing.Size(95, 21);
-            this.txtServerPWD.TabIndex = 7;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(10, 49);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(99, 15);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "Server Password";
-            // 
-            // txtServerName
-            // 
-            this.txtServerName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtServerName.Location = new System.Drawing.Point(115, 20);
-            this.txtServerName.Name = "txtServerName";
-            this.txtServerName.Size = new System.Drawing.Size(649, 21);
-            this.txtServerName.TabIndex = 5;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(10, 23);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(79, 15);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Server Name";
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox4.Controls.Add(this.cbBranch);
-            this.groupBox4.Controls.Add(this.label22);
-            this.groupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
-            this.groupBox4.Location = new System.Drawing.Point(4, 43);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(776, 56);
-            this.groupBox4.TabIndex = 15;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Server Details";
-            // 
-            // cbBranch
-            // 
-            this.cbBranch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbBranch.FormattingEnabled = true;
-            this.cbBranch.Location = new System.Drawing.Point(115, 20);
-            this.cbBranch.Name = "cbBranch";
-            this.cbBranch.Size = new System.Drawing.Size(649, 21);
-            this.cbBranch.TabIndex = 14;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(10, 23);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(46, 15);
-            this.label22.TabIndex = 4;
-            this.label22.Text = "Branch";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(11, 67);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(84, 15);
-            this.label9.TabIndex = 4;
-            this.label9.Text = "Save Location";
-            // 
-            // txtSaveLocation
-            // 
-            this.txtSaveLocation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSaveLocation.Location = new System.Drawing.Point(116, 64);
-            this.txtSaveLocation.Name = "txtSaveLocation";
-            this.txtSaveLocation.ReadOnly = true;
-            this.txtSaveLocation.Size = new System.Drawing.Size(577, 21);
-            this.txtSaveLocation.TabIndex = 6;
-            // 
-            // txtLogLocation
-            // 
-            this.txtLogLocation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtLogLocation.Location = new System.Drawing.Point(116, 90);
-            this.txtLogLocation.Name = "txtLogLocation";
-            this.txtLogLocation.ReadOnly = true;
-            this.txtLogLocation.Size = new System.Drawing.Size(577, 21);
-            this.txtLogLocation.TabIndex = 9;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(11, 93);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(101, 15);
-            this.label7.TabIndex = 8;
-            this.label7.Text = "Log File Location";
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox5.Controls.Add(this.button3);
-            this.groupBox5.Controls.Add(this.button1);
-            this.groupBox5.Controls.Add(this.label15);
-            this.groupBox5.Controls.Add(this.txtSubBackups);
-            this.groupBox5.Controls.Add(this.tbSubBackups);
-            this.groupBox5.Controls.Add(this.label17);
-            this.groupBox5.Controls.Add(this.label13);
-            this.groupBox5.Controls.Add(this.txtFirstBackup);
-            this.groupBox5.Controls.Add(this.tbFirstBackup);
-            this.groupBox5.Controls.Add(this.label14);
-            this.groupBox5.Controls.Add(this.txtBackupToKeep);
-            this.groupBox5.Controls.Add(this.label8);
-            this.groupBox5.Controls.Add(this.txtLogLocation);
-            this.groupBox5.Controls.Add(this.label20);
-            this.groupBox5.Controls.Add(this.label7);
-            this.groupBox5.Controls.Add(this.txtAutoSavePeriod);
-            this.groupBox5.Controls.Add(this.tbAutoSavePeriod);
-            this.groupBox5.Controls.Add(this.txtSaveLocation);
-            this.groupBox5.Controls.Add(this.label9);
-            this.groupBox5.Controls.Add(this.label19);
-            this.groupBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
-            this.groupBox5.Location = new System.Drawing.Point(4, 44);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(776, 249);
-            this.groupBox5.TabIndex = 19;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Saves && Backups";
-            // 
-            // button3
-            // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(700, 89);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(30, 23);
-            this.button3.TabIndex = 31;
-            this.button3.Text = "...";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(700, 63);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(30, 23);
-            this.button1.TabIndex = 30;
-            this.button1.Text = "...";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // label15
-            // 
-            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(697, 219);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(51, 15);
-            this.label15.TabIndex = 29;
-            this.label15.Text = "Minutes";
-            // 
-            // txtSubBackups
-            // 
-            this.txtSubBackups.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSubBackups.Enabled = false;
-            this.txtSubBackups.Location = new System.Drawing.Point(699, 195);
-            this.txtSubBackups.Name = "txtSubBackups";
-            this.txtSubBackups.Size = new System.Drawing.Size(49, 21);
-            this.txtSubBackups.TabIndex = 28;
-            // 
-            // tbSubBackups
-            // 
-            this.tbSubBackups.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbSubBackups.Location = new System.Drawing.Point(115, 191);
-            this.tbSubBackups.Maximum = 1440;
-            this.tbSubBackups.Minimum = 1;
-            this.tbSubBackups.Name = "tbSubBackups";
-            this.tbSubBackups.Size = new System.Drawing.Size(563, 45);
-            this.tbSubBackups.TabIndex = 27;
-            this.tbSubBackups.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.tbSubBackups.Value = 1;
-            this.tbSubBackups.Scroll += new System.EventHandler(this.tbSubBackups_Scroll);
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(9, 201);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(123, 15);
-            this.label17.TabIndex = 26;
-            this.label17.Text = "Subsequent Backups";
-            // 
-            // label13
-            // 
-            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(698, 168);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(51, 15);
-            this.label13.TabIndex = 25;
-            this.label13.Text = "Minutes";
-            // 
-            // txtFirstBackup
-            // 
-            this.txtFirstBackup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtFirstBackup.Enabled = false;
-            this.txtFirstBackup.Location = new System.Drawing.Point(700, 144);
-            this.txtFirstBackup.Name = "txtFirstBackup";
-            this.txtFirstBackup.Size = new System.Drawing.Size(49, 21);
-            this.txtFirstBackup.TabIndex = 24;
-            // 
-            // tbFirstBackup
-            // 
-            this.tbFirstBackup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbFirstBackup.Location = new System.Drawing.Point(116, 140);
-            this.tbFirstBackup.Maximum = 720;
-            this.tbFirstBackup.Minimum = 1;
-            this.tbFirstBackup.Name = "tbFirstBackup";
-            this.tbFirstBackup.Size = new System.Drawing.Size(563, 45);
-            this.tbFirstBackup.TabIndex = 23;
-            this.tbFirstBackup.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.tbFirstBackup.Value = 1;
-            this.tbFirstBackup.Scroll += new System.EventHandler(this.tbFirstBackup_Scroll);
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(10, 150);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(87, 15);
-            this.label14.TabIndex = 22;
-            this.label14.Text = "First automatic";
-            // 
-            // txtBackupToKeep
-            // 
-            this.txtBackupToKeep.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBackupToKeep.Location = new System.Drawing.Point(115, 116);
-            this.txtBackupToKeep.Name = "txtBackupToKeep";
-            this.txtBackupToKeep.Size = new System.Drawing.Size(28, 21);
-            this.txtBackupToKeep.TabIndex = 21;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(10, 119);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(97, 15);
-            this.label8.TabIndex = 20;
-            this.label8.Text = "Backups to keep";
-            // 
-            // label20
-            // 
-            this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(698, 41);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(51, 15);
-            this.label20.TabIndex = 19;
-            this.label20.Text = "Minutes";
-            // 
-            // txtAutoSavePeriod
-            // 
-            this.txtAutoSavePeriod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAutoSavePeriod.Enabled = false;
-            this.txtAutoSavePeriod.Location = new System.Drawing.Point(700, 17);
-            this.txtAutoSavePeriod.Name = "txtAutoSavePeriod";
-            this.txtAutoSavePeriod.Size = new System.Drawing.Size(49, 21);
-            this.txtAutoSavePeriod.TabIndex = 18;
-            // 
-            // tbAutoSavePeriod
-            // 
-            this.tbAutoSavePeriod.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbAutoSavePeriod.Location = new System.Drawing.Point(116, 13);
-            this.tbAutoSavePeriod.Maximum = 120;
-            this.tbAutoSavePeriod.Minimum = 1;
-            this.tbAutoSavePeriod.Name = "tbAutoSavePeriod";
-            this.tbAutoSavePeriod.Size = new System.Drawing.Size(563, 45);
-            this.tbAutoSavePeriod.TabIndex = 5;
-            this.tbAutoSavePeriod.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.tbAutoSavePeriod.Value = 1;
-            this.tbAutoSavePeriod.Scroll += new System.EventHandler(this.tbAutoSavePeriod_Scroll);
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(10, 23);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(100, 15);
-            this.label19.TabIndex = 4;
-            this.label19.Text = "Auto Save Period";
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.rbCombatVeryHard);
-            this.groupBox6.Controls.Add(this.rbCombatHard);
-            this.groupBox6.Controls.Add(this.rbCombatEasy);
-            this.groupBox6.Controls.Add(this.rbCombatVeryEasy);
-            this.groupBox6.Controls.Add(this.rbCombatNone);
-            this.groupBox6.ForeColor = System.Drawing.Color.SteelBlue;
-            this.groupBox6.Location = new System.Drawing.Point(4, 32);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(776, 50);
-            this.groupBox6.TabIndex = 16;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Combat";
-            // 
-            // rbCombatVeryHard
-            // 
-            this.rbCombatVeryHard.AutoSize = true;
-            this.rbCombatVeryHard.Location = new System.Drawing.Point(355, 22);
-            this.rbCombatVeryHard.Name = "rbCombatVeryHard";
-            this.rbCombatVeryHard.Size = new System.Drawing.Size(78, 19);
-            this.rbCombatVeryHard.TabIndex = 21;
-            this.rbCombatVeryHard.TabStop = true;
-            this.rbCombatVeryHard.Text = "Very Hard";
-            this.rbCombatVeryHard.UseVisualStyleBackColor = true;
-            // 
-            // rbCombatHard
-            // 
-            this.rbCombatHard.AutoSize = true;
-            this.rbCombatHard.Location = new System.Drawing.Point(271, 22);
-            this.rbCombatHard.Name = "rbCombatHard";
-            this.rbCombatHard.Size = new System.Drawing.Size(52, 19);
-            this.rbCombatHard.TabIndex = 20;
-            this.rbCombatHard.TabStop = true;
-            this.rbCombatHard.Text = "Hard";
-            this.rbCombatHard.UseVisualStyleBackColor = true;
-            // 
-            // rbCombatEasy
-            // 
-            this.rbCombatEasy.AutoSize = true;
-            this.rbCombatEasy.Location = new System.Drawing.Point(188, 22);
-            this.rbCombatEasy.Name = "rbCombatEasy";
-            this.rbCombatEasy.Size = new System.Drawing.Size(51, 19);
-            this.rbCombatEasy.TabIndex = 19;
-            this.rbCombatEasy.TabStop = true;
-            this.rbCombatEasy.Text = "Easy";
-            this.rbCombatEasy.UseVisualStyleBackColor = true;
-            // 
-            // rbCombatVeryEasy
-            // 
-            this.rbCombatVeryEasy.AutoSize = true;
-            this.rbCombatVeryEasy.Location = new System.Drawing.Point(97, 20);
-            this.rbCombatVeryEasy.Name = "rbCombatVeryEasy";
-            this.rbCombatVeryEasy.Size = new System.Drawing.Size(77, 19);
-            this.rbCombatVeryEasy.TabIndex = 18;
-            this.rbCombatVeryEasy.TabStop = true;
-            this.rbCombatVeryEasy.Text = "Very Easy";
-            this.rbCombatVeryEasy.UseVisualStyleBackColor = true;
-            // 
-            // rbCombatNone
-            // 
-            this.rbCombatNone.AutoSize = true;
-            this.rbCombatNone.Location = new System.Drawing.Point(6, 22);
-            this.rbCombatNone.Name = "rbCombatNone";
-            this.rbCombatNone.Size = new System.Drawing.Size(55, 19);
-            this.rbCombatNone.TabIndex = 17;
-            this.rbCombatNone.TabStop = true;
-            this.rbCombatNone.Text = "None";
-            this.rbCombatNone.UseVisualStyleBackColor = true;
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.Controls.Add(this.rbDeathPenaltyCasual);
-            this.groupBox7.Controls.Add(this.rbDeathPenaltyHardCore);
-            this.groupBox7.Controls.Add(this.rbDeathPenaltyHard);
-            this.groupBox7.Controls.Add(this.rbDeathPenaltyEasy);
-            this.groupBox7.Controls.Add(this.rbDeathPenaltyVeryEasy);
-            this.groupBox7.Controls.Add(this.rbDeathPenaltyNone);
-            this.groupBox7.ForeColor = System.Drawing.Color.SteelBlue;
-            this.groupBox7.Location = new System.Drawing.Point(4, 88);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(776, 50);
-            this.groupBox7.TabIndex = 17;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Death Penalty";
-            // 
-            // rbDeathPenaltyCasual
-            // 
-            this.rbDeathPenaltyCasual.AutoSize = true;
-            this.rbDeathPenaltyCasual.Location = new System.Drawing.Point(97, 22);
-            this.rbDeathPenaltyCasual.Name = "rbDeathPenaltyCasual";
-            this.rbDeathPenaltyCasual.Size = new System.Drawing.Size(63, 19);
-            this.rbDeathPenaltyCasual.TabIndex = 22;
-            this.rbDeathPenaltyCasual.TabStop = true;
-            this.rbDeathPenaltyCasual.Text = "Casual";
-            this.rbDeathPenaltyCasual.UseVisualStyleBackColor = true;
-            // 
-            // rbDeathPenaltyHardCore
-            // 
-            this.rbDeathPenaltyHardCore.AutoSize = true;
-            this.rbDeathPenaltyHardCore.Location = new System.Drawing.Point(449, 20);
-            this.rbDeathPenaltyHardCore.Name = "rbDeathPenaltyHardCore";
-            this.rbDeathPenaltyHardCore.Size = new System.Drawing.Size(76, 19);
-            this.rbDeathPenaltyHardCore.TabIndex = 21;
-            this.rbDeathPenaltyHardCore.TabStop = true;
-            this.rbDeathPenaltyHardCore.Text = "Hardcore";
-            this.rbDeathPenaltyHardCore.UseVisualStyleBackColor = true;
-            // 
-            // rbDeathPenaltyHard
-            // 
-            this.rbDeathPenaltyHard.AutoSize = true;
-            this.rbDeathPenaltyHard.Location = new System.Drawing.Point(355, 20);
-            this.rbDeathPenaltyHard.Name = "rbDeathPenaltyHard";
-            this.rbDeathPenaltyHard.Size = new System.Drawing.Size(52, 19);
-            this.rbDeathPenaltyHard.TabIndex = 20;
-            this.rbDeathPenaltyHard.TabStop = true;
-            this.rbDeathPenaltyHard.Text = "Hard";
-            this.rbDeathPenaltyHard.UseVisualStyleBackColor = true;
-            // 
-            // rbDeathPenaltyEasy
-            // 
-            this.rbDeathPenaltyEasy.AutoSize = true;
-            this.rbDeathPenaltyEasy.Location = new System.Drawing.Point(271, 22);
-            this.rbDeathPenaltyEasy.Name = "rbDeathPenaltyEasy";
-            this.rbDeathPenaltyEasy.Size = new System.Drawing.Size(51, 19);
-            this.rbDeathPenaltyEasy.TabIndex = 19;
-            this.rbDeathPenaltyEasy.TabStop = true;
-            this.rbDeathPenaltyEasy.Text = "Easy";
-            this.rbDeathPenaltyEasy.UseVisualStyleBackColor = true;
-            // 
-            // rbDeathPenaltyVeryEasy
-            // 
-            this.rbDeathPenaltyVeryEasy.AutoSize = true;
-            this.rbDeathPenaltyVeryEasy.Location = new System.Drawing.Point(188, 22);
-            this.rbDeathPenaltyVeryEasy.Name = "rbDeathPenaltyVeryEasy";
-            this.rbDeathPenaltyVeryEasy.Size = new System.Drawing.Size(77, 19);
-            this.rbDeathPenaltyVeryEasy.TabIndex = 18;
-            this.rbDeathPenaltyVeryEasy.TabStop = true;
-            this.rbDeathPenaltyVeryEasy.Text = "Very Easy";
-            this.rbDeathPenaltyVeryEasy.UseVisualStyleBackColor = true;
-            // 
-            // rbDeathPenaltyNone
-            // 
-            this.rbDeathPenaltyNone.AutoSize = true;
-            this.rbDeathPenaltyNone.Location = new System.Drawing.Point(6, 22);
-            this.rbDeathPenaltyNone.Name = "rbDeathPenaltyNone";
-            this.rbDeathPenaltyNone.Size = new System.Drawing.Size(55, 19);
-            this.rbDeathPenaltyNone.TabIndex = 17;
-            this.rbDeathPenaltyNone.TabStop = true;
-            this.rbDeathPenaltyNone.Text = "None";
-            this.rbDeathPenaltyNone.UseVisualStyleBackColor = true;
-            // 
-            // expandCollapsePanel3
-            // 
-            this.expandCollapsePanel3.ButtonSize = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonSize.Small;
-            this.expandCollapsePanel3.ButtonStyle = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonStyle.Classic;
-            this.expandCollapsePanel3.Controls.Add(this.groupBox9);
-            this.expandCollapsePanel3.Controls.Add(this.groupBox8);
-            this.expandCollapsePanel3.Controls.Add(this.groupBox7);
-            this.expandCollapsePanel3.Controls.Add(this.groupBox6);
-            this.expandCollapsePanel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.expandCollapsePanel3.ExpandedHeight = 0;
-            this.expandCollapsePanel3.IsExpanded = true;
-            this.expandCollapsePanel3.Location = new System.Drawing.Point(0, 737);
-            this.expandCollapsePanel3.Name = "expandCollapsePanel3";
-            this.expandCollapsePanel3.Size = new System.Drawing.Size(783, 258);
-            this.expandCollapsePanel3.TabIndex = 21;
-            this.expandCollapsePanel3.Text = "Modifiers";
-            this.expandCollapsePanel3.UseAnimation = true;
-            // 
-            // groupBox9
-            // 
-            this.groupBox9.Controls.Add(this.rbPortalsNone);
-            this.groupBox9.Controls.Add(this.rbPortalsVeryHard);
-            this.groupBox9.Controls.Add(this.rbPortalsHard);
-            this.groupBox9.Controls.Add(this.rbPortalsCasual);
-            this.groupBox9.ForeColor = System.Drawing.Color.SteelBlue;
-            this.groupBox9.Location = new System.Drawing.Point(4, 200);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(776, 50);
-            this.groupBox9.TabIndex = 19;
-            this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "Portals";
-            // 
-            // rbPortalsNone
-            // 
-            this.rbPortalsNone.AutoSize = true;
-            this.rbPortalsNone.Location = new System.Drawing.Point(6, 20);
-            this.rbPortalsNone.Name = "rbPortalsNone";
-            this.rbPortalsNone.Size = new System.Drawing.Size(55, 19);
-            this.rbPortalsNone.TabIndex = 24;
-            this.rbPortalsNone.TabStop = true;
-            this.rbPortalsNone.Text = "None";
-            this.rbPortalsNone.UseVisualStyleBackColor = true;
-            // 
-            // rbPortalsVeryHard
-            // 
-            this.rbPortalsVeryHard.AutoSize = true;
-            this.rbPortalsVeryHard.Location = new System.Drawing.Point(271, 20);
-            this.rbPortalsVeryHard.Name = "rbPortalsVeryHard";
-            this.rbPortalsVeryHard.Size = new System.Drawing.Size(78, 19);
-            this.rbPortalsVeryHard.TabIndex = 19;
-            this.rbPortalsVeryHard.TabStop = true;
-            this.rbPortalsVeryHard.Text = "Very Hard";
-            this.rbPortalsVeryHard.UseVisualStyleBackColor = true;
-            // 
-            // rbPortalsHard
-            // 
-            this.rbPortalsHard.AutoSize = true;
-            this.rbPortalsHard.Location = new System.Drawing.Point(188, 20);
-            this.rbPortalsHard.Name = "rbPortalsHard";
-            this.rbPortalsHard.Size = new System.Drawing.Size(52, 19);
-            this.rbPortalsHard.TabIndex = 18;
-            this.rbPortalsHard.TabStop = true;
-            this.rbPortalsHard.Text = "Hard";
-            this.rbPortalsHard.UseVisualStyleBackColor = true;
-            // 
-            // rbPortalsCasual
-            // 
-            this.rbPortalsCasual.AutoSize = true;
-            this.rbPortalsCasual.Location = new System.Drawing.Point(97, 20);
-            this.rbPortalsCasual.Name = "rbPortalsCasual";
-            this.rbPortalsCasual.Size = new System.Drawing.Size(63, 19);
-            this.rbPortalsCasual.TabIndex = 17;
-            this.rbPortalsCasual.TabStop = true;
-            this.rbPortalsCasual.Text = "Casual";
-            this.rbPortalsCasual.UseVisualStyleBackColor = true;
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this.rbResourcesNone);
-            this.groupBox8.Controls.Add(this.rbResourcesMuchLess);
-            this.groupBox8.Controls.Add(this.rbResourcesMost);
-            this.groupBox8.Controls.Add(this.rbResourcesMuchMore);
-            this.groupBox8.Controls.Add(this.rbResourcesMore);
-            this.groupBox8.Controls.Add(this.rbResourcesLess);
-            this.groupBox8.ForeColor = System.Drawing.Color.SteelBlue;
-            this.groupBox8.Location = new System.Drawing.Point(4, 144);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(776, 50);
-            this.groupBox8.TabIndex = 18;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Resources";
-            // 
-            // rbResourcesNone
-            // 
-            this.rbResourcesNone.AutoSize = true;
-            this.rbResourcesNone.Location = new System.Drawing.Point(6, 20);
-            this.rbResourcesNone.Name = "rbResourcesNone";
-            this.rbResourcesNone.Size = new System.Drawing.Size(55, 19);
-            this.rbResourcesNone.TabIndex = 23;
-            this.rbResourcesNone.TabStop = true;
-            this.rbResourcesNone.Text = "None";
-            this.rbResourcesNone.UseVisualStyleBackColor = true;
-            // 
-            // rbResourcesMuchLess
-            // 
-            this.rbResourcesMuchLess.AutoSize = true;
-            this.rbResourcesMuchLess.Location = new System.Drawing.Point(97, 20);
-            this.rbResourcesMuchLess.Name = "rbResourcesMuchLess";
-            this.rbResourcesMuchLess.Size = new System.Drawing.Size(85, 19);
-            this.rbResourcesMuchLess.TabIndex = 22;
-            this.rbResourcesMuchLess.TabStop = true;
-            this.rbResourcesMuchLess.Text = "Much Less";
-            this.rbResourcesMuchLess.UseVisualStyleBackColor = true;
-            // 
-            // rbResourcesMost
-            // 
-            this.rbResourcesMost.AutoSize = true;
-            this.rbResourcesMost.Location = new System.Drawing.Point(449, 20);
-            this.rbResourcesMost.Name = "rbResourcesMost";
-            this.rbResourcesMost.Size = new System.Drawing.Size(52, 19);
-            this.rbResourcesMost.TabIndex = 21;
-            this.rbResourcesMost.TabStop = true;
-            this.rbResourcesMost.Text = "Most";
-            this.rbResourcesMost.UseVisualStyleBackColor = true;
-            // 
-            // rbResourcesMuchMore
-            // 
-            this.rbResourcesMuchMore.AutoSize = true;
-            this.rbResourcesMuchMore.Location = new System.Drawing.Point(355, 20);
-            this.rbResourcesMuchMore.Name = "rbResourcesMuchMore";
-            this.rbResourcesMuchMore.Size = new System.Drawing.Size(88, 19);
-            this.rbResourcesMuchMore.TabIndex = 20;
-            this.rbResourcesMuchMore.TabStop = true;
-            this.rbResourcesMuchMore.Text = "Much More";
-            this.rbResourcesMuchMore.UseVisualStyleBackColor = true;
-            // 
-            // rbResourcesMore
-            // 
-            this.rbResourcesMore.AutoSize = true;
-            this.rbResourcesMore.Location = new System.Drawing.Point(271, 20);
-            this.rbResourcesMore.Name = "rbResourcesMore";
-            this.rbResourcesMore.Size = new System.Drawing.Size(54, 19);
-            this.rbResourcesMore.TabIndex = 19;
-            this.rbResourcesMore.TabStop = true;
-            this.rbResourcesMore.Text = "More";
-            this.rbResourcesMore.UseVisualStyleBackColor = true;
-            // 
-            // rbResourcesLess
-            // 
-            this.rbResourcesLess.AutoSize = true;
-            this.rbResourcesLess.Location = new System.Drawing.Point(188, 20);
-            this.rbResourcesLess.Name = "rbResourcesLess";
-            this.rbResourcesLess.Size = new System.Drawing.Size(51, 19);
-            this.rbResourcesLess.TabIndex = 18;
-            this.rbResourcesLess.TabStop = true;
-            this.rbResourcesLess.Text = "Less";
-            this.rbResourcesLess.UseVisualStyleBackColor = true;
-            // 
-            // expandCollapsePanel2
-            // 
-            this.expandCollapsePanel2.ButtonSize = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonSize.Small;
-            this.expandCollapsePanel2.ButtonStyle = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonStyle.Classic;
-            this.expandCollapsePanel2.Controls.Add(this.groupBox5);
-            this.expandCollapsePanel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.expandCollapsePanel2.ExpandedHeight = 296;
-            this.expandCollapsePanel2.IsExpanded = true;
-            this.expandCollapsePanel2.Location = new System.Drawing.Point(0, 995);
-            this.expandCollapsePanel2.Name = "expandCollapsePanel2";
-            this.expandCollapsePanel2.Size = new System.Drawing.Size(783, 296);
-            this.expandCollapsePanel2.TabIndex = 20;
-            this.expandCollapsePanel2.Text = "Saves && Backups";
-            this.expandCollapsePanel2.UseAnimation = true;
+            // timerGetProcess
+            // 
+            this.timerGetProcess.Enabled = true;
+            this.timerGetProcess.Interval = 500;
+            this.timerGetProcess.Tick += new System.EventHandler(this.timerGetProcess_Tick);
             // 
             // expandCollapsePanel4
             // 
@@ -1411,9 +411,9 @@
             this.expandCollapsePanel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.expandCollapsePanel4.ExpandedHeight = 800;
             this.expandCollapsePanel4.IsExpanded = true;
-            this.expandCollapsePanel4.Location = new System.Drawing.Point(0, 1291);
+            this.expandCollapsePanel4.Location = new System.Drawing.Point(0, 1344);
             this.expandCollapsePanel4.Name = "expandCollapsePanel4";
-            this.expandCollapsePanel4.Size = new System.Drawing.Size(783, 226);
+            this.expandCollapsePanel4.Size = new System.Drawing.Size(800, 226);
             this.expandCollapsePanel4.TabIndex = 22;
             this.expandCollapsePanel4.Text = "Automatic Management";
             this.expandCollapsePanel4.UseAnimation = false;
@@ -1452,7 +452,7 @@
             this.groupBox11.Controls.Add(this.chkAutoStart);
             this.groupBox11.Location = new System.Drawing.Point(11, 34);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(759, 181);
+            this.groupBox11.Size = new System.Drawing.Size(776, 181);
             this.groupBox11.TabIndex = 1;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Server Manager Settings";
@@ -1796,18 +796,1110 @@
             this.chkAutoStart.UseVisualStyleBackColor = true;
             this.chkAutoStart.CheckedChanged += new System.EventHandler(this.chkAutoStart_CheckedChanged);
             // 
-            // timerGetProcess
+            // expandCollapsePanel2
             // 
-            this.timerGetProcess.Enabled = true;
-            this.timerGetProcess.Interval = 500;
-            this.timerGetProcess.Tick += new System.EventHandler(this.timerGetProcess_Tick);
+            this.expandCollapsePanel2.ButtonSize = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonSize.Small;
+            this.expandCollapsePanel2.ButtonStyle = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonStyle.Classic;
+            this.expandCollapsePanel2.Controls.Add(this.groupBox5);
+            this.expandCollapsePanel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.expandCollapsePanel2.ExpandedHeight = 296;
+            this.expandCollapsePanel2.IsExpanded = true;
+            this.expandCollapsePanel2.Location = new System.Drawing.Point(0, 1048);
+            this.expandCollapsePanel2.Name = "expandCollapsePanel2";
+            this.expandCollapsePanel2.Size = new System.Drawing.Size(800, 296);
+            this.expandCollapsePanel2.TabIndex = 20;
+            this.expandCollapsePanel2.Text = "Saves && Backups";
+            this.expandCollapsePanel2.UseAnimation = true;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox5.Controls.Add(this.button3);
+            this.groupBox5.Controls.Add(this.button1);
+            this.groupBox5.Controls.Add(this.label15);
+            this.groupBox5.Controls.Add(this.txtSubBackups);
+            this.groupBox5.Controls.Add(this.tbSubBackups);
+            this.groupBox5.Controls.Add(this.label17);
+            this.groupBox5.Controls.Add(this.label13);
+            this.groupBox5.Controls.Add(this.txtFirstBackup);
+            this.groupBox5.Controls.Add(this.tbFirstBackup);
+            this.groupBox5.Controls.Add(this.label14);
+            this.groupBox5.Controls.Add(this.txtBackupToKeep);
+            this.groupBox5.Controls.Add(this.label8);
+            this.groupBox5.Controls.Add(this.txtLogLocation);
+            this.groupBox5.Controls.Add(this.label20);
+            this.groupBox5.Controls.Add(this.label7);
+            this.groupBox5.Controls.Add(this.txtAutoSavePeriod);
+            this.groupBox5.Controls.Add(this.tbAutoSavePeriod);
+            this.groupBox5.Controls.Add(this.txtSaveLocation);
+            this.groupBox5.Controls.Add(this.label9);
+            this.groupBox5.Controls.Add(this.label19);
+            this.groupBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
+            this.groupBox5.Location = new System.Drawing.Point(4, 44);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(793, 249);
+            this.groupBox5.TabIndex = 19;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Saves && Backups";
+            // 
+            // button3
+            // 
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button3.Location = new System.Drawing.Point(717, 89);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(30, 23);
+            this.button3.TabIndex = 31;
+            this.button3.Text = "...";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(717, 63);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(30, 23);
+            this.button1.TabIndex = 30;
+            this.button1.Text = "...";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label15
+            // 
+            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(714, 219);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(51, 15);
+            this.label15.TabIndex = 29;
+            this.label15.Text = "Minutes";
+            // 
+            // txtSubBackups
+            // 
+            this.txtSubBackups.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSubBackups.Enabled = false;
+            this.txtSubBackups.Location = new System.Drawing.Point(716, 195);
+            this.txtSubBackups.Name = "txtSubBackups";
+            this.txtSubBackups.Size = new System.Drawing.Size(49, 21);
+            this.txtSubBackups.TabIndex = 28;
+            // 
+            // tbSubBackups
+            // 
+            this.tbSubBackups.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbSubBackups.Location = new System.Drawing.Point(115, 191);
+            this.tbSubBackups.Maximum = 1440;
+            this.tbSubBackups.Minimum = 1;
+            this.tbSubBackups.Name = "tbSubBackups";
+            this.tbSubBackups.Size = new System.Drawing.Size(580, 45);
+            this.tbSubBackups.TabIndex = 27;
+            this.tbSubBackups.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbSubBackups.Value = 1;
+            this.tbSubBackups.Scroll += new System.EventHandler(this.tbSubBackups_Scroll);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(9, 201);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(123, 15);
+            this.label17.TabIndex = 26;
+            this.label17.Text = "Subsequent Backups";
+            // 
+            // label13
+            // 
+            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(715, 168);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(51, 15);
+            this.label13.TabIndex = 25;
+            this.label13.Text = "Minutes";
+            // 
+            // txtFirstBackup
+            // 
+            this.txtFirstBackup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtFirstBackup.Enabled = false;
+            this.txtFirstBackup.Location = new System.Drawing.Point(717, 144);
+            this.txtFirstBackup.Name = "txtFirstBackup";
+            this.txtFirstBackup.Size = new System.Drawing.Size(49, 21);
+            this.txtFirstBackup.TabIndex = 24;
+            // 
+            // tbFirstBackup
+            // 
+            this.tbFirstBackup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbFirstBackup.Location = new System.Drawing.Point(116, 140);
+            this.tbFirstBackup.Maximum = 720;
+            this.tbFirstBackup.Minimum = 1;
+            this.tbFirstBackup.Name = "tbFirstBackup";
+            this.tbFirstBackup.Size = new System.Drawing.Size(580, 45);
+            this.tbFirstBackup.TabIndex = 23;
+            this.tbFirstBackup.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbFirstBackup.Value = 1;
+            this.tbFirstBackup.Scroll += new System.EventHandler(this.tbFirstBackup_Scroll);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(10, 150);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(87, 15);
+            this.label14.TabIndex = 22;
+            this.label14.Text = "First automatic";
+            // 
+            // txtBackupToKeep
+            // 
+            this.txtBackupToKeep.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBackupToKeep.Location = new System.Drawing.Point(115, 116);
+            this.txtBackupToKeep.Name = "txtBackupToKeep";
+            this.txtBackupToKeep.Size = new System.Drawing.Size(45, 21);
+            this.txtBackupToKeep.TabIndex = 21;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(10, 119);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(97, 15);
+            this.label8.TabIndex = 20;
+            this.label8.Text = "Backups to keep";
+            // 
+            // txtLogLocation
+            // 
+            this.txtLogLocation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtLogLocation.Location = new System.Drawing.Point(116, 90);
+            this.txtLogLocation.Name = "txtLogLocation";
+            this.txtLogLocation.ReadOnly = true;
+            this.txtLogLocation.Size = new System.Drawing.Size(594, 21);
+            this.txtLogLocation.TabIndex = 9;
+            // 
+            // label20
+            // 
+            this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(715, 41);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(51, 15);
+            this.label20.TabIndex = 19;
+            this.label20.Text = "Minutes";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(11, 93);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(101, 15);
+            this.label7.TabIndex = 8;
+            this.label7.Text = "Log File Location";
+            // 
+            // txtAutoSavePeriod
+            // 
+            this.txtAutoSavePeriod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtAutoSavePeriod.Enabled = false;
+            this.txtAutoSavePeriod.Location = new System.Drawing.Point(717, 17);
+            this.txtAutoSavePeriod.Name = "txtAutoSavePeriod";
+            this.txtAutoSavePeriod.Size = new System.Drawing.Size(49, 21);
+            this.txtAutoSavePeriod.TabIndex = 18;
+            // 
+            // tbAutoSavePeriod
+            // 
+            this.tbAutoSavePeriod.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbAutoSavePeriod.Location = new System.Drawing.Point(116, 13);
+            this.tbAutoSavePeriod.Maximum = 120;
+            this.tbAutoSavePeriod.Minimum = 1;
+            this.tbAutoSavePeriod.Name = "tbAutoSavePeriod";
+            this.tbAutoSavePeriod.Size = new System.Drawing.Size(580, 45);
+            this.tbAutoSavePeriod.TabIndex = 5;
+            this.tbAutoSavePeriod.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbAutoSavePeriod.Value = 1;
+            this.tbAutoSavePeriod.Scroll += new System.EventHandler(this.tbAutoSavePeriod_Scroll);
+            // 
+            // txtSaveLocation
+            // 
+            this.txtSaveLocation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSaveLocation.Location = new System.Drawing.Point(116, 64);
+            this.txtSaveLocation.Name = "txtSaveLocation";
+            this.txtSaveLocation.ReadOnly = true;
+            this.txtSaveLocation.Size = new System.Drawing.Size(594, 21);
+            this.txtSaveLocation.TabIndex = 6;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(11, 67);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(84, 15);
+            this.label9.TabIndex = 4;
+            this.label9.Text = "Save Location";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(10, 23);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(100, 15);
+            this.label19.TabIndex = 4;
+            this.label19.Text = "Auto Save Period";
+            // 
+            // expandCollapsePanel3
+            // 
+            this.expandCollapsePanel3.ButtonSize = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonSize.Small;
+            this.expandCollapsePanel3.ButtonStyle = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonStyle.Classic;
+            this.expandCollapsePanel3.Controls.Add(this.groupBox13);
+            this.expandCollapsePanel3.Controls.Add(this.groupBox9);
+            this.expandCollapsePanel3.Controls.Add(this.groupBox8);
+            this.expandCollapsePanel3.Controls.Add(this.groupBox7);
+            this.expandCollapsePanel3.Controls.Add(this.groupBox6);
+            this.expandCollapsePanel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.expandCollapsePanel3.ExpandedHeight = 0;
+            this.expandCollapsePanel3.IsExpanded = true;
+            this.expandCollapsePanel3.Location = new System.Drawing.Point(0, 737);
+            this.expandCollapsePanel3.Name = "expandCollapsePanel3";
+            this.expandCollapsePanel3.Size = new System.Drawing.Size(800, 311);
+            this.expandCollapsePanel3.TabIndex = 21;
+            this.expandCollapsePanel3.Text = "Modifiers";
+            this.expandCollapsePanel3.UseAnimation = true;
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.rbPortalsNone);
+            this.groupBox9.Controls.Add(this.rbPortalsVeryHard);
+            this.groupBox9.Controls.Add(this.rbPortalsHard);
+            this.groupBox9.Controls.Add(this.rbPortalsCasual);
+            this.groupBox9.ForeColor = System.Drawing.Color.SteelBlue;
+            this.groupBox9.Location = new System.Drawing.Point(4, 256);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(776, 50);
+            this.groupBox9.TabIndex = 19;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Portals";
+            // 
+            // rbPortalsNone
+            // 
+            this.rbPortalsNone.AutoSize = true;
+            this.rbPortalsNone.Location = new System.Drawing.Point(6, 20);
+            this.rbPortalsNone.Name = "rbPortalsNone";
+            this.rbPortalsNone.Size = new System.Drawing.Size(64, 19);
+            this.rbPortalsNone.TabIndex = 24;
+            this.rbPortalsNone.TabStop = true;
+            this.rbPortalsNone.Text = "Default";
+            this.rbPortalsNone.UseVisualStyleBackColor = true;
+            // 
+            // rbPortalsVeryHard
+            // 
+            this.rbPortalsVeryHard.AutoSize = true;
+            this.rbPortalsVeryHard.Location = new System.Drawing.Point(279, 20);
+            this.rbPortalsVeryHard.Name = "rbPortalsVeryHard";
+            this.rbPortalsVeryHard.Size = new System.Drawing.Size(78, 19);
+            this.rbPortalsVeryHard.TabIndex = 19;
+            this.rbPortalsVeryHard.TabStop = true;
+            this.rbPortalsVeryHard.Text = "Very Hard";
+            this.rbPortalsVeryHard.UseVisualStyleBackColor = true;
+            // 
+            // rbPortalsHard
+            // 
+            this.rbPortalsHard.AutoSize = true;
+            this.rbPortalsHard.Location = new System.Drawing.Point(188, 20);
+            this.rbPortalsHard.Name = "rbPortalsHard";
+            this.rbPortalsHard.Size = new System.Drawing.Size(52, 19);
+            this.rbPortalsHard.TabIndex = 18;
+            this.rbPortalsHard.TabStop = true;
+            this.rbPortalsHard.Text = "Hard";
+            this.rbPortalsHard.UseVisualStyleBackColor = true;
+            // 
+            // rbPortalsCasual
+            // 
+            this.rbPortalsCasual.AutoSize = true;
+            this.rbPortalsCasual.Location = new System.Drawing.Point(97, 20);
+            this.rbPortalsCasual.Name = "rbPortalsCasual";
+            this.rbPortalsCasual.Size = new System.Drawing.Size(63, 19);
+            this.rbPortalsCasual.TabIndex = 17;
+            this.rbPortalsCasual.TabStop = true;
+            this.rbPortalsCasual.Text = "Casual";
+            this.rbPortalsCasual.UseVisualStyleBackColor = true;
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.rbResourcesNone);
+            this.groupBox8.Controls.Add(this.rbResourcesMuchLess);
+            this.groupBox8.Controls.Add(this.rbResourcesMost);
+            this.groupBox8.Controls.Add(this.rbResourcesMuchMore);
+            this.groupBox8.Controls.Add(this.rbResourcesMore);
+            this.groupBox8.Controls.Add(this.rbResourcesLess);
+            this.groupBox8.ForeColor = System.Drawing.Color.SteelBlue;
+            this.groupBox8.Location = new System.Drawing.Point(4, 144);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(776, 50);
+            this.groupBox8.TabIndex = 18;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Resources";
+            // 
+            // rbResourcesNone
+            // 
+            this.rbResourcesNone.AutoSize = true;
+            this.rbResourcesNone.Location = new System.Drawing.Point(6, 20);
+            this.rbResourcesNone.Name = "rbResourcesNone";
+            this.rbResourcesNone.Size = new System.Drawing.Size(64, 19);
+            this.rbResourcesNone.TabIndex = 23;
+            this.rbResourcesNone.TabStop = true;
+            this.rbResourcesNone.Text = "Default";
+            this.rbResourcesNone.UseVisualStyleBackColor = true;
+            // 
+            // rbResourcesMuchLess
+            // 
+            this.rbResourcesMuchLess.AutoSize = true;
+            this.rbResourcesMuchLess.Location = new System.Drawing.Point(97, 20);
+            this.rbResourcesMuchLess.Name = "rbResourcesMuchLess";
+            this.rbResourcesMuchLess.Size = new System.Drawing.Size(85, 19);
+            this.rbResourcesMuchLess.TabIndex = 22;
+            this.rbResourcesMuchLess.TabStop = true;
+            this.rbResourcesMuchLess.Text = "Much Less";
+            this.rbResourcesMuchLess.UseVisualStyleBackColor = true;
+            // 
+            // rbResourcesMost
+            // 
+            this.rbResourcesMost.AutoSize = true;
+            this.rbResourcesMost.Location = new System.Drawing.Point(449, 20);
+            this.rbResourcesMost.Name = "rbResourcesMost";
+            this.rbResourcesMost.Size = new System.Drawing.Size(52, 19);
+            this.rbResourcesMost.TabIndex = 21;
+            this.rbResourcesMost.TabStop = true;
+            this.rbResourcesMost.Text = "Most";
+            this.rbResourcesMost.UseVisualStyleBackColor = true;
+            // 
+            // rbResourcesMuchMore
+            // 
+            this.rbResourcesMuchMore.AutoSize = true;
+            this.rbResourcesMuchMore.Location = new System.Drawing.Point(355, 20);
+            this.rbResourcesMuchMore.Name = "rbResourcesMuchMore";
+            this.rbResourcesMuchMore.Size = new System.Drawing.Size(88, 19);
+            this.rbResourcesMuchMore.TabIndex = 20;
+            this.rbResourcesMuchMore.TabStop = true;
+            this.rbResourcesMuchMore.Text = "Much More";
+            this.rbResourcesMuchMore.UseVisualStyleBackColor = true;
+            // 
+            // rbResourcesMore
+            // 
+            this.rbResourcesMore.AutoSize = true;
+            this.rbResourcesMore.Location = new System.Drawing.Point(279, 20);
+            this.rbResourcesMore.Name = "rbResourcesMore";
+            this.rbResourcesMore.Size = new System.Drawing.Size(54, 19);
+            this.rbResourcesMore.TabIndex = 19;
+            this.rbResourcesMore.TabStop = true;
+            this.rbResourcesMore.Text = "More";
+            this.rbResourcesMore.UseVisualStyleBackColor = true;
+            // 
+            // rbResourcesLess
+            // 
+            this.rbResourcesLess.AutoSize = true;
+            this.rbResourcesLess.Location = new System.Drawing.Point(188, 20);
+            this.rbResourcesLess.Name = "rbResourcesLess";
+            this.rbResourcesLess.Size = new System.Drawing.Size(51, 19);
+            this.rbResourcesLess.TabIndex = 18;
+            this.rbResourcesLess.TabStop = true;
+            this.rbResourcesLess.Text = "Less";
+            this.rbResourcesLess.UseVisualStyleBackColor = true;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.rbDeathPenaltyCasual);
+            this.groupBox7.Controls.Add(this.rbDeathPenaltyHardCore);
+            this.groupBox7.Controls.Add(this.rbDeathPenaltyHard);
+            this.groupBox7.Controls.Add(this.rbDeathPenaltyEasy);
+            this.groupBox7.Controls.Add(this.rbDeathPenaltyVeryEasy);
+            this.groupBox7.Controls.Add(this.rbDeathPenaltyNone);
+            this.groupBox7.ForeColor = System.Drawing.Color.SteelBlue;
+            this.groupBox7.Location = new System.Drawing.Point(4, 88);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(776, 50);
+            this.groupBox7.TabIndex = 17;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Death Penalty";
+            // 
+            // rbDeathPenaltyCasual
+            // 
+            this.rbDeathPenaltyCasual.AutoSize = true;
+            this.rbDeathPenaltyCasual.Location = new System.Drawing.Point(97, 22);
+            this.rbDeathPenaltyCasual.Name = "rbDeathPenaltyCasual";
+            this.rbDeathPenaltyCasual.Size = new System.Drawing.Size(63, 19);
+            this.rbDeathPenaltyCasual.TabIndex = 22;
+            this.rbDeathPenaltyCasual.TabStop = true;
+            this.rbDeathPenaltyCasual.Text = "Casual";
+            this.rbDeathPenaltyCasual.UseVisualStyleBackColor = true;
+            // 
+            // rbDeathPenaltyHardCore
+            // 
+            this.rbDeathPenaltyHardCore.AutoSize = true;
+            this.rbDeathPenaltyHardCore.Location = new System.Drawing.Point(449, 20);
+            this.rbDeathPenaltyHardCore.Name = "rbDeathPenaltyHardCore";
+            this.rbDeathPenaltyHardCore.Size = new System.Drawing.Size(76, 19);
+            this.rbDeathPenaltyHardCore.TabIndex = 21;
+            this.rbDeathPenaltyHardCore.TabStop = true;
+            this.rbDeathPenaltyHardCore.Text = "Hardcore";
+            this.rbDeathPenaltyHardCore.UseVisualStyleBackColor = true;
+            // 
+            // rbDeathPenaltyHard
+            // 
+            this.rbDeathPenaltyHard.AutoSize = true;
+            this.rbDeathPenaltyHard.Location = new System.Drawing.Point(355, 20);
+            this.rbDeathPenaltyHard.Name = "rbDeathPenaltyHard";
+            this.rbDeathPenaltyHard.Size = new System.Drawing.Size(52, 19);
+            this.rbDeathPenaltyHard.TabIndex = 20;
+            this.rbDeathPenaltyHard.TabStop = true;
+            this.rbDeathPenaltyHard.Text = "Hard";
+            this.rbDeathPenaltyHard.UseVisualStyleBackColor = true;
+            // 
+            // rbDeathPenaltyEasy
+            // 
+            this.rbDeathPenaltyEasy.AutoSize = true;
+            this.rbDeathPenaltyEasy.Location = new System.Drawing.Point(279, 22);
+            this.rbDeathPenaltyEasy.Name = "rbDeathPenaltyEasy";
+            this.rbDeathPenaltyEasy.Size = new System.Drawing.Size(51, 19);
+            this.rbDeathPenaltyEasy.TabIndex = 19;
+            this.rbDeathPenaltyEasy.TabStop = true;
+            this.rbDeathPenaltyEasy.Text = "Easy";
+            this.rbDeathPenaltyEasy.UseVisualStyleBackColor = true;
+            // 
+            // rbDeathPenaltyVeryEasy
+            // 
+            this.rbDeathPenaltyVeryEasy.AutoSize = true;
+            this.rbDeathPenaltyVeryEasy.Location = new System.Drawing.Point(188, 22);
+            this.rbDeathPenaltyVeryEasy.Name = "rbDeathPenaltyVeryEasy";
+            this.rbDeathPenaltyVeryEasy.Size = new System.Drawing.Size(77, 19);
+            this.rbDeathPenaltyVeryEasy.TabIndex = 18;
+            this.rbDeathPenaltyVeryEasy.TabStop = true;
+            this.rbDeathPenaltyVeryEasy.Text = "Very Easy";
+            this.rbDeathPenaltyVeryEasy.UseVisualStyleBackColor = true;
+            // 
+            // rbDeathPenaltyNone
+            // 
+            this.rbDeathPenaltyNone.AutoSize = true;
+            this.rbDeathPenaltyNone.Location = new System.Drawing.Point(6, 22);
+            this.rbDeathPenaltyNone.Name = "rbDeathPenaltyNone";
+            this.rbDeathPenaltyNone.Size = new System.Drawing.Size(64, 19);
+            this.rbDeathPenaltyNone.TabIndex = 17;
+            this.rbDeathPenaltyNone.TabStop = true;
+            this.rbDeathPenaltyNone.Text = "Default";
+            this.rbDeathPenaltyNone.UseVisualStyleBackColor = true;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.rbCombatVeryHard);
+            this.groupBox6.Controls.Add(this.rbCombatHard);
+            this.groupBox6.Controls.Add(this.rbCombatEasy);
+            this.groupBox6.Controls.Add(this.rbCombatVeryEasy);
+            this.groupBox6.Controls.Add(this.rbCombatNone);
+            this.groupBox6.ForeColor = System.Drawing.Color.SteelBlue;
+            this.groupBox6.Location = new System.Drawing.Point(4, 32);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(776, 50);
+            this.groupBox6.TabIndex = 16;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Combat";
+            // 
+            // rbCombatVeryHard
+            // 
+            this.rbCombatVeryHard.AutoSize = true;
+            this.rbCombatVeryHard.Location = new System.Drawing.Point(355, 22);
+            this.rbCombatVeryHard.Name = "rbCombatVeryHard";
+            this.rbCombatVeryHard.Size = new System.Drawing.Size(78, 19);
+            this.rbCombatVeryHard.TabIndex = 21;
+            this.rbCombatVeryHard.TabStop = true;
+            this.rbCombatVeryHard.Text = "Very Hard";
+            this.rbCombatVeryHard.UseVisualStyleBackColor = true;
+            // 
+            // rbCombatHard
+            // 
+            this.rbCombatHard.AutoSize = true;
+            this.rbCombatHard.Location = new System.Drawing.Point(279, 22);
+            this.rbCombatHard.Name = "rbCombatHard";
+            this.rbCombatHard.Size = new System.Drawing.Size(52, 19);
+            this.rbCombatHard.TabIndex = 20;
+            this.rbCombatHard.TabStop = true;
+            this.rbCombatHard.Text = "Hard";
+            this.rbCombatHard.UseVisualStyleBackColor = true;
+            // 
+            // rbCombatEasy
+            // 
+            this.rbCombatEasy.AutoSize = true;
+            this.rbCombatEasy.Location = new System.Drawing.Point(188, 22);
+            this.rbCombatEasy.Name = "rbCombatEasy";
+            this.rbCombatEasy.Size = new System.Drawing.Size(51, 19);
+            this.rbCombatEasy.TabIndex = 19;
+            this.rbCombatEasy.TabStop = true;
+            this.rbCombatEasy.Text = "Easy";
+            this.rbCombatEasy.UseVisualStyleBackColor = true;
+            // 
+            // rbCombatVeryEasy
+            // 
+            this.rbCombatVeryEasy.AutoSize = true;
+            this.rbCombatVeryEasy.Location = new System.Drawing.Point(97, 20);
+            this.rbCombatVeryEasy.Name = "rbCombatVeryEasy";
+            this.rbCombatVeryEasy.Size = new System.Drawing.Size(77, 19);
+            this.rbCombatVeryEasy.TabIndex = 18;
+            this.rbCombatVeryEasy.TabStop = true;
+            this.rbCombatVeryEasy.Text = "Very Easy";
+            this.rbCombatVeryEasy.UseVisualStyleBackColor = true;
+            // 
+            // rbCombatNone
+            // 
+            this.rbCombatNone.AutoSize = true;
+            this.rbCombatNone.Location = new System.Drawing.Point(6, 22);
+            this.rbCombatNone.Name = "rbCombatNone";
+            this.rbCombatNone.Size = new System.Drawing.Size(64, 19);
+            this.rbCombatNone.TabIndex = 17;
+            this.rbCombatNone.TabStop = true;
+            this.rbCombatNone.Text = "Default";
+            this.rbCombatNone.UseVisualStyleBackColor = true;
+            // 
+            // expandCollapsePanel1
+            // 
+            this.expandCollapsePanel1.ButtonSize = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonSize.Small;
+            this.expandCollapsePanel1.ButtonStyle = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonStyle.Classic;
+            this.expandCollapsePanel1.Controls.Add(this.groupBox12);
+            this.expandCollapsePanel1.Controls.Add(this.groupBox3);
+            this.expandCollapsePanel1.Controls.Add(this.groupBox2);
+            this.expandCollapsePanel1.Controls.Add(this.groupBox1);
+            this.expandCollapsePanel1.Controls.Add(this.groupBox4);
+            this.expandCollapsePanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.expandCollapsePanel1.ExpandedHeight = 456;
+            this.expandCollapsePanel1.IsExpanded = true;
+            this.expandCollapsePanel1.Location = new System.Drawing.Point(0, 147);
+            this.expandCollapsePanel1.Name = "expandCollapsePanel1";
+            this.expandCollapsePanel1.Size = new System.Drawing.Size(800, 590);
+            this.expandCollapsePanel1.TabIndex = 3;
+            this.expandCollapsePanel1.Text = "Administration";
+            this.expandCollapsePanel1.UseAnimation = true;
+            // 
+            // groupBox12
+            // 
+            this.groupBox12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox12.Controls.Add(this.button2);
+            this.groupBox12.Controls.Add(this.txtCommand);
+            this.groupBox12.Controls.Add(this.btProcessorAffinity);
+            this.groupBox12.Controls.Add(this.txtAffinity);
+            this.groupBox12.Controls.Add(this.label34);
+            this.groupBox12.Controls.Add(this.label33);
+            this.groupBox12.Controls.Add(this.cboPriority);
+            this.groupBox12.ForeColor = System.Drawing.Color.SteelBlue;
+            this.groupBox12.Location = new System.Drawing.Point(4, 451);
+            this.groupBox12.Name = "groupBox12";
+            this.groupBox12.Size = new System.Drawing.Size(810, 127);
+            this.groupBox12.TabIndex = 23;
+            this.groupBox12.TabStop = false;
+            this.groupBox12.Text = "Command Line";
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Location = new System.Drawing.Point(737, 46);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(61, 23);
+            this.button2.TabIndex = 72;
+            this.button2.Text = "Refresh";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // txtCommand
+            // 
+            this.txtCommand.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCommand.Enabled = false;
+            this.txtCommand.Location = new System.Drawing.Point(5, 46);
+            this.txtCommand.Multiline = true;
+            this.txtCommand.Name = "txtCommand";
+            this.txtCommand.Size = new System.Drawing.Size(727, 72);
+            this.txtCommand.TabIndex = 71;
+            // 
+            // btProcessorAffinity
+            // 
+            this.btProcessorAffinity.Location = new System.Drawing.Point(513, 18);
+            this.btProcessorAffinity.Name = "btProcessorAffinity";
+            this.btProcessorAffinity.Size = new System.Drawing.Size(30, 23);
+            this.btProcessorAffinity.TabIndex = 70;
+            this.btProcessorAffinity.Text = "...";
+            this.btProcessorAffinity.UseVisualStyleBackColor = true;
+            this.btProcessorAffinity.Click += new System.EventHandler(this.btProcessorAffinity_Click);
+            // 
+            // txtAffinity
+            // 
+            this.txtAffinity.Enabled = false;
+            this.txtAffinity.Location = new System.Drawing.Point(299, 20);
+            this.txtAffinity.Name = "txtAffinity";
+            this.txtAffinity.Size = new System.Drawing.Size(208, 21);
+            this.txtAffinity.TabIndex = 69;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(217, 22);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(76, 15);
+            this.label34.TabIndex = 68;
+            this.label34.Text = "Affinity - CPU";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(4, 22);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(44, 15);
+            this.label33.TabIndex = 67;
+            this.label33.Text = "Priority";
+            // 
+            // cboPriority
+            // 
+            this.cboPriority.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPriority.FormattingEnabled = true;
+            this.cboPriority.Location = new System.Drawing.Point(70, 19);
+            this.cboPriority.Name = "cboPriority";
+            this.cboPriority.Size = new System.Drawing.Size(132, 21);
+            this.cboPriority.TabIndex = 15;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox3.Controls.Add(this.groupBox10);
+            this.groupBox3.Controls.Add(this.txtWorldName);
+            this.groupBox3.Controls.Add(this.label23);
+            this.groupBox3.Controls.Add(this.label21);
+            this.groupBox3.Controls.Add(this.cLBKeys);
+            this.groupBox3.Controls.Add(this.txtInstanceID);
+            this.groupBox3.Controls.Add(this.label18);
+            this.groupBox3.Controls.Add(this.chkCrossplay);
+            this.groupBox3.Controls.Add(this.chkPublic);
+            this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
+            this.groupBox3.Location = new System.Drawing.Point(4, 272);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(793, 173);
+            this.groupBox3.TabIndex = 18;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Server Settings";
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.tbPresetHammer);
+            this.groupBox10.Controls.Add(this.tbPresetCasual);
+            this.groupBox10.Controls.Add(this.tbPresetImmersive);
+            this.groupBox10.Controls.Add(this.tbPresetHardcore);
+            this.groupBox10.Controls.Add(this.tbPresetHard);
+            this.groupBox10.Controls.Add(this.tbPresetEasy);
+            this.groupBox10.Controls.Add(this.tbPresetNormal);
+            this.groupBox10.ForeColor = System.Drawing.Color.SteelBlue;
+            this.groupBox10.Location = new System.Drawing.Point(8, 113);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(671, 50);
+            this.groupBox10.TabIndex = 18;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "Preset";
+            // 
+            // tbPresetHammer
+            // 
+            this.tbPresetHammer.AutoSize = true;
+            this.tbPresetHammer.Location = new System.Drawing.Point(436, 22);
+            this.tbPresetHammer.Name = "tbPresetHammer";
+            this.tbPresetHammer.Size = new System.Drawing.Size(74, 19);
+            this.tbPresetHammer.TabIndex = 23;
+            this.tbPresetHammer.TabStop = true;
+            this.tbPresetHammer.Text = "Hammer";
+            this.tbPresetHammer.UseVisualStyleBackColor = true;
+            // 
+            // tbPresetCasual
+            // 
+            this.tbPresetCasual.AutoSize = true;
+            this.tbPresetCasual.Location = new System.Drawing.Point(78, 22);
+            this.tbPresetCasual.Name = "tbPresetCasual";
+            this.tbPresetCasual.Size = new System.Drawing.Size(63, 19);
+            this.tbPresetCasual.TabIndex = 22;
+            this.tbPresetCasual.TabStop = true;
+            this.tbPresetCasual.Text = "Casual";
+            this.tbPresetCasual.UseVisualStyleBackColor = true;
+            // 
+            // tbPresetImmersive
+            // 
+            this.tbPresetImmersive.AutoSize = true;
+            this.tbPresetImmersive.Location = new System.Drawing.Point(348, 22);
+            this.tbPresetImmersive.Name = "tbPresetImmersive";
+            this.tbPresetImmersive.Size = new System.Drawing.Size(82, 19);
+            this.tbPresetImmersive.TabIndex = 21;
+            this.tbPresetImmersive.TabStop = true;
+            this.tbPresetImmersive.Text = "Immersive";
+            this.tbPresetImmersive.UseVisualStyleBackColor = true;
+            // 
+            // tbPresetHardcore
+            // 
+            this.tbPresetHardcore.AutoSize = true;
+            this.tbPresetHardcore.Location = new System.Drawing.Point(266, 22);
+            this.tbPresetHardcore.Name = "tbPresetHardcore";
+            this.tbPresetHardcore.Size = new System.Drawing.Size(76, 19);
+            this.tbPresetHardcore.TabIndex = 20;
+            this.tbPresetHardcore.TabStop = true;
+            this.tbPresetHardcore.Text = "Hardcore";
+            this.tbPresetHardcore.UseVisualStyleBackColor = true;
+            // 
+            // tbPresetHard
+            // 
+            this.tbPresetHard.AutoSize = true;
+            this.tbPresetHard.Location = new System.Drawing.Point(208, 22);
+            this.tbPresetHard.Name = "tbPresetHard";
+            this.tbPresetHard.Size = new System.Drawing.Size(52, 19);
+            this.tbPresetHard.TabIndex = 19;
+            this.tbPresetHard.TabStop = true;
+            this.tbPresetHard.Text = "Hard";
+            this.tbPresetHard.UseVisualStyleBackColor = true;
+            // 
+            // tbPresetEasy
+            // 
+            this.tbPresetEasy.AutoSize = true;
+            this.tbPresetEasy.Location = new System.Drawing.Point(151, 22);
+            this.tbPresetEasy.Name = "tbPresetEasy";
+            this.tbPresetEasy.Size = new System.Drawing.Size(51, 19);
+            this.tbPresetEasy.TabIndex = 18;
+            this.tbPresetEasy.TabStop = true;
+            this.tbPresetEasy.Text = "Easy";
+            this.tbPresetEasy.UseVisualStyleBackColor = true;
+            // 
+            // tbPresetNormal
+            // 
+            this.tbPresetNormal.AutoSize = true;
+            this.tbPresetNormal.Location = new System.Drawing.Point(6, 22);
+            this.tbPresetNormal.Name = "tbPresetNormal";
+            this.tbPresetNormal.Size = new System.Drawing.Size(66, 19);
+            this.tbPresetNormal.TabIndex = 17;
+            this.tbPresetNormal.TabStop = true;
+            this.tbPresetNormal.Text = "Normal";
+            this.tbPresetNormal.UseVisualStyleBackColor = true;
+            // 
+            // txtWorldName
+            // 
+            this.txtWorldName.Location = new System.Drawing.Point(115, 87);
+            this.txtWorldName.Name = "txtWorldName";
+            this.txtWorldName.Size = new System.Drawing.Size(120, 21);
+            this.txtWorldName.TabIndex = 14;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(10, 90);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(76, 15);
+            this.label23.TabIndex = 13;
+            this.label23.Text = "World Name";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(257, 21);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(48, 15);
+            this.label21.TabIndex = 12;
+            this.label21.Text = "Set Key";
+            // 
+            // cLBKeys
+            // 
+            this.cLBKeys.FormattingEnabled = true;
+            this.cLBKeys.Items.AddRange(new object[] {
+            "No Build Cost",
+            "Player Events",
+            "Passive Mobs",
+            "No Map"});
+            this.cLBKeys.Location = new System.Drawing.Point(321, 21);
+            this.cLBKeys.Name = "cLBKeys";
+            this.cLBKeys.Size = new System.Drawing.Size(120, 84);
+            this.cLBKeys.TabIndex = 11;
+            // 
+            // txtInstanceID
+            // 
+            this.txtInstanceID.Location = new System.Drawing.Point(115, 64);
+            this.txtInstanceID.Name = "txtInstanceID";
+            this.txtInstanceID.Size = new System.Drawing.Size(121, 21);
+            this.txtInstanceID.TabIndex = 10;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(10, 67);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(66, 15);
+            this.label18.TabIndex = 9;
+            this.label18.Text = "Instance Id";
+            // 
+            // chkCrossplay
+            // 
+            this.chkCrossplay.AutoSize = true;
+            this.chkCrossplay.Location = new System.Drawing.Point(12, 45);
+            this.chkCrossplay.Name = "chkCrossplay";
+            this.chkCrossplay.Size = new System.Drawing.Size(79, 19);
+            this.chkCrossplay.TabIndex = 8;
+            this.chkCrossplay.Text = "Crossplay";
+            this.chkCrossplay.UseVisualStyleBackColor = true;
+            // 
+            // chkPublic
+            // 
+            this.chkPublic.AutoSize = true;
+            this.chkPublic.Location = new System.Drawing.Point(12, 20);
+            this.chkPublic.Name = "chkPublic";
+            this.chkPublic.Size = new System.Drawing.Size(60, 19);
+            this.chkPublic.TabIndex = 7;
+            this.chkPublic.Text = "Public";
+            this.chkPublic.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox2.Controls.Add(this.txtLocalIP);
+            this.groupBox2.Controls.Add(this.txtPeerPort);
+            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.txtServerPort);
+            this.groupBox2.Controls.Add(this.label11);
+            this.groupBox2.Controls.Add(this.label12);
+            this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
+            this.groupBox2.Location = new System.Drawing.Point(4, 188);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(793, 78);
+            this.groupBox2.TabIndex = 17;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Networking";
+            // 
+            // txtLocalIP
+            // 
+            this.txtLocalIP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.txtLocalIP.FormattingEnabled = true;
+            this.txtLocalIP.Location = new System.Drawing.Point(115, 19);
+            this.txtLocalIP.Name = "txtLocalIP";
+            this.txtLocalIP.Size = new System.Drawing.Size(515, 21);
+            this.txtLocalIP.TabIndex = 12;
+            // 
+            // txtPeerPort
+            // 
+            this.txtPeerPort.Enabled = false;
+            this.txtPeerPort.Location = new System.Drawing.Point(321, 46);
+            this.txtPeerPort.Name = "txtPeerPort";
+            this.txtPeerPort.Size = new System.Drawing.Size(93, 21);
+            this.txtPeerPort.TabIndex = 9;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(257, 49);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(58, 15);
+            this.label10.TabIndex = 8;
+            this.label10.Text = "Peer Port";
+            // 
+            // txtServerPort
+            // 
+            this.txtServerPort.Location = new System.Drawing.Point(115, 46);
+            this.txtServerPort.Name = "txtServerPort";
+            this.txtServerPort.Size = new System.Drawing.Size(95, 21);
+            this.txtServerPort.TabIndex = 7;
+            this.txtServerPort.TextChanged += new System.EventHandler(this.txtServerPort_TextChanged);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(10, 49);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(67, 15);
+            this.label11.TabIndex = 6;
+            this.label11.Text = "Server Port";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(10, 23);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(51, 15);
+            this.label12.TabIndex = 4;
+            this.label12.Text = "Local IP";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox1.Controls.Add(this.txtServerPWD);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.txtServerName);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
+            this.groupBox1.Location = new System.Drawing.Point(4, 105);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(793, 77);
+            this.groupBox1.TabIndex = 16;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Name and Password";
+            // 
+            // txtServerPWD
+            // 
+            this.txtServerPWD.Location = new System.Drawing.Point(115, 46);
+            this.txtServerPWD.Name = "txtServerPWD";
+            this.txtServerPWD.PasswordChar = '*';
+            this.txtServerPWD.Size = new System.Drawing.Size(95, 21);
+            this.txtServerPWD.TabIndex = 7;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(10, 49);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(99, 15);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "Server Password";
+            // 
+            // txtServerName
+            // 
+            this.txtServerName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtServerName.Location = new System.Drawing.Point(115, 20);
+            this.txtServerName.Name = "txtServerName";
+            this.txtServerName.Size = new System.Drawing.Size(666, 21);
+            this.txtServerName.TabIndex = 5;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(10, 23);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(79, 15);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Server Name";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox4.Controls.Add(this.cbBranch);
+            this.groupBox4.Controls.Add(this.label22);
+            this.groupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
+            this.groupBox4.Location = new System.Drawing.Point(4, 43);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(793, 56);
+            this.groupBox4.TabIndex = 15;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Server Details";
+            // 
+            // cbBranch
+            // 
+            this.cbBranch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbBranch.FormattingEnabled = true;
+            this.cbBranch.Location = new System.Drawing.Point(115, 20);
+            this.cbBranch.Name = "cbBranch";
+            this.cbBranch.Size = new System.Drawing.Size(666, 21);
+            this.cbBranch.TabIndex = 14;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(10, 23);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(46, 15);
+            this.label22.TabIndex = 4;
+            this.label22.Text = "Branch";
+            // 
+            // groupBox13
+            // 
+            this.groupBox13.Controls.Add(this.rbRaidsDefault);
+            this.groupBox13.Controls.Add(this.rbRaidsMuchLess);
+            this.groupBox13.Controls.Add(this.rbRaidsNone);
+            this.groupBox13.Controls.Add(this.rbRaidsMuchMore);
+            this.groupBox13.Controls.Add(this.rbRaidsMore);
+            this.groupBox13.Controls.Add(this.rbRaidsLess);
+            this.groupBox13.ForeColor = System.Drawing.Color.SteelBlue;
+            this.groupBox13.Location = new System.Drawing.Point(4, 200);
+            this.groupBox13.Name = "groupBox13";
+            this.groupBox13.Size = new System.Drawing.Size(776, 50);
+            this.groupBox13.TabIndex = 20;
+            this.groupBox13.TabStop = false;
+            this.groupBox13.Text = "Raids";
+            // 
+            // rbRaidsDefault
+            // 
+            this.rbRaidsDefault.AutoSize = true;
+            this.rbRaidsDefault.Location = new System.Drawing.Point(6, 20);
+            this.rbRaidsDefault.Name = "rbRaidsDefault";
+            this.rbRaidsDefault.Size = new System.Drawing.Size(64, 19);
+            this.rbRaidsDefault.TabIndex = 23;
+            this.rbRaidsDefault.TabStop = true;
+            this.rbRaidsDefault.Text = "Default";
+            this.rbRaidsDefault.UseVisualStyleBackColor = true;
+            // 
+            // rbRaidsMuchLess
+            // 
+            this.rbRaidsMuchLess.AutoSize = true;
+            this.rbRaidsMuchLess.Location = new System.Drawing.Point(188, 20);
+            this.rbRaidsMuchLess.Name = "rbRaidsMuchLess";
+            this.rbRaidsMuchLess.Size = new System.Drawing.Size(85, 19);
+            this.rbRaidsMuchLess.TabIndex = 22;
+            this.rbRaidsMuchLess.TabStop = true;
+            this.rbRaidsMuchLess.Text = "Much Less";
+            this.rbRaidsMuchLess.UseVisualStyleBackColor = true;
+            // 
+            // rbRaidsMuchMore
+            // 
+            this.rbRaidsMuchMore.AutoSize = true;
+            this.rbRaidsMuchMore.Location = new System.Drawing.Point(449, 20);
+            this.rbRaidsMuchMore.Name = "rbRaidsMuchMore";
+            this.rbRaidsMuchMore.Size = new System.Drawing.Size(88, 19);
+            this.rbRaidsMuchMore.TabIndex = 20;
+            this.rbRaidsMuchMore.TabStop = true;
+            this.rbRaidsMuchMore.Text = "Much More";
+            this.rbRaidsMuchMore.UseVisualStyleBackColor = true;
+            // 
+            // rbRaidsMore
+            // 
+            this.rbRaidsMore.AutoSize = true;
+            this.rbRaidsMore.Location = new System.Drawing.Point(355, 20);
+            this.rbRaidsMore.Name = "rbRaidsMore";
+            this.rbRaidsMore.Size = new System.Drawing.Size(54, 19);
+            this.rbRaidsMore.TabIndex = 19;
+            this.rbRaidsMore.TabStop = true;
+            this.rbRaidsMore.Text = "More";
+            this.rbRaidsMore.UseVisualStyleBackColor = true;
+            // 
+            // rbRaidsLess
+            // 
+            this.rbRaidsLess.AutoSize = true;
+            this.rbRaidsLess.Location = new System.Drawing.Point(279, 20);
+            this.rbRaidsLess.Name = "rbRaidsLess";
+            this.rbRaidsLess.Size = new System.Drawing.Size(51, 19);
+            this.rbRaidsLess.TabIndex = 18;
+            this.rbRaidsLess.TabStop = true;
+            this.rbRaidsLess.Text = "Less";
+            this.rbRaidsLess.UseVisualStyleBackColor = true;
+            // 
+            // rbRaidsNone
+            // 
+            this.rbRaidsNone.AutoSize = true;
+            this.rbRaidsNone.Location = new System.Drawing.Point(97, 20);
+            this.rbRaidsNone.Name = "rbRaidsNone";
+            this.rbRaidsNone.Size = new System.Drawing.Size(55, 19);
+            this.rbRaidsNone.TabIndex = 21;
+            this.rbRaidsNone.TabStop = true;
+            this.rbRaidsNone.Text = "None";
+            this.rbRaidsNone.UseVisualStyleBackColor = true;
+            this.rbRaidsNone.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
             // 
             // FrmValheim
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(800, 1100);
+            this.ClientSize = new System.Drawing.Size(817, 1100);
             this.Controls.Add(this.expandCollapsePanel4);
             this.Controls.Add(this.expandCollapsePanel2);
             this.Controls.Add(this.expandCollapsePanel3);
@@ -1820,6 +1912,27 @@
             this.Load += new System.EventHandler(this.FrmValheim_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.expandCollapsePanel4.ResumeLayout(false);
+            this.expandCollapsePanel4.PerformLayout();
+            this.groupBox11.ResumeLayout(false);
+            this.groupBox11.PerformLayout();
+            this.expandCollapsePanel2.ResumeLayout(false);
+            this.expandCollapsePanel2.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbSubBackups)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbFirstBackup)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbAutoSavePeriod)).EndInit();
+            this.expandCollapsePanel3.ResumeLayout(false);
+            this.expandCollapsePanel3.PerformLayout();
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.expandCollapsePanel1.ResumeLayout(false);
             this.expandCollapsePanel1.PerformLayout();
             this.groupBox12.ResumeLayout(false);
@@ -1834,27 +1947,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbSubBackups)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbFirstBackup)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbAutoSavePeriod)).EndInit();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
-            this.expandCollapsePanel3.ResumeLayout(false);
-            this.expandCollapsePanel3.PerformLayout();
-            this.groupBox9.ResumeLayout(false);
-            this.groupBox9.PerformLayout();
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox8.PerformLayout();
-            this.expandCollapsePanel2.ResumeLayout(false);
-            this.expandCollapsePanel2.PerformLayout();
-            this.expandCollapsePanel4.ResumeLayout(false);
-            this.expandCollapsePanel4.PerformLayout();
-            this.groupBox11.ResumeLayout(false);
-            this.groupBox11.PerformLayout();
+            this.groupBox13.ResumeLayout(false);
+            this.groupBox13.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2001,5 +2095,12 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.FolderBrowserDialog fbd;
         private System.Windows.Forms.Timer timerGetProcess;
+        private System.Windows.Forms.GroupBox groupBox13;
+        private System.Windows.Forms.RadioButton rbRaidsDefault;
+        private System.Windows.Forms.RadioButton rbRaidsMuchLess;
+        private System.Windows.Forms.RadioButton rbRaidsMuchMore;
+        private System.Windows.Forms.RadioButton rbRaidsMore;
+        private System.Windows.Forms.RadioButton rbRaidsLess;
+        private System.Windows.Forms.RadioButton rbRaidsNone;
     }
 }

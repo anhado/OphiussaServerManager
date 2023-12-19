@@ -22,7 +22,7 @@ namespace OphiussaServerManager.Common.Models.ValheimProfile
 
     public enum Combat
     {
-        None,
+        Default,
         VeryEasy,
         Easy,
         Hard,
@@ -31,7 +31,7 @@ namespace OphiussaServerManager.Common.Models.ValheimProfile
 
     public enum DeathPenalty
     {
-        None,
+        Default,
         Casual,
         VeryEasy,
         Easy,
@@ -41,7 +41,7 @@ namespace OphiussaServerManager.Common.Models.ValheimProfile
 
     public enum Resources
     {
-        None,
+        Default,
         MuchLess,
         Less,
         More,
@@ -51,10 +51,20 @@ namespace OphiussaServerManager.Common.Models.ValheimProfile
 
     public enum Portals
     {
-        None,
+        Default,
         Casual,
         Hard,
         VeryHard
+    }
+
+    public enum Raids
+    {
+        Default,
+        None,
+        MuchLess,
+        Less,
+        More,
+        MuchMore
     }
 
 
@@ -95,11 +105,11 @@ namespace OphiussaServerManager.Common.Models.ValheimProfile
             if (this.Administration.Crossplay) hifenArgs.Add(" -crossplay");
             if (!string.IsNullOrEmpty(this.Administration.InstanceID)) hifenArgs.Add($" -instanceid \"{this.Administration.InstanceID}\"");
             hifenArgs.Add($" -preset {this.Administration.Preset.ToString().ToLower()}");
-            if (this.Administration.Combat != Combat.None) hifenArgs.Add($" -modifier combat {this.Administration.Combat.ToString().ToLower()}");
-            if (this.Administration.DeathPenalty != DeathPenalty.None) hifenArgs.Add($" -modifier deathpenalty {this.Administration.DeathPenalty.ToString().ToLower()}");
-            if (this.Administration.Resources != Resources.None) hifenArgs.Add($" -modifier resources {this.Administration.Resources.ToString().ToLower()}");
-            //TODO:Missing raids
-            if (this.Administration.Portals != Portals.None) hifenArgs.Add($" -modifier portals {this.Administration.Portals.ToString().ToLower()}");
+            if (this.Administration.Combat != Combat.Default) hifenArgs.Add($" -modifier combat {this.Administration.Combat.ToString().ToLower()}");
+            if (this.Administration.DeathPenalty != DeathPenalty.Default) hifenArgs.Add($" -modifier deathpenalty {this.Administration.DeathPenalty.ToString().ToLower()}");
+            if (this.Administration.Resources != Resources.Default) hifenArgs.Add($" -modifier resources {this.Administration.Resources.ToString().ToLower()}");
+            if (this.Administration.Raids != Raids.Default) hifenArgs.Add($" -modifier raids {this.Administration.Raids.ToString().ToLower()}");
+            if (this.Administration.Portals != Portals.Default) hifenArgs.Add($" -modifier portals {this.Administration.Portals.ToString().ToLower()}");
             if (this.Administration.NoBuildcost) hifenArgs.Add(" -setkey nobuildcost");
             if (this.Administration.PlayerEvents) hifenArgs.Add(" -setkey playerevents");
             if (this.Administration.PassiveMobs) hifenArgs.Add(" -setkey passivemobs");
@@ -153,10 +163,11 @@ namespace OphiussaServerManager.Common.Models.ValheimProfile
         public bool PlayerEvents { get; set; } = false;
         public bool PassiveMobs { get; set; } = false;
         public bool NoMap { get; set; } = false;
-        public Combat Combat { get; set; } = Combat.None;
-        public DeathPenalty DeathPenalty { get; set; } = DeathPenalty.None;
-        public Resources Resources { get; set; } = Resources.None;
-        public Portals Portals { get; set; } = Portals.None;
+        public Combat Combat { get; set; } = Combat.Default;
+        public DeathPenalty DeathPenalty { get; set; } = DeathPenalty.Default;
+        public Resources Resources { get; set; } = Resources.Default;
+        public Portals Portals { get; set; } = Portals.Default;
+        public Raids Raids { get; set; } = Raids.Default;
         public string SaveLocation { get; set; } = "";
         public string LogFileLocation { get; set; } = "";
         public ProcessPriorityClass CPUPriority { get; set; } = ProcessPriorityClass.Normal;

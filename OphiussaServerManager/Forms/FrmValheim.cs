@@ -97,27 +97,34 @@ namespace OphiussaServerManager.Forms
             cboPriority.SelectedItem = profile.ValheimConfiguration.Administration.CPUPriority;
             txtAffinity.Text = profile.ValheimConfiguration.Administration.CPUAffinity;
 
-            rbCombatNone.Checked = profile.ValheimConfiguration.Administration.Combat == Common.Models.ValheimProfile.Combat.None;
+            rbCombatNone.Checked = profile.ValheimConfiguration.Administration.Combat == Common.Models.ValheimProfile.Combat.Default;
             rbCombatVeryEasy.Checked = profile.ValheimConfiguration.Administration.Combat == Common.Models.ValheimProfile.Combat.VeryEasy;
             rbCombatEasy.Checked = profile.ValheimConfiguration.Administration.Combat == Common.Models.ValheimProfile.Combat.Easy;
             rbCombatHard.Checked = profile.ValheimConfiguration.Administration.Combat == Common.Models.ValheimProfile.Combat.Hard;
             rbCombatVeryHard.Checked = profile.ValheimConfiguration.Administration.Combat == Common.Models.ValheimProfile.Combat.VeryHard;
 
-            rbDeathPenaltyNone.Checked = profile.ValheimConfiguration.Administration.DeathPenalty == Common.Models.ValheimProfile.DeathPenalty.None;
+            rbDeathPenaltyNone.Checked = profile.ValheimConfiguration.Administration.DeathPenalty == Common.Models.ValheimProfile.DeathPenalty.Default;
             rbDeathPenaltyCasual.Checked = profile.ValheimConfiguration.Administration.DeathPenalty == Common.Models.ValheimProfile.DeathPenalty.Casual;
             rbDeathPenaltyVeryEasy.Checked = profile.ValheimConfiguration.Administration.DeathPenalty == Common.Models.ValheimProfile.DeathPenalty.VeryEasy;
             rbDeathPenaltyEasy.Checked = profile.ValheimConfiguration.Administration.DeathPenalty == Common.Models.ValheimProfile.DeathPenalty.Easy;
             rbDeathPenaltyHard.Checked = profile.ValheimConfiguration.Administration.DeathPenalty == Common.Models.ValheimProfile.DeathPenalty.Hard;
             rbDeathPenaltyHardCore.Checked = profile.ValheimConfiguration.Administration.DeathPenalty == Common.Models.ValheimProfile.DeathPenalty.HardCore;
 
-            rbResourcesNone.Checked = profile.ValheimConfiguration.Administration.Resources == Common.Models.ValheimProfile.Resources.None;
+            rbResourcesNone.Checked = profile.ValheimConfiguration.Administration.Resources == Common.Models.ValheimProfile.Resources.Default;
             rbResourcesMuchLess.Checked = profile.ValheimConfiguration.Administration.Resources == Common.Models.ValheimProfile.Resources.MuchLess;
             rbResourcesLess.Checked = profile.ValheimConfiguration.Administration.Resources == Common.Models.ValheimProfile.Resources.Less;
             rbResourcesMore.Checked = profile.ValheimConfiguration.Administration.Resources == Common.Models.ValheimProfile.Resources.More;
             rbResourcesMuchMore.Checked = profile.ValheimConfiguration.Administration.Resources == Common.Models.ValheimProfile.Resources.MuchMore;
             rbResourcesMost.Checked = profile.ValheimConfiguration.Administration.Resources == Common.Models.ValheimProfile.Resources.Most;
-            //TODO:Missing raids
-            rbPortalsNone.Checked = profile.ValheimConfiguration.Administration.Portals == Common.Models.ValheimProfile.Portals.None;
+             
+            rbRaidsDefault.Checked = profile.ValheimConfiguration.Administration.Raids == Common.Models.ValheimProfile.Raids.Default;
+            rbRaidsNone.Checked = profile.ValheimConfiguration.Administration.Raids == Common.Models.ValheimProfile.Raids.None;
+            rbRaidsMuchLess.Checked = profile.ValheimConfiguration.Administration.Raids == Common.Models.ValheimProfile.Raids.MuchLess;
+            rbRaidsLess.Checked = profile.ValheimConfiguration.Administration.Raids == Common.Models.ValheimProfile.Raids.Less;
+            rbRaidsMore.Checked = profile.ValheimConfiguration.Administration.Raids == Common.Models.ValheimProfile.Raids.More;
+            rbRaidsMuchMore.Checked = profile.ValheimConfiguration.Administration.Raids == Common.Models.ValheimProfile.Raids.MuchMore;
+             
+            rbPortalsNone.Checked = profile.ValheimConfiguration.Administration.Portals == Common.Models.ValheimProfile.Portals.Default;
             rbPortalsCasual.Checked = profile.ValheimConfiguration.Administration.Portals == Common.Models.ValheimProfile.Portals.Casual;
             rbPortalsHard.Checked = profile.ValheimConfiguration.Administration.Portals == Common.Models.ValheimProfile.Portals.Hard;
             rbPortalsVeryHard.Checked = profile.ValheimConfiguration.Administration.Portals == Common.Models.ValheimProfile.Portals.VeryHard;
@@ -433,14 +440,14 @@ namespace OphiussaServerManager.Forms
             profile.ValheimConfiguration.Administration.CPUAffinity = txtAffinity.Text;
 
 
-            if (rbCombatNone.Checked) profile.ValheimConfiguration.Administration.Combat = Common.Models.ValheimProfile.Combat.None;
+            if (rbCombatNone.Checked) profile.ValheimConfiguration.Administration.Combat = Common.Models.ValheimProfile.Combat.Default;
             if (rbCombatVeryEasy.Checked) profile.ValheimConfiguration.Administration.Combat = Common.Models.ValheimProfile.Combat.VeryEasy;
             if (rbCombatEasy.Checked) profile.ValheimConfiguration.Administration.Combat = Common.Models.ValheimProfile.Combat.Easy;
             if (rbCombatHard.Checked) profile.ValheimConfiguration.Administration.Combat = Common.Models.ValheimProfile.Combat.Hard;
             if (rbCombatVeryHard.Checked) profile.ValheimConfiguration.Administration.Combat = Common.Models.ValheimProfile.Combat.VeryHard;
 
 
-            if (rbDeathPenaltyNone.Checked) profile.ValheimConfiguration.Administration.DeathPenalty = Common.Models.ValheimProfile.DeathPenalty.None;
+            if (rbDeathPenaltyNone.Checked) profile.ValheimConfiguration.Administration.DeathPenalty = Common.Models.ValheimProfile.DeathPenalty.Default;
             if (rbDeathPenaltyCasual.Checked) profile.ValheimConfiguration.Administration.DeathPenalty = Common.Models.ValheimProfile.DeathPenalty.Casual;
             if (rbDeathPenaltyVeryEasy.Checked) profile.ValheimConfiguration.Administration.DeathPenalty = Common.Models.ValheimProfile.DeathPenalty.VeryEasy;
             if (rbDeathPenaltyEasy.Checked) profile.ValheimConfiguration.Administration.DeathPenalty = Common.Models.ValheimProfile.DeathPenalty.Easy;
@@ -448,15 +455,21 @@ namespace OphiussaServerManager.Forms
             if (rbDeathPenaltyHardCore.Checked) profile.ValheimConfiguration.Administration.DeathPenalty = Common.Models.ValheimProfile.DeathPenalty.HardCore;
 
 
-            if (rbResourcesNone.Checked) profile.ValheimConfiguration.Administration.Resources = Common.Models.ValheimProfile.Resources.None;
+            if (rbResourcesNone.Checked) profile.ValheimConfiguration.Administration.Resources = Common.Models.ValheimProfile.Resources.Default;
             if (rbResourcesMuchLess.Checked) profile.ValheimConfiguration.Administration.Resources = Common.Models.ValheimProfile.Resources.MuchLess;
             if (rbResourcesLess.Checked) profile.ValheimConfiguration.Administration.Resources = Common.Models.ValheimProfile.Resources.Less;
             if (rbResourcesMore.Checked) profile.ValheimConfiguration.Administration.Resources = Common.Models.ValheimProfile.Resources.More;
             if (rbResourcesMuchMore.Checked) profile.ValheimConfiguration.Administration.Resources = Common.Models.ValheimProfile.Resources.MuchMore;
             if (rbResourcesMost.Checked) profile.ValheimConfiguration.Administration.Resources = Common.Models.ValheimProfile.Resources.Most;
 
+            if (rbRaidsDefault.Checked) profile.ValheimConfiguration.Administration.Raids = Common.Models.ValheimProfile.Raids.Default;
+            if (rbRaidsNone.Checked) profile.ValheimConfiguration.Administration.Raids = Common.Models.ValheimProfile.Raids.None;
+            if (rbRaidsMuchLess.Checked) profile.ValheimConfiguration.Administration.Raids = Common.Models.ValheimProfile.Raids.MuchLess;
+            if (rbRaidsLess.Checked) profile.ValheimConfiguration.Administration.Raids = Common.Models.ValheimProfile.Raids.Less;
+            if (rbRaidsMore.Checked) profile.ValheimConfiguration.Administration.Raids = Common.Models.ValheimProfile.Raids.More;
+            if (rbRaidsMuchMore.Checked) profile.ValheimConfiguration.Administration.Raids = Common.Models.ValheimProfile.Raids.MuchMore;
 
-            if (rbPortalsNone.Checked) profile.ValheimConfiguration.Administration.Portals = Common.Models.ValheimProfile.Portals.None;
+            if (rbPortalsNone.Checked) profile.ValheimConfiguration.Administration.Portals = Common.Models.ValheimProfile.Portals.Default;
             if (rbPortalsCasual.Checked) profile.ValheimConfiguration.Administration.Portals = Common.Models.ValheimProfile.Portals.Casual;
             if (rbPortalsHard.Checked) profile.ValheimConfiguration.Administration.Portals = Common.Models.ValheimProfile.Portals.Hard;
             if (rbPortalsVeryHard.Checked) profile.ValheimConfiguration.Administration.Portals = Common.Models.ValheimProfile.Portals.VeryHard;
@@ -692,6 +705,11 @@ namespace OphiussaServerManager.Forms
         {
             Thread thread = new Thread(new ThreadStart(isRunningProcess));
             thread.Start();
+        }
+
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
