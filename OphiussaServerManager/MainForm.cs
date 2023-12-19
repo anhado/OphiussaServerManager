@@ -117,6 +117,9 @@ namespace OphiussaServerManager
                         case EnumServerType.ArkSurviveAscended:
                             AddNewArkServer(p.Key, p.Type, "", p);
                             break;
+                        case EnumServerType.Valheim:
+                            AddNewValheimServer(p.Key, p.Type, "", p);
+                            break;
                         default:
                             break;
                     }
@@ -149,6 +152,9 @@ namespace OphiussaServerManager
                             case EnumServerType.ArkSurviveEvolved:
                             case EnumServerType.ArkSurviveAscended:
                                 AddNewArkServer(guid.ToString(), newServer.serversType, newServer.installDir, null);
+                                break;
+                            case EnumServerType.Valheim:
+                                AddNewValheimServer(guid.ToString(), newServer.serversType, newServer.installDir, null);
                                 break;
                             default:
                                 break;
@@ -190,6 +196,44 @@ namespace OphiussaServerManager
                 }
             }
 
+        }
+
+        void AddNewValheimServer(string guid, SupportedServersType serverType, string InstallLocation, Profile p)
+        {
+            try
+            {
+                string tabName = "Server " + tabControl1.TabPages.Count;
+                tabControl1.TabPages.Insert(tabControl1.TabPages.Count - 1, guid.ToString(), tabName);
+                int index = tabControl1.TabPages.IndexOfKey(guid.ToString());
+                TabPage tab = tabControl1.TabPages[index];
+
+                Profile prf;
+                if (p == null)
+                {
+                    prf = new Profile(guid, tabName, serverType);
+                    prf.InstallLocation = InstallLocation;
+                    prf.SaveProfile(Settings);
+                }
+                else
+                {
+                    prf = p;
+                    tab.Text = p.Name + "          ";
+                }
+                Profiles.Add(prf.Key, prf);
+
+                FrmValheim frm = new FrmValheim();
+                frm.LoadSettings(prf, tab);
+                addform(tab, frm);
+
+                linkProfileForms.Add(prf.Key, new LinkProfileForm() { Form = frm, Profile = prf, Tab = tab });
+                tabControl1.SelectTab(index);
+
+            }
+            catch (Exception e)
+            {
+                OphiussaLogger.logger.Error(e);
+                MessageBox.Show($"Error Adding tab {e.Message}");
+            }
         }
 
         void AddNewArkServer(string guid, SupportedServersType serverType, string InstallLocation, Profile p)

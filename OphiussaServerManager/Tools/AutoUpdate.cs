@@ -356,8 +356,7 @@ namespace OphiussaServerManager.Tools.Update
         private string GetCacheBuild(Profile p, string CacheFolder)
         {
 
-            string fileName = "appmanifest_2430930.acf";
-            if (p.Type.ServerType == EnumServerType.ArkSurviveEvolved) fileName = "appmanifest_376030.acf";
+            string fileName = p.Type.ManifestFileName;
             if (!File.Exists(System.IO.Path.Combine(CacheFolder, "steamapps", fileName))) return "";
 
             string[] content = File.ReadAllText(System.IO.Path.Combine(CacheFolder, "steamapps", fileName)).Split('\n');
@@ -399,7 +398,21 @@ namespace OphiussaServerManager.Tools.Update
                 OnProgressChanged(new ProcessEventArg() { Message = "Comparing cache with production files", IsStarting = false, ProcessedFileCount = 0, Sucessful = false, TotalFiles = 0 });
                 if (Settings.UseSmartCopy)
                 {
-                    changedFiles = Utils.CompareFolderContent(p.InstallLocation, CacheFolder, new List<string> { "Saved", "genosl", "Privacy" });
+                    List<string> ignoredFolders = new List<string>();
+                    switch (p.Type.ServerType)
+                    {
+                        case EnumServerType.ArkSurviveEvolved:
+                        case EnumServerType.ArkSurviveAscended:
+                            ignoredFolders = new List<string> { "Saved", "genosl", "Privacy" };
+                            break;
+                        case EnumServerType.Valheim:
+                            //see all
+                            break;
+                        default:
+                            break;
+                    }
+
+                    changedFiles = Utils.CompareFolderContent(p.InstallLocation, CacheFolder, ignoredFolders);
                     if (currentServerBuild == currentCacheBuild && changedFiles.Count == 1)
                     {
                         changedFiles = new List<FileInfo>();

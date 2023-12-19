@@ -13,7 +13,7 @@ using System.Windows.Documents;
 using Newtonsoft.Json.Linq;
 using static System.Collections.Specialized.BitVector32;
 
-namespace OphiussaServerManager.Common.Models.Profiles
+namespace OphiussaServerManager.Common.Models.Profiles.ArkProfile
 {
 
     public class ArkProfile

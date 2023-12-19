@@ -9,7 +9,8 @@ namespace OphiussaServerManager.Common.Models.SupportedServers
     public enum EnumServerType
     {
         ArkSurviveEvolved = 0,
-        ArkSurviveAscended = 1
+        ArkSurviveAscended = 1,
+        Valheim = 2
     }
 
     public class SupportedServersType
@@ -33,7 +34,8 @@ namespace OphiussaServerManager.Common.Models.SupportedServers
     public enum ModSource
     {
         SteamWorkshop,
-        CurseForge
+        CurseForge,
+        NexusMods
     }
 
     public class MapList
@@ -80,6 +82,22 @@ namespace OphiussaServerManager.Common.Models.SupportedServers
                         SteamClientID =2399830,
                         ModsSource = ModSource.CurseForge,
                         ManifestFileName="appmanifest_2430930.acf"
+                    },
+                    new SupportedServersType() {
+                        KeyName="VAL",
+                        ServerTypeDescription="Valheim",
+                        ServerType=EnumServerType.Valheim,
+                        SteamServerID="896660",
+                        SaveGamesRelativePath="",
+                        SavedFilesRelativePath="",
+                        SavedRelativePath="",
+                        ExecutablePath="",
+                        ExecutablePathAPI="",
+                        ProcessName="",
+                        ModAppID = 0,
+                        SteamClientID =892970,
+                        ModsSource = ModSource.NexusMods,
+                        ManifestFileName="appmanifest_896660.acf"
                     }
                 };
             }

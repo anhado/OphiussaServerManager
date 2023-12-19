@@ -207,6 +207,7 @@
     <Compile Include="Models\Steam\WorkshopFileDetailResponse.cs" />
     <Compile Include="Models\Steam\WorkshopFileDetailResult.cs" />
     <Compile Include="Models\SupportedServers.cs" />
+    <Compile Include="Models\ValheimProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

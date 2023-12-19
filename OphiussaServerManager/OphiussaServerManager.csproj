@@ -269,6 +269,12 @@
     <Compile Include="Forms\FrmUsedResourcesStatusWindow.Designer.cs">
       <DependentUpon>FrmUsedResourcesStatusWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmValheim.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmValheim.Designer.cs">
+      <DependentUpon>FrmValheim.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -321,6 +327,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmUsedResourcesStatusWindow.resx">
       <DependentUpon>FrmUsedResourcesStatusWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmValheim.resx">
+      <DependentUpon>FrmValheim.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

@@ -27,8 +27,10 @@ namespace OphiussaServerManager.Common.Models.Profiles
         public string InstallLocation { get; set; }
         [JsonProperty("Type")]
         public SupportedServersType Type { get; set; }
-        [JsonProperty("Configuration")]
-        public ArkProfile ARKConfiguration { get; set; } = new ArkProfile();
+        [JsonProperty("ARKConfiguration", NullValueHandling = NullValueHandling.Ignore)]
+        public ArkProfile.ArkProfile ARKConfiguration { get; set; } = new ArkProfile.ArkProfile();
+        [JsonProperty("ValheimConfiguration", NullValueHandling = NullValueHandling.Ignore)]
+        public ValheimProfile ValheimConfiguration { get; set; } = new ValheimProfile();
         public AutoManageSettings AutoManageSettings { get; set; } = new AutoManageSettings();
 
         [JsonIgnore]
@@ -67,13 +69,17 @@ namespace OphiussaServerManager.Common.Models.Profiles
             switch (type.ServerType)
             {
                 case EnumServerType.ArkSurviveEvolved:
-                    this.ARKConfiguration = new ArkProfile();
+                    this.ARKConfiguration = new ArkProfile.ArkProfile();
                     this.ARKConfiguration.LoadNewArkProfile(key);
                     break;
                 case EnumServerType.ArkSurviveAscended:
-                    this.ARKConfiguration = new ArkProfile();
+                    this.ARKConfiguration = new ArkProfile.ArkProfile();
                     this.ARKConfiguration.LoadNewArkProfile(key);
                     break;
+                case EnumServerType.Valheim:
+                    this.ARKConfiguration = null;
+                    break;
+
             }
             LoadProfile();
         }
