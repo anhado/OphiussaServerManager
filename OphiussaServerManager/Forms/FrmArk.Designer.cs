@@ -362,7 +362,7 @@
             this.btChooseFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btChooseFolder.Location = new System.Drawing.Point(611, 84);
             this.btChooseFolder.Name = "btChooseFolder";
-            this.btChooseFolder.Size = new System.Drawing.Size(22, 23);
+            this.btChooseFolder.Size = new System.Drawing.Size(30, 23);
             this.btChooseFolder.TabIndex = 8;
             this.btChooseFolder.Text = "...";
             this.btChooseFolder.UseVisualStyleBackColor = true;

@@ -222,6 +222,7 @@ namespace OphiussaServerManager.Common.Models.Profiles.ArkProfile
         }
         public string GetCPUAffinity()
         {
+            //TODO: duplicated function
             List<ProcessorAffinity> lst = new List<ProcessorAffinity>();
 
             for (int i = Utils.GetProcessorCount() - 1; i >= 0; i--)

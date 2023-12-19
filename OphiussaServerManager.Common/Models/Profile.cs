@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Runtime;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -30,7 +31,7 @@ namespace OphiussaServerManager.Common.Models.Profiles
         [JsonProperty("ARKConfiguration", NullValueHandling = NullValueHandling.Ignore)]
         public ArkProfile.ArkProfile ARKConfiguration { get; set; } = new ArkProfile.ArkProfile();
         [JsonProperty("ValheimConfiguration", NullValueHandling = NullValueHandling.Ignore)]
-        public ValheimProfile ValheimConfiguration { get; set; } = new ValheimProfile();
+        public ValheimProfile.ValheimProfile ValheimConfiguration { get; set; } = new ValheimProfile.ValheimProfile();
         public AutoManageSettings AutoManageSettings { get; set; } = new AutoManageSettings();
 
         [JsonIgnore]
@@ -43,6 +44,9 @@ namespace OphiussaServerManager.Common.Models.Profiles
                     case EnumServerType.ArkSurviveEvolved:
                     case EnumServerType.ArkSurviveAscended:
                         if (Utils.IsAValidFolder(InstallLocation, new List<string> { "Engine", "ShooterGame", "steamapps" })) return true;
+                        break;
+                    case EnumServerType.Valheim:
+                        if (Utils.IsAValidFolder(InstallLocation, new List<string> { "MonoBleedingEdge", "valheim_server_Data" })) return true;
                         break;
                 }
                 return false;
@@ -70,6 +74,7 @@ namespace OphiussaServerManager.Common.Models.Profiles
             {
                 case EnumServerType.ArkSurviveEvolved:
                     this.ARKConfiguration = new ArkProfile.ArkProfile();
+                    this.ValheimConfiguration = null;
                     this.ARKConfiguration.LoadNewArkProfile(key);
                     break;
                 case EnumServerType.ArkSurviveAscended:
@@ -78,6 +83,8 @@ namespace OphiussaServerManager.Common.Models.Profiles
                     break;
                 case EnumServerType.Valheim:
                     this.ARKConfiguration = null;
+                    this.ValheimConfiguration = new ValheimProfile.ValheimProfile();
+                    this.ValheimConfiguration.LoadNewValheimProfile(key);
                     break;
 
             }
@@ -171,15 +178,43 @@ namespace OphiussaServerManager.Common.Models.Profiles
 
                     File.WriteAllText(sett.DataFolder + $"StartServer\\Run_{this.Key.Replace("-", "")}.cmd", $"start \"{this.Name}\" /{priority} {affinity} \"{Path.Combine(InstallLocation, (this.ARKConfiguration.Administration.UseServerAPI ? Type.ExecutablePathAPI : Type.ExecutablePath))}\" {this.ARKConfiguration.GetCommandLinesArguments(sett, this, this.ARKConfiguration.Administration.LocalIP)}");
                     break;
+                case EnumServerType.Valheim:
+
+                    string priorityV = ValheimConfiguration.Administration.CPUPriority.ToString().ToLower();
+                    string affinityV = ValheimConfiguration.GetCPUAffinity();
+
+                    StringBuilder stringBuilder = new StringBuilder();
+                    stringBuilder.AppendLine($"@echo off");
+                    stringBuilder.AppendLine($"set SteamAppId=892970");
+                    stringBuilder.AppendLine($"");
+                    stringBuilder.AppendLine($"echo \"Starting server PRESS CTRL-C to exit\"");
+                    stringBuilder.AppendLine($"");
+                    stringBuilder.AppendLine($"start \"{this.Name}\" /{priorityV} {affinityV} \"{Path.Combine(InstallLocation, Type.ExecutablePath)}\" {this.ValheimConfiguration.GetCommandLinesArguments(sett, this, this.ValheimConfiguration.Administration.LocalIP)}");
+
+                    File.WriteAllText(sett.DataFolder + $"StartServer\\Run_{this.Key.Replace("-", "")}.bat", stringBuilder.ToString());
+                    break;
             }
 
         }
 
         public void StartServer(Settings sett)
         {
-            string file = sett.DataFolder + $"StartServer\\Run_{this.Key.Replace("-", "")}.cmd";
+            string file = "";
+            switch (Type.ServerType)
+            {
+                case EnumServerType.ArkSurviveEvolved:
+                case EnumServerType.ArkSurviveAscended:
+                    file = sett.DataFolder + $"StartServer\\Run_{this.Key.Replace("-", "")}.cmd";
+                    Utils.ExecuteAsAdmin(file, "", false);
+                    break;
+                case EnumServerType.Valheim:
+                    file = sett.DataFolder + $"StartServer\\Run_{this.Key.Replace("-", "")}.bat";
+                    Utils.ExecuteAsAdmin(file, "", false, false, true);
+                    break;
+                default:
+                    break;
+            }
 
-            Utils.ExecuteAsAdmin(file, "", false);
         }
 
         public async Task CloseServer(Settings sett, Func<ProcessEventArg, bool> OnProgressChanged)
@@ -190,6 +225,9 @@ namespace OphiussaServerManager.Common.Models.Profiles
                 case EnumServerType.ArkSurviveEvolved:
                 case EnumServerType.ArkSurviveAscended:
                     await CloseServerArk(sett, OnProgressChanged);
+                    break;
+                case EnumServerType.Valheim:
+                    Utils.SendCloseCommand(Utils.GetProcessRunning(Path.Combine(InstallLocation, Type.ExecutablePath)));
                     break;
             }
         }
@@ -214,10 +252,10 @@ namespace OphiussaServerManager.Common.Models.Profiles
                             //validate server have players 
                             if (settings.SendShutdowMessages) await rcon.SendCommandAsync($"Broadcast {settings.Message1.Replace("{minutes}", "15")}");
                             OnProgressChanged(new ProcessEventArg() { Message = settings.Message1.Replace("{minutes}", "15"), IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
-                            Thread.Sleep(900000);
+                            Thread.Sleep(300000);
                             if (settings.SendShutdowMessages) await rcon.SendCommandAsync($"Broadcast {settings.Message1.Replace("{minutes}", "10")}");
                             OnProgressChanged(new ProcessEventArg() { Message = settings.Message1.Replace("{minutes}", "10"), IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
-                            Thread.Sleep(600000);
+                            Thread.Sleep(300000);
                             if (settings.SendShutdowMessages) await rcon.SendCommandAsync($"Broadcast {settings.Message1.Replace("{minutes}", "5")}");
                             OnProgressChanged(new ProcessEventArg() { Message = settings.Message1.Replace("{minutes}", "5"), IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
                             Thread.Sleep(240000);

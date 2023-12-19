@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtBuild = new System.Windows.Forms.TextBox();
             this.label35 = new System.Windows.Forms.Label();
@@ -35,7 +36,6 @@
             this.label16 = new System.Windows.Forms.Label();
             this.txtServerType = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
             this.btRCON = new System.Windows.Forms.Button();
             this.btStart = new System.Windows.Forms.Button();
             this.btUpdate = new System.Windows.Forms.Button();
@@ -49,9 +49,31 @@
             this.txtProfileID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.expandCollapsePanel1 = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.cbBranch = new System.Windows.Forms.ComboBox();
-            this.label22 = new System.Windows.Forms.Label();
+            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.txtCommand = new System.Windows.Forms.TextBox();
+            this.btProcessorAffinity = new System.Windows.Forms.Button();
+            this.txtAffinity = new System.Windows.Forms.TextBox();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.cboPriority = new System.Windows.Forms.ComboBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.tbPresetHammer = new System.Windows.Forms.RadioButton();
+            this.tbPresetCasual = new System.Windows.Forms.RadioButton();
+            this.tbPresetImmersive = new System.Windows.Forms.RadioButton();
+            this.tbPresetHardcore = new System.Windows.Forms.RadioButton();
+            this.tbPresetHard = new System.Windows.Forms.RadioButton();
+            this.tbPresetEasy = new System.Windows.Forms.RadioButton();
+            this.tbPresetNormal = new System.Windows.Forms.RadioButton();
+            this.txtWorldName = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.cLBKeys = new System.Windows.Forms.CheckedListBox();
+            this.txtInstanceID = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.chkCrossplay = new System.Windows.Forms.CheckBox();
+            this.chkPublic = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtLocalIP = new System.Windows.Forms.ComboBox();
             this.txtPeerPort = new System.Windows.Forms.TextBox();
@@ -64,67 +86,53 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtServerName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.cbBranch = new System.Windows.Forms.ComboBox();
+            this.label22 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtSaveLocation = new System.Windows.Forms.TextBox();
+            this.txtLogLocation = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtSubBackups = new System.Windows.Forms.TextBox();
+            this.tbSubBackups = new System.Windows.Forms.TrackBar();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtFirstBackup = new System.Windows.Forms.TextBox();
+            this.tbFirstBackup = new System.Windows.Forms.TrackBar();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtBackupToKeep = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.txtAutoSavePeriod = new System.Windows.Forms.TextBox();
             this.tbAutoSavePeriod = new System.Windows.Forms.TrackBar();
             this.label19 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.trackBar2 = new System.Windows.Forms.TrackBar();
-            this.label17 = new System.Windows.Forms.Label();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
+            this.rbCombatVeryHard = new System.Windows.Forms.RadioButton();
+            this.rbCombatHard = new System.Windows.Forms.RadioButton();
+            this.rbCombatEasy = new System.Windows.Forms.RadioButton();
+            this.rbCombatVeryEasy = new System.Windows.Forms.RadioButton();
+            this.rbCombatNone = new System.Windows.Forms.RadioButton();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
-            this.radioButton7 = new System.Windows.Forms.RadioButton();
-            this.radioButton8 = new System.Windows.Forms.RadioButton();
-            this.radioButton9 = new System.Windows.Forms.RadioButton();
-            this.radioButton10 = new System.Windows.Forms.RadioButton();
-            this.radioButton11 = new System.Windows.Forms.RadioButton();
-            this.expandCollapsePanel2 = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
+            this.rbDeathPenaltyCasual = new System.Windows.Forms.RadioButton();
+            this.rbDeathPenaltyHardCore = new System.Windows.Forms.RadioButton();
+            this.rbDeathPenaltyHard = new System.Windows.Forms.RadioButton();
+            this.rbDeathPenaltyEasy = new System.Windows.Forms.RadioButton();
+            this.rbDeathPenaltyVeryEasy = new System.Windows.Forms.RadioButton();
+            this.rbDeathPenaltyNone = new System.Windows.Forms.RadioButton();
             this.expandCollapsePanel3 = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.radioButton12 = new System.Windows.Forms.RadioButton();
-            this.radioButton13 = new System.Windows.Forms.RadioButton();
-            this.radioButton14 = new System.Windows.Forms.RadioButton();
-            this.radioButton15 = new System.Windows.Forms.RadioButton();
-            this.radioButton16 = new System.Windows.Forms.RadioButton();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.radioButton20 = new System.Windows.Forms.RadioButton();
-            this.radioButton21 = new System.Windows.Forms.RadioButton();
-            this.radioButton22 = new System.Windows.Forms.RadioButton();
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.radioButton18 = new System.Windows.Forms.RadioButton();
-            this.radioButton19 = new System.Windows.Forms.RadioButton();
-            this.radioButton23 = new System.Windows.Forms.RadioButton();
-            this.radioButton24 = new System.Windows.Forms.RadioButton();
-            this.radioButton25 = new System.Windows.Forms.RadioButton();
-            this.radioButton26 = new System.Windows.Forms.RadioButton();
-            this.radioButton27 = new System.Windows.Forms.RadioButton();
+            this.rbPortalsVeryHard = new System.Windows.Forms.RadioButton();
+            this.rbPortalsHard = new System.Windows.Forms.RadioButton();
+            this.rbPortalsCasual = new System.Windows.Forms.RadioButton();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.rbResourcesMuchLess = new System.Windows.Forms.RadioButton();
+            this.rbResourcesMost = new System.Windows.Forms.RadioButton();
+            this.rbResourcesMuchMore = new System.Windows.Forms.RadioButton();
+            this.rbResourcesMore = new System.Windows.Forms.RadioButton();
+            this.rbResourcesLess = new System.Windows.Forms.RadioButton();
+            this.expandCollapsePanel2 = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
             this.expandCollapsePanel4 = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.chkRestart2 = new System.Windows.Forms.CheckBox();
@@ -155,34 +163,32 @@
             this.rbOnLogin = new System.Windows.Forms.RadioButton();
             this.rbOnBoot = new System.Windows.Forms.RadioButton();
             this.chkAutoStart = new System.Windows.Forms.CheckBox();
-            this.groupBox12 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.txtCommand = new System.Windows.Forms.TextBox();
-            this.btProcessorAffinity = new System.Windows.Forms.Button();
-            this.txtAffinity = new System.Windows.Forms.TextBox();
-            this.label34 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.cboPriority = new System.Windows.Forms.ComboBox();
+            this.rbResourcesNone = new System.Windows.Forms.RadioButton();
+            this.rbPortalsNone = new System.Windows.Forms.RadioButton();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.fbd = new System.Windows.Forms.FolderBrowserDialog();
+            this.timerGetProcess = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.expandCollapsePanel1.SuspendLayout();
-            this.groupBox4.SuspendLayout();
+            this.groupBox12.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox10.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbSubBackups)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbFirstBackup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbAutoSavePeriod)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
             this.groupBox6.SuspendLayout();
             this.groupBox7.SuspendLayout();
-            this.expandCollapsePanel2.SuspendLayout();
             this.expandCollapsePanel3.SuspendLayout();
-            this.groupBox8.SuspendLayout();
             this.groupBox9.SuspendLayout();
-            this.groupBox10.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            this.expandCollapsePanel2.SuspendLayout();
             this.expandCollapsePanel4.SuspendLayout();
             this.groupBox11.SuspendLayout();
-            this.groupBox12.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -194,7 +200,6 @@
             this.panel1.Controls.Add(this.label16);
             this.panel1.Controls.Add(this.txtServerType);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.btRCON);
             this.panel1.Controls.Add(this.btStart);
             this.panel1.Controls.Add(this.btUpdate);
@@ -264,16 +269,6 @@
             this.label4.TabIndex = 13;
             this.label4.Text = "Server Type";
             // 
-            // button5
-            // 
-            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.Location = new System.Drawing.Point(532, 8);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 12;
-            this.button5.Text = "Reload";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
             // btRCON
             // 
             this.btRCON.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -293,6 +288,7 @@
             this.btStart.TabIndex = 10;
             this.btStart.Text = "Start";
             this.btStart.UseVisualStyleBackColor = true;
+            this.btStart.Click += new System.EventHandler(this.btStart_Click);
             // 
             // btUpdate
             // 
@@ -411,39 +407,281 @@
             this.expandCollapsePanel1.Text = "Administration";
             this.expandCollapsePanel1.UseAnimation = true;
             // 
-            // groupBox4
+            // groupBox12
             // 
-            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.groupBox12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox4.Controls.Add(this.cbBranch);
-            this.groupBox4.Controls.Add(this.label22);
-            this.groupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
-            this.groupBox4.Location = new System.Drawing.Point(4, 43);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(776, 56);
-            this.groupBox4.TabIndex = 15;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Server Details";
+            this.groupBox12.Controls.Add(this.button2);
+            this.groupBox12.Controls.Add(this.txtCommand);
+            this.groupBox12.Controls.Add(this.btProcessorAffinity);
+            this.groupBox12.Controls.Add(this.txtAffinity);
+            this.groupBox12.Controls.Add(this.label34);
+            this.groupBox12.Controls.Add(this.label33);
+            this.groupBox12.Controls.Add(this.cboPriority);
+            this.groupBox12.ForeColor = System.Drawing.Color.SteelBlue;
+            this.groupBox12.Location = new System.Drawing.Point(4, 451);
+            this.groupBox12.Name = "groupBox12";
+            this.groupBox12.Size = new System.Drawing.Size(793, 127);
+            this.groupBox12.TabIndex = 23;
+            this.groupBox12.TabStop = false;
+            this.groupBox12.Text = "Command Line";
             // 
-            // cbBranch
+            // button2
             // 
-            this.cbBranch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Location = new System.Drawing.Point(720, 46);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(61, 23);
+            this.button2.TabIndex = 72;
+            this.button2.Text = "Refresh";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // txtCommand
+            // 
+            this.txtCommand.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbBranch.FormattingEnabled = true;
-            this.cbBranch.Location = new System.Drawing.Point(115, 20);
-            this.cbBranch.Name = "cbBranch";
-            this.cbBranch.Size = new System.Drawing.Size(649, 21);
-            this.cbBranch.TabIndex = 14;
+            this.txtCommand.Enabled = false;
+            this.txtCommand.Location = new System.Drawing.Point(5, 46);
+            this.txtCommand.Multiline = true;
+            this.txtCommand.Name = "txtCommand";
+            this.txtCommand.Size = new System.Drawing.Size(710, 72);
+            this.txtCommand.TabIndex = 71;
             // 
-            // label22
+            // btProcessorAffinity
             // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(10, 23);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(46, 15);
-            this.label22.TabIndex = 4;
-            this.label22.Text = "Branch";
+            this.btProcessorAffinity.Location = new System.Drawing.Point(513, 18);
+            this.btProcessorAffinity.Name = "btProcessorAffinity";
+            this.btProcessorAffinity.Size = new System.Drawing.Size(30, 23);
+            this.btProcessorAffinity.TabIndex = 70;
+            this.btProcessorAffinity.Text = "...";
+            this.btProcessorAffinity.UseVisualStyleBackColor = true;
+            this.btProcessorAffinity.Click += new System.EventHandler(this.btProcessorAffinity_Click);
+            // 
+            // txtAffinity
+            // 
+            this.txtAffinity.Enabled = false;
+            this.txtAffinity.Location = new System.Drawing.Point(299, 20);
+            this.txtAffinity.Name = "txtAffinity";
+            this.txtAffinity.Size = new System.Drawing.Size(208, 21);
+            this.txtAffinity.TabIndex = 69;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(217, 22);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(76, 15);
+            this.label34.TabIndex = 68;
+            this.label34.Text = "Affinity - CPU";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(4, 22);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(44, 15);
+            this.label33.TabIndex = 67;
+            this.label33.Text = "Priority";
+            // 
+            // cboPriority
+            // 
+            this.cboPriority.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPriority.FormattingEnabled = true;
+            this.cboPriority.Location = new System.Drawing.Point(70, 19);
+            this.cboPriority.Name = "cboPriority";
+            this.cboPriority.Size = new System.Drawing.Size(132, 21);
+            this.cboPriority.TabIndex = 15;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox3.Controls.Add(this.groupBox10);
+            this.groupBox3.Controls.Add(this.txtWorldName);
+            this.groupBox3.Controls.Add(this.label23);
+            this.groupBox3.Controls.Add(this.label21);
+            this.groupBox3.Controls.Add(this.cLBKeys);
+            this.groupBox3.Controls.Add(this.txtInstanceID);
+            this.groupBox3.Controls.Add(this.label18);
+            this.groupBox3.Controls.Add(this.chkCrossplay);
+            this.groupBox3.Controls.Add(this.chkPublic);
+            this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
+            this.groupBox3.Location = new System.Drawing.Point(4, 272);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(776, 173);
+            this.groupBox3.TabIndex = 18;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Server Settings";
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.tbPresetHammer);
+            this.groupBox10.Controls.Add(this.tbPresetCasual);
+            this.groupBox10.Controls.Add(this.tbPresetImmersive);
+            this.groupBox10.Controls.Add(this.tbPresetHardcore);
+            this.groupBox10.Controls.Add(this.tbPresetHard);
+            this.groupBox10.Controls.Add(this.tbPresetEasy);
+            this.groupBox10.Controls.Add(this.tbPresetNormal);
+            this.groupBox10.ForeColor = System.Drawing.Color.SteelBlue;
+            this.groupBox10.Location = new System.Drawing.Point(8, 113);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(671, 50);
+            this.groupBox10.TabIndex = 18;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "Preset";
+            // 
+            // tbPresetHammer
+            // 
+            this.tbPresetHammer.AutoSize = true;
+            this.tbPresetHammer.Location = new System.Drawing.Point(436, 22);
+            this.tbPresetHammer.Name = "tbPresetHammer";
+            this.tbPresetHammer.Size = new System.Drawing.Size(74, 19);
+            this.tbPresetHammer.TabIndex = 23;
+            this.tbPresetHammer.TabStop = true;
+            this.tbPresetHammer.Text = "Hammer";
+            this.tbPresetHammer.UseVisualStyleBackColor = true;
+            // 
+            // tbPresetCasual
+            // 
+            this.tbPresetCasual.AutoSize = true;
+            this.tbPresetCasual.Location = new System.Drawing.Point(78, 22);
+            this.tbPresetCasual.Name = "tbPresetCasual";
+            this.tbPresetCasual.Size = new System.Drawing.Size(63, 19);
+            this.tbPresetCasual.TabIndex = 22;
+            this.tbPresetCasual.TabStop = true;
+            this.tbPresetCasual.Text = "Casual";
+            this.tbPresetCasual.UseVisualStyleBackColor = true;
+            // 
+            // tbPresetImmersive
+            // 
+            this.tbPresetImmersive.AutoSize = true;
+            this.tbPresetImmersive.Location = new System.Drawing.Point(348, 22);
+            this.tbPresetImmersive.Name = "tbPresetImmersive";
+            this.tbPresetImmersive.Size = new System.Drawing.Size(82, 19);
+            this.tbPresetImmersive.TabIndex = 21;
+            this.tbPresetImmersive.TabStop = true;
+            this.tbPresetImmersive.Text = "Immersive";
+            this.tbPresetImmersive.UseVisualStyleBackColor = true;
+            // 
+            // tbPresetHardcore
+            // 
+            this.tbPresetHardcore.AutoSize = true;
+            this.tbPresetHardcore.Location = new System.Drawing.Point(266, 22);
+            this.tbPresetHardcore.Name = "tbPresetHardcore";
+            this.tbPresetHardcore.Size = new System.Drawing.Size(76, 19);
+            this.tbPresetHardcore.TabIndex = 20;
+            this.tbPresetHardcore.TabStop = true;
+            this.tbPresetHardcore.Text = "Hardcore";
+            this.tbPresetHardcore.UseVisualStyleBackColor = true;
+            // 
+            // tbPresetHard
+            // 
+            this.tbPresetHard.AutoSize = true;
+            this.tbPresetHard.Location = new System.Drawing.Point(208, 22);
+            this.tbPresetHard.Name = "tbPresetHard";
+            this.tbPresetHard.Size = new System.Drawing.Size(52, 19);
+            this.tbPresetHard.TabIndex = 19;
+            this.tbPresetHard.TabStop = true;
+            this.tbPresetHard.Text = "Hard";
+            this.tbPresetHard.UseVisualStyleBackColor = true;
+            // 
+            // tbPresetEasy
+            // 
+            this.tbPresetEasy.AutoSize = true;
+            this.tbPresetEasy.Location = new System.Drawing.Point(151, 22);
+            this.tbPresetEasy.Name = "tbPresetEasy";
+            this.tbPresetEasy.Size = new System.Drawing.Size(51, 19);
+            this.tbPresetEasy.TabIndex = 18;
+            this.tbPresetEasy.TabStop = true;
+            this.tbPresetEasy.Text = "Easy";
+            this.tbPresetEasy.UseVisualStyleBackColor = true;
+            // 
+            // tbPresetNormal
+            // 
+            this.tbPresetNormal.AutoSize = true;
+            this.tbPresetNormal.Location = new System.Drawing.Point(6, 22);
+            this.tbPresetNormal.Name = "tbPresetNormal";
+            this.tbPresetNormal.Size = new System.Drawing.Size(66, 19);
+            this.tbPresetNormal.TabIndex = 17;
+            this.tbPresetNormal.TabStop = true;
+            this.tbPresetNormal.Text = "Normal";
+            this.tbPresetNormal.UseVisualStyleBackColor = true;
+            // 
+            // txtWorldName
+            // 
+            this.txtWorldName.Location = new System.Drawing.Point(115, 87);
+            this.txtWorldName.Name = "txtWorldName";
+            this.txtWorldName.Size = new System.Drawing.Size(120, 21);
+            this.txtWorldName.TabIndex = 14;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(10, 90);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(76, 15);
+            this.label23.TabIndex = 13;
+            this.label23.Text = "World Name";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(257, 21);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(48, 15);
+            this.label21.TabIndex = 12;
+            this.label21.Text = "Set Key";
+            // 
+            // cLBKeys
+            // 
+            this.cLBKeys.FormattingEnabled = true;
+            this.cLBKeys.Items.AddRange(new object[] {
+            "No Build Cost",
+            "Player Events",
+            "Passive Mobs",
+            "No Map"});
+            this.cLBKeys.Location = new System.Drawing.Point(321, 21);
+            this.cLBKeys.Name = "cLBKeys";
+            this.cLBKeys.Size = new System.Drawing.Size(120, 84);
+            this.cLBKeys.TabIndex = 11;
+            // 
+            // txtInstanceID
+            // 
+            this.txtInstanceID.Location = new System.Drawing.Point(115, 64);
+            this.txtInstanceID.Name = "txtInstanceID";
+            this.txtInstanceID.Size = new System.Drawing.Size(121, 21);
+            this.txtInstanceID.TabIndex = 10;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(10, 67);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(66, 15);
+            this.label18.TabIndex = 9;
+            this.label18.Text = "Instance Id";
+            // 
+            // chkCrossplay
+            // 
+            this.chkCrossplay.AutoSize = true;
+            this.chkCrossplay.Location = new System.Drawing.Point(12, 45);
+            this.chkCrossplay.Name = "chkCrossplay";
+            this.chkCrossplay.Size = new System.Drawing.Size(79, 19);
+            this.chkCrossplay.TabIndex = 8;
+            this.chkCrossplay.Text = "Crossplay";
+            this.chkCrossplay.UseVisualStyleBackColor = true;
+            // 
+            // chkPublic
+            // 
+            this.chkPublic.AutoSize = true;
+            this.chkPublic.Location = new System.Drawing.Point(12, 20);
+            this.chkPublic.Name = "chkPublic";
+            this.chkPublic.Size = new System.Drawing.Size(60, 19);
+            this.chkPublic.TabIndex = 7;
+            this.chkPublic.Text = "Public";
+            this.chkPublic.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -478,7 +716,7 @@
             this.txtPeerPort.Enabled = false;
             this.txtPeerPort.Location = new System.Drawing.Point(321, 46);
             this.txtPeerPort.Name = "txtPeerPort";
-            this.txtPeerPort.Size = new System.Drawing.Size(93, 20);
+            this.txtPeerPort.Size = new System.Drawing.Size(93, 21);
             this.txtPeerPort.TabIndex = 9;
             // 
             // label10
@@ -494,8 +732,9 @@
             // 
             this.txtServerPort.Location = new System.Drawing.Point(115, 46);
             this.txtServerPort.Name = "txtServerPort";
-            this.txtServerPort.Size = new System.Drawing.Size(95, 20);
+            this.txtServerPort.Size = new System.Drawing.Size(95, 21);
             this.txtServerPort.TabIndex = 7;
+            this.txtServerPort.TextChanged += new System.EventHandler(this.txtServerPort_TextChanged);
             // 
             // label11
             // 
@@ -537,7 +776,7 @@
             this.txtServerPWD.Location = new System.Drawing.Point(115, 46);
             this.txtServerPWD.Name = "txtServerPWD";
             this.txtServerPWD.PasswordChar = '*';
-            this.txtServerPWD.Size = new System.Drawing.Size(95, 20);
+            this.txtServerPWD.Size = new System.Drawing.Size(95, 21);
             this.txtServerPWD.TabIndex = 7;
             // 
             // label6
@@ -555,7 +794,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtServerName.Location = new System.Drawing.Point(115, 20);
             this.txtServerName.Name = "txtServerName";
-            this.txtServerName.Size = new System.Drawing.Size(649, 20);
+            this.txtServerName.Size = new System.Drawing.Size(649, 21);
             this.txtServerName.TabIndex = 5;
             // 
             // label5
@@ -567,27 +806,39 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "Server Name";
             // 
-            // groupBox3
+            // groupBox4
             // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox3.Controls.Add(this.groupBox10);
-            this.groupBox3.Controls.Add(this.textBox7);
-            this.groupBox3.Controls.Add(this.label23);
-            this.groupBox3.Controls.Add(this.label21);
-            this.groupBox3.Controls.Add(this.checkedListBox1);
-            this.groupBox3.Controls.Add(this.textBox6);
-            this.groupBox3.Controls.Add(this.label18);
-            this.groupBox3.Controls.Add(this.checkBox2);
-            this.groupBox3.Controls.Add(this.checkBox1);
-            this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
-            this.groupBox3.Location = new System.Drawing.Point(4, 272);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(776, 173);
-            this.groupBox3.TabIndex = 18;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Server Settings";
+            this.groupBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox4.Controls.Add(this.cbBranch);
+            this.groupBox4.Controls.Add(this.label22);
+            this.groupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
+            this.groupBox4.Location = new System.Drawing.Point(4, 43);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(776, 56);
+            this.groupBox4.TabIndex = 15;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Server Details";
+            // 
+            // cbBranch
+            // 
+            this.cbBranch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbBranch.FormattingEnabled = true;
+            this.cbBranch.Location = new System.Drawing.Point(115, 20);
+            this.cbBranch.Name = "cbBranch";
+            this.cbBranch.Size = new System.Drawing.Size(649, 21);
+            this.cbBranch.TabIndex = 14;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(10, 23);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(46, 15);
+            this.label22.TabIndex = 4;
+            this.label22.Text = "Branch";
             // 
             // label9
             // 
@@ -598,33 +849,23 @@
             this.label9.TabIndex = 4;
             this.label9.Text = "Save Location";
             // 
-            // textBox1
+            // txtSaveLocation
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtSaveLocation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(116, 64);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(613, 20);
-            this.textBox1.TabIndex = 6;
+            this.txtSaveLocation.Location = new System.Drawing.Point(116, 64);
+            this.txtSaveLocation.Name = "txtSaveLocation";
+            this.txtSaveLocation.Size = new System.Drawing.Size(577, 21);
+            this.txtSaveLocation.TabIndex = 6;
             // 
-            // checkBox1
+            // txtLogLocation
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(12, 20);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(60, 19);
-            this.checkBox1.TabIndex = 7;
-            this.checkBox1.Text = "Public";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtLogLocation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(116, 90);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(613, 20);
-            this.textBox2.TabIndex = 9;
+            this.txtLogLocation.Location = new System.Drawing.Point(116, 90);
+            this.txtLogLocation.Name = "txtLogLocation";
+            this.txtLogLocation.Size = new System.Drawing.Size(577, 21);
+            this.txtLogLocation.TabIndex = 9;
             // 
             // label7
             // 
@@ -640,22 +881,24 @@
             this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox5.Controls.Add(this.button3);
+            this.groupBox5.Controls.Add(this.button1);
             this.groupBox5.Controls.Add(this.label15);
-            this.groupBox5.Controls.Add(this.textBox5);
-            this.groupBox5.Controls.Add(this.trackBar2);
+            this.groupBox5.Controls.Add(this.txtSubBackups);
+            this.groupBox5.Controls.Add(this.tbSubBackups);
             this.groupBox5.Controls.Add(this.label17);
             this.groupBox5.Controls.Add(this.label13);
-            this.groupBox5.Controls.Add(this.textBox4);
-            this.groupBox5.Controls.Add(this.trackBar1);
+            this.groupBox5.Controls.Add(this.txtFirstBackup);
+            this.groupBox5.Controls.Add(this.tbFirstBackup);
             this.groupBox5.Controls.Add(this.label14);
-            this.groupBox5.Controls.Add(this.textBox3);
+            this.groupBox5.Controls.Add(this.txtBackupToKeep);
             this.groupBox5.Controls.Add(this.label8);
-            this.groupBox5.Controls.Add(this.textBox2);
+            this.groupBox5.Controls.Add(this.txtLogLocation);
             this.groupBox5.Controls.Add(this.label20);
             this.groupBox5.Controls.Add(this.label7);
             this.groupBox5.Controls.Add(this.txtAutoSavePeriod);
             this.groupBox5.Controls.Add(this.tbAutoSavePeriod);
-            this.groupBox5.Controls.Add(this.textBox1);
+            this.groupBox5.Controls.Add(this.txtSaveLocation);
             this.groupBox5.Controls.Add(this.label9);
             this.groupBox5.Controls.Add(this.label19);
             this.groupBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
@@ -665,6 +908,108 @@
             this.groupBox5.TabIndex = 19;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Saves && Backups";
+            // 
+            // label15
+            // 
+            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(697, 219);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(51, 15);
+            this.label15.TabIndex = 29;
+            this.label15.Text = "Minutes";
+            // 
+            // txtSubBackups
+            // 
+            this.txtSubBackups.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSubBackups.Enabled = false;
+            this.txtSubBackups.Location = new System.Drawing.Point(699, 195);
+            this.txtSubBackups.Name = "txtSubBackups";
+            this.txtSubBackups.Size = new System.Drawing.Size(49, 21);
+            this.txtSubBackups.TabIndex = 28;
+            // 
+            // tbSubBackups
+            // 
+            this.tbSubBackups.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbSubBackups.Location = new System.Drawing.Point(115, 191);
+            this.tbSubBackups.Maximum = 1440;
+            this.tbSubBackups.Minimum = 1;
+            this.tbSubBackups.Name = "tbSubBackups";
+            this.tbSubBackups.Size = new System.Drawing.Size(563, 45);
+            this.tbSubBackups.TabIndex = 27;
+            this.tbSubBackups.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbSubBackups.Value = 1;
+            this.tbSubBackups.Scroll += new System.EventHandler(this.tbSubBackups_Scroll);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(9, 201);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(123, 15);
+            this.label17.TabIndex = 26;
+            this.label17.Text = "Subsequent Backups";
+            // 
+            // label13
+            // 
+            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(698, 168);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(51, 15);
+            this.label13.TabIndex = 25;
+            this.label13.Text = "Minutes";
+            // 
+            // txtFirstBackup
+            // 
+            this.txtFirstBackup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtFirstBackup.Enabled = false;
+            this.txtFirstBackup.Location = new System.Drawing.Point(700, 144);
+            this.txtFirstBackup.Name = "txtFirstBackup";
+            this.txtFirstBackup.Size = new System.Drawing.Size(49, 21);
+            this.txtFirstBackup.TabIndex = 24;
+            // 
+            // tbFirstBackup
+            // 
+            this.tbFirstBackup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbFirstBackup.Location = new System.Drawing.Point(116, 140);
+            this.tbFirstBackup.Maximum = 720;
+            this.tbFirstBackup.Minimum = 1;
+            this.tbFirstBackup.Name = "tbFirstBackup";
+            this.tbFirstBackup.Size = new System.Drawing.Size(563, 45);
+            this.tbFirstBackup.TabIndex = 23;
+            this.tbFirstBackup.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbFirstBackup.Value = 1;
+            this.tbFirstBackup.Scroll += new System.EventHandler(this.tbFirstBackup_Scroll);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(10, 150);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(87, 15);
+            this.label14.TabIndex = 22;
+            this.label14.Text = "First automatic";
+            // 
+            // txtBackupToKeep
+            // 
+            this.txtBackupToKeep.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBackupToKeep.Location = new System.Drawing.Point(115, 116);
+            this.txtBackupToKeep.Name = "txtBackupToKeep";
+            this.txtBackupToKeep.Size = new System.Drawing.Size(28, 21);
+            this.txtBackupToKeep.TabIndex = 21;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(10, 119);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(97, 15);
+            this.label8.TabIndex = 20;
+            this.label8.Text = "Backups to keep";
             // 
             // label20
             // 
@@ -682,7 +1027,7 @@
             this.txtAutoSavePeriod.Enabled = false;
             this.txtAutoSavePeriod.Location = new System.Drawing.Point(700, 17);
             this.txtAutoSavePeriod.Name = "txtAutoSavePeriod";
-            this.txtAutoSavePeriod.Size = new System.Drawing.Size(49, 20);
+            this.txtAutoSavePeriod.Size = new System.Drawing.Size(49, 21);
             this.txtAutoSavePeriod.TabIndex = 18;
             // 
             // tbAutoSavePeriod
@@ -697,6 +1042,7 @@
             this.tbAutoSavePeriod.TabIndex = 5;
             this.tbAutoSavePeriod.TickStyle = System.Windows.Forms.TickStyle.None;
             this.tbAutoSavePeriod.Value = 1;
+            this.tbAutoSavePeriod.Scroll += new System.EventHandler(this.tbAutoSavePeriod_Scroll);
             // 
             // label19
             // 
@@ -707,177 +1053,13 @@
             this.label19.TabIndex = 4;
             this.label19.Text = "Auto Save Period";
             // 
-            // textBox3
-            // 
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.Location = new System.Drawing.Point(115, 116);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(28, 20);
-            this.textBox3.TabIndex = 21;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(10, 119);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(97, 15);
-            this.label8.TabIndex = 20;
-            this.label8.Text = "Backups to keep";
-            // 
-            // label13
-            // 
-            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(698, 168);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(51, 15);
-            this.label13.TabIndex = 25;
-            this.label13.Text = "Minutes";
-            // 
-            // textBox4
-            // 
-            this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox4.Enabled = false;
-            this.textBox4.Location = new System.Drawing.Point(700, 144);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(49, 20);
-            this.textBox4.TabIndex = 24;
-            // 
-            // trackBar1
-            // 
-            this.trackBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBar1.Location = new System.Drawing.Point(116, 140);
-            this.trackBar1.Maximum = 120;
-            this.trackBar1.Minimum = 1;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(563, 45);
-            this.trackBar1.TabIndex = 23;
-            this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBar1.Value = 1;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(10, 150);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(87, 15);
-            this.label14.TabIndex = 22;
-            this.label14.Text = "First automatic";
-            // 
-            // label15
-            // 
-            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(697, 219);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(51, 15);
-            this.label15.TabIndex = 29;
-            this.label15.Text = "Minutes";
-            // 
-            // textBox5
-            // 
-            this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox5.Enabled = false;
-            this.textBox5.Location = new System.Drawing.Point(699, 195);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(49, 20);
-            this.textBox5.TabIndex = 28;
-            // 
-            // trackBar2
-            // 
-            this.trackBar2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBar2.Location = new System.Drawing.Point(115, 191);
-            this.trackBar2.Maximum = 120;
-            this.trackBar2.Minimum = 1;
-            this.trackBar2.Name = "trackBar2";
-            this.trackBar2.Size = new System.Drawing.Size(563, 45);
-            this.trackBar2.TabIndex = 27;
-            this.trackBar2.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBar2.Value = 1;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(9, 201);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(123, 15);
-            this.label17.TabIndex = 26;
-            this.label17.Text = "Subsequent Backups";
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(12, 45);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(79, 19);
-            this.checkBox2.TabIndex = 8;
-            this.checkBox2.Text = "Crossplay";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(115, 64);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(121, 20);
-            this.textBox6.TabIndex = 10;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(10, 67);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(66, 15);
-            this.label18.TabIndex = 9;
-            this.label18.Text = "Instance Id";
-            // 
-            // checkedListBox1
-            // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Items.AddRange(new object[] {
-            "No Build Cost",
-            "Player Events",
-            "Passive Mobs",
-            "No Map"});
-            this.checkedListBox1.Location = new System.Drawing.Point(321, 21);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(120, 84);
-            this.checkedListBox1.TabIndex = 11;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(257, 21);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(48, 15);
-            this.label21.TabIndex = 12;
-            this.label21.Text = "Set Key";
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(115, 87);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(120, 20);
-            this.textBox7.TabIndex = 14;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(10, 90);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(76, 15);
-            this.label23.TabIndex = 13;
-            this.label23.Text = "World Name";
-            // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.radioButton5);
-            this.groupBox6.Controls.Add(this.radioButton4);
-            this.groupBox6.Controls.Add(this.radioButton3);
-            this.groupBox6.Controls.Add(this.radioButton2);
-            this.groupBox6.Controls.Add(this.radioButton1);
+            this.groupBox6.Controls.Add(this.rbCombatVeryHard);
+            this.groupBox6.Controls.Add(this.rbCombatHard);
+            this.groupBox6.Controls.Add(this.rbCombatEasy);
+            this.groupBox6.Controls.Add(this.rbCombatVeryEasy);
+            this.groupBox6.Controls.Add(this.rbCombatNone);
             this.groupBox6.ForeColor = System.Drawing.Color.SteelBlue;
             this.groupBox6.Location = new System.Drawing.Point(4, 32);
             this.groupBox6.Name = "groupBox6";
@@ -886,69 +1068,69 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Combat";
             // 
-            // radioButton1
+            // rbCombatVeryHard
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(6, 22);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(55, 19);
-            this.radioButton1.TabIndex = 17;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "None";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rbCombatVeryHard.AutoSize = true;
+            this.rbCombatVeryHard.Location = new System.Drawing.Point(355, 22);
+            this.rbCombatVeryHard.Name = "rbCombatVeryHard";
+            this.rbCombatVeryHard.Size = new System.Drawing.Size(78, 19);
+            this.rbCombatVeryHard.TabIndex = 21;
+            this.rbCombatVeryHard.TabStop = true;
+            this.rbCombatVeryHard.Text = "Very Hard";
+            this.rbCombatVeryHard.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // rbCombatHard
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(97, 20);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(77, 19);
-            this.radioButton2.TabIndex = 18;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Very Easy";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rbCombatHard.AutoSize = true;
+            this.rbCombatHard.Location = new System.Drawing.Point(271, 22);
+            this.rbCombatHard.Name = "rbCombatHard";
+            this.rbCombatHard.Size = new System.Drawing.Size(52, 19);
+            this.rbCombatHard.TabIndex = 20;
+            this.rbCombatHard.TabStop = true;
+            this.rbCombatHard.Text = "Hard";
+            this.rbCombatHard.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // rbCombatEasy
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(180, 22);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(51, 19);
-            this.radioButton3.TabIndex = 19;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Easy";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.rbCombatEasy.AutoSize = true;
+            this.rbCombatEasy.Location = new System.Drawing.Point(188, 22);
+            this.rbCombatEasy.Name = "rbCombatEasy";
+            this.rbCombatEasy.Size = new System.Drawing.Size(51, 19);
+            this.rbCombatEasy.TabIndex = 19;
+            this.rbCombatEasy.TabStop = true;
+            this.rbCombatEasy.Text = "Easy";
+            this.rbCombatEasy.UseVisualStyleBackColor = true;
             // 
-            // radioButton4
+            // rbCombatVeryEasy
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(263, 22);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(52, 19);
-            this.radioButton4.TabIndex = 20;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "Hard";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.rbCombatVeryEasy.AutoSize = true;
+            this.rbCombatVeryEasy.Location = new System.Drawing.Point(97, 20);
+            this.rbCombatVeryEasy.Name = "rbCombatVeryEasy";
+            this.rbCombatVeryEasy.Size = new System.Drawing.Size(77, 19);
+            this.rbCombatVeryEasy.TabIndex = 18;
+            this.rbCombatVeryEasy.TabStop = true;
+            this.rbCombatVeryEasy.Text = "Very Easy";
+            this.rbCombatVeryEasy.UseVisualStyleBackColor = true;
             // 
-            // radioButton5
+            // rbCombatNone
             // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(356, 22);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(78, 19);
-            this.radioButton5.TabIndex = 21;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "Very Hard";
-            this.radioButton5.UseVisualStyleBackColor = true;
+            this.rbCombatNone.AutoSize = true;
+            this.rbCombatNone.Location = new System.Drawing.Point(6, 22);
+            this.rbCombatNone.Name = "rbCombatNone";
+            this.rbCombatNone.Size = new System.Drawing.Size(55, 19);
+            this.rbCombatNone.TabIndex = 17;
+            this.rbCombatNone.TabStop = true;
+            this.rbCombatNone.Text = "None";
+            this.rbCombatNone.UseVisualStyleBackColor = true;
             // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.radioButton11);
-            this.groupBox7.Controls.Add(this.radioButton6);
-            this.groupBox7.Controls.Add(this.radioButton7);
-            this.groupBox7.Controls.Add(this.radioButton8);
-            this.groupBox7.Controls.Add(this.radioButton9);
-            this.groupBox7.Controls.Add(this.radioButton10);
+            this.groupBox7.Controls.Add(this.rbDeathPenaltyCasual);
+            this.groupBox7.Controls.Add(this.rbDeathPenaltyHardCore);
+            this.groupBox7.Controls.Add(this.rbDeathPenaltyHard);
+            this.groupBox7.Controls.Add(this.rbDeathPenaltyEasy);
+            this.groupBox7.Controls.Add(this.rbDeathPenaltyVeryEasy);
+            this.groupBox7.Controls.Add(this.rbDeathPenaltyNone);
             this.groupBox7.ForeColor = System.Drawing.Color.SteelBlue;
             this.groupBox7.Location = new System.Drawing.Point(4, 88);
             this.groupBox7.Name = "groupBox7";
@@ -957,86 +1139,71 @@
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Death Penalty";
             // 
-            // radioButton6
+            // rbDeathPenaltyCasual
             // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Location = new System.Drawing.Point(414, 22);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(76, 19);
-            this.radioButton6.TabIndex = 21;
-            this.radioButton6.TabStop = true;
-            this.radioButton6.Text = "Hardcore";
-            this.radioButton6.UseVisualStyleBackColor = true;
+            this.rbDeathPenaltyCasual.AutoSize = true;
+            this.rbDeathPenaltyCasual.Location = new System.Drawing.Point(97, 22);
+            this.rbDeathPenaltyCasual.Name = "rbDeathPenaltyCasual";
+            this.rbDeathPenaltyCasual.Size = new System.Drawing.Size(63, 19);
+            this.rbDeathPenaltyCasual.TabIndex = 22;
+            this.rbDeathPenaltyCasual.TabStop = true;
+            this.rbDeathPenaltyCasual.Text = "Casual";
+            this.rbDeathPenaltyCasual.UseVisualStyleBackColor = true;
             // 
-            // radioButton7
+            // rbDeathPenaltyHardCore
             // 
-            this.radioButton7.AutoSize = true;
-            this.radioButton7.Location = new System.Drawing.Point(356, 22);
-            this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(52, 19);
-            this.radioButton7.TabIndex = 20;
-            this.radioButton7.TabStop = true;
-            this.radioButton7.Text = "Hard";
-            this.radioButton7.UseVisualStyleBackColor = true;
+            this.rbDeathPenaltyHardCore.AutoSize = true;
+            this.rbDeathPenaltyHardCore.Location = new System.Drawing.Point(449, 20);
+            this.rbDeathPenaltyHardCore.Name = "rbDeathPenaltyHardCore";
+            this.rbDeathPenaltyHardCore.Size = new System.Drawing.Size(76, 19);
+            this.rbDeathPenaltyHardCore.TabIndex = 21;
+            this.rbDeathPenaltyHardCore.TabStop = true;
+            this.rbDeathPenaltyHardCore.Text = "Hardcore";
+            this.rbDeathPenaltyHardCore.UseVisualStyleBackColor = true;
             // 
-            // radioButton8
+            // rbDeathPenaltyHard
             // 
-            this.radioButton8.AutoSize = true;
-            this.radioButton8.Location = new System.Drawing.Point(263, 22);
-            this.radioButton8.Name = "radioButton8";
-            this.radioButton8.Size = new System.Drawing.Size(51, 19);
-            this.radioButton8.TabIndex = 19;
-            this.radioButton8.TabStop = true;
-            this.radioButton8.Text = "Easy";
-            this.radioButton8.UseVisualStyleBackColor = true;
+            this.rbDeathPenaltyHard.AutoSize = true;
+            this.rbDeathPenaltyHard.Location = new System.Drawing.Point(355, 20);
+            this.rbDeathPenaltyHard.Name = "rbDeathPenaltyHard";
+            this.rbDeathPenaltyHard.Size = new System.Drawing.Size(52, 19);
+            this.rbDeathPenaltyHard.TabIndex = 20;
+            this.rbDeathPenaltyHard.TabStop = true;
+            this.rbDeathPenaltyHard.Text = "Hard";
+            this.rbDeathPenaltyHard.UseVisualStyleBackColor = true;
             // 
-            // radioButton9
+            // rbDeathPenaltyEasy
             // 
-            this.radioButton9.AutoSize = true;
-            this.radioButton9.Location = new System.Drawing.Point(180, 22);
-            this.radioButton9.Name = "radioButton9";
-            this.radioButton9.Size = new System.Drawing.Size(77, 19);
-            this.radioButton9.TabIndex = 18;
-            this.radioButton9.TabStop = true;
-            this.radioButton9.Text = "Very Easy";
-            this.radioButton9.UseVisualStyleBackColor = true;
+            this.rbDeathPenaltyEasy.AutoSize = true;
+            this.rbDeathPenaltyEasy.Location = new System.Drawing.Point(271, 22);
+            this.rbDeathPenaltyEasy.Name = "rbDeathPenaltyEasy";
+            this.rbDeathPenaltyEasy.Size = new System.Drawing.Size(51, 19);
+            this.rbDeathPenaltyEasy.TabIndex = 19;
+            this.rbDeathPenaltyEasy.TabStop = true;
+            this.rbDeathPenaltyEasy.Text = "Easy";
+            this.rbDeathPenaltyEasy.UseVisualStyleBackColor = true;
             // 
-            // radioButton10
+            // rbDeathPenaltyVeryEasy
             // 
-            this.radioButton10.AutoSize = true;
-            this.radioButton10.Location = new System.Drawing.Point(6, 22);
-            this.radioButton10.Name = "radioButton10";
-            this.radioButton10.Size = new System.Drawing.Size(55, 19);
-            this.radioButton10.TabIndex = 17;
-            this.radioButton10.TabStop = true;
-            this.radioButton10.Text = "None";
-            this.radioButton10.UseVisualStyleBackColor = true;
+            this.rbDeathPenaltyVeryEasy.AutoSize = true;
+            this.rbDeathPenaltyVeryEasy.Location = new System.Drawing.Point(188, 22);
+            this.rbDeathPenaltyVeryEasy.Name = "rbDeathPenaltyVeryEasy";
+            this.rbDeathPenaltyVeryEasy.Size = new System.Drawing.Size(77, 19);
+            this.rbDeathPenaltyVeryEasy.TabIndex = 18;
+            this.rbDeathPenaltyVeryEasy.TabStop = true;
+            this.rbDeathPenaltyVeryEasy.Text = "Very Easy";
+            this.rbDeathPenaltyVeryEasy.UseVisualStyleBackColor = true;
             // 
-            // radioButton11
+            // rbDeathPenaltyNone
             // 
-            this.radioButton11.AutoSize = true;
-            this.radioButton11.Location = new System.Drawing.Point(97, 22);
-            this.radioButton11.Name = "radioButton11";
-            this.radioButton11.Size = new System.Drawing.Size(63, 19);
-            this.radioButton11.TabIndex = 22;
-            this.radioButton11.TabStop = true;
-            this.radioButton11.Text = "Casual";
-            this.radioButton11.UseVisualStyleBackColor = true;
-            // 
-            // expandCollapsePanel2
-            // 
-            this.expandCollapsePanel2.ButtonSize = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonSize.Small;
-            this.expandCollapsePanel2.ButtonStyle = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonStyle.Classic;
-            this.expandCollapsePanel2.Controls.Add(this.groupBox5);
-            this.expandCollapsePanel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.expandCollapsePanel2.ExpandedHeight = 296;
-            this.expandCollapsePanel2.IsExpanded = true;
-            this.expandCollapsePanel2.Location = new System.Drawing.Point(0, 737);
-            this.expandCollapsePanel2.Name = "expandCollapsePanel2";
-            this.expandCollapsePanel2.Size = new System.Drawing.Size(783, 296);
-            this.expandCollapsePanel2.TabIndex = 20;
-            this.expandCollapsePanel2.Text = "Saves && Backups";
-            this.expandCollapsePanel2.UseAnimation = true;
+            this.rbDeathPenaltyNone.AutoSize = true;
+            this.rbDeathPenaltyNone.Location = new System.Drawing.Point(6, 22);
+            this.rbDeathPenaltyNone.Name = "rbDeathPenaltyNone";
+            this.rbDeathPenaltyNone.Size = new System.Drawing.Size(55, 19);
+            this.rbDeathPenaltyNone.TabIndex = 17;
+            this.rbDeathPenaltyNone.TabStop = true;
+            this.rbDeathPenaltyNone.Text = "None";
+            this.rbDeathPenaltyNone.UseVisualStyleBackColor = true;
             // 
             // expandCollapsePanel3
             // 
@@ -1049,88 +1216,19 @@
             this.expandCollapsePanel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.expandCollapsePanel3.ExpandedHeight = 0;
             this.expandCollapsePanel3.IsExpanded = true;
-            this.expandCollapsePanel3.Location = new System.Drawing.Point(0, 1033);
+            this.expandCollapsePanel3.Location = new System.Drawing.Point(0, 737);
             this.expandCollapsePanel3.Name = "expandCollapsePanel3";
             this.expandCollapsePanel3.Size = new System.Drawing.Size(783, 258);
             this.expandCollapsePanel3.TabIndex = 21;
             this.expandCollapsePanel3.Text = "Modifiers";
             this.expandCollapsePanel3.UseAnimation = true;
             // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this.radioButton12);
-            this.groupBox8.Controls.Add(this.radioButton13);
-            this.groupBox8.Controls.Add(this.radioButton14);
-            this.groupBox8.Controls.Add(this.radioButton15);
-            this.groupBox8.Controls.Add(this.radioButton16);
-            this.groupBox8.ForeColor = System.Drawing.Color.SteelBlue;
-            this.groupBox8.Location = new System.Drawing.Point(4, 144);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(776, 50);
-            this.groupBox8.TabIndex = 18;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Resources";
-            // 
-            // radioButton12
-            // 
-            this.radioButton12.AutoSize = true;
-            this.radioButton12.Location = new System.Drawing.Point(6, 25);
-            this.radioButton12.Name = "radioButton12";
-            this.radioButton12.Size = new System.Drawing.Size(85, 19);
-            this.radioButton12.TabIndex = 22;
-            this.radioButton12.TabStop = true;
-            this.radioButton12.Text = "Much Less";
-            this.radioButton12.UseVisualStyleBackColor = true;
-            // 
-            // radioButton13
-            // 
-            this.radioButton13.AutoSize = true;
-            this.radioButton13.Location = new System.Drawing.Point(356, 25);
-            this.radioButton13.Name = "radioButton13";
-            this.radioButton13.Size = new System.Drawing.Size(52, 19);
-            this.radioButton13.TabIndex = 21;
-            this.radioButton13.TabStop = true;
-            this.radioButton13.Text = "Most";
-            this.radioButton13.UseVisualStyleBackColor = true;
-            // 
-            // radioButton14
-            // 
-            this.radioButton14.AutoSize = true;
-            this.radioButton14.Location = new System.Drawing.Point(262, 25);
-            this.radioButton14.Name = "radioButton14";
-            this.radioButton14.Size = new System.Drawing.Size(88, 19);
-            this.radioButton14.TabIndex = 20;
-            this.radioButton14.TabStop = true;
-            this.radioButton14.Text = "Much More";
-            this.radioButton14.UseVisualStyleBackColor = true;
-            // 
-            // radioButton15
-            // 
-            this.radioButton15.AutoSize = true;
-            this.radioButton15.Location = new System.Drawing.Point(180, 25);
-            this.radioButton15.Name = "radioButton15";
-            this.radioButton15.Size = new System.Drawing.Size(54, 19);
-            this.radioButton15.TabIndex = 19;
-            this.radioButton15.TabStop = true;
-            this.radioButton15.Text = "More";
-            this.radioButton15.UseVisualStyleBackColor = true;
-            // 
-            // radioButton16
-            // 
-            this.radioButton16.AutoSize = true;
-            this.radioButton16.Location = new System.Drawing.Point(97, 25);
-            this.radioButton16.Name = "radioButton16";
-            this.radioButton16.Size = new System.Drawing.Size(51, 19);
-            this.radioButton16.TabIndex = 18;
-            this.radioButton16.TabStop = true;
-            this.radioButton16.Text = "Less";
-            this.radioButton16.UseVisualStyleBackColor = true;
-            // 
             // groupBox9
             // 
-            this.groupBox9.Controls.Add(this.radioButton20);
-            this.groupBox9.Controls.Add(this.radioButton21);
-            this.groupBox9.Controls.Add(this.radioButton22);
+            this.groupBox9.Controls.Add(this.rbPortalsNone);
+            this.groupBox9.Controls.Add(this.rbPortalsVeryHard);
+            this.groupBox9.Controls.Add(this.rbPortalsHard);
+            this.groupBox9.Controls.Add(this.rbPortalsCasual);
             this.groupBox9.ForeColor = System.Drawing.Color.SteelBlue;
             this.groupBox9.Location = new System.Drawing.Point(4, 200);
             this.groupBox9.Name = "groupBox9";
@@ -1139,132 +1237,124 @@
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Portals";
             // 
-            // radioButton20
+            // rbPortalsVeryHard
             // 
-            this.radioButton20.AutoSize = true;
-            this.radioButton20.Location = new System.Drawing.Point(180, 22);
-            this.radioButton20.Name = "radioButton20";
-            this.radioButton20.Size = new System.Drawing.Size(78, 19);
-            this.radioButton20.TabIndex = 19;
-            this.radioButton20.TabStop = true;
-            this.radioButton20.Text = "Very Hard";
-            this.radioButton20.UseVisualStyleBackColor = true;
+            this.rbPortalsVeryHard.AutoSize = true;
+            this.rbPortalsVeryHard.Location = new System.Drawing.Point(271, 20);
+            this.rbPortalsVeryHard.Name = "rbPortalsVeryHard";
+            this.rbPortalsVeryHard.Size = new System.Drawing.Size(78, 19);
+            this.rbPortalsVeryHard.TabIndex = 19;
+            this.rbPortalsVeryHard.TabStop = true;
+            this.rbPortalsVeryHard.Text = "Very Hard";
+            this.rbPortalsVeryHard.UseVisualStyleBackColor = true;
             // 
-            // radioButton21
+            // rbPortalsHard
             // 
-            this.radioButton21.AutoSize = true;
-            this.radioButton21.Location = new System.Drawing.Point(97, 22);
-            this.radioButton21.Name = "radioButton21";
-            this.radioButton21.Size = new System.Drawing.Size(52, 19);
-            this.radioButton21.TabIndex = 18;
-            this.radioButton21.TabStop = true;
-            this.radioButton21.Text = "Hard";
-            this.radioButton21.UseVisualStyleBackColor = true;
+            this.rbPortalsHard.AutoSize = true;
+            this.rbPortalsHard.Location = new System.Drawing.Point(188, 20);
+            this.rbPortalsHard.Name = "rbPortalsHard";
+            this.rbPortalsHard.Size = new System.Drawing.Size(52, 19);
+            this.rbPortalsHard.TabIndex = 18;
+            this.rbPortalsHard.TabStop = true;
+            this.rbPortalsHard.Text = "Hard";
+            this.rbPortalsHard.UseVisualStyleBackColor = true;
             // 
-            // radioButton22
+            // rbPortalsCasual
             // 
-            this.radioButton22.AutoSize = true;
-            this.radioButton22.Location = new System.Drawing.Point(6, 22);
-            this.radioButton22.Name = "radioButton22";
-            this.radioButton22.Size = new System.Drawing.Size(63, 19);
-            this.radioButton22.TabIndex = 17;
-            this.radioButton22.TabStop = true;
-            this.radioButton22.Text = "Casual";
-            this.radioButton22.UseVisualStyleBackColor = true;
+            this.rbPortalsCasual.AutoSize = true;
+            this.rbPortalsCasual.Location = new System.Drawing.Point(97, 20);
+            this.rbPortalsCasual.Name = "rbPortalsCasual";
+            this.rbPortalsCasual.Size = new System.Drawing.Size(63, 19);
+            this.rbPortalsCasual.TabIndex = 17;
+            this.rbPortalsCasual.TabStop = true;
+            this.rbPortalsCasual.Text = "Casual";
+            this.rbPortalsCasual.UseVisualStyleBackColor = true;
             // 
-            // groupBox10
+            // groupBox8
             // 
-            this.groupBox10.Controls.Add(this.radioButton27);
-            this.groupBox10.Controls.Add(this.radioButton18);
-            this.groupBox10.Controls.Add(this.radioButton19);
-            this.groupBox10.Controls.Add(this.radioButton23);
-            this.groupBox10.Controls.Add(this.radioButton24);
-            this.groupBox10.Controls.Add(this.radioButton25);
-            this.groupBox10.Controls.Add(this.radioButton26);
-            this.groupBox10.ForeColor = System.Drawing.Color.SteelBlue;
-            this.groupBox10.Location = new System.Drawing.Point(8, 113);
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(671, 50);
-            this.groupBox10.TabIndex = 18;
-            this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "Preset";
+            this.groupBox8.Controls.Add(this.rbResourcesNone);
+            this.groupBox8.Controls.Add(this.rbResourcesMuchLess);
+            this.groupBox8.Controls.Add(this.rbResourcesMost);
+            this.groupBox8.Controls.Add(this.rbResourcesMuchMore);
+            this.groupBox8.Controls.Add(this.rbResourcesMore);
+            this.groupBox8.Controls.Add(this.rbResourcesLess);
+            this.groupBox8.ForeColor = System.Drawing.Color.SteelBlue;
+            this.groupBox8.Location = new System.Drawing.Point(4, 144);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(776, 50);
+            this.groupBox8.TabIndex = 18;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Resources";
             // 
-            // radioButton18
+            // rbResourcesMuchLess
             // 
-            this.radioButton18.AutoSize = true;
-            this.radioButton18.Location = new System.Drawing.Point(78, 22);
-            this.radioButton18.Name = "radioButton18";
-            this.radioButton18.Size = new System.Drawing.Size(63, 19);
-            this.radioButton18.TabIndex = 22;
-            this.radioButton18.TabStop = true;
-            this.radioButton18.Text = "Casual";
-            this.radioButton18.UseVisualStyleBackColor = true;
+            this.rbResourcesMuchLess.AutoSize = true;
+            this.rbResourcesMuchLess.Location = new System.Drawing.Point(97, 20);
+            this.rbResourcesMuchLess.Name = "rbResourcesMuchLess";
+            this.rbResourcesMuchLess.Size = new System.Drawing.Size(85, 19);
+            this.rbResourcesMuchLess.TabIndex = 22;
+            this.rbResourcesMuchLess.TabStop = true;
+            this.rbResourcesMuchLess.Text = "Much Less";
+            this.rbResourcesMuchLess.UseVisualStyleBackColor = true;
             // 
-            // radioButton19
+            // rbResourcesMost
             // 
-            this.radioButton19.AutoSize = true;
-            this.radioButton19.Location = new System.Drawing.Point(348, 22);
-            this.radioButton19.Name = "radioButton19";
-            this.radioButton19.Size = new System.Drawing.Size(82, 19);
-            this.radioButton19.TabIndex = 21;
-            this.radioButton19.TabStop = true;
-            this.radioButton19.Text = "Immersive";
-            this.radioButton19.UseVisualStyleBackColor = true;
+            this.rbResourcesMost.AutoSize = true;
+            this.rbResourcesMost.Location = new System.Drawing.Point(449, 20);
+            this.rbResourcesMost.Name = "rbResourcesMost";
+            this.rbResourcesMost.Size = new System.Drawing.Size(52, 19);
+            this.rbResourcesMost.TabIndex = 21;
+            this.rbResourcesMost.TabStop = true;
+            this.rbResourcesMost.Text = "Most";
+            this.rbResourcesMost.UseVisualStyleBackColor = true;
             // 
-            // radioButton23
+            // rbResourcesMuchMore
             // 
-            this.radioButton23.AutoSize = true;
-            this.radioButton23.Location = new System.Drawing.Point(266, 22);
-            this.radioButton23.Name = "radioButton23";
-            this.radioButton23.Size = new System.Drawing.Size(76, 19);
-            this.radioButton23.TabIndex = 20;
-            this.radioButton23.TabStop = true;
-            this.radioButton23.Text = "Hardcore";
-            this.radioButton23.UseVisualStyleBackColor = true;
+            this.rbResourcesMuchMore.AutoSize = true;
+            this.rbResourcesMuchMore.Location = new System.Drawing.Point(355, 20);
+            this.rbResourcesMuchMore.Name = "rbResourcesMuchMore";
+            this.rbResourcesMuchMore.Size = new System.Drawing.Size(88, 19);
+            this.rbResourcesMuchMore.TabIndex = 20;
+            this.rbResourcesMuchMore.TabStop = true;
+            this.rbResourcesMuchMore.Text = "Much More";
+            this.rbResourcesMuchMore.UseVisualStyleBackColor = true;
             // 
-            // radioButton24
+            // rbResourcesMore
             // 
-            this.radioButton24.AutoSize = true;
-            this.radioButton24.Location = new System.Drawing.Point(208, 22);
-            this.radioButton24.Name = "radioButton24";
-            this.radioButton24.Size = new System.Drawing.Size(52, 19);
-            this.radioButton24.TabIndex = 19;
-            this.radioButton24.TabStop = true;
-            this.radioButton24.Text = "Hard";
-            this.radioButton24.UseVisualStyleBackColor = true;
+            this.rbResourcesMore.AutoSize = true;
+            this.rbResourcesMore.Location = new System.Drawing.Point(271, 20);
+            this.rbResourcesMore.Name = "rbResourcesMore";
+            this.rbResourcesMore.Size = new System.Drawing.Size(54, 19);
+            this.rbResourcesMore.TabIndex = 19;
+            this.rbResourcesMore.TabStop = true;
+            this.rbResourcesMore.Text = "More";
+            this.rbResourcesMore.UseVisualStyleBackColor = true;
             // 
-            // radioButton25
+            // rbResourcesLess
             // 
-            this.radioButton25.AutoSize = true;
-            this.radioButton25.Location = new System.Drawing.Point(151, 22);
-            this.radioButton25.Name = "radioButton25";
-            this.radioButton25.Size = new System.Drawing.Size(51, 19);
-            this.radioButton25.TabIndex = 18;
-            this.radioButton25.TabStop = true;
-            this.radioButton25.Text = "Easy";
-            this.radioButton25.UseVisualStyleBackColor = true;
+            this.rbResourcesLess.AutoSize = true;
+            this.rbResourcesLess.Location = new System.Drawing.Point(188, 20);
+            this.rbResourcesLess.Name = "rbResourcesLess";
+            this.rbResourcesLess.Size = new System.Drawing.Size(51, 19);
+            this.rbResourcesLess.TabIndex = 18;
+            this.rbResourcesLess.TabStop = true;
+            this.rbResourcesLess.Text = "Less";
+            this.rbResourcesLess.UseVisualStyleBackColor = true;
             // 
-            // radioButton26
+            // expandCollapsePanel2
             // 
-            this.radioButton26.AutoSize = true;
-            this.radioButton26.Location = new System.Drawing.Point(6, 22);
-            this.radioButton26.Name = "radioButton26";
-            this.radioButton26.Size = new System.Drawing.Size(66, 19);
-            this.radioButton26.TabIndex = 17;
-            this.radioButton26.TabStop = true;
-            this.radioButton26.Text = "Normal";
-            this.radioButton26.UseVisualStyleBackColor = true;
-            // 
-            // radioButton27
-            // 
-            this.radioButton27.AutoSize = true;
-            this.radioButton27.Location = new System.Drawing.Point(436, 22);
-            this.radioButton27.Name = "radioButton27";
-            this.radioButton27.Size = new System.Drawing.Size(74, 19);
-            this.radioButton27.TabIndex = 23;
-            this.radioButton27.TabStop = true;
-            this.radioButton27.Text = "Hammer";
-            this.radioButton27.UseVisualStyleBackColor = true;
+            this.expandCollapsePanel2.ButtonSize = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonSize.Small;
+            this.expandCollapsePanel2.ButtonStyle = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonStyle.Classic;
+            this.expandCollapsePanel2.Controls.Add(this.groupBox5);
+            this.expandCollapsePanel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.expandCollapsePanel2.ExpandedHeight = 296;
+            this.expandCollapsePanel2.IsExpanded = true;
+            this.expandCollapsePanel2.Location = new System.Drawing.Point(0, 995);
+            this.expandCollapsePanel2.Name = "expandCollapsePanel2";
+            this.expandCollapsePanel2.Size = new System.Drawing.Size(783, 296);
+            this.expandCollapsePanel2.TabIndex = 20;
+            this.expandCollapsePanel2.Text = "Saves && Backups";
+            this.expandCollapsePanel2.UseAnimation = true;
             // 
             // expandCollapsePanel4
             // 
@@ -1480,6 +1570,7 @@
             this.chkShutdown2.TabIndex = 19;
             this.chkShutdown2.Text = "Shutdow server at";
             this.chkShutdown2.UseVisualStyleBackColor = true;
+            this.chkShutdown2.CheckedChanged += new System.EventHandler(this.chkShutdown2_CheckedChanged);
             // 
             // chkMon1
             // 
@@ -1622,6 +1713,7 @@
             this.chkShutdown1.TabIndex = 3;
             this.chkShutdown1.Text = "Shutdow server at";
             this.chkShutdown1.UseVisualStyleBackColor = true;
+            this.chkShutdown1.CheckedChanged += new System.EventHandler(this.chkShutdown1_CheckedChanged);
             // 
             // rbOnLogin
             // 
@@ -1656,90 +1748,57 @@
             this.chkAutoStart.TabIndex = 0;
             this.chkAutoStart.Text = "Auto-Start server";
             this.chkAutoStart.UseVisualStyleBackColor = true;
+            this.chkAutoStart.CheckedChanged += new System.EventHandler(this.chkAutoStart_CheckedChanged);
             // 
-            // groupBox12
+            // rbResourcesNone
             // 
-            this.groupBox12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox12.Controls.Add(this.button2);
-            this.groupBox12.Controls.Add(this.txtCommand);
-            this.groupBox12.Controls.Add(this.btProcessorAffinity);
-            this.groupBox12.Controls.Add(this.txtAffinity);
-            this.groupBox12.Controls.Add(this.label34);
-            this.groupBox12.Controls.Add(this.label33);
-            this.groupBox12.Controls.Add(this.cboPriority);
-            this.groupBox12.ForeColor = System.Drawing.Color.SteelBlue;
-            this.groupBox12.Location = new System.Drawing.Point(4, 451);
-            this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(793, 127);
-            this.groupBox12.TabIndex = 23;
-            this.groupBox12.TabStop = false;
-            this.groupBox12.Text = "Command Line";
+            this.rbResourcesNone.AutoSize = true;
+            this.rbResourcesNone.Location = new System.Drawing.Point(6, 20);
+            this.rbResourcesNone.Name = "rbResourcesNone";
+            this.rbResourcesNone.Size = new System.Drawing.Size(55, 19);
+            this.rbResourcesNone.TabIndex = 23;
+            this.rbResourcesNone.TabStop = true;
+            this.rbResourcesNone.Text = "None";
+            this.rbResourcesNone.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // rbPortalsNone
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(720, 46);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(61, 23);
-            this.button2.TabIndex = 72;
-            this.button2.Text = "Refresh";
-            this.button2.UseVisualStyleBackColor = true;
+            this.rbPortalsNone.AutoSize = true;
+            this.rbPortalsNone.Location = new System.Drawing.Point(6, 20);
+            this.rbPortalsNone.Name = "rbPortalsNone";
+            this.rbPortalsNone.Size = new System.Drawing.Size(55, 19);
+            this.rbPortalsNone.TabIndex = 24;
+            this.rbPortalsNone.TabStop = true;
+            this.rbPortalsNone.Text = "None";
+            this.rbPortalsNone.UseVisualStyleBackColor = true;
             // 
-            // txtCommand
+            // button1
             // 
-            this.txtCommand.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCommand.Enabled = false;
-            this.txtCommand.Location = new System.Drawing.Point(5, 46);
-            this.txtCommand.Multiline = true;
-            this.txtCommand.Name = "txtCommand";
-            this.txtCommand.Size = new System.Drawing.Size(710, 72);
-            this.txtCommand.TabIndex = 71;
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(700, 63);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(30, 23);
+            this.button1.TabIndex = 30;
+            this.button1.Text = "...";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // btProcessorAffinity
+            // button3
             // 
-            this.btProcessorAffinity.Location = new System.Drawing.Point(513, 18);
-            this.btProcessorAffinity.Name = "btProcessorAffinity";
-            this.btProcessorAffinity.Size = new System.Drawing.Size(30, 23);
-            this.btProcessorAffinity.TabIndex = 70;
-            this.btProcessorAffinity.Text = "...";
-            this.btProcessorAffinity.UseVisualStyleBackColor = true;
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button3.Location = new System.Drawing.Point(700, 89);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(30, 23);
+            this.button3.TabIndex = 31;
+            this.button3.Text = "...";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // txtAffinity
+            // timerGetProcess
             // 
-            this.txtAffinity.Enabled = false;
-            this.txtAffinity.Location = new System.Drawing.Point(299, 20);
-            this.txtAffinity.Name = "txtAffinity";
-            this.txtAffinity.Size = new System.Drawing.Size(208, 20);
-            this.txtAffinity.TabIndex = 69;
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(217, 22);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(76, 15);
-            this.label34.TabIndex = 68;
-            this.label34.Text = "Affinity - CPU";
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(4, 22);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(44, 15);
-            this.label33.TabIndex = 67;
-            this.label33.Text = "Priority";
-            // 
-            // cboPriority
-            // 
-            this.cboPriority.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboPriority.FormattingEnabled = true;
-            this.cboPriority.Location = new System.Drawing.Point(70, 19);
-            this.cboPriority.Name = "cboPriority";
-            this.cboPriority.Size = new System.Drawing.Size(132, 21);
-            this.cboPriority.TabIndex = 15;
+            this.timerGetProcess.Enabled = true;
+            this.timerGetProcess.Interval = 500;
+            this.timerGetProcess.Tick += new System.EventHandler(this.timerGetProcess_Tick);
             // 
             // FrmValheim
             // 
@@ -1748,51 +1807,52 @@
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(800, 1100);
             this.Controls.Add(this.expandCollapsePanel4);
-            this.Controls.Add(this.expandCollapsePanel3);
             this.Controls.Add(this.expandCollapsePanel2);
+            this.Controls.Add(this.expandCollapsePanel3);
             this.Controls.Add(this.expandCollapsePanel1);
             this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.Color.SteelBlue;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmValheim";
             this.Text = "FrmValheim";
+            this.Load += new System.EventHandler(this.FrmValheim_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.expandCollapsePanel1.ResumeLayout(false);
             this.expandCollapsePanel1.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
+            this.groupBox12.ResumeLayout(false);
+            this.groupBox12.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbSubBackups)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbFirstBackup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbAutoSavePeriod)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
-            this.expandCollapsePanel2.ResumeLayout(false);
-            this.expandCollapsePanel2.PerformLayout();
             this.expandCollapsePanel3.ResumeLayout(false);
             this.expandCollapsePanel3.PerformLayout();
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox8.PerformLayout();
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
-            this.groupBox10.ResumeLayout(false);
-            this.groupBox10.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
+            this.expandCollapsePanel2.ResumeLayout(false);
+            this.expandCollapsePanel2.PerformLayout();
             this.expandCollapsePanel4.ResumeLayout(false);
             this.expandCollapsePanel4.PerformLayout();
             this.groupBox11.ResumeLayout(false);
             this.groupBox11.PerformLayout();
-            this.groupBox12.ResumeLayout(false);
-            this.groupBox12.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1806,7 +1866,6 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtServerType;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button btRCON;
         private System.Windows.Forms.Button btStart;
         private System.Windows.Forms.Button btUpdate;
@@ -1836,66 +1895,66 @@
         private System.Windows.Forms.TextBox txtServerName;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtSaveLocation;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.CheckBox chkPublic;
+        private System.Windows.Forms.TextBox txtLogLocation;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox txtAutoSavePeriod;
         private System.Windows.Forms.TrackBar tbAutoSavePeriod;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtBackupToKeep;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TrackBar trackBar2;
+        private System.Windows.Forms.TextBox txtSubBackups;
+        private System.Windows.Forms.TrackBar tbSubBackups;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.TextBox txtFirstBackup;
+        private System.Windows.Forms.TrackBar tbFirstBackup;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.CheckBox chkCrossplay;
+        private System.Windows.Forms.TextBox txtInstanceID;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.CheckedListBox cLBKeys;
+        private System.Windows.Forms.TextBox txtWorldName;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.RadioButton radioButton5;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton rbCombatVeryHard;
+        private System.Windows.Forms.RadioButton rbCombatHard;
+        private System.Windows.Forms.RadioButton rbCombatEasy;
+        private System.Windows.Forms.RadioButton rbCombatVeryEasy;
+        private System.Windows.Forms.RadioButton rbCombatNone;
         private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.RadioButton radioButton11;
-        private System.Windows.Forms.RadioButton radioButton6;
-        private System.Windows.Forms.RadioButton radioButton7;
-        private System.Windows.Forms.RadioButton radioButton8;
-        private System.Windows.Forms.RadioButton radioButton9;
-        private System.Windows.Forms.RadioButton radioButton10;
-        private MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel expandCollapsePanel2;
+        private System.Windows.Forms.RadioButton rbDeathPenaltyCasual;
+        private System.Windows.Forms.RadioButton rbDeathPenaltyHardCore;
+        private System.Windows.Forms.RadioButton rbDeathPenaltyHard;
+        private System.Windows.Forms.RadioButton rbDeathPenaltyEasy;
+        private System.Windows.Forms.RadioButton rbDeathPenaltyVeryEasy;
+        private System.Windows.Forms.RadioButton rbDeathPenaltyNone;
         private MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel expandCollapsePanel3;
+        private MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel expandCollapsePanel2;
         private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.RadioButton radioButton12;
-        private System.Windows.Forms.RadioButton radioButton13;
-        private System.Windows.Forms.RadioButton radioButton14;
-        private System.Windows.Forms.RadioButton radioButton15;
-        private System.Windows.Forms.RadioButton radioButton16;
+        private System.Windows.Forms.RadioButton rbResourcesMuchLess;
+        private System.Windows.Forms.RadioButton rbResourcesMost;
+        private System.Windows.Forms.RadioButton rbResourcesMuchMore;
+        private System.Windows.Forms.RadioButton rbResourcesMore;
+        private System.Windows.Forms.RadioButton rbResourcesLess;
         private System.Windows.Forms.GroupBox groupBox9;
-        private System.Windows.Forms.RadioButton radioButton20;
-        private System.Windows.Forms.RadioButton radioButton21;
-        private System.Windows.Forms.RadioButton radioButton22;
+        private System.Windows.Forms.RadioButton rbPortalsVeryHard;
+        private System.Windows.Forms.RadioButton rbPortalsHard;
+        private System.Windows.Forms.RadioButton rbPortalsCasual;
         private System.Windows.Forms.GroupBox groupBox10;
-        private System.Windows.Forms.RadioButton radioButton18;
-        private System.Windows.Forms.RadioButton radioButton19;
-        private System.Windows.Forms.RadioButton radioButton23;
-        private System.Windows.Forms.RadioButton radioButton24;
-        private System.Windows.Forms.RadioButton radioButton25;
-        private System.Windows.Forms.RadioButton radioButton26;
-        private System.Windows.Forms.RadioButton radioButton27;
+        private System.Windows.Forms.RadioButton tbPresetCasual;
+        private System.Windows.Forms.RadioButton tbPresetImmersive;
+        private System.Windows.Forms.RadioButton tbPresetHardcore;
+        private System.Windows.Forms.RadioButton tbPresetHard;
+        private System.Windows.Forms.RadioButton tbPresetEasy;
+        private System.Windows.Forms.RadioButton tbPresetNormal;
+        private System.Windows.Forms.RadioButton tbPresetHammer;
         private MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel expandCollapsePanel4;
         private System.Windows.Forms.GroupBox groupBox11;
         private System.Windows.Forms.CheckBox chkRestart2;
@@ -1934,5 +1993,11 @@
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.ComboBox cboPriority;
+        private System.Windows.Forms.RadioButton rbPortalsNone;
+        private System.Windows.Forms.RadioButton rbResourcesNone;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.FolderBrowserDialog fbd;
+        private System.Windows.Forms.Timer timerGetProcess;
     }
 }

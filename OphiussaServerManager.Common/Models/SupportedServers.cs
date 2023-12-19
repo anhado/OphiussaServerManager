@@ -91,9 +91,9 @@ namespace OphiussaServerManager.Common.Models.SupportedServers
                         SaveGamesRelativePath="",
                         SavedFilesRelativePath="",
                         SavedRelativePath="",
-                        ExecutablePath="",
+                        ExecutablePath="valheim_server.exe",
                         ExecutablePathAPI="",
-                        ProcessName="",
+                        ProcessName="valheim_server",
                         ModAppID = 0,
                         SteamClientID =892970,
                         ModsSource = ModSource.NexusMods,
@@ -129,6 +129,9 @@ namespace OphiussaServerManager.Common.Models.SupportedServers
                     {
                         new MapList(){Key="TheIsland_WP" ,Description="The Island" }
                     };
+                case EnumServerType.Valheim:
+                    //Nothing todo
+                    break;
             }
             return new List<MapList>();
         }

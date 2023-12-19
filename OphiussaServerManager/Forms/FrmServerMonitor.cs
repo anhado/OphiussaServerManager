@@ -66,9 +66,25 @@ namespace OphiussaServerManager.Forms
                                         Map = p.ARKConfiguration.Administration.MapName,
                                         Mods = p.ARKConfiguration.Administration.ModIDs.Count,
                                         Status = !p.IsInstalled ? "Uninstalled" : (p.IsRunning ? "Running" : "Stopped"),
-                                        Version = p.GetVersion() == "" ? p.GetBuild(): p.GetVersion(),
+                                        Version = p.GetVersion() == "" ? p.GetBuild() : p.GetVersion(),
                                         Ports = p.ARKConfiguration.Administration.ServerPort + "," + p.ARKConfiguration.Administration.PeerPort + "," + p.ARKConfiguration.Administration.QueryPort,
                                         Players = p.ARKConfiguration.Administration.MaxPlayers.ToString()
+                                    }
+                                    );
+                                break;
+                            case Common.Models.SupportedServers.EnumServerType.Valheim:
+                                monitorGridBindingSource.Add(
+                                    new Common.Models.MonitorGrid()
+                                    {
+                                        Select = false,
+                                        Profile = p.Name,
+                                        ServerName = p.ValheimConfiguration.Administration.ServerName,
+                                        Map = p.ValheimConfiguration.Administration.WordName,
+                                        Mods = 0,
+                                        Status = !p.IsInstalled ? "Uninstalled" : (p.IsRunning ? "Running" : "Stopped"),
+                                        Version = p.GetVersion() == "" ? p.GetBuild() : p.GetVersion(),
+                                        Ports = p.ValheimConfiguration.Administration.ServerPort + "," + p.ValheimConfiguration.Administration.PeerPort,
+                                        Players = "0"
                                     }
                                     );
                                 break;

@@ -767,18 +767,6 @@ namespace OphiussaServerManager.Forms
             {
                 timerGetProcess.Enabled = false;
 
-                //Process process = profile.GetExeProcess();
-                //if (process != null)
-                //{
-                //    if (isRunning) return;
-                //    isRunning = true;
-                //}
-                //else
-                //{
-                //    if (!isRunning) return;
-                //    isRunning = false;
-
-                //}
                 if (isRunning) btStart.Text = "Stop";
                 else btStart.Text = "Start";
                 btUpdate.Enabled = !isRunning;

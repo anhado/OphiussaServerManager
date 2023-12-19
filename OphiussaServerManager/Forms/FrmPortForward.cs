@@ -86,6 +86,23 @@ namespace OphiussaServerManager.Forms
                             vQueryPort = profile.ARKConfiguration.Administration.QueryPort.ToUShort();
                             if (profile.ARKConfiguration.Administration.UseRCON) vRconPort = profile.ARKConfiguration.Administration.RCONPort.ToUShort();
                             break;
+                        case Common.Models.SupportedServers.EnumServerType.Valheim:
+                            serverName = profile.ValheimConfiguration.Administration.ServerName;
+
+                            UseServerPort = true;
+                            UsePeerPort = true;
+                            UseQueryPort = false;
+                            UseRconPort = false;
+
+                            serverMapping = await device.GetSpecificMappingAsync(Protocol.TcpUpd, profile.ValheimConfiguration.Administration.ServerPort.ToInt());
+                            peerMapping = await device.GetSpecificMappingAsync(Protocol.TcpUpd, profile.ValheimConfiguration.Administration.PeerPort.ToInt());
+
+                            FirewallServerPort = NetworkTools.IsPortOpen(profile.Name, profile.ValheimConfiguration.Administration.ServerPort.ToInt());
+                            FirewallPeerPort = NetworkTools.IsPortOpen(profile.Name, profile.ValheimConfiguration.Administration.PeerPort.ToInt());
+
+                            vServerPort = profile.ValheimConfiguration.Administration.ServerPort.ToUShort();
+                            vPeerPort = profile.ValheimConfiguration.Administration.PeerPort.ToUShort();
+                            break;
                     }
 
                     portForwardGridBindingSource.Add(new PortForwardGrid()
@@ -189,7 +206,7 @@ namespace OphiussaServerManager.Forms
                     bool FirewallPeerPort = false;
                     bool FirewallQueryPort = false;
                     bool FirewallRconPort = false;
-                     
+
                     if (obj.UseServerPort) serverMapping = await device.GetSpecificMappingAsync(Protocol.TcpUpd, obj.ServerPort);
                     if (obj.UsePeerPort) peerMapping = await device.GetSpecificMappingAsync(Protocol.TcpUpd, obj.PeerPort);
                     if (obj.UseQueryPort) QueryMapping = await device.GetSpecificMappingAsync(Protocol.TcpUpd, obj.QueryPort);

@@ -48,7 +48,7 @@ namespace OphiussaServerManager.Forms
                 {
                     MessageBox.Show("Selected folder dont exists");
                     return false;
-                } 
+                }
                 SupportedServersType type = (SupportedServersType)cboServerType.SelectedItem;
                 switch (type.ServerType)
                 {
@@ -56,6 +56,14 @@ namespace OphiussaServerManager.Forms
                     case EnumServerType.ArkSurviveAscended:
 
                         if (!Common.Utils.IsAValidFolder(dir, new List<string> { "Engine", "ShooterGame", "steamapps" }))
+                        {
+                            MessageBox.Show("This is not a valid Ark Folder");
+                            return false;
+                        }
+                        break;
+
+                    case Common.Models.SupportedServers.EnumServerType.Valheim:
+                        if (!Common.Utils.IsAValidFolder(dir, new List<string> { "MonoBleedingEdge", "MonoBleedingEdge", "steamapps" }))
                         {
                             MessageBox.Show("This is not a valid Ark Folder");
                             return false;

@@ -9,24 +9,30 @@ using System.IO;
 using System.Linq;
 using System.Numerics;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Documents;
+using System.Windows.Forms;
 
 namespace OphiussaServerManager.Common
 {
     public static class Utils
     {
+
+        [DllImport("user32.dll")]
+        public static extern int SetForegroundWindow(IntPtr hWnd);
+
         public const string DEFAULT_CULTURE_CODE = "en-US";
-        public static void ExecuteAsAdmin(string exeName, string parameters, bool wait = true, bool noWindow = false)
+        public static void ExecuteAsAdmin(string exeName, string parameters, bool wait = true, bool noWindow = false, bool dontRunAsAdmin = false)
         {
             try
             {
                 System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
                 startInfo.UseShellExecute = true;
                 startInfo.FileName = exeName;
-                startInfo.Verb = "runas";
+                if (!dontRunAsAdmin) startInfo.Verb = "runas";
 
                 //MLHIDE
                 startInfo.Arguments = parameters;
@@ -381,6 +387,12 @@ namespace OphiussaServerManager.Common
                         return false;
                 return true;
             }
+        }
+
+        public static void SendCloseCommand(Process process)
+        {
+            SetForegroundWindow(process.MainWindowHandle);
+            SendKeys.SendWait("^(c)");
         }
     }
 }

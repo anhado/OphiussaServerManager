@@ -186,6 +186,9 @@ namespace OphiussaServerManager
                             case EnumServerType.ArkSurviveAscended:
                                 AddNewArkServer(guid.ToString(), newServer.serversType, newServer.installDir, null);
                                 break;
+                            case Common.Models.SupportedServers.EnumServerType.Valheim:
+                                AddNewValheimServer(guid.ToString(), newServer.serversType, newServer.installDir, null);
+                                break;
                             default:
                                 break;
                         }
