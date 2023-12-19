@@ -94,6 +94,8 @@
             this.txtLogLocation = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.txtSubBackups = new System.Windows.Forms.TextBox();
             this.tbSubBackups = new System.Windows.Forms.TrackBar();
@@ -123,10 +125,12 @@
             this.rbDeathPenaltyNone = new System.Windows.Forms.RadioButton();
             this.expandCollapsePanel3 = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.rbPortalsNone = new System.Windows.Forms.RadioButton();
             this.rbPortalsVeryHard = new System.Windows.Forms.RadioButton();
             this.rbPortalsHard = new System.Windows.Forms.RadioButton();
             this.rbPortalsCasual = new System.Windows.Forms.RadioButton();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.rbResourcesNone = new System.Windows.Forms.RadioButton();
             this.rbResourcesMuchLess = new System.Windows.Forms.RadioButton();
             this.rbResourcesMost = new System.Windows.Forms.RadioButton();
             this.rbResourcesMuchMore = new System.Windows.Forms.RadioButton();
@@ -163,10 +167,6 @@
             this.rbOnLogin = new System.Windows.Forms.RadioButton();
             this.rbOnBoot = new System.Windows.Forms.RadioButton();
             this.chkAutoStart = new System.Windows.Forms.CheckBox();
-            this.rbResourcesNone = new System.Windows.Forms.RadioButton();
-            this.rbPortalsNone = new System.Windows.Forms.RadioButton();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.fbd = new System.Windows.Forms.FolderBrowserDialog();
             this.timerGetProcess = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
@@ -855,6 +855,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSaveLocation.Location = new System.Drawing.Point(116, 64);
             this.txtSaveLocation.Name = "txtSaveLocation";
+            this.txtSaveLocation.ReadOnly = true;
             this.txtSaveLocation.Size = new System.Drawing.Size(577, 21);
             this.txtSaveLocation.TabIndex = 6;
             // 
@@ -864,6 +865,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtLogLocation.Location = new System.Drawing.Point(116, 90);
             this.txtLogLocation.Name = "txtLogLocation";
+            this.txtLogLocation.ReadOnly = true;
             this.txtLogLocation.Size = new System.Drawing.Size(577, 21);
             this.txtLogLocation.TabIndex = 9;
             // 
@@ -908,6 +910,28 @@
             this.groupBox5.TabIndex = 19;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Saves && Backups";
+            // 
+            // button3
+            // 
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button3.Location = new System.Drawing.Point(700, 89);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(30, 23);
+            this.button3.TabIndex = 31;
+            this.button3.Text = "...";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(700, 63);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(30, 23);
+            this.button1.TabIndex = 30;
+            this.button1.Text = "...";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label15
             // 
@@ -1237,6 +1261,17 @@
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Portals";
             // 
+            // rbPortalsNone
+            // 
+            this.rbPortalsNone.AutoSize = true;
+            this.rbPortalsNone.Location = new System.Drawing.Point(6, 20);
+            this.rbPortalsNone.Name = "rbPortalsNone";
+            this.rbPortalsNone.Size = new System.Drawing.Size(55, 19);
+            this.rbPortalsNone.TabIndex = 24;
+            this.rbPortalsNone.TabStop = true;
+            this.rbPortalsNone.Text = "None";
+            this.rbPortalsNone.UseVisualStyleBackColor = true;
+            // 
             // rbPortalsVeryHard
             // 
             this.rbPortalsVeryHard.AutoSize = true;
@@ -1285,6 +1320,17 @@
             this.groupBox8.TabIndex = 18;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Resources";
+            // 
+            // rbResourcesNone
+            // 
+            this.rbResourcesNone.AutoSize = true;
+            this.rbResourcesNone.Location = new System.Drawing.Point(6, 20);
+            this.rbResourcesNone.Name = "rbResourcesNone";
+            this.rbResourcesNone.Size = new System.Drawing.Size(55, 19);
+            this.rbResourcesNone.TabIndex = 23;
+            this.rbResourcesNone.TabStop = true;
+            this.rbResourcesNone.Text = "None";
+            this.rbResourcesNone.UseVisualStyleBackColor = true;
             // 
             // rbResourcesMuchLess
             // 
@@ -1749,50 +1795,6 @@
             this.chkAutoStart.Text = "Auto-Start server";
             this.chkAutoStart.UseVisualStyleBackColor = true;
             this.chkAutoStart.CheckedChanged += new System.EventHandler(this.chkAutoStart_CheckedChanged);
-            // 
-            // rbResourcesNone
-            // 
-            this.rbResourcesNone.AutoSize = true;
-            this.rbResourcesNone.Location = new System.Drawing.Point(6, 20);
-            this.rbResourcesNone.Name = "rbResourcesNone";
-            this.rbResourcesNone.Size = new System.Drawing.Size(55, 19);
-            this.rbResourcesNone.TabIndex = 23;
-            this.rbResourcesNone.TabStop = true;
-            this.rbResourcesNone.Text = "None";
-            this.rbResourcesNone.UseVisualStyleBackColor = true;
-            // 
-            // rbPortalsNone
-            // 
-            this.rbPortalsNone.AutoSize = true;
-            this.rbPortalsNone.Location = new System.Drawing.Point(6, 20);
-            this.rbPortalsNone.Name = "rbPortalsNone";
-            this.rbPortalsNone.Size = new System.Drawing.Size(55, 19);
-            this.rbPortalsNone.TabIndex = 24;
-            this.rbPortalsNone.TabStop = true;
-            this.rbPortalsNone.Text = "None";
-            this.rbPortalsNone.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(700, 63);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(30, 23);
-            this.button1.TabIndex = 30;
-            this.button1.Text = "...";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button3
-            // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(700, 89);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(30, 23);
-            this.button3.TabIndex = 31;
-            this.button3.Text = "...";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // timerGetProcess
             // 
