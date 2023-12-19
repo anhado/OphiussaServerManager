@@ -6,10 +6,8 @@
 [  ]Add mod support?
 [  ]Missing Raid Options
 
-```mermaid
-graph TD;
-    A-->B;
-    A-->C;
-    B-->D;
-    C-->D;
+```
+function test() {
+  console.log("notice the blank line before this function?");
+}
 ```
