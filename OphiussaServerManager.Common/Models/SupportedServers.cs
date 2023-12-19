@@ -94,7 +94,7 @@ namespace OphiussaServerManager.Common.Models.SupportedServers
                         ExecutablePath="valheim_server.exe",
                         ExecutablePathAPI="",
                         ProcessName="valheim_server",
-                        ModAppID = 0,
+                        ModAppID = 3667,
                         SteamClientID =892970,
                         ModsSource = ModSource.NexusMods,
                         ManifestFileName="appmanifest_896660.acf"

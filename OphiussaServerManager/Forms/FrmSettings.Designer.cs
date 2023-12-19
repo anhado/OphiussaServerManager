@@ -80,13 +80,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.chkAnonymous = new System.Windows.Forms.CheckBox();
             this.expandCollapsePanel5 = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
-            this.chkEnableLogs = new System.Windows.Forms.CheckBox();
-            this.txtMaxDays = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.txtMaxFiles = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtMaxDays = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.chkEnableLogs = new System.Windows.Forms.CheckBox();
+            this.label18 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.expandCollapsePanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbGracePeriod)).BeginInit();
@@ -575,6 +576,7 @@
             this.expandCollapsePanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.expandCollapsePanel1.ButtonSize = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonSize.Small;
             this.expandCollapsePanel1.ButtonStyle = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonStyle.Classic;
+            this.expandCollapsePanel1.Controls.Add(this.label18);
             this.expandCollapsePanel1.Controls.Add(this.chkUpdateOnStart);
             this.expandCollapsePanel1.Controls.Add(this.txtPassword);
             this.expandCollapsePanel1.Controls.Add(this.label2);
@@ -670,44 +672,6 @@
             this.expandCollapsePanel5.Text = "Logging";
             this.expandCollapsePanel5.UseAnimation = true;
             // 
-            // chkEnableLogs
-            // 
-            this.chkEnableLogs.AutoSize = true;
-            this.chkEnableLogs.Checked = true;
-            this.chkEnableLogs.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkEnableLogs.Location = new System.Drawing.Point(12, 46);
-            this.chkEnableLogs.Name = "chkEnableLogs";
-            this.chkEnableLogs.Size = new System.Drawing.Size(95, 19);
-            this.chkEnableLogs.TabIndex = 2;
-            this.chkEnableLogs.Text = "Enable Logs";
-            this.chkEnableLogs.UseVisualStyleBackColor = true;
-            // 
-            // txtMaxDays
-            // 
-            this.txtMaxDays.Location = new System.Drawing.Point(140, 65);
-            this.txtMaxDays.Name = "txtMaxDays";
-            this.txtMaxDays.Size = new System.Drawing.Size(69, 20);
-            this.txtMaxDays.TabIndex = 16;
-            this.txtMaxDays.Text = "30";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(12, 68);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(100, 15);
-            this.label14.TabIndex = 15;
-            this.label14.Text = "Delete Logs After";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(215, 68);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(32, 15);
-            this.label15.TabIndex = 17;
-            this.label15.Text = "days";
-            // 
             // label16
             // 
             this.label16.AutoSize = true;
@@ -721,7 +685,7 @@
             // 
             this.txtMaxFiles.Location = new System.Drawing.Point(140, 91);
             this.txtMaxFiles.Name = "txtMaxFiles";
-            this.txtMaxFiles.Size = new System.Drawing.Size(69, 20);
+            this.txtMaxFiles.Size = new System.Drawing.Size(69, 21);
             this.txtMaxFiles.TabIndex = 19;
             this.txtMaxFiles.Text = "30";
             // 
@@ -733,6 +697,54 @@
             this.label17.Size = new System.Drawing.Size(122, 15);
             this.label17.TabIndex = 18;
             this.label17.Text = "Max Number of Logs";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(215, 68);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(32, 15);
+            this.label15.TabIndex = 17;
+            this.label15.Text = "days";
+            // 
+            // txtMaxDays
+            // 
+            this.txtMaxDays.Location = new System.Drawing.Point(140, 65);
+            this.txtMaxDays.Name = "txtMaxDays";
+            this.txtMaxDays.Size = new System.Drawing.Size(69, 21);
+            this.txtMaxDays.TabIndex = 16;
+            this.txtMaxDays.Text = "30";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(12, 68);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(100, 15);
+            this.label14.TabIndex = 15;
+            this.label14.Text = "Delete Logs After";
+            // 
+            // chkEnableLogs
+            // 
+            this.chkEnableLogs.AutoSize = true;
+            this.chkEnableLogs.Checked = true;
+            this.chkEnableLogs.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkEnableLogs.Location = new System.Drawing.Point(12, 46);
+            this.chkEnableLogs.Name = "chkEnableLogs";
+            this.chkEnableLogs.Size = new System.Drawing.Size(95, 19);
+            this.chkEnableLogs.TabIndex = 2;
+            this.chkEnableLogs.Text = "Enable Logs";
+            this.chkEnableLogs.UseVisualStyleBackColor = true;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.ForeColor = System.Drawing.Color.Crimson;
+            this.label18.Location = new System.Drawing.Point(372, 65);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(398, 15);
+            this.label18.TabIndex = 7;
+            this.label18.Text = "ATTENTION: THIS DO NOT SUPPORT TWO FACTOR AUTHENTICATOR";
             // 
             // FrmSettings
             // 
@@ -833,5 +845,6 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtMaxDays;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label18;
     }
 }

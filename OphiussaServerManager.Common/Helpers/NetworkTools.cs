@@ -163,18 +163,22 @@ namespace OphiussaServerManager.Common
 
         public static void InstallGame(Profile profile)
         {
-            //profile.Type.SteamAppID G:\asmdata\SteamCMD\steamcmd.exe +force_install_dir G:\ASA\server\ +login anonymous +app_update 2430930 validate +quit
-            Utils.ExecuteAsAdmin(Path.Combine(Settings.SteamCMDLocation, "steamcmd.exe"), $" +force_install_dir {profile.InstallLocation} +login anonymous +app_update {profile.Type.SteamServerID} validate +quit");
+            string login = "+login anonymous";
+            if (!Settings.UseAnonymousConnection) login = $"+login {Settings.SteamUserName} {Settings.SteamPassword}";
+
+            Utils.ExecuteAsAdmin(Path.Combine(Settings.SteamCMDLocation, "steamcmd.exe"), $" +force_install_dir {profile.InstallLocation} {login} +app_update {profile.Type.SteamServerID} validate +quit");
         }
         public static void UpdateCacheFolder(CacheServerTypes serverType)
         {
-            //profile.Type.SteamAppID G:\asmdata\SteamCMD\steamcmd.exe +force_install_dir G:\ASA\server\ +login anonymous +app_update 2430930 validate +quit
-            Utils.ExecuteAsAdmin(Path.Combine(Settings.SteamCMDLocation, "steamcmd.exe"), $" +force_install_dir {serverType.InstallCacheFolder} +login anonymous +app_update {serverType.Type.SteamServerID} validate +quit", true, true);
+            string login = "+login anonymous";
+            if (!Settings.UseAnonymousConnection) login = $"+login {Settings.SteamUserName} {Settings.SteamPassword}";
+            Utils.ExecuteAsAdmin(Path.Combine(Settings.SteamCMDLocation, "steamcmd.exe"), $" +force_install_dir {serverType.InstallCacheFolder} {login} +app_update {serverType.Type.SteamServerID} validate +quit", true, true);
         }
         public static void UpdateModCacheFolder(CacheServerTypes serverType)
         {
-            //profile.Type.SteamAppID G:\asmdata\SteamCMD\steamcmd.exe +force_install_dir G:\ASA\server\ +login anonymous +workshop_download_item 2430930 731604991 validate +quit
-            Utils.ExecuteAsAdmin(Path.Combine(Settings.SteamCMDLocation, "steamcmd.exe"), $" +force_install_dir {Path.Combine(serverType.InstallCacheFolder)} +login anonymous +workshop_download_item {serverType.Type.SteamClientID} {serverType.ModId} validate +quit", true, true);
+            string login = "+login anonymous";
+            if (!Settings.UseAnonymousConnection) login = $"+login {Settings.SteamUserName} {Settings.SteamPassword}";
+            Utils.ExecuteAsAdmin(Path.Combine(Settings.SteamCMDLocation, "steamcmd.exe"), $" +force_install_dir {Path.Combine(serverType.InstallCacheFolder)} {login} +workshop_download_item {serverType.Type.SteamClientID} {serverType.ModId} validate +quit", true, true);
         }
 
         public static bool IsPortOpen(string name, int port)
