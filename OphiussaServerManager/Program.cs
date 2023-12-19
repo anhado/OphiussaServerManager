@@ -45,13 +45,13 @@ namespace OphiussaServerManager
                         if (arg.StartsWith("-as1"))
                         {
                             OphiussaLogger.ReconfigureLogging();
-                            ServerTools.UpdateSingleServerJob1(arg.Substring(3));
+                            ServerTools.UpdateSingleServerJob1(arg.Substring(4));
                             return;
                         }
                         if (arg.StartsWith("-as1"))
                         {
                             OphiussaLogger.ReconfigureLogging();
-                            ServerTools.UpdateSingleServerJob2(arg.Substring(3));
+                            ServerTools.UpdateSingleServerJob2(arg.Substring(4));
                             return;
                         }
                     }

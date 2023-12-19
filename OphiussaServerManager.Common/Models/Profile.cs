@@ -217,24 +217,40 @@ namespace OphiussaServerManager.Common.Models.Profiles
 
         }
 
-        public async Task CloseServer(Settings sett, Func<ProcessEventArg, bool> OnProgressChanged)
+        public async Task CloseServer(Settings sett, Func<ProcessEventArg, bool> OnProgressChanged, bool ForceKillProcess = false)
         {
 
             switch (this.Type.ServerType)
             {
                 case EnumServerType.ArkSurviveEvolved:
                 case EnumServerType.ArkSurviveAscended:
-                    await CloseServerArk(sett, OnProgressChanged);
+                    await CloseServerArk(sett, OnProgressChanged, ForceKillProcess);
                     break;
                 case EnumServerType.Valheim:
-                    Utils.SendCloseCommand(Utils.GetProcessRunning(Path.Combine(InstallLocation, Type.ExecutablePath)));
+                    if (ForceKillProcess)
+                    {
+                        if (ForceKillProcess) OnProgressChanged(new ProcessEventArg() { Message = "Process didnt respond to command, the processed will be killed", IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
+                        Process pro = Utils.GetProcessRunning(System.IO.Path.Combine(this.InstallLocation, this.Type.ExecutablePath));
+                        pro.Kill(); 
+                    }
+                    else
+                    {
+                        Utils.SendCloseCommand(Utils.GetProcessRunning(Path.Combine(InstallLocation, Type.ExecutablePath)));
+                    }
                     break;
             }
         }
 
-        public async Task CloseServerArk(Settings settings, Func<ProcessEventArg, bool> OnProgressChanged)
+        public async Task CloseServerArk(Settings settings, Func<ProcessEventArg, bool> OnProgressChanged, bool ForceKillProcess = false)
         {
-            if (this.ARKConfiguration.Administration.UseRCON)
+            if (!this.ARKConfiguration.Administration.UseRCON || ForceKillProcess)
+            {
+                if (!this.ARKConfiguration.Administration.UseRCON) OnProgressChanged(new ProcessEventArg() { Message = "No RCON configured, server process will be killed", IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
+                if (ForceKillProcess) OnProgressChanged(new ProcessEventArg() { Message = "Process didnt respond to command, the processed will be killed", IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
+                Process pro = Utils.GetProcessRunning(System.IO.Path.Combine(this.InstallLocation, this.Type.ExecutablePath));
+                pro.Kill();
+            }
+            else
             {
                 try
                 {
@@ -273,12 +289,6 @@ namespace OphiussaServerManager.Common.Models.Profiles
                     OphiussaLogger.logger.Error(ex);
                     throw ex;
                 }
-            }
-            else
-            {
-                OnProgressChanged(new ProcessEventArg() { Message = "No RCON configured, server process will be killed", IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
-                Process pro = Utils.GetProcessRunning(System.IO.Path.Combine(this.InstallLocation, this.Type.ExecutablePath));
-                pro.Kill();
             }
         }
 

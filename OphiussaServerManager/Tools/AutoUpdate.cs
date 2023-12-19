@@ -110,7 +110,7 @@ namespace OphiussaServerManager.Tools.Update
             }
         }
 
-        internal void UpdateSingleServerJob1(string profileKey, bool restartOnlyToUpdate)
+        internal async void UpdateSingleServerJob1(string profileKey, bool restartOnlyToUpdate)
         {
             try
             {
@@ -140,11 +140,16 @@ namespace OphiussaServerManager.Tools.Update
                         Task.WaitAll(tasks.ToArray());
                     }
 
+
+                    DateTime startDate = DateTime.Now;
+
                     while (p.IsRunning)
                     {
 
                         OnProgressChanged(new ProcessEventArg() { Message = "Server Still running", IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
 
+                        TimeSpan ts = DateTime.Now - startDate;
+                        if (ts.TotalSeconds > 5) await CloseServer(p, Settings, true);
                         Thread.Sleep(5000);
                     }
                 }
@@ -580,11 +585,11 @@ namespace OphiussaServerManager.Tools.Update
 
         }
 
-        public async Task CloseServer(Profile p, Settings settings)
+        public async Task CloseServer(Profile p, Settings settings, bool ForceKillProcess = false)
         {
             OnProgressChanged(new ProcessEventArg() { Message = "Closing server " + p.Name, IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
 
-            await p.CloseServer(settings, OnProgressChanged);
+            await p.CloseServer(settings, OnProgressChanged, ForceKillProcess);
         }
 
         public List<PublishedFileDetail> CheckSteamMods(Profile p, Settings Settings, string CacheFolder)
