@@ -293,8 +293,8 @@ namespace OphiussaServerManager.Forms
             sett.DefaultInstallationFolder = txtInstallFolder.Text;
             sett.SteamCMDLocation = txtSteamCmd.Text;
             sett.UseAnonymousConnection = chkAnonymous.Checked;
-            sett.SteamUserName = txtUserName.Text;
-            sett.SteamPassword = txtPassword.Text;
+            sett.CryptedSteamUserName = EncryptionUtils.EncryptString(sett.CryptKey, txtUserName.Text);
+            sett.CryptedSteamPassword = EncryptionUtils.EncryptString(sett.CryptKey, txtPassword.Text);
             sett.ValidateProfileOnServerStart = chkValidate.Checked;
             sett.PerformServerAndModUpdateOnServerStart = chkPerform.Checked;
             sett.UpdateModsWhenUpdatingServer = chkUpdateMods.Checked;

@@ -191,9 +191,9 @@ namespace OphiussaServerManager.Common
 
         public SteamCmdAppWorkshop ReadSteamCmdAppWorkshopFile(string file) => string.IsNullOrWhiteSpace(file) || !System.IO.File.Exists(file) ? (SteamCmdAppWorkshop)null : SteamCmdWorkshopDetailsResult.Deserialize(VdfDeserializer.FromFile(file).Deserialize());
 
-        public  string SteamWebApiKey => !string.IsNullOrWhiteSpace(_settings.SteamKey) ? _settings.SteamKey : _settings.DefaultSteamKey;
+        public string SteamWebApiKey => /* !string.IsNullOrWhiteSpace(_settings.SteamKey) ? */ _settings.SteamKey /*: _settings.DefaultSteamKey*/;
 
-        public  Process GetSteamProcess()
+        public Process GetSteamProcess()
         {
             string SteamClientFile = Path.Combine(_settings.SteamCMDLocation, "steamcmd.exe");
             if (string.IsNullOrWhiteSpace(SteamClientFile) || !System.IO.File.Exists(SteamClientFile))

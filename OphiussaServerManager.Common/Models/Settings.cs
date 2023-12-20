@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using OphiussaServerManager.Common.Helpers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,9 +13,7 @@ namespace OphiussaServerManager.Common.Models
     public class Settings
     {
         [JsonIgnore]
-        public string DefaultSteamKey { get { return "4DF03576EDA7C3350237D3E547E9CE3C"; } }
-        [JsonIgnore]
-        public string DefaultCurseForgeKey { get { return "$2a$10$eKu6i/S1ipKbGYxiDGGjnO4BjVuBJCoTaw7DNg.6Qqf5y./9tQDIq"; } }
+        public string CryptKey { get; set; } = "b14ca5898a4e4133bbce2ea2315a1916";
         public string GUID { get; set; }
         public string SteamKey { get; set; } = "";
         public string CurseForgeKey { get; set; } = "";
@@ -23,8 +22,12 @@ namespace OphiussaServerManager.Common.Models
         public string DefaultInstallationFolder { get; set; }
         public string SteamCMDLocation { get; set; } = "";
         public bool UseAnonymousConnection { get; set; } = true;
-        public string SteamUserName { get; set; } = "";
-        public string SteamPassword { get; set; } = "";
+        public string CryptedSteamUserName { get; set; } = "";
+        public string CryptedSteamPassword { get; set; } = "";
+        [JsonIgnore]
+        public string SteamUserName { get { return EncryptionUtils.DecryptString(this.CryptKey, this.CryptedSteamUserName); } }
+        [JsonIgnore]
+        public string SteamPassword { get { return EncryptionUtils.DecryptString(this.CryptKey, this.CryptedSteamPassword); } }
         public bool ValidateProfileOnServerStart { get; set; } = true;
         public bool PerformServerAndModUpdateOnServerStart { get; set; } = false;
         public bool UpdateModsWhenUpdatingServer { get; set; } = true;

@@ -143,7 +143,7 @@ namespace OphiussaServerManager.Common
                 return (CurseForgeFileDetailResponse)null;
             }
         }
-        public string CurseForgeWebApiKey => !string.IsNullOrWhiteSpace(_settings.CurseForgeKey) ? _settings.CurseForgeKey : _settings.DefaultCurseForgeKey;
+        public string CurseForgeWebApiKey => /*!string.IsNullOrWhiteSpace(_settings.CurseForgeKey) ?*/ _settings.CurseForgeKey /*: _settings.DefaultCurseForgeKey*/;
 
     }
 }

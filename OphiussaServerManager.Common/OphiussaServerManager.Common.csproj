@@ -144,6 +144,7 @@
     <Compile Include="ArkData\SSQLib\SSQL.cs" />
     <Compile Include="ArkData\SSQLib\SSQLServerException.cs" />
     <Compile Include="ArkData\TribeData.cs" />
+    <Compile Include="Helpers\EncryptionUtils.cs" />
     <Compile Include="Helpers\FileComparer.cs" />
     <Compile Include="Helpers\Ini\AggregateIniValue.cs" />
     <Compile Include="Helpers\Extensions.cs" />
