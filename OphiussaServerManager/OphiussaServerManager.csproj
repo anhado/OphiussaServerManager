@@ -251,6 +251,12 @@
     <Compile Include="Forms\FrmSettings.Designer.cs">
       <DependentUpon>FrmSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmStartScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmStartScreen.Designer.cs">
+      <DependentUpon>FrmStartScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmTests.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -318,6 +324,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmSettings.resx">
       <DependentUpon>FrmSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmStartScreen.resx">
+      <DependentUpon>FrmStartScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmTests.resx">
       <DependentUpon>FrmTests.cs</DependentUpon>

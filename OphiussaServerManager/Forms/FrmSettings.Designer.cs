@@ -87,6 +87,12 @@
             this.txtMaxDays = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.chkEnableLogs = new System.Windows.Forms.CheckBox();
+            this.lblWarningSteam = new System.Windows.Forms.Label();
+            this.txtSteamKey = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.txtCurseForgeKey = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.expandCollapsePanel4.SuspendLayout();
@@ -216,7 +222,7 @@
             this.expandCollapsePanel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.expandCollapsePanel4.ExpandedHeight = 0;
             this.expandCollapsePanel4.IsExpanded = true;
-            this.expandCollapsePanel4.Location = new System.Drawing.Point(0, 522);
+            this.expandCollapsePanel4.Location = new System.Drawing.Point(0, 606);
             this.expandCollapsePanel4.Name = "expandCollapsePanel4";
             this.expandCollapsePanel4.Size = new System.Drawing.Size(800, 174);
             this.expandCollapsePanel4.TabIndex = 4;
@@ -351,7 +357,7 @@
             this.expandCollapsePanel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.expandCollapsePanel3.ExpandedHeight = 0;
             this.expandCollapsePanel3.IsExpanded = true;
-            this.expandCollapsePanel3.Location = new System.Drawing.Point(0, 269);
+            this.expandCollapsePanel3.Location = new System.Drawing.Point(0, 353);
             this.expandCollapsePanel3.Name = "expandCollapsePanel3";
             this.expandCollapsePanel3.Size = new System.Drawing.Size(800, 253);
             this.expandCollapsePanel3.TabIndex = 3;
@@ -530,7 +536,7 @@
             this.expandCollapsePanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.expandCollapsePanel2.ExpandedHeight = 0;
             this.expandCollapsePanel2.IsExpanded = true;
-            this.expandCollapsePanel2.Location = new System.Drawing.Point(0, 179);
+            this.expandCollapsePanel2.Location = new System.Drawing.Point(0, 263);
             this.expandCollapsePanel2.Name = "expandCollapsePanel2";
             this.expandCollapsePanel2.Size = new System.Drawing.Size(800, 90);
             this.expandCollapsePanel2.TabIndex = 2;
@@ -576,7 +582,13 @@
             this.expandCollapsePanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.expandCollapsePanel1.ButtonSize = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonSize.Small;
             this.expandCollapsePanel1.ButtonStyle = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonStyle.Classic;
+            this.expandCollapsePanel1.Controls.Add(this.button6);
+            this.expandCollapsePanel1.Controls.Add(this.txtCurseForgeKey);
             this.expandCollapsePanel1.Controls.Add(this.label18);
+            this.expandCollapsePanel1.Controls.Add(this.button5);
+            this.expandCollapsePanel1.Controls.Add(this.txtSteamKey);
+            this.expandCollapsePanel1.Controls.Add(this.label19);
+            this.expandCollapsePanel1.Controls.Add(this.lblWarningSteam);
             this.expandCollapsePanel1.Controls.Add(this.chkUpdateOnStart);
             this.expandCollapsePanel1.Controls.Add(this.txtPassword);
             this.expandCollapsePanel1.Controls.Add(this.label2);
@@ -588,9 +600,9 @@
             this.expandCollapsePanel1.IsExpanded = true;
             this.expandCollapsePanel1.Location = new System.Drawing.Point(0, 89);
             this.expandCollapsePanel1.Name = "expandCollapsePanel1";
-            this.expandCollapsePanel1.Size = new System.Drawing.Size(800, 90);
+            this.expandCollapsePanel1.Size = new System.Drawing.Size(800, 174);
             this.expandCollapsePanel1.TabIndex = 1;
-            this.expandCollapsePanel1.Text = "Steam Settings";
+            this.expandCollapsePanel1.Text = "Steam && Curseforge Settings";
             this.expandCollapsePanel1.UseAnimation = false;
             // 
             // chkUpdateOnStart
@@ -607,7 +619,7 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(266, 62);
+            this.txtPassword.Location = new System.Drawing.Point(312, 83);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(100, 21);
@@ -616,7 +628,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(192, 65);
+            this.label2.Location = new System.Drawing.Point(238, 86);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(64, 15);
             this.label2.TabIndex = 4;
@@ -624,7 +636,7 @@
             // 
             // txtUserName
             // 
-            this.txtUserName.Location = new System.Drawing.Point(85, 62);
+            this.txtUserName.Location = new System.Drawing.Point(131, 83);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(100, 21);
             this.txtUserName.TabIndex = 3;
@@ -632,7 +644,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 65);
+            this.label1.Location = new System.Drawing.Point(15, 86);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 15);
             this.label1.TabIndex = 2;
@@ -653,8 +665,8 @@
             // 
             // expandCollapsePanel5
             // 
-            this.expandCollapsePanel5.ButtonSize = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonSize.Normal;
-            this.expandCollapsePanel5.ButtonStyle = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonStyle.Circle;
+            this.expandCollapsePanel5.ButtonSize = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonSize.Small;
+            this.expandCollapsePanel5.ButtonStyle = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonStyle.Classic;
             this.expandCollapsePanel5.Controls.Add(this.label16);
             this.expandCollapsePanel5.Controls.Add(this.txtMaxFiles);
             this.expandCollapsePanel5.Controls.Add(this.label17);
@@ -665,7 +677,7 @@
             this.expandCollapsePanel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.expandCollapsePanel5.ExpandedHeight = 0;
             this.expandCollapsePanel5.IsExpanded = true;
-            this.expandCollapsePanel5.Location = new System.Drawing.Point(0, 696);
+            this.expandCollapsePanel5.Location = new System.Drawing.Point(0, 780);
             this.expandCollapsePanel5.Name = "expandCollapsePanel5";
             this.expandCollapsePanel5.Size = new System.Drawing.Size(800, 122);
             this.expandCollapsePanel5.TabIndex = 5;
@@ -736,15 +748,67 @@
             this.chkEnableLogs.Text = "Enable Logs";
             this.chkEnableLogs.UseVisualStyleBackColor = true;
             // 
+            // lblWarningSteam
+            // 
+            this.lblWarningSteam.AutoSize = true;
+            this.lblWarningSteam.ForeColor = System.Drawing.Color.Crimson;
+            this.lblWarningSteam.Location = new System.Drawing.Point(11, 65);
+            this.lblWarningSteam.Name = "lblWarningSteam";
+            this.lblWarningSteam.Size = new System.Drawing.Size(398, 15);
+            this.lblWarningSteam.TabIndex = 7;
+            this.lblWarningSteam.Text = "ATTENTION: THIS DO NOT SUPPORT TWO FACTOR AUTHENTICATOR";
+            // 
+            // txtSteamKey
+            // 
+            this.txtSteamKey.Location = new System.Drawing.Point(131, 110);
+            this.txtSteamKey.Name = "txtSteamKey";
+            this.txtSteamKey.Size = new System.Drawing.Size(281, 21);
+            this.txtSteamKey.TabIndex = 9;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(16, 113);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(109, 15);
+            this.label19.TabIndex = 8;
+            this.label19.Text = "Steam WebKeyAPI";
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(418, 109);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(99, 23);
+            this.button5.TabIndex = 13;
+            this.button5.Text = "Get WebApi Key";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(418, 136);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(99, 23);
+            this.button6.TabIndex = 16;
+            this.button6.Text = "GetApi Key";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // txtCurseForgeKey
+            // 
+            this.txtCurseForgeKey.Location = new System.Drawing.Point(131, 137);
+            this.txtCurseForgeKey.Name = "txtCurseForgeKey";
+            this.txtCurseForgeKey.Size = new System.Drawing.Size(281, 21);
+            this.txtCurseForgeKey.TabIndex = 15;
+            // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.ForeColor = System.Drawing.Color.Crimson;
-            this.label18.Location = new System.Drawing.Point(372, 65);
+            this.label18.Location = new System.Drawing.Point(16, 140);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(398, 15);
-            this.label18.TabIndex = 7;
-            this.label18.Text = "ATTENTION: THIS DO NOT SUPPORT TWO FACTOR AUTHENTICATOR";
+            this.label18.Size = new System.Drawing.Size(115, 15);
+            this.label18.TabIndex = 14;
+            this.label18.Text = "CurseForge API Key";
             // 
             // FrmSettings
             // 
@@ -845,6 +909,12 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtMaxDays;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label lblWarningSteam;
+        private System.Windows.Forms.TextBox txtSteamKey;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.TextBox txtCurseForgeKey;
         private System.Windows.Forms.Label label18;
     }
 }

@@ -51,6 +51,8 @@ namespace OphiussaServerManager.Forms
 
         public void LoadSettings(Common.Models.Settings sett)
         {
+            txtSteamKey.Text = sett.SteamKey;
+            txtCurseForgeKey.Text = sett.CurseForgeKey;
             chkUpdateOnStart.Checked = sett.UpdateSteamCMDOnStartup;
             txtDataFolder.Text = sett.DataFolder;
             txtInstallFolder.Text = sett.DefaultInstallationFolder;
@@ -269,6 +271,7 @@ namespace OphiussaServerManager.Forms
         {
             txtUserName.Enabled = !chkAnonymous.Checked;
             txtPassword.Enabled = !chkAnonymous.Checked;
+            lblWarningSteam.Visible = !chkAnonymous.Checked;
         }
 
         private void FrmSettings_Leave(object sender, EventArgs e)
@@ -288,6 +291,8 @@ namespace OphiussaServerManager.Forms
             {
                 sett.GUID = MainForm.Settings.GUID;
             }
+            sett.SteamKey = txtSteamKey.Text;
+            sett.CurseForgeKey = txtCurseForgeKey.Text;
             sett.UpdateSteamCMDOnStartup = chkUpdateOnStart.Checked;
             sett.DataFolder = txtDataFolder.Text;
             sett.DefaultInstallationFolder = txtInstallFolder.Text;
@@ -343,6 +348,16 @@ namespace OphiussaServerManager.Forms
                 Directory.CreateDirectory(txtSteamCmd.Text);
             }
             CreateWindowsTaskS(sett);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://steamcommunity.com/dev/apikey");
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://console.curseforge.com/?#/api-keys");
         }
     }
 }
