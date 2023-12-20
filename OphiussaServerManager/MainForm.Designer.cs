@@ -158,6 +158,8 @@
             this.tabControl1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tabControl1_DrawItem);
             this.tabControl1.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl1_Selecting);
             this.tabControl1.Click += new System.EventHandler(this.tabControl1_Click);
+            this.tabControl1.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.tabControl1_ControlAdded);
+            this.tabControl1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tabControl1_MouseDown);
             this.tabControl1.MouseLeave += new System.EventHandler(this.tabControl1_MouseLeave);
             this.tabControl1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.tabControl1_MouseMove);
             this.tabControl1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.tabControl1_MouseUp);
@@ -449,7 +451,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtVersion;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage NewTab;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
@@ -476,6 +477,7 @@
         private System.Windows.Forms.ToolStripMenuItem testsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem perfomanceToolStripMenuItem;
+        public System.Windows.Forms.TabControl tabControl1;
     }
 }
 

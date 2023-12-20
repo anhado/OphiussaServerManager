@@ -255,7 +255,7 @@ namespace OphiussaServerManager.Forms
             {
                 rcon = new RCON(IPAddress.Parse(profile.ARKConfiguration.Administration.LocalIP), ushort.Parse(profile.ARKConfiguration.Administration.RCONPort), profile.ARKConfiguration.Administration.ServerAdminPassword);
                 await rcon.ConnectAsync();
-                txtChat.AppendTextWithTimeStamp("Connection established.", Color.Orange); 
+                txtChat.AppendTextWithTimeStamp("Connection established.", Color.Orange);
                 SetStatus(true);
             }
             catch (Exception ex)
@@ -365,10 +365,10 @@ namespace OphiussaServerManager.Forms
                     }
 
                     //lbPlayers.Items.Clear();
-                    List<exListBoxItem> l =  new List<exListBoxItem>();
+                    List<exListBoxItem> l = new List<exListBoxItem>();
                     foreach (var player in playerLists)
                     {
-                        l.Add(new exListBoxItem(player.PlayerNum, player.Name, "Steam ID:" + player.SteamID));
+                        l.Add(new exListBoxItem(player.PlayerNum, player.Name, "Steam ID:" + player.SteamID, player));
                     }
                     lbPlayers.DataSource = l;
                     lbPlayers.ValueMember = "SteamID";

@@ -20,6 +20,9 @@ using Open.Nat;
 using Microsoft.Win32.TaskScheduler;
 using NLog.Common;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
+using System.Windows.Controls.Primitives;
+using OphiussaServerManager.Tools;
 
 namespace OphiussaServerManager
 {
@@ -27,6 +30,8 @@ namespace OphiussaServerManager
     {
         Dictionary<string, Profile> Profiles = new Dictionary<string, Profile>();
         Dictionary<string, LinkProfileForm> linkProfileForms = new Dictionary<string, LinkProfileForm>();
+        private Dictionary<TabPage, Color> TabColors = new Dictionary<TabPage, Color>();
+
         public static Common.Models.Settings Settings;
         private int HoverIndex = -1;
 
@@ -60,6 +65,8 @@ namespace OphiussaServerManager
                 System.Diagnostics.FileVersionInfo fvi = System.Diagnostics.FileVersionInfo.GetVersionInfo(assembly.Location);
                 txtVersion.Text = fvi.FileVersion;
 
+                UsefullTools.MainForm = this;
+                TabColors.Add(tabControl1.TabPages[0], SystemColors.Control);
                 LoadProfiles();
 
                 txtLocalIP.Text = await System.Threading.Tasks.Task.Run(() => Common.NetworkTools.GetHostIp());
@@ -88,6 +95,7 @@ namespace OphiussaServerManager
                 }
                 timerCheckTask.Enabled = true;
                 tabControl1.SelectedIndex = 0;
+                this.tabControl1.HandleCreated += tabControl1_HandleCreated;
 
 
             }
@@ -137,7 +145,7 @@ namespace OphiussaServerManager
 
             if (e.TabPage == NewTab)
             {
-                e.Cancel = true;
+                //e.Cancel = true;
                 Guid guid = Guid.NewGuid();
                 if (tabControl1.SelectedTab == NewTab)
                 {
@@ -159,7 +167,6 @@ namespace OphiussaServerManager
                             default:
                                 break;
                         }
-
                     };
                     frm.ShowDialog();
 
@@ -228,9 +235,10 @@ namespace OphiussaServerManager
                 frm.LoadSettings(prf, tab);
                 addform(tab, frm);
 
+                TabColors.Add(tab, SystemColors.Control);
                 linkProfileForms.Add(prf.Key, new LinkProfileForm() { Form = frm, Profile = prf, Tab = tab });
                 tabControl1.SelectTab(index);
-
+                tabControl1.SelectedTab = tab;
             }
             catch (Exception e)
             {
@@ -247,6 +255,7 @@ namespace OphiussaServerManager
                 tabControl1.TabPages.Insert(tabControl1.TabPages.Count - 1, guid.ToString(), tabName);
                 int index = tabControl1.TabPages.IndexOfKey(guid.ToString());
                 TabPage tab = tabControl1.TabPages[index];
+                TabColors.Add(tab, SystemColors.Control);
 
                 Profile prf;
                 if (p == null)
@@ -268,6 +277,7 @@ namespace OphiussaServerManager
 
                 linkProfileForms.Add(prf.Key, new LinkProfileForm() { Form = frm, Profile = prf, Tab = tab });
                 tabControl1.SelectTab(index);
+                tabControl1.SelectedTab = tab;
 
             }
             catch (Exception e)
@@ -496,80 +506,172 @@ namespace OphiussaServerManager
 
         private void tabControl1_DrawItem(object sender, DrawItemEventArgs e)
         {
-            var g = e.Graphics;
-            var tp = tabControl1.TabPages[e.Index];
+            //switch (e.Index)
+            //{
+            //    case 0:
+            //        e.Graphics.FillRectangle(new SolidBrush(Color.Red), e.Bounds);
+            //        break;
+            //    case 1:
+            //        e.Graphics.FillRectangle(new SolidBrush(Color.Blue), e.Bounds);
+            //        break;
+            //    default:
+            //        break;
+            //}
 
-            var rt = e.Bounds;
-            var rx = new Rectangle(rt.Right - 20, (rt.Y + (rt.Height - 12)) / 2 + 1, 12, 12);
-
-            if ((e.State & DrawItemState.Selected) != DrawItemState.Selected)
+            if (TabColors.ContainsKey(tabControl1.TabPages[e.Index]))
             {
-                rx.Offset(0, 2);
+                using (Brush br = new SolidBrush(TabColors[tabControl1.TabPages[e.Index]]))
+                {
+                    e.Graphics.FillRectangle(br, e.Bounds);
+                    //SizeF sz = e.Graphics.MeasureString(tabControl1.TabPages[e.Index].Text, e.Font);
+                    //e.Graphics.DrawString(tabControl1.TabPages[e.Index].Text, e.Font, Brushes.Black, e.Bounds.Left + (e.Bounds.Width - sz.Width) / 2, e.Bounds.Top + (e.Bounds.Height - sz.Height) / 2 + 1);
+
+                    //Rectangle rect = e.Bounds;
+                    //rect.Offset(0, 1);
+                    //rect.Inflate(0, -1);
+                    //e.Graphics.DrawRectangle(Pens.DarkGray, rect);
+                    //e.DrawFocusRectangle();
+                }
+
             }
 
-            rt.Inflate(-rx.Width, 0);
-            rt.Offset(-(rx.Width / 2), 0);
-            using (Font f = new Font("Marlett", 8f))
-            using (StringFormat sf = new StringFormat()
+            var tabPage = this.tabControl1.TabPages[e.Index];
+            var tabRect = this.tabControl1.GetTabRect(e.Index);
+            tabRect.Inflate(-2, -2);
+            if (e.Index == this.tabControl1.TabCount - 1)
             {
-                Alignment = StringAlignment.Center,
-                LineAlignment = StringAlignment.Center,
-                Trimming = StringTrimming.EllipsisCharacter,
-                FormatFlags = StringFormatFlags.NoWrap,
-            })
-            {
-                g.DrawString(tp.Text, tp.Font ?? Font, Brushes.Black, rt, sf);
-                if (tp.Text != "+") g.DrawString("r", f, HoverIndex == e.Index ? Brushes.Black : Brushes.Red, rx, sf);
+                var addImage = Properties.Resources.add_icon_icon_16x16;
+                e.Graphics.DrawImage(addImage,
+                    tabRect.Left + (tabRect.Width - addImage.Width) / 2,
+                    tabRect.Top + (tabRect.Height - addImage.Height) / 2);
             }
-            tp.Tag = rx;
+            else
+            {
+                var closeImage = Properties.Resources.Close_icon_icon;
+                e.Graphics.DrawImage(closeImage,
+                    (tabRect.Right - closeImage.Width),
+                    tabRect.Top + (tabRect.Height - closeImage.Height) / 2);
+                TextRenderer.DrawText(e.Graphics, tabPage.Text, tabPage.Font,
+                    tabRect, tabPage.ForeColor, TextFormatFlags.Left);
+                /*
+                var g = e.Graphics;
+                var tp = tabControl1.TabPages[e.Index];
+
+                var rt = e.Bounds;
+                var rx = new Rectangle(rt.Right - 20, (rt.Y + (rt.Height - 12)) / 2 + 1, 12, 12);
+
+                if ((e.State & DrawItemState.Selected) != DrawItemState.Selected)
+                {
+                    rx.Offset(0, 2);
+                }
+
+                rt.Inflate(-rx.Width, 0);
+                rt.Offset(-(rx.Width / 2), 0);
+                using (Font f = new Font("Marlett", 8f))
+                using (StringFormat sf = new StringFormat()
+                {
+                    Alignment = StringAlignment.Center,
+                    LineAlignment = StringAlignment.Center,
+                    Trimming = StringTrimming.EllipsisCharacter,
+                    FormatFlags = StringFormatFlags.NoWrap,
+                })
+                {
+                    g.DrawString(tp.Text, tp.Font ?? Font, Brushes.Black, rt, sf);
+                    if (tp.Text != "+") g.DrawString("r", f, HoverIndex == e.Index ? Brushes.Black : Brushes.Red, rx, sf);
+                }
+                tp.Tag = rx;
+                */
+            }
         }
 
         private void tabControl1_MouseMove(object sender, MouseEventArgs e)
         {
-            for (int i = 0; i < tabControl1.TabCount; i++)
-            {
-                if (tabControl1.TabPages[i].Tag == null) continue;
-                var rx = (Rectangle)tabControl1.TabPages[i].Tag;
+            //for (int i = 0; i < tabControl1.TabCount; i++)
+            //{
+            //    if (tabControl1.TabPages[i].Tag == null) continue;
+            //    var rx = (Rectangle)tabControl1.TabPages[i].Tag;
 
-                if (rx.Contains(e.Location))
-                {
-                    //To avoid the redundant calls. 
-                    if (HoverIndex != i)
-                    {
-                        HoverIndex = i;
-                        tabControl1.Invalidate();
-                    }
-                    return;
-                }
-            }
+            //    if (rx.Contains(e.Location))
+            //    {
+            //        //To avoid the redundant calls. 
+            //        if (HoverIndex != i)
+            //        {
+            //            HoverIndex = i;
+            //            tabControl1.Invalidate();
+            //        }
+            //        return;
+            //    }
+            //}
 
-            //To avoid the redundant calls.
-            if (HoverIndex != -1)
-            {
-                HoverIndex = -1;
-                tabControl1.Invalidate();
-            }
+            ////To avoid the redundant calls.
+            //if (HoverIndex != -1)
+            //{
+            //    HoverIndex = -1;
+            //    tabControl1.Invalidate();
+            //}
         }
 
         private void tabControl1_MouseLeave(object sender, EventArgs e)
         {
-            if (HoverIndex != -1)
-            {
-                HoverIndex = -1;
-                tabControl1.Invalidate();
-            }
+            //if (HoverIndex != -1)
+            //{
+            //    HoverIndex = -1;
+            //    tabControl1.Invalidate();
+            //}
         }
 
         private void tabControl1_MouseUp(object sender, MouseEventArgs e)
         {
-            for (int i = 0; i < tabControl1.TabCount; i++)
-            {
-                var rx = (Rectangle)tabControl1.TabPages[i].Tag;
+            //for (int i = 0; i < tabControl1.TabCount; i++)
+            //{
+            //    var rx = (Rectangle)tabControl1.TabPages[i].Tag;
 
-                if (rx.Contains(e.Location)) //changed e.Location to rx.Location
+            //    if (rx.Contains(e.Location)) //changed e.Location to rx.Location
+            //    {
+            //        if (MessageBox.Show("Do you want to delete this profile?", "DELETE PROFILE", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            //        {
+
+            //            foreach (var key in linkProfileForms.Keys)
+            //            {
+            //                if (linkProfileForms[key].Tab == tabControl1.TabPages[i])
+            //                {
+            //                    FrmDeleteProfile frm = new FrmDeleteProfile();
+            //                    if (frm.OpenDeleteProfile(linkProfileForms[key].Profile) == DialogResult.OK)
+            //                    {
+            //                        tabControl1.TabPages[i].Dispose();
+            //                        return;
+            //                    }
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
+        }
+
+        private void tabControl1_MouseDown(object sender, MouseEventArgs e)
+        {
+            var lastIndex = this.tabControl1.TabCount - 1;
+            if (this.tabControl1.GetTabRect(lastIndex).Contains(e.Location))
+            {
+                //this.tabControl1.TabPages.Insert(lastIndex, "New Tab");
+                //this.tabControl1.SelectedIndex = lastIndex;
+            }
+            else
+            {
+                for (var i = 0; i < this.tabControl1.TabPages.Count; i++)
                 {
-                    if (MessageBox.Show("Do you want to delete this profile?", "DELETE PROFILE", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                    var tabRect = this.tabControl1.GetTabRect(i);
+                    tabRect.Inflate(-2, -2);
+                    var closeImage = Properties.Resources.Close_icon_icon;
+                    var imageRect = new Rectangle(
+                        (tabRect.Right - closeImage.Width),
+                        tabRect.Top + (tabRect.Height - closeImage.Height) / 2,
+                        closeImage.Width,
+                        closeImage.Height);
+                    if (imageRect.Contains(e.Location))
                     {
+                        //if (MessageBox.Show("Do you want to delete this profile?", "DELETE PROFILE", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                        //{
 
                         foreach (var key in linkProfileForms.Keys)
                         {
@@ -583,9 +685,31 @@ namespace OphiussaServerManager
                                 }
                             }
                         }
+                        //}
                     }
                 }
             }
+        }
+
+        [DllImport("user32.dll")]
+        private static extern IntPtr SendMessage(IntPtr hWnd, int msg, IntPtr wp, IntPtr lp);
+        private const int TCM_SETMINTABWIDTH = 0x1300 + 49;
+        private void tabControl1_HandleCreated(object sender, EventArgs e)
+        {
+            SendMessage(this.tabControl1.Handle, TCM_SETMINTABWIDTH, IntPtr.Zero, (IntPtr)16);
+        }
+
+        public void SetTabHeader(TabPage page, Profile prf, bool isRunning)
+        {
+            Color color = (!prf.IsInstalled ? Color.LightBlue : (isRunning ? Color.LightGreen : Color.LightSalmon));
+            if (TabColors[page] == color) return;
+            TabColors[page] = color;
+            tabControl1.Invalidate();
+        }
+
+        private void tabControl1_ControlAdded(object sender, ControlEventArgs e)
+        {
+
         }
     }
 }

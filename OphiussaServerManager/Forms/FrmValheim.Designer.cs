@@ -36,7 +36,6 @@
             this.label16 = new System.Windows.Forms.Label();
             this.txtServerType = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.btRCON = new System.Windows.Forms.Button();
             this.btStart = new System.Windows.Forms.Button();
             this.btUpdate = new System.Windows.Forms.Button();
             this.btChooseFolder = new System.Windows.Forms.Button();
@@ -103,6 +102,13 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.expandCollapsePanel3 = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
+            this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.rbRaidsDefault = new System.Windows.Forms.RadioButton();
+            this.rbRaidsMuchLess = new System.Windows.Forms.RadioButton();
+            this.rbRaidsNone = new System.Windows.Forms.RadioButton();
+            this.rbRaidsMuchMore = new System.Windows.Forms.RadioButton();
+            this.rbRaidsMore = new System.Windows.Forms.RadioButton();
+            this.rbRaidsLess = new System.Windows.Forms.RadioButton();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.rbPortalsNone = new System.Windows.Forms.RadioButton();
             this.rbPortalsVeryHard = new System.Windows.Forms.RadioButton();
@@ -169,13 +175,6 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.cbBranch = new System.Windows.Forms.ComboBox();
             this.label22 = new System.Windows.Forms.Label();
-            this.groupBox13 = new System.Windows.Forms.GroupBox();
-            this.rbRaidsDefault = new System.Windows.Forms.RadioButton();
-            this.rbRaidsMuchLess = new System.Windows.Forms.RadioButton();
-            this.rbRaidsMuchMore = new System.Windows.Forms.RadioButton();
-            this.rbRaidsMore = new System.Windows.Forms.RadioButton();
-            this.rbRaidsLess = new System.Windows.Forms.RadioButton();
-            this.rbRaidsNone = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.expandCollapsePanel4.SuspendLayout();
             this.groupBox11.SuspendLayout();
@@ -185,6 +184,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tbFirstBackup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbAutoSavePeriod)).BeginInit();
             this.expandCollapsePanel3.SuspendLayout();
+            this.groupBox13.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -196,7 +196,6 @@
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            this.groupBox13.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -208,7 +207,6 @@
             this.panel1.Controls.Add(this.label16);
             this.panel1.Controls.Add(this.txtServerType);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.btRCON);
             this.panel1.Controls.Add(this.btStart);
             this.panel1.Controls.Add(this.btUpdate);
             this.panel1.Controls.Add(this.btChooseFolder);
@@ -277,22 +275,12 @@
             this.label4.TabIndex = 13;
             this.label4.Text = "Server Type";
             // 
-            // btRCON
-            // 
-            this.btRCON.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btRCON.Location = new System.Drawing.Point(711, 60);
-            this.btRCON.Name = "btRCON";
-            this.btRCON.Size = new System.Drawing.Size(75, 23);
-            this.btRCON.TabIndex = 11;
-            this.btRCON.Text = "RCON";
-            this.btRCON.UseVisualStyleBackColor = true;
-            // 
             // btStart
             // 
             this.btStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btStart.Location = new System.Drawing.Point(630, 60);
             this.btStart.Name = "btStart";
-            this.btStart.Size = new System.Drawing.Size(75, 23);
+            this.btStart.Size = new System.Drawing.Size(156, 23);
             this.btStart.TabIndex = 10;
             this.btStart.Text = "Start";
             this.btStart.UseVisualStyleBackColor = true;
@@ -1067,6 +1055,89 @@
             this.expandCollapsePanel3.Text = "Modifiers";
             this.expandCollapsePanel3.UseAnimation = true;
             // 
+            // groupBox13
+            // 
+            this.groupBox13.Controls.Add(this.rbRaidsDefault);
+            this.groupBox13.Controls.Add(this.rbRaidsMuchLess);
+            this.groupBox13.Controls.Add(this.rbRaidsNone);
+            this.groupBox13.Controls.Add(this.rbRaidsMuchMore);
+            this.groupBox13.Controls.Add(this.rbRaidsMore);
+            this.groupBox13.Controls.Add(this.rbRaidsLess);
+            this.groupBox13.ForeColor = System.Drawing.Color.SteelBlue;
+            this.groupBox13.Location = new System.Drawing.Point(4, 200);
+            this.groupBox13.Name = "groupBox13";
+            this.groupBox13.Size = new System.Drawing.Size(776, 50);
+            this.groupBox13.TabIndex = 20;
+            this.groupBox13.TabStop = false;
+            this.groupBox13.Text = "Raids";
+            // 
+            // rbRaidsDefault
+            // 
+            this.rbRaidsDefault.AutoSize = true;
+            this.rbRaidsDefault.Location = new System.Drawing.Point(6, 20);
+            this.rbRaidsDefault.Name = "rbRaidsDefault";
+            this.rbRaidsDefault.Size = new System.Drawing.Size(64, 19);
+            this.rbRaidsDefault.TabIndex = 23;
+            this.rbRaidsDefault.TabStop = true;
+            this.rbRaidsDefault.Text = "Default";
+            this.rbRaidsDefault.UseVisualStyleBackColor = true;
+            // 
+            // rbRaidsMuchLess
+            // 
+            this.rbRaidsMuchLess.AutoSize = true;
+            this.rbRaidsMuchLess.Location = new System.Drawing.Point(188, 20);
+            this.rbRaidsMuchLess.Name = "rbRaidsMuchLess";
+            this.rbRaidsMuchLess.Size = new System.Drawing.Size(85, 19);
+            this.rbRaidsMuchLess.TabIndex = 22;
+            this.rbRaidsMuchLess.TabStop = true;
+            this.rbRaidsMuchLess.Text = "Much Less";
+            this.rbRaidsMuchLess.UseVisualStyleBackColor = true;
+            // 
+            // rbRaidsNone
+            // 
+            this.rbRaidsNone.AutoSize = true;
+            this.rbRaidsNone.Location = new System.Drawing.Point(97, 20);
+            this.rbRaidsNone.Name = "rbRaidsNone";
+            this.rbRaidsNone.Size = new System.Drawing.Size(55, 19);
+            this.rbRaidsNone.TabIndex = 21;
+            this.rbRaidsNone.TabStop = true;
+            this.rbRaidsNone.Text = "None";
+            this.rbRaidsNone.UseVisualStyleBackColor = true;
+            this.rbRaidsNone.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
+            // 
+            // rbRaidsMuchMore
+            // 
+            this.rbRaidsMuchMore.AutoSize = true;
+            this.rbRaidsMuchMore.Location = new System.Drawing.Point(449, 20);
+            this.rbRaidsMuchMore.Name = "rbRaidsMuchMore";
+            this.rbRaidsMuchMore.Size = new System.Drawing.Size(88, 19);
+            this.rbRaidsMuchMore.TabIndex = 20;
+            this.rbRaidsMuchMore.TabStop = true;
+            this.rbRaidsMuchMore.Text = "Much More";
+            this.rbRaidsMuchMore.UseVisualStyleBackColor = true;
+            // 
+            // rbRaidsMore
+            // 
+            this.rbRaidsMore.AutoSize = true;
+            this.rbRaidsMore.Location = new System.Drawing.Point(355, 20);
+            this.rbRaidsMore.Name = "rbRaidsMore";
+            this.rbRaidsMore.Size = new System.Drawing.Size(54, 19);
+            this.rbRaidsMore.TabIndex = 19;
+            this.rbRaidsMore.TabStop = true;
+            this.rbRaidsMore.Text = "More";
+            this.rbRaidsMore.UseVisualStyleBackColor = true;
+            // 
+            // rbRaidsLess
+            // 
+            this.rbRaidsLess.AutoSize = true;
+            this.rbRaidsLess.Location = new System.Drawing.Point(279, 20);
+            this.rbRaidsLess.Name = "rbRaidsLess";
+            this.rbRaidsLess.Size = new System.Drawing.Size(51, 19);
+            this.rbRaidsLess.TabIndex = 18;
+            this.rbRaidsLess.TabStop = true;
+            this.rbRaidsLess.Text = "Less";
+            this.rbRaidsLess.UseVisualStyleBackColor = true;
+            // 
             // groupBox9
             // 
             this.groupBox9.Controls.Add(this.rbPortalsNone);
@@ -1811,89 +1882,6 @@
             this.label22.TabIndex = 4;
             this.label22.Text = "Branch";
             // 
-            // groupBox13
-            // 
-            this.groupBox13.Controls.Add(this.rbRaidsDefault);
-            this.groupBox13.Controls.Add(this.rbRaidsMuchLess);
-            this.groupBox13.Controls.Add(this.rbRaidsNone);
-            this.groupBox13.Controls.Add(this.rbRaidsMuchMore);
-            this.groupBox13.Controls.Add(this.rbRaidsMore);
-            this.groupBox13.Controls.Add(this.rbRaidsLess);
-            this.groupBox13.ForeColor = System.Drawing.Color.SteelBlue;
-            this.groupBox13.Location = new System.Drawing.Point(4, 200);
-            this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(776, 50);
-            this.groupBox13.TabIndex = 20;
-            this.groupBox13.TabStop = false;
-            this.groupBox13.Text = "Raids";
-            // 
-            // rbRaidsDefault
-            // 
-            this.rbRaidsDefault.AutoSize = true;
-            this.rbRaidsDefault.Location = new System.Drawing.Point(6, 20);
-            this.rbRaidsDefault.Name = "rbRaidsDefault";
-            this.rbRaidsDefault.Size = new System.Drawing.Size(64, 19);
-            this.rbRaidsDefault.TabIndex = 23;
-            this.rbRaidsDefault.TabStop = true;
-            this.rbRaidsDefault.Text = "Default";
-            this.rbRaidsDefault.UseVisualStyleBackColor = true;
-            // 
-            // rbRaidsMuchLess
-            // 
-            this.rbRaidsMuchLess.AutoSize = true;
-            this.rbRaidsMuchLess.Location = new System.Drawing.Point(188, 20);
-            this.rbRaidsMuchLess.Name = "rbRaidsMuchLess";
-            this.rbRaidsMuchLess.Size = new System.Drawing.Size(85, 19);
-            this.rbRaidsMuchLess.TabIndex = 22;
-            this.rbRaidsMuchLess.TabStop = true;
-            this.rbRaidsMuchLess.Text = "Much Less";
-            this.rbRaidsMuchLess.UseVisualStyleBackColor = true;
-            // 
-            // rbRaidsMuchMore
-            // 
-            this.rbRaidsMuchMore.AutoSize = true;
-            this.rbRaidsMuchMore.Location = new System.Drawing.Point(449, 20);
-            this.rbRaidsMuchMore.Name = "rbRaidsMuchMore";
-            this.rbRaidsMuchMore.Size = new System.Drawing.Size(88, 19);
-            this.rbRaidsMuchMore.TabIndex = 20;
-            this.rbRaidsMuchMore.TabStop = true;
-            this.rbRaidsMuchMore.Text = "Much More";
-            this.rbRaidsMuchMore.UseVisualStyleBackColor = true;
-            // 
-            // rbRaidsMore
-            // 
-            this.rbRaidsMore.AutoSize = true;
-            this.rbRaidsMore.Location = new System.Drawing.Point(355, 20);
-            this.rbRaidsMore.Name = "rbRaidsMore";
-            this.rbRaidsMore.Size = new System.Drawing.Size(54, 19);
-            this.rbRaidsMore.TabIndex = 19;
-            this.rbRaidsMore.TabStop = true;
-            this.rbRaidsMore.Text = "More";
-            this.rbRaidsMore.UseVisualStyleBackColor = true;
-            // 
-            // rbRaidsLess
-            // 
-            this.rbRaidsLess.AutoSize = true;
-            this.rbRaidsLess.Location = new System.Drawing.Point(279, 20);
-            this.rbRaidsLess.Name = "rbRaidsLess";
-            this.rbRaidsLess.Size = new System.Drawing.Size(51, 19);
-            this.rbRaidsLess.TabIndex = 18;
-            this.rbRaidsLess.TabStop = true;
-            this.rbRaidsLess.Text = "Less";
-            this.rbRaidsLess.UseVisualStyleBackColor = true;
-            // 
-            // rbRaidsNone
-            // 
-            this.rbRaidsNone.AutoSize = true;
-            this.rbRaidsNone.Location = new System.Drawing.Point(97, 20);
-            this.rbRaidsNone.Name = "rbRaidsNone";
-            this.rbRaidsNone.Size = new System.Drawing.Size(55, 19);
-            this.rbRaidsNone.TabIndex = 21;
-            this.rbRaidsNone.TabStop = true;
-            this.rbRaidsNone.Text = "None";
-            this.rbRaidsNone.UseVisualStyleBackColor = true;
-            this.rbRaidsNone.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
-            // 
             // FrmValheim
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1925,6 +1913,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.tbAutoSavePeriod)).EndInit();
             this.expandCollapsePanel3.ResumeLayout(false);
             this.expandCollapsePanel3.PerformLayout();
+            this.groupBox13.ResumeLayout(false);
+            this.groupBox13.PerformLayout();
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
             this.groupBox8.ResumeLayout(false);
@@ -1947,8 +1937,6 @@
             this.groupBox1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            this.groupBox13.ResumeLayout(false);
-            this.groupBox13.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1962,7 +1950,6 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtServerType;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button btRCON;
         private System.Windows.Forms.Button btStart;
         private System.Windows.Forms.Button btUpdate;
         private System.Windows.Forms.Button btChooseFolder;

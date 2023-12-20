@@ -116,14 +116,14 @@ namespace OphiussaServerManager.Forms
             rbResourcesMore.Checked = profile.ValheimConfiguration.Administration.Resources == Common.Models.ValheimProfile.Resources.More;
             rbResourcesMuchMore.Checked = profile.ValheimConfiguration.Administration.Resources == Common.Models.ValheimProfile.Resources.MuchMore;
             rbResourcesMost.Checked = profile.ValheimConfiguration.Administration.Resources == Common.Models.ValheimProfile.Resources.Most;
-             
+
             rbRaidsDefault.Checked = profile.ValheimConfiguration.Administration.Raids == Common.Models.ValheimProfile.Raids.Default;
             rbRaidsNone.Checked = profile.ValheimConfiguration.Administration.Raids == Common.Models.ValheimProfile.Raids.None;
             rbRaidsMuchLess.Checked = profile.ValheimConfiguration.Administration.Raids == Common.Models.ValheimProfile.Raids.MuchLess;
             rbRaidsLess.Checked = profile.ValheimConfiguration.Administration.Raids == Common.Models.ValheimProfile.Raids.Less;
             rbRaidsMore.Checked = profile.ValheimConfiguration.Administration.Raids == Common.Models.ValheimProfile.Raids.More;
             rbRaidsMuchMore.Checked = profile.ValheimConfiguration.Administration.Raids == Common.Models.ValheimProfile.Raids.MuchMore;
-             
+
             rbPortalsNone.Checked = profile.ValheimConfiguration.Administration.Portals == Common.Models.ValheimProfile.Portals.Default;
             rbPortalsCasual.Checked = profile.ValheimConfiguration.Administration.Portals == Common.Models.ValheimProfile.Portals.Casual;
             rbPortalsHard.Checked = profile.ValheimConfiguration.Administration.Portals == Common.Models.ValheimProfile.Portals.Hard;
@@ -693,6 +693,7 @@ namespace OphiussaServerManager.Forms
                 else btStart.Text = "Start";
                 btUpdate.Enabled = !isRunning;
 
+                UsefullTools.MainForm.SetTabHeader(tab, profile, isRunning);
             }
             catch (Exception ex)
             {

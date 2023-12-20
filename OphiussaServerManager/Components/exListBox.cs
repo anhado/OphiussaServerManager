@@ -13,18 +13,19 @@ namespace OphiussaServerManager
         private string _title;
         private string _details;
         private string _id;
-
+        private object _object;
         public string Id
         {
             get { return _id; }
             set { _id = value; }
         }
 
-        public exListBoxItem(string id, string title, string details)
+        public exListBoxItem(string id, string title, string details, object pObject)
         {
             _id = id;
             _title = title;
             _details = details;
+            _object = pObject;
         }
 
         public string Title
@@ -39,10 +40,16 @@ namespace OphiussaServerManager
             set { _details = value; }
         }
 
+        public object AssociatedObject
+        {
+            get { return _object; }
+            set { _object = value; }
+        }
 
-        public void drawItem(DrawItemEventArgs e, Padding margin, 
+
+        public void drawItem(DrawItemEventArgs e, Padding margin,
                              Font titleFont, Font detailsFont, StringFormat aligment)
-        {            
+        {
 
             // if selected, mark the background differently
             if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
@@ -62,32 +69,32 @@ namespace OphiussaServerManager
                                                   e.Bounds.Y + margin.Top,
                                                   e.Bounds.Width - margin.Right - margin.Horizontal,
                                                   (int)titleFont.GetHeight() + 2);
-            
+
             // calculate bounds for details text drawing
-            Rectangle detailBounds = new Rectangle(e.Bounds.X + margin.Horizontal ,
+            Rectangle detailBounds = new Rectangle(e.Bounds.X + margin.Horizontal,
                                                    e.Bounds.Y + (int)titleFont.GetHeight() + 2 + margin.Vertical + margin.Top,
-                                                   e.Bounds.Width - margin.Right  - margin.Horizontal,
+                                                   e.Bounds.Width - margin.Right - margin.Horizontal,
                                                    e.Bounds.Height - margin.Bottom - (int)titleFont.GetHeight() - 2 - margin.Vertical - margin.Top);
 
             // draw the text within the bounds
             e.Graphics.DrawString(this.Title, titleFont, Brushes.Black, titleBounds, aligment);
-            e.Graphics.DrawString(this.Details, detailsFont, Brushes.DarkGray, detailBounds, aligment);            
-            
+            e.Graphics.DrawString(this.Details, detailsFont, Brushes.DarkGray, detailBounds, aligment);
+
             // put some focus rectangle
             e.DrawFocusRectangle();
-        
+
         }
 
     }
 
     public partial class exListBox : ListBox
     {
-         
+
         private StringFormat _fmt;
         private Font _titleFont;
         private Font _detailsFont;
 
-        public exListBox(Font titleFont, Font detailsFont, 
+        public exListBox(Font titleFont, Font detailsFont,
                          StringAlignment aligment, StringAlignment lineAligment)
         {
             _titleFont = titleFont;
@@ -107,20 +114,20 @@ namespace OphiussaServerManager
             _fmt.LineAlignment = StringAlignment.Near;
             _titleFont = new Font(this.Font, FontStyle.Bold);
             _detailsFont = new Font(this.Font, FontStyle.Regular);
-            
+
         }
 
 
         protected override void OnDrawItem(DrawItemEventArgs e)
         {
             // prevent from error Visual Designer
-            if (this.Items.Count > 0 && e.Index>=0)            
-            {                
-                exListBoxItem item = (exListBoxItem)this.Items[e.Index];                
+            if (this.Items.Count > 0 && e.Index >= 0)
+            {
+                exListBoxItem item = (exListBoxItem)this.Items[e.Index];
                 item.drawItem(e, this.Margin, _titleFont, _detailsFont, _fmt);
-            }                            
+            }
         }
-       
+
 
         protected override void OnPaint(PaintEventArgs pe)
         {

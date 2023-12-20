@@ -16,7 +16,7 @@ using static System.Collections.Specialized.BitVector32;
 namespace OphiussaServerManager.Common.Models.Profiles.ArkProfile
 {
 
-    public class ArkProfile
+    public class ArkProfile : BaseProfile
     {
         public Administration Administration { get; set; }
         public string DefaultGameUserSettingsINILocation { get { return "ShooterGame\\Saved\\Config\\WindowsServer\\GameUserSettings.ini"; } }
@@ -25,11 +25,6 @@ namespace OphiussaServerManager.Common.Models.Profiles.ArkProfile
         public ArkProfile()
         {
             this.Administration = new Administration();
-
-        }
-
-        public void LoadNewArkProfile(string key)
-        {
 
         }
 
@@ -123,7 +118,9 @@ namespace OphiussaServerManager.Common.Models.Profiles.ArkProfile
             }
         }
 
-        public string GetCommandLinesArguments(Settings settings, Profile prf, string PublicIP)
+         
+
+        public override string GetCommandLinesArguments(Settings settings, Profile prf, string PublicIP)
         {
             string cmd = string.Empty;
 
@@ -222,50 +219,28 @@ namespace OphiussaServerManager.Common.Models.Profiles.ArkProfile
         }
         public string GetCPUAffinity()
         {
-            //TODO: duplicated function
-            List<ProcessorAffinity> lst = new List<ProcessorAffinity>();
-
-            for (int i = Utils.GetProcessorCount() - 1; i >= 0; i--)
-            {
-                lst.Add(
-                    new ProcessorAffinity()
-                    {
-                        ProcessorNumber = i,
-                        Selected = this.Administration.CPUAffinity == "All" ? true : this.Administration.CPUAffinityList.DefaultIfEmpty(new ProcessorAffinity() { Selected = true, ProcessorNumber = i }).FirstOrDefault(x => x.ProcessorNumber == i).Selected
-                    }
-                    );
-            }
-            string bin = string.Join("", lst.Select(x => x.Selected ? "1" : "0"));
-            string hex = !bin.Contains("0") ? "" : "0" + Utils.BinaryStringToHexString(bin);
-            return hex;
+            return base.GetCPUAffinity(this.Administration.CPUAffinity, this.Administration.CPUAffinityList);
         }
     }
 
 
-    public class Administration
+    public class Administration : BaseAdministration
     {
         public bool UseServerAPI { get; set; } = false;
-        public string ServerName { get; set; } = "New Server";
-        public string ServerPassword { get; set; } = System.Web.Security.Membership.GeneratePassword(10, 6);
         public string ServerAdminPassword { get; set; } = System.Web.Security.Membership.GeneratePassword(10, 6);
         public string ServerSpectatorPassword { get; set; } = "";
-        public string LocalIP { get; set; } = NetworkTools.GetHostIp();
-        public string ServerPort { get; set; } = "7777";
-        public string PeerPort { get; set; } = "7778";
         public string QueryPort { get; set; } = "27015";
         public bool UseRCON { get; set; } = false;
         public string RCONPort { get; set; } = "32330";
         public int RCONServerLogBuffer { get; set; } = 600;
         public string MapName { get; set; } = "";
         public string TotalConversionID { get; set; } = "";
-        public List<string> ModIDs { get; set; } = new List<string>();
         public int AutoSavePeriod { get; set; } = 15;
         public string MOD { get; set; } = "";
         public int MODDuration { get; set; } = 20;
         public bool EnableInterval { get; set; } = true;
         public int MODInterval { get; set; } = 60;
         public string Branch { get; set; } = "Live";
-        public int MaxPlayers { get; set; } = 70;
         public bool EnablIdleTimeOut { get; set; } = true;
         public int IdleTimout { get; set; } = 3600;
         public bool UseBanListUrl { get; set; } = false;
@@ -300,9 +275,6 @@ namespace OphiussaServerManager.Common.Models.Profiles.ArkProfile
         public string AlternateSaveDirectoryName { get; set; } = "";
         public string ClusterID { get; set; } = "";
         public bool ClusterDirectoryOverride { get; set; } = false;
-        public ProcessPriorityClass CPUPriority { get; set; } = ProcessPriorityClass.Normal;
-        public string CPUAffinity { get; set; } = "All";
-        public List<ProcessorAffinity> CPUAffinityList { get; set; } = new List<ProcessorAffinity>();
         public bool EnableServerAdminLogs { get; set; } = true;
         public bool ServerAdminLogsIncludeTribeLogs { get; set; } = true;
         public bool ServerRCONOutputTribeLogs { get; set; } = true;

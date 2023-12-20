@@ -75,16 +75,13 @@ namespace OphiussaServerManager.Common.Models.Profiles
                 case EnumServerType.ArkSurviveEvolved:
                     this.ARKConfiguration = new ArkProfile.ArkProfile();
                     this.ValheimConfiguration = null;
-                    this.ARKConfiguration.LoadNewArkProfile(key);
                     break;
                 case EnumServerType.ArkSurviveAscended:
                     this.ARKConfiguration = new ArkProfile.ArkProfile();
-                    this.ARKConfiguration.LoadNewArkProfile(key);
                     break;
                 case EnumServerType.Valheim:
                     this.ARKConfiguration = null;
                     this.ValheimConfiguration = new ValheimProfile.ValheimProfile();
-                    this.ValheimConfiguration.LoadNewValheimProfile(key);
                     break;
 
             }
@@ -231,7 +228,7 @@ namespace OphiussaServerManager.Common.Models.Profiles
                     {
                         if (ForceKillProcess) OnProgressChanged(new ProcessEventArg() { Message = "Process didnt respond to command, the processed will be killed", IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
                         Process pro = Utils.GetProcessRunning(System.IO.Path.Combine(this.InstallLocation, this.Type.ExecutablePath));
-                        pro.Kill(); 
+                        pro.Kill();
                     }
                     else
                     {
@@ -308,6 +305,7 @@ namespace OphiussaServerManager.Common.Models.Profiles
                 Profile p = JsonConvert.DeserializeObject<Profile>(File.ReadAllText(dir + this.Key + ".json"));
 
                 this.ARKConfiguration = p.ARKConfiguration;
+                this.ValheimConfiguration = p.ValheimConfiguration;
             }
         }
         public string GetProfileSaveGamesPath(Profile profile) => profile.GetProfileSaveGamesPath(profile?.InstallLocation);

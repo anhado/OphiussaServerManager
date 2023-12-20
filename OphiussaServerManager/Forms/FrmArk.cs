@@ -9,12 +9,14 @@ using OphiussaServerManager.Tools.Update;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
 
 namespace OphiussaServerManager.Forms
@@ -770,6 +772,10 @@ namespace OphiussaServerManager.Forms
                 if (isRunning) btStart.Text = "Stop";
                 else btStart.Text = "Start";
                 btUpdate.Enabled = !isRunning;
+
+                UsefullTools.MainForm.SetTabHeader(tab, profile, isRunning);
+                //TabColors[page] = color;
+                //MainForm..Invalidate();
 
             }
             catch (Exception ex)

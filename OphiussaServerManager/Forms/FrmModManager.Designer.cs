@@ -31,17 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmModManager));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.clUp = new System.Windows.Forms.DataGridViewImageColumn();
-            this.clDown = new System.Windows.Forms.DataGridViewImageColumn();
-            this.clDelete = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.orderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewLinkColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,7 +39,18 @@
             this.lastUpdatedAuthorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timeStampDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.folderSizeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clUp = new System.Windows.Forms.DataGridViewImageColumn();
+            this.clDown = new System.Windows.Forms.DataGridViewImageColumn();
+            this.clDelete = new System.Windows.Forms.DataGridViewImageColumn();
             this.modListDetailsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.btSavetooltip = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modListDetailsBindingSource)).BeginInit();
@@ -85,6 +85,70 @@
             this.dataGridView1.TabIndex = 5;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
+            // orderDataGridViewTextBoxColumn
+            // 
+            this.orderDataGridViewTextBoxColumn.DataPropertyName = "Order";
+            this.orderDataGridViewTextBoxColumn.HeaderText = "#";
+            this.orderDataGridViewTextBoxColumn.Name = "orderDataGridViewTextBoxColumn";
+            this.orderDataGridViewTextBoxColumn.ReadOnly = true;
+            this.orderDataGridViewTextBoxColumn.Width = 25;
+            // 
+            // modIDDataGridViewTextBoxColumn
+            // 
+            this.modIDDataGridViewTextBoxColumn.DataPropertyName = "ModID";
+            this.modIDDataGridViewTextBoxColumn.HeaderText = "Mod ID";
+            this.modIDDataGridViewTextBoxColumn.Name = "modIDDataGridViewTextBoxColumn";
+            this.modIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.modIDDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.modIDDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.modIDDataGridViewTextBoxColumn.Width = 75;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // modTypeDataGridViewTextBoxColumn
+            // 
+            this.modTypeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.modTypeDataGridViewTextBoxColumn.DataPropertyName = "ModType";
+            this.modTypeDataGridViewTextBoxColumn.HeaderText = "Mod Type";
+            this.modTypeDataGridViewTextBoxColumn.Name = "modTypeDataGridViewTextBoxColumn";
+            this.modTypeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // lastDownloadedDataGridViewTextBoxColumn
+            // 
+            this.lastDownloadedDataGridViewTextBoxColumn.DataPropertyName = "LastDownloaded";
+            this.lastDownloadedDataGridViewTextBoxColumn.HeaderText = "Last Downloaded";
+            this.lastDownloadedDataGridViewTextBoxColumn.Name = "lastDownloadedDataGridViewTextBoxColumn";
+            this.lastDownloadedDataGridViewTextBoxColumn.ReadOnly = true;
+            this.lastDownloadedDataGridViewTextBoxColumn.Width = 110;
+            // 
+            // lastUpdatedAuthorDataGridViewTextBoxColumn
+            // 
+            this.lastUpdatedAuthorDataGridViewTextBoxColumn.DataPropertyName = "LastUpdatedAuthor";
+            this.lastUpdatedAuthorDataGridViewTextBoxColumn.HeaderText = "Last Updated(Author)";
+            this.lastUpdatedAuthorDataGridViewTextBoxColumn.Name = "lastUpdatedAuthorDataGridViewTextBoxColumn";
+            this.lastUpdatedAuthorDataGridViewTextBoxColumn.ReadOnly = true;
+            this.lastUpdatedAuthorDataGridViewTextBoxColumn.Width = 110;
+            // 
+            // timeStampDataGridViewTextBoxColumn
+            // 
+            this.timeStampDataGridViewTextBoxColumn.DataPropertyName = "TimeStamp";
+            this.timeStampDataGridViewTextBoxColumn.HeaderText = "TimeStamp";
+            this.timeStampDataGridViewTextBoxColumn.Name = "timeStampDataGridViewTextBoxColumn";
+            this.timeStampDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // folderSizeDataGridViewTextBoxColumn
+            // 
+            this.folderSizeDataGridViewTextBoxColumn.DataPropertyName = "FolderSize";
+            this.folderSizeDataGridViewTextBoxColumn.HeaderText = "Folder Size";
+            this.folderSizeDataGridViewTextBoxColumn.Name = "folderSizeDataGridViewTextBoxColumn";
+            this.folderSizeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // clUp
             // 
             this.clUp.HeaderText = "";
@@ -107,6 +171,10 @@
             this.clDelete.Image = global::OphiussaServerManager.Properties.Resources.Close_icon_icon;
             this.clDelete.Name = "clDelete";
             this.clDelete.Width = 32;
+            // 
+            // modListDetailsBindingSource
+            // 
+            this.modListDetailsBindingSource.DataSource = typeof(OphiussaServerManager.Common.Models.ModListDetails);
             // 
             // dataGridViewImageColumn1
             // 
@@ -179,74 +247,6 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // orderDataGridViewTextBoxColumn
-            // 
-            this.orderDataGridViewTextBoxColumn.DataPropertyName = "Order";
-            this.orderDataGridViewTextBoxColumn.HeaderText = "#";
-            this.orderDataGridViewTextBoxColumn.Name = "orderDataGridViewTextBoxColumn";
-            this.orderDataGridViewTextBoxColumn.ReadOnly = true;
-            this.orderDataGridViewTextBoxColumn.Width = 25;
-            // 
-            // modIDDataGridViewTextBoxColumn
-            // 
-            this.modIDDataGridViewTextBoxColumn.DataPropertyName = "ModID";
-            this.modIDDataGridViewTextBoxColumn.HeaderText = "Mod ID";
-            this.modIDDataGridViewTextBoxColumn.Name = "modIDDataGridViewTextBoxColumn";
-            this.modIDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.modIDDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.modIDDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.modIDDataGridViewTextBoxColumn.Width = 75;
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // modTypeDataGridViewTextBoxColumn
-            // 
-            this.modTypeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.modTypeDataGridViewTextBoxColumn.DataPropertyName = "ModType";
-            this.modTypeDataGridViewTextBoxColumn.HeaderText = "Mod Type";
-            this.modTypeDataGridViewTextBoxColumn.Name = "modTypeDataGridViewTextBoxColumn";
-            this.modTypeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // lastDownloadedDataGridViewTextBoxColumn
-            // 
-            this.lastDownloadedDataGridViewTextBoxColumn.DataPropertyName = "LastDownloaded";
-            this.lastDownloadedDataGridViewTextBoxColumn.HeaderText = "Last Downloaded";
-            this.lastDownloadedDataGridViewTextBoxColumn.Name = "lastDownloadedDataGridViewTextBoxColumn";
-            this.lastDownloadedDataGridViewTextBoxColumn.ReadOnly = true;
-            this.lastDownloadedDataGridViewTextBoxColumn.Width = 110;
-            // 
-            // lastUpdatedAuthorDataGridViewTextBoxColumn
-            // 
-            this.lastUpdatedAuthorDataGridViewTextBoxColumn.DataPropertyName = "LastUpdatedAuthor";
-            this.lastUpdatedAuthorDataGridViewTextBoxColumn.HeaderText = "Last Updated(Author)";
-            this.lastUpdatedAuthorDataGridViewTextBoxColumn.Name = "lastUpdatedAuthorDataGridViewTextBoxColumn";
-            this.lastUpdatedAuthorDataGridViewTextBoxColumn.ReadOnly = true;
-            this.lastUpdatedAuthorDataGridViewTextBoxColumn.Width = 110;
-            // 
-            // timeStampDataGridViewTextBoxColumn
-            // 
-            this.timeStampDataGridViewTextBoxColumn.DataPropertyName = "TimeStamp";
-            this.timeStampDataGridViewTextBoxColumn.HeaderText = "TimeStamp";
-            this.timeStampDataGridViewTextBoxColumn.Name = "timeStampDataGridViewTextBoxColumn";
-            this.timeStampDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // folderSizeDataGridViewTextBoxColumn
-            // 
-            this.folderSizeDataGridViewTextBoxColumn.DataPropertyName = "FolderSize";
-            this.folderSizeDataGridViewTextBoxColumn.HeaderText = "Folder Size";
-            this.folderSizeDataGridViewTextBoxColumn.Name = "folderSizeDataGridViewTextBoxColumn";
-            this.folderSizeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // modListDetailsBindingSource
-            // 
-            this.modListDetailsBindingSource.DataSource = typeof(OphiussaServerManager.Common.Models.ModListDetails);
-            // 
             // FrmModManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -261,6 +261,7 @@
             this.ForeColor = System.Drawing.Color.SteelBlue;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmModManager";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Mod Details";
             this.Load += new System.EventHandler(this.FrmModManager_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

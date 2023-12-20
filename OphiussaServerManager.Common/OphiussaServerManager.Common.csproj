@@ -176,11 +176,13 @@
     <Compile Include="Helpers\Utils.cs" />
     <Compile Include="Models\ArkProfile.cs" />
     <Compile Include="Models\AutoManageSettings.cs" />
+    <Compile Include="Models\BaseAdministration.cs" />
     <Compile Include="Models\CacheServerTypes.cs" />
     <Compile Include="Models\Curseforge\CurseForgeFileDetailResponse.cs" />
     <Compile Include="Models\Curseforge\CurseForgeFileDetailResult.cs" />
     <Compile Include="Models\Curseforge\CurseForgeFileDetail.cs" />
     <Compile Include="Models\DefaultModels.cs" />
+    <Compile Include="Models\DriveInfoDisplay.cs" />
     <Compile Include="Models\ModListDetails.cs" />
     <Compile Include="Models\MonitorGrid.cs" />
     <Compile Include="Models\PlayerInfo.cs" />

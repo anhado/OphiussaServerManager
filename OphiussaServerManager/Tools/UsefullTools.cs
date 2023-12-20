@@ -7,8 +7,9 @@ using System.Windows.Forms;
 
 namespace OphiussaServerManager.Tools
 {
-    internal class UsefullTools
+    internal static class UsefullTools
     {
+        public static MainForm MainForm;
 
         internal static bool isFormRunning(string formName)
         {

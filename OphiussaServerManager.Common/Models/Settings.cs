@@ -51,14 +51,15 @@ namespace OphiussaServerManager.Common.Models
         public bool EnableLogs { get; set; } = true;
         public int MaxLogsDays { get; set; } = 30;
         public int MaxLogFiles { get; set; } = 30;
-        public Settings()
+        public Settings(string pDrive = "", string pFoldernName = "osmdata")
         {
             FileInfo f = new FileInfo(Assembly.GetExecutingAssembly().FullName);
             string drive = Path.GetPathRoot(f.FullName);
-            DataFolder = drive + "osmdata\\";
-            DefaultInstallationFolder = drive + "osmdata\\Servers\\";
-            SteamCMDLocation = drive + "osmdata\\steamcmd\\";
-            BackupDirectory = drive + "osmBackups\\";
+            if (pDrive != "") drive = pDrive;
+            DataFolder = drive + $"{pFoldernName}\\";
+            DefaultInstallationFolder = drive + $"{pFoldernName}\\Servers\\";
+            SteamCMDLocation = drive + $"{pFoldernName}\\steamcmd\\";
+            BackupDirectory = drive + $"{pFoldernName}\\osmBackups\\";
             GUID = Guid.NewGuid().ToString();
         }
 

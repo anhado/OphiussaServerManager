@@ -56,7 +56,15 @@ namespace OphiussaServerManager
                         }
                     }
 
-                    Application.Run(new MainForm());
+                    if (!System.IO.File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json")))
+                    {
+                        Application.Run(new FrmStartScreen());
+                        if (System.IO.File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json"))) Application.Run(new MainForm());
+                    }
+                    else
+                    {
+                        Application.Run(new MainForm());
+                    }
                 }
 
             }

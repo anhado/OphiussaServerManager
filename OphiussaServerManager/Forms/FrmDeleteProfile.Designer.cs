@@ -164,6 +164,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmDeleteProfile";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Delete Profile";
             this.Load += new System.EventHandler(this.FrmDeleteProfile_Load);
             this.ResumeLayout(false);

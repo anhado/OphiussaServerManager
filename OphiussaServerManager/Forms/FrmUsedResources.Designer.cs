@@ -48,6 +48,7 @@
             this.Controls.Add(this.flPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmUsedResources";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Used Resources";
             this.Load += new System.EventHandler(this.FrmUsedResources_Load);
             this.ResumeLayout(false);

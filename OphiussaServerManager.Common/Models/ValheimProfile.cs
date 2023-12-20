@@ -68,7 +68,7 @@ namespace OphiussaServerManager.Common.Models.ValheimProfile
     }
 
 
-    public class ValheimProfile
+    public class ValheimProfile : BaseProfile
     {
         public Administration Administration { get; set; }
 
@@ -78,12 +78,8 @@ namespace OphiussaServerManager.Common.Models.ValheimProfile
             this.Administration = new Administration();
 
         }
-        public void LoadNewValheimProfile(string key)
-        {
 
-        }
-
-        public string GetCommandLinesArguments(Settings settings, Profile profile, string locaIP)
+        public override string GetCommandLinesArguments(Settings settings, Profile profile, string locaIP)
         {
             string cmd = string.Empty;
 
@@ -121,34 +117,14 @@ namespace OphiussaServerManager.Common.Models.ValheimProfile
             return cmd;
         }
 
-        internal string GetCPUAffinity()
+        public string GetCPUAffinity()
         {
-            //TODO: dublicated function
-            List<ProcessorAffinity> lst = new List<ProcessorAffinity>();
-
-            for (int i = Utils.GetProcessorCount() - 1; i >= 0; i--)
-            {
-                lst.Add(
-                    new ProcessorAffinity()
-                    {
-                        ProcessorNumber = i,
-                        Selected = this.Administration.CPUAffinity == "All" ? true : this.Administration.CPUAffinityList.DefaultIfEmpty(new ProcessorAffinity() { Selected = true, ProcessorNumber = i }).FirstOrDefault(x => x.ProcessorNumber == i).Selected
-                    }
-                    );
-            }
-            string bin = string.Join("", lst.Select(x => x.Selected ? "1" : "0"));
-            string hex = !bin.Contains("0") ? "" : "0" + Utils.BinaryStringToHexString(bin);
-            return hex;
+            return base.GetCPUAffinity(this.Administration.CPUAffinity, this.Administration.CPUAffinityList);
         }
     }
 
-    public class Administration
+    public class Administration : BaseAdministration
     {
-        public string ServerName { get; set; } = "New Server";
-        public string ServerPassword { get; set; } = System.Web.Security.Membership.GeneratePassword(10, 6);
-        public string LocalIP { get; set; } = NetworkTools.GetHostIp();
-        public string ServerPort { get; set; } = "2456";
-        public string PeerPort { get; set; } = "2457";
         public string Branch { get; set; } = "Live";
         public bool Crossplay { get; set; } = false;
         public bool Public { get; set; } = false;
@@ -170,8 +146,5 @@ namespace OphiussaServerManager.Common.Models.ValheimProfile
         public Raids Raids { get; set; } = Raids.Default;
         public string SaveLocation { get; set; } = "";
         public string LogFileLocation { get; set; } = "";
-        public ProcessPriorityClass CPUPriority { get; set; } = ProcessPriorityClass.Normal;
-        public string CPUAffinity { get; set; } = "All";
-        public List<ProcessorAffinity> CPUAffinityList { get; set; } = new List<ProcessorAffinity>();
     }
 }
