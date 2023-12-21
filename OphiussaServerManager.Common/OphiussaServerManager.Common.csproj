@@ -184,6 +184,7 @@
     <Compile Include="Models\DefaultModels.cs" />
     <Compile Include="Models\DriveInfoDisplay.cs" />
     <Compile Include="Models\ModListDetails.cs" />
+    <Compile Include="Models\ProfileOrderGrid.cs" />
     <Compile Include="Models\MonitorGrid.cs" />
     <Compile Include="Models\PlayerInfo.cs" />
     <Compile Include="Models\PlayerListParameters.cs" />

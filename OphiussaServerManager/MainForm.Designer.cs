@@ -52,6 +52,7 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.routingFirewallToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.orderProfilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.perfomanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -260,6 +261,7 @@
             this.toolStripMenuItem1,
             this.routingFirewallToolStripMenuItem,
             this.settingsToolStripMenuItem,
+            this.orderProfilesToolStripMenuItem,
             this.testsToolStripMenuItem});
             this.settingsToolStripMenuItem1.Image = global::OphiussaServerManager.Properties.Resources.preferences__options__setting__cog__gear__system__settings_icon_icon;
             this.settingsToolStripMenuItem1.Name = "settingsToolStripMenuItem1";
@@ -269,13 +271,13 @@
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(135, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
             // 
             // routingFirewallToolStripMenuItem
             // 
             this.routingFirewallToolStripMenuItem.Image = global::OphiussaServerManager.Properties.Resources.firewall_icon_icon;
             this.routingFirewallToolStripMenuItem.Name = "routingFirewallToolStripMenuItem";
-            this.routingFirewallToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.routingFirewallToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.routingFirewallToolStripMenuItem.Text = "Port Foward";
             this.routingFirewallToolStripMenuItem.Click += new System.EventHandler(this.routingFirewallToolStripMenuItem_Click);
             // 
@@ -283,14 +285,22 @@
             // 
             this.settingsToolStripMenuItem.Image = global::OphiussaServerManager.Properties.Resources.preferences__options__setting__cog__gear__system__settings_icon_icon;
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
+            // 
+            // orderProfilesToolStripMenuItem
+            // 
+            this.orderProfilesToolStripMenuItem.Image = global::OphiussaServerManager.Properties.Resources.checklist_icon_icon;
+            this.orderProfilesToolStripMenuItem.Name = "orderProfilesToolStripMenuItem";
+            this.orderProfilesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.orderProfilesToolStripMenuItem.Text = "Order Profiles";
+            this.orderProfilesToolStripMenuItem.Click += new System.EventHandler(this.orderProfilesToolStripMenuItem_Click);
             // 
             // testsToolStripMenuItem
             // 
             this.testsToolStripMenuItem.Name = "testsToolStripMenuItem";
-            this.testsToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.testsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.testsToolStripMenuItem.Text = "Tests";
             this.testsToolStripMenuItem.Click += new System.EventHandler(this.testsToolStripMenuItem_Click);
             // 
@@ -478,6 +488,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem perfomanceToolStripMenuItem;
         public System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.ToolStripMenuItem orderProfilesToolStripMenuItem;
     }
 }
 

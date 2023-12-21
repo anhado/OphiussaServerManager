@@ -772,6 +772,7 @@ namespace OphiussaServerManager.Forms
                 if (isRunning) btStart.Text = "Stop";
                 else btStart.Text = "Start";
                 btUpdate.Enabled = !isRunning;
+                btRCON.Enabled = isRunning && profile.ARKConfiguration.Administration.UseRCON;
 
                 UsefullTools.MainForm.SetTabHeader(tab, profile, isRunning);
                 //TabColors[page] = color;

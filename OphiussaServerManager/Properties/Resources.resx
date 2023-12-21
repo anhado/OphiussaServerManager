@@ -136,8 +136,14 @@
   <data name="folder, close icon icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\folder, close icon icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Copy icon icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Copy icon icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="collapse_icon_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\collapse icon icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="console, command line, command icon icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\console, command line, command icon icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="add icon icon 16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\add icon icon (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -160,6 +166,12 @@
   <data name="Filter icon icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Filter icon icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ok_icon_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ok icon icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="upgrade, misc icon icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\upgrade, misc icon icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="remove, cancel, delete icon icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\remove, cancel, delete icon icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -172,16 +184,19 @@
   <data name="firewall icon icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\firewall icon icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="save_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\save, floppy, disk icon icon (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="expand_icon_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\expand icon icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="save, floppy, disk icon icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\save, floppy, disk icon icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ok_icon_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ok icon icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="speedometer, speed, dashboard, measure, board, device, gauge, widgets, value icon icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\speedometer, speed, dashboard, measure, board, device, gauge, widgets, value icon icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="checklist icon icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\checklist icon icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

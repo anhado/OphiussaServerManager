@@ -116,20 +116,48 @@ namespace OphiussaServerManager
                 }
 
                 string[] files = System.IO.Directory.GetFiles(dir);
-                foreach (string file in files)
+                if (Settings.ProfileOrders.Count > 0)
                 {
-                    Profile p = JsonConvert.DeserializeObject<Profile>(File.ReadAllText(file));
-                    switch (p.Type.ServerType)
+                    foreach (var profileOrder in Settings.ProfileOrders.OrderBy(x => x.Order))
                     {
-                        case EnumServerType.ArkSurviveEvolved:
-                        case EnumServerType.ArkSurviveAscended:
-                            AddNewArkServer(p.Key, p.Type, "", p);
-                            break;
-                        case EnumServerType.Valheim:
-                            AddNewValheimServer(p.Key, p.Type, "", p);
-                            break;
-                        default:
-                            break;
+                        string file = files.First(f => f.Contains(profileOrder.Key));
+                        if (!string.IsNullOrEmpty(file))
+                        {
+                            Profile p = JsonConvert.DeserializeObject<Profile>(File.ReadAllText(file));
+                            switch (p.Type.ServerType)
+                            {
+                                case EnumServerType.ArkSurviveEvolved:
+                                case EnumServerType.ArkSurviveAscended:
+                                    AddNewArkServer(p.Key, p.Type, "", p);
+                                    break;
+                                case EnumServerType.Valheim:
+                                    AddNewValheimServer(p.Key, p.Type, "", p);
+                                    break;
+                                default:
+                                    break;
+                            }
+                            files = files.Where(x => x != file).ToArray();
+                        }
+                    }
+                }
+
+                if (files.Length > 0)
+                {
+                    foreach (string file in files)
+                    {
+                        Profile p = JsonConvert.DeserializeObject<Profile>(File.ReadAllText(file));
+                        switch (p.Type.ServerType)
+                        {
+                            case EnumServerType.ArkSurviveEvolved:
+                            case EnumServerType.ArkSurviveAscended:
+                                AddNewArkServer(p.Key, p.Type, "", p);
+                                break;
+                            case EnumServerType.Valheim:
+                                AddNewValheimServer(p.Key, p.Type, "", p);
+                                break;
+                            default:
+                                break;
+                        }
                     }
                 }
             }
@@ -710,6 +738,16 @@ namespace OphiussaServerManager
         private void tabControl1_ControlAdded(object sender, ControlEventArgs e)
         {
 
+        }
+
+        private void orderProfilesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmOrderProfiles frm = new FrmOrderProfiles();
+            frm.LoadProfiles(Settings);
+            frm.ShowDialog(); 
+
+            //TODO: RELOAD TABS https://stackoverflow.com/questions/2559280/programmatically-change-the-tab-order
+            //LoadProfiles();
         }
     }
 }

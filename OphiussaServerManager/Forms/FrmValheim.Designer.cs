@@ -37,12 +37,9 @@
             this.txtServerType = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btStart = new System.Windows.Forms.Button();
-            this.btUpdate = new System.Windows.Forms.Button();
             this.btChooseFolder = new System.Windows.Forms.Button();
             this.txtLocation = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.btSave = new System.Windows.Forms.Button();
-            this.btSync = new System.Windows.Forms.Button();
             this.txtProfileName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtProfileID = new System.Windows.Forms.TextBox();
@@ -175,6 +172,9 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.cbBranch = new System.Windows.Forms.ComboBox();
             this.label22 = new System.Windows.Forms.Label();
+            this.btUpdate = new System.Windows.Forms.Button();
+            this.btSave = new System.Windows.Forms.Button();
+            this.btSync = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.expandCollapsePanel4.SuspendLayout();
             this.groupBox11.SuspendLayout();
@@ -221,7 +221,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 147);
+            this.panel1.Size = new System.Drawing.Size(868, 147);
             this.panel1.TabIndex = 2;
             // 
             // txtBuild
@@ -278,7 +278,7 @@
             // btStart
             // 
             this.btStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btStart.Location = new System.Drawing.Point(630, 60);
+            this.btStart.Location = new System.Drawing.Point(698, 60);
             this.btStart.Name = "btStart";
             this.btStart.Size = new System.Drawing.Size(156, 23);
             this.btStart.TabIndex = 10;
@@ -286,21 +286,10 @@
             this.btStart.UseVisualStyleBackColor = true;
             this.btStart.Click += new System.EventHandler(this.btStart_Click);
             // 
-            // btUpdate
-            // 
-            this.btUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btUpdate.Location = new System.Drawing.Point(630, 34);
-            this.btUpdate.Name = "btUpdate";
-            this.btUpdate.Size = new System.Drawing.Size(156, 23);
-            this.btUpdate.TabIndex = 9;
-            this.btUpdate.Text = "Update/Verify";
-            this.btUpdate.UseVisualStyleBackColor = true;
-            this.btUpdate.Click += new System.EventHandler(this.btUpdate_Click);
-            // 
             // btChooseFolder
             // 
             this.btChooseFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btChooseFolder.Location = new System.Drawing.Point(594, 84);
+            this.btChooseFolder.Location = new System.Drawing.Point(662, 84);
             this.btChooseFolder.Name = "btChooseFolder";
             this.btChooseFolder.Size = new System.Drawing.Size(22, 23);
             this.btChooseFolder.TabIndex = 8;
@@ -314,7 +303,7 @@
             this.txtLocation.Location = new System.Drawing.Point(108, 86);
             this.txtLocation.Name = "txtLocation";
             this.txtLocation.ReadOnly = true;
-            this.txtLocation.Size = new System.Drawing.Size(478, 20);
+            this.txtLocation.Size = new System.Drawing.Size(546, 20);
             this.txtLocation.TabIndex = 7;
             // 
             // label3
@@ -326,35 +315,13 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Installation Folder";
             // 
-            // btSave
-            // 
-            this.btSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btSave.Location = new System.Drawing.Point(711, 8);
-            this.btSave.Name = "btSave";
-            this.btSave.Size = new System.Drawing.Size(75, 23);
-            this.btSave.TabIndex = 5;
-            this.btSave.Text = "Save";
-            this.btSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btSave.UseVisualStyleBackColor = true;
-            this.btSave.Click += new System.EventHandler(this.btSave_Click);
-            // 
-            // btSync
-            // 
-            this.btSync.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btSync.Location = new System.Drawing.Point(630, 8);
-            this.btSync.Name = "btSync";
-            this.btSync.Size = new System.Drawing.Size(75, 23);
-            this.btSync.TabIndex = 4;
-            this.btSync.Text = "Sync";
-            this.btSync.UseVisualStyleBackColor = true;
-            // 
             // txtProfileName
             // 
             this.txtProfileName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtProfileName.Location = new System.Drawing.Point(108, 36);
             this.txtProfileName.Name = "txtProfileName";
-            this.txtProfileName.Size = new System.Drawing.Size(508, 20);
+            this.txtProfileName.Size = new System.Drawing.Size(576, 20);
             this.txtProfileName.TabIndex = 3;
             this.txtProfileName.Validated += new System.EventHandler(this.txtProfileName_Validated);
             // 
@@ -401,7 +368,7 @@
             this.expandCollapsePanel4.IsExpanded = true;
             this.expandCollapsePanel4.Location = new System.Drawing.Point(0, 1344);
             this.expandCollapsePanel4.Name = "expandCollapsePanel4";
-            this.expandCollapsePanel4.Size = new System.Drawing.Size(800, 226);
+            this.expandCollapsePanel4.Size = new System.Drawing.Size(868, 226);
             this.expandCollapsePanel4.TabIndex = 22;
             this.expandCollapsePanel4.Text = "Automatic Management";
             this.expandCollapsePanel4.UseAnimation = false;
@@ -440,7 +407,7 @@
             this.groupBox11.Controls.Add(this.chkAutoStart);
             this.groupBox11.Location = new System.Drawing.Point(11, 34);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(776, 181);
+            this.groupBox11.Size = new System.Drawing.Size(844, 181);
             this.groupBox11.TabIndex = 1;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Server Manager Settings";
@@ -794,7 +761,7 @@
             this.expandCollapsePanel2.IsExpanded = true;
             this.expandCollapsePanel2.Location = new System.Drawing.Point(0, 1048);
             this.expandCollapsePanel2.Name = "expandCollapsePanel2";
-            this.expandCollapsePanel2.Size = new System.Drawing.Size(800, 296);
+            this.expandCollapsePanel2.Size = new System.Drawing.Size(868, 296);
             this.expandCollapsePanel2.TabIndex = 20;
             this.expandCollapsePanel2.Text = "Saves && Backups";
             this.expandCollapsePanel2.UseAnimation = true;
@@ -827,7 +794,7 @@
             this.groupBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
             this.groupBox5.Location = new System.Drawing.Point(4, 44);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(793, 249);
+            this.groupBox5.Size = new System.Drawing.Size(861, 249);
             this.groupBox5.TabIndex = 19;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Saves && Backups";
@@ -835,7 +802,7 @@
             // button3
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(717, 89);
+            this.button3.Location = new System.Drawing.Point(785, 89);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(30, 23);
             this.button3.TabIndex = 31;
@@ -846,7 +813,7 @@
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(717, 63);
+            this.button1.Location = new System.Drawing.Point(785, 63);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(30, 23);
             this.button1.TabIndex = 30;
@@ -858,7 +825,7 @@
             // 
             this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(714, 219);
+            this.label15.Location = new System.Drawing.Point(782, 219);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(51, 15);
             this.label15.TabIndex = 29;
@@ -868,7 +835,7 @@
             // 
             this.txtSubBackups.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSubBackups.Enabled = false;
-            this.txtSubBackups.Location = new System.Drawing.Point(716, 195);
+            this.txtSubBackups.Location = new System.Drawing.Point(784, 195);
             this.txtSubBackups.Name = "txtSubBackups";
             this.txtSubBackups.Size = new System.Drawing.Size(49, 21);
             this.txtSubBackups.TabIndex = 28;
@@ -881,7 +848,7 @@
             this.tbSubBackups.Maximum = 1440;
             this.tbSubBackups.Minimum = 1;
             this.tbSubBackups.Name = "tbSubBackups";
-            this.tbSubBackups.Size = new System.Drawing.Size(580, 45);
+            this.tbSubBackups.Size = new System.Drawing.Size(648, 45);
             this.tbSubBackups.TabIndex = 27;
             this.tbSubBackups.TickStyle = System.Windows.Forms.TickStyle.None;
             this.tbSubBackups.Value = 1;
@@ -900,7 +867,7 @@
             // 
             this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(715, 168);
+            this.label13.Location = new System.Drawing.Point(783, 168);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(51, 15);
             this.label13.TabIndex = 25;
@@ -910,7 +877,7 @@
             // 
             this.txtFirstBackup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFirstBackup.Enabled = false;
-            this.txtFirstBackup.Location = new System.Drawing.Point(717, 144);
+            this.txtFirstBackup.Location = new System.Drawing.Point(785, 144);
             this.txtFirstBackup.Name = "txtFirstBackup";
             this.txtFirstBackup.Size = new System.Drawing.Size(49, 21);
             this.txtFirstBackup.TabIndex = 24;
@@ -923,7 +890,7 @@
             this.tbFirstBackup.Maximum = 720;
             this.tbFirstBackup.Minimum = 1;
             this.tbFirstBackup.Name = "tbFirstBackup";
-            this.tbFirstBackup.Size = new System.Drawing.Size(580, 45);
+            this.tbFirstBackup.Size = new System.Drawing.Size(648, 45);
             this.tbFirstBackup.TabIndex = 23;
             this.tbFirstBackup.TickStyle = System.Windows.Forms.TickStyle.None;
             this.tbFirstBackup.Value = 1;
@@ -944,7 +911,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBackupToKeep.Location = new System.Drawing.Point(115, 116);
             this.txtBackupToKeep.Name = "txtBackupToKeep";
-            this.txtBackupToKeep.Size = new System.Drawing.Size(45, 21);
+            this.txtBackupToKeep.Size = new System.Drawing.Size(113, 21);
             this.txtBackupToKeep.TabIndex = 21;
             // 
             // label8
@@ -963,14 +930,14 @@
             this.txtLogLocation.Location = new System.Drawing.Point(116, 90);
             this.txtLogLocation.Name = "txtLogLocation";
             this.txtLogLocation.ReadOnly = true;
-            this.txtLogLocation.Size = new System.Drawing.Size(594, 21);
+            this.txtLogLocation.Size = new System.Drawing.Size(662, 21);
             this.txtLogLocation.TabIndex = 9;
             // 
             // label20
             // 
             this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(715, 41);
+            this.label20.Location = new System.Drawing.Point(783, 41);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(51, 15);
             this.label20.TabIndex = 19;
@@ -989,7 +956,7 @@
             // 
             this.txtAutoSavePeriod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtAutoSavePeriod.Enabled = false;
-            this.txtAutoSavePeriod.Location = new System.Drawing.Point(717, 17);
+            this.txtAutoSavePeriod.Location = new System.Drawing.Point(785, 17);
             this.txtAutoSavePeriod.Name = "txtAutoSavePeriod";
             this.txtAutoSavePeriod.Size = new System.Drawing.Size(49, 21);
             this.txtAutoSavePeriod.TabIndex = 18;
@@ -1002,7 +969,7 @@
             this.tbAutoSavePeriod.Maximum = 120;
             this.tbAutoSavePeriod.Minimum = 1;
             this.tbAutoSavePeriod.Name = "tbAutoSavePeriod";
-            this.tbAutoSavePeriod.Size = new System.Drawing.Size(580, 45);
+            this.tbAutoSavePeriod.Size = new System.Drawing.Size(648, 45);
             this.tbAutoSavePeriod.TabIndex = 5;
             this.tbAutoSavePeriod.TickStyle = System.Windows.Forms.TickStyle.None;
             this.tbAutoSavePeriod.Value = 1;
@@ -1015,7 +982,7 @@
             this.txtSaveLocation.Location = new System.Drawing.Point(116, 64);
             this.txtSaveLocation.Name = "txtSaveLocation";
             this.txtSaveLocation.ReadOnly = true;
-            this.txtSaveLocation.Size = new System.Drawing.Size(594, 21);
+            this.txtSaveLocation.Size = new System.Drawing.Size(662, 21);
             this.txtSaveLocation.TabIndex = 6;
             // 
             // label9
@@ -1050,7 +1017,7 @@
             this.expandCollapsePanel3.IsExpanded = true;
             this.expandCollapsePanel3.Location = new System.Drawing.Point(0, 737);
             this.expandCollapsePanel3.Name = "expandCollapsePanel3";
-            this.expandCollapsePanel3.Size = new System.Drawing.Size(800, 311);
+            this.expandCollapsePanel3.Size = new System.Drawing.Size(868, 311);
             this.expandCollapsePanel3.TabIndex = 21;
             this.expandCollapsePanel3.Text = "Modifiers";
             this.expandCollapsePanel3.UseAnimation = true;
@@ -1444,7 +1411,7 @@
             this.expandCollapsePanel1.IsExpanded = true;
             this.expandCollapsePanel1.Location = new System.Drawing.Point(0, 147);
             this.expandCollapsePanel1.Name = "expandCollapsePanel1";
-            this.expandCollapsePanel1.Size = new System.Drawing.Size(800, 590);
+            this.expandCollapsePanel1.Size = new System.Drawing.Size(868, 590);
             this.expandCollapsePanel1.TabIndex = 3;
             this.expandCollapsePanel1.Text = "Administration";
             this.expandCollapsePanel1.UseAnimation = true;
@@ -1463,7 +1430,7 @@
             this.groupBox12.ForeColor = System.Drawing.Color.SteelBlue;
             this.groupBox12.Location = new System.Drawing.Point(4, 451);
             this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(810, 127);
+            this.groupBox12.Size = new System.Drawing.Size(878, 127);
             this.groupBox12.TabIndex = 23;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "Command Line";
@@ -1471,7 +1438,7 @@
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(737, 46);
+            this.button2.Location = new System.Drawing.Point(805, 46);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(61, 23);
             this.button2.TabIndex = 72;
@@ -1487,7 +1454,7 @@
             this.txtCommand.Location = new System.Drawing.Point(5, 46);
             this.txtCommand.Multiline = true;
             this.txtCommand.Name = "txtCommand";
-            this.txtCommand.Size = new System.Drawing.Size(727, 72);
+            this.txtCommand.Size = new System.Drawing.Size(795, 72);
             this.txtCommand.TabIndex = 71;
             // 
             // btProcessorAffinity
@@ -1552,7 +1519,7 @@
             this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
             this.groupBox3.Location = new System.Drawing.Point(4, 272);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(793, 173);
+            this.groupBox3.Size = new System.Drawing.Size(861, 173);
             this.groupBox3.TabIndex = 18;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Server Settings";
@@ -1739,7 +1706,7 @@
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
             this.groupBox2.Location = new System.Drawing.Point(4, 188);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(793, 78);
+            this.groupBox2.Size = new System.Drawing.Size(861, 78);
             this.groupBox2.TabIndex = 17;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Networking";
@@ -1808,7 +1775,7 @@
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
             this.groupBox1.Location = new System.Drawing.Point(4, 105);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(793, 77);
+            this.groupBox1.Size = new System.Drawing.Size(861, 77);
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Name and Password";
@@ -1836,7 +1803,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtServerName.Location = new System.Drawing.Point(115, 20);
             this.txtServerName.Name = "txtServerName";
-            this.txtServerName.Size = new System.Drawing.Size(666, 21);
+            this.txtServerName.Size = new System.Drawing.Size(734, 21);
             this.txtServerName.TabIndex = 5;
             // 
             // label5
@@ -1858,7 +1825,7 @@
             this.groupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
             this.groupBox4.Location = new System.Drawing.Point(4, 43);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(793, 56);
+            this.groupBox4.Size = new System.Drawing.Size(861, 56);
             this.groupBox4.TabIndex = 15;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Server Details";
@@ -1870,7 +1837,7 @@
             this.cbBranch.FormattingEnabled = true;
             this.cbBranch.Location = new System.Drawing.Point(115, 20);
             this.cbBranch.Name = "cbBranch";
-            this.cbBranch.Size = new System.Drawing.Size(666, 21);
+            this.cbBranch.Size = new System.Drawing.Size(734, 21);
             this.cbBranch.TabIndex = 14;
             // 
             // label22
@@ -1882,12 +1849,53 @@
             this.label22.TabIndex = 4;
             this.label22.Text = "Branch";
             // 
+            // btUpdate
+            // 
+            this.btUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btUpdate.Image = global::OphiussaServerManager.Properties.Resources.upgrade__misc_icon_icon;
+            this.btUpdate.Location = new System.Drawing.Point(698, 34);
+            this.btUpdate.Name = "btUpdate";
+            this.btUpdate.Size = new System.Drawing.Size(156, 23);
+            this.btUpdate.TabIndex = 9;
+            this.btUpdate.Text = "Update/Verify";
+            this.btUpdate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btUpdate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btUpdate.UseVisualStyleBackColor = true;
+            this.btUpdate.Click += new System.EventHandler(this.btUpdate_Click);
+            // 
+            // btSave
+            // 
+            this.btSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btSave.Image = global::OphiussaServerManager.Properties.Resources.save_16x16;
+            this.btSave.Location = new System.Drawing.Point(779, 8);
+            this.btSave.Name = "btSave";
+            this.btSave.Size = new System.Drawing.Size(75, 23);
+            this.btSave.TabIndex = 5;
+            this.btSave.Text = "Save";
+            this.btSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btSave.UseVisualStyleBackColor = true;
+            this.btSave.Click += new System.EventHandler(this.btSave_Click);
+            // 
+            // btSync
+            // 
+            this.btSync.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btSync.Image = global::OphiussaServerManager.Properties.Resources.Copy_icon_icon;
+            this.btSync.Location = new System.Drawing.Point(698, 8);
+            this.btSync.Name = "btSync";
+            this.btSync.Size = new System.Drawing.Size(75, 23);
+            this.btSync.TabIndex = 4;
+            this.btSync.Text = "Sync";
+            this.btSync.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btSync.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btSync.UseVisualStyleBackColor = true;
+            // 
             // FrmValheim
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(817, 1100);
+            this.ClientSize = new System.Drawing.Size(885, 1100);
             this.Controls.Add(this.expandCollapsePanel4);
             this.Controls.Add(this.expandCollapsePanel2);
             this.Controls.Add(this.expandCollapsePanel3);

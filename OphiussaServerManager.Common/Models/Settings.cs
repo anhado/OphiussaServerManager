@@ -10,6 +10,12 @@ using System.Threading.Tasks;
 
 namespace OphiussaServerManager.Common.Models
 {
+    public class ProfileOrder
+    {
+        public int Order { get; set; }
+        public string Key { get; set; }
+    }
+
     public class Settings
     {
         [JsonIgnore]
@@ -51,6 +57,7 @@ namespace OphiussaServerManager.Common.Models
         public bool EnableLogs { get; set; } = true;
         public int MaxLogsDays { get; set; } = 30;
         public int MaxLogFiles { get; set; } = 30;
+        public List<ProfileOrder> ProfileOrders { get; set; } = new List<ProfileOrder>();
         public Settings(string pDrive = "", string pFoldernName = "osmdata")
         {
             FileInfo f = new FileInfo(Assembly.GetExecutingAssembly().FullName);
