@@ -65,6 +65,8 @@
             this.btRun2 = new System.Windows.Forms.Button();
             this.lblAutoUpdate = new System.Windows.Forms.Label();
             this.timerCheckTask = new System.Windows.Forms.Timer(this.components);
+            this.createDesktopShortcutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.createMonitorDesktopShortcutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -195,6 +197,8 @@
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.refreshPublicIPToolStripMenuItem1,
             this.refreshLocalIPToolStripMenuItem1,
+            this.createDesktopShortcutToolStripMenuItem,
+            this.createMonitorDesktopShortcutToolStripMenuItem,
             this.toolStripMenuItem2,
             this.updateSteamCMDToolStripMenuItem,
             this.toolStripMenuItem3,
@@ -208,7 +212,7 @@
             // 
             this.refreshPublicIPToolStripMenuItem1.Image = global::OphiussaServerManager.Properties.Resources.refresh_icon_icon__4_;
             this.refreshPublicIPToolStripMenuItem1.Name = "refreshPublicIPToolStripMenuItem1";
-            this.refreshPublicIPToolStripMenuItem1.Size = new System.Drawing.Size(175, 22);
+            this.refreshPublicIPToolStripMenuItem1.Size = new System.Drawing.Size(248, 22);
             this.refreshPublicIPToolStripMenuItem1.Text = "Refresh Public IP";
             this.refreshPublicIPToolStripMenuItem1.Click += new System.EventHandler(this.refreshPublicIPToolStripMenuItem1_Click);
             // 
@@ -216,33 +220,33 @@
             // 
             this.refreshLocalIPToolStripMenuItem1.Image = global::OphiussaServerManager.Properties.Resources.refresh_icon_icon__4_;
             this.refreshLocalIPToolStripMenuItem1.Name = "refreshLocalIPToolStripMenuItem1";
-            this.refreshLocalIPToolStripMenuItem1.Size = new System.Drawing.Size(175, 22);
+            this.refreshLocalIPToolStripMenuItem1.Size = new System.Drawing.Size(248, 22);
             this.refreshLocalIPToolStripMenuItem1.Text = "Refresh Local IP";
             this.refreshLocalIPToolStripMenuItem1.Click += new System.EventHandler(this.refreshLocalIPToolStripMenuItem1_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(172, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(245, 6);
             // 
             // updateSteamCMDToolStripMenuItem
             // 
             this.updateSteamCMDToolStripMenuItem.Image = global::OphiussaServerManager.Properties.Resources.down_icon_icon;
             this.updateSteamCMDToolStripMenuItem.Name = "updateSteamCMDToolStripMenuItem";
-            this.updateSteamCMDToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.updateSteamCMDToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
             this.updateSteamCMDToolStripMenuItem.Text = "Update SteamCMD";
             this.updateSteamCMDToolStripMenuItem.Click += new System.EventHandler(this.updateSteamCMDToolStripMenuItem_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(172, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(245, 6);
             // 
             // exitToolStripMenuItem1
             // 
             this.exitToolStripMenuItem1.Image = global::OphiussaServerManager.Properties.Resources.Close_icon_icon;
             this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
-            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(175, 22);
+            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(248, 22);
             this.exitToolStripMenuItem1.Text = "Exit";
             this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
             // 
@@ -271,13 +275,13 @@
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(143, 6);
             // 
             // routingFirewallToolStripMenuItem
             // 
             this.routingFirewallToolStripMenuItem.Image = global::OphiussaServerManager.Properties.Resources.firewall_icon_icon;
             this.routingFirewallToolStripMenuItem.Name = "routingFirewallToolStripMenuItem";
-            this.routingFirewallToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.routingFirewallToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.routingFirewallToolStripMenuItem.Text = "Port Foward";
             this.routingFirewallToolStripMenuItem.Click += new System.EventHandler(this.routingFirewallToolStripMenuItem_Click);
             // 
@@ -285,7 +289,7 @@
             // 
             this.settingsToolStripMenuItem.Image = global::OphiussaServerManager.Properties.Resources.preferences__options__setting__cog__gear__system__settings_icon_icon;
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
@@ -293,14 +297,14 @@
             // 
             this.orderProfilesToolStripMenuItem.Image = global::OphiussaServerManager.Properties.Resources.checklist_icon_icon;
             this.orderProfilesToolStripMenuItem.Name = "orderProfilesToolStripMenuItem";
-            this.orderProfilesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.orderProfilesToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.orderProfilesToolStripMenuItem.Text = "Order Profiles";
             this.orderProfilesToolStripMenuItem.Click += new System.EventHandler(this.orderProfilesToolStripMenuItem_Click);
             // 
             // testsToolStripMenuItem
             // 
             this.testsToolStripMenuItem.Name = "testsToolStripMenuItem";
-            this.testsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.testsToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.testsToolStripMenuItem.Text = "Tests";
             this.testsToolStripMenuItem.Click += new System.EventHandler(this.testsToolStripMenuItem_Click);
             // 
@@ -417,6 +421,20 @@
             this.timerCheckTask.Interval = 500;
             this.timerCheckTask.Tick += new System.EventHandler(this.timerCheckTask_Tick);
             // 
+            // createDesktopShortcutToolStripMenuItem
+            // 
+            this.createDesktopShortcutToolStripMenuItem.Name = "createDesktopShortcutToolStripMenuItem";
+            this.createDesktopShortcutToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.createDesktopShortcutToolStripMenuItem.Text = "Create Desktop Shortcut";
+            this.createDesktopShortcutToolStripMenuItem.Click += new System.EventHandler(this.createDesktopShortcutToolStripMenuItem_Click);
+            // 
+            // createMonitorDesktopShortcutToolStripMenuItem
+            // 
+            this.createMonitorDesktopShortcutToolStripMenuItem.Name = "createMonitorDesktopShortcutToolStripMenuItem";
+            this.createMonitorDesktopShortcutToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.createMonitorDesktopShortcutToolStripMenuItem.Text = "Create Monitor Desktop Shortcut";
+            this.createMonitorDesktopShortcutToolStripMenuItem.Click += new System.EventHandler(this.createMonitorDesktopShortcutToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -489,6 +507,8 @@
         private System.Windows.Forms.ToolStripMenuItem perfomanceToolStripMenuItem;
         public System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.ToolStripMenuItem orderProfilesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem createDesktopShortcutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem createMonitorDesktopShortcutToolStripMenuItem;
     }
 }
 

@@ -1,28 +1,22 @@
-﻿using Newtonsoft.Json;
-using OphiussaServerManager.Forms;
-using OphiussaServerManager.Common.Helpers;
+﻿using Microsoft.Win32.TaskScheduler;
+using Newtonsoft.Json;
+using Open.Nat;
 using OphiussaServerManager.Common.Models;
 using OphiussaServerManager.Common.Models.Profiles;
 using OphiussaServerManager.Common.Models.SupportedServers;
+using OphiussaServerManager.Forms;
+using OphiussaServerManager.Tools;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using System.Net.Sockets;
-using Open.Nat;
-using Microsoft.Win32.TaskScheduler;
-using NLog.Common;
-using System.Diagnostics;
+using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Windows.Controls.Primitives;
-using OphiussaServerManager.Tools;
+using System.Runtime.InteropServices.ComTypes;
+using System.Windows.Forms;
 
 namespace OphiussaServerManager
 {
@@ -744,10 +738,39 @@ namespace OphiussaServerManager
         {
             FrmOrderProfiles frm = new FrmOrderProfiles();
             frm.LoadProfiles(Settings);
-            frm.ShowDialog(); 
+            frm.ShowDialog();
 
             //TODO: RELOAD TABS https://stackoverflow.com/questions/2559280/programmatically-change-the-tab-order
             //LoadProfiles();
+        }
+
+        private void createDesktopShortcutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            IShellLink link = (IShellLink)new ShellLink();
+
+            // setup shortcut information
+            link.SetDescription("Ophiussa Server Manager");
+            link.SetPath(System.Reflection.Assembly.GetEntryAssembly().Location);
+
+            // save it
+            IPersistFile file = (IPersistFile)link;
+            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+            file.Save(Path.Combine(desktopPath, "Ophiussa Server Manager.lnk"), false);
+        }
+
+        private void createMonitorDesktopShortcutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            IShellLink link = (IShellLink)new ShellLink();
+
+            // setup shortcut information
+            link.SetDescription("Ophiussa Server Manager Monitor");
+            link.SetPath(System.Reflection.Assembly.GetEntryAssembly().Location);
+            link.SetArguments(" -monitor");
+            // save it
+            IPersistFile file = (IPersistFile)link;
+            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+            file.Save(Path.Combine(desktopPath, "Ophiussa Server Manager Monitor.lnk"), false);
         }
     }
 }
