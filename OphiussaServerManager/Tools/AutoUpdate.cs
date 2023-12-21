@@ -517,9 +517,26 @@ namespace OphiussaServerManager.Tools.Update
                     {
                         Directory.CreateDirectory(file1.DirectoryName);
                     }
+                    bool notCopied = true;
+                    int attempt = 1;
+                    while (notCopied)
+                    {
+                        try
+                        {
 
-                    System.IO.File.Copy(file.FullName, file.FullName.Replace(CacheFolder, p.InstallLocation), true);
-                    OnProgressChanged(new ProcessEventArg() { Message = $"Copying files {i}/{changedFiles.Count} => {file.FullName}", IsStarting = false, ProcessedFileCount = i, Sucessful = false, TotalFiles = changedFiles.Count });
+                            OnProgressChanged(new ProcessEventArg() { Message = $"Copying files {i}/{changedFiles.Count} => {file.FullName}", IsStarting = false, ProcessedFileCount = i, Sucessful = false, TotalFiles = changedFiles.Count });
+                            System.IO.File.Copy(file.FullName, file.FullName.Replace(CacheFolder, p.InstallLocation), true);
+                            notCopied = false;
+                        }
+                        catch (Exception ex)
+                        {
+                            OnProcessError(new ProcessEventArg() { Message = $"Error copying file {file.FullName} attempt {attempt}/5 => {ex.Message}", IsStarting = false, ProcessedFileCount = i, Sucessful = false, TotalFiles = changedFiles.Count });
+
+                        }
+                        if (attempt >= 5) notCopied = false;
+
+                        attempt++;
+                    }
 
                     i++;
                 }
@@ -539,7 +556,7 @@ namespace OphiussaServerManager.Tools.Update
                         p.StartServer(Settings);
                     }
             }
-
+            OnProcessCompleted(new ProcessEventArg() { Message = $"Server {p.Name} updated", isError = false, IsStarting = false, SendToDiscord = true, Sucessful = true });
         }
 
         private void UpdateSteamMods(Settings settings, Profile p, List<PublishedFileDetail> steamFileDetails)

@@ -102,8 +102,12 @@ namespace OphiussaServerManager.Forms
             chkEnableInterval.Checked = profile.ARKConfiguration.Administration.EnableInterval;
 
             tbMaxPlayers.Value = profile.ARKConfiguration.Administration.MaxPlayers;
+            txtMaxPlayers.Text = profile.ARKConfiguration.Administration.MaxPlayers.ToString();
+
             chkEnableIdleTimeout.Checked = profile.ARKConfiguration.Administration.EnablIdleTimeOut;
             tbIdleTimeout.Value = profile.ARKConfiguration.Administration.IdleTimout;
+            txtIdleTimeout.Text = profile.ARKConfiguration.Administration.IdleTimout.ToString();
+
             chkUseBanUrl.Checked = profile.ARKConfiguration.Administration.UseBanListUrl;
             txtBanUrl.Text = profile.ARKConfiguration.Administration.BanListUrl;
             chkDisableVAC.Checked = profile.ARKConfiguration.Administration.DisableVAC;
