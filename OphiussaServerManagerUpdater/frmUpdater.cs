@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,8 +26,7 @@ namespace OphiussaServerManagerUpdater
 
         private void frmUpdater_Load(object sender, EventArgs e)
         {
-            //TODO:This is not closing the applications
-            KillProcessRunning(AppContext.BaseDirectory + "\\OphiussaServerManager.exe");
+            KillProcessRunning(AppContext.BaseDirectory + "OphiussaServerManager.exe");
             progressBar1.Maximum = 5;
             progressBar1.Value = 0;
             using (var client = new WebClient())
@@ -102,7 +100,7 @@ namespace OphiussaServerManagerUpdater
                 string mainModuleFilepath = GetMainModuleFilepath(process.Id);
                 if (string.Equals(a, mainModuleFilepath, StringComparison.OrdinalIgnoreCase))
                 {
-                    process.Close();
+                    process.Kill();
 
                 }
             }
