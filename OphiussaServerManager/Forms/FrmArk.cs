@@ -315,7 +315,7 @@ namespace OphiussaServerManager.Forms
         private void btSave_Click(object sender, EventArgs e)
         {
             try
-            {  
+            {
                 SaveProfile();
                 CreateWindowsTasks();
 

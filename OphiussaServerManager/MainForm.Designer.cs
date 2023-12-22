@@ -34,7 +34,7 @@
             this.txtPublicIP = new System.Windows.Forms.TextBox();
             this.txtLocalIP = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblLastVersion = new System.Windows.Forms.Label();
             this.txtVersion = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -43,6 +43,8 @@
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.refreshPublicIPToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.refreshLocalIPToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.createDesktopShortcutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.createMonitorDesktopShortcutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.updateSteamCMDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
@@ -65,12 +67,12 @@
             this.btRun2 = new System.Windows.Forms.Button();
             this.lblAutoUpdate = new System.Windows.Forms.Label();
             this.timerCheckTask = new System.Windows.Forms.Timer(this.components);
-            this.createDesktopShortcutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.createMonitorDesktopShortcutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btDisable3 = new System.Windows.Forms.Button();
             this.btRun3 = new System.Windows.Forms.Button();
             this.lblNotifications = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblLast = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -117,27 +119,29 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "My Host IP";
             // 
-            // label3
+            // lblLastVersion
             // 
-            this.label3.BackColor = System.Drawing.Color.SteelBlue;
-            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label3.Location = new System.Drawing.Point(0, 24);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(800, 83);
-            this.label3.TabIndex = 4;
+            this.lblLastVersion.BackColor = System.Drawing.Color.SteelBlue;
+            this.lblLastVersion.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblLastVersion.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblLastVersion.ForeColor = System.Drawing.Color.Crimson;
+            this.lblLastVersion.Location = new System.Drawing.Point(0, 24);
+            this.lblLastVersion.Name = "lblLastVersion";
+            this.lblLastVersion.Size = new System.Drawing.Size(800, 83);
+            this.lblLastVersion.TabIndex = 4;
             // 
             // txtVersion
             // 
             this.txtVersion.BackColor = System.Drawing.Color.SteelBlue;
             this.txtVersion.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtVersion.ForeColor = System.Drawing.Color.Transparent;
-            this.txtVersion.Location = new System.Drawing.Point(84, 84);
+            this.txtVersion.Location = new System.Drawing.Point(84, 87);
             this.txtVersion.Name = "txtVersion";
             this.txtVersion.ReadOnly = true;
             this.txtVersion.Size = new System.Drawing.Size(100, 13);
             this.txtVersion.TabIndex = 6;
             this.txtVersion.TabStop = false;
+            this.txtVersion.Text = "0.0.0.0";
             this.txtVersion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label4
@@ -227,6 +231,20 @@
             this.refreshLocalIPToolStripMenuItem1.Size = new System.Drawing.Size(248, 22);
             this.refreshLocalIPToolStripMenuItem1.Text = "Refresh Local IP";
             this.refreshLocalIPToolStripMenuItem1.Click += new System.EventHandler(this.refreshLocalIPToolStripMenuItem1_Click);
+            // 
+            // createDesktopShortcutToolStripMenuItem
+            // 
+            this.createDesktopShortcutToolStripMenuItem.Name = "createDesktopShortcutToolStripMenuItem";
+            this.createDesktopShortcutToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.createDesktopShortcutToolStripMenuItem.Text = "Create Desktop Shortcut";
+            this.createDesktopShortcutToolStripMenuItem.Click += new System.EventHandler(this.createDesktopShortcutToolStripMenuItem_Click);
+            // 
+            // createMonitorDesktopShortcutToolStripMenuItem
+            // 
+            this.createMonitorDesktopShortcutToolStripMenuItem.Name = "createMonitorDesktopShortcutToolStripMenuItem";
+            this.createMonitorDesktopShortcutToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.createMonitorDesktopShortcutToolStripMenuItem.Text = "Create Monitor Desktop Shortcut";
+            this.createMonitorDesktopShortcutToolStripMenuItem.Click += new System.EventHandler(this.createMonitorDesktopShortcutToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
@@ -328,6 +346,7 @@
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.SteelBlue;
             this.label5.ForeColor = System.Drawing.Color.Transparent;
@@ -339,6 +358,7 @@
             // 
             // label6
             // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.SteelBlue;
             this.label6.ForeColor = System.Drawing.Color.Transparent;
@@ -350,6 +370,7 @@
             // 
             // lblAutoBackup
             // 
+            this.lblAutoBackup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblAutoBackup.AutoSize = true;
             this.lblAutoBackup.BackColor = System.Drawing.Color.SteelBlue;
             this.lblAutoBackup.ForeColor = System.Drawing.Color.Transparent;
@@ -361,6 +382,7 @@
             // 
             // btRun1
             // 
+            this.btRun1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btRun1.BackColor = System.Drawing.Color.DarkGreen;
             this.btRun1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btRun1.ForeColor = System.Drawing.Color.White;
@@ -374,6 +396,7 @@
             // 
             // btDisable1
             // 
+            this.btDisable1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btDisable1.BackColor = System.Drawing.Color.Goldenrod;
             this.btDisable1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btDisable1.ForeColor = System.Drawing.Color.White;
@@ -387,6 +410,7 @@
             // 
             // btDisable2
             // 
+            this.btDisable2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btDisable2.BackColor = System.Drawing.Color.Goldenrod;
             this.btDisable2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btDisable2.ForeColor = System.Drawing.Color.White;
@@ -400,6 +424,7 @@
             // 
             // btRun2
             // 
+            this.btRun2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btRun2.BackColor = System.Drawing.Color.DarkGreen;
             this.btRun2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btRun2.ForeColor = System.Drawing.Color.White;
@@ -413,6 +438,7 @@
             // 
             // lblAutoUpdate
             // 
+            this.lblAutoUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblAutoUpdate.AutoSize = true;
             this.lblAutoUpdate.BackColor = System.Drawing.Color.SteelBlue;
             this.lblAutoUpdate.ForeColor = System.Drawing.Color.Transparent;
@@ -427,22 +453,9 @@
             this.timerCheckTask.Interval = 500;
             this.timerCheckTask.Tick += new System.EventHandler(this.timerCheckTask_Tick);
             // 
-            // createDesktopShortcutToolStripMenuItem
-            // 
-            this.createDesktopShortcutToolStripMenuItem.Name = "createDesktopShortcutToolStripMenuItem";
-            this.createDesktopShortcutToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
-            this.createDesktopShortcutToolStripMenuItem.Text = "Create Desktop Shortcut";
-            this.createDesktopShortcutToolStripMenuItem.Click += new System.EventHandler(this.createDesktopShortcutToolStripMenuItem_Click);
-            // 
-            // createMonitorDesktopShortcutToolStripMenuItem
-            // 
-            this.createMonitorDesktopShortcutToolStripMenuItem.Name = "createMonitorDesktopShortcutToolStripMenuItem";
-            this.createMonitorDesktopShortcutToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
-            this.createMonitorDesktopShortcutToolStripMenuItem.Text = "Create Monitor Desktop Shortcut";
-            this.createMonitorDesktopShortcutToolStripMenuItem.Click += new System.EventHandler(this.createMonitorDesktopShortcutToolStripMenuItem_Click);
-            // 
             // btDisable3
             // 
+            this.btDisable3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btDisable3.BackColor = System.Drawing.Color.Crimson;
             this.btDisable3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btDisable3.ForeColor = System.Drawing.Color.White;
@@ -456,6 +469,7 @@
             // 
             // btRun3
             // 
+            this.btRun3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btRun3.BackColor = System.Drawing.Color.DarkGreen;
             this.btRun3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btRun3.ForeColor = System.Drawing.Color.White;
@@ -469,6 +483,7 @@
             // 
             // lblNotifications
             // 
+            this.lblNotifications.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblNotifications.AutoSize = true;
             this.lblNotifications.BackColor = System.Drawing.Color.SteelBlue;
             this.lblNotifications.ForeColor = System.Drawing.Color.Transparent;
@@ -480,6 +495,7 @@
             // 
             // label8
             // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.SteelBlue;
             this.label8.ForeColor = System.Drawing.Color.Transparent;
@@ -489,11 +505,37 @@
             this.label8.TabIndex = 20;
             this.label8.Text = "Notifications";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.SteelBlue;
+            this.label3.ForeColor = System.Drawing.Color.Transparent;
+            this.label3.Location = new System.Drawing.Point(190, 87);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(65, 13);
+            this.label3.TabIndex = 25;
+            this.label3.Text = "Last Version";
+            // 
+            // lblLast
+            // 
+            this.lblLast.AutoSize = true;
+            this.lblLast.BackColor = System.Drawing.Color.SteelBlue;
+            this.lblLast.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblLast.ForeColor = System.Drawing.Color.Transparent;
+            this.lblLast.Location = new System.Drawing.Point(261, 87);
+            this.lblLast.Name = "lblLast";
+            this.lblLast.Size = new System.Drawing.Size(40, 13);
+            this.lblLast.TabIndex = 26;
+            this.lblLast.Text = "0.0.0.0";
+            this.lblLast.DoubleClick += new System.EventHandler(this.lblLast_DoubleClick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 613);
+            this.Controls.Add(this.lblLast);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.btDisable3);
             this.Controls.Add(this.btRun3);
             this.Controls.Add(this.lblNotifications);
@@ -513,7 +555,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtPublicIP);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lblLastVersion);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
@@ -534,7 +576,7 @@
         private System.Windows.Forms.TextBox txtPublicIP;
         private System.Windows.Forms.TextBox txtLocalIP;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblLastVersion;
         private System.Windows.Forms.TextBox txtVersion;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TabPage NewTab;
@@ -571,6 +613,8 @@
         private System.Windows.Forms.Button btRun3;
         private System.Windows.Forms.Label lblNotifications;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblLast;
     }
 }
 

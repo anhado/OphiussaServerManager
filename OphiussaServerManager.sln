@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NeXt.Vdf", "NeXtVdf\NeXt.Vd
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QueryMaster", "QueryMaster\QueryMaster.csproj", "{BC3B8088-1C92-433F-B506-99376D784CF9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OphiussaServerManagerUpdater", "OphiussaServerManagerUpdater\OphiussaServerManagerUpdater.csproj", "{81E1F25E-FFD6-4B76-95C4-06998AD4E8E1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug - Beta|Any CPU = Debug - Beta|Any CPU
@@ -215,6 +217,24 @@ Global
 		{BC3B8088-1C92-433F-B506-99376D784CF9}.Release|x64.Build.0 = Release|Any CPU
 		{BC3B8088-1C92-433F-B506-99376D784CF9}.Release|x86.ActiveCfg = Release|Any CPU
 		{BC3B8088-1C92-433F-B506-99376D784CF9}.Release|x86.Build.0 = Release|Any CPU
+		{81E1F25E-FFD6-4B76-95C4-06998AD4E8E1}.Debug - Beta|Any CPU.ActiveCfg = Debug|Any CPU
+		{81E1F25E-FFD6-4B76-95C4-06998AD4E8E1}.Debug - Beta|Any CPU.Build.0 = Debug|Any CPU
+		{81E1F25E-FFD6-4B76-95C4-06998AD4E8E1}.Debug - Beta|x64.ActiveCfg = Debug|Any CPU
+		{81E1F25E-FFD6-4B76-95C4-06998AD4E8E1}.Debug - Beta|x64.Build.0 = Debug|Any CPU
+		{81E1F25E-FFD6-4B76-95C4-06998AD4E8E1}.Debug - Beta|x86.ActiveCfg = Debug|Any CPU
+		{81E1F25E-FFD6-4B76-95C4-06998AD4E8E1}.Debug - Beta|x86.Build.0 = Debug|Any CPU
+		{81E1F25E-FFD6-4B76-95C4-06998AD4E8E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81E1F25E-FFD6-4B76-95C4-06998AD4E8E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81E1F25E-FFD6-4B76-95C4-06998AD4E8E1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{81E1F25E-FFD6-4B76-95C4-06998AD4E8E1}.Debug|x64.Build.0 = Debug|Any CPU
+		{81E1F25E-FFD6-4B76-95C4-06998AD4E8E1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{81E1F25E-FFD6-4B76-95C4-06998AD4E8E1}.Debug|x86.Build.0 = Debug|Any CPU
+		{81E1F25E-FFD6-4B76-95C4-06998AD4E8E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81E1F25E-FFD6-4B76-95C4-06998AD4E8E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81E1F25E-FFD6-4B76-95C4-06998AD4E8E1}.Release|x64.ActiveCfg = Release|Any CPU
+		{81E1F25E-FFD6-4B76-95C4-06998AD4E8E1}.Release|x64.Build.0 = Release|Any CPU
+		{81E1F25E-FFD6-4B76-95C4-06998AD4E8E1}.Release|x86.ActiveCfg = Release|Any CPU
+		{81E1F25E-FFD6-4B76-95C4-06998AD4E8E1}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

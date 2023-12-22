@@ -201,8 +201,6 @@ namespace OphiussaServerManager.Forms
             }
         }
 
-
-
         private void CreateWindowsTasks()
         {
             #region AutoStartServer

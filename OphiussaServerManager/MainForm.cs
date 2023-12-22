@@ -13,9 +13,11 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.ComTypes;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace OphiussaServerManager
@@ -91,7 +93,36 @@ namespace OphiussaServerManager
                 tabControl1.SelectedIndex = 0;
                 this.tabControl1.HandleCreated += tabControl1_HandleCreated;
 
+                try
+                {
+                    using (var client = new WebClient())
+                    {
+                        client.DownloadFile("https://www.ophiussa.eu/OSM/latest.txt", "latest.txt");
+                    }
 
+                    string lastversion = File.ReadAllText("latest.txt");
+                    var versionInfo = FileVersionInfo.GetVersionInfo("OphiussaServerManager.exe");
+                    string currentVersion = versionInfo.FileVersion;
+
+                    var version1 = new Version(lastversion);
+                    var version2 = new Version(currentVersion);
+                    var result = version1.CompareTo(version2);
+                    if (result > 0)
+                    {
+                        lblLast.Text = lastversion;
+                        lblLast.Visible = true;
+                        lblLast.ForeColor = Color.Crimson;
+                    }
+                    else
+                    {
+                        lblLast.Visible = false;
+                        lblLast.ForeColor = SystemColors.ControlText;
+                    }
+                }
+                catch (Exception)
+                {
+
+                }
             }
             catch (Exception ex)
             {
@@ -461,7 +492,7 @@ namespace OphiussaServerManager
 
                 string taskName3 = "OphiussaServerManager\\Notification_" + MainForm.Settings.GUID;
                 Microsoft.Win32.TaskScheduler.Task task3 = TaskService.Instance.GetTask(taskName3);
-                if (task2 != null)
+                if (task3 != null)
                 {
                     var x = lTasks.Find(xc => xc?.Name == "Notification_" + MainForm.Settings.GUID);
 
@@ -845,6 +876,57 @@ namespace OphiussaServerManager
         private void btDisable1_Click(object sender, EventArgs e)
         {
             //TODO: disable task 1
+        }
+
+        private void lblLast_DoubleClick(object sender, EventArgs e)
+        {
+            //TODO:Launch Updater
+            if (MessageBox.Show("Do you want update the Ophiussa Server Manager?", "Updater", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                var lTasks = TaskService.Instance.GetRunningTasks().ToList();
+
+                string taskName = "OphiussaServerManager\\AutoBackup_" + MainForm.Settings.GUID;
+                Microsoft.Win32.TaskScheduler.Task task = TaskService.Instance.GetTask(taskName);
+                if (task != null)
+                {
+                    task.Definition.Principal.RunLevel = TaskRunLevel.Highest;
+                    task.Definition.Settings.Priority = ProcessPriorityClass.Normal;
+                    var x = lTasks.Find(xc => xc?.Name == "AutoBackup_" + MainForm.Settings.GUID);
+
+                    if (x != null)
+                    {
+                        task.Stop();
+                    }
+                }
+
+                string taskName2 = "OphiussaServerManager\\AutoUpdate_" + MainForm.Settings.GUID;
+
+                Microsoft.Win32.TaskScheduler.Task task2 = TaskService.Instance.GetTask(taskName2);
+                if (task2 != null)
+                {
+                    var x = lTasks.Find(xc => xc?.Name == "AutoUpdate_" + MainForm.Settings.GUID);
+
+                    if (x != null)
+                    {
+                        task2.Stop();
+                    }
+                }
+
+                string taskName3 = "OphiussaServerManager\\Notification_" + MainForm.Settings.GUID;
+                Microsoft.Win32.TaskScheduler.Task task3 = TaskService.Instance.GetTask(taskName3);
+                if (task3 != null)
+                {
+                    var x = lTasks.Find(xc => xc?.Name == "Notification_" + MainForm.Settings.GUID);
+
+                    if (x != null)
+                    {
+                        task3.Stop();
+                    }
+                }
+
+                Common.Utils.ExecuteAsAdmin("OphiussaServerManagerUpdater.exe", "", false, false);
+                this.Close();
+            }
         }
     }
 }
