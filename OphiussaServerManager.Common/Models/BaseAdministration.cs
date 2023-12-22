@@ -25,8 +25,8 @@ namespace OphiussaServerManager.Common.Models
 
     public abstract class BaseProfile
     {
-        //public abstract string GetCPUAffinity();
-        public abstract string GetCommandLinesArguments(Settings settings, Profile profile, string locaIP); 
+        public abstract string GetCommandLinesArguments(Settings settings, string locaIP);
+        public abstract void BackupServer(Settings settings);
         public string GetCPUAffinity(string CPUAffinity, List<ProcessorAffinity> CPUAffinityList)
         {
             List<ProcessorAffinity> lst = new List<ProcessorAffinity>();

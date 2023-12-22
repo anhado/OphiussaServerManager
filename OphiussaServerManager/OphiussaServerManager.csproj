@@ -295,6 +295,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools\AutoBackup.cs" />
     <Compile Include="Tools\AutoUpdate.cs" />
     <Compile Include="Tools\NotificationController.cs" />
     <Compile Include="Tools\ServerTools.cs" />

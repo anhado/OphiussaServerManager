@@ -37,7 +37,7 @@ namespace OphiussaServerManager
                 else if (Array.IndexOf(args, "-ab") >= 0)
                 {
                     OphiussaLogger.ReconfigureLogging();
-                    ServerTools.BackupServer();
+                    ServerTools.BackupAllServer();
                 }
                 else if (Array.IndexOf(args, "-notifications") >= 0)
                 {

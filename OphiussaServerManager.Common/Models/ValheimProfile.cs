@@ -68,7 +68,7 @@ namespace OphiussaServerManager.Common.Models.ValheimProfile
     }
 
 
-    public class ValheimProfile : BaseProfile
+    public class ValheimProfile
     {
         public Administration Administration { get; set; }
 
@@ -79,7 +79,7 @@ namespace OphiussaServerManager.Common.Models.ValheimProfile
 
         }
 
-        public override string GetCommandLinesArguments(Settings settings, Profile profile, string locaIP)
+        public string GetCommandLinesArguments(Settings settings, Profile profile, string locaIP)
         {
             string cmd = string.Empty;
 
@@ -115,11 +115,6 @@ namespace OphiussaServerManager.Common.Models.ValheimProfile
             cmd += string.Join("", hifenArgs.ToArray());
 
             return cmd;
-        }
-
-        public string GetCPUAffinity()
-        {
-            return base.GetCPUAffinity(this.Administration.CPUAffinity, this.Administration.CPUAffinityList);
         }
     }
 

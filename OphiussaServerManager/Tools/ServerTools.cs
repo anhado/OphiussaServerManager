@@ -1,4 +1,5 @@
 ﻿using OphiussaServerManager.Common.Models;
+using OphiussaServerManager.Tools;
 using OphiussaServerManager.Tools.Update;
 using System;
 using System.Collections.Generic;
@@ -28,10 +29,18 @@ namespace OphiussaServerManager
             autoUpdate.UpdateSingleServerJob2(ProfileKey, restartOnlyToUpdate);
         }
 
-        public static void BackupServer()
+        public static void BackupAllServer()
         {
-
+            AutoBackup autoBackup = new AutoBackup();
+            autoBackup.BackupAllServers();
         }
+
+        public static void BackupSingleServer(string ProfileKey)
+        {
+            AutoBackup autoBackup = new AutoBackup();
+            autoBackup.BackupSingleServers(ProfileKey);
+        }
+
 
     }
 }

@@ -305,7 +305,7 @@ namespace OphiussaServerManager.Tools.Update
                 }
                 foreach (var p in profiles)
                 {
-                    if (servers.Find(x3 => p.Type == x3.Type) == null)
+                    if (servers.Find(x3 => p.Type.ServerType == x3.Type.ServerType) == null)
                     {
                         servers.Add(new CacheServerTypes()
                         {

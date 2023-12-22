@@ -1,11 +1,16 @@
 ﻿using CoreRCON;
+using FirewallManager;
 using Newtonsoft.Json;
 using OphiussaServerManager.Common.Helpers;
+using OphiussaServerManager.Common.Ini;
 using OphiussaServerManager.Common.Models.SupportedServers;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.Eventing.Reader;
+using System.Globalization;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Runtime;
@@ -13,10 +18,11 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Shapes;
 
 namespace OphiussaServerManager.Common.Models.Profiles
 {
-    public class Profile
+    public class Profile : BaseProfile
     {
         [JsonProperty("Key")]
         public string Key { get; set; }
@@ -58,7 +64,7 @@ namespace OphiussaServerManager.Common.Models.Profiles
         {
             get
             {
-                return Utils.GetProcessRunning(Path.Combine(InstallLocation, Type.ExecutablePath)) != null;
+                return Utils.GetProcessRunning(System.IO.Path.Combine(InstallLocation, Type.ExecutablePath)) != null;
             }
         }
 
@@ -91,9 +97,9 @@ namespace OphiussaServerManager.Common.Models.Profiles
         public string GetBuild()
         {
             string fileName = this.Type.ManifestFileName;
-            if (!File.Exists(Path.Combine(this.InstallLocation, "steamapps", fileName))) return "";
+            if (!File.Exists(System.IO.Path.Combine(this.InstallLocation, "steamapps", fileName))) return "";
 
-            string[] content = File.ReadAllText(Path.Combine(this.InstallLocation, "steamapps", fileName)).Split('\n');
+            string[] content = File.ReadAllText(System.IO.Path.Combine(this.InstallLocation, "steamapps", fileName)).Split('\n');
 
             foreach (var item in content)
             {
@@ -105,19 +111,19 @@ namespace OphiussaServerManager.Common.Models.Profiles
                 }
 
             }
-            return System.IO.File.ReadAllText(Path.Combine(this.InstallLocation, "steamapps", fileName));
+            return System.IO.File.ReadAllText(System.IO.Path.Combine(this.InstallLocation, "steamapps", fileName));
         }
 
         public string GetVersion()
         {
-            if (!File.Exists(Path.Combine(this.InstallLocation, "version.txt"))) return "";
+            if (!File.Exists(System.IO.Path.Combine(this.InstallLocation, "version.txt"))) return "";
 
-            return System.IO.File.ReadAllText(Path.Combine(this.InstallLocation, "version.txt"));
+            return System.IO.File.ReadAllText(System.IO.Path.Combine(this.InstallLocation, "version.txt"));
         }
 
         public Process GetExeProcess()
         {
-            string ClientFile = Path.Combine(this.InstallLocation, Type.ExecutablePath);
+            string ClientFile = System.IO.Path.Combine(this.InstallLocation, Type.ExecutablePath);
             if (string.IsNullOrWhiteSpace(ClientFile) || !System.IO.File.Exists(ClientFile))
                 return (Process)null;
             string a = IOUtils.NormalizePath(ClientFile);
@@ -146,7 +152,7 @@ namespace OphiussaServerManager.Common.Models.Profiles
 
         public void SaveProfile(Settings sett)
         {
-            string fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json");
+            string fileName = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json");
             Settings settings = JsonConvert.DeserializeObject<Settings>(File.ReadAllText(fileName));
             string dir = settings.DataFolder + "Profiles\\";
             if (!Directory.Exists(dir))
@@ -169,16 +175,16 @@ namespace OphiussaServerManager.Common.Models.Profiles
                     ARKConfiguration.SaveGameINI(this);
 
                     string priority = ARKConfiguration.Administration.CPUPriority.ToString().ToLower();
-                    string affinity = ARKConfiguration.GetCPUAffinity();
+                    string affinity = GetCPUAffinity();
 
                     if (!string.IsNullOrEmpty(affinity)) affinity = "/affinity " + affinity;
 
-                    File.WriteAllText(sett.DataFolder + $"StartServer\\Run_{this.Key.Replace("-", "")}.cmd", $"start \"{this.Name}\" /{priority} {affinity} \"{Path.Combine(InstallLocation, (this.ARKConfiguration.Administration.UseServerAPI ? Type.ExecutablePathAPI : Type.ExecutablePath))}\" {this.ARKConfiguration.GetCommandLinesArguments(sett, this, this.ARKConfiguration.Administration.LocalIP)}");
+                    File.WriteAllText(sett.DataFolder + $"StartServer\\Run_{this.Key.Replace("-", "")}.cmd", $"start \"{this.Name}\" /{priority} {affinity} \"{System.IO.Path.Combine(InstallLocation, (this.ARKConfiguration.Administration.UseServerAPI ? Type.ExecutablePathAPI : Type.ExecutablePath))}\" {this.ARKConfiguration.GetCommandLinesArguments(sett, this, this.ARKConfiguration.Administration.LocalIP)}");
                     break;
                 case EnumServerType.Valheim:
 
                     string priorityV = ValheimConfiguration.Administration.CPUPriority.ToString().ToLower();
-                    string affinityV = ValheimConfiguration.GetCPUAffinity();
+                    string affinityV = GetCPUAffinity();
 
                     StringBuilder stringBuilder = new StringBuilder();
                     stringBuilder.AppendLine($"@echo off");
@@ -186,7 +192,7 @@ namespace OphiussaServerManager.Common.Models.Profiles
                     stringBuilder.AppendLine($"");
                     stringBuilder.AppendLine($"echo \"Starting server PRESS CTRL-C to exit\"");
                     stringBuilder.AppendLine($"");
-                    stringBuilder.AppendLine($"start \"{this.Name}\" /{priorityV} {affinityV} \"{Path.Combine(InstallLocation, Type.ExecutablePath)}\" {this.ValheimConfiguration.GetCommandLinesArguments(sett, this, this.ValheimConfiguration.Administration.LocalIP)}");
+                    stringBuilder.AppendLine($"start \"{this.Name}\" /{priorityV} {affinityV} \"{System.IO.Path.Combine(InstallLocation, Type.ExecutablePath)}\" {this.ValheimConfiguration.GetCommandLinesArguments(sett, this, this.ValheimConfiguration.Administration.LocalIP)}");
 
                     File.WriteAllText(sett.DataFolder + $"StartServer\\Run_{this.Key.Replace("-", "")}.bat", stringBuilder.ToString());
                     break;
@@ -232,7 +238,7 @@ namespace OphiussaServerManager.Common.Models.Profiles
                     }
                     else
                     {
-                        Utils.SendCloseCommand(Utils.GetProcessRunning(Path.Combine(InstallLocation, Type.ExecutablePath)));
+                        Utils.SendCloseCommand(Utils.GetProcessRunning(System.IO.Path.Combine(InstallLocation, Type.ExecutablePath)));
                     }
                     break;
             }
@@ -291,7 +297,7 @@ namespace OphiussaServerManager.Common.Models.Profiles
 
         public void LoadProfile(bool readFileDisk = true)
         {
-            string fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json");
+            string fileName = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json");
             Settings settings = JsonConvert.DeserializeObject<Settings>(File.ReadAllText(fileName));
             string dir = settings.DataFolder + "Profiles\\";
             if (!Directory.Exists(dir))
@@ -311,7 +317,7 @@ namespace OphiussaServerManager.Common.Models.Profiles
         }
         public string GetProfileSaveGamesPath(Profile profile) => profile.GetProfileSaveGamesPath(profile?.InstallLocation);
 
-        public string GetProfileSaveGamesPath(string installDirectory) => Path.Combine(installDirectory ?? string.Empty, this.Type.SavedRelativePath, this.Type.SaveGamesRelativePath);
+        public string GetProfileSaveGamesPath(string installDirectory) => System.IO.Path.Combine(installDirectory ?? string.Empty, this.Type.SavedRelativePath, this.Type.SaveGamesRelativePath);
 
         public string GetProfileSavePath(Profile profile) => profile.GetProfileSavePath(profile, profile?.InstallLocation, profile?.ARKConfiguration.Administration.AlternateSaveDirectoryName);
 
@@ -326,15 +332,190 @@ namespace OphiussaServerManager.Common.Models.Profiles
 
                     if (!string.IsNullOrWhiteSpace(altSaveDirectoryName))
                     {
-                        return Path.Combine(installDirectory ?? string.Empty, this.Type.SavedRelativePath, altSaveDirectoryName, profile.ARKConfiguration.Administration.MapName);
+                        return System.IO.Path.Combine(installDirectory ?? string.Empty, this.Type.SavedRelativePath, altSaveDirectoryName, profile.ARKConfiguration.Administration.MapName);
                     }
-                    return Path.Combine(installDirectory ?? string.Empty, this.Type.SavedFilesRelativePath, profile.ARKConfiguration.Administration.MapName);
+                    return System.IO.Path.Combine(installDirectory ?? string.Empty, this.Type.SavedFilesRelativePath, profile.ARKConfiguration.Administration.MapName);
+
+                case EnumServerType.ArkSurviveEvolved:
+                    if (!string.IsNullOrWhiteSpace(altSaveDirectoryName))
+                    {
+                        return System.IO.Path.Combine(installDirectory ?? string.Empty, this.Type.SavedRelativePath, altSaveDirectoryName);
+                    }
+                    return System.IO.Path.Combine(installDirectory ?? string.Empty, this.Type.SavedFilesRelativePath);
+
+                case EnumServerType.Valheim:
+                    if (!string.IsNullOrEmpty(this.ValheimConfiguration.Administration.SaveLocation))
+                        return System.IO.Path.Combine(this.ValheimConfiguration.Administration.SaveLocation, "worlds_local\\");
+
+                    return System.IO.Path.Combine(Utils.GetLocalLowFolderPath(), "\\IronGate\\Valheim\\worlds_local\\");
             }
             if (!string.IsNullOrWhiteSpace(altSaveDirectoryName))
             {
-                return Path.Combine(installDirectory ?? string.Empty, this.Type.SavedRelativePath, altSaveDirectoryName);
+                return System.IO.Path.Combine(installDirectory ?? string.Empty, this.Type.SavedRelativePath, altSaveDirectoryName);
             }
-            return Path.Combine(installDirectory ?? string.Empty, this.Type.SavedFilesRelativePath);
+            return System.IO.Path.Combine(installDirectory ?? string.Empty, this.Type.SavedFilesRelativePath);
+        }
+
+        public override string GetCommandLinesArguments(Settings settings, string locaIP)
+        {
+            switch (this.Type.ServerType)
+            {
+                case EnumServerType.ArkSurviveEvolved:
+                case EnumServerType.ArkSurviveAscended:
+                    return ARKConfiguration.GetCommandLinesArguments(settings, this, locaIP);
+                case EnumServerType.Valheim:
+                    return ValheimConfiguration.GetCommandLinesArguments(settings, this, locaIP);
+            }
+            return "";
+        }
+
+        public string GetCPUAffinity()
+        {
+            switch (this.Type.ServerType)
+            {
+                case EnumServerType.ArkSurviveEvolved:
+                case EnumServerType.ArkSurviveAscended:
+                    return base.GetCPUAffinity(this.ARKConfiguration.Administration.CPUAffinity, this.ARKConfiguration.Administration.CPUAffinityList);
+                case EnumServerType.Valheim:
+                    return base.GetCPUAffinity(this.ValheimConfiguration.Administration.CPUAffinity, this.ValheimConfiguration.Administration.CPUAffinityList);
+            }
+            return "";
+        }
+
+        public override async void BackupServer(Settings settings)
+        {
+            string SaveGamesFolder = this.GetProfileSavePath(this);
+
+            switch (this.Type.ServerType)
+            {
+                case EnumServerType.ArkSurviveEvolved:
+                case EnumServerType.ArkSurviveAscended:
+                    if (this.ARKConfiguration.Administration.UseRCON)
+                    {
+                        Task t2 = Task.Run(() => this.ARKConfiguration.SaveWorldRCON(settings), cancellationToken.Token);
+                        t2.Wait();
+                        Task t3 = Task.Run(() => CreateServerBackup(settings, SaveGamesFolder), cancellationToken.Token);
+                        t3.Wait();
+                        Task t4 = Task.Run(() => CreateProfileBackup(settings), cancellationToken.Token);
+                        t4.Wait();
+                    }
+                    else
+                    {
+                        Task t3 = Task.Run(() => CreateServerBackup(settings, SaveGamesFolder), cancellationToken.Token);
+                        t3.Wait();
+                        Task t4 = Task.Run(() => CreateProfileBackup(settings), cancellationToken.Token);
+                        t4.Wait();
+                    }
+                    break;
+                case EnumServerType.Valheim:
+                    Task t5 = Task.Run(() => CreateServerBackup(settings, SaveGamesFolder), cancellationToken.Token);
+                    t5.Wait();
+                    Task t6 = Task.Run(() => CreateProfileBackup(settings), cancellationToken.Token);
+                    t6.Wait();
+                    break;
+            }
+        }
+
+        private async Task<bool> CreateProfileBackup(Settings settings)
+        {
+            try
+            {
+                List<string> files = new List<string>();
+                switch (this.Type.ServerType)
+                {
+                    case EnumServerType.ArkSurviveEvolved:
+                    case EnumServerType.ArkSurviveAscended:
+                        SystemIniFile systemIniFile = new SystemIniFile(this.InstallLocation);
+                        foreach (var fName in systemIniFile.FileNames)
+                        {
+                            files.Add(System.IO.Path.Combine(this.InstallLocation, fName.Value));
+                        }
+                        break;
+                    case EnumServerType.Valheim:
+                        //nothing to ad
+                        break;
+                }
+                string dirProfiles = settings.DataFolder + "Profiles\\";
+                files.Add(System.IO.Path.Combine(dirProfiles, this.Key + ".json"));
+                files.Add(settings.DataFolder + $"StartServer\\Run_{this.Key.Replace("-", "")}.cmd");
+
+                if (!Directory.Exists(settings.BackupDirectory)) Directory.CreateDirectory(settings.BackupDirectory);
+                if (!Directory.Exists(System.IO.Path.Combine(settings.BackupDirectory, "profiles", this.Key))) Directory.CreateDirectory(System.IO.Path.Combine(settings.BackupDirectory, "profiles", this.Key));
+
+                using (ZipArchive zip = ZipFile.Open(System.IO.Path.Combine(settings.BackupDirectory, "profiles", this.Key) + $"\\{this.Type.KeyName}_{this.Key}_{DateTime.Now.ToString("yyyyMMddHHmmssfff", CultureInfo.InvariantCulture)}.zip", ZipArchiveMode.Create))
+                {
+                    foreach (var file in files)
+                    {
+                        FileInfo f = new FileInfo(file);
+                        zip.CreateEntryFromFile(file, file.Replace(this.InstallLocation, "").Replace(settings.DataFolder, ""));
+                    }
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                OphiussaLogger.logger.Error(ex);
+                return false;
+            }
+        }
+
+        private async Task<bool> CreateServerBackup(Settings settings, string saveGamesFolder)
+        {
+            try
+            {
+                List<string> files = new List<string>();
+                switch (this.Type.ServerType)
+                {
+                    case EnumServerType.ArkSurviveEvolved:
+                    case EnumServerType.ArkSurviveAscended:
+                        files.Add($"{saveGamesFolder}\\{this.ARKConfiguration.Administration.MapName}.ark");
+                        if (settings.IncludeSaveGamesFolder)
+                        {
+                            string savegameFolder = System.IO.Path.Combine(this.InstallLocation, "ShooterGame\\Saved\\SaveGames");
+                            System.IO.DirectoryInfo dir1 = new System.IO.DirectoryInfo(savegameFolder);
+                            IEnumerable<System.IO.FileInfo> list1 = dir1.GetFiles("*.*", System.IO.SearchOption.AllDirectories);
+                            foreach (var item in list1.ToList())
+                            {
+                                files.Add(item.FullName);
+                            }
+                        }
+
+                        break;
+                    case EnumServerType.Valheim:
+                        files.Add($"{saveGamesFolder}{this.ValheimConfiguration.Administration.WordName}.db");
+                        files.Add($"{saveGamesFolder}{this.ValheimConfiguration.Administration.WordName}.fwl");
+                        break;
+                }
+
+                if (!Directory.Exists(settings.BackupDirectory)) Directory.CreateDirectory(settings.BackupDirectory);
+
+                if (!Directory.Exists(System.IO.Path.Combine(settings.BackupDirectory, "servers", this.Key))) Directory.CreateDirectory(System.IO.Path.Combine(settings.BackupDirectory, "servers", this.Key));
+
+                using (ZipArchive zip = ZipFile.Open(System.IO.Path.Combine(settings.BackupDirectory, "servers", this.Key) + $"\\{this.Type.KeyName}_{this.Key}_{DateTime.Now.ToString("yyyyMMddHHmmssfff", CultureInfo.InvariantCulture)}.zip", ZipArchiveMode.Create))
+                {
+                    foreach (var file in files)
+                    {
+                        FileInfo f = new FileInfo(file);
+                        zip.CreateEntryFromFile(file, file.Replace(this.InstallLocation, "").Replace(saveGamesFolder, ""));
+                    }
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                OphiussaLogger.logger.Error(ex);
+                return false;
+            }
+        }
+
+        [JsonIgnore]
+        CancellationTokenSource cancellationToken = new CancellationTokenSource();
+
+        private void Watcher_Changed(object sender, FileSystemEventArgs e)
+        {
+
         }
     }
 

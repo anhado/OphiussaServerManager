@@ -12,11 +12,15 @@ using static System.Net.WebRequestMethods;
 using System.Windows.Documents;
 using Newtonsoft.Json.Linq;
 using static System.Collections.Specialized.BitVector32;
+using System.Net;
+using CoreRCON;
+using System.Runtime.InteropServices;
+using System.Runtime;
 
 namespace OphiussaServerManager.Common.Models.Profiles.ArkProfile
 {
 
-    public class ArkProfile : BaseProfile
+    public class ArkProfile /*: BaseProfile*/
     {
         public Administration Administration { get; set; }
         public string DefaultGameUserSettingsINILocation { get { return "ShooterGame\\Saved\\Config\\WindowsServer\\GameUserSettings.ini"; } }
@@ -118,9 +122,9 @@ namespace OphiussaServerManager.Common.Models.Profiles.ArkProfile
             }
         }
 
-         
 
-        public override string GetCommandLinesArguments(Settings settings, Profile prf, string PublicIP)
+
+        public string GetCommandLinesArguments(Settings settings, Profile prf, string PublicIP)
         {
             string cmd = string.Empty;
 
@@ -217,9 +221,21 @@ namespace OphiussaServerManager.Common.Models.Profiles.ArkProfile
 
             return cmd;
         }
-        public string GetCPUAffinity()
+
+        internal async Task<bool> SaveWorldRCON(Settings settings)
         {
-            return base.GetCPUAffinity(this.Administration.CPUAffinity, this.Administration.CPUAffinityList);
+            try
+            {
+                RCON rcon = new RCON(IPAddress.Parse(this.Administration.LocalIP), ushort.Parse(this.Administration.RCONPort), this.Administration.ServerAdminPassword);
+                await rcon.ConnectAsync();
+                await rcon.SendCommandAsync($"Broadcast {settings.WorldSaveMessage}");
+                await rcon.SendCommandAsync("saveworld");
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 

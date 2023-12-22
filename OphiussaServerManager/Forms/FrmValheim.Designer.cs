@@ -37,9 +37,12 @@
             this.txtServerType = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btStart = new System.Windows.Forms.Button();
+            this.btUpdate = new System.Windows.Forms.Button();
             this.btChooseFolder = new System.Windows.Forms.Button();
             this.txtLocation = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.btSave = new System.Windows.Forms.Button();
+            this.btSync = new System.Windows.Forms.Button();
             this.txtProfileName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtProfileID = new System.Windows.Forms.TextBox();
@@ -172,9 +175,6 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.cbBranch = new System.Windows.Forms.ComboBox();
             this.label22 = new System.Windows.Forms.Label();
-            this.btUpdate = new System.Windows.Forms.Button();
-            this.btSave = new System.Windows.Forms.Button();
-            this.btSync = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.expandCollapsePanel4.SuspendLayout();
             this.groupBox11.SuspendLayout();
@@ -286,6 +286,20 @@
             this.btStart.UseVisualStyleBackColor = true;
             this.btStart.Click += new System.EventHandler(this.btStart_Click);
             // 
+            // btUpdate
+            // 
+            this.btUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btUpdate.Image = global::OphiussaServerManager.Properties.Resources.upgrade__misc_icon_icon;
+            this.btUpdate.Location = new System.Drawing.Point(698, 34);
+            this.btUpdate.Name = "btUpdate";
+            this.btUpdate.Size = new System.Drawing.Size(156, 23);
+            this.btUpdate.TabIndex = 9;
+            this.btUpdate.Text = "Update/Verify";
+            this.btUpdate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btUpdate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btUpdate.UseVisualStyleBackColor = true;
+            this.btUpdate.Click += new System.EventHandler(this.btUpdate_Click);
+            // 
             // btChooseFolder
             // 
             this.btChooseFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -314,6 +328,33 @@
             this.label3.Size = new System.Drawing.Size(89, 13);
             this.label3.TabIndex = 6;
             this.label3.Text = "Installation Folder";
+            // 
+            // btSave
+            // 
+            this.btSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btSave.Image = global::OphiussaServerManager.Properties.Resources.save_16x16;
+            this.btSave.Location = new System.Drawing.Point(779, 8);
+            this.btSave.Name = "btSave";
+            this.btSave.Size = new System.Drawing.Size(75, 23);
+            this.btSave.TabIndex = 5;
+            this.btSave.Text = "Save";
+            this.btSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btSave.UseVisualStyleBackColor = true;
+            this.btSave.Click += new System.EventHandler(this.btSave_Click);
+            // 
+            // btSync
+            // 
+            this.btSync.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btSync.Image = global::OphiussaServerManager.Properties.Resources.Copy_icon_icon;
+            this.btSync.Location = new System.Drawing.Point(698, 8);
+            this.btSync.Name = "btSync";
+            this.btSync.Size = new System.Drawing.Size(75, 23);
+            this.btSync.TabIndex = 4;
+            this.btSync.Text = "Sync";
+            this.btSync.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btSync.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btSync.UseVisualStyleBackColor = true;
             // 
             // txtProfileName
             // 
@@ -1848,47 +1889,6 @@
             this.label22.Size = new System.Drawing.Size(46, 15);
             this.label22.TabIndex = 4;
             this.label22.Text = "Branch";
-            // 
-            // btUpdate
-            // 
-            this.btUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btUpdate.Image = global::OphiussaServerManager.Properties.Resources.upgrade__misc_icon_icon;
-            this.btUpdate.Location = new System.Drawing.Point(698, 34);
-            this.btUpdate.Name = "btUpdate";
-            this.btUpdate.Size = new System.Drawing.Size(156, 23);
-            this.btUpdate.TabIndex = 9;
-            this.btUpdate.Text = "Update/Verify";
-            this.btUpdate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btUpdate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btUpdate.UseVisualStyleBackColor = true;
-            this.btUpdate.Click += new System.EventHandler(this.btUpdate_Click);
-            // 
-            // btSave
-            // 
-            this.btSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btSave.Image = global::OphiussaServerManager.Properties.Resources.save_16x16;
-            this.btSave.Location = new System.Drawing.Point(779, 8);
-            this.btSave.Name = "btSave";
-            this.btSave.Size = new System.Drawing.Size(75, 23);
-            this.btSave.TabIndex = 5;
-            this.btSave.Text = "Save";
-            this.btSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btSave.UseVisualStyleBackColor = true;
-            this.btSave.Click += new System.EventHandler(this.btSave_Click);
-            // 
-            // btSync
-            // 
-            this.btSync.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btSync.Image = global::OphiussaServerManager.Properties.Resources.Copy_icon_icon;
-            this.btSync.Location = new System.Drawing.Point(698, 8);
-            this.btSync.Name = "btSync";
-            this.btSync.Size = new System.Drawing.Size(75, 23);
-            this.btSync.TabIndex = 4;
-            this.btSync.Text = "Sync";
-            this.btSync.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btSync.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btSync.UseVisualStyleBackColor = true;
             // 
             // FrmValheim
             // 

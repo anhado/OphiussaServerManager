@@ -24,6 +24,10 @@ namespace OphiussaServerManager.Common
         [DllImport("user32.dll")]
         public static extern int SetForegroundWindow(IntPtr hWnd);
 
+        [DllImport("shell32.dll")]
+        static extern int SHGetKnownFolderPath([MarshalAs(UnmanagedType.LPStruct)] Guid rfid, uint dwFlags, IntPtr hToken, out IntPtr pszPath);
+
+        static Guid localLowId = new Guid("A520A1A4-1780-4FF6-BD18-167343C5AF16");
         public const string DEFAULT_CULTURE_CODE = "en-US";
         public static void ExecuteAsAdmin(string exeName, string parameters, bool wait = true, bool noWindow = false, bool dontRunAsAdmin = false)
         {
@@ -394,5 +398,24 @@ namespace OphiussaServerManager.Common
             SetForegroundWindow(process.MainWindowHandle);
             SendKeys.SendWait("^(c)");
         }
+
+        public static string GetLocalLowFolderPath()
+        {
+            Guid knownFolderId = localLowId;
+            IntPtr pszPath = IntPtr.Zero;
+            try
+            {
+                int hr = SHGetKnownFolderPath(knownFolderId, 0, IntPtr.Zero, out pszPath);
+                if (hr >= 0)
+                    return Marshal.PtrToStringAuto(pszPath);
+                throw Marshal.GetExceptionForHR(hr);
+            }
+            finally
+            {
+                if (pszPath != IntPtr.Zero)
+                    Marshal.FreeCoTaskMem(pszPath);
+            }
+        }
+
     }
 }
