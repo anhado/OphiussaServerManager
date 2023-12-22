@@ -67,6 +67,10 @@
             this.timerCheckTask = new System.Windows.Forms.Timer(this.components);
             this.createDesktopShortcutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createMonitorDesktopShortcutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btDisable3 = new System.Windows.Forms.Button();
+            this.btRun3 = new System.Windows.Forms.Button();
+            this.lblNotifications = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -379,6 +383,7 @@
             this.btDisable1.TabIndex = 16;
             this.btDisable1.Text = "Disable";
             this.btDisable1.UseVisualStyleBackColor = false;
+            this.btDisable1.Click += new System.EventHandler(this.btDisable1_Click);
             // 
             // btDisable2
             // 
@@ -391,6 +396,7 @@
             this.btDisable2.TabIndex = 19;
             this.btDisable2.Text = "Disable";
             this.btDisable2.UseVisualStyleBackColor = false;
+            this.btDisable2.Click += new System.EventHandler(this.btDisable2_Click);
             // 
             // btRun2
             // 
@@ -435,11 +441,63 @@
             this.createMonitorDesktopShortcutToolStripMenuItem.Text = "Create Monitor Desktop Shortcut";
             this.createMonitorDesktopShortcutToolStripMenuItem.Click += new System.EventHandler(this.createMonitorDesktopShortcutToolStripMenuItem_Click);
             // 
+            // btDisable3
+            // 
+            this.btDisable3.BackColor = System.Drawing.Color.Crimson;
+            this.btDisable3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btDisable3.ForeColor = System.Drawing.Color.White;
+            this.btDisable3.Location = new System.Drawing.Point(721, 83);
+            this.btDisable3.Name = "btDisable3";
+            this.btDisable3.Size = new System.Drawing.Size(56, 21);
+            this.btDisable3.TabIndex = 23;
+            this.btDisable3.Text = "Stop";
+            this.btDisable3.UseVisualStyleBackColor = false;
+            this.btDisable3.Click += new System.EventHandler(this.btDisable3_Click);
+            // 
+            // btRun3
+            // 
+            this.btRun3.BackColor = System.Drawing.Color.DarkGreen;
+            this.btRun3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btRun3.ForeColor = System.Drawing.Color.White;
+            this.btRun3.Location = new System.Drawing.Point(666, 83);
+            this.btRun3.Name = "btRun3";
+            this.btRun3.Size = new System.Drawing.Size(49, 21);
+            this.btRun3.TabIndex = 22;
+            this.btRun3.Text = "Start";
+            this.btRun3.UseVisualStyleBackColor = false;
+            this.btRun3.Click += new System.EventHandler(this.btRun3_Click);
+            // 
+            // lblNotifications
+            // 
+            this.lblNotifications.AutoSize = true;
+            this.lblNotifications.BackColor = System.Drawing.Color.SteelBlue;
+            this.lblNotifications.ForeColor = System.Drawing.Color.Transparent;
+            this.lblNotifications.Location = new System.Drawing.Point(622, 87);
+            this.lblNotifications.Name = "lblNotifications";
+            this.lblNotifications.Size = new System.Drawing.Size(38, 13);
+            this.lblNotifications.TabIndex = 21;
+            this.lblNotifications.Text = "Ready";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.SteelBlue;
+            this.label8.ForeColor = System.Drawing.Color.Transparent;
+            this.label8.Location = new System.Drawing.Point(549, 87);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(65, 13);
+            this.label8.TabIndex = 20;
+            this.label8.Text = "Notifications";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 613);
+            this.Controls.Add(this.btDisable3);
+            this.Controls.Add(this.btRun3);
+            this.Controls.Add(this.lblNotifications);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.btDisable2);
             this.Controls.Add(this.btRun2);
             this.Controls.Add(this.lblAutoUpdate);
@@ -509,6 +567,10 @@
         private System.Windows.Forms.ToolStripMenuItem orderProfilesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem createDesktopShortcutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem createMonitorDesktopShortcutToolStripMenuItem;
+        private System.Windows.Forms.Button btDisable3;
+        private System.Windows.Forms.Button btRun3;
+        private System.Windows.Forms.Label lblNotifications;
+        private System.Windows.Forms.Label label8;
     }
 }
 

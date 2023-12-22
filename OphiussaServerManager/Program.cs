@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using OphiussaServerManager.Forms;
+using OphiussaServerManager.Tools;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -38,6 +39,12 @@ namespace OphiussaServerManager
                     OphiussaLogger.ReconfigureLogging();
                     ServerTools.BackupServer();
                 }
+                else if (Array.IndexOf(args, "-notifications") >= 0)
+                {
+                    OphiussaLogger.ReconfigureLogging();
+                    NotificationController notificationController = new NotificationController();
+                    notificationController.StartServer();
+                }
                 else
                 {
                     foreach (string arg in args)
@@ -48,7 +55,7 @@ namespace OphiussaServerManager
                             ServerTools.UpdateSingleServerJob1(arg.Substring(4));
                             return;
                         }
-                        if (arg.StartsWith("-as1"))
+                        if (arg.StartsWith("-as2"))
                         {
                             OphiussaLogger.ReconfigureLogging();
                             ServerTools.UpdateSingleServerJob2(arg.Substring(4));

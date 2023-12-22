@@ -1,4 +1,5 @@
 ﻿using OphiussaServerManager.Common;
+using OphiussaServerManager.Tools;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -53,6 +54,19 @@ If you can see this line, it looks like it overlaps something and there's a bug 
             {
                 Console.WriteLine("Number Of Logical Processors: {0}", item["NumberOfLogicalProcessors"]);
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            NotificationController x = new NotificationController();
+            x.ConnectClient();
+            x.SendCloseCommand();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            NotificationController x = new NotificationController();
+            x.StartServer();
         }
     }
 }

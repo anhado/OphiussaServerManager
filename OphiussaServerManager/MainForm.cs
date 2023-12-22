@@ -25,12 +25,12 @@ namespace OphiussaServerManager
         Dictionary<string, Profile> Profiles = new Dictionary<string, Profile>();
         Dictionary<string, LinkProfileForm> linkProfileForms = new Dictionary<string, LinkProfileForm>();
         private Dictionary<TabPage, Color> TabColors = new Dictionary<TabPage, Color>();
-
-        public static Common.Models.Settings Settings;
+        internal static NotificationController notificationController = new NotificationController();
+        internal static Common.Models.Settings Settings;
         private int HoverIndex = -1;
 
-        public static string PublicIP { get; set; }
-        public static string LocaIP { get; set; }
+        internal static string PublicIP { get; set; }
+        internal static string LocaIP { get; set; }
 
         public MainForm()
         {
@@ -389,6 +389,8 @@ namespace OphiussaServerManager
         {
             try
             {
+                //TODO:Place the validation if the task is running in another thread and here only read the values
+
                 timerCheckTask.Enabled = false;
                 //System.Threading.Tasks.Task.Run(() => 
                 //{ 
@@ -424,6 +426,7 @@ namespace OphiussaServerManager
                     btRun1.Visible = false;
                     btDisable1.Visible = false;
                 }
+
                 string taskName2 = "OphiussaServerManager\\AutoUpdate_" + MainForm.Settings.GUID;
 
                 Microsoft.Win32.TaskScheduler.Task task2 = TaskService.Instance.GetTask(taskName2);
@@ -455,6 +458,35 @@ namespace OphiussaServerManager
                 }
                 //}).Wait();
 
+
+                string taskName3 = "OphiussaServerManager\\Notification_" + MainForm.Settings.GUID;
+                Microsoft.Win32.TaskScheduler.Task task3 = TaskService.Instance.GetTask(taskName3);
+                if (task2 != null)
+                {
+                    var x = lTasks.Find(xc => xc?.Name == "Notification_" + MainForm.Settings.GUID);
+
+                    if (x != null)
+                    {
+                        lblNotifications.Text = "Is Running";
+                        lblNotifications.ForeColor = Color.GreenYellow;
+                        btRun3.Visible = false;
+                        btDisable3.Visible = true;
+                    }
+                    else
+                    {
+                        lblNotifications.Text = "Ready";
+                        lblNotifications.ForeColor = Color.White;
+                        btRun3.Visible = true;
+                        btDisable3.Visible = false;
+                    }
+                }
+                else
+                {
+                    lblNotifications.Text = "Not Running";
+                    lblNotifications.ForeColor = Color.White;
+                    btRun3.Visible = true;
+                    btDisable3.Visible = false;
+                }
 
             }
             catch (Exception ex)
@@ -771,6 +803,48 @@ namespace OphiussaServerManager
             IPersistFile file = (IPersistFile)link;
             string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
             file.Save(Path.Combine(desktopPath, "Ophiussa Server Manager Monitor.lnk"), false);
+        }
+
+        private void btRun3_Click(object sender, EventArgs e)
+        {
+            string taskName = "OphiussaServerManager\\Notification_" + MainForm.Settings.GUID;
+
+            Microsoft.Win32.TaskScheduler.Task task = TaskService.Instance.GetTask(taskName);
+            if (task != null)
+            {
+                btRun3.Visible = false;
+                btDisable3.Visible = true;
+                task.Run();
+
+            }
+
+            if (!notificationController.IsClientConnected) notificationController.ConnectClient();
+        }
+
+        private void btDisable3_Click(object sender, EventArgs e)
+        {
+
+            if (notificationController.IsClientConnected) notificationController.CloseClient();
+
+            string taskName = "OphiussaServerManager\\Notification_" + MainForm.Settings.GUID;
+            Microsoft.Win32.TaskScheduler.Task task = TaskService.Instance.GetTask(taskName);
+            if (task != null)
+            {
+                btRun3.Visible = true;
+                btDisable3.Visible = false;
+                task.Stop();
+            }
+
+        }
+
+        private void btDisable2_Click(object sender, EventArgs e)
+        {
+            //TODO: disable task 2
+        }
+
+        private void btDisable1_Click(object sender, EventArgs e)
+        {
+            //TODO: disable task 1
         }
     }
 }

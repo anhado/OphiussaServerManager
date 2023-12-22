@@ -237,6 +237,36 @@ namespace OphiussaServerManager.Forms
                     TaskService.Instance.RootFolder.DeleteTask(taskName);
                 }
             }
+
+            //Notification Controller Task
+
+            string fileName2 = System.Reflection.Assembly.GetEntryAssembly().Location;
+            string taskName2 = "OphiussaServerManager\\Notification_" + settings.GUID;
+            Microsoft.Win32.TaskScheduler.Task task3 = TaskService.Instance.GetTask(taskName2);
+            if (task3 != null)
+            {
+                task3.Definition.Triggers.Clear();
+
+                BootTrigger bt1 = new BootTrigger { Delay = TimeSpan.FromMinutes(30) };
+                task3.Definition.Triggers.Add(bt1);
+
+                task3.Definition.Principal.RunLevel = TaskRunLevel.Highest;
+                task3.Definition.Settings.Priority = ProcessPriorityClass.Normal;
+                task3.RegisterChanges();
+            }
+            else
+            {
+                TaskDefinition td = TaskService.Instance.NewTask();
+                td.RegistrationInfo.Description = "Server Notification Controller - " + settings.GUID;
+                td.Principal.LogonType = TaskLogonType.InteractiveToken;
+
+                BootTrigger bt1 = new BootTrigger { Delay = TimeSpan.FromMinutes(30) };
+                td.Triggers.Add(bt1);
+                td.Actions.Add(fileName2, "-notifications");
+                td.Principal.RunLevel = TaskRunLevel.Highest;
+                td.Settings.Priority = ProcessPriorityClass.Normal;
+                TaskService.Instance.RootFolder.RegisterTaskDefinition(taskName2, td);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)

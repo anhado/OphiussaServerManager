@@ -319,6 +319,7 @@ namespace OphiussaServerManager.Forms
                 SaveProfile();
                 CreateWindowsTasks();
 
+                MainForm.notificationController.SendReloadCommand(profile.Key);
                 MessageBox.Show("Profile Saved");
             }
             catch (Exception ex)

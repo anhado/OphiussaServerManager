@@ -306,6 +306,7 @@ namespace OphiussaServerManager.Common.Models.Profiles
 
                 this.ARKConfiguration = p.ARKConfiguration;
                 this.ValheimConfiguration = p.ValheimConfiguration;
+                this.AutoManageSettings = p.AutoManageSettings;
             }
         }
         public string GetProfileSaveGamesPath(Profile profile) => profile.GetProfileSaveGamesPath(profile?.InstallLocation);

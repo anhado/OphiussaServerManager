@@ -296,6 +296,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tools\AutoUpdate.cs" />
+    <Compile Include="Tools\NotificationController.cs" />
     <Compile Include="Tools\ServerTools.cs" />
     <Compile Include="Tools\ShellLink.cs" />
     <Compile Include="Tools\UsefullTools.cs" />
@@ -390,6 +391,14 @@
     <ProjectReference Include="..\..\Open.NAT\Open.Nat\Open.Nat.csproj">
       <Project>{FDEACF87-8877-45D8-AD9F-AEE32A100544}</Project>
       <Name>Open.Nat</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Clifton.Core.ExtensionMethods\Clifton.Core.ExtensionMethods.csproj">
+      <Project>{41d1de10-1a65-495f-83ae-4b914f8e33f6}</Project>
+      <Name>Clifton.Core.ExtensionMethods</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Clifton.Core.Pipes\Clifton.Core.Pipes.csproj">
+      <Project>{b826097c-cc24-4cac-8d31-8a65c4b76be9}</Project>
+      <Name>Clifton.Core.Pipes</Name>
     </ProjectReference>
     <ProjectReference Include="..\MakarovDev.ExpandCollapsePanel\MakarovDev.ExpandCollapsePanel.csproj">
       <Project>{be76a6fe-225f-4287-9ca0-231f5af4cdc1}</Project>

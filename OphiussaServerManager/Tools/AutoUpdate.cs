@@ -149,7 +149,7 @@ namespace OphiussaServerManager.Tools.Update
                         OnProgressChanged(new ProcessEventArg() { Message = "Server Still running", IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
 
                         TimeSpan ts = DateTime.Now - startDate;
-                        if (ts.TotalSeconds > 5) await CloseServer(p, Settings, true);
+                        if (ts.TotalMinutes > 5) await CloseServer(p, Settings, true);
                         Thread.Sleep(5000);
                     }
                 }
