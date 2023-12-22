@@ -6,7 +6,6 @@ using Newtonsoft.Json.Linq;
 using OphiussaServerManager.Common.Helpers;
 using OphiussaServerManager.Common.Models;
 using OphiussaServerManager.Common.Models.Profiles;
-using SSQLib;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -21,6 +20,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using ArkData;
 
 namespace OphiussaServerManager.Forms
 {
@@ -177,24 +177,24 @@ namespace OphiussaServerManager.Forms
                         {
                             nullable4 = new bool?();
                             //TODO:Cenas do server
-                            /*Server server = playerListParameters3.Server;
-                            if (server == null)
-                            {
-                                nullable4 = new bool?();
-                            }
-                            else
-                            {
-                                ServerProfile profile = server.Profile;
-                                if (profile == null)
-                                {
-                                    nullable4 = new bool?();
-                                }
-                                else
-                                {
-                                    PlayerUserList serverFilesAdmins = profile.ServerFilesAdmins;
-                                    nullable4 = serverFilesAdmins != null ? new bool?(serverFilesAdmins.Any<PlayerUserItem>((Func<PlayerUserItem, bool>)(u => u.PlayerId.Equals(player.PlayerId, StringComparison.OrdinalIgnoreCase)))) : new bool?();
-                                }
-                            }*/
+                            //Server server = playerListParameters3.Server;
+                            //if (server == null)
+                            //{
+                            //    nullable4 = new bool?();
+                            //}
+                            //else
+                            //{
+                            //    ServerProfile profile = server.Profile;
+                            //    if (profile == null)
+                            //    {
+                            //        nullable4 = new bool?();
+                            //    }
+                            //    else
+                            //    {
+                            //        PlayerUserList serverFilesAdmins = profile.ServerFilesAdmins;
+                            //        nullable4 = serverFilesAdmins != null ? new bool?(serverFilesAdmins.Any<PlayerUserItem>((Func<PlayerUserItem, bool>)(u => u.PlayerId.Equals(player.PlayerId, StringComparison.OrdinalIgnoreCase)))) : new bool?();
+                            //    }
+                            //}
                         }
                         bool? nullable5 = nullable4;
                         int num3 = nullable5.GetValueOrDefault() ? 1 : 0;

@@ -392,6 +392,10 @@
       <Project>{FDEACF87-8877-45D8-AD9F-AEE32A100544}</Project>
       <Name>Open.Nat</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ArkData\ArkData.csproj">
+      <Project>{eb2f3774-da67-4772-b317-742247cec657}</Project>
+      <Name>ArkData</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Clifton.Core.ExtensionMethods\Clifton.Core.ExtensionMethods.csproj">
       <Project>{41d1de10-1a65-495f-83ae-4b914f8e33f6}</Project>
       <Name>Clifton.Core.ExtensionMethods</Name>
