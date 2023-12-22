@@ -192,7 +192,7 @@ namespace OphiussaServerManager.Tools
                             {
                                 if (serversToReload.TryDequeue(out var key2))
                                 {
-                                    if (key2 == p.Key) p.LoadProfile(true);
+                                    if (key2 == p.Key) { p.LoadProfile(true); } else { serversToReload.Enqueue(key2); }
 
                                     OphiussaLogger.logger.Info("Reloaded Profile " + p.Name);
                                 }
@@ -220,7 +220,5 @@ namespace OphiussaServerManager.Tools
                 }
             }
         }
-
-
     }
 }
