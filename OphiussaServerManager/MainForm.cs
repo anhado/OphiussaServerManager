@@ -880,7 +880,6 @@ namespace OphiussaServerManager
 
         private void lblLast_DoubleClick(object sender, EventArgs e)
         {
-            //TODO:Launch Updater
             if (MessageBox.Show("Do you want update the Ophiussa Server Manager?", "Updater", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 var lTasks = TaskService.Instance.GetRunningTasks().ToList();

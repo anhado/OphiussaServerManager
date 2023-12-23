@@ -709,6 +709,12 @@ namespace OphiussaServerManager.Forms
             txtBanUrl.Enabled = chkUseBanUrl.Checked;
         }
 
+        protected virtual bool OnProgressChanged(ProcessEventArg e)
+        {
+            OphiussaLogger.logger.Info(e.Message);
+            return true;
+        }
+
         private async void btStart_Click(object sender, EventArgs e)
         {
             try
@@ -718,6 +724,7 @@ namespace OphiussaServerManager.Forms
                     //TODO: remove from here and place and use the profile closeserver
                     AutoUpdate x = new AutoUpdate();
                     await x.CloseServer(profile, MainForm.Settings);
+
                 }
                 else
                 {
@@ -851,6 +858,33 @@ namespace OphiussaServerManager.Forms
             };
 
             frm.LoadMods(ref profile, txtMods.Text, this);
+        }
+
+        private void expandCollapsePanel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void ManageCheckGroupBox(System.Windows.Forms.CheckBox chk, System.Windows.Forms.GroupBox grp)
+        {
+            // Make sure the CheckBox isn't in the GroupBox.
+            // This will only happen the first time.
+            if (chk.Parent == grp)
+            {
+                // Reparent the CheckBox so it's not in the GroupBox.
+                grp.Parent.Controls.Add(chk);
+
+                // Adjust the CheckBox's location.
+                chk.Location = new Point(
+                    chk.Left + grp.Left,
+                    chk.Top + grp.Top);
+
+                // Move the CheckBox to the top of the stacking order.
+                chk.BringToFront();
+            }
+
+            // Enable or disable the GroupBox.
+            grp.Enabled = chk.Checked;
         }
     }
 }
