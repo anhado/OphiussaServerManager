@@ -4,61 +4,51 @@
 // MVID: 286B49CC-C102-462A-B492-86CC6465D89B
 // Assembly location: C:\Users\Utilizador\Downloads\ArkServerManager_1.1.445\ServerManager.Common.dll
 
-using NeXt.Vdf;
-using NLog;
-using OphiussaServerManager.Common;
-using OphiussaServerManager.Common.Helpers;
-using OphiussaServerManager.Common.Models;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Text;
+using OphiussaServerManager.Common.Helpers;
+using OphiussaServerManager.Common.Models;
 
-namespace OphiussaServerManager.Common
-{
-    public class CurseForgeUtils
-    {
-        Settings _settings;
-        public CurseForgeUtils(Settings settings)
-        {
+namespace OphiussaServerManager.Common {
+    public class CurseForgeUtils {
+        private const    string   KeyworkQuit = "+quit";
+        private readonly Settings _settings;
+
+        public CurseForgeUtils(Settings settings) {
             _settings = settings;
         }
-        private const string KEYWORK_QUIT = "+quit";
 
-        public CurseForgeFileDetailResponse GetCurseForgeModDetails(string appId)
-        {
-            int num1 = 0;
-            int num2 = 0;
-            CurseForgeFileDetailResponse steamModDetails = new CurseForgeFileDetailResponse();
+        public string CurseForgeWebApiKey => /*!string.IsNullOrWhiteSpace(_settings.CurseForgeKey) ?*/ _settings.CurseForgeKey /*: _settings.DefaultCurseForgeKey*/;
+
+        public CurseForgeFileDetailResponse GetCurseForgeModDetails(string appId) {
+            int num1            = 0;
+            int num2            = 0;
+            var steamModDetails = new CurseForgeFileDetailResponse();
             if (string.IsNullOrWhiteSpace(CurseForgeWebApiKey))
                 return steamModDetails;
-            try
-            {
-                do
-                {
+            try {
+                do {
                     //WebRequest webRequest =
-                    HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(string.Format("https://api.curseforge.com/v1/mods/search?gameId={0}&index={1}", (object)appId, (object)num2));
+                    var webRequest = (HttpWebRequest)WebRequest.Create(string.Format("https://api.curseforge.com/v1/mods/search?gameId={0}&index={1}", appId, num2));
                     webRequest.Headers.Add("x-api-key", CurseForgeWebApiKey);
-                    webRequest.Accept = "application/json";
+                    webRequest.Accept  = "application/json";
                     webRequest.Timeout = 30000;
                     //var x = new StreamReader(webRequest.GetResponse().GetResponseStream()).ReadToEnd();
 
                     //var asd = JsonUtils.Deserialize<CurseForgeFileDetailResponse>(x);
 
-                    CurseForgeFileDetailResponse fileDetailResult = JsonUtils.Deserialize<CurseForgeFileDetailResponse>(new StreamReader(webRequest.GetResponse().GetResponseStream()).ReadToEnd());
-                    if (fileDetailResult != null && fileDetailResult.data != null)
-                    {
-                        if (fileDetailResult.data.FindAll(x => x.id == 932007).Count > 0)
-                        {
+                    var fileDetailResult = JsonUtils.Deserialize<CurseForgeFileDetailResponse>(new StreamReader(webRequest.GetResponse().GetResponseStream()).ReadToEnd());
+                    if (fileDetailResult != null && fileDetailResult.Data != null) {
+                        if (fileDetailResult.Data.FindAll(x => x.Id == 932007).Count > 0) {
                             int i = 0;
-                            var x = fileDetailResult.data.FindAll(x2 => x2.id == 932007);
+                            var x = fileDetailResult.Data.FindAll(x2 => x2.Id == 932007);
                         }
-                        if (num1 == 0)
-                        {
-                            num1 = fileDetailResult.pagination.totalCount;
+
+                        if (num1 == 0) {
+                            num1            = fileDetailResult.Pagination.TotalCount;
                             steamModDetails = fileDetailResult;
                             //if (steamModDetails.pagination.totalCount > 50)
                             //{
@@ -68,82 +58,74 @@ namespace OphiussaServerManager.Common
                             //        ++num1;
                             //}
                         }
-                        else if (fileDetailResult.data != null)
-                            steamModDetails.data.AddRange((IEnumerable<CurseForgeFileDetail>)fileDetailResult.data);
-                        num2 += fileDetailResult.pagination.pageSize;
+                        else if (fileDetailResult.Data != null) {
+                            steamModDetails.Data.AddRange(fileDetailResult.Data);
+                        }
+
+                        num2 += fileDetailResult.Pagination.PageSize;
                     }
-                    else
+                    else {
                         break;
-                }
-                while (num2 <= num1);
+                    }
+                } while (num2 <= num1);
+
                 return steamModDetails;
             }
-            catch (Exception ex)
-            {
-                OphiussaLogger.logger.Error("GetSteamModDetails. " + ex.Message + "\r\n" + ex.StackTrace);
-                return (CurseForgeFileDetailResponse)null;
+            catch (Exception ex) {
+                OphiussaLogger.Logger.Error("GetSteamModDetails. " + ex.Message + "\r\n" + ex.StackTrace);
+                return null;
             }
         }
 
-        public CurseForgeFileDetailResponse GetCurseForgeModDetails(List<string> modIdList) => GetSteamModDetails(new List<(string, List<string>)>()
-    {
-      ("", modIdList)
-    });
+        public CurseForgeFileDetailResponse GetCurseForgeModDetails(List<string> modIdList) {
+            return GetSteamModDetails(new List<(string, List<string>)> {
+                                                                           ("", modIdList)
+                                                                       });
+        }
 
         public CurseForgeFileDetailResponse GetSteamModDetails(
-          List<(string AppId, List<string> ModIdList)> appMods)
-        {
-            CurseForgeFileDetailResponse steamModDetails = (CurseForgeFileDetailResponse)null;
+            List<(string AppId, List<string> ModIdList)> appMods) {
+            CurseForgeFileDetailResponse steamModDetails = null;
             if (string.IsNullOrWhiteSpace(CurseForgeWebApiKey))
                 return steamModDetails;
-            try
-            {
+            try {
                 if (appMods == null || appMods.Count == 0)
                     return new CurseForgeFileDetailResponse();
-                foreach ((string AppId, List<string> ModIdList) appMod in appMods)
-                {
-                    if (appMod.ModIdList.Count != 0)
-                    {
-
+                foreach (var appMod in appMods)
+                    if (appMod.ModIdList.Count != 0) {
                         string payload = "{\"modIds\": [" + string.Join(",", appMod.ModIdList.ToArray()) + "],\"filterPcOnly\": true}";
 
-                        HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create("https://api.curseforge.com/v1/mods");
+                        var webRequest = (HttpWebRequest)WebRequest.Create("https://api.curseforge.com/v1/mods");
                         webRequest.Headers.Add("x-api-key", CurseForgeWebApiKey);
-                        webRequest.Accept = "application/json";
+                        webRequest.Accept      = "application/json";
                         webRequest.ContentType = "application/json";
-                        webRequest.Timeout = 30000;
-                        webRequest.Method = "POST";
+                        webRequest.Timeout     = 30000;
+                        webRequest.Method      = "POST";
 
                         byte[] bytes = Encoding.ASCII.GetBytes(payload);
 
-                        using (Stream requestStream = webRequest.GetRequestStream())
+                        using (var requestStream = webRequest.GetRequestStream()) {
                             requestStream.Write(bytes, 0, bytes.Length);
+                        }
 
-                        CurseForgeFileDetailResponse fileDetailsResult = JsonUtils.Deserialize<CurseForgeFileDetailResponse>(new StreamReader(webRequest.GetResponse().GetResponseStream()).ReadToEnd());
-                        if (fileDetailsResult != null && fileDetailsResult.data != null)
-                        {
-                            if (steamModDetails == null)
-                            {
+                        var fileDetailsResult = JsonUtils.Deserialize<CurseForgeFileDetailResponse>(new StreamReader(webRequest.GetResponse().GetResponseStream()).ReadToEnd());
+                        if (fileDetailsResult != null && fileDetailsResult.Data != null) {
+                            if (steamModDetails == null) {
                                 steamModDetails = fileDetailsResult;
                             }
-                            else
-                            {
-                                steamModDetails.pagination.resultCount += fileDetailsResult.pagination.resultCount;
-                                steamModDetails.data.AddRange((IEnumerable<CurseForgeFileDetail>)fileDetailsResult.data);
+                            else {
+                                steamModDetails.Pagination.ResultCount += fileDetailsResult.Pagination.ResultCount;
+                                steamModDetails.Data.AddRange(fileDetailsResult.Data);
                             }
                         }
                     }
-                }
+
                 return steamModDetails ?? new CurseForgeFileDetailResponse();
             }
-            catch (Exception ex)
-            {
-
-                OphiussaLogger.logger.Error("GetSteamModDetails. " + ex.Message + "\r\n" + ex.StackTrace);
-                return (CurseForgeFileDetailResponse)null;
+            catch (Exception ex) {
+                OphiussaLogger.Logger.Error("GetSteamModDetails. " + ex.Message + "\r\n" + ex.StackTrace);
+                return null;
             }
         }
-        public string CurseForgeWebApiKey => /*!string.IsNullOrWhiteSpace(_settings.CurseForgeKey) ?*/ _settings.CurseForgeKey /*: _settings.DefaultCurseForgeKey*/;
-
     }
 }

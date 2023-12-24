@@ -63,9 +63,9 @@ namespace OphiussaServerManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Add_icon_icon {
+        internal static System.Drawing.Bitmap AddIcon16x16 {
             get {
-                object obj = ResourceManager.GetObject("Add_icon_icon", resourceCulture);
+                object obj = ResourceManager.GetObject("AddIcon16x16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace OphiussaServerManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap add_icon_icon_16x16 {
+        internal static System.Drawing.Bitmap AddIcon32x32 {
             get {
-                object obj = ResourceManager.GetObject("add icon icon 16x16", resourceCulture);
+                object obj = ResourceManager.GetObject("AddIcon32x32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace OphiussaServerManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap checklist_icon_icon {
+        internal static System.Drawing.Bitmap CheckListIcon {
             get {
-                object obj = ResourceManager.GetObject("checklist icon icon", resourceCulture);
+                object obj = ResourceManager.GetObject("CheckListIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace OphiussaServerManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Close_icon_icon {
+        internal static System.Drawing.Bitmap CloseFoldericon {
             get {
-                object obj = ResourceManager.GetObject("Close_icon_icon", resourceCulture);
+                object obj = ResourceManager.GetObject("CloseFoldericon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +103,9 @@ namespace OphiussaServerManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap collapse_icon_icon {
+        internal static System.Drawing.Bitmap CloseIcon {
             get {
-                object obj = ResourceManager.GetObject("collapse_icon_icon", resourceCulture);
+                object obj = ResourceManager.GetObject("CloseIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +113,9 @@ namespace OphiussaServerManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap console__command_line__command_icon_icon {
+        internal static System.Drawing.Bitmap CollapseIcon {
             get {
-                object obj = ResourceManager.GetObject("console, command line, command icon icon", resourceCulture);
+                object obj = ResourceManager.GetObject("CollapseIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +123,9 @@ namespace OphiussaServerManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap copy__documents__clone__duplicate_icon_icon {
+        internal static System.Drawing.Bitmap ConsoleIcon {
             get {
-                object obj = ResourceManager.GetObject("copy, documents, clone, duplicate icon icon", resourceCulture);
+                object obj = ResourceManager.GetObject("ConsoleIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +133,9 @@ namespace OphiussaServerManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Copy_icon_icon {
+        internal static System.Drawing.Bitmap CopyIcon16x16 {
             get {
-                object obj = ResourceManager.GetObject("Copy icon icon", resourceCulture);
+                object obj = ResourceManager.GetObject("CopyIcon16x16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,9 +143,9 @@ namespace OphiussaServerManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap down_icon_icon {
+        internal static System.Drawing.Bitmap CopyIcon32x32 {
             get {
-                object obj = ResourceManager.GetObject("down icon icon", resourceCulture);
+                object obj = ResourceManager.GetObject("CopyIcon32x32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,9 +153,9 @@ namespace OphiussaServerManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap expand_icon_icon {
+        internal static System.Drawing.Bitmap DeleteIcon {
             get {
-                object obj = ResourceManager.GetObject("expand_icon_icon", resourceCulture);
+                object obj = ResourceManager.GetObject("DeleteIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,9 +163,9 @@ namespace OphiussaServerManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap file__open__folder_icon_icon {
+        internal static System.Drawing.Bitmap DowloadIcon {
             get {
-                object obj = ResourceManager.GetObject("file, open, folder icon icon", resourceCulture);
+                object obj = ResourceManager.GetObject("DowloadIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -173,9 +173,9 @@ namespace OphiussaServerManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Filter_icon_icon {
+        internal static System.Drawing.Bitmap ExpandIcon {
             get {
-                object obj = ResourceManager.GetObject("Filter icon icon", resourceCulture);
+                object obj = ResourceManager.GetObject("ExpandIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -183,9 +183,9 @@ namespace OphiussaServerManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap firewall_icon_icon {
+        internal static System.Drawing.Bitmap FilterIcon {
             get {
-                object obj = ResourceManager.GetObject("firewall icon icon", resourceCulture);
+                object obj = ResourceManager.GetObject("FilterIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -193,9 +193,9 @@ namespace OphiussaServerManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap folder__close_icon_icon {
+        internal static System.Drawing.Bitmap FirewallIcon {
             get {
-                object obj = ResourceManager.GetObject("folder, close icon icon", resourceCulture);
+                object obj = ResourceManager.GetObject("FirewallIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -203,9 +203,9 @@ namespace OphiussaServerManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap help__about__question_icon_icon {
+        internal static System.Drawing.Bitmap GaugeIcon {
             get {
-                object obj = ResourceManager.GetObject("help, about, question icon icon", resourceCulture);
+                object obj = ResourceManager.GetObject("GaugeIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -213,9 +213,9 @@ namespace OphiussaServerManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Monitor_icon_icon {
+        internal static System.Drawing.Bitmap HelpIcon {
             get {
-                object obj = ResourceManager.GetObject("Monitor icon icon", resourceCulture);
+                object obj = ResourceManager.GetObject("HelpIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -223,9 +223,9 @@ namespace OphiussaServerManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ok_icon_icon {
+        internal static System.Drawing.Bitmap MonitorIcon {
             get {
-                object obj = ResourceManager.GetObject("ok_icon_icon", resourceCulture);
+                object obj = ResourceManager.GetObject("MonitorIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -233,9 +233,19 @@ namespace OphiussaServerManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap preferences__options__setting__cog__gear__system__settings_icon_icon {
+        internal static System.Drawing.Bitmap OkIcon {
             get {
-                object obj = ResourceManager.GetObject("preferences, options, setting, cog, gear, system, settings icon icon", resourceCulture);
+                object obj = ResourceManager.GetObject("OkIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap OpenFileIcon {
+            get {
+                object obj = ResourceManager.GetObject("OpenFileIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -253,9 +263,9 @@ namespace OphiussaServerManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap refresh_icon_icon__4_ {
+        internal static System.Drawing.Bitmap RefeshIcon {
             get {
-                object obj = ResourceManager.GetObject("refresh_icon_icon__4_", resourceCulture);
+                object obj = ResourceManager.GetObject("RefeshIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -263,9 +273,9 @@ namespace OphiussaServerManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap remove__cancel__delete_icon_icon {
+        internal static System.Drawing.Bitmap SaveIcon {
             get {
-                object obj = ResourceManager.GetObject("remove, cancel, delete icon icon", resourceCulture);
+                object obj = ResourceManager.GetObject("SaveIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -273,9 +283,9 @@ namespace OphiussaServerManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap save__floppy__disk_icon_icon {
+        internal static System.Drawing.Bitmap SaveIcon16x16 {
             get {
-                object obj = ResourceManager.GetObject("save, floppy, disk icon icon", resourceCulture);
+                object obj = ResourceManager.GetObject("SaveIcon16x16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -283,9 +293,9 @@ namespace OphiussaServerManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap save_16x16 {
+        internal static System.Drawing.Bitmap SettingsIcon {
             get {
-                object obj = ResourceManager.GetObject("save_16x16", resourceCulture);
+                object obj = ResourceManager.GetObject("SettingsIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -293,10 +303,9 @@ namespace OphiussaServerManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap speedometer__speed__dashboard__measure__board__device__gauge__widgets__value_icon_icon {
+        internal static System.Drawing.Bitmap ToolIcon {
             get {
-                object obj = ResourceManager.GetObject("speedometer, speed, dashboard, measure, board, device, gauge, widgets, value icon" +
-                        " icon", resourceCulture);
+                object obj = ResourceManager.GetObject("ToolIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -304,9 +313,9 @@ namespace OphiussaServerManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap tool__tools__settings__options__preferences_icon_icon {
+        internal static System.Drawing.Bitmap ToolsIcon {
             get {
-                object obj = ResourceManager.GetObject("tool, tools, settings, options, preferences icon icon", resourceCulture);
+                object obj = ResourceManager.GetObject("ToolsIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -314,19 +323,9 @@ namespace OphiussaServerManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap tool_icon_icon {
+        internal static System.Drawing.Bitmap UpgradeIcon16x16 {
             get {
-                object obj = ResourceManager.GetObject("tool icon icon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap upgrade__misc_icon_icon {
-            get {
-                object obj = ResourceManager.GetObject("upgrade, misc icon icon", resourceCulture);
+                object obj = ResourceManager.GetObject("UpgradeIcon16x16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -1,293 +1,324 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace QueryMaster
-{
-
-
+﻿namespace QueryMaster {
     /// <summary>
-    /// Specifies the type of engine used by server
+    ///     Specifies the type of engine used by server
     /// </summary>
-    public enum EngineType
-    {
+    public enum EngineType {
         /// <summary>
-        /// Source Engine
+        ///     Source Engine
         /// </summary>
         Source,
+
         /// <summary>
-        /// Gold Source Engine
+        ///     Gold Source Engine
         /// </summary>
         GoldSource
     }
 
     /// <summary>
-    /// Specifies the game
+    ///     Specifies the game
     /// </summary>
-    public enum Game
-    {
+    public enum Game {
         //Gold Source Games
         /// <summary>
-        /// Counter-Strike
+        ///     Counter-Strike
         /// </summary>
         CounterStrike = 10,
+
         /// <summary>
-        /// Team Fortress Classic
+        ///     Team Fortress Classic
         /// </summary>
-        Team_Fortress_Classic = 20,
+        TeamFortressClassic = 20,
+
         /// <summary>
-        /// Day Of Defeat
+        ///     Day Of Defeat
         /// </summary>
-        Day_Of_Defeat = 30,
+        DayOfDefeat = 30,
+
         /// <summary>
-        /// Deathmatch Classic
+        ///     Deathmatch Classic
         /// </summary>
-        Deathmatch_Classic = 40,
+        DeathmatchClassic = 40,
+
         /// <summary>
-        /// Opposing Force
+        ///     Opposing Force
         /// </summary>
-        Opposing_Force = 50,
+        OpposingForce = 50,
+
         /// <summary>
-        /// Ricochet
+        ///     Ricochet
         /// </summary>
         Ricochet = 60,
+
         /// <summary>
-        /// Half-Life
+        ///     Half-Life
         /// </summary>
-        Half_Life = 70,
+        HalfLife = 70,
+
         /// <summary>
-        /// Condition Zero
+        ///     Condition Zero
         /// </summary>
-        Condition_Zero = 80,
+        ConditionZero = 80,
+
         /// <summary>
-        /// CounterStrike 1.6 dedicated server
+        ///     CounterStrike 1.6 dedicated server
         /// </summary>
-        CounterStrike_1_6_dedicated_server = 90,
+        CounterStrike16DedicatedServer = 90,
+
         /// <summary>
-        /// Condition Zero Deleted Scenes
+        ///     Condition Zero Deleted Scenes
         /// </summary>
-        Condition_Zero_Deleted_Scenes = 100,
+        ConditionZeroDeletedScenes = 100,
+
         /// <summary>
-        /// Half-Life:Blue Shift
+        ///     Half-Life:Blue Shift
         /// </summary>
-        Half_Life_Blue_Shift = 130,
+        HalfLifeBlueShift = 130,
+
         //Source Games
         /// <summary>
-        /// Half-Life 2
+        ///     Half-Life 2
         /// </summary>
-        Half_Life_2 = 220,
+        HalfLife2 = 220,
+
         /// <summary>
-        /// Counter-Strike: Source
+        ///     Counter-Strike: Source
         /// </summary>
-        CounterStrike_Source = 240,
+        CounterStrikeSource = 240,
+
         /// <summary>
-        /// Half-Life: Source
+        ///     Half-Life: Source
         /// </summary>
-        Half_Life_Source = 280,
+        HalfLifeSource = 280,
+
         /// <summary>
-        /// Day of Defeat: Source
+        ///     Day of Defeat: Source
         /// </summary>
-        Day_Of_Defeat_Source = 300,
+        DayOfDefeatSource = 300,
+
         /// <summary>
-        /// Half-Life 2: Deathmatch
+        ///     Half-Life 2: Deathmatch
         /// </summary>
-        Half_Life_2_Deathmatch = 320,
+        HalfLife2Deathmatch = 320,
+
         /// <summary>
-        /// Half-Life 2: Lost Coast
+        ///     Half-Life 2: Lost Coast
         /// </summary>
-        Half_Life_2_Lost_Coast = 340,
+        HalfLife2LostCoast = 340,
+
         /// <summary>
-        /// Half-Life Deathmatch: Source
+        ///     Half-Life Deathmatch: Source
         /// </summary>
-        Half_Life_Deathmatch_Source = 360,
+        HalfLifeDeathmatchSource = 360,
+
         /// <summary>
-        /// Half-Life 2: Episode One
+        ///     Half-Life 2: Episode One
         /// </summary>
-        Half_Life_2_Episode_One = 380,
+        HalfLife2EpisodeOne = 380,
+
         /// <summary>
-        /// Portal
+        ///     Portal
         /// </summary>
         Portal = 400,
+
         /// <summary>
-        /// Half-Life 2: Episode Two
+        ///     Half-Life 2: Episode Two
         /// </summary>
-        Half_Life_2_Episode_Two = 420,
+        HalfLife2EpisodeTwo = 420,
+
         /// <summary>
-        /// Team Fortress 2
+        ///     Team Fortress 2
         /// </summary>
-        Team_Fortress_2 = 440,
+        TeamFortress2 = 440,
+
         /// <summary>
-        /// Left 4 Dead
+        ///     Left 4 Dead
         /// </summary>
-        Left_4_Dead = 500,
+        Left4Dead = 500,
+
         /// <summary>
-        /// Left 4 Dead 2
+        ///     Left 4 Dead 2
         /// </summary>
-        Left_4_Dead_2 = 550,
+        Left4Dead2 = 550,
+
         /// <summary>
-        /// Dota 2 
+        ///     Dota 2
         /// </summary>
-        Dota_2 = 570,
+        Dota2 = 570,
+
         /// <summary>
-        /// Portal 2
+        ///     Portal 2
         /// </summary>
-        Portal_2 = 620,
+        Portal2 = 620,
+
         /// <summary>
-        /// Alien Swarm
+        ///     Alien Swarm
         /// </summary>
-        Alien_Swarm = 630,
+        AlienSwarm = 630,
+
         /// <summary>
-        /// Counter-Strike: Global Offensive
+        ///     Counter-Strike: Global Offensive
         /// </summary>
-        CounterStrike_Global_Offensive = 1800,
+        CounterStrikeGlobalOffensive = 1800,
+
         /// <summary>
-        /// SiN Episodes: Emergence
+        ///     SiN Episodes: Emergence
         /// </summary>
-        SiN_Episodes_Emergence = 1300,
+        SiNEpisodesEmergence = 1300,
+
         /// <summary>
-        /// Dark Messiah of Might and Magic
+        ///     Dark Messiah of Might and Magic
         /// </summary>
-        Dark_Messiah_Of_Might_And_Magic = 2100,
+        DarkMessiahOfMightAndMagic = 2100,
+
         /// <summary>
-        /// Dark Messiah Might and Magic Multi-Player
+        ///     Dark Messiah Might and Magic Multi-Player
         /// </summary>
-        Dark_Messiah_Might_And_Magic_MultiPlayer = 2130,
+        DarkMessiahMightAndMagicMultiPlayer = 2130,
+
         /// <summary>
-        /// The Ship
+        ///     The Ship
         /// </summary>
-        The_Ship = 2400,
+        TheShip = 2400,
+
         /// <summary>
-        /// Bloody Good Time
+        ///     Bloody Good Time
         /// </summary>
-        Bloody_Good_Time = 2450,
+        BloodyGoodTime = 2450,
+
         /// <summary>
-        /// Vampire The Masquerade - Bloodlines
+        ///     Vampire The Masquerade - Bloodlines
         /// </summary>
-        Vampire_The_Masquerade_Bloodlines = 2600,
+        VampireTheMasqueradeBloodlines = 2600,
+
         /// <summary>
-        /// Garry's Mod
+        ///     Garry's Mod
         /// </summary>
-        Garrys_Mod = 4000,
+        GarrysMod = 4000,
+
         /// <summary>
-        /// Zombie Panic! Source
+        ///     Zombie Panic! Source
         /// </summary>
-        Zombie_Panic_Source = 17500,
+        ZombiePanicSource = 17500,
+
         /// <summary>
-        /// Age of Chivalry
+        ///     Age of Chivalry
         /// </summary>
-        Age_of_Chivalry = 17510,
+        AgeOfChivalry = 17510,
+
         /// <summary>
-        /// Synergy
+        ///     Synergy
         /// </summary>
         Synergy = 17520,
+
         /// <summary>
-        /// D.I.P.R.I.P.
+        ///     D.I.P.R.I.P.
         /// </summary>
-        D_I_P_R_I_P = 17530,
+        Diprip = 17530,
+
         /// <summary>
-        /// Eternal Silence
+        ///     Eternal Silence
         /// </summary>
-        Eternal_Silence = 17550,
+        EternalSilence = 17550,
+
         /// <summary>
-        /// Pirates, Vikings, and Knights II
+        ///     Pirates, Vikings, and Knights II
         /// </summary>
-        Pirates_Vikings_And_Knights_II = 17570,
+        PiratesVikingsAndKnightsIi = 17570,
+
         /// <summary>
-        /// Dystopia
+        ///     Dystopia
         /// </summary>
         Dystopia = 17580,
+
         /// <summary>
-        /// Insurgency
+        ///     Insurgency
         /// </summary>
         Insurgency = 17700,
+
         /// <summary>
-        /// Nuclear Dawn
+        ///     Nuclear Dawn
         /// </summary>
-        Nuclear_Dawn = 17710,
+        NuclearDawn = 17710,
+
         /// <summary>
-        /// Smashball
+        ///     Smashball
         /// </summary>
-        Smashball = 17730,
+        Smashball = 17730
     }
 
     /// <summary>
-    /// Specifies the Region
+    ///     Specifies the Region
     /// </summary>
-    public enum Region : byte
-    {
+    public enum Region : byte {
         /// <summary>
-        /// US East coast 
+        ///     US East coast
         /// </summary>
-        US_East_coast,
+        UsEastCoast,
+
         /// <summary>
-        /// 	US West coast 
+        ///     US West coast
         /// </summary>
-        US_West_coast,
+        UsWestCoast,
+
         /// <summary>
-        /// South America
+        ///     South America
         /// </summary>
-        South_America,
+        SouthAmerica,
+
         /// <summary>
-        /// Europe
+        ///     Europe
         /// </summary>
         Europe,
+
         /// <summary>
-        /// Asia
+        ///     Asia
         /// </summary>
         Asia,
+
         /// <summary>
-        /// Australia
+        ///     Australia
         /// </summary>
         Australia,
+
         /// <summary>
-        /// Middle East 
+        ///     Middle East
         /// </summary>
-        Middle_East,
+        MiddleEast,
+
         /// <summary>
-        /// Africa
+        ///     Africa
         /// </summary>
         Africa,
+
         /// <summary>
-        /// Rest of the world 
+        ///     Rest of the world
         /// </summary>
-        Rest_of_the_world = 0xFF
+        RestOfTheWorld = 0xFF
     }
 
-    enum SocketType
-    {
+    internal enum SocketType {
         Udp,
         Tcp
     }
 
-    enum ResponseMsgHeader : byte
-    {
-        A2S_INFO = 0x49,
-        A2S_INFO_Obsolete = 0x6D,
-        A2S_PLAYER = 0x44,
-        A2S_RULES = 0x45,
-        A2S_SERVERQUERY_GETCHALLENGE = 0x41,
+    internal enum ResponseMsgHeader : byte {
+        A2SInfo                    = 0x49,
+        A2SInfoObsolete            = 0x6D,
+        A2SPlayer                  = 0x44,
+        A2SRules                   = 0x45,
+        A2SServerqueryGetchallenge = 0x41
     }
 
     //Used in Source Rcon
-    enum PacketId
-    {
-        Empty = 10,
+    internal enum PacketId {
+        Empty   = 10,
         ExecCmd = 11
     }
 
-    enum PacketType
-    {
-        Auth = 3,
+    internal enum PacketType {
+        Auth         = 3,
         AuthResponse = 2,
-        Exec = 2,
+        Exec         = 2,
         ExecResponse = 0
     }
-
-
-
-
-
-
-
 }

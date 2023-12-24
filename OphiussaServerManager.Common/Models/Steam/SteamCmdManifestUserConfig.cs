@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OphiussaServerManager.Common.Models
-{
-    public class SteamCmdManifestUserConfig
-    {
-        public string betakey { get; set; }
+﻿namespace OphiussaServerManager.Common.Models {
+    public class SteamCmdManifestUserConfig {
+        public string Betakey { get; set; }
     }
 }

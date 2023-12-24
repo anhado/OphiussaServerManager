@@ -144,7 +144,7 @@
             // clRefresh
             // 
             this.clRefresh.HeaderText = "Refresh";
-            this.clRefresh.Image = global::OphiussaServerManager.Properties.Resources.refresh_icon_icon__4_;
+            this.clRefresh.Image = global::OphiussaServerManager.Properties.Resources.RefeshIcon;
             this.clRefresh.Name = "clRefresh";
             this.clRefresh.Width = 64;
             // 
@@ -179,14 +179,14 @@
             // clAddFW
             // 
             this.clAddFW.HeaderText = "Add/Update Firewall Rule";
-            this.clAddFW.Image = global::OphiussaServerManager.Properties.Resources.add_icon_icon_16x16;
+            this.clAddFW.Image = global::OphiussaServerManager.Properties.Resources.AddIcon16x16;
             this.clAddFW.Name = "clAddFW";
             this.clAddFW.ReadOnly = true;
             // 
             // clDeleteFW
             // 
             this.clDeleteFW.HeaderText = "Delete Firewall Rules";
-            this.clDeleteFW.Image = global::OphiussaServerManager.Properties.Resources.Close_icon_icon;
+            this.clDeleteFW.Image = global::OphiussaServerManager.Properties.Resources.CloseIcon;
             this.clDeleteFW.Name = "clDeleteFW";
             this.clDeleteFW.Width = 64;
             // 
@@ -221,14 +221,14 @@
             // clAddRouter
             // 
             this.clAddRouter.HeaderText = "Add/Update Router Rule";
-            this.clAddRouter.Image = global::OphiussaServerManager.Properties.Resources.add_icon_icon_16x16;
+            this.clAddRouter.Image = global::OphiussaServerManager.Properties.Resources.AddIcon16x16;
             this.clAddRouter.Name = "clAddRouter";
             this.clAddRouter.ReadOnly = true;
             // 
             // clDeleteRouter
             // 
             this.clDeleteRouter.HeaderText = "Delete Router Rule";
-            this.clDeleteRouter.Image = global::OphiussaServerManager.Properties.Resources.Close_icon_icon;
+            this.clDeleteRouter.Image = global::OphiussaServerManager.Properties.Resources.CloseIcon;
             this.clDeleteRouter.Name = "clDeleteRouter";
             this.clDeleteRouter.ReadOnly = true;
             // 
@@ -239,35 +239,35 @@
             // dataGridViewImageColumn1
             // 
             this.dataGridViewImageColumn1.HeaderText = "Refresh";
-            this.dataGridViewImageColumn1.Image = global::OphiussaServerManager.Properties.Resources.refresh_icon_icon__4_;
+            this.dataGridViewImageColumn1.Image = global::OphiussaServerManager.Properties.Resources.RefeshIcon;
             this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
             this.dataGridViewImageColumn1.Width = 64;
             // 
             // dataGridViewImageColumn2
             // 
             this.dataGridViewImageColumn2.HeaderText = "Add/Update Firewall Rule";
-            this.dataGridViewImageColumn2.Image = global::OphiussaServerManager.Properties.Resources.add_icon_icon_16x16;
+            this.dataGridViewImageColumn2.Image = global::OphiussaServerManager.Properties.Resources.AddIcon16x16;
             this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
             this.dataGridViewImageColumn2.ReadOnly = true;
             // 
             // dataGridViewImageColumn3
             // 
             this.dataGridViewImageColumn3.HeaderText = "Delete Firewall Rules";
-            this.dataGridViewImageColumn3.Image = global::OphiussaServerManager.Properties.Resources.Close_icon_icon;
+            this.dataGridViewImageColumn3.Image = global::OphiussaServerManager.Properties.Resources.CloseIcon;
             this.dataGridViewImageColumn3.Name = "dataGridViewImageColumn3";
             this.dataGridViewImageColumn3.Width = 64;
             // 
             // dataGridViewImageColumn4
             // 
             this.dataGridViewImageColumn4.HeaderText = "Add/Update Router Rule";
-            this.dataGridViewImageColumn4.Image = global::OphiussaServerManager.Properties.Resources.add_icon_icon_16x16;
+            this.dataGridViewImageColumn4.Image = global::OphiussaServerManager.Properties.Resources.AddIcon16x16;
             this.dataGridViewImageColumn4.Name = "dataGridViewImageColumn4";
             this.dataGridViewImageColumn4.ReadOnly = true;
             // 
             // dataGridViewImageColumn5
             // 
             this.dataGridViewImageColumn5.HeaderText = "Delete Router Rule";
-            this.dataGridViewImageColumn5.Image = global::OphiussaServerManager.Properties.Resources.Close_icon_icon;
+            this.dataGridViewImageColumn5.Image = global::OphiussaServerManager.Properties.Resources.CloseIcon;
             this.dataGridViewImageColumn5.Name = "dataGridViewImageColumn5";
             this.dataGridViewImageColumn5.ReadOnly = true;
             // 

@@ -211,14 +211,14 @@
             this.updateSteamCMDToolStripMenuItem,
             this.toolStripMenuItem3,
             this.exitToolStripMenuItem1});
-            this.toolsToolStripMenuItem.Image = global::OphiussaServerManager.Properties.Resources.tool_icon_icon;
+            this.toolsToolStripMenuItem.Image = global::OphiussaServerManager.Properties.Resources.ToolsIcon;
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
             this.toolsToolStripMenuItem.Text = "Tools";
             // 
             // refreshPublicIPToolStripMenuItem1
             // 
-            this.refreshPublicIPToolStripMenuItem1.Image = global::OphiussaServerManager.Properties.Resources.refresh_icon_icon__4_;
+            this.refreshPublicIPToolStripMenuItem1.Image = global::OphiussaServerManager.Properties.Resources.RefeshIcon;
             this.refreshPublicIPToolStripMenuItem1.Name = "refreshPublicIPToolStripMenuItem1";
             this.refreshPublicIPToolStripMenuItem1.Size = new System.Drawing.Size(248, 22);
             this.refreshPublicIPToolStripMenuItem1.Text = "Refresh Public IP";
@@ -226,7 +226,7 @@
             // 
             // refreshLocalIPToolStripMenuItem1
             // 
-            this.refreshLocalIPToolStripMenuItem1.Image = global::OphiussaServerManager.Properties.Resources.refresh_icon_icon__4_;
+            this.refreshLocalIPToolStripMenuItem1.Image = global::OphiussaServerManager.Properties.Resources.RefeshIcon;
             this.refreshLocalIPToolStripMenuItem1.Name = "refreshLocalIPToolStripMenuItem1";
             this.refreshLocalIPToolStripMenuItem1.Size = new System.Drawing.Size(248, 22);
             this.refreshLocalIPToolStripMenuItem1.Text = "Refresh Local IP";
@@ -253,7 +253,7 @@
             // 
             // updateSteamCMDToolStripMenuItem
             // 
-            this.updateSteamCMDToolStripMenuItem.Image = global::OphiussaServerManager.Properties.Resources.down_icon_icon;
+            this.updateSteamCMDToolStripMenuItem.Image = global::OphiussaServerManager.Properties.Resources.DowloadIcon;
             this.updateSteamCMDToolStripMenuItem.Name = "updateSteamCMDToolStripMenuItem";
             this.updateSteamCMDToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
             this.updateSteamCMDToolStripMenuItem.Text = "Update SteamCMD";
@@ -266,7 +266,7 @@
             // 
             // exitToolStripMenuItem1
             // 
-            this.exitToolStripMenuItem1.Image = global::OphiussaServerManager.Properties.Resources.Close_icon_icon;
+            this.exitToolStripMenuItem1.Image = global::OphiussaServerManager.Properties.Resources.CloseIcon;
             this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
             this.exitToolStripMenuItem1.Size = new System.Drawing.Size(248, 22);
             this.exitToolStripMenuItem1.Text = "Exit";
@@ -275,7 +275,7 @@
             // serverMonitorToolStripMenuItem
             // 
             this.serverMonitorToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.serverMonitorToolStripMenuItem.Image = global::OphiussaServerManager.Properties.Resources.Monitor_icon_icon;
+            this.serverMonitorToolStripMenuItem.Image = global::OphiussaServerManager.Properties.Resources.MonitorIcon;
             this.serverMonitorToolStripMenuItem.Name = "serverMonitorToolStripMenuItem";
             this.serverMonitorToolStripMenuItem.Size = new System.Drawing.Size(113, 20);
             this.serverMonitorToolStripMenuItem.Text = "Server Monitor";
@@ -289,7 +289,7 @@
             this.settingsToolStripMenuItem,
             this.orderProfilesToolStripMenuItem,
             this.testsToolStripMenuItem});
-            this.settingsToolStripMenuItem1.Image = global::OphiussaServerManager.Properties.Resources.preferences__options__setting__cog__gear__system__settings_icon_icon;
+            this.settingsToolStripMenuItem1.Image = global::OphiussaServerManager.Properties.Resources.SettingsIcon;
             this.settingsToolStripMenuItem1.Name = "settingsToolStripMenuItem1";
             this.settingsToolStripMenuItem1.Size = new System.Drawing.Size(77, 20);
             this.settingsToolStripMenuItem1.Text = "Settings";
@@ -301,7 +301,7 @@
             // 
             // routingFirewallToolStripMenuItem
             // 
-            this.routingFirewallToolStripMenuItem.Image = global::OphiussaServerManager.Properties.Resources.firewall_icon_icon;
+            this.routingFirewallToolStripMenuItem.Image = global::OphiussaServerManager.Properties.Resources.FirewallIcon;
             this.routingFirewallToolStripMenuItem.Name = "routingFirewallToolStripMenuItem";
             this.routingFirewallToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.routingFirewallToolStripMenuItem.Text = "Port Foward";
@@ -309,7 +309,7 @@
             // 
             // settingsToolStripMenuItem
             // 
-            this.settingsToolStripMenuItem.Image = global::OphiussaServerManager.Properties.Resources.preferences__options__setting__cog__gear__system__settings_icon_icon;
+            this.settingsToolStripMenuItem.Image = global::OphiussaServerManager.Properties.Resources.SettingsIcon;
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
@@ -317,7 +317,7 @@
             // 
             // orderProfilesToolStripMenuItem
             // 
-            this.orderProfilesToolStripMenuItem.Image = global::OphiussaServerManager.Properties.Resources.checklist_icon_icon;
+            this.orderProfilesToolStripMenuItem.Image = global::OphiussaServerManager.Properties.Resources.CheckListIcon;
             this.orderProfilesToolStripMenuItem.Name = "orderProfilesToolStripMenuItem";
             this.orderProfilesToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.orderProfilesToolStripMenuItem.Text = "Order Profiles";
@@ -338,7 +338,7 @@
             // perfomanceToolStripMenuItem
             // 
             this.perfomanceToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.perfomanceToolStripMenuItem.Image = global::OphiussaServerManager.Properties.Resources.speedometer__speed__dashboard__measure__board__device__gauge__widgets__value_icon_icon;
+            this.perfomanceToolStripMenuItem.Image = global::OphiussaServerManager.Properties.Resources.GaugeIcon;
             this.perfomanceToolStripMenuItem.Name = "perfomanceToolStripMenuItem";
             this.perfomanceToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
             this.perfomanceToolStripMenuItem.Text = "Perfomance";

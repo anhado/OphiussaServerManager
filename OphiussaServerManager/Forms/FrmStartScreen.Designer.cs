@@ -40,7 +40,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.exListBox1 = new OphiussaServerManager.exListBox();
+            this.exListBox1 = new OphiussaServerManager.ExListBox();
             this.SuspendLayout();
             // 
             // label1
@@ -184,7 +184,7 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private exListBox exListBox1;
+        private ExListBox exListBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtFolderName;
         private System.Windows.Forms.TextBox textBox2;

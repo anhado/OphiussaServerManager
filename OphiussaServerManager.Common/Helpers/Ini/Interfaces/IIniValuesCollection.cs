@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace OphiussaServerManager.Common.Ini
-{
-    public interface IIniValuesCollection
-    {
+namespace OphiussaServerManager.Common.Ini {
+    public interface IIniValuesCollection {
         string IniCollectionKey { get; }
 
         bool IsArray { get; }

@@ -1,52 +1,76 @@
-﻿using CoreRCON;
-using FirewallManager;
-using Newtonsoft.Json;
-using OphiussaServerManager.Common.Helpers;
-using OphiussaServerManager.Common.Ini;
-using OphiussaServerManager.Common.Models.SupportedServers;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Diagnostics.Eventing.Reader;
 using System.Globalization;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Net;
-using System.Runtime;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Windows.Shapes;
+using CoreRCON;
+using Newtonsoft.Json;
+using OphiussaServerManager.Common.Helpers;
+using OphiussaServerManager.Common.Ini;
+using OphiussaServerManager.Common.Models.SupportedServers;
 
-namespace OphiussaServerManager.Common.Models.Profiles
-{
-    public class Profile : BaseProfile
-    {
-        [JsonProperty("Key")]
-        public string Key { get; set; }
-        [JsonProperty("Name")]
-        public string Name { get; set; }
-        [JsonProperty("Version")]
-        public string Version { get; set; }
-        [JsonProperty("InstallLocation")]
-        public string InstallLocation { get; set; }
-        [JsonProperty("Type")]
-        public SupportedServersType Type { get; set; }
+namespace OphiussaServerManager.Common.Models.Profiles {
+    public class Profile : BaseProfile {
+        [JsonIgnore] private readonly CancellationTokenSource _cancellationToken = new CancellationTokenSource();
+
+
+        public Profile() {
+        }
+
+        public Profile(string key, string name, SupportedServersType type) {
+            Key  = key;
+            Name = name;
+            Type = type;
+            switch (type.ServerType) {
+                case EnumServerType.ArkSurviveEvolved:
+                    ArkConfiguration     = new ArkProfile.ArkProfile();
+                    ValheimConfiguration = null;
+                    break;
+                case EnumServerType.ArkSurviveAscended:
+                    ArkConfiguration     = new ArkProfile.ArkProfile();
+                    ValheimConfiguration = null;
+                    break;
+                case EnumServerType.Valheim:
+                    ArkConfiguration     = null;
+                    ValheimConfiguration = new ValheimProfile.ValheimProfile();
+                    break;
+            }
+
+            LoadProfile();
+        }
+
+        public Profile(string key, string name, SupportedServersType type, dynamic configuration) {
+            Key              = key;
+            Name             = name;
+            Type             = type;
+            ArkConfiguration = configuration;
+            LoadProfile(false);
+        }
+
+        [JsonProperty("Key")]             public string               Key             { get; set; }
+        [JsonProperty("Name")]            public string               Name            { get; set; }
+        [JsonProperty("Version")]         public string               Version         { get; set; }
+        [JsonProperty("InstallLocation")] public string               InstallLocation { get; set; }
+        [JsonProperty("Type")]            public SupportedServersType Type            { get; set; }
+
         [JsonProperty("ARKConfiguration", NullValueHandling = NullValueHandling.Ignore)]
-        public ArkProfile.ArkProfile ARKConfiguration { get; set; } = new ArkProfile.ArkProfile();
+        public ArkProfile.ArkProfile ArkConfiguration { get; set; } = new ArkProfile.ArkProfile();
+
         [JsonProperty("ValheimConfiguration", NullValueHandling = NullValueHandling.Ignore)]
         public ValheimProfile.ValheimProfile ValheimConfiguration { get; set; } = new ValheimProfile.ValheimProfile();
+
         public AutoManageSettings AutoManageSettings { get; set; } = new AutoManageSettings();
 
         [JsonIgnore]
-        public bool IsInstalled
-        {
-            get
-            {
-                switch (Type.ServerType)
-                {
+        public bool IsInstalled {
+            get {
+                switch (Type.ServerType) {
                     case EnumServerType.ArkSurviveEvolved:
                     case EnumServerType.ArkSurviveAscended:
                         if (Utils.IsAValidFolder(InstallLocation, new List<string> { "Engine", "ShooterGame", "steamapps" })) return true;
@@ -55,468 +79,366 @@ namespace OphiussaServerManager.Common.Models.Profiles
                         if (Utils.IsAValidFolder(InstallLocation, new List<string> { "MonoBleedingEdge", "valheim_server_Data" })) return true;
                         break;
                 }
+
                 return false;
             }
         }
 
-        [JsonIgnore]
-        public bool IsRunning
-        {
-            get
-            {
-                return Utils.GetProcessRunning(System.IO.Path.Combine(InstallLocation, Type.ExecutablePath)) != null;
-            }
-        }
+        [JsonIgnore] public bool IsRunning => Utils.GetProcessRunning(Path.Combine(InstallLocation, Type.ExecutablePath)) != null;
 
+        public string GetBuild() {
+            string fileName = Type.ManifestFileName;
+            if (!File.Exists(Path.Combine(InstallLocation, "steamapps", fileName))) return "";
 
-        public Profile() { }
+            string[] content = File.ReadAllText(Path.Combine(InstallLocation, "steamapps", fileName)).Split('\n');
 
-        public Profile(string key, string name, SupportedServersType type)
-        {
-            this.Key = key;
-            this.Name = name;
-            this.Type = type;
-            switch (type.ServerType)
-            {
-                case EnumServerType.ArkSurviveEvolved:
-                    this.ARKConfiguration = new ArkProfile.ArkProfile();
-                    this.ValheimConfiguration = null;
-                    break;
-                case EnumServerType.ArkSurviveAscended:
-                    this.ARKConfiguration = new ArkProfile.ArkProfile();
-                    break;
-                case EnumServerType.Valheim:
-                    this.ARKConfiguration = null;
-                    this.ValheimConfiguration = new ValheimProfile.ValheimProfile();
-                    break;
-
-            }
-            LoadProfile();
-        }
-
-        public string GetBuild()
-        {
-            string fileName = this.Type.ManifestFileName;
-            if (!File.Exists(System.IO.Path.Combine(this.InstallLocation, "steamapps", fileName))) return "";
-
-            string[] content = File.ReadAllText(System.IO.Path.Combine(this.InstallLocation, "steamapps", fileName)).Split('\n');
-
-            foreach (var item in content)
-            {
+            foreach (string item in content) {
                 string[] t = item.Split('\t');
 
-                if (item.Contains("buildid"))
-                {
-                    return t[3].Replace("\"", "");
-                }
-
+                if (item.Contains("buildid")) return t[3].Replace("\"", "");
             }
-            return System.IO.File.ReadAllText(System.IO.Path.Combine(this.InstallLocation, "steamapps", fileName));
+
+            return File.ReadAllText(Path.Combine(InstallLocation, "steamapps", fileName));
         }
 
-        public string GetVersion()
-        {
-            if (!File.Exists(System.IO.Path.Combine(this.InstallLocation, "version.txt"))) return "";
+        public string GetVersion() {
+            if (!File.Exists(Path.Combine(InstallLocation, "version.txt"))) return "";
 
-            return System.IO.File.ReadAllText(System.IO.Path.Combine(this.InstallLocation, "version.txt"));
+            return File.ReadAllText(Path.Combine(InstallLocation, "version.txt"));
         }
 
-        public Process GetExeProcess()
-        {
-            string ClientFile = System.IO.Path.Combine(this.InstallLocation, Type.ExecutablePath);
-            if (string.IsNullOrWhiteSpace(ClientFile) || !System.IO.File.Exists(ClientFile))
-                return (Process)null;
-            string a = IOUtils.NormalizePath(ClientFile);
-            Process[] processesByName = Process.GetProcessesByName(Type.ProcessName);
-            Process steamProcess = (Process)null;
-            foreach (Process process in processesByName)
-            {
+        public Process GetExeProcess() {
+            string clientFile = Path.Combine(InstallLocation, Type.ExecutablePath);
+            if (string.IsNullOrWhiteSpace(clientFile) || !File.Exists(clientFile))
+                return null;
+            string  a               = IoUtils.NormalizePath(clientFile);
+            var     processesByName = Process.GetProcessesByName(Type.ProcessName);
+            Process steamProcess    = null;
+            foreach (var process in processesByName) {
                 string mainModuleFilepath = ProcessUtils.GetMainModuleFilepath(process.Id);
-                if (string.Equals(a, mainModuleFilepath, StringComparison.OrdinalIgnoreCase))
-                {
+                if (string.Equals(a, mainModuleFilepath, StringComparison.OrdinalIgnoreCase)) {
                     steamProcess = process;
                     break;
                 }
             }
+
             return steamProcess;
         }
 
-        public Profile(string key, string name, SupportedServersType type, dynamic configuration)
-        {
-            this.Key = key;
-            this.Name = name;
-            this.Type = type;
-            this.ARKConfiguration = configuration;
-            LoadProfile(false);
-        }
+        public void SaveProfile(Settings sett) {
+            string fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json");
+            var    settings = JsonConvert.DeserializeObject<Settings>(File.ReadAllText(fileName));
+            string dir      = settings.DataFolder + "Profiles\\";
+            if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
 
-        public void SaveProfile(Settings sett)
-        {
-            string fileName = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json");
-            Settings settings = JsonConvert.DeserializeObject<Settings>(File.ReadAllText(fileName));
-            string dir = settings.DataFolder + "Profiles\\";
-            if (!Directory.Exists(dir))
-            {
-                Directory.CreateDirectory(dir);
-            }
-
-            if (!Directory.Exists(InstallLocation))
-            {
-                Directory.CreateDirectory(InstallLocation);
-            }
+            if (!Directory.Exists(InstallLocation)) Directory.CreateDirectory(InstallLocation);
 
             string jsonString = JsonConvert.SerializeObject(this, Formatting.Indented);
-            File.WriteAllText(dir + this.Key + ".json", jsonString);
+            File.WriteAllText(dir + Key + ".json", jsonString);
 
-            switch (this.Type.ServerType)
-            {
+            switch (Type.ServerType) {
                 case EnumServerType.ArkSurviveEvolved:
                 case EnumServerType.ArkSurviveAscended:
-                    ARKConfiguration.SaveGameINI(this);
+                    ArkConfiguration.SaveGameIni(this);
 
-                    string priority = ARKConfiguration.Administration.CPUPriority.ToString().ToLower();
-                    string affinity = GetCPUAffinity();
+                    string priority = ArkConfiguration.Administration.CpuPriority.ToString().ToLower();
+                    string affinity = GetCpuAffinity();
 
                     if (!string.IsNullOrEmpty(affinity)) affinity = "/affinity " + affinity;
 
-                    File.WriteAllText(sett.DataFolder + $"StartServer\\Run_{this.Key.Replace("-", "")}.cmd", $"start \"{this.Name}\" /{priority} {affinity} \"{System.IO.Path.Combine(InstallLocation, (this.ARKConfiguration.Administration.UseServerAPI ? Type.ExecutablePathAPI : Type.ExecutablePath))}\" {this.ARKConfiguration.GetCommandLinesArguments(sett, this, this.ARKConfiguration.Administration.LocalIP)}");
+                    File.WriteAllText(sett.DataFolder + $"StartServer\\Run_{Key.Replace("-", "")}.cmd",
+                                      $"start \"{Name}\" /{priority} {affinity} \"{Path.Combine(InstallLocation, ArkConfiguration.Administration.UseServerApi ? Type.ExecutablePathApi : Type.ExecutablePath)}\" {ArkConfiguration.GetCommandLinesArguments(sett, this, ArkConfiguration.Administration.LocalIp)}");
                     break;
                 case EnumServerType.Valheim:
 
-                    string priorityV = ValheimConfiguration.Administration.CPUPriority.ToString().ToLower();
-                    string affinityV = GetCPUAffinity();
+                    string priorityV = ValheimConfiguration.Administration.CpuPriority.ToString().ToLower();
+                    string affinityV = GetCpuAffinity();
 
-                    StringBuilder stringBuilder = new StringBuilder();
-                    stringBuilder.AppendLine($"@echo off");
-                    stringBuilder.AppendLine($"set SteamAppId=892970");
-                    stringBuilder.AppendLine($"");
-                    stringBuilder.AppendLine($"echo \"Starting server PRESS CTRL-C to exit\"");
-                    stringBuilder.AppendLine($"");
-                    stringBuilder.AppendLine($"start \"{this.Name}\" /{priorityV} {affinityV} \"{System.IO.Path.Combine(InstallLocation, Type.ExecutablePath)}\" {this.ValheimConfiguration.GetCommandLinesArguments(sett, this, this.ValheimConfiguration.Administration.LocalIP)}");
+                    var stringBuilder = new StringBuilder();
+                    stringBuilder.AppendLine("@echo off");
+                    stringBuilder.AppendLine("set SteamAppId=892970");
+                    stringBuilder.AppendLine("");
+                    stringBuilder.AppendLine("echo \"Starting server PRESS CTRL-C to exit\"");
+                    stringBuilder.AppendLine("");
+                    stringBuilder.AppendLine($"start \"{Name}\" /{priorityV} {affinityV} \"{Path.Combine(InstallLocation, Type.ExecutablePath)}\" {ValheimConfiguration.GetCommandLinesArguments(sett, this, ValheimConfiguration.Administration.LocalIp)}");
 
-                    File.WriteAllText(sett.DataFolder + $"StartServer\\Run_{this.Key.Replace("-", "")}.bat", stringBuilder.ToString());
+                    File.WriteAllText(sett.DataFolder + $"StartServer\\Run_{Key.Replace("-", "")}.bat", stringBuilder.ToString());
                     break;
             }
-
         }
 
-        public void StartServer(Settings sett)
-        {
+        public void StartServer(Settings sett) {
             string file = "";
-            switch (Type.ServerType)
-            {
+            switch (Type.ServerType) {
                 case EnumServerType.ArkSurviveEvolved:
                 case EnumServerType.ArkSurviveAscended:
-                    file = sett.DataFolder + $"StartServer\\Run_{this.Key.Replace("-", "")}.cmd";
+                    file = sett.DataFolder + $"StartServer\\Run_{Key.Replace("-", "")}.cmd";
                     Utils.ExecuteAsAdmin(file, "", false);
                     break;
                 case EnumServerType.Valheim:
-                    file = sett.DataFolder + $"StartServer\\Run_{this.Key.Replace("-", "")}.bat";
+                    file = sett.DataFolder + $"StartServer\\Run_{Key.Replace("-", "")}.bat";
                     Utils.ExecuteAsAdmin(file, "", false, false, true);
                     break;
-                default:
-                    break;
             }
-
         }
 
-        public async Task CloseServer(Settings sett, Func<ProcessEventArg, bool> OnProgressChanged, bool ForceKillProcess = false)
-        {
-
-            switch (this.Type.ServerType)
-            {
+        public async Task CloseServer(Settings sett, Func<ProcessEventArg, bool> onProgressChanged, bool forceKillProcess = false) {
+            switch (Type.ServerType) {
                 case EnumServerType.ArkSurviveEvolved:
                 case EnumServerType.ArkSurviveAscended:
-                    await CloseServerArk(sett, OnProgressChanged, ForceKillProcess);
+                    await CloseServerArk(sett, onProgressChanged, forceKillProcess);
                     break;
                 case EnumServerType.Valheim:
-                    if (ForceKillProcess)
-                    {
-                        if (ForceKillProcess) OnProgressChanged(new ProcessEventArg() { Message = "Process didnt respond to command, the processed will be killed", IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
-                        Process pro = Utils.GetProcessRunning(System.IO.Path.Combine(this.InstallLocation, this.Type.ExecutablePath));
+                    if (forceKillProcess) {
+                        if (forceKillProcess) onProgressChanged(new ProcessEventArg { Message = "Process didnt respond to command, the processed will be killed", IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
+                        var pro = Utils.GetProcessRunning(Path.Combine(InstallLocation, Type.ExecutablePath));
                         pro.Kill();
                     }
-                    else
-                    {
-                        Utils.SendCloseCommand(Utils.GetProcessRunning(System.IO.Path.Combine(InstallLocation, Type.ExecutablePath)));
+                    else {
+                        Utils.SendCloseCommand(Utils.GetProcessRunning(Path.Combine(InstallLocation, Type.ExecutablePath)));
                     }
+
                     break;
             }
         }
 
-        public async Task CloseServerArk(Settings settings, Func<ProcessEventArg, bool> OnProgressChanged, bool ForceKillProcess = false)
-        {
-            if (!this.ARKConfiguration.Administration.UseRCON || ForceKillProcess)
-            {
-                if (!this.ARKConfiguration.Administration.UseRCON) OnProgressChanged(new ProcessEventArg() { Message = "No RCON configured, server process will be killed", IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
-                if (ForceKillProcess) OnProgressChanged(new ProcessEventArg() { Message = "Process didnt respond to command, the processed will be killed", IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
-                Process pro = Utils.GetProcessRunning(System.IO.Path.Combine(this.InstallLocation, this.Type.ExecutablePath));
+        public async Task CloseServerArk(Settings settings, Func<ProcessEventArg, bool> onProgressChanged, bool forceKillProcess = false) {
+            if (!ArkConfiguration.Administration.UseRcon || forceKillProcess) {
+                if (!ArkConfiguration.Administration.UseRcon) onProgressChanged(new ProcessEventArg { Message = "No RCON configured, server process will be killed", IsStarting              = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
+                if (forceKillProcess) onProgressChanged(new ProcessEventArg { Message                         = "Process didnt respond to command, the processed will be killed", IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
+                var pro = Utils.GetProcessRunning(Path.Combine(InstallLocation, Type.ExecutablePath));
                 pro.Kill();
             }
-            else
-            {
-                try
-                {
-
-                    RCON rcon = new RCON(IPAddress.Parse(this.ARKConfiguration.Administration.LocalIP), ushort.Parse(this.ARKConfiguration.Administration.RCONPort), this.ARKConfiguration.Administration.ServerAdminPassword);
+            else {
+                try {
+                    var rcon = new RCON(IPAddress.Parse(ArkConfiguration.Administration.LocalIp), ushort.Parse(ArkConfiguration.Administration.RconPort), ArkConfiguration.Administration.ServerAdminPassword);
                     await rcon.ConnectAsync();
 
 
-                    if (settings.PerformOnlinePlayerCheck)
-                    {
-
+                    if (settings.PerformOnlinePlayerCheck) {
                         string respnose = await rcon.SendCommandAsync("ListPlayers");
-                        if (respnose != "No Players Connected")
-                        {
+                        if (respnose != "No Players Connected") {
                             //validate server have players 
                             if (settings.SendShutdowMessages) await rcon.SendCommandAsync($"Broadcast {settings.Message1.Replace("{minutes}", "15")}");
-                            OnProgressChanged(new ProcessEventArg() { Message = settings.Message1.Replace("{minutes}", "15"), IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
+                            onProgressChanged(new ProcessEventArg { Message = settings.Message1.Replace("{minutes}", "15"), IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
                             Thread.Sleep(300000);
                             if (settings.SendShutdowMessages) await rcon.SendCommandAsync($"Broadcast {settings.Message1.Replace("{minutes}", "10")}");
-                            OnProgressChanged(new ProcessEventArg() { Message = settings.Message1.Replace("{minutes}", "10"), IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
+                            onProgressChanged(new ProcessEventArg { Message = settings.Message1.Replace("{minutes}", "10"), IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
                             Thread.Sleep(300000);
                             if (settings.SendShutdowMessages) await rcon.SendCommandAsync($"Broadcast {settings.Message1.Replace("{minutes}", "5")}");
-                            OnProgressChanged(new ProcessEventArg() { Message = settings.Message1.Replace("{minutes}", "5"), IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
+                            onProgressChanged(new ProcessEventArg { Message = settings.Message1.Replace("{minutes}", "5"), IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
                             Thread.Sleep(240000);
                             if (settings.SendShutdowMessages) await rcon.SendCommandAsync($"Broadcast {settings.Message1.Replace("{minutes}", "1")}");
-                            OnProgressChanged(new ProcessEventArg() { Message = settings.Message1.Replace("{minutes}", "1"), IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
+                            onProgressChanged(new ProcessEventArg { Message = settings.Message1.Replace("{minutes}", "1"), IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
                             Thread.Sleep(60000);
                         }
                     }
+
                     if (settings.SendShutdowMessages) await rcon.SendCommandAsync($"Broadcast {settings.Message2}");
-                    OnProgressChanged(new ProcessEventArg() { Message = settings.Message2, IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
-                    await rcon.SendCommandAsync($"DoExit");
+                    onProgressChanged(new ProcessEventArg { Message = settings.Message2, IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
+                    await rcon.SendCommandAsync("DoExit");
                 }
-                catch (Exception ex)
-                {
-                    OphiussaLogger.logger.Error(ex);
+                catch (Exception ex) {
+                    OphiussaLogger.Logger.Error(ex);
                     throw ex;
                 }
             }
         }
 
-        public void LoadProfile(bool readFileDisk = true)
-        {
-            string fileName = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json");
-            Settings settings = JsonConvert.DeserializeObject<Settings>(File.ReadAllText(fileName));
-            string dir = settings.DataFolder + "Profiles\\";
-            if (!Directory.Exists(dir))
-            {
+        public void LoadProfile(bool readFileDisk = true) {
+            string fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json");
+            var    settings = JsonConvert.DeserializeObject<Settings>(File.ReadAllText(fileName));
+            string dir      = settings.DataFolder + "Profiles\\";
+            if (!Directory.Exists(dir)) {
                 Directory.CreateDirectory(dir);
                 string jsonString = JsonConvert.SerializeObject(this, Formatting.Indented);
-                File.WriteAllText(dir + this.Key + ".json", jsonString);
+                File.WriteAllText(dir + Key + ".json", jsonString);
             }
-            if (File.Exists(dir + this.Key + ".json") && readFileDisk)
-            {
-                Profile p = JsonConvert.DeserializeObject<Profile>(File.ReadAllText(dir + this.Key + ".json"));
 
-                this.ARKConfiguration = p.ARKConfiguration;
-                this.ValheimConfiguration = p.ValheimConfiguration;
-                this.AutoManageSettings = p.AutoManageSettings;
+            if (File.Exists(dir + Key + ".json") && readFileDisk) {
+                var p = JsonConvert.DeserializeObject<Profile>(File.ReadAllText(dir + Key + ".json"));
+
+                ArkConfiguration     = p.ArkConfiguration;
+                ValheimConfiguration = p.ValheimConfiguration;
+                AutoManageSettings   = p.AutoManageSettings;
             }
         }
-        public string GetProfileSaveGamesPath(Profile profile) => profile.GetProfileSaveGamesPath(profile?.InstallLocation);
 
-        public string GetProfileSaveGamesPath(string installDirectory) => System.IO.Path.Combine(installDirectory ?? string.Empty, this.Type.SavedRelativePath, this.Type.SaveGamesRelativePath);
+        public string GetProfileSaveGamesPath(Profile profile) {
+            return profile.GetProfileSaveGamesPath(profile?.InstallLocation);
+        }
 
-        public string GetProfileSavePath(Profile profile) => profile.GetProfileSavePath(profile, profile?.InstallLocation, profile?.ARKConfiguration.Administration.AlternateSaveDirectoryName);
+        public string GetProfileSaveGamesPath(string installDirectory) {
+            return Path.Combine(installDirectory ?? string.Empty, Type.SavedRelativePath, Type.SaveGamesRelativePath);
+        }
+
+        public string GetProfileSavePath(Profile profile) {
+            return profile.GetProfileSavePath(profile, profile?.InstallLocation, profile?.ArkConfiguration.Administration.AlternateSaveDirectoryName);
+        }
 
         public string GetProfileSavePath(
-          Profile profile,
-          string installDirectory,
-          string altSaveDirectoryName)
-        {
-            switch (profile.Type.ServerType)
-            {
+            Profile profile,
+            string  installDirectory,
+            string  altSaveDirectoryName) {
+            switch (profile.Type.ServerType) {
                 case EnumServerType.ArkSurviveAscended:
 
-                    if (!string.IsNullOrWhiteSpace(altSaveDirectoryName))
-                    {
-                        return System.IO.Path.Combine(installDirectory ?? string.Empty, this.Type.SavedRelativePath, altSaveDirectoryName, profile.ARKConfiguration.Administration.MapName);
-                    }
-                    return System.IO.Path.Combine(installDirectory ?? string.Empty, this.Type.SavedFilesRelativePath, profile.ARKConfiguration.Administration.MapName);
+                    if (!string.IsNullOrWhiteSpace(altSaveDirectoryName)) return Path.Combine(installDirectory ?? string.Empty, Type.SavedRelativePath, altSaveDirectoryName, profile.ArkConfiguration.Administration.MapName);
+
+                    return Path.Combine(installDirectory ?? string.Empty, Type.SavedFilesRelativePath, profile.ArkConfiguration.Administration.MapName);
 
                 case EnumServerType.ArkSurviveEvolved:
-                    if (!string.IsNullOrWhiteSpace(altSaveDirectoryName))
-                    {
-                        return System.IO.Path.Combine(installDirectory ?? string.Empty, this.Type.SavedRelativePath, altSaveDirectoryName);
-                    }
-                    return System.IO.Path.Combine(installDirectory ?? string.Empty, this.Type.SavedFilesRelativePath);
+                    if (!string.IsNullOrWhiteSpace(altSaveDirectoryName)) return Path.Combine(installDirectory ?? string.Empty, Type.SavedRelativePath, altSaveDirectoryName);
+
+                    return Path.Combine(installDirectory ?? string.Empty, Type.SavedFilesRelativePath);
 
                 case EnumServerType.Valheim:
-                    if (!string.IsNullOrEmpty(this.ValheimConfiguration.Administration.SaveLocation))
-                        return System.IO.Path.Combine(this.ValheimConfiguration.Administration.SaveLocation, "worlds_local\\");
+                    if (!string.IsNullOrEmpty(ValheimConfiguration.Administration.SaveLocation))
+                        return Path.Combine(ValheimConfiguration.Administration.SaveLocation, "worlds_local\\");
 
-                    return System.IO.Path.Combine(Utils.GetLocalLowFolderPath(), "\\IronGate\\Valheim\\worlds_local\\");
+                    return Path.Combine(Utils.GetLocalLowFolderPath(), "\\IronGate\\Valheim\\worlds_local\\");
             }
-            if (!string.IsNullOrWhiteSpace(altSaveDirectoryName))
-            {
-                return System.IO.Path.Combine(installDirectory ?? string.Empty, this.Type.SavedRelativePath, altSaveDirectoryName);
-            }
-            return System.IO.Path.Combine(installDirectory ?? string.Empty, this.Type.SavedFilesRelativePath);
+
+            if (!string.IsNullOrWhiteSpace(altSaveDirectoryName)) return Path.Combine(installDirectory ?? string.Empty, Type.SavedRelativePath, altSaveDirectoryName);
+
+            return Path.Combine(installDirectory ?? string.Empty, Type.SavedFilesRelativePath);
         }
 
-        public override string GetCommandLinesArguments(Settings settings, string locaIP)
-        {
-            switch (this.Type.ServerType)
-            {
+        public override string GetCommandLinesArguments(Settings settings, string locaIp) {
+            switch (Type.ServerType) {
                 case EnumServerType.ArkSurviveEvolved:
                 case EnumServerType.ArkSurviveAscended:
-                    return ARKConfiguration.GetCommandLinesArguments(settings, this, locaIP);
+                    return ArkConfiguration.GetCommandLinesArguments(settings, this, locaIp);
                 case EnumServerType.Valheim:
-                    return ValheimConfiguration.GetCommandLinesArguments(settings, this, locaIP);
+                    return ValheimConfiguration.GetCommandLinesArguments(settings, this, locaIp);
             }
+
             return "";
         }
 
-        public string GetCPUAffinity()
-        {
-            switch (this.Type.ServerType)
-            {
+        public string GetCpuAffinity() {
+            switch (Type.ServerType) {
                 case EnumServerType.ArkSurviveEvolved:
                 case EnumServerType.ArkSurviveAscended:
-                    return base.GetCPUAffinity(this.ARKConfiguration.Administration.CPUAffinity, this.ARKConfiguration.Administration.CPUAffinityList);
+                    return base.GetCpuAffinity(ArkConfiguration.Administration.CpuAffinity, ArkConfiguration.Administration.CpuAffinityList);
                 case EnumServerType.Valheim:
-                    return base.GetCPUAffinity(this.ValheimConfiguration.Administration.CPUAffinity, this.ValheimConfiguration.Administration.CPUAffinityList);
+                    return base.GetCpuAffinity(ValheimConfiguration.Administration.CpuAffinity, ValheimConfiguration.Administration.CpuAffinityList);
             }
+
             return "";
         }
 
-        public override async void BackupServer(Settings settings)
-        {
-            string SaveGamesFolder = this.GetProfileSavePath(this);
+        public override async void BackupServer(Settings settings) {
+            string saveGamesFolder = GetProfileSavePath(this);
 
-            switch (this.Type.ServerType)
-            {
+            switch (Type.ServerType) {
                 case EnumServerType.ArkSurviveEvolved:
                 case EnumServerType.ArkSurviveAscended:
-                    if (this.ARKConfiguration.Administration.UseRCON)
-                    {
-                        Task t2 = Task.Run(() => this.ARKConfiguration.SaveWorldRCON(settings), cancellationToken.Token);
+                    if (ArkConfiguration.Administration.UseRcon) {
+                        Task t2 = Task.Run(() => ArkConfiguration.SaveWorldRcon(settings), _cancellationToken.Token);
                         t2.Wait();
-                        Task t3 = Task.Run(() => CreateServerBackup(settings, SaveGamesFolder), cancellationToken.Token);
+                        Task t3 = Task.Run(() => CreateServerBackup(settings, saveGamesFolder), _cancellationToken.Token);
                         t3.Wait();
-                        Task t4 = Task.Run(() => CreateProfileBackup(settings), cancellationToken.Token);
+                        Task t4 = Task.Run(() => CreateProfileBackup(settings), _cancellationToken.Token);
                         t4.Wait();
                     }
-                    else
-                    {
-                        Task t3 = Task.Run(() => CreateServerBackup(settings, SaveGamesFolder), cancellationToken.Token);
+                    else {
+                        Task t3 = Task.Run(() => CreateServerBackup(settings, saveGamesFolder), _cancellationToken.Token);
                         t3.Wait();
-                        Task t4 = Task.Run(() => CreateProfileBackup(settings), cancellationToken.Token);
+                        Task t4 = Task.Run(() => CreateProfileBackup(settings), _cancellationToken.Token);
                         t4.Wait();
                     }
+
                     break;
                 case EnumServerType.Valheim:
-                    Task t5 = Task.Run(() => CreateServerBackup(settings, SaveGamesFolder), cancellationToken.Token);
+                    Task t5 = Task.Run(() => CreateServerBackup(settings, saveGamesFolder), _cancellationToken.Token);
                     t5.Wait();
-                    Task t6 = Task.Run(() => CreateProfileBackup(settings), cancellationToken.Token);
+                    Task t6 = Task.Run(() => CreateProfileBackup(settings), _cancellationToken.Token);
                     t6.Wait();
                     break;
             }
         }
 
-        private async Task<bool> CreateProfileBackup(Settings settings)
-        {
-            try
-            {
-                List<string> files = new List<string>();
-                switch (this.Type.ServerType)
-                {
+        private async Task<bool> CreateProfileBackup(Settings settings) {
+            try {
+                var files = new List<string>();
+                switch (Type.ServerType) {
                     case EnumServerType.ArkSurviveEvolved:
                     case EnumServerType.ArkSurviveAscended:
-                        SystemIniFile systemIniFile = new SystemIniFile(this.InstallLocation);
-                        foreach (var fName in systemIniFile.FileNames)
-                        {
-                            files.Add(System.IO.Path.Combine(this.InstallLocation, fName.Value));
-                        }
+                        var systemIniFile = new SystemIniFile(InstallLocation);
+                        foreach (var fName in systemIniFile.FileNames) files.Add(Path.Combine(InstallLocation, fName.Value));
+
                         break;
                     case EnumServerType.Valheim:
                         //nothing to ad
                         break;
                 }
+
                 string dirProfiles = settings.DataFolder + "Profiles\\";
-                files.Add(System.IO.Path.Combine(dirProfiles, this.Key + ".json"));
-                files.Add(settings.DataFolder + $"StartServer\\Run_{this.Key.Replace("-", "")}.cmd");
+                files.Add(Path.Combine(dirProfiles, Key + ".json"));
+                files.Add(settings.DataFolder + $"StartServer\\Run_{Key.Replace("-", "")}.cmd");
 
                 if (!Directory.Exists(settings.BackupDirectory)) Directory.CreateDirectory(settings.BackupDirectory);
-                if (!Directory.Exists(System.IO.Path.Combine(settings.BackupDirectory, "profiles", this.Key))) Directory.CreateDirectory(System.IO.Path.Combine(settings.BackupDirectory, "profiles", this.Key));
+                if (!Directory.Exists(Path.Combine(settings.BackupDirectory, "profiles", Key))) Directory.CreateDirectory(Path.Combine(settings.BackupDirectory, "profiles", Key));
 
-                using (ZipArchive zip = ZipFile.Open(System.IO.Path.Combine(settings.BackupDirectory, "profiles", this.Key) + $"\\{this.Type.KeyName}_{this.Key}_{DateTime.Now.ToString("yyyyMMddHHmmssfff", CultureInfo.InvariantCulture)}.zip", ZipArchiveMode.Create))
-                {
-                    foreach (var file in files)
-                    {
-                        FileInfo f = new FileInfo(file);
-                        zip.CreateEntryFromFile(file, file.Replace(this.InstallLocation, "").Replace(settings.DataFolder, ""));
+                using (var zip = ZipFile.Open(Path.Combine(settings.BackupDirectory, "profiles", Key) + $"\\{Type.KeyName}_{Key}_{DateTime.Now.ToString("yyyyMMddHHmmssfff", CultureInfo.InvariantCulture)}.zip", ZipArchiveMode.Create)) {
+                    foreach (string file in files) {
+                        var f = new FileInfo(file);
+                        zip.CreateEntryFromFile(file, file.Replace(InstallLocation, "").Replace(settings.DataFolder, ""));
                     }
                 }
 
+                //TODO:Delete old backups
                 return true;
             }
-            catch (Exception ex)
-            {
-                OphiussaLogger.logger.Error(ex);
+            catch (Exception ex) {
+                OphiussaLogger.Logger.Error(ex);
                 return false;
             }
         }
 
-        private async Task<bool> CreateServerBackup(Settings settings, string saveGamesFolder)
-        {
-            try
-            {
-                List<string> files = new List<string>();
-                switch (this.Type.ServerType)
-                {
+        private async Task<bool> CreateServerBackup(Settings settings, string saveGamesFolder) {
+            try {
+                var files = new List<string>();
+                switch (Type.ServerType) {
                     case EnumServerType.ArkSurviveEvolved:
                     case EnumServerType.ArkSurviveAscended:
-                        files.Add($"{saveGamesFolder}\\{this.ARKConfiguration.Administration.MapName}.ark");
-                        if (settings.IncludeSaveGamesFolder)
-                        {
-                            string savegameFolder = System.IO.Path.Combine(this.InstallLocation, "ShooterGame\\Saved\\SaveGames");
-                            System.IO.DirectoryInfo dir1 = new System.IO.DirectoryInfo(savegameFolder);
-                            IEnumerable<System.IO.FileInfo> list1 = dir1.GetFiles("*.*", System.IO.SearchOption.AllDirectories);
-                            foreach (var item in list1.ToList())
-                            {
-                                files.Add(item.FullName);
-                            }
+                        files.Add($"{saveGamesFolder}\\{ArkConfiguration.Administration.MapName}.ark");
+                        if (settings.IncludeSaveGamesFolder) {
+                            string                savegameFolder = Path.Combine(InstallLocation, "ShooterGame\\Saved\\SaveGames");
+                            var                   dir1           = new DirectoryInfo(savegameFolder);
+                            IEnumerable<FileInfo> list1          = dir1.GetFiles("*.*", SearchOption.AllDirectories);
+                            foreach (var item in list1.ToList()) files.Add(item.FullName);
                         }
 
                         break;
                     case EnumServerType.Valheim:
-                        files.Add($"{saveGamesFolder}{this.ValheimConfiguration.Administration.WordName}.db");
-                        files.Add($"{saveGamesFolder}{this.ValheimConfiguration.Administration.WordName}.fwl");
+                        files.Add($"{saveGamesFolder}{ValheimConfiguration.Administration.WordName}.db");
+                        files.Add($"{saveGamesFolder}{ValheimConfiguration.Administration.WordName}.fwl");
                         break;
                 }
 
                 if (!Directory.Exists(settings.BackupDirectory)) Directory.CreateDirectory(settings.BackupDirectory);
 
-                if (!Directory.Exists(System.IO.Path.Combine(settings.BackupDirectory, "servers", this.Key))) Directory.CreateDirectory(System.IO.Path.Combine(settings.BackupDirectory, "servers", this.Key));
+                if (!Directory.Exists(Path.Combine(settings.BackupDirectory, "servers", Key))) Directory.CreateDirectory(Path.Combine(settings.BackupDirectory, "servers", Key));
 
-                using (ZipArchive zip = ZipFile.Open(System.IO.Path.Combine(settings.BackupDirectory, "servers", this.Key) + $"\\{this.Type.KeyName}_{this.Key}_{DateTime.Now.ToString("yyyyMMddHHmmssfff", CultureInfo.InvariantCulture)}.zip", ZipArchiveMode.Create))
-                {
-                    foreach (var file in files)
-                    {
-                        FileInfo f = new FileInfo(file);
-                        zip.CreateEntryFromFile(file, file.Replace(this.InstallLocation, "").Replace(saveGamesFolder, ""));
+                using (var zip = ZipFile.Open(Path.Combine(settings.BackupDirectory, "servers", Key) + $"\\{Type.KeyName}_{Key}_{DateTime.Now.ToString("yyyyMMddHHmmssfff", CultureInfo.InvariantCulture)}.zip", ZipArchiveMode.Create)) {
+                    foreach (string file in files) {
+                        var f = new FileInfo(file);
+                        zip.CreateEntryFromFile(file, file.Replace(InstallLocation, "").Replace(saveGamesFolder, ""));
                     }
                 }
 
+                //TODO:Delete old backups
                 return true;
             }
-            catch (Exception ex)
-            {
-                OphiussaLogger.logger.Error(ex);
+            catch (Exception ex) {
+                OphiussaLogger.Logger.Error(ex);
                 return false;
             }
         }
 
-        [JsonIgnore]
-        CancellationTokenSource cancellationToken = new CancellationTokenSource();
-
-        private void Watcher_Changed(object sender, FileSystemEventArgs e)
-        {
-
+        private void Watcher_Changed(object sender, FileSystemEventArgs e) {
         }
     }
-
 }

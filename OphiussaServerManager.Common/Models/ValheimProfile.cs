@@ -1,16 +1,8 @@
-﻿using OphiussaServerManager.Common.Models.Profiles;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using OphiussaServerManager.Common.Models.Profiles;
 
-namespace OphiussaServerManager.Common.Models.ValheimProfile
-{
-    public enum Preset
-    {
+namespace OphiussaServerManager.Common.Models.ValheimProfile {
+    public enum Preset {
         Normal,
         Casual,
         Easy,
@@ -20,8 +12,7 @@ namespace OphiussaServerManager.Common.Models.ValheimProfile
         Hammer
     }
 
-    public enum Combat
-    {
+    public enum Combat {
         Default,
         VeryEasy,
         Easy,
@@ -29,8 +20,7 @@ namespace OphiussaServerManager.Common.Models.ValheimProfile
         VeryHard
     }
 
-    public enum DeathPenalty
-    {
+    public enum DeathPenalty {
         Default,
         Casual,
         VeryEasy,
@@ -39,8 +29,7 @@ namespace OphiussaServerManager.Common.Models.ValheimProfile
         HardCore
     }
 
-    public enum Resources
-    {
+    public enum Resources {
         Default,
         MuchLess,
         Less,
@@ -49,16 +38,14 @@ namespace OphiussaServerManager.Common.Models.ValheimProfile
         Most
     }
 
-    public enum Portals
-    {
+    public enum Portals {
         Default,
         Casual,
         Hard,
         VeryHard
     }
 
-    public enum Raids
-    {
+    public enum Raids {
         Default,
         None,
         MuchLess,
@@ -68,48 +55,56 @@ namespace OphiussaServerManager.Common.Models.ValheimProfile
     }
 
 
-    public class ValheimProfile
-    {
-        public Administration Administration { get; set; }
-
-
-        public ValheimProfile()
-        {
-            this.Administration = new Administration();
-
+    public class ValheimProfile {
+        public ValheimProfile() {
+            Administration = new Administration();
         }
 
-        public string GetCommandLinesArguments(Settings settings, Profile profile, string locaIP)
-        {
+        public Administration Administration { get; set; }
+
+        public string GetCommandLinesArguments(Settings settings, Profile profile, string locaIp) {
             string cmd = string.Empty;
 
-            List<string> hifenArgs = new List<string>();
+            var hifenArgs = new List<string>();
 
-            hifenArgs.Add($" -nographics");
-            hifenArgs.Add($" -batchmode");
-            hifenArgs.Add($" -name \"{this.Administration.ServerName}\"");
-            hifenArgs.Add($" -port {this.Administration.ServerPort}");
-            hifenArgs.Add($" -world \"{this.Administration.WordName}\"");
-            hifenArgs.Add($" -password \"{this.Administration.ServerPassword}\"");
-            if (!string.IsNullOrEmpty(this.Administration.SaveLocation)) hifenArgs.Add($" -savedir \"{this.Administration.SaveLocation}\"");
-            hifenArgs.Add($" -public {(this.Administration.Public ? 1 : 0)}");
-            if (!string.IsNullOrEmpty(this.Administration.LogFileLocation)) hifenArgs.Add($" -logFile \"{this.Administration.LogFileLocation}\\VAL_{profile.Key}.log\"");
-            hifenArgs.Add($" -saveinterval {this.Administration.AutoSavePeriod * 60}");
-            hifenArgs.Add($" -backups {this.Administration.TotalBackups}");
-            hifenArgs.Add($" -backupshort {this.Administration.BackupShort * 60}");
-            hifenArgs.Add($" -backuplong {this.Administration.BackupLong * 60}");
-            if (this.Administration.Crossplay) hifenArgs.Add(" -crossplay");
-            if (!string.IsNullOrEmpty(this.Administration.InstanceID)) hifenArgs.Add($" -instanceid \"{this.Administration.InstanceID}\"");
-            hifenArgs.Add($" -preset {this.Administration.Preset.ToString().ToLower()}");
-            if (this.Administration.Combat != Combat.Default) hifenArgs.Add($" -modifier combat {this.Administration.Combat.ToString().ToLower()}");
-            if (this.Administration.DeathPenalty != DeathPenalty.Default) hifenArgs.Add($" -modifier deathpenalty {this.Administration.DeathPenalty.ToString().ToLower()}");
-            if (this.Administration.Resources != Resources.Default) hifenArgs.Add($" -modifier resources {this.Administration.Resources.ToString().ToLower()}");
-            if (this.Administration.Raids != Raids.Default) hifenArgs.Add($" -modifier raids {this.Administration.Raids.ToString().ToLower()}");
-            if (this.Administration.Portals != Portals.Default) hifenArgs.Add($" -modifier portals {this.Administration.Portals.ToString().ToLower()}");
-            if (this.Administration.NoBuildcost) hifenArgs.Add(" -setkey nobuildcost");
-            if (this.Administration.PlayerEvents) hifenArgs.Add(" -setkey playerevents");
-            if (this.Administration.PassiveMobs) hifenArgs.Add(" -setkey passivemobs");
-            if (this.Administration.NoMap) hifenArgs.Add(" -setkey nomap");
+            hifenArgs.Add(" -nographics");
+            hifenArgs.Add(" -batchmode");
+            hifenArgs.Add($" -name \"{Administration.ServerName}\"");
+            hifenArgs.Add($" -port {Administration.ServerPort}");
+            hifenArgs.Add($" -world \"{Administration.WordName}\"");
+            hifenArgs.Add($" -password \"{Administration.ServerPassword}\"");
+            if (!string.IsNullOrEmpty(Administration.SaveLocation))
+                hifenArgs.Add($" -savedir \"{Administration.SaveLocation}\"");
+            hifenArgs.Add($" -public {(Administration.Public ? 1 : 0)}");
+            if (!string.IsNullOrEmpty(Administration.LogFileLocation))
+                hifenArgs.Add($" -logFile \"{Administration.LogFileLocation}\\VAL_{profile.Key}.log\"");
+            hifenArgs.Add($" -saveinterval {Administration.AutoSavePeriod * 60}");
+            hifenArgs.Add($" -backups {Administration.TotalBackups}");
+            hifenArgs.Add($" -backupshort {Administration.BackupShort * 60}");
+            hifenArgs.Add($" -backuplong {Administration.BackupLong   * 60}");
+            if (Administration.Crossplay)
+                hifenArgs.Add(" -crossplay");
+            if (!string.IsNullOrEmpty(Administration.InstanceId))
+                hifenArgs.Add($" -instanceid \"{Administration.InstanceId}\"");
+            hifenArgs.Add($" -preset {Administration.Preset.ToString().ToLower()}");
+            if (Administration.Combat != Combat.Default)
+                hifenArgs.Add($" -modifier combat {Administration.Combat.ToString().ToLower()}");
+            if (Administration.DeathPenalty != DeathPenalty.Default)
+                hifenArgs.Add($" -modifier deathpenalty {Administration.DeathPenalty.ToString().ToLower()}");
+            if (Administration.Resources != Resources.Default)
+                hifenArgs.Add($" -modifier resources {Administration.Resources.ToString().ToLower()}");
+            if (Administration.Raids != Raids.Default)
+                hifenArgs.Add($" -modifier raids {Administration.Raids.ToString().ToLower()}");
+            if (Administration.Portals != Portals.Default)
+                hifenArgs.Add($" -modifier portals {Administration.Portals.ToString().ToLower()}");
+            if (Administration.NoBuildcost)
+                hifenArgs.Add(" -setkey nobuildcost");
+            if (Administration.PlayerEvents)
+                hifenArgs.Add(" -setkey playerevents");
+            if (Administration.PassiveMobs)
+                hifenArgs.Add(" -setkey passivemobs");
+            if (Administration.NoMap)
+                hifenArgs.Add(" -setkey nomap");
 
 
             cmd += string.Join("", hifenArgs.ToArray());
@@ -118,28 +113,27 @@ namespace OphiussaServerManager.Common.Models.ValheimProfile
         }
     }
 
-    public class Administration : BaseAdministration
-    {
-        public string Branch { get; set; } = "Live";
-        public bool Crossplay { get; set; } = false;
-        public bool Public { get; set; } = false;
-        public string InstanceID { get; set; } = "";
-        public string WordName { get; set; } = "NewWorld";
-        public Preset Preset { get; set; } = Preset.Normal;
-        public int AutoSavePeriod { get; set; } = 30;
-        public int TotalBackups { get; set; } = 3;
-        public int BackupShort { get; set; } = 120;
-        public int BackupLong { get; set; } = 720;
-        public bool NoBuildcost { get; set; } = false;
-        public bool PlayerEvents { get; set; } = false;
-        public bool PassiveMobs { get; set; } = false;
-        public bool NoMap { get; set; } = false;
-        public Combat Combat { get; set; } = Combat.Default;
-        public DeathPenalty DeathPenalty { get; set; } = DeathPenalty.Default;
-        public Resources Resources { get; set; } = Resources.Default;
-        public Portals Portals { get; set; } = Portals.Default;
-        public Raids Raids { get; set; } = Raids.Default;
-        public string SaveLocation { get; set; } = "";
-        public string LogFileLocation { get; set; } = "";
+    public class Administration : BaseAdministration {
+        public string       Branch          { get; set; } = "Live";
+        public bool         Crossplay       { get; set; } = false;
+        public bool         Public          { get; set; } = false;
+        public string       InstanceId      { get; set; } = "";
+        public string       WordName        { get; set; } = "NewWorld";
+        public Preset       Preset          { get; set; } = Preset.Normal;
+        public int          AutoSavePeriod  { get; set; } = 30;
+        public int          TotalBackups    { get; set; } = 3;
+        public int          BackupShort     { get; set; } = 120;
+        public int          BackupLong      { get; set; } = 720;
+        public bool         NoBuildcost     { get; set; } = false;
+        public bool         PlayerEvents    { get; set; } = false;
+        public bool         PassiveMobs     { get; set; } = false;
+        public bool         NoMap           { get; set; } = false;
+        public Combat       Combat          { get; set; } = Combat.Default;
+        public DeathPenalty DeathPenalty    { get; set; } = DeathPenalty.Default;
+        public Resources    Resources       { get; set; } = Resources.Default;
+        public Portals      Portals         { get; set; } = Portals.Default;
+        public Raids        Raids           { get; set; } = Raids.Default;
+        public string       SaveLocation    { get; set; } = "";
+        public string       LogFileLocation { get; set; } = "";
     }
 }

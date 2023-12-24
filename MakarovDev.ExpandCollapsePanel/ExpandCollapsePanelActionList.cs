@@ -2,97 +2,66 @@
 using System.ComponentModel;
 using System.ComponentModel.Design;
 
-namespace MakarovDev.ExpandCollapsePanel
-{
+namespace MakarovDev.ExpandCollapsePanel {
     /// <summary>
-    /// DesignerActionList-derived class defines smart tag entries and resultant actions. 
-    /// <remarks>http://msdn.microsoft.com/en-us/library/ms171829.aspx</remarks>
+    ///     DesignerActionList-derived class defines smart tag entries and resultant actions.
+    ///     <remarks>http://msdn.microsoft.com/en-us/library/ms171829.aspx</remarks>
     /// </summary>
-    public class ExpandCollapsePanelActionList : System.ComponentModel.Design.DesignerActionList
-    {
-        private ExpandCollapsePanel panel;
-
-        private DesignerActionUIService designerActionUISvc = null;
+    public class ExpandCollapsePanelActionList : DesignerActionList {
+        private readonly ExpandCollapsePanel     _panel;
+        private          DesignerActionUIService _designerActionUiSvc;
 
         //The constructor associates the control  
         //with the smart tag list. 
         public ExpandCollapsePanelActionList(IComponent component)
-            : base(component)
-        {
-            this.panel = component as ExpandCollapsePanel;
+            : base(component) {
+            _panel = component as ExpandCollapsePanel;
 
             // Cache a reference to DesignerActionUIService, so the 
             // DesigneractionList can be refreshed. 
-            this.designerActionUISvc =
+            _designerActionUiSvc =
                 GetService(typeof(DesignerActionUIService))
-                as DesignerActionUIService;
+                    as DesignerActionUIService;
+        }
+
+        // Properties that are targets of DesignerActionPropertyItem entries. 
+        public bool IsExpanded {
+            get => _panel.IsExpanded;
+            set => GetPropertyByName("IsExpanded").SetValue(_panel, value);
+            // Refresh the list. 
+            //this.designerActionUISvc.Refresh(this.Component);
+        }
+
+        public ExpandCollapseButton.ExpandButtonStyle ButtonStyle {
+            get => _panel.ButtonStyle;
+            set => GetPropertyByName("ButtonStyle").SetValue(_panel, value);
+            // Refresh the list. 
+            //this.designerActionUISvc.Refresh(this.Component);
+        }
+
+        public ExpandCollapseButton.ExpandButtonSize ButtonSize {
+            get => _panel.ButtonSize;
+            set => GetPropertyByName("ButtonSize").SetValue(_panel, value);
+            // Refresh the list. 
+            //this.designerActionUISvc.Refresh(this.Component);
         }
 
         // Helper method to retrieve control properties. Use of  
         // GetProperties enables undo and menu updates to work properly. 
-        private PropertyDescriptor GetPropertyByName(String propName)
-        {
+        private PropertyDescriptor GetPropertyByName(string propName) {
             PropertyDescriptor prop;
-            prop = TypeDescriptor.GetProperties(panel)[propName];
+            prop = TypeDescriptor.GetProperties(_panel)[propName];
             if (null == prop)
                 throw new ArgumentException(
-                    "Matching ExpandCollapsePanel property not found!",
-                    propName);
-            else
-                return prop;
+                                            "Matching ExpandCollapsePanel property not found!",
+                                            propName);
+            return prop;
         }
 
-        // Properties that are targets of DesignerActionPropertyItem entries. 
-        public bool IsExpanded
-        {
-            get
-            {
-                return panel.IsExpanded;
-            }
-            set
-            {
-                GetPropertyByName("IsExpanded").SetValue(panel, value);
-
-                // Refresh the list. 
-                //this.designerActionUISvc.Refresh(this.Component);
-            }
-        }
-
-        public ExpandCollapseButton.ExpandButtonStyle ButtonStyle
-        {
-            get
-            {
-                return panel.ButtonStyle;
-            }
-            set
-            {
-                GetPropertyByName("ButtonStyle").SetValue(panel, value);
-
-                // Refresh the list. 
-                //this.designerActionUISvc.Refresh(this.Component);
-            }
-        }
-
-        public ExpandCollapseButton.ExpandButtonSize ButtonSize
-        {
-            get
-            {
-                return panel.ButtonSize;
-            }
-            set
-            {
-                GetPropertyByName("ButtonSize").SetValue(panel, value);
-
-                // Refresh the list. 
-                //this.designerActionUISvc.Refresh(this.Component);
-            }
-        }
-        
 
         // Implementation of this abstract method creates smart tag   
         // items, associates their targets, and collects into list. 
-        public override DesignerActionItemCollection GetSortedActionItems()
-        {
+        public override DesignerActionItemCollection GetSortedActionItems() {
             var items = new DesignerActionItemCollection();
 
             //Define static section header entries.

@@ -15,93 +15,78 @@
  *   along with SSQLib.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Net;
 using System.Net.Sockets;
 
-namespace SSQLib
-{
-    internal class SocketUtils
-    {
-        private SocketUtils() { }
+namespace SSQLib {
+    internal class SocketUtils {
+        private SocketUtils() {
+        }
 
-        internal static byte[] getInfo(IPEndPoint ipe, Packet packet)
-        {
+        internal static byte[] GetInfo(IPEndPoint ipe, Packet packet) {
             //Create the socket
-            Socket srvSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+            var srvSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
 
             //Save the max packet size
             int packetSize = 12288;
 
             //Send/Receive timeouts
-            srvSocket.SendTimeout = 3000;
+            srvSocket.SendTimeout    = 3000;
             srvSocket.ReceiveTimeout = 3000;
 
-            try
-            {
+            try {
                 //Send the request to the server
-                srvSocket.SendTo(packet.outputAsBytes(), ipe);
+                srvSocket.SendTo(packet.OutputAsBytes(), ipe);
             }
-            catch (SocketException se)
-            {
-                throw new SSQLServerException("Could not send packet to server {" + se.Message + "}");
+            catch (SocketException se) {
+                throw new SsqlServerException("Could not send packet to server {" + se.Message + "}");
             }
 
             //Create a new receive buffer
-            byte[] rcvPacketInfo = new byte[packetSize];
-            EndPoint Remote = (EndPoint)ipe;
+            byte[]   rcvPacketInfo = new byte[packetSize];
+            EndPoint remote        = ipe;
 
-            try
-            {
+            try {
                 //Receive the data from the server
-                srvSocket.ReceiveFrom(rcvPacketInfo, ref Remote);
+                srvSocket.ReceiveFrom(rcvPacketInfo, ref remote);
             }
-            catch (SocketException se)
-            {
-                throw new SSQLServerException("Could not receive packet from server {" + se.Message + "}");
+            catch (SocketException se) {
+                throw new SsqlServerException("Could not receive packet from server {" + se.Message + "}");
             }
 
             //Send the information back
             return rcvPacketInfo;
         }
 
-        internal static byte[] getInfo(IPEndPoint ipe, byte[] request)
-        {
+        internal static byte[] GetInfo(IPEndPoint ipe, byte[] request) {
             //Create the socket
-            Socket srvSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+            var srvSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
 
             //Save the max packet size
             int packetSize = 12288;
 
             //Send/Receive timeouts
-            srvSocket.SendTimeout = 3000;
+            srvSocket.SendTimeout    = 3000;
             srvSocket.ReceiveTimeout = 3000;
 
-            try
-            {
+            try {
                 //Send the request to the server
                 srvSocket.SendTo(request, ipe);
             }
-            catch (SocketException se)
-            {
-                throw new SSQLServerException("Could not send packet to server {" + se.Message + "}");
+            catch (SocketException se) {
+                throw new SsqlServerException("Could not send packet to server {" + se.Message + "}");
             }
 
             //Create a new receive buffer
-            byte[] rcvPacketInfo = new byte[packetSize];
-            EndPoint Remote = (EndPoint)ipe;
+            byte[]   rcvPacketInfo = new byte[packetSize];
+            EndPoint remote        = ipe;
 
-            try
-            {
+            try {
                 //Receive the data from the server
-                srvSocket.ReceiveFrom(rcvPacketInfo, ref Remote);
+                srvSocket.ReceiveFrom(rcvPacketInfo, ref remote);
             }
-            catch (SocketException se)
-            {
-                throw new SSQLServerException("Could not receive packet from server {" + se.Message + "}");
+            catch (SocketException se) {
+                throw new SsqlServerException("Could not receive packet from server {" + se.Message + "}");
             }
 
             //Send the information back

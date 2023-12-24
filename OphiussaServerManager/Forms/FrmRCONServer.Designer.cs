@@ -1,6 +1,6 @@
 ﻿namespace OphiussaServerManager.Forms
 {
-    partial class FrmRCONServer
+    partial class FrmRconServer
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRCONServer));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRconServer));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewLogsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -75,7 +75,7 @@
             this.timersChat = new System.Windows.Forms.Timer(this.components);
             this.timerConnection = new System.Windows.Forms.Timer(this.components);
             this.timerUpdatePlayersFromDisk = new System.Windows.Forms.Timer(this.components);
-            this.lbPlayers = new OphiussaServerManager.exListBox();
+            this.lbPlayers = new OphiussaServerManager.ExListBox();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -487,7 +487,7 @@
             this.ForeColor = System.Drawing.Color.SteelBlue;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "FrmRCONServer";
+            this.Name = "FrmRconServer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RCON";
             this.Load += new System.EventHandler(this.RCONServer_Load);
@@ -551,6 +551,6 @@
         private System.Windows.Forms.ToolStripMenuItem copyPlayerIDToolStripMenuItem;
         private System.Windows.Forms.Timer timerConnection;
         private System.Windows.Forms.Timer timerUpdatePlayersFromDisk;
-        private exListBox lbPlayers;
+        private ExListBox lbPlayers;
     }
 }

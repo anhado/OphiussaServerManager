@@ -133,7 +133,7 @@
             // 
             this.btDelete.BackColor = System.Drawing.Color.IndianRed;
             this.btDelete.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btDelete.Image = global::OphiussaServerManager.Properties.Resources.Close_icon_icon;
+            this.btDelete.Image = global::OphiussaServerManager.Properties.Resources.CloseIcon;
             this.btDelete.Location = new System.Drawing.Point(349, 136);
             this.btDelete.Name = "btDelete";
             this.btDelete.Size = new System.Drawing.Size(75, 23);

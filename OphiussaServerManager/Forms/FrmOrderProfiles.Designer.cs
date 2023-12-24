@@ -73,7 +73,7 @@
             // 
             // button4
             // 
-            this.button4.Image = global::OphiussaServerManager.Properties.Resources.refresh_icon_icon__4_;
+            this.button4.Image = global::OphiussaServerManager.Properties.Resources.RefeshIcon;
             this.button4.Location = new System.Drawing.Point(50, 8);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(32, 32);
@@ -83,7 +83,7 @@
             // 
             // button1
             // 
-            this.button1.Image = global::OphiussaServerManager.Properties.Resources.save__floppy__disk_icon_icon;
+            this.button1.Image = global::OphiussaServerManager.Properties.Resources.SaveIcon;
             this.button1.Location = new System.Drawing.Point(12, 8);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(32, 32);
@@ -117,7 +117,7 @@
             // clUp
             // 
             this.clUp.HeaderText = "";
-            this.clUp.Image = global::OphiussaServerManager.Properties.Resources.collapse_icon_icon;
+            this.clUp.Image = global::OphiussaServerManager.Properties.Resources.CollapseIcon;
             this.clUp.Name = "clUp";
             this.clUp.ReadOnly = true;
             this.clUp.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -126,7 +126,7 @@
             // clDown
             // 
             this.clDown.HeaderText = "";
-            this.clDown.Image = global::OphiussaServerManager.Properties.Resources.expand_icon_icon;
+            this.clDown.Image = global::OphiussaServerManager.Properties.Resources.ExpandIcon;
             this.clDown.Name = "clDown";
             this.clDown.ReadOnly = true;
             this.clDown.Resizable = System.Windows.Forms.DataGridViewTriState.True;

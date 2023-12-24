@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ArkData.Models
-{
-    internal class SteamProfile
-    {
-        public string steamid { get; set; }
-        public string personaname { get; set; }
-        public string profileurl { get; set; }
-        public string avatar { get; set; }
+﻿namespace ArkData.Models {
+    internal class SteamProfile {
+        public string Steamid     { get; set; }
+        public string Personaname { get; set; }
+        public string Profileurl  { get; set; }
+        public string Avatar      { get; set; }
     }
 }

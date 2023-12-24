@@ -1,40 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Net;
 
-namespace QueryMaster
-{
-    internal class TcpQuery : ServerSocket
-    {
+namespace QueryMaster {
+    internal class TcpQuery : ServerSocket {
+        private byte[] _emptyPkt = { 0x0a, 0x00, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
 
-        private byte[] EmptyPkt = new byte[] { 0x0a, 0x00, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
         internal TcpQuery(IPEndPoint address, int sendTimeOut, int receiveTimeOut)
-            : base(SocketType.Tcp)
-        {
+            : base(SocketType.Tcp) {
             Connect(address);
-            socket.SendTimeout = sendTimeOut;
-            socket.ReceiveTimeout = receiveTimeOut;
+            Socket.SendTimeout    = sendTimeOut;
+            Socket.ReceiveTimeout = receiveTimeOut;
         }
 
-        internal byte[] GetResponse(byte[] msg)
-        {
+        internal byte[] GetResponse(byte[] msg) {
             byte[] recvData;
             SendData(msg);
-            recvData = ReceiveData();//Response value packet
+            recvData = ReceiveData(); //Response value packet
             //recvData = ReceiveData();//Auth response packet
             return recvData;
         }
 
-        internal List<byte[]> GetMultiPacketResponse(byte[] msg)
-        {
-            List<byte[]> recvBytes = new List<byte[]>();
+        internal List<byte[]> GetMultiPacketResponse(byte[] msg) {
+            var recvBytes = new List<byte[]>();
             //bool isRemaining = true;
             byte[] recvData;
             SendData(msg);
             //SendData(EmptyPkt);//Empty packet
-            recvData = ReceiveData();//reply
+            recvData = ReceiveData(); //reply
             recvBytes.Add(recvData);
 #if false
             do

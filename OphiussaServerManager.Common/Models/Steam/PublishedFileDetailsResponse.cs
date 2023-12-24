@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace OphiussaServerManager.Common.Models
-{
-    public class PublishedFileDetailsResponse
-    {
-        public int result { get; set; }
+namespace OphiussaServerManager.Common.Models {
+    public class PublishedFileDetailsResponse {
+        public int Result { get; set; }
 
-        public int resultcount { get; set; }
+        public int Resultcount { get; set; }
 
-        public List<PublishedFileDetail> publishedfiledetails { get; set; }
+        public List<PublishedFileDetail> Publishedfiledetails { get; set; }
     }
 }

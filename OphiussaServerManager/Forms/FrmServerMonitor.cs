@@ -1,100 +1,79 @@
-﻿using OphiussaServerManager.Common.Models.Profiles;
-using OphiussaServerManager.Common.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 using Newtonsoft.Json;
-using System.IO;
+using OphiussaServerManager.Common.Models;
+using OphiussaServerManager.Common.Models.Profiles;
 using OphiussaServerManager.Common.Models.SupportedServers;
 
-namespace OphiussaServerManager.Forms
-{
-    public partial class FrmServerMonitor : Form
-    {
-        Dictionary<string, Profile> Profiles = new Dictionary<string, Profile>();
-        public static Common.Models.Settings Settings;
-        public FrmServerMonitor()
-        {
+namespace OphiussaServerManager.Forms {
+    public partial class FrmServerMonitor : Form {
+        public static Settings                    Settings;
+        private       Dictionary<string, Profile> _profiles = new Dictionary<string, Profile>();
+
+        public FrmServerMonitor() {
             InitializeComponent();
         }
 
-        private void ServerMonitor_Load(object sender, EventArgs e)
-        {
-            if (!File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json")))
-            {
-                Forms.FrmSettings settings = new Forms.FrmSettings();
+        private void ServerMonitor_Load(object sender, EventArgs e) {
+            if (!File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json"))) {
+                var settings = new FrmSettings();
                 settings.ShowDialog();
             }
-            Settings = JsonConvert.DeserializeObject<Common.Models.Settings>(File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json")));
+
+            Settings = JsonConvert.DeserializeObject<Settings>(File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json")));
             LoadProfiles();
         }
 
-        private void LoadProfiles()
-        {
+        private void LoadProfiles() {
             monitorGridBindingSource.Clear();
-            try
-            {
+            try {
                 string dir = Settings.DataFolder + "Profiles\\";
-                if (!Directory.Exists(dir))
-                {
-                    return;
-                }
+                if (!Directory.Exists(dir)) return;
 
-                string[] files = System.IO.Directory.GetFiles(dir);
-                foreach (string file in files)
-                {
-                    Profile p = JsonConvert.DeserializeObject<Profile>(File.ReadAllText(file));
+                string[] files = Directory.GetFiles(dir);
+                foreach (string file in files) {
+                    var p = JsonConvert.DeserializeObject<Profile>(File.ReadAllText(file));
                     if (p != null)
-                    {
-                        switch (p.Type.ServerType)
-                        {
+                        switch (p.Type.ServerType) {
                             case EnumServerType.ArkSurviveEvolved:
                             case EnumServerType.ArkSurviveAscended:
 
                                 monitorGridBindingSource.Add(
-                                    new Common.Models.MonitorGrid()
-                                    {
-                                        Select = false,
-                                        Profile = p.Name,
-                                        ServerName = p.ARKConfiguration.Administration.ServerName,
-                                        Map = p.ARKConfiguration.Administration.MapName,
-                                        Mods = p.ARKConfiguration.Administration.ModIDs.Count,
-                                        Status = !p.IsInstalled ? "Uninstalled" : (p.IsRunning ? "Running" : "Stopped"),
-                                        Version = p.GetVersion() == "" ? p.GetBuild() : p.GetVersion(),
-                                        Ports = p.ARKConfiguration.Administration.ServerPort + "," + p.ARKConfiguration.Administration.PeerPort + "," + p.ARKConfiguration.Administration.QueryPort,
-                                        Players = p.ARKConfiguration.Administration.MaxPlayers.ToString()
-                                    }
-                                    );
+                                                             new MonitorGrid {
+                                                                                 Select     = false,
+                                                                                 Profile    = p.Name,
+                                                                                 ServerName = p.ArkConfiguration.Administration.ServerName,
+                                                                                 Map        = p.ArkConfiguration.Administration.MapName,
+                                                                                 Mods       = p.ArkConfiguration.Administration.ModIDs.Count,
+                                                                                 Status     = !p.IsInstalled ? "Uninstalled" : p.IsRunning ? "Running" : "Stopped",
+                                                                                 Version    = p.GetVersion() == "" ? p.GetBuild() : p.GetVersion(),
+                                                                                 Ports      = p.ArkConfiguration.Administration.ServerPort + "," + p.ArkConfiguration.Administration.PeerPort + "," + p.ArkConfiguration.Administration.QueryPort,
+                                                                                 Players    = p.ArkConfiguration.Administration.MaxPlayers.ToString()
+                                                                             }
+                                                            );
                                 break;
-                            case Common.Models.SupportedServers.EnumServerType.Valheim:
+                            case EnumServerType.Valheim:
                                 monitorGridBindingSource.Add(
-                                    new Common.Models.MonitorGrid()
-                                    {
-                                        Select = false,
-                                        Profile = p.Name,
-                                        ServerName = p.ValheimConfiguration.Administration.ServerName,
-                                        Map = p.ValheimConfiguration.Administration.WordName,
-                                        Mods = 0,
-                                        Status = !p.IsInstalled ? "Uninstalled" : (p.IsRunning ? "Running" : "Stopped"),
-                                        Version = p.GetVersion() == "" ? p.GetBuild() : p.GetVersion(),
-                                        Ports = p.ValheimConfiguration.Administration.ServerPort + "," + p.ValheimConfiguration.Administration.PeerPort,
-                                        Players = "0"
-                                    }
-                                    );
+                                                             new MonitorGrid {
+                                                                                 Select     = false,
+                                                                                 Profile    = p.Name,
+                                                                                 ServerName = p.ValheimConfiguration.Administration.ServerName,
+                                                                                 Map        = p.ValheimConfiguration.Administration.WordName,
+                                                                                 Mods       = 0,
+                                                                                 Status     = !p.IsInstalled ? "Uninstalled" : p.IsRunning ? "Running" : "Stopped",
+                                                                                 Version    = p.GetVersion() == "" ? p.GetBuild() : p.GetVersion(),
+                                                                                 Ports      = p.ValheimConfiguration.Administration.ServerPort + "," + p.ValheimConfiguration.Administration.PeerPort,
+                                                                                 Players    = "0"
+                                                                             }
+                                                            );
                                 break;
                         }
-                    }
                 }
             }
-            catch (Exception e)
-            {
-                OphiussaLogger.logger.Error(e);
+            catch (Exception e) {
+                OphiussaLogger.Logger.Error(e);
                 MessageBox.Show($"LoadProfiles: {e.Message}");
             }
         }

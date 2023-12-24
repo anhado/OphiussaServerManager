@@ -16,54 +16,44 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.IO;
 
-namespace SSQLib
-{
-    internal class Packet
-    {
-        internal int RequestId = 0;
-        internal string Data = "";
-
-        internal Packet() { }
+namespace SSQLib {
+    internal class Packet {
+        internal string Data      = "";
+        internal int    RequestId = 0;
 
         //Output the packet data as a byte array
-        internal byte[] outputAsBytes()
-        {
-            byte[] data_byte = null;
+        internal byte[] OutputAsBytes() {
+            byte[] dataByte = null;
 
-            if (Data.Length > 0)
-            {
+            if (Data.Length > 0) {
                 //Create a new packet based on the length of the request
-                data_byte = new byte[Data.Length + 5];
+                dataByte = new byte[Data.Length + 5];
 
                 //Fill the first 4 bytes with 0xff
-                data_byte[0] = 0xff;
-                data_byte[1] = 0xff;
-                data_byte[2] = 0xff;
-                data_byte[3] = 0xff;
+                dataByte[0] = 0xff;
+                dataByte[1] = 0xff;
+                dataByte[2] = 0xff;
+                dataByte[3] = 0xff;
 
                 //Copy the data to the new request
-                Array.Copy(ASCIIEncoding.UTF8.GetBytes(Data), 0, data_byte, 4, Data.Length);
+                Array.Copy(Encoding.UTF8.GetBytes(Data), 0, dataByte, 4, Data.Length);
             }
             //Empty request to get challenge
-            else
-            {
-                data_byte = new byte[5];
+            else {
+                dataByte = new byte[5];
 
                 //Fill the first 4 bytes with 0xff
-                data_byte[0] = 0xff;
-                data_byte[1] = 0xff;
-                data_byte[2] = 0xff;
-                data_byte[3] = 0xff;
-                data_byte[4] = 0x57;
+                dataByte[0] = 0xff;
+                dataByte[1] = 0xff;
+                dataByte[2] = 0xff;
+                dataByte[3] = 0xff;
+                dataByte[4] = 0x57;
             }
 
 
-            return data_byte;
+            return dataByte;
         }
     }
 }

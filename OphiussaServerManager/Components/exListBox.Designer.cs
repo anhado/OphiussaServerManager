@@ -1,6 +1,6 @@
 namespace OphiussaServerManager
 {
-    partial class exListBox
+    partial class ExListBox
     {
         /// <summary>
         /// Required designer variable.

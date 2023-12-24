@@ -2,20 +2,19 @@
 using System.IO;
 using System.Runtime.InteropServices;
 
-namespace OphiussaServerManager.Common.Helpers
-{
-    public static class IOUtils
-    {
+namespace OphiussaServerManager.Common.Helpers {
+    public static class IoUtils {
         [DllImport("kernel32", CharSet = CharSet.Unicode, SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         private static extern bool DeleteFile(string name);
 
-        public static bool IsUnc(string path) => new Uri(path).IsUnc;
+        public static bool IsUnc(string path) {
+            return new Uri(path).IsUnc;
+        }
 
-        public static string NormalizeFolder(string path)
-        {
+        public static string NormalizeFolder(string path) {
             string str = path.TrimEnd('\\') + "\\";
-            if (IOUtils.IsUnc(str))
+            if (IsUnc(str))
                 return str.TrimEnd('\\');
             string pathRoot = Path.GetPathRoot(str);
             if (!pathRoot.EndsWith("\\"))
@@ -25,8 +24,12 @@ namespace OphiussaServerManager.Common.Helpers
             return str;
         }
 
-        public static string NormalizePath(string path) => Path.GetFullPath(new Uri(path).LocalPath).TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar).ToLowerInvariant();
+        public static string NormalizePath(string path) {
+            return Path.GetFullPath(new Uri(path).LocalPath).TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar).ToLowerInvariant();
+        }
 
-        public static bool Unblock(string fileName) => IOUtils.DeleteFile(fileName + ":Zone.Identifier");
+        public static bool Unblock(string fileName) {
+            return DeleteFile(fileName + ":Zone.Identifier");
+        }
     }
 }

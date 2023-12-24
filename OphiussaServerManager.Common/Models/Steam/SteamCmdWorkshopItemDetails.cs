@@ -1,19 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace OphiussaServerManager.Common.Models {
+    public class SteamCmdWorkshopItemDetails {
+        public string Publishedfileid { get; set; }
 
-namespace OphiussaServerManager.Common.Models
-{
-    public class SteamCmdWorkshopItemDetails
-    {
-        public string publishedfileid { get; set; }
+        public string Manifest { get; set; }
 
-        public string manifest { get; set; }
+        public string Timeupdated { get; set; }
 
-        public string timeupdated { get; set; }
-
-        public string timetouched { get; set; }
+        public string Timetouched { get; set; }
     }
 }

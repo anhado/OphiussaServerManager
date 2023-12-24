@@ -1,22 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OphiussaServerManager.Common.Ini
-{
-    public class IniKey
-    {
+﻿namespace OphiussaServerManager.Common.Ini {
+    public class IniKey {
         public string KeyName;
         public string KeyValue;
 
-        public IniKey()
-        {
-            this.KeyName = string.Empty;
-            this.KeyValue = string.Empty;
+        public IniKey() {
+            KeyName  = string.Empty;
+            KeyValue = string.Empty;
         }
 
-        public override string ToString() => this.KeyName + "=" + this.KeyValue;
+        public override string ToString() {
+            return KeyName + "=" + KeyValue;
+        }
     }
 }

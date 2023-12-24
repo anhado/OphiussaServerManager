@@ -1,29 +1,29 @@
-﻿using OphiussaServerManager.Common;
-using OphiussaServerManager.Common.Helpers;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using OphiussaServerManager.Common.Helpers;
 
-namespace OphiussaServerManager.Common.Models
-{
-    public class CurseForgeFileDetailPaginationResponse
-    {
-        public int index { get; set; }
-        public int pageSize { get; set; }
-        public int resultCount { get; set; }
-        public int totalCount { get; set; }
+namespace OphiussaServerManager.Common.Models {
+    public class CurseForgeFileDetailPaginationResponse {
+        public int Index       { get; set; }
+        public int PageSize    { get; set; }
+        public int ResultCount { get; set; }
+        public int TotalCount  { get; set; }
     }
 
-    public class CurseForgeFileDetailResponse
-    {
-        public DateTime cached = DateTime.UtcNow;
+    public class CurseForgeFileDetailResponse {
+        public DateTime Cached = DateTime.UtcNow;
 
-        public CurseForgeFileDetailPaginationResponse pagination { get; set; }
+        public CurseForgeFileDetailPaginationResponse Pagination { get; set; }
 
-        public List<CurseForgeFileDetail> data { get; set; }
+        public List<CurseForgeFileDetail> Data { get; set; }
 
-        public static CurseForgeFileDetailResponse Load(string file) => string.IsNullOrWhiteSpace(file) || !File.Exists(file) ? (CurseForgeFileDetailResponse)null : JsonUtils.DeserializeFromFile<CurseForgeFileDetailResponse>(file);
+        public static CurseForgeFileDetailResponse Load(string file) {
+            return string.IsNullOrWhiteSpace(file) || !File.Exists(file) ? null : JsonUtils.DeserializeFromFile<CurseForgeFileDetailResponse>(file);
+        }
 
-        public bool Save(string file) => !string.IsNullOrWhiteSpace(file) && JsonUtils.SerializeToFile<CurseForgeFileDetailResponse>(this, file);
+        public bool Save(string file) {
+            return !string.IsNullOrWhiteSpace(file) && JsonUtils.SerializeToFile(this, file);
+        }
     }
 }

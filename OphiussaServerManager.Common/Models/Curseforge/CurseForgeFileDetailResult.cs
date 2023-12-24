@@ -1,7 +1,5 @@
-﻿namespace OphiussaServerManager.Common.Models
-{
-    public class CurseForgeFileDetailResult
-    {
-        public CurseForgeFileDetailResponse response { get; set; }
+﻿namespace OphiussaServerManager.Common.Models {
+    public class CurseForgeFileDetailResult {
+        public CurseForgeFileDetailResponse Response { get; set; }
     }
 }

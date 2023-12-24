@@ -26,8 +26,7 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
-        {
+        private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmArk));
             this.panel1 = new System.Windows.Forms.Panel();
@@ -201,150 +200,297 @@
             this.txtServerName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.expandCollapsePanel3 = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
+            this.groupBox30 = new System.Windows.Forms.GroupBox();
+            this.chkEnableRagnarokSettings = new System.Windows.Forms.CheckBox();
+            this.label126 = new System.Windows.Forms.Label();
+            this.txtVolcanoIntensity = new System.Windows.Forms.TextBox();
+            this.tbVolcanoIntensity = new System.Windows.Forms.TrackBar();
+            this.label127 = new System.Windows.Forms.Label();
+            this.label128 = new System.Windows.Forms.Label();
+            this.txtVolcanoInterval = new System.Windows.Forms.TextBox();
+            this.tbVolcanoInterval = new System.Windows.Forms.TrackBar();
+            this.label129 = new System.Windows.Forms.Label();
+            this.label130 = new System.Windows.Forms.Label();
+            this.txtUnicornSpawnInterval = new System.Windows.Forms.TextBox();
+            this.tbUnicornSpawnInterval = new System.Windows.Forms.TrackBar();
+            this.label131 = new System.Windows.Forms.Label();
+            this.chkEnableVolcano = new System.Windows.Forms.CheckBox();
+            this.chkAllowMultipleTamedUnicorns = new System.Windows.Forms.CheckBox();
+            this.groupBox29 = new System.Windows.Forms.GroupBox();
+            this.label124 = new System.Windows.Forms.Label();
+            this.txtHexagonCostMultiplier = new System.Windows.Forms.TextBox();
+            this.tbHexagonCostMultiplier = new System.Windows.Forms.TrackBar();
+            this.label125 = new System.Windows.Forms.Label();
+            this.label122 = new System.Windows.Forms.Label();
+            this.txtHexagonRewardMultiplier = new System.Windows.Forms.TextBox();
+            this.tbHexagonRewardMultiplier = new System.Windows.Forms.TrackBar();
+            this.label123 = new System.Windows.Forms.Label();
+            this.label51 = new System.Windows.Forms.Label();
+            this.txtMaxHexagonsPerCharacter = new System.Windows.Forms.TextBox();
+            this.tbMaxHexagonsPerCharacter = new System.Windows.Forms.TrackBar();
+            this.label117 = new System.Windows.Forms.Label();
+            this.chkAllowOnlyEngramPointsTrade = new System.Windows.Forms.CheckBox();
+            this.chkDisableHexagonStore = new System.Windows.Forms.CheckBox();
+            this.groupBox28 = new System.Windows.Forms.GroupBox();
+            this.tbConnectionInvicibleInterval = new System.Windows.Forms.TrackBar();
+            this.label118 = new System.Windows.Forms.Label();
+            this.txtConnectionInvicibleInterval = new System.Windows.Forms.TextBox();
+            this.label119 = new System.Windows.Forms.Label();
+            this.label120 = new System.Windows.Forms.Label();
+            this.txtLogoutInterval = new System.Windows.Forms.TextBox();
+            this.tbLogoutInterval = new System.Windows.Forms.TrackBar();
+            this.label121 = new System.Windows.Forms.Label();
+            this.chkPreventOfflinePVP = new System.Windows.Forms.CheckBox();
+            this.tbPlatformSaddleBuildAreaBoundsMultiplier = new System.Windows.Forms.TrackBar();
+            this.chkAllowPlatformSaddleMultiFloors = new System.Windows.Forms.CheckBox();
+            this.groupBox27 = new System.Windows.Forms.GroupBox();
+            this.chkEnableHyperInsulationClamp = new System.Windows.Forms.CheckBox();
+            this.txtHyperInsulationClamp = new System.Windows.Forms.TextBox();
+            this.tbHyperInsulationClamp = new System.Windows.Forms.TrackBar();
+            this.label110 = new System.Windows.Forms.Label();
+            this.chkEnableWeaponClipAmmoClamp = new System.Windows.Forms.CheckBox();
+            this.chkEnableMaxDurabilityClamp = new System.Windows.Forms.CheckBox();
+            this.chkEnableWeightClamp = new System.Windows.Forms.CheckBox();
+            this.txtWeaponClipAmmoClamp = new System.Windows.Forms.TextBox();
+            this.tbWeaponClipAmmoClamp = new System.Windows.Forms.TrackBar();
+            this.label111 = new System.Windows.Forms.Label();
+            this.txtMaxDurabilityClamp = new System.Windows.Forms.TextBox();
+            this.tbMaxDurabilityClamp = new System.Windows.Forms.TrackBar();
+            this.label115 = new System.Windows.Forms.Label();
+            this.txtWeightClamp = new System.Windows.Forms.TextBox();
+            this.tbWeightClamp = new System.Windows.Forms.TrackBar();
+            this.label116 = new System.Windows.Forms.Label();
+            this.chkEnableHypoInsulationClamp = new System.Windows.Forms.CheckBox();
+            this.txtHypoInsulationClamp = new System.Windows.Forms.TextBox();
+            this.tbHypoInsulationClamp = new System.Windows.Forms.TrackBar();
+            this.label108 = new System.Windows.Forms.Label();
+            this.chkEnableWeaponDamagePercentClamp = new System.Windows.Forms.CheckBox();
+            this.chkEnableArmorClamp = new System.Windows.Forms.CheckBox();
+            this.chkEnableGenericQualityClamp = new System.Windows.Forms.CheckBox();
+            this.label114 = new System.Windows.Forms.Label();
+            this.txtWeaponDamagePercentClamp = new System.Windows.Forms.TextBox();
+            this.tbWeaponDamagePercentClamp = new System.Windows.Forms.TrackBar();
+            this.label109 = new System.Windows.Forms.Label();
+            this.txtArmorClamp = new System.Windows.Forms.TextBox();
+            this.tbArmorClamp = new System.Windows.Forms.TrackBar();
+            this.label112 = new System.Windows.Forms.Label();
+            this.txtGenericQualityClamp = new System.Windows.Forms.TextBox();
+            this.tbGenericQualityClamp = new System.Windows.Forms.TrackBar();
+            this.label113 = new System.Windows.Forms.Label();
+            this.groupBox26 = new System.Windows.Forms.GroupBox();
+            this.chkEnableFjordurBiomeTeleport = new System.Windows.Forms.CheckBox();
+            this.chkEnableFjordurSettings = new System.Windows.Forms.CheckBox();
+            this.groupBox25 = new System.Windows.Forms.GroupBox();
+            this.label104 = new System.Windows.Forms.Label();
+            this.txtMutagemSpawnDelayMultiplier = new System.Windows.Forms.TextBox();
+            this.tbMutagemSpawnDelayMultiplier = new System.Windows.Forms.TrackBar();
+            this.label105 = new System.Windows.Forms.Label();
+            this.label106 = new System.Windows.Forms.Label();
+            this.txtWorldBuffScanlingEfficacy = new System.Windows.Forms.TextBox();
+            this.tbWorldBuffScanlingEfficacy = new System.Windows.Forms.TrackBar();
+            this.label107 = new System.Windows.Forms.Label();
+            this.chkEnableWorldBuffScaling = new System.Windows.Forms.CheckBox();
+            this.chkGen2DisableWorldBuffs = new System.Windows.Forms.CheckBox();
+            this.chkGen2DisableTEKSuitonSpawn = new System.Windows.Forms.CheckBox();
+            this.groupBox24 = new System.Windows.Forms.GroupBox();
+            this.chkGen1AllowTekSuitPowers = new System.Windows.Forms.CheckBox();
+            this.chkGen1DisableMissions = new System.Windows.Forms.CheckBox();
+            this.groupBox23 = new System.Windows.Forms.GroupBox();
+            this.label98 = new System.Windows.Forms.Label();
+            this.txtIncomingDamageMultiplierPercent = new System.Windows.Forms.TextBox();
+            this.tbIncomingDamageMultiplierPercent = new System.Windows.Forms.TrackBar();
+            this.label99 = new System.Windows.Forms.Label();
+            this.label100 = new System.Windows.Forms.Label();
+            this.label101 = new System.Windows.Forms.Label();
+            this.txtOutgoingDamageMultiplier = new System.Windows.Forms.TextBox();
+            this.tbOutgoingDamageMultiplier = new System.Windows.Forms.TrackBar();
+            this.label102 = new System.Windows.Forms.Label();
+            this.txtEnableCryopodNerfDuration = new System.Windows.Forms.TextBox();
+            this.tbEnableCryopodNerfDuration = new System.Windows.Forms.TrackBar();
+            this.label103 = new System.Windows.Forms.Label();
+            this.chkEnableCryopodNerf = new System.Windows.Forms.CheckBox();
+            this.label96 = new System.Windows.Forms.Label();
+            this.label94 = new System.Windows.Forms.Label();
+            this.txtLimitNonPlayerDroppedItemsCount = new System.Windows.Forms.TextBox();
+            this.tbLimitNonPlayerDroppedItemsCount = new System.Windows.Forms.TrackBar();
+            this.label92 = new System.Windows.Forms.Label();
+            this.label97 = new System.Windows.Forms.Label();
+            this.txtLimitNonPlayerDroppedItemsRange = new System.Windows.Forms.TextBox();
+            this.tbLimitNonPlayerDroppedItemsRange = new System.Windows.Forms.TrackBar();
+            this.label90 = new System.Windows.Forms.Label();
+            this.label95 = new System.Windows.Forms.Label();
+            this.txtFuelConsumptionIntervalMultiplier = new System.Windows.Forms.TextBox();
+            this.tbFuelConsumptionIntervalMultiplier = new System.Windows.Forms.TrackBar();
+            this.label88 = new System.Windows.Forms.Label();
+            this.label93 = new System.Windows.Forms.Label();
+            this.txtGlobalPoweredBatteryDurability = new System.Windows.Forms.TextBox();
+            this.tbGlobalPoweredBatteryDurability = new System.Windows.Forms.TrackBar();
+            this.label86 = new System.Windows.Forms.Label();
+            this.label91 = new System.Windows.Forms.Label();
+            this.txtFjordhawkInventoryCooldown = new System.Windows.Forms.TextBox();
+            this.tbFjordhawkInventoryCooldown = new System.Windows.Forms.TrackBar();
+            this.label84 = new System.Windows.Forms.Label();
+            this.label89 = new System.Windows.Forms.Label();
+            this.groupBox22 = new System.Windows.Forms.GroupBox();
+            this.label82 = new System.Windows.Forms.Label();
+            this.txtScaleMaximum = new System.Windows.Forms.TextBox();
+            this.tbScaleMaximum = new System.Windows.Forms.TrackBar();
+            this.label83 = new System.Windows.Forms.Label();
+            this.label81 = new System.Windows.Forms.Label();
+            this.label80 = new System.Windows.Forms.Label();
+            this.txtOnlinePlayerCountEnd = new System.Windows.Forms.TextBox();
+            this.tbOnlinePlayerCountEnd = new System.Windows.Forms.TrackBar();
+            this.label78 = new System.Windows.Forms.Label();
+            this.txtOnlinePlayerCountStart = new System.Windows.Forms.TextBox();
+            this.tbOnlinePlayerCountStart = new System.Windows.Forms.TrackBar();
+            this.label79 = new System.Windows.Forms.Label();
+            this.chkOverrideNPCNetworkStasisRangeScale = new System.Windows.Forms.CheckBox();
+            this.txtUseCorpseLifeSpanMultiplier = new System.Windows.Forms.TextBox();
+            this.txtOxygenSwimSpeedStatMultiplier = new System.Windows.Forms.TextBox();
+            this.groupBox21 = new System.Windows.Forms.GroupBox();
+            this.chkNonPermanentDiseases = new System.Windows.Forms.CheckBox();
+            this.chkEnableDiseases = new System.Windows.Forms.CheckBox();
+            this.tbUseCorpseLifeSpanMultiplier = new System.Windows.Forms.TrackBar();
+            this.label87 = new System.Windows.Forms.Label();
+            this.tbOxygenSwimSpeedStatMultiplier = new System.Windows.Forms.TrackBar();
+            this.label85 = new System.Windows.Forms.Label();
+            this.groupBox20 = new System.Windows.Forms.GroupBox();
+            this.label76 = new System.Windows.Forms.Label();
+            this.label74 = new System.Windows.Forms.Label();
+            this.txtCostumRecipesSkillMultiplier = new System.Windows.Forms.TextBox();
+            this.tbCostumRecipesSkillMultiplier = new System.Windows.Forms.TrackBar();
+            this.label72 = new System.Windows.Forms.Label();
+            this.txtCostumRecipesEffectivenessMultiplier = new System.Windows.Forms.TextBox();
+            this.tbCostumRecipesEffectivenessMultiplier = new System.Windows.Forms.TrackBar();
+            this.label73 = new System.Windows.Forms.Label();
+            this.chkAllowCostumRecipes = new System.Windows.Forms.CheckBox();
+            this.groupBox19 = new System.Windows.Forms.GroupBox();
+            this.chkAllowCancelingTribeWarfare = new System.Windows.Forms.CheckBox();
+            this.chkAllowTribeWarfare = new System.Windows.Forms.CheckBox();
+            this.groupBox18 = new System.Windows.Forms.GroupBox();
+            this.txtMaxTribesPerAlliance = new System.Windows.Forms.TextBox();
+            this.tbMaxTribesPerAlliance = new System.Windows.Forms.TrackBar();
+            this.label75 = new System.Windows.Forms.Label();
+            this.txtMaxAlliancesPerTribe = new System.Windows.Forms.TextBox();
+            this.tbMaxAlliancesPerTribe = new System.Windows.Forms.TrackBar();
+            this.label77 = new System.Windows.Forms.Label();
+            this.chkAllowTribeAlliances = new System.Windows.Forms.CheckBox();
+            this.label70 = new System.Windows.Forms.Label();
+            this.txtTribeSlotReuseCooldown = new System.Windows.Forms.TextBox();
+            this.tbTribeSlotReuseCooldown = new System.Windows.Forms.TrackBar();
+            this.label71 = new System.Windows.Forms.Label();
+            this.groupBox17 = new System.Windows.Forms.GroupBox();
+            this.label68 = new System.Windows.Forms.Label();
+            this.txtIntervalBaseAmount = new System.Windows.Forms.TextBox();
+            this.tbIntervalBaseAmount = new System.Windows.Forms.TrackBar();
+            this.label69 = new System.Windows.Forms.Label();
+            this.label66 = new System.Windows.Forms.Label();
+            this.txtIntervalMultiplier = new System.Windows.Forms.TextBox();
+            this.tbIntervalMultiplier = new System.Windows.Forms.TrackBar();
+            this.label67 = new System.Windows.Forms.Label();
+            this.label64 = new System.Windows.Forms.Label();
+            this.txtIntervalCheckPeriod = new System.Windows.Forms.TextBox();
+            this.tbIntervalCheckPeriod = new System.Windows.Forms.TrackBar();
+            this.label65 = new System.Windows.Forms.Label();
+            this.chkIncreasePVPRespawnInterval = new System.Windows.Forms.CheckBox();
+            this.label62 = new System.Windows.Forms.Label();
+            this.txtTribeNameChangeCooldDown = new System.Windows.Forms.TextBox();
+            this.tbTribeNameChangeCooldDown = new System.Windows.Forms.TrackBar();
+            this.label63 = new System.Windows.Forms.Label();
+            this.label60 = new System.Windows.Forms.Label();
+            this.txtMaxPlayersInTribe = new System.Windows.Forms.TextBox();
+            this.tbMaxPlayersInTribe = new System.Windows.Forms.TrackBar();
+            this.label61 = new System.Windows.Forms.Label();
+            this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.label59 = new System.Windows.Forms.Label();
+            this.txtPVPEndTime = new System.Windows.Forms.MaskedTextBox();
+            this.label58 = new System.Windows.Forms.Label();
+            this.txtPVPStartTime = new System.Windows.Forms.MaskedTextBox();
+            this.chkUseServerTime = new System.Windows.Forms.CheckBox();
+            this.chkPVESchedule = new System.Windows.Forms.CheckBox();
+            this.groupBox15 = new System.Windows.Forms.GroupBox();
+            this.chkOverrideMinimumDinoReUploadInterval = new System.Windows.Forms.CheckBox();
+            this.label57 = new System.Windows.Forms.Label();
+            this.txtOverrideMinimumDinoReUploadIntervalValue = new System.Windows.Forms.TextBox();
+            this.tbOverrideMinimumDinoReUploadIntervalValue = new System.Windows.Forms.TrackBar();
+            this.chkOverrideDinoUploadExpiration = new System.Windows.Forms.CheckBox();
+            this.label52 = new System.Windows.Forms.Label();
+            this.txtOverrideDinoUploadExpirationValue = new System.Windows.Forms.TextBox();
+            this.tbOverrideDinoUploadExpirationValue = new System.Windows.Forms.TrackBar();
+            this.chkOverrideItemUploadExpiration = new System.Windows.Forms.CheckBox();
+            this.label50 = new System.Windows.Forms.Label();
+            this.txtOverrideItemUploadExpirationValue = new System.Windows.Forms.TextBox();
+            this.tbOverrideItemUploadExpirationValue = new System.Windows.Forms.TrackBar();
+            this.chkOverrideSurvivorUploadExpiration = new System.Windows.Forms.CheckBox();
+            this.label49 = new System.Windows.Forms.Label();
+            this.txtOverrideSurvivorUploadExpirationValue = new System.Windows.Forms.TextBox();
+            this.tbOverrideSurvivorUploadExpirationValue = new System.Windows.Forms.TrackBar();
+            this.chkNoTransferFromFiltering = new System.Windows.Forms.CheckBox();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
-            this.checkBox27 = new System.Windows.Forms.CheckBox();
+            this.chkLimitTributeItems = new System.Windows.Forms.CheckBox();
             this.label53 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.trackBar10 = new System.Windows.Forms.TrackBar();
+            this.txtMaxTributeItems = new System.Windows.Forms.TextBox();
+            this.tbMaxTributeItems = new System.Windows.Forms.TrackBar();
             this.label54 = new System.Windows.Forms.Label();
-            this.checkBox28 = new System.Windows.Forms.CheckBox();
+            this.chkLimitMaxTributeDinos = new System.Windows.Forms.CheckBox();
             this.label55 = new System.Windows.Forms.Label();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.trackBar11 = new System.Windows.Forms.TrackBar();
+            this.txtMaxTributeDinos = new System.Windows.Forms.TextBox();
+            this.tbMaxTributeDinos = new System.Windows.Forms.TrackBar();
             this.label56 = new System.Windows.Forms.Label();
-            this.checkBox30 = new System.Windows.Forms.CheckBox();
-            this.checkBox31 = new System.Windows.Forms.CheckBox();
-            this.checkBox32 = new System.Windows.Forms.CheckBox();
+            this.chkNoDinoUploads = new System.Windows.Forms.CheckBox();
+            this.chkNoItemUploads = new System.Windows.Forms.CheckBox();
+            this.chkNoSurvivorUploads = new System.Windows.Forms.CheckBox();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
-            this.checkBox24 = new System.Windows.Forms.CheckBox();
-            this.checkBox23 = new System.Windows.Forms.CheckBox();
-            this.checkBox22 = new System.Windows.Forms.CheckBox();
-            this.checkBox21 = new System.Windows.Forms.CheckBox();
-            this.checkBox20 = new System.Windows.Forms.CheckBox();
+            this.chkAllowForeignDinoDownloads = new System.Windows.Forms.CheckBox();
+            this.chkNoDinoDownloads = new System.Windows.Forms.CheckBox();
+            this.chkNoItemDownloads = new System.Windows.Forms.CheckBox();
+            this.chkNoSurvivorDownloads = new System.Windows.Forms.CheckBox();
+            this.chkEnableTributeDownloads = new System.Windows.Forms.CheckBox();
             this.label47 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.trackBar7 = new System.Windows.Forms.TrackBar();
+            this.txtDestroyTamesOverLevel = new System.Windows.Forms.TextBox();
+            this.tbDestroyTamesOverLevel = new System.Windows.Forms.TrackBar();
             this.label48 = new System.Windows.Forms.Label();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.trackBar6 = new System.Windows.Forms.TrackBar();
+            this.txtDifficultyOffset = new System.Windows.Forms.TextBox();
+            this.tbDifficultyOffset = new System.Windows.Forms.TrackBar();
             this.label46 = new System.Windows.Forms.Label();
             this.label44 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.trackBar5 = new System.Windows.Forms.TrackBar();
+            this.txtMaxDinoLevel = new System.Windows.Forms.TextBox();
+            this.tbMaxDinoLevel = new System.Windows.Forms.TrackBar();
             this.label45 = new System.Windows.Forms.Label();
-            this.checkBox19 = new System.Windows.Forms.CheckBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.trackBar4 = new System.Windows.Forms.TrackBar();
+            this.chkEnableDifficultOverride = new System.Windows.Forms.CheckBox();
+            this.txtMaxGatewaysOnSaddles = new System.Windows.Forms.TextBox();
+            this.tbMaxGatewaysOnSaddles = new System.Windows.Forms.TrackBar();
             this.label43 = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.trackBar3 = new System.Windows.Forms.TrackBar();
+            this.txtPlatformSaddleBuildAreaBoundsMultiplier = new System.Windows.Forms.TextBox();
             this.label42 = new System.Windows.Forms.Label();
-            this.checkBox18 = new System.Windows.Forms.CheckBox();
-            this.checkBox17 = new System.Windows.Forms.CheckBox();
-            this.checkBox16 = new System.Windows.Forms.CheckBox();
+            this.chkAllowUnlimitedRespecs = new System.Windows.Forms.CheckBox();
+            this.chkPreventSpawnAnimations = new System.Windows.Forms.CheckBox();
+            this.chkUseCorpseLocation = new System.Windows.Forms.CheckBox();
             this.label39 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.trackBar2 = new System.Windows.Forms.TrackBar();
+            this.txtFishingLootQualityMultiplier = new System.Windows.Forms.TextBox();
+            this.tbFishingLootQualityMultiplier = new System.Windows.Forms.TrackBar();
             this.label40 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.txtSupplyCrateLootQualityMultiplier = new System.Windows.Forms.TextBox();
+            this.tbSupplyCrateLootQualityMultiplier = new System.Windows.Forms.TrackBar();
             this.label37 = new System.Windows.Forms.Label();
-            this.checkBox15 = new System.Windows.Forms.CheckBox();
-            this.checkBox14 = new System.Windows.Forms.CheckBox();
-            this.checkBox13 = new System.Windows.Forms.CheckBox();
-            this.checkBox12 = new System.Windows.Forms.CheckBox();
-            this.checkBox11 = new System.Windows.Forms.CheckBox();
-            this.checkBox10 = new System.Windows.Forms.CheckBox();
-            this.checkBox9 = new System.Windows.Forms.CheckBox();
-            this.checkBox8 = new System.Windows.Forms.CheckBox();
-            this.checkBox7 = new System.Windows.Forms.CheckBox();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.groupBox15 = new System.Windows.Forms.GroupBox();
-            this.checkBox26 = new System.Windows.Forms.CheckBox();
-            this.label51 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.trackBar9 = new System.Windows.Forms.TrackBar();
-            this.checkBox25 = new System.Windows.Forms.CheckBox();
-            this.label49 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.trackBar8 = new System.Windows.Forms.TrackBar();
-            this.checkBox29 = new System.Windows.Forms.CheckBox();
-            this.label50 = new System.Windows.Forms.Label();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.trackBar12 = new System.Windows.Forms.TrackBar();
-            this.checkBox33 = new System.Windows.Forms.CheckBox();
-            this.label52 = new System.Windows.Forms.Label();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.trackBar13 = new System.Windows.Forms.TrackBar();
-            this.checkBox34 = new System.Windows.Forms.CheckBox();
-            this.label57 = new System.Windows.Forms.Label();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.trackBar14 = new System.Windows.Forms.TrackBar();
-            this.checkBox35 = new System.Windows.Forms.CheckBox();
-            this.groupBox16 = new System.Windows.Forms.GroupBox();
-            this.checkBox39 = new System.Windows.Forms.CheckBox();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.label58 = new System.Windows.Forms.Label();
-            this.label59 = new System.Windows.Forms.Label();
-            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
-            this.label60 = new System.Windows.Forms.Label();
-            this.textBox15 = new System.Windows.Forms.TextBox();
-            this.trackBar15 = new System.Windows.Forms.TrackBar();
-            this.label61 = new System.Windows.Forms.Label();
-            this.label62 = new System.Windows.Forms.Label();
-            this.textBox16 = new System.Windows.Forms.TextBox();
-            this.trackBar16 = new System.Windows.Forms.TrackBar();
-            this.label63 = new System.Windows.Forms.Label();
-            this.groupBox17 = new System.Windows.Forms.GroupBox();
-            this.checkBox37 = new System.Windows.Forms.CheckBox();
-            this.label64 = new System.Windows.Forms.Label();
-            this.textBox17 = new System.Windows.Forms.TextBox();
-            this.trackBar17 = new System.Windows.Forms.TrackBar();
-            this.label65 = new System.Windows.Forms.Label();
-            this.label66 = new System.Windows.Forms.Label();
-            this.textBox18 = new System.Windows.Forms.TextBox();
-            this.trackBar18 = new System.Windows.Forms.TrackBar();
-            this.label67 = new System.Windows.Forms.Label();
-            this.label68 = new System.Windows.Forms.Label();
-            this.textBox19 = new System.Windows.Forms.TextBox();
-            this.trackBar19 = new System.Windows.Forms.TrackBar();
-            this.label69 = new System.Windows.Forms.Label();
-            this.label70 = new System.Windows.Forms.Label();
-            this.textBox20 = new System.Windows.Forms.TextBox();
-            this.trackBar20 = new System.Windows.Forms.TrackBar();
-            this.label71 = new System.Windows.Forms.Label();
-            this.groupBox18 = new System.Windows.Forms.GroupBox();
-            this.textBox22 = new System.Windows.Forms.TextBox();
-            this.trackBar22 = new System.Windows.Forms.TrackBar();
-            this.label75 = new System.Windows.Forms.Label();
-            this.textBox23 = new System.Windows.Forms.TextBox();
-            this.trackBar23 = new System.Windows.Forms.TrackBar();
-            this.label77 = new System.Windows.Forms.Label();
-            this.checkBox36 = new System.Windows.Forms.CheckBox();
-            this.groupBox19 = new System.Windows.Forms.GroupBox();
-            this.checkBox38 = new System.Windows.Forms.CheckBox();
-            this.checkBox40 = new System.Windows.Forms.CheckBox();
-            this.groupBox20 = new System.Windows.Forms.GroupBox();
-            this.textBox21 = new System.Windows.Forms.TextBox();
-            this.trackBar21 = new System.Windows.Forms.TrackBar();
-            this.label72 = new System.Windows.Forms.Label();
-            this.textBox24 = new System.Windows.Forms.TextBox();
-            this.trackBar24 = new System.Windows.Forms.TrackBar();
-            this.label73 = new System.Windows.Forms.Label();
-            this.checkBox41 = new System.Windows.Forms.CheckBox();
-            this.label74 = new System.Windows.Forms.Label();
-            this.label76 = new System.Windows.Forms.Label();
-            this.checkBox42 = new System.Windows.Forms.CheckBox();
-            this.groupBox21 = new System.Windows.Forms.GroupBox();
-            this.checkBox43 = new System.Windows.Forms.CheckBox();
+            this.chkEnableCreativeMode = new System.Windows.Forms.CheckBox();
+            this.chkEnablePVECryoSickness = new System.Windows.Forms.CheckBox();
+            this.chkDisablePVPRailGun = new System.Windows.Forms.CheckBox();
+            this.chkDisableCostumTributeFolders = new System.Windows.Forms.CheckBox();
+            this.chkRandomSupplyCratePoints = new System.Windows.Forms.CheckBox();
+            this.chkAllowCrateSpawnsOnTopOfStructures = new System.Windows.Forms.CheckBox();
+            this.chkEnableSinglePlayerSettings = new System.Windows.Forms.CheckBox();
+            this.chkEnablePVPCaveBuilding = new System.Windows.Forms.CheckBox();
+            this.chkEnablePVECaveBuilding = new System.Windows.Forms.CheckBox();
+            this.chkEnablePVP = new System.Windows.Forms.CheckBox();
+            this.chkDisableSupplyCrates = new System.Windows.Forms.CheckBox();
+            this.chkPreventBuildingInResourceRichAreas = new System.Windows.Forms.CheckBox();
+            this.chkDisablePVPFriendlyFire = new System.Windows.Forms.CheckBox();
+            this.chkDisablePVEFriendlyFire = new System.Windows.Forms.CheckBox();
+            this.chkEnableHardcoreMode = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.expandCollapsePanel2.SuspendLayout();
             this.groupBox11.SuspendLayout();
@@ -367,40 +513,79 @@
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.expandCollapsePanel3.SuspendLayout();
-            this.groupBox14.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar11)).BeginInit();
-            this.groupBox13.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar7)).BeginInit();
-            this.groupBox12.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
-            this.groupBox15.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar13)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar14)).BeginInit();
-            this.groupBox16.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar15)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar16)).BeginInit();
-            this.groupBox17.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar17)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar18)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar19)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar20)).BeginInit();
-            this.groupBox18.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar22)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar23)).BeginInit();
-            this.groupBox19.SuspendLayout();
-            this.groupBox20.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar21)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar24)).BeginInit();
+            this.groupBox30.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbVolcanoIntensity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbVolcanoInterval)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbUnicornSpawnInterval)).BeginInit();
+            this.groupBox29.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbHexagonCostMultiplier)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbHexagonRewardMultiplier)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbMaxHexagonsPerCharacter)).BeginInit();
+            this.groupBox28.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbConnectionInvicibleInterval)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbLogoutInterval)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbPlatformSaddleBuildAreaBoundsMultiplier)).BeginInit();
+            this.groupBox27.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbHyperInsulationClamp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbWeaponClipAmmoClamp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbMaxDurabilityClamp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbWeightClamp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbHypoInsulationClamp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbWeaponDamagePercentClamp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbArmorClamp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbGenericQualityClamp)).BeginInit();
+            this.groupBox26.SuspendLayout();
+            this.groupBox25.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbMutagemSpawnDelayMultiplier)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbWorldBuffScanlingEfficacy)).BeginInit();
+            this.groupBox24.SuspendLayout();
+            this.groupBox23.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbIncomingDamageMultiplierPercent)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbOutgoingDamageMultiplier)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbEnableCryopodNerfDuration)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbLimitNonPlayerDroppedItemsCount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbLimitNonPlayerDroppedItemsRange)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbFuelConsumptionIntervalMultiplier)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbGlobalPoweredBatteryDurability)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbFjordhawkInventoryCooldown)).BeginInit();
+            this.groupBox22.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbScaleMaximum)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbOnlinePlayerCountEnd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbOnlinePlayerCountStart)).BeginInit();
             this.groupBox21.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbUseCorpseLifeSpanMultiplier)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbOxygenSwimSpeedStatMultiplier)).BeginInit();
+            this.groupBox20.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbCostumRecipesSkillMultiplier)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbCostumRecipesEffectivenessMultiplier)).BeginInit();
+            this.groupBox19.SuspendLayout();
+            this.groupBox18.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbMaxTribesPerAlliance)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbMaxAlliancesPerTribe)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbTribeSlotReuseCooldown)).BeginInit();
+            this.groupBox17.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbIntervalBaseAmount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbIntervalMultiplier)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbIntervalCheckPeriod)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbTribeNameChangeCooldDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbMaxPlayersInTribe)).BeginInit();
+            this.groupBox16.SuspendLayout();
+            this.groupBox15.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbOverrideMinimumDinoReUploadIntervalValue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbOverrideDinoUploadExpirationValue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbOverrideItemUploadExpirationValue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbOverrideSurvivorUploadExpirationValue)).BeginInit();
+            this.groupBox14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbMaxTributeItems)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbMaxTributeDinos)).BeginInit();
+            this.groupBox13.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbDestroyTamesOverLevel)).BeginInit();
+            this.groupBox12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbDifficultyOffset)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbMaxDinoLevel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbMaxGatewaysOnSaddles)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbFishingLootQualityMultiplier)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbSupplyCrateLootQualityMultiplier)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -429,7 +614,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(834, 147);
+            this.panel1.Size = new System.Drawing.Size(885, 147);
             this.panel1.TabIndex = 1;
             // 
             // chkUseApi
@@ -496,7 +681,7 @@
             // button5
             // 
             this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.Location = new System.Drawing.Point(583, 8);
+            this.button5.Location = new System.Drawing.Point(634, 8);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(75, 23);
             this.button5.TabIndex = 12;
@@ -507,8 +692,7 @@
             // btRCON
             // 
             this.btRCON.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btRCON.Image = global::OphiussaServerManager.Properties.Resources.console__command_line__command_icon_icon;
-            this.btRCON.Location = new System.Drawing.Point(745, 60);
+            this.btRCON.Location = new System.Drawing.Point(796, 60);
             this.btRCON.Name = "btRCON";
             this.btRCON.Size = new System.Drawing.Size(75, 23);
             this.btRCON.TabIndex = 11;
@@ -521,7 +705,7 @@
             // btStart
             // 
             this.btStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btStart.Location = new System.Drawing.Point(664, 60);
+            this.btStart.Location = new System.Drawing.Point(715, 60);
             this.btStart.Name = "btStart";
             this.btStart.Size = new System.Drawing.Size(75, 23);
             this.btStart.TabIndex = 10;
@@ -532,8 +716,7 @@
             // btUpdate
             // 
             this.btUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btUpdate.Image = global::OphiussaServerManager.Properties.Resources.upgrade__misc_icon_icon;
-            this.btUpdate.Location = new System.Drawing.Point(664, 34);
+            this.btUpdate.Location = new System.Drawing.Point(715, 34);
             this.btUpdate.Name = "btUpdate";
             this.btUpdate.Size = new System.Drawing.Size(156, 23);
             this.btUpdate.TabIndex = 9;
@@ -546,7 +729,7 @@
             // btChooseFolder
             // 
             this.btChooseFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btChooseFolder.Location = new System.Drawing.Point(628, 84);
+            this.btChooseFolder.Location = new System.Drawing.Point(679, 84);
             this.btChooseFolder.Name = "btChooseFolder";
             this.btChooseFolder.Size = new System.Drawing.Size(30, 23);
             this.btChooseFolder.TabIndex = 8;
@@ -561,7 +744,7 @@
             this.txtLocation.Location = new System.Drawing.Point(108, 86);
             this.txtLocation.Name = "txtLocation";
             this.txtLocation.ReadOnly = true;
-            this.txtLocation.Size = new System.Drawing.Size(512, 20);
+            this.txtLocation.Size = new System.Drawing.Size(563, 20);
             this.txtLocation.TabIndex = 7;
             // 
             // label3
@@ -576,8 +759,8 @@
             // btSave
             // 
             this.btSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btSave.Image = global::OphiussaServerManager.Properties.Resources.save_16x16;
-            this.btSave.Location = new System.Drawing.Point(745, 8);
+            this.btSave.Image = global::OphiussaServerManager.Properties.Resources.SaveIcon16x16;
+            this.btSave.Location = new System.Drawing.Point(796, 8);
             this.btSave.Name = "btSave";
             this.btSave.Size = new System.Drawing.Size(75, 23);
             this.btSave.TabIndex = 5;
@@ -590,8 +773,7 @@
             // btSync
             // 
             this.btSync.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btSync.Image = global::OphiussaServerManager.Properties.Resources.Copy_icon_icon;
-            this.btSync.Location = new System.Drawing.Point(664, 8);
+            this.btSync.Location = new System.Drawing.Point(715, 8);
             this.btSync.Name = "btSync";
             this.btSync.Size = new System.Drawing.Size(75, 23);
             this.btSync.TabIndex = 4;
@@ -606,7 +788,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtProfileName.Location = new System.Drawing.Point(108, 36);
             this.txtProfileName.Name = "txtProfileName";
-            this.txtProfileName.Size = new System.Drawing.Size(542, 20);
+            this.txtProfileName.Size = new System.Drawing.Size(593, 20);
             this.txtProfileName.TabIndex = 3;
             this.txtProfileName.Validated += new System.EventHandler(this.txtProfileName_Validated);
             // 
@@ -653,7 +835,7 @@
             this.expandCollapsePanel2.IsExpanded = true;
             this.expandCollapsePanel2.Location = new System.Drawing.Point(0, 1889);
             this.expandCollapsePanel2.Name = "expandCollapsePanel2";
-            this.expandCollapsePanel2.Size = new System.Drawing.Size(834, 226);
+            this.expandCollapsePanel2.Size = new System.Drawing.Size(885, 226);
             this.expandCollapsePanel2.TabIndex = 3;
             this.expandCollapsePanel2.Text = "Automatic Management";
             this.expandCollapsePanel2.UseAnimation = false;
@@ -694,7 +876,7 @@
             this.groupBox11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
             this.groupBox11.Location = new System.Drawing.Point(11, 34);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(810, 181);
+            this.groupBox11.Size = new System.Drawing.Size(861, 181);
             this.groupBox11.TabIndex = 1;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Server Manager Settings";
@@ -1058,7 +1240,7 @@
             this.expandCollapsePanel1.IsExpanded = true;
             this.expandCollapsePanel1.Location = new System.Drawing.Point(0, 147);
             this.expandCollapsePanel1.Name = "expandCollapsePanel1";
-            this.expandCollapsePanel1.Size = new System.Drawing.Size(834, 1742);
+            this.expandCollapsePanel1.Size = new System.Drawing.Size(885, 1742);
             this.expandCollapsePanel1.TabIndex = 2;
             this.expandCollapsePanel1.Text = "Administration";
             this.expandCollapsePanel1.UseAnimation = false;
@@ -1080,7 +1262,7 @@
             this.groupBox10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
             this.groupBox10.Location = new System.Drawing.Point(11, 1477);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(810, 127);
+            this.groupBox10.Size = new System.Drawing.Size(861, 127);
             this.groupBox10.TabIndex = 23;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Server Log Options";
@@ -1121,7 +1303,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtMaximumTribeLogs.Location = new System.Drawing.Point(453, 20);
             this.txtMaximumTribeLogs.Name = "txtMaximumTribeLogs";
-            this.txtMaximumTribeLogs.Size = new System.Drawing.Size(194, 21);
+            this.txtMaximumTribeLogs.Size = new System.Drawing.Size(245, 21);
             this.txtMaximumTribeLogs.TabIndex = 70;
             // 
             // label36
@@ -1189,7 +1371,7 @@
             this.groupBox9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
             this.groupBox9.Location = new System.Drawing.Point(11, 1608);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(810, 127);
+            this.groupBox9.Size = new System.Drawing.Size(861, 127);
             this.groupBox9.TabIndex = 22;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Command Line";
@@ -1197,7 +1379,7 @@
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(737, 46);
+            this.button2.Location = new System.Drawing.Point(788, 46);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(61, 23);
             this.button2.TabIndex = 72;
@@ -1213,7 +1395,7 @@
             this.txtCommand.Location = new System.Drawing.Point(5, 46);
             this.txtCommand.Multiline = true;
             this.txtCommand.Name = "txtCommand";
-            this.txtCommand.Size = new System.Drawing.Size(727, 72);
+            this.txtCommand.Size = new System.Drawing.Size(778, 72);
             this.txtCommand.TabIndex = 71;
             // 
             // btProcessorAffinity
@@ -1275,7 +1457,7 @@
             this.groupBox8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
             this.groupBox8.Location = new System.Drawing.Point(11, 1368);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(810, 103);
+            this.groupBox8.Size = new System.Drawing.Size(861, 103);
             this.groupBox8.TabIndex = 21;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Cross Play && Cluster Settings";
@@ -1296,7 +1478,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtClusterID.Location = new System.Drawing.Point(243, 47);
             this.txtClusterID.Name = "txtClusterID";
-            this.txtClusterID.Size = new System.Drawing.Size(555, 21);
+            this.txtClusterID.Size = new System.Drawing.Size(606, 21);
             this.txtClusterID.TabIndex = 67;
             // 
             // label32
@@ -1388,7 +1570,7 @@
             this.groupBox7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
             this.groupBox7.Location = new System.Drawing.Point(11, 773);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(810, 589);
+            this.groupBox7.Size = new System.Drawing.Size(861, 589);
             this.groupBox7.TabIndex = 20;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Server Options";
@@ -1399,7 +1581,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtAltSaveDirectory.Location = new System.Drawing.Point(243, 554);
             this.txtAltSaveDirectory.Name = "txtAltSaveDirectory";
-            this.txtAltSaveDirectory.Size = new System.Drawing.Size(555, 21);
+            this.txtAltSaveDirectory.Size = new System.Drawing.Size(606, 21);
             this.txtAltSaveDirectory.TabIndex = 65;
             // 
             // label31
@@ -1424,7 +1606,7 @@
             // 
             this.label29.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(747, 531);
+            this.label29.Location = new System.Drawing.Point(798, 531);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(40, 15);
             this.label29.TabIndex = 62;
@@ -1433,11 +1615,11 @@
             // txtRespawnInterval
             // 
             this.txtRespawnInterval.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtRespawnInterval.Enabled = false;
-            this.txtRespawnInterval.Location = new System.Drawing.Point(749, 507);
+            this.txtRespawnInterval.Location = new System.Drawing.Point(800, 507);
             this.txtRespawnInterval.Name = "txtRespawnInterval";
             this.txtRespawnInterval.Size = new System.Drawing.Size(49, 21);
             this.txtRespawnInterval.TabIndex = 61;
+            this.txtRespawnInterval.TextChanged += new System.EventHandler(this.txtRespawnInterval_TextChanged);
             // 
             // tbRespawnInterval
             // 
@@ -1447,7 +1629,7 @@
             this.tbRespawnInterval.Maximum = 720;
             this.tbRespawnInterval.Minimum = 1;
             this.tbRespawnInterval.Name = "tbRespawnInterval";
-            this.tbRespawnInterval.Size = new System.Drawing.Size(513, 45);
+            this.tbRespawnInterval.Size = new System.Drawing.Size(564, 45);
             this.tbRespawnInterval.TabIndex = 60;
             this.tbRespawnInterval.TickStyle = System.Windows.Forms.TickStyle.None;
             this.tbRespawnInterval.Value = 60;
@@ -1546,7 +1728,7 @@
             // 
             this.label26.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(787, 179);
+            this.label26.Location = new System.Drawing.Point(838, 179);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(13, 15);
             this.label26.TabIndex = 50;
@@ -1555,11 +1737,11 @@
             // txtSpeedBias
             // 
             this.txtSpeedBias.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSpeedBias.Enabled = false;
-            this.txtSpeedBias.Location = new System.Drawing.Point(767, 178);
+            this.txtSpeedBias.Location = new System.Drawing.Point(818, 178);
             this.txtSpeedBias.Name = "txtSpeedBias";
             this.txtSpeedBias.Size = new System.Drawing.Size(19, 21);
             this.txtSpeedBias.TabIndex = 49;
+            this.txtSpeedBias.TextChanged += new System.EventHandler(this.txtSpeedBias_TextChanged);
             // 
             // tbSpeedBias
             // 
@@ -1569,7 +1751,7 @@
             this.tbSpeedBias.Maximum = 250;
             this.tbSpeedBias.Minimum = 1;
             this.tbSpeedBias.Name = "tbSpeedBias";
-            this.tbSpeedBias.Size = new System.Drawing.Size(348, 45);
+            this.tbSpeedBias.Size = new System.Drawing.Size(399, 45);
             this.tbSpeedBias.TabIndex = 48;
             this.tbSpeedBias.TickStyle = System.Windows.Forms.TickStyle.None;
             this.tbSpeedBias.Value = 1;
@@ -1730,7 +1912,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBanUrl.Location = new System.Drawing.Point(135, 126);
             this.txtBanUrl.Name = "txtBanUrl";
-            this.txtBanUrl.Size = new System.Drawing.Size(648, 21);
+            this.txtBanUrl.Size = new System.Drawing.Size(699, 21);
             this.txtBanUrl.TabIndex = 32;
             // 
             // chkUseBanUrl
@@ -1758,11 +1940,11 @@
             // txtMaxPlayers
             // 
             this.txtMaxPlayers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMaxPlayers.Enabled = false;
-            this.txtMaxPlayers.Location = new System.Drawing.Point(734, 75);
+            this.txtMaxPlayers.Location = new System.Drawing.Point(785, 75);
             this.txtMaxPlayers.Name = "txtMaxPlayers";
             this.txtMaxPlayers.Size = new System.Drawing.Size(49, 21);
             this.txtMaxPlayers.TabIndex = 30;
+            this.txtMaxPlayers.TextChanged += new System.EventHandler(this.txtMaxPlayers_TextChanged);
             // 
             // tbMaxPlayers
             // 
@@ -1772,11 +1954,11 @@
             this.tbMaxPlayers.Maximum = 250;
             this.tbMaxPlayers.Minimum = 1;
             this.tbMaxPlayers.Name = "tbMaxPlayers";
-            this.tbMaxPlayers.Size = new System.Drawing.Size(552, 45);
+            this.tbMaxPlayers.Size = new System.Drawing.Size(603, 45);
             this.tbMaxPlayers.TabIndex = 29;
             this.tbMaxPlayers.TickStyle = System.Windows.Forms.TickStyle.None;
             this.tbMaxPlayers.Value = 1;
-            this.tbMaxPlayers.Scroll += new System.EventHandler(this.tbMaxPlayers_Scroll);
+            this.tbMaxPlayers.ValueChanged += new System.EventHandler(this.tbMaxPlayers_Scroll);
             // 
             // label28
             // 
@@ -1791,7 +1973,7 @@
             // 
             this.label25.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(731, 48);
+            this.label25.Location = new System.Drawing.Point(782, 48);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(55, 15);
             this.label25.TabIndex = 27;
@@ -1800,11 +1982,11 @@
             // txtIdleTimeout
             // 
             this.txtIdleTimeout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtIdleTimeout.Enabled = false;
-            this.txtIdleTimeout.Location = new System.Drawing.Point(733, 24);
+            this.txtIdleTimeout.Location = new System.Drawing.Point(784, 24);
             this.txtIdleTimeout.Name = "txtIdleTimeout";
             this.txtIdleTimeout.Size = new System.Drawing.Size(49, 21);
             this.txtIdleTimeout.TabIndex = 26;
+            this.txtIdleTimeout.TextChanged += new System.EventHandler(this.txtIdleTimeout_TextChanged);
             // 
             // tbIdleTimeout
             // 
@@ -1814,11 +1996,11 @@
             this.tbIdleTimeout.Maximum = 7200;
             this.tbIdleTimeout.Minimum = 60;
             this.tbIdleTimeout.Name = "tbIdleTimeout";
-            this.tbIdleTimeout.Size = new System.Drawing.Size(552, 45);
+            this.tbIdleTimeout.Size = new System.Drawing.Size(603, 45);
             this.tbIdleTimeout.TabIndex = 25;
             this.tbIdleTimeout.TickStyle = System.Windows.Forms.TickStyle.None;
             this.tbIdleTimeout.Value = 60;
-            this.tbIdleTimeout.Scroll += new System.EventHandler(this.tbIdleTimeout_Scroll);
+            this.tbIdleTimeout.ValueChanged += new System.EventHandler(this.tbIdleTimeout_Scroll);
             // 
             // groupBox6
             // 
@@ -1837,7 +2019,7 @@
             this.groupBox6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
             this.groupBox6.Location = new System.Drawing.Point(11, 508);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(810, 259);
+            this.groupBox6.Size = new System.Drawing.Size(861, 259);
             this.groupBox6.TabIndex = 15;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Message of the Day";
@@ -1857,7 +2039,7 @@
             // 
             this.label24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(732, 232);
+            this.label24.Location = new System.Drawing.Point(783, 232);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(51, 15);
             this.label24.TabIndex = 27;
@@ -1866,11 +2048,11 @@
             // txtMOTDInterval
             // 
             this.txtMOTDInterval.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMOTDInterval.Enabled = false;
-            this.txtMOTDInterval.Location = new System.Drawing.Point(734, 208);
+            this.txtMOTDInterval.Location = new System.Drawing.Point(785, 208);
             this.txtMOTDInterval.Name = "txtMOTDInterval";
             this.txtMOTDInterval.Size = new System.Drawing.Size(49, 21);
             this.txtMOTDInterval.TabIndex = 26;
+            this.txtMOTDInterval.TextChanged += new System.EventHandler(this.txtMOTDInterval_TextChanged);
             // 
             // tbMOTDInterval
             // 
@@ -1880,17 +2062,17 @@
             this.tbMOTDInterval.Maximum = 120;
             this.tbMOTDInterval.Minimum = 1;
             this.tbMOTDInterval.Name = "tbMOTDInterval";
-            this.tbMOTDInterval.Size = new System.Drawing.Size(553, 45);
+            this.tbMOTDInterval.Size = new System.Drawing.Size(604, 45);
             this.tbMOTDInterval.TabIndex = 25;
             this.tbMOTDInterval.TickStyle = System.Windows.Forms.TickStyle.None;
             this.tbMOTDInterval.Value = 1;
-            this.tbMOTDInterval.Scroll += new System.EventHandler(this.tbMOTDInterval_Scroll);
+            this.tbMOTDInterval.ValueChanged += new System.EventHandler(this.tbMOTDInterval_Scroll);
             // 
             // label21
             // 
             this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(731, 181);
+            this.label21.Location = new System.Drawing.Point(782, 181);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(55, 15);
             this.label21.TabIndex = 23;
@@ -1903,17 +2085,17 @@
             this.txtMOTD.Location = new System.Drawing.Point(13, 20);
             this.txtMOTD.Multiline = true;
             this.txtMOTD.Name = "txtMOTD";
-            this.txtMOTD.Size = new System.Drawing.Size(770, 127);
+            this.txtMOTD.Size = new System.Drawing.Size(821, 127);
             this.txtMOTD.TabIndex = 5;
             // 
             // txtMOTDDuration
             // 
             this.txtMOTDDuration.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMOTDDuration.Enabled = false;
-            this.txtMOTDDuration.Location = new System.Drawing.Point(733, 157);
+            this.txtMOTDDuration.Location = new System.Drawing.Point(784, 157);
             this.txtMOTDDuration.Name = "txtMOTDDuration";
             this.txtMOTDDuration.Size = new System.Drawing.Size(49, 21);
             this.txtMOTDDuration.TabIndex = 22;
+            this.txtMOTDDuration.TextChanged += new System.EventHandler(this.txtMOTDDuration_TextChanged);
             // 
             // tbMOTDDuration
             // 
@@ -1923,11 +2105,11 @@
             this.tbMOTDDuration.Maximum = 120;
             this.tbMOTDDuration.Minimum = 1;
             this.tbMOTDDuration.Name = "tbMOTDDuration";
-            this.tbMOTDDuration.Size = new System.Drawing.Size(552, 45);
+            this.tbMOTDDuration.Size = new System.Drawing.Size(603, 45);
             this.tbMOTDDuration.TabIndex = 21;
             this.tbMOTDDuration.TickStyle = System.Windows.Forms.TickStyle.None;
             this.tbMOTDDuration.Value = 1;
-            this.tbMOTDDuration.Scroll += new System.EventHandler(this.tbMOTDDuration_Scroll);
+            this.tbMOTDDuration.ValueChanged += new System.EventHandler(this.tbMOTDDuration_Scroll);
             // 
             // label23
             // 
@@ -1950,7 +2132,7 @@
             this.groupBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
             this.groupBox5.Location = new System.Drawing.Point(11, 438);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(810, 64);
+            this.groupBox5.Size = new System.Drawing.Size(861, 64);
             this.groupBox5.TabIndex = 15;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Saves";
@@ -1959,7 +2141,7 @@
             // 
             this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(732, 41);
+            this.label20.Location = new System.Drawing.Point(783, 41);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(51, 15);
             this.label20.TabIndex = 19;
@@ -1968,11 +2150,11 @@
             // txtAutoSavePeriod
             // 
             this.txtAutoSavePeriod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAutoSavePeriod.Enabled = false;
-            this.txtAutoSavePeriod.Location = new System.Drawing.Point(734, 17);
+            this.txtAutoSavePeriod.Location = new System.Drawing.Point(785, 17);
             this.txtAutoSavePeriod.Name = "txtAutoSavePeriod";
             this.txtAutoSavePeriod.Size = new System.Drawing.Size(49, 21);
             this.txtAutoSavePeriod.TabIndex = 18;
+            this.txtAutoSavePeriod.TextChanged += new System.EventHandler(this.txtAutoSavePeriod_TextChanged);
             // 
             // tbAutoSavePeriod
             // 
@@ -1982,11 +2164,11 @@
             this.tbAutoSavePeriod.Maximum = 120;
             this.tbAutoSavePeriod.Minimum = 1;
             this.tbAutoSavePeriod.Name = "tbAutoSavePeriod";
-            this.tbAutoSavePeriod.Size = new System.Drawing.Size(597, 45);
+            this.tbAutoSavePeriod.Size = new System.Drawing.Size(648, 45);
             this.tbAutoSavePeriod.TabIndex = 5;
             this.tbAutoSavePeriod.TickStyle = System.Windows.Forms.TickStyle.None;
             this.tbAutoSavePeriod.Value = 1;
-            this.tbAutoSavePeriod.Scroll += new System.EventHandler(this.tbAutoSavePeriod_Scroll);
+            this.tbAutoSavePeriod.ValueChanged += new System.EventHandler(this.tbAutoSavePeriod_Scroll);
             // 
             // label19
             // 
@@ -2007,7 +2189,7 @@
             this.groupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
             this.groupBox4.Location = new System.Drawing.Point(11, 376);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(810, 56);
+            this.groupBox4.Size = new System.Drawing.Size(861, 56);
             this.groupBox4.TabIndex = 14;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Server Details";
@@ -2019,7 +2201,7 @@
             this.cbBranch.FormattingEnabled = true;
             this.cbBranch.Location = new System.Drawing.Point(115, 20);
             this.cbBranch.Name = "cbBranch";
-            this.cbBranch.Size = new System.Drawing.Size(668, 21);
+            this.cbBranch.Size = new System.Drawing.Size(719, 21);
             this.cbBranch.TabIndex = 14;
             // 
             // label22
@@ -2046,7 +2228,7 @@
             this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
             this.groupBox3.Location = new System.Drawing.Point(11, 265);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(810, 105);
+            this.groupBox3.Size = new System.Drawing.Size(861, 105);
             this.groupBox3.TabIndex = 13;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Maps and Mods";
@@ -2054,7 +2236,7 @@
             // btMods
             // 
             this.btMods.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btMods.Location = new System.Drawing.Point(734, 45);
+            this.btMods.Location = new System.Drawing.Point(785, 45);
             this.btMods.Name = "btMods";
             this.btMods.Size = new System.Drawing.Size(49, 23);
             this.btMods.TabIndex = 15;
@@ -2068,7 +2250,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtMods.Location = new System.Drawing.Point(183, 47);
             this.txtMods.Name = "txtMods";
-            this.txtMods.Size = new System.Drawing.Size(549, 21);
+            this.txtMods.Size = new System.Drawing.Size(600, 21);
             this.txtMods.TabIndex = 13;
             // 
             // label15
@@ -2088,7 +2270,7 @@
             this.txtTotalConversion.FormattingEnabled = true;
             this.txtTotalConversion.Location = new System.Drawing.Point(183, 74);
             this.txtTotalConversion.Name = "txtTotalConversion";
-            this.txtTotalConversion.Size = new System.Drawing.Size(600, 21);
+            this.txtTotalConversion.Size = new System.Drawing.Size(651, 21);
             this.txtTotalConversion.TabIndex = 14;
             // 
             // cboMap
@@ -2098,7 +2280,7 @@
             this.cboMap.FormattingEnabled = true;
             this.cboMap.Location = new System.Drawing.Point(183, 20);
             this.cboMap.Name = "cboMap";
-            this.cboMap.Size = new System.Drawing.Size(600, 21);
+            this.cboMap.Size = new System.Drawing.Size(651, 21);
             this.cboMap.TabIndex = 13;
             // 
             // label17
@@ -2141,7 +2323,7 @@
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
             this.groupBox2.Location = new System.Drawing.Point(11, 120);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(810, 139);
+            this.groupBox2.Size = new System.Drawing.Size(861, 139);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Networking";
@@ -2273,7 +2455,7 @@
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
             this.groupBox1.Location = new System.Drawing.Point(11, 37);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(810, 77);
+            this.groupBox1.Size = new System.Drawing.Size(861, 77);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Name and Password";
@@ -2338,7 +2520,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtServerName.Location = new System.Drawing.Point(115, 20);
             this.txtServerName.Name = "txtServerName";
-            this.txtServerName.Size = new System.Drawing.Size(683, 21);
+            this.txtServerName.Size = new System.Drawing.Size(734, 21);
             this.txtServerName.TabIndex = 5;
             // 
             // label5
@@ -2355,141 +2537,2682 @@
             this.expandCollapsePanel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.expandCollapsePanel3.ButtonSize = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonSize.Small;
             this.expandCollapsePanel3.ButtonStyle = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonStyle.Classic;
+            this.expandCollapsePanel3.Controls.Add(this.groupBox30);
+            this.expandCollapsePanel3.Controls.Add(this.groupBox29);
+            this.expandCollapsePanel3.Controls.Add(this.groupBox28);
+            this.expandCollapsePanel3.Controls.Add(this.tbPlatformSaddleBuildAreaBoundsMultiplier);
+            this.expandCollapsePanel3.Controls.Add(this.chkAllowPlatformSaddleMultiFloors);
+            this.expandCollapsePanel3.Controls.Add(this.groupBox27);
+            this.expandCollapsePanel3.Controls.Add(this.groupBox26);
+            this.expandCollapsePanel3.Controls.Add(this.groupBox25);
+            this.expandCollapsePanel3.Controls.Add(this.groupBox24);
+            this.expandCollapsePanel3.Controls.Add(this.groupBox23);
+            this.expandCollapsePanel3.Controls.Add(this.label96);
+            this.expandCollapsePanel3.Controls.Add(this.label94);
+            this.expandCollapsePanel3.Controls.Add(this.txtLimitNonPlayerDroppedItemsCount);
+            this.expandCollapsePanel3.Controls.Add(this.tbLimitNonPlayerDroppedItemsCount);
+            this.expandCollapsePanel3.Controls.Add(this.label92);
+            this.expandCollapsePanel3.Controls.Add(this.label97);
+            this.expandCollapsePanel3.Controls.Add(this.txtLimitNonPlayerDroppedItemsRange);
+            this.expandCollapsePanel3.Controls.Add(this.tbLimitNonPlayerDroppedItemsRange);
+            this.expandCollapsePanel3.Controls.Add(this.label90);
+            this.expandCollapsePanel3.Controls.Add(this.label95);
+            this.expandCollapsePanel3.Controls.Add(this.txtFuelConsumptionIntervalMultiplier);
+            this.expandCollapsePanel3.Controls.Add(this.tbFuelConsumptionIntervalMultiplier);
+            this.expandCollapsePanel3.Controls.Add(this.label88);
+            this.expandCollapsePanel3.Controls.Add(this.label93);
+            this.expandCollapsePanel3.Controls.Add(this.txtGlobalPoweredBatteryDurability);
+            this.expandCollapsePanel3.Controls.Add(this.tbGlobalPoweredBatteryDurability);
+            this.expandCollapsePanel3.Controls.Add(this.label86);
+            this.expandCollapsePanel3.Controls.Add(this.label91);
+            this.expandCollapsePanel3.Controls.Add(this.txtFjordhawkInventoryCooldown);
+            this.expandCollapsePanel3.Controls.Add(this.tbFjordhawkInventoryCooldown);
+            this.expandCollapsePanel3.Controls.Add(this.label84);
+            this.expandCollapsePanel3.Controls.Add(this.label89);
+            this.expandCollapsePanel3.Controls.Add(this.groupBox22);
+            this.expandCollapsePanel3.Controls.Add(this.txtUseCorpseLifeSpanMultiplier);
+            this.expandCollapsePanel3.Controls.Add(this.txtOxygenSwimSpeedStatMultiplier);
             this.expandCollapsePanel3.Controls.Add(this.groupBox21);
+            this.expandCollapsePanel3.Controls.Add(this.tbUseCorpseLifeSpanMultiplier);
+            this.expandCollapsePanel3.Controls.Add(this.label87);
+            this.expandCollapsePanel3.Controls.Add(this.tbOxygenSwimSpeedStatMultiplier);
+            this.expandCollapsePanel3.Controls.Add(this.label85);
             this.expandCollapsePanel3.Controls.Add(this.groupBox20);
             this.expandCollapsePanel3.Controls.Add(this.groupBox19);
             this.expandCollapsePanel3.Controls.Add(this.groupBox18);
             this.expandCollapsePanel3.Controls.Add(this.label70);
-            this.expandCollapsePanel3.Controls.Add(this.textBox20);
-            this.expandCollapsePanel3.Controls.Add(this.trackBar20);
+            this.expandCollapsePanel3.Controls.Add(this.txtTribeSlotReuseCooldown);
+            this.expandCollapsePanel3.Controls.Add(this.tbTribeSlotReuseCooldown);
             this.expandCollapsePanel3.Controls.Add(this.label71);
             this.expandCollapsePanel3.Controls.Add(this.groupBox17);
             this.expandCollapsePanel3.Controls.Add(this.label62);
-            this.expandCollapsePanel3.Controls.Add(this.textBox16);
-            this.expandCollapsePanel3.Controls.Add(this.trackBar16);
+            this.expandCollapsePanel3.Controls.Add(this.txtTribeNameChangeCooldDown);
+            this.expandCollapsePanel3.Controls.Add(this.tbTribeNameChangeCooldDown);
             this.expandCollapsePanel3.Controls.Add(this.label63);
             this.expandCollapsePanel3.Controls.Add(this.label60);
-            this.expandCollapsePanel3.Controls.Add(this.textBox15);
-            this.expandCollapsePanel3.Controls.Add(this.trackBar15);
+            this.expandCollapsePanel3.Controls.Add(this.txtMaxPlayersInTribe);
+            this.expandCollapsePanel3.Controls.Add(this.tbMaxPlayersInTribe);
             this.expandCollapsePanel3.Controls.Add(this.label61);
             this.expandCollapsePanel3.Controls.Add(this.groupBox16);
             this.expandCollapsePanel3.Controls.Add(this.groupBox15);
             this.expandCollapsePanel3.Controls.Add(this.groupBox14);
             this.expandCollapsePanel3.Controls.Add(this.groupBox13);
             this.expandCollapsePanel3.Controls.Add(this.label47);
-            this.expandCollapsePanel3.Controls.Add(this.textBox7);
-            this.expandCollapsePanel3.Controls.Add(this.trackBar7);
+            this.expandCollapsePanel3.Controls.Add(this.txtDestroyTamesOverLevel);
+            this.expandCollapsePanel3.Controls.Add(this.tbDestroyTamesOverLevel);
             this.expandCollapsePanel3.Controls.Add(this.label48);
             this.expandCollapsePanel3.Controls.Add(this.groupBox12);
-            this.expandCollapsePanel3.Controls.Add(this.textBox4);
-            this.expandCollapsePanel3.Controls.Add(this.trackBar4);
+            this.expandCollapsePanel3.Controls.Add(this.txtMaxGatewaysOnSaddles);
+            this.expandCollapsePanel3.Controls.Add(this.tbMaxGatewaysOnSaddles);
             this.expandCollapsePanel3.Controls.Add(this.label43);
             this.expandCollapsePanel3.Controls.Add(this.label41);
-            this.expandCollapsePanel3.Controls.Add(this.textBox3);
-            this.expandCollapsePanel3.Controls.Add(this.trackBar3);
+            this.expandCollapsePanel3.Controls.Add(this.txtPlatformSaddleBuildAreaBoundsMultiplier);
             this.expandCollapsePanel3.Controls.Add(this.label42);
-            this.expandCollapsePanel3.Controls.Add(this.checkBox18);
-            this.expandCollapsePanel3.Controls.Add(this.checkBox17);
-            this.expandCollapsePanel3.Controls.Add(this.checkBox16);
+            this.expandCollapsePanel3.Controls.Add(this.chkAllowUnlimitedRespecs);
+            this.expandCollapsePanel3.Controls.Add(this.chkPreventSpawnAnimations);
+            this.expandCollapsePanel3.Controls.Add(this.chkUseCorpseLocation);
             this.expandCollapsePanel3.Controls.Add(this.label39);
-            this.expandCollapsePanel3.Controls.Add(this.textBox2);
-            this.expandCollapsePanel3.Controls.Add(this.trackBar2);
+            this.expandCollapsePanel3.Controls.Add(this.txtFishingLootQualityMultiplier);
+            this.expandCollapsePanel3.Controls.Add(this.tbFishingLootQualityMultiplier);
             this.expandCollapsePanel3.Controls.Add(this.label40);
             this.expandCollapsePanel3.Controls.Add(this.label38);
-            this.expandCollapsePanel3.Controls.Add(this.textBox1);
-            this.expandCollapsePanel3.Controls.Add(this.trackBar1);
+            this.expandCollapsePanel3.Controls.Add(this.txtSupplyCrateLootQualityMultiplier);
+            this.expandCollapsePanel3.Controls.Add(this.tbSupplyCrateLootQualityMultiplier);
             this.expandCollapsePanel3.Controls.Add(this.label37);
-            this.expandCollapsePanel3.Controls.Add(this.checkBox15);
-            this.expandCollapsePanel3.Controls.Add(this.checkBox14);
-            this.expandCollapsePanel3.Controls.Add(this.checkBox13);
-            this.expandCollapsePanel3.Controls.Add(this.checkBox12);
-            this.expandCollapsePanel3.Controls.Add(this.checkBox11);
-            this.expandCollapsePanel3.Controls.Add(this.checkBox10);
-            this.expandCollapsePanel3.Controls.Add(this.checkBox9);
-            this.expandCollapsePanel3.Controls.Add(this.checkBox8);
-            this.expandCollapsePanel3.Controls.Add(this.checkBox7);
-            this.expandCollapsePanel3.Controls.Add(this.checkBox6);
-            this.expandCollapsePanel3.Controls.Add(this.checkBox5);
-            this.expandCollapsePanel3.Controls.Add(this.checkBox4);
-            this.expandCollapsePanel3.Controls.Add(this.checkBox3);
-            this.expandCollapsePanel3.Controls.Add(this.checkBox2);
-            this.expandCollapsePanel3.Controls.Add(this.checkBox1);
+            this.expandCollapsePanel3.Controls.Add(this.chkEnableCreativeMode);
+            this.expandCollapsePanel3.Controls.Add(this.chkEnablePVECryoSickness);
+            this.expandCollapsePanel3.Controls.Add(this.chkDisablePVPRailGun);
+            this.expandCollapsePanel3.Controls.Add(this.chkDisableCostumTributeFolders);
+            this.expandCollapsePanel3.Controls.Add(this.chkRandomSupplyCratePoints);
+            this.expandCollapsePanel3.Controls.Add(this.chkAllowCrateSpawnsOnTopOfStructures);
+            this.expandCollapsePanel3.Controls.Add(this.chkEnableSinglePlayerSettings);
+            this.expandCollapsePanel3.Controls.Add(this.chkEnablePVPCaveBuilding);
+            this.expandCollapsePanel3.Controls.Add(this.chkEnablePVECaveBuilding);
+            this.expandCollapsePanel3.Controls.Add(this.chkEnablePVP);
+            this.expandCollapsePanel3.Controls.Add(this.chkDisableSupplyCrates);
+            this.expandCollapsePanel3.Controls.Add(this.chkPreventBuildingInResourceRichAreas);
+            this.expandCollapsePanel3.Controls.Add(this.chkDisablePVPFriendlyFire);
+            this.expandCollapsePanel3.Controls.Add(this.chkDisablePVEFriendlyFire);
+            this.expandCollapsePanel3.Controls.Add(this.chkEnableHardcoreMode);
             this.expandCollapsePanel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.expandCollapsePanel3.ExpandedHeight = 1800;
             this.expandCollapsePanel3.IsExpanded = true;
             this.expandCollapsePanel3.Location = new System.Drawing.Point(0, 2115);
             this.expandCollapsePanel3.Name = "expandCollapsePanel3";
-            this.expandCollapsePanel3.Size = new System.Drawing.Size(834, 1800);
+            this.expandCollapsePanel3.Size = new System.Drawing.Size(885, 2981);
             this.expandCollapsePanel3.TabIndex = 4;
             this.expandCollapsePanel3.Text = "Rules";
             this.expandCollapsePanel3.UseAnimation = false;
             this.expandCollapsePanel3.Paint += new System.Windows.Forms.PaintEventHandler(this.expandCollapsePanel3_Paint);
             // 
+            // groupBox30
+            // 
+            this.groupBox30.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox30.Controls.Add(this.chkEnableRagnarokSettings);
+            this.groupBox30.Controls.Add(this.label126);
+            this.groupBox30.Controls.Add(this.txtVolcanoIntensity);
+            this.groupBox30.Controls.Add(this.tbVolcanoIntensity);
+            this.groupBox30.Controls.Add(this.label127);
+            this.groupBox30.Controls.Add(this.label128);
+            this.groupBox30.Controls.Add(this.txtVolcanoInterval);
+            this.groupBox30.Controls.Add(this.tbVolcanoInterval);
+            this.groupBox30.Controls.Add(this.label129);
+            this.groupBox30.Controls.Add(this.label130);
+            this.groupBox30.Controls.Add(this.txtUnicornSpawnInterval);
+            this.groupBox30.Controls.Add(this.tbUnicornSpawnInterval);
+            this.groupBox30.Controls.Add(this.label131);
+            this.groupBox30.Controls.Add(this.chkEnableVolcano);
+            this.groupBox30.Controls.Add(this.chkAllowMultipleTamedUnicorns);
+            this.groupBox30.ForeColor = System.Drawing.Color.SteelBlue;
+            this.groupBox30.Location = new System.Drawing.Point(16, 2439);
+            this.groupBox30.Name = "groupBox30";
+            this.groupBox30.Size = new System.Drawing.Size(842, 166);
+            this.groupBox30.TabIndex = 78;
+            this.groupBox30.TabStop = false;
+            // 
+            // chkEnableRagnarokSettings
+            // 
+            this.chkEnableRagnarokSettings.AutoSize = true;
+            this.chkEnableRagnarokSettings.Location = new System.Drawing.Point(7, 0);
+            this.chkEnableRagnarokSettings.Name = "chkEnableRagnarokSettings";
+            this.chkEnableRagnarokSettings.Size = new System.Drawing.Size(169, 19);
+            this.chkEnableRagnarokSettings.TabIndex = 66;
+            this.chkEnableRagnarokSettings.Text = "Enable Ragnarok Settings";
+            this.chkEnableRagnarokSettings.UseVisualStyleBackColor = true;
+            this.chkEnableRagnarokSettings.CheckedChanged += new System.EventHandler(this.chkEnableRagnarokSettings_CheckedChanged);
+            // 
+            // label126
+            // 
+            this.label126.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label126.AutoSize = true;
+            this.label126.Location = new System.Drawing.Point(780, 125);
+            this.label126.Name = "label126";
+            this.label126.Size = new System.Drawing.Size(13, 15);
+            this.label126.TabIndex = 65;
+            this.label126.Text = "x";
+            // 
+            // txtVolcanoIntensity
+            // 
+            this.txtVolcanoIntensity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtVolcanoIntensity.Location = new System.Drawing.Point(706, 120);
+            this.txtVolcanoIntensity.Name = "txtVolcanoIntensity";
+            this.txtVolcanoIntensity.Size = new System.Drawing.Size(49, 21);
+            this.txtVolcanoIntensity.TabIndex = 64;
+            this.txtVolcanoIntensity.TextChanged += new System.EventHandler(this.txtVolcanoIntensity_TextChanged);
+            // 
+            // tbVolcanoIntensity
+            // 
+            this.tbVolcanoIntensity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbVolcanoIntensity.Location = new System.Drawing.Point(166, 117);
+            this.tbVolcanoIntensity.Maximum = 100;
+            this.tbVolcanoIntensity.Name = "tbVolcanoIntensity";
+            this.tbVolcanoIntensity.Size = new System.Drawing.Size(534, 45);
+            this.tbVolcanoIntensity.TabIndex = 63;
+            this.tbVolcanoIntensity.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbVolcanoIntensity.Value = 30;
+            this.tbVolcanoIntensity.ValueChanged += new System.EventHandler(this.tbVolcanoIntensity_Scroll);
+            // 
+            // label127
+            // 
+            this.label127.AutoSize = true;
+            this.label127.Location = new System.Drawing.Point(8, 123);
+            this.label127.Name = "label127";
+            this.label127.Size = new System.Drawing.Size(98, 15);
+            this.label127.TabIndex = 62;
+            this.label127.Text = "Volcano Intensity";
+            // 
+            // label128
+            // 
+            this.label128.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label128.AutoSize = true;
+            this.label128.Location = new System.Drawing.Point(780, 98);
+            this.label128.Name = "label128";
+            this.label128.Size = new System.Drawing.Size(13, 15);
+            this.label128.TabIndex = 61;
+            this.label128.Text = "x";
+            // 
+            // txtVolcanoInterval
+            // 
+            this.txtVolcanoInterval.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtVolcanoInterval.Location = new System.Drawing.Point(706, 93);
+            this.txtVolcanoInterval.Name = "txtVolcanoInterval";
+            this.txtVolcanoInterval.Size = new System.Drawing.Size(49, 21);
+            this.txtVolcanoInterval.TabIndex = 60;
+            this.txtVolcanoInterval.TextChanged += new System.EventHandler(this.txtVolcanoInterval_TextChanged);
+            // 
+            // tbVolcanoInterval
+            // 
+            this.tbVolcanoInterval.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbVolcanoInterval.Location = new System.Drawing.Point(166, 90);
+            this.tbVolcanoInterval.Maximum = 100;
+            this.tbVolcanoInterval.Name = "tbVolcanoInterval";
+            this.tbVolcanoInterval.Size = new System.Drawing.Size(534, 45);
+            this.tbVolcanoInterval.TabIndex = 59;
+            this.tbVolcanoInterval.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbVolcanoInterval.Value = 30;
+            this.tbVolcanoInterval.ValueChanged += new System.EventHandler(this.tbVolcanoInterval_Scroll);
+            // 
+            // label129
+            // 
+            this.label129.AutoSize = true;
+            this.label129.Location = new System.Drawing.Point(8, 96);
+            this.label129.Name = "label129";
+            this.label129.Size = new System.Drawing.Size(93, 15);
+            this.label129.TabIndex = 58;
+            this.label129.Text = "Volcano Interval";
+            // 
+            // label130
+            // 
+            this.label130.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label130.AutoSize = true;
+            this.label130.Location = new System.Drawing.Point(780, 55);
+            this.label130.Name = "label130";
+            this.label130.Size = new System.Drawing.Size(13, 15);
+            this.label130.TabIndex = 57;
+            this.label130.Text = "x";
+            // 
+            // txtUnicornSpawnInterval
+            // 
+            this.txtUnicornSpawnInterval.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtUnicornSpawnInterval.Location = new System.Drawing.Point(706, 50);
+            this.txtUnicornSpawnInterval.Name = "txtUnicornSpawnInterval";
+            this.txtUnicornSpawnInterval.Size = new System.Drawing.Size(49, 21);
+            this.txtUnicornSpawnInterval.TabIndex = 56;
+            this.txtUnicornSpawnInterval.TextChanged += new System.EventHandler(this.txtUnicornSpawnInterval_TextChanged);
+            // 
+            // tbUnicornSpawnInterval
+            // 
+            this.tbUnicornSpawnInterval.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbUnicornSpawnInterval.Location = new System.Drawing.Point(166, 47);
+            this.tbUnicornSpawnInterval.Maximum = 48;
+            this.tbUnicornSpawnInterval.Name = "tbUnicornSpawnInterval";
+            this.tbUnicornSpawnInterval.Size = new System.Drawing.Size(534, 45);
+            this.tbUnicornSpawnInterval.TabIndex = 55;
+            this.tbUnicornSpawnInterval.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbUnicornSpawnInterval.Value = 30;
+            this.tbUnicornSpawnInterval.ValueChanged += new System.EventHandler(this.tbUnicornSpawnInterval_Scroll);
+            // 
+            // label131
+            // 
+            this.label131.AutoSize = true;
+            this.label131.Location = new System.Drawing.Point(8, 53);
+            this.label131.Name = "label131";
+            this.label131.Size = new System.Drawing.Size(133, 15);
+            this.label131.TabIndex = 54;
+            this.label131.Text = "Unicorn Spawn Interval";
+            // 
+            // chkEnableVolcano
+            // 
+            this.chkEnableVolcano.AutoSize = true;
+            this.chkEnableVolcano.Location = new System.Drawing.Point(7, 73);
+            this.chkEnableVolcano.Name = "chkEnableVolcano";
+            this.chkEnableVolcano.Size = new System.Drawing.Size(112, 19);
+            this.chkEnableVolcano.TabIndex = 11;
+            this.chkEnableVolcano.Text = "Enable Volcano";
+            this.chkEnableVolcano.UseVisualStyleBackColor = true;
+            // 
+            // chkAllowMultipleTamedUnicorns
+            // 
+            this.chkAllowMultipleTamedUnicorns.AutoSize = true;
+            this.chkAllowMultipleTamedUnicorns.Location = new System.Drawing.Point(7, 25);
+            this.chkAllowMultipleTamedUnicorns.Name = "chkAllowMultipleTamedUnicorns";
+            this.chkAllowMultipleTamedUnicorns.Size = new System.Drawing.Size(196, 19);
+            this.chkAllowMultipleTamedUnicorns.TabIndex = 10;
+            this.chkAllowMultipleTamedUnicorns.Text = "Allow Multiple Tamed Unicorns";
+            this.chkAllowMultipleTamedUnicorns.UseVisualStyleBackColor = true;
+            // 
+            // groupBox29
+            // 
+            this.groupBox29.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox29.Controls.Add(this.label124);
+            this.groupBox29.Controls.Add(this.txtHexagonCostMultiplier);
+            this.groupBox29.Controls.Add(this.tbHexagonCostMultiplier);
+            this.groupBox29.Controls.Add(this.label125);
+            this.groupBox29.Controls.Add(this.label122);
+            this.groupBox29.Controls.Add(this.txtHexagonRewardMultiplier);
+            this.groupBox29.Controls.Add(this.tbHexagonRewardMultiplier);
+            this.groupBox29.Controls.Add(this.label123);
+            this.groupBox29.Controls.Add(this.label51);
+            this.groupBox29.Controls.Add(this.txtMaxHexagonsPerCharacter);
+            this.groupBox29.Controls.Add(this.tbMaxHexagonsPerCharacter);
+            this.groupBox29.Controls.Add(this.label117);
+            this.groupBox29.Controls.Add(this.chkAllowOnlyEngramPointsTrade);
+            this.groupBox29.Controls.Add(this.chkDisableHexagonStore);
+            this.groupBox29.ForeColor = System.Drawing.Color.SteelBlue;
+            this.groupBox29.Location = new System.Drawing.Point(16, 2287);
+            this.groupBox29.Name = "groupBox29";
+            this.groupBox29.Size = new System.Drawing.Size(842, 152);
+            this.groupBox29.TabIndex = 77;
+            this.groupBox29.TabStop = false;
+            this.groupBox29.Text = "Hexagons";
+            // 
+            // label124
+            // 
+            this.label124.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label124.AutoSize = true;
+            this.label124.Location = new System.Drawing.Point(780, 109);
+            this.label124.Name = "label124";
+            this.label124.Size = new System.Drawing.Size(13, 15);
+            this.label124.TabIndex = 65;
+            this.label124.Text = "x";
+            // 
+            // txtHexagonCostMultiplier
+            // 
+            this.txtHexagonCostMultiplier.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtHexagonCostMultiplier.Location = new System.Drawing.Point(706, 104);
+            this.txtHexagonCostMultiplier.Name = "txtHexagonCostMultiplier";
+            this.txtHexagonCostMultiplier.Size = new System.Drawing.Size(49, 21);
+            this.txtHexagonCostMultiplier.TabIndex = 64;
+            this.txtHexagonCostMultiplier.TextChanged += new System.EventHandler(this.txtHexagonCostMultiplier_TextChanged);
+            // 
+            // tbHexagonCostMultiplier
+            // 
+            this.tbHexagonCostMultiplier.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbHexagonCostMultiplier.Location = new System.Drawing.Point(166, 101);
+            this.tbHexagonCostMultiplier.Maximum = 100;
+            this.tbHexagonCostMultiplier.Name = "tbHexagonCostMultiplier";
+            this.tbHexagonCostMultiplier.Size = new System.Drawing.Size(534, 45);
+            this.tbHexagonCostMultiplier.TabIndex = 63;
+            this.tbHexagonCostMultiplier.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbHexagonCostMultiplier.Value = 30;
+            this.tbHexagonCostMultiplier.ValueChanged += new System.EventHandler(this.tbHexagonCostMultiplier_Scroll);
+            // 
+            // label125
+            // 
+            this.label125.AutoSize = true;
+            this.label125.Location = new System.Drawing.Point(8, 107);
+            this.label125.Name = "label125";
+            this.label125.Size = new System.Drawing.Size(138, 15);
+            this.label125.TabIndex = 62;
+            this.label125.Text = "Hexagon Cost Multiplier";
+            // 
+            // label122
+            // 
+            this.label122.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label122.AutoSize = true;
+            this.label122.Location = new System.Drawing.Point(780, 82);
+            this.label122.Name = "label122";
+            this.label122.Size = new System.Drawing.Size(13, 15);
+            this.label122.TabIndex = 61;
+            this.label122.Text = "x";
+            // 
+            // txtHexagonRewardMultiplier
+            // 
+            this.txtHexagonRewardMultiplier.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtHexagonRewardMultiplier.Location = new System.Drawing.Point(706, 77);
+            this.txtHexagonRewardMultiplier.Name = "txtHexagonRewardMultiplier";
+            this.txtHexagonRewardMultiplier.Size = new System.Drawing.Size(49, 21);
+            this.txtHexagonRewardMultiplier.TabIndex = 60;
+            this.txtHexagonRewardMultiplier.TextChanged += new System.EventHandler(this.txtHexagonRewardMultiplier_TextChanged);
+            // 
+            // tbHexagonRewardMultiplier
+            // 
+            this.tbHexagonRewardMultiplier.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbHexagonRewardMultiplier.Location = new System.Drawing.Point(166, 74);
+            this.tbHexagonRewardMultiplier.Maximum = 100;
+            this.tbHexagonRewardMultiplier.Name = "tbHexagonRewardMultiplier";
+            this.tbHexagonRewardMultiplier.Size = new System.Drawing.Size(534, 45);
+            this.tbHexagonRewardMultiplier.TabIndex = 59;
+            this.tbHexagonRewardMultiplier.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbHexagonRewardMultiplier.Value = 30;
+            this.tbHexagonRewardMultiplier.ValueChanged += new System.EventHandler(this.tbHexagonRewardMultiplier_Scroll);
+            // 
+            // label123
+            // 
+            this.label123.AutoSize = true;
+            this.label123.Location = new System.Drawing.Point(8, 80);
+            this.label123.Name = "label123";
+            this.label123.Size = new System.Drawing.Size(157, 15);
+            this.label123.TabIndex = 58;
+            this.label123.Text = "Hexagon Reward Multiplier";
+            // 
+            // label51
+            // 
+            this.label51.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label51.AutoSize = true;
+            this.label51.Location = new System.Drawing.Point(780, 55);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(13, 15);
+            this.label51.TabIndex = 57;
+            this.label51.Text = "x";
+            // 
+            // txtMaxHexagonsPerCharacter
+            // 
+            this.txtMaxHexagonsPerCharacter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtMaxHexagonsPerCharacter.Location = new System.Drawing.Point(706, 50);
+            this.txtMaxHexagonsPerCharacter.Name = "txtMaxHexagonsPerCharacter";
+            this.txtMaxHexagonsPerCharacter.Size = new System.Drawing.Size(49, 21);
+            this.txtMaxHexagonsPerCharacter.TabIndex = 56;
+            this.txtMaxHexagonsPerCharacter.TextChanged += new System.EventHandler(this.txtMaxHexagonsPerCharacter_TextChanged);
+            // 
+            // tbMaxHexagonsPerCharacter
+            // 
+            this.tbMaxHexagonsPerCharacter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbMaxHexagonsPerCharacter.Location = new System.Drawing.Point(166, 47);
+            this.tbMaxHexagonsPerCharacter.Maximum = 2000000000;
+            this.tbMaxHexagonsPerCharacter.Name = "tbMaxHexagonsPerCharacter";
+            this.tbMaxHexagonsPerCharacter.Size = new System.Drawing.Size(534, 45);
+            this.tbMaxHexagonsPerCharacter.TabIndex = 55;
+            this.tbMaxHexagonsPerCharacter.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbMaxHexagonsPerCharacter.Value = 30;
+            this.tbMaxHexagonsPerCharacter.ValueChanged += new System.EventHandler(this.tbMaxHexagonsPerCharacter_Scroll);
+            // 
+            // label117
+            // 
+            this.label117.AutoSize = true;
+            this.label117.Location = new System.Drawing.Point(8, 53);
+            this.label117.Name = "label117";
+            this.label117.Size = new System.Drawing.Size(167, 15);
+            this.label117.TabIndex = 54;
+            this.label117.Text = "Max Hexagons per Character";
+            // 
+            // chkAllowOnlyEngramPointsTrade
+            // 
+            this.chkAllowOnlyEngramPointsTrade.AutoSize = true;
+            this.chkAllowOnlyEngramPointsTrade.Location = new System.Drawing.Point(255, 25);
+            this.chkAllowOnlyEngramPointsTrade.Name = "chkAllowOnlyEngramPointsTrade";
+            this.chkAllowOnlyEngramPointsTrade.Size = new System.Drawing.Size(201, 19);
+            this.chkAllowOnlyEngramPointsTrade.TabIndex = 11;
+            this.chkAllowOnlyEngramPointsTrade.Text = "Allow Only Engram Points Trade";
+            this.chkAllowOnlyEngramPointsTrade.UseVisualStyleBackColor = true;
+            // 
+            // chkDisableHexagonStore
+            // 
+            this.chkDisableHexagonStore.AutoSize = true;
+            this.chkDisableHexagonStore.Location = new System.Drawing.Point(7, 25);
+            this.chkDisableHexagonStore.Name = "chkDisableHexagonStore";
+            this.chkDisableHexagonStore.Size = new System.Drawing.Size(153, 19);
+            this.chkDisableHexagonStore.TabIndex = 10;
+            this.chkDisableHexagonStore.Text = "Disable Hexagon Store";
+            this.chkDisableHexagonStore.UseVisualStyleBackColor = true;
+            // 
+            // groupBox28
+            // 
+            this.groupBox28.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox28.Controls.Add(this.tbConnectionInvicibleInterval);
+            this.groupBox28.Controls.Add(this.label118);
+            this.groupBox28.Controls.Add(this.txtConnectionInvicibleInterval);
+            this.groupBox28.Controls.Add(this.label119);
+            this.groupBox28.Controls.Add(this.label120);
+            this.groupBox28.Controls.Add(this.txtLogoutInterval);
+            this.groupBox28.Controls.Add(this.tbLogoutInterval);
+            this.groupBox28.Controls.Add(this.label121);
+            this.groupBox28.Controls.Add(this.chkPreventOfflinePVP);
+            this.groupBox28.ForeColor = System.Drawing.Color.SteelBlue;
+            this.groupBox28.Location = new System.Drawing.Point(16, 1017);
+            this.groupBox28.Name = "groupBox28";
+            this.groupBox28.Size = new System.Drawing.Size(842, 76);
+            this.groupBox28.TabIndex = 68;
+            this.groupBox28.TabStop = false;
+            // 
+            // tbConnectionInvicibleInterval
+            // 
+            this.tbConnectionInvicibleInterval.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbConnectionInvicibleInterval.Location = new System.Drawing.Point(165, 44);
+            this.tbConnectionInvicibleInterval.Maximum = 3600;
+            this.tbConnectionInvicibleInterval.Minimum = 1;
+            this.tbConnectionInvicibleInterval.Name = "tbConnectionInvicibleInterval";
+            this.tbConnectionInvicibleInterval.Size = new System.Drawing.Size(534, 45);
+            this.tbConnectionInvicibleInterval.TabIndex = 68;
+            this.tbConnectionInvicibleInterval.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbConnectionInvicibleInterval.Value = 30;
+            this.tbConnectionInvicibleInterval.ValueChanged += new System.EventHandler(this.tbConnectionInvicibleInterval_Scroll);
+            // 
+            // label118
+            // 
+            this.label118.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label118.AutoSize = true;
+            this.label118.Location = new System.Drawing.Point(779, 52);
+            this.label118.Name = "label118";
+            this.label118.Size = new System.Drawing.Size(13, 15);
+            this.label118.TabIndex = 70;
+            this.label118.Text = "x";
+            // 
+            // txtConnectionInvicibleInterval
+            // 
+            this.txtConnectionInvicibleInterval.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtConnectionInvicibleInterval.Location = new System.Drawing.Point(705, 47);
+            this.txtConnectionInvicibleInterval.Name = "txtConnectionInvicibleInterval";
+            this.txtConnectionInvicibleInterval.Size = new System.Drawing.Size(49, 21);
+            this.txtConnectionInvicibleInterval.TabIndex = 69;
+            this.txtConnectionInvicibleInterval.TextChanged += new System.EventHandler(this.txtConnectionInvicibleInterval_TextChanged);
+            // 
+            // label119
+            // 
+            this.label119.AutoSize = true;
+            this.label119.Location = new System.Drawing.Point(4, 50);
+            this.label119.Name = "label119";
+            this.label119.Size = new System.Drawing.Size(158, 15);
+            this.label119.TabIndex = 67;
+            this.label119.Text = "Connection Invicible Interval";
+            // 
+            // label120
+            // 
+            this.label120.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label120.AutoSize = true;
+            this.label120.Location = new System.Drawing.Point(779, 25);
+            this.label120.Name = "label120";
+            this.label120.Size = new System.Drawing.Size(53, 15);
+            this.label120.TabIndex = 66;
+            this.label120.Text = "seconds";
+            // 
+            // txtLogoutInterval
+            // 
+            this.txtLogoutInterval.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtLogoutInterval.Location = new System.Drawing.Point(705, 20);
+            this.txtLogoutInterval.Name = "txtLogoutInterval";
+            this.txtLogoutInterval.Size = new System.Drawing.Size(49, 21);
+            this.txtLogoutInterval.TabIndex = 65;
+            this.txtLogoutInterval.TextChanged += new System.EventHandler(this.txtLogoutInterval_TextChanged);
+            // 
+            // tbLogoutInterval
+            // 
+            this.tbLogoutInterval.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbLogoutInterval.Location = new System.Drawing.Point(165, 17);
+            this.tbLogoutInterval.Maximum = 3600;
+            this.tbLogoutInterval.Name = "tbLogoutInterval";
+            this.tbLogoutInterval.Size = new System.Drawing.Size(534, 45);
+            this.tbLogoutInterval.TabIndex = 64;
+            this.tbLogoutInterval.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbLogoutInterval.Value = 30;
+            this.tbLogoutInterval.ValueChanged += new System.EventHandler(this.tbLogoutInterval_Scroll);
+            // 
+            // label121
+            // 
+            this.label121.AutoSize = true;
+            this.label121.Location = new System.Drawing.Point(4, 23);
+            this.label121.Name = "label121";
+            this.label121.Size = new System.Drawing.Size(87, 15);
+            this.label121.TabIndex = 63;
+            this.label121.Text = "Logout Interval";
+            // 
+            // chkPreventOfflinePVP
+            // 
+            this.chkPreventOfflinePVP.AutoSize = true;
+            this.chkPreventOfflinePVP.Location = new System.Drawing.Point(7, 0);
+            this.chkPreventOfflinePVP.Name = "chkPreventOfflinePVP";
+            this.chkPreventOfflinePVP.Size = new System.Drawing.Size(129, 19);
+            this.chkPreventOfflinePVP.TabIndex = 9;
+            this.chkPreventOfflinePVP.Text = "Prevent Offline PvP";
+            this.chkPreventOfflinePVP.UseVisualStyleBackColor = true;
+            this.chkPreventOfflinePVP.CheckedChanged += new System.EventHandler(this.chkPreventOfflinePVP_CheckedChanged);
+            // 
+            // tbPlatformSaddleBuildAreaBoundsMultiplier
+            // 
+            this.tbPlatformSaddleBuildAreaBoundsMultiplier.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbPlatformSaddleBuildAreaBoundsMultiplier.Location = new System.Drawing.Point(219, 273);
+            this.tbPlatformSaddleBuildAreaBoundsMultiplier.Maximum = 50;
+            this.tbPlatformSaddleBuildAreaBoundsMultiplier.Name = "tbPlatformSaddleBuildAreaBoundsMultiplier";
+            this.tbPlatformSaddleBuildAreaBoundsMultiplier.Size = new System.Drawing.Size(534, 45);
+            this.tbPlatformSaddleBuildAreaBoundsMultiplier.TabIndex = 43;
+            this.tbPlatformSaddleBuildAreaBoundsMultiplier.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbPlatformSaddleBuildAreaBoundsMultiplier.Value = 1;
+            this.tbPlatformSaddleBuildAreaBoundsMultiplier.ValueChanged += new System.EventHandler(this.tbPlatformSaddleBuildAreaBoundsMultiplier_Scroll);
+            // 
+            // chkAllowPlatformSaddleMultiFloors
+            // 
+            this.chkAllowPlatformSaddleMultiFloors.AutoSize = true;
+            this.chkAllowPlatformSaddleMultiFloors.Location = new System.Drawing.Point(17, 265);
+            this.chkAllowPlatformSaddleMultiFloors.Name = "chkAllowPlatformSaddleMultiFloors";
+            this.chkAllowPlatformSaddleMultiFloors.Size = new System.Drawing.Size(213, 19);
+            this.chkAllowPlatformSaddleMultiFloors.TabIndex = 88;
+            this.chkAllowPlatformSaddleMultiFloors.Text = "Allow Platform Saddle Multi Floors";
+            this.chkAllowPlatformSaddleMultiFloors.UseVisualStyleBackColor = true;
+            // 
+            // groupBox27
+            // 
+            this.groupBox27.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox27.Controls.Add(this.chkEnableHyperInsulationClamp);
+            this.groupBox27.Controls.Add(this.txtHyperInsulationClamp);
+            this.groupBox27.Controls.Add(this.tbHyperInsulationClamp);
+            this.groupBox27.Controls.Add(this.label110);
+            this.groupBox27.Controls.Add(this.chkEnableWeaponClipAmmoClamp);
+            this.groupBox27.Controls.Add(this.chkEnableMaxDurabilityClamp);
+            this.groupBox27.Controls.Add(this.chkEnableWeightClamp);
+            this.groupBox27.Controls.Add(this.txtWeaponClipAmmoClamp);
+            this.groupBox27.Controls.Add(this.tbWeaponClipAmmoClamp);
+            this.groupBox27.Controls.Add(this.label111);
+            this.groupBox27.Controls.Add(this.txtMaxDurabilityClamp);
+            this.groupBox27.Controls.Add(this.tbMaxDurabilityClamp);
+            this.groupBox27.Controls.Add(this.label115);
+            this.groupBox27.Controls.Add(this.txtWeightClamp);
+            this.groupBox27.Controls.Add(this.tbWeightClamp);
+            this.groupBox27.Controls.Add(this.label116);
+            this.groupBox27.Controls.Add(this.chkEnableHypoInsulationClamp);
+            this.groupBox27.Controls.Add(this.txtHypoInsulationClamp);
+            this.groupBox27.Controls.Add(this.tbHypoInsulationClamp);
+            this.groupBox27.Controls.Add(this.label108);
+            this.groupBox27.Controls.Add(this.chkEnableWeaponDamagePercentClamp);
+            this.groupBox27.Controls.Add(this.chkEnableArmorClamp);
+            this.groupBox27.Controls.Add(this.chkEnableGenericQualityClamp);
+            this.groupBox27.Controls.Add(this.label114);
+            this.groupBox27.Controls.Add(this.txtWeaponDamagePercentClamp);
+            this.groupBox27.Controls.Add(this.tbWeaponDamagePercentClamp);
+            this.groupBox27.Controls.Add(this.label109);
+            this.groupBox27.Controls.Add(this.txtArmorClamp);
+            this.groupBox27.Controls.Add(this.tbArmorClamp);
+            this.groupBox27.Controls.Add(this.label112);
+            this.groupBox27.Controls.Add(this.txtGenericQualityClamp);
+            this.groupBox27.Controls.Add(this.tbGenericQualityClamp);
+            this.groupBox27.Controls.Add(this.label113);
+            this.groupBox27.ForeColor = System.Drawing.Color.SteelBlue;
+            this.groupBox27.Location = new System.Drawing.Point(16, 2663);
+            this.groupBox27.Name = "groupBox27";
+            this.groupBox27.Size = new System.Drawing.Size(842, 308);
+            this.groupBox27.TabIndex = 78;
+            this.groupBox27.TabStop = false;
+            this.groupBox27.Text = "Item Stat Clamps";
+            // 
+            // chkEnableHyperInsulationClamp
+            // 
+            this.chkEnableHyperInsulationClamp.AutoSize = true;
+            this.chkEnableHyperInsulationClamp.Location = new System.Drawing.Point(152, 266);
+            this.chkEnableHyperInsulationClamp.Name = "chkEnableHyperInsulationClamp";
+            this.chkEnableHyperInsulationClamp.Size = new System.Drawing.Size(15, 14);
+            this.chkEnableHyperInsulationClamp.TabIndex = 99;
+            this.chkEnableHyperInsulationClamp.UseVisualStyleBackColor = true;
+            // 
+            // txtHyperInsulationClamp
+            // 
+            this.txtHyperInsulationClamp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtHyperInsulationClamp.Location = new System.Drawing.Point(783, 263);
+            this.txtHyperInsulationClamp.Name = "txtHyperInsulationClamp";
+            this.txtHyperInsulationClamp.Size = new System.Drawing.Size(49, 21);
+            this.txtHyperInsulationClamp.TabIndex = 98;
+            this.txtHyperInsulationClamp.TextChanged += new System.EventHandler(this.txtHyperInsulationClamp_TextChanged);
+            // 
+            // tbHyperInsulationClamp
+            // 
+            this.tbHyperInsulationClamp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbHyperInsulationClamp.Location = new System.Drawing.Point(165, 260);
+            this.tbHyperInsulationClamp.Maximum = 1000000;
+            this.tbHyperInsulationClamp.Name = "tbHyperInsulationClamp";
+            this.tbHyperInsulationClamp.Size = new System.Drawing.Size(612, 45);
+            this.tbHyperInsulationClamp.TabIndex = 97;
+            this.tbHyperInsulationClamp.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbHyperInsulationClamp.Value = 30;
+            this.tbHyperInsulationClamp.ValueChanged += new System.EventHandler(this.tbHyperInsulationClamp_Scroll);
+            // 
+            // label110
+            // 
+            this.label110.AutoSize = true;
+            this.label110.Location = new System.Drawing.Point(4, 266);
+            this.label110.Name = "label110";
+            this.label110.Size = new System.Drawing.Size(95, 15);
+            this.label110.TabIndex = 96;
+            this.label110.Text = "Hyper Insulation";
+            // 
+            // chkEnableWeaponClipAmmoClamp
+            // 
+            this.chkEnableWeaponClipAmmoClamp.AutoSize = true;
+            this.chkEnableWeaponClipAmmoClamp.Location = new System.Drawing.Point(153, 237);
+            this.chkEnableWeaponClipAmmoClamp.Name = "chkEnableWeaponClipAmmoClamp";
+            this.chkEnableWeaponClipAmmoClamp.Size = new System.Drawing.Size(15, 14);
+            this.chkEnableWeaponClipAmmoClamp.TabIndex = 95;
+            this.chkEnableWeaponClipAmmoClamp.UseVisualStyleBackColor = true;
+            // 
+            // chkEnableMaxDurabilityClamp
+            // 
+            this.chkEnableMaxDurabilityClamp.AutoSize = true;
+            this.chkEnableMaxDurabilityClamp.Location = new System.Drawing.Point(152, 210);
+            this.chkEnableMaxDurabilityClamp.Name = "chkEnableMaxDurabilityClamp";
+            this.chkEnableMaxDurabilityClamp.Size = new System.Drawing.Size(15, 14);
+            this.chkEnableMaxDurabilityClamp.TabIndex = 94;
+            this.chkEnableMaxDurabilityClamp.UseVisualStyleBackColor = true;
+            // 
+            // chkEnableWeightClamp
+            // 
+            this.chkEnableWeightClamp.AutoSize = true;
+            this.chkEnableWeightClamp.Location = new System.Drawing.Point(152, 185);
+            this.chkEnableWeightClamp.Name = "chkEnableWeightClamp";
+            this.chkEnableWeightClamp.Size = new System.Drawing.Size(15, 14);
+            this.chkEnableWeightClamp.TabIndex = 93;
+            this.chkEnableWeightClamp.UseVisualStyleBackColor = true;
+            // 
+            // txtWeaponClipAmmoClamp
+            // 
+            this.txtWeaponClipAmmoClamp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtWeaponClipAmmoClamp.Location = new System.Drawing.Point(783, 236);
+            this.txtWeaponClipAmmoClamp.Name = "txtWeaponClipAmmoClamp";
+            this.txtWeaponClipAmmoClamp.Size = new System.Drawing.Size(49, 21);
+            this.txtWeaponClipAmmoClamp.TabIndex = 92;
+            this.txtWeaponClipAmmoClamp.TextChanged += new System.EventHandler(this.txtWeaponClipAmmoClamp_TextChanged);
+            // 
+            // tbWeaponClipAmmoClamp
+            // 
+            this.tbWeaponClipAmmoClamp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbWeaponClipAmmoClamp.Location = new System.Drawing.Point(165, 233);
+            this.tbWeaponClipAmmoClamp.Maximum = 1000000;
+            this.tbWeaponClipAmmoClamp.Name = "tbWeaponClipAmmoClamp";
+            this.tbWeaponClipAmmoClamp.Size = new System.Drawing.Size(612, 45);
+            this.tbWeaponClipAmmoClamp.TabIndex = 91;
+            this.tbWeaponClipAmmoClamp.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbWeaponClipAmmoClamp.Value = 30;
+            this.tbWeaponClipAmmoClamp.ValueChanged += new System.EventHandler(this.tbWeaponClipAmmoClamp_Scroll);
+            // 
+            // label111
+            // 
+            this.label111.Location = new System.Drawing.Point(4, 239);
+            this.label111.Name = "label111";
+            this.label111.Size = new System.Drawing.Size(165, 39);
+            this.label111.TabIndex = 90;
+            this.label111.Text = "Weapon Clip Ammo";
+            // 
+            // txtMaxDurabilityClamp
+            // 
+            this.txtMaxDurabilityClamp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtMaxDurabilityClamp.Location = new System.Drawing.Point(783, 209);
+            this.txtMaxDurabilityClamp.Name = "txtMaxDurabilityClamp";
+            this.txtMaxDurabilityClamp.Size = new System.Drawing.Size(49, 21);
+            this.txtMaxDurabilityClamp.TabIndex = 89;
+            this.txtMaxDurabilityClamp.TextChanged += new System.EventHandler(this.txtMaxDurabilityClamp_TextChanged);
+            // 
+            // tbMaxDurabilityClamp
+            // 
+            this.tbMaxDurabilityClamp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbMaxDurabilityClamp.Location = new System.Drawing.Point(165, 206);
+            this.tbMaxDurabilityClamp.Maximum = 1000000;
+            this.tbMaxDurabilityClamp.Name = "tbMaxDurabilityClamp";
+            this.tbMaxDurabilityClamp.Size = new System.Drawing.Size(612, 45);
+            this.tbMaxDurabilityClamp.TabIndex = 88;
+            this.tbMaxDurabilityClamp.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbMaxDurabilityClamp.Value = 30;
+            this.tbMaxDurabilityClamp.ValueChanged += new System.EventHandler(this.tbMaxDurabilityClamp_Scroll);
+            // 
+            // label115
+            // 
+            this.label115.AutoSize = true;
+            this.label115.Location = new System.Drawing.Point(4, 212);
+            this.label115.Name = "label115";
+            this.label115.Size = new System.Drawing.Size(85, 15);
+            this.label115.TabIndex = 87;
+            this.label115.Text = "Max Durability";
+            // 
+            // txtWeightClamp
+            // 
+            this.txtWeightClamp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtWeightClamp.Location = new System.Drawing.Point(783, 182);
+            this.txtWeightClamp.Name = "txtWeightClamp";
+            this.txtWeightClamp.Size = new System.Drawing.Size(49, 21);
+            this.txtWeightClamp.TabIndex = 86;
+            this.txtWeightClamp.TextChanged += new System.EventHandler(this.txtWeightClamp_TextChanged);
+            // 
+            // tbWeightClamp
+            // 
+            this.tbWeightClamp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbWeightClamp.Location = new System.Drawing.Point(165, 179);
+            this.tbWeightClamp.Maximum = 1000000;
+            this.tbWeightClamp.Name = "tbWeightClamp";
+            this.tbWeightClamp.Size = new System.Drawing.Size(612, 45);
+            this.tbWeightClamp.TabIndex = 85;
+            this.tbWeightClamp.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbWeightClamp.Value = 30;
+            this.tbWeightClamp.ValueChanged += new System.EventHandler(this.tbWeightClamp_Scroll);
+            // 
+            // label116
+            // 
+            this.label116.AutoSize = true;
+            this.label116.Location = new System.Drawing.Point(4, 185);
+            this.label116.Name = "label116";
+            this.label116.Size = new System.Drawing.Size(45, 15);
+            this.label116.TabIndex = 84;
+            this.label116.Text = "Weight";
+            // 
+            // chkEnableHypoInsulationClamp
+            // 
+            this.chkEnableHypoInsulationClamp.AutoSize = true;
+            this.chkEnableHypoInsulationClamp.Location = new System.Drawing.Point(152, 158);
+            this.chkEnableHypoInsulationClamp.Name = "chkEnableHypoInsulationClamp";
+            this.chkEnableHypoInsulationClamp.Size = new System.Drawing.Size(15, 14);
+            this.chkEnableHypoInsulationClamp.TabIndex = 83;
+            this.chkEnableHypoInsulationClamp.UseVisualStyleBackColor = true;
+            // 
+            // txtHypoInsulationClamp
+            // 
+            this.txtHypoInsulationClamp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtHypoInsulationClamp.Location = new System.Drawing.Point(783, 155);
+            this.txtHypoInsulationClamp.Name = "txtHypoInsulationClamp";
+            this.txtHypoInsulationClamp.Size = new System.Drawing.Size(49, 21);
+            this.txtHypoInsulationClamp.TabIndex = 82;
+            this.txtHypoInsulationClamp.TextChanged += new System.EventHandler(this.txtHypoInsulationClamp_TextChanged);
+            // 
+            // tbHypoInsulationClamp
+            // 
+            this.tbHypoInsulationClamp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbHypoInsulationClamp.Location = new System.Drawing.Point(165, 152);
+            this.tbHypoInsulationClamp.Maximum = 1000000;
+            this.tbHypoInsulationClamp.Name = "tbHypoInsulationClamp";
+            this.tbHypoInsulationClamp.Size = new System.Drawing.Size(612, 45);
+            this.tbHypoInsulationClamp.TabIndex = 81;
+            this.tbHypoInsulationClamp.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbHypoInsulationClamp.Value = 30;
+            this.tbHypoInsulationClamp.ValueChanged += new System.EventHandler(this.tbHypoInsulationClamp_Scroll);
+            // 
+            // label108
+            // 
+            this.label108.AutoSize = true;
+            this.label108.Location = new System.Drawing.Point(4, 158);
+            this.label108.Name = "label108";
+            this.label108.Size = new System.Drawing.Size(91, 15);
+            this.label108.TabIndex = 80;
+            this.label108.Text = "Hypo Insulation";
+            // 
+            // chkEnableWeaponDamagePercentClamp
+            // 
+            this.chkEnableWeaponDamagePercentClamp.AutoSize = true;
+            this.chkEnableWeaponDamagePercentClamp.Location = new System.Drawing.Point(153, 129);
+            this.chkEnableWeaponDamagePercentClamp.Name = "chkEnableWeaponDamagePercentClamp";
+            this.chkEnableWeaponDamagePercentClamp.Size = new System.Drawing.Size(15, 14);
+            this.chkEnableWeaponDamagePercentClamp.TabIndex = 79;
+            this.chkEnableWeaponDamagePercentClamp.UseVisualStyleBackColor = true;
+            // 
+            // chkEnableArmorClamp
+            // 
+            this.chkEnableArmorClamp.AutoSize = true;
+            this.chkEnableArmorClamp.Location = new System.Drawing.Point(152, 102);
+            this.chkEnableArmorClamp.Name = "chkEnableArmorClamp";
+            this.chkEnableArmorClamp.Size = new System.Drawing.Size(15, 14);
+            this.chkEnableArmorClamp.TabIndex = 78;
+            this.chkEnableArmorClamp.UseVisualStyleBackColor = true;
+            // 
+            // chkEnableGenericQualityClamp
+            // 
+            this.chkEnableGenericQualityClamp.AutoSize = true;
+            this.chkEnableGenericQualityClamp.Location = new System.Drawing.Point(152, 77);
+            this.chkEnableGenericQualityClamp.Name = "chkEnableGenericQualityClamp";
+            this.chkEnableGenericQualityClamp.Size = new System.Drawing.Size(15, 14);
+            this.chkEnableGenericQualityClamp.TabIndex = 77;
+            this.chkEnableGenericQualityClamp.UseVisualStyleBackColor = true;
+            // 
+            // label114
+            // 
+            this.label114.Location = new System.Drawing.Point(4, 22);
+            this.label114.Name = "label114";
+            this.label114.Size = new System.Drawing.Size(777, 46);
+            this.label114.TabIndex = 76;
+            this.label114.Text = "WARNING: This Will permanently change the stats of any existing items so make sur" +
+    "e to backup your current savve before modifying and playing with the clamping va" +
+    "lues.";
+            // 
+            // txtWeaponDamagePercentClamp
+            // 
+            this.txtWeaponDamagePercentClamp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtWeaponDamagePercentClamp.Location = new System.Drawing.Point(783, 128);
+            this.txtWeaponDamagePercentClamp.Name = "txtWeaponDamagePercentClamp";
+            this.txtWeaponDamagePercentClamp.Size = new System.Drawing.Size(49, 21);
+            this.txtWeaponDamagePercentClamp.TabIndex = 74;
+            this.txtWeaponDamagePercentClamp.TextChanged += new System.EventHandler(this.txtWeaponDamagePercentClamp_TextChanged);
+            // 
+            // tbWeaponDamagePercentClamp
+            // 
+            this.tbWeaponDamagePercentClamp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbWeaponDamagePercentClamp.Location = new System.Drawing.Point(165, 125);
+            this.tbWeaponDamagePercentClamp.Maximum = 1000000;
+            this.tbWeaponDamagePercentClamp.Name = "tbWeaponDamagePercentClamp";
+            this.tbWeaponDamagePercentClamp.Size = new System.Drawing.Size(612, 45);
+            this.tbWeaponDamagePercentClamp.TabIndex = 73;
+            this.tbWeaponDamagePercentClamp.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbWeaponDamagePercentClamp.Value = 30;
+            this.tbWeaponDamagePercentClamp.ValueChanged += new System.EventHandler(this.tbWeaponDamagePercentClamp_Scroll);
+            // 
+            // label109
+            // 
+            this.label109.Location = new System.Drawing.Point(4, 131);
+            this.label109.Name = "label109";
+            this.label109.Size = new System.Drawing.Size(165, 39);
+            this.label109.TabIndex = 72;
+            this.label109.Text = "Weapon Damage Percent";
+            // 
+            // txtArmorClamp
+            // 
+            this.txtArmorClamp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtArmorClamp.Location = new System.Drawing.Point(783, 101);
+            this.txtArmorClamp.Name = "txtArmorClamp";
+            this.txtArmorClamp.Size = new System.Drawing.Size(49, 21);
+            this.txtArmorClamp.TabIndex = 69;
+            this.txtArmorClamp.TextChanged += new System.EventHandler(this.txtArmorClamp_TextChanged);
+            // 
+            // tbArmorClamp
+            // 
+            this.tbArmorClamp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbArmorClamp.Location = new System.Drawing.Point(165, 98);
+            this.tbArmorClamp.Maximum = 1000000;
+            this.tbArmorClamp.Name = "tbArmorClamp";
+            this.tbArmorClamp.Size = new System.Drawing.Size(612, 45);
+            this.tbArmorClamp.TabIndex = 68;
+            this.tbArmorClamp.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbArmorClamp.Value = 30;
+            this.tbArmorClamp.ValueChanged += new System.EventHandler(this.tbArmorClamp_Scroll);
+            // 
+            // label112
+            // 
+            this.label112.AutoSize = true;
+            this.label112.Location = new System.Drawing.Point(4, 104);
+            this.label112.Name = "label112";
+            this.label112.Size = new System.Drawing.Size(40, 15);
+            this.label112.TabIndex = 67;
+            this.label112.Text = "Armor";
+            // 
+            // txtGenericQualityClamp
+            // 
+            this.txtGenericQualityClamp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtGenericQualityClamp.Location = new System.Drawing.Point(783, 74);
+            this.txtGenericQualityClamp.Name = "txtGenericQualityClamp";
+            this.txtGenericQualityClamp.Size = new System.Drawing.Size(49, 21);
+            this.txtGenericQualityClamp.TabIndex = 65;
+            this.txtGenericQualityClamp.TextChanged += new System.EventHandler(this.txtGenericQualityClamp_TextChanged);
+            // 
+            // tbGenericQualityClamp
+            // 
+            this.tbGenericQualityClamp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbGenericQualityClamp.Location = new System.Drawing.Point(165, 71);
+            this.tbGenericQualityClamp.Maximum = 1000000;
+            this.tbGenericQualityClamp.Name = "tbGenericQualityClamp";
+            this.tbGenericQualityClamp.Size = new System.Drawing.Size(612, 45);
+            this.tbGenericQualityClamp.TabIndex = 64;
+            this.tbGenericQualityClamp.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbGenericQualityClamp.Value = 30;
+            this.tbGenericQualityClamp.ValueChanged += new System.EventHandler(this.tbGenericQualityClamp_Scroll);
+            // 
+            // label113
+            // 
+            this.label113.AutoSize = true;
+            this.label113.Location = new System.Drawing.Point(4, 77);
+            this.label113.Name = "label113";
+            this.label113.Size = new System.Drawing.Size(90, 15);
+            this.label113.TabIndex = 63;
+            this.label113.Text = "Generic Quality";
+            // 
+            // groupBox26
+            // 
+            this.groupBox26.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox26.Controls.Add(this.chkEnableFjordurBiomeTeleport);
+            this.groupBox26.Controls.Add(this.chkEnableFjordurSettings);
+            this.groupBox26.ForeColor = System.Drawing.Color.SteelBlue;
+            this.groupBox26.Location = new System.Drawing.Point(16, 2607);
+            this.groupBox26.Name = "groupBox26";
+            this.groupBox26.Size = new System.Drawing.Size(842, 53);
+            this.groupBox26.TabIndex = 76;
+            this.groupBox26.TabStop = false;
+            // 
+            // chkEnableFjordurBiomeTeleport
+            // 
+            this.chkEnableFjordurBiomeTeleport.AutoSize = true;
+            this.chkEnableFjordurBiomeTeleport.Location = new System.Drawing.Point(7, 25);
+            this.chkEnableFjordurBiomeTeleport.Name = "chkEnableFjordurBiomeTeleport";
+            this.chkEnableFjordurBiomeTeleport.Size = new System.Drawing.Size(194, 19);
+            this.chkEnableFjordurBiomeTeleport.TabIndex = 10;
+            this.chkEnableFjordurBiomeTeleport.Text = "Enable Fjordur Biome Teleport";
+            this.chkEnableFjordurBiomeTeleport.UseVisualStyleBackColor = true;
+            // 
+            // chkEnableFjordurSettings
+            // 
+            this.chkEnableFjordurSettings.AutoSize = true;
+            this.chkEnableFjordurSettings.Location = new System.Drawing.Point(7, 0);
+            this.chkEnableFjordurSettings.Name = "chkEnableFjordurSettings";
+            this.chkEnableFjordurSettings.Size = new System.Drawing.Size(154, 19);
+            this.chkEnableFjordurSettings.TabIndex = 9;
+            this.chkEnableFjordurSettings.Text = "Enable Fjordur Settings";
+            this.chkEnableFjordurSettings.UseVisualStyleBackColor = true;
+            this.chkEnableFjordurSettings.CheckedChanged += new System.EventHandler(this.chkEnableFjordurSettings_CheckedChanged);
+            // 
+            // groupBox25
+            // 
+            this.groupBox25.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox25.Controls.Add(this.label104);
+            this.groupBox25.Controls.Add(this.txtMutagemSpawnDelayMultiplier);
+            this.groupBox25.Controls.Add(this.tbMutagemSpawnDelayMultiplier);
+            this.groupBox25.Controls.Add(this.label105);
+            this.groupBox25.Controls.Add(this.label106);
+            this.groupBox25.Controls.Add(this.txtWorldBuffScanlingEfficacy);
+            this.groupBox25.Controls.Add(this.tbWorldBuffScanlingEfficacy);
+            this.groupBox25.Controls.Add(this.label107);
+            this.groupBox25.Controls.Add(this.chkEnableWorldBuffScaling);
+            this.groupBox25.Controls.Add(this.chkGen2DisableWorldBuffs);
+            this.groupBox25.Controls.Add(this.chkGen2DisableTEKSuitonSpawn);
+            this.groupBox25.ForeColor = System.Drawing.Color.SteelBlue;
+            this.groupBox25.Location = new System.Drawing.Point(17, 2145);
+            this.groupBox25.Name = "groupBox25";
+            this.groupBox25.Size = new System.Drawing.Size(842, 139);
+            this.groupBox25.TabIndex = 56;
+            this.groupBox25.TabStop = false;
+            this.groupBox25.Text = "Genesis: Part 2";
+            // 
+            // label104
+            // 
+            this.label104.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label104.AutoSize = true;
+            this.label104.Location = new System.Drawing.Point(779, 99);
+            this.label104.Name = "label104";
+            this.label104.Size = new System.Drawing.Size(13, 15);
+            this.label104.TabIndex = 58;
+            this.label104.Text = "x";
+            // 
+            // txtMutagemSpawnDelayMultiplier
+            // 
+            this.txtMutagemSpawnDelayMultiplier.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtMutagemSpawnDelayMultiplier.Location = new System.Drawing.Point(705, 94);
+            this.txtMutagemSpawnDelayMultiplier.Name = "txtMutagemSpawnDelayMultiplier";
+            this.txtMutagemSpawnDelayMultiplier.Size = new System.Drawing.Size(49, 21);
+            this.txtMutagemSpawnDelayMultiplier.TabIndex = 57;
+            this.txtMutagemSpawnDelayMultiplier.TextChanged += new System.EventHandler(this.txtMutagemSpawnDelayMultiplier_TextChanged);
+            // 
+            // tbMutagemSpawnDelayMultiplier
+            // 
+            this.tbMutagemSpawnDelayMultiplier.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbMutagemSpawnDelayMultiplier.Location = new System.Drawing.Point(165, 91);
+            this.tbMutagemSpawnDelayMultiplier.Maximum = 100;
+            this.tbMutagemSpawnDelayMultiplier.Minimum = 1;
+            this.tbMutagemSpawnDelayMultiplier.Name = "tbMutagemSpawnDelayMultiplier";
+            this.tbMutagemSpawnDelayMultiplier.Size = new System.Drawing.Size(534, 45);
+            this.tbMutagemSpawnDelayMultiplier.TabIndex = 56;
+            this.tbMutagemSpawnDelayMultiplier.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbMutagemSpawnDelayMultiplier.Value = 30;
+            this.tbMutagemSpawnDelayMultiplier.ValueChanged += new System.EventHandler(this.tbMutagemSpawnDelayMultiplier_Scroll);
+            // 
+            // label105
+            // 
+            this.label105.Location = new System.Drawing.Point(7, 97);
+            this.label105.Name = "label105";
+            this.label105.Size = new System.Drawing.Size(161, 39);
+            this.label105.TabIndex = 55;
+            this.label105.Text = "Mutagen Spawn Delay Multiplier";
+            // 
+            // label106
+            // 
+            this.label106.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label106.AutoSize = true;
+            this.label106.Location = new System.Drawing.Point(779, 63);
+            this.label106.Name = "label106";
+            this.label106.Size = new System.Drawing.Size(13, 15);
+            this.label106.TabIndex = 53;
+            this.label106.Text = "x";
+            // 
+            // txtWorldBuffScanlingEfficacy
+            // 
+            this.txtWorldBuffScanlingEfficacy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtWorldBuffScanlingEfficacy.Location = new System.Drawing.Point(705, 58);
+            this.txtWorldBuffScanlingEfficacy.Name = "txtWorldBuffScanlingEfficacy";
+            this.txtWorldBuffScanlingEfficacy.Size = new System.Drawing.Size(49, 21);
+            this.txtWorldBuffScanlingEfficacy.TabIndex = 52;
+            this.txtWorldBuffScanlingEfficacy.TextChanged += new System.EventHandler(this.txtWorldBuffScanlingEfficacy_TextChanged);
+            // 
+            // tbWorldBuffScanlingEfficacy
+            // 
+            this.tbWorldBuffScanlingEfficacy.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbWorldBuffScanlingEfficacy.Location = new System.Drawing.Point(165, 55);
+            this.tbWorldBuffScanlingEfficacy.Maximum = 5000;
+            this.tbWorldBuffScanlingEfficacy.Name = "tbWorldBuffScanlingEfficacy";
+            this.tbWorldBuffScanlingEfficacy.Size = new System.Drawing.Size(534, 45);
+            this.tbWorldBuffScanlingEfficacy.TabIndex = 51;
+            this.tbWorldBuffScanlingEfficacy.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbWorldBuffScanlingEfficacy.Value = 30;
+            this.tbWorldBuffScanlingEfficacy.ValueChanged += new System.EventHandler(this.tbWorldBuffScanlingEfficacy_Scroll);
+            // 
+            // label107
+            // 
+            this.label107.AutoSize = true;
+            this.label107.Location = new System.Drawing.Point(7, 61);
+            this.label107.Name = "label107";
+            this.label107.Size = new System.Drawing.Size(151, 15);
+            this.label107.TabIndex = 50;
+            this.label107.Text = "World Buff Scaling Efficacy";
+            // 
+            // chkEnableWorldBuffScaling
+            // 
+            this.chkEnableWorldBuffScaling.AutoSize = true;
+            this.chkEnableWorldBuffScaling.Location = new System.Drawing.Point(503, 25);
+            this.chkEnableWorldBuffScaling.Name = "chkEnableWorldBuffScaling";
+            this.chkEnableWorldBuffScaling.Size = new System.Drawing.Size(168, 19);
+            this.chkEnableWorldBuffScaling.TabIndex = 12;
+            this.chkEnableWorldBuffScaling.Text = "Enable World Buff Scaling";
+            this.chkEnableWorldBuffScaling.UseVisualStyleBackColor = true;
+            // 
+            // chkGen2DisableWorldBuffs
+            // 
+            this.chkGen2DisableWorldBuffs.AutoSize = true;
+            this.chkGen2DisableWorldBuffs.Location = new System.Drawing.Point(255, 25);
+            this.chkGen2DisableWorldBuffs.Name = "chkGen2DisableWorldBuffs";
+            this.chkGen2DisableWorldBuffs.Size = new System.Drawing.Size(133, 19);
+            this.chkGen2DisableWorldBuffs.TabIndex = 11;
+            this.chkGen2DisableWorldBuffs.Text = "Disable World Buffs";
+            this.chkGen2DisableWorldBuffs.UseVisualStyleBackColor = true;
+            // 
+            // chkGen2DisableTEKSuitonSpawn
+            // 
+            this.chkGen2DisableTEKSuitonSpawn.AutoSize = true;
+            this.chkGen2DisableTEKSuitonSpawn.Location = new System.Drawing.Point(8, 25);
+            this.chkGen2DisableTEKSuitonSpawn.Name = "chkGen2DisableTEKSuitonSpawn";
+            this.chkGen2DisableTEKSuitonSpawn.Size = new System.Drawing.Size(176, 19);
+            this.chkGen2DisableTEKSuitonSpawn.TabIndex = 10;
+            this.chkGen2DisableTEKSuitonSpawn.Text = "Disable TEK Suit on Spawn";
+            this.chkGen2DisableTEKSuitonSpawn.UseVisualStyleBackColor = true;
+            // 
+            // groupBox24
+            // 
+            this.groupBox24.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox24.Controls.Add(this.chkGen1AllowTekSuitPowers);
+            this.groupBox24.Controls.Add(this.chkGen1DisableMissions);
+            this.groupBox24.ForeColor = System.Drawing.Color.SteelBlue;
+            this.groupBox24.Location = new System.Drawing.Point(17, 2086);
+            this.groupBox24.Name = "groupBox24";
+            this.groupBox24.Size = new System.Drawing.Size(842, 53);
+            this.groupBox24.TabIndex = 76;
+            this.groupBox24.TabStop = false;
+            this.groupBox24.Text = "Genesis: Part 1";
+            // 
+            // chkGen1AllowTekSuitPowers
+            // 
+            this.chkGen1AllowTekSuitPowers.AutoSize = true;
+            this.chkGen1AllowTekSuitPowers.Location = new System.Drawing.Point(255, 25);
+            this.chkGen1AllowTekSuitPowers.Name = "chkGen1AllowTekSuitPowers";
+            this.chkGen1AllowTekSuitPowers.Size = new System.Drawing.Size(146, 19);
+            this.chkGen1AllowTekSuitPowers.TabIndex = 11;
+            this.chkGen1AllowTekSuitPowers.Text = "Allow Tek Suit Powers";
+            this.chkGen1AllowTekSuitPowers.UseVisualStyleBackColor = true;
+            // 
+            // chkGen1DisableMissions
+            // 
+            this.chkGen1DisableMissions.AutoSize = true;
+            this.chkGen1DisableMissions.Location = new System.Drawing.Point(7, 25);
+            this.chkGen1DisableMissions.Name = "chkGen1DisableMissions";
+            this.chkGen1DisableMissions.Size = new System.Drawing.Size(120, 19);
+            this.chkGen1DisableMissions.TabIndex = 10;
+            this.chkGen1DisableMissions.Text = "Disable Missions";
+            this.chkGen1DisableMissions.UseVisualStyleBackColor = true;
+            // 
+            // groupBox23
+            // 
+            this.groupBox23.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox23.Controls.Add(this.label98);
+            this.groupBox23.Controls.Add(this.txtIncomingDamageMultiplierPercent);
+            this.groupBox23.Controls.Add(this.tbIncomingDamageMultiplierPercent);
+            this.groupBox23.Controls.Add(this.label99);
+            this.groupBox23.Controls.Add(this.label100);
+            this.groupBox23.Controls.Add(this.label101);
+            this.groupBox23.Controls.Add(this.txtOutgoingDamageMultiplier);
+            this.groupBox23.Controls.Add(this.tbOutgoingDamageMultiplier);
+            this.groupBox23.Controls.Add(this.label102);
+            this.groupBox23.Controls.Add(this.txtEnableCryopodNerfDuration);
+            this.groupBox23.Controls.Add(this.tbEnableCryopodNerfDuration);
+            this.groupBox23.Controls.Add(this.label103);
+            this.groupBox23.Controls.Add(this.chkEnableCryopodNerf);
+            this.groupBox23.ForeColor = System.Drawing.Color.SteelBlue;
+            this.groupBox23.Location = new System.Drawing.Point(16, 1964);
+            this.groupBox23.Name = "groupBox23";
+            this.groupBox23.Size = new System.Drawing.Size(842, 118);
+            this.groupBox23.TabIndex = 77;
+            this.groupBox23.TabStop = false;
+            // 
+            // label98
+            // 
+            this.label98.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label98.AutoSize = true;
+            this.label98.Location = new System.Drawing.Point(778, 77);
+            this.label98.Name = "label98";
+            this.label98.Size = new System.Drawing.Size(25, 15);
+            this.label98.TabIndex = 75;
+            this.label98.Text = "0%";
+            // 
+            // txtIncomingDamageMultiplierPercent
+            // 
+            this.txtIncomingDamageMultiplierPercent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtIncomingDamageMultiplierPercent.Location = new System.Drawing.Point(705, 74);
+            this.txtIncomingDamageMultiplierPercent.Name = "txtIncomingDamageMultiplierPercent";
+            this.txtIncomingDamageMultiplierPercent.Size = new System.Drawing.Size(49, 21);
+            this.txtIncomingDamageMultiplierPercent.TabIndex = 74;
+            this.txtIncomingDamageMultiplierPercent.TextChanged += new System.EventHandler(this.txtIncomingDamageMultiplierPercent_TextChanged);
+            // 
+            // tbIncomingDamageMultiplierPercent
+            // 
+            this.tbIncomingDamageMultiplierPercent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbIncomingDamageMultiplierPercent.Location = new System.Drawing.Point(165, 71);
+            this.tbIncomingDamageMultiplierPercent.Maximum = 100;
+            this.tbIncomingDamageMultiplierPercent.Name = "tbIncomingDamageMultiplierPercent";
+            this.tbIncomingDamageMultiplierPercent.Size = new System.Drawing.Size(534, 45);
+            this.tbIncomingDamageMultiplierPercent.TabIndex = 73;
+            this.tbIncomingDamageMultiplierPercent.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbIncomingDamageMultiplierPercent.Value = 30;
+            this.tbIncomingDamageMultiplierPercent.ValueChanged += new System.EventHandler(this.tbIncomingDamageMultiplierPercent_Scroll);
+            // 
+            // label99
+            // 
+            this.label99.Location = new System.Drawing.Point(4, 77);
+            this.label99.Name = "label99";
+            this.label99.Size = new System.Drawing.Size(165, 39);
+            this.label99.TabIndex = 72;
+            this.label99.Text = "Incoming Damage Multiplier Percent";
+            // 
+            // label100
+            // 
+            this.label100.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label100.AutoSize = true;
+            this.label100.Location = new System.Drawing.Point(778, 50);
+            this.label100.Name = "label100";
+            this.label100.Size = new System.Drawing.Size(13, 15);
+            this.label100.TabIndex = 71;
+            this.label100.Text = "x";
+            // 
+            // label101
+            // 
+            this.label101.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label101.AutoSize = true;
+            this.label101.Location = new System.Drawing.Point(777, 23);
+            this.label101.Name = "label101";
+            this.label101.Size = new System.Drawing.Size(53, 15);
+            this.label101.TabIndex = 70;
+            this.label101.Text = "seconds";
+            // 
+            // txtOutgoingDamageMultiplier
+            // 
+            this.txtOutgoingDamageMultiplier.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtOutgoingDamageMultiplier.Location = new System.Drawing.Point(705, 47);
+            this.txtOutgoingDamageMultiplier.Name = "txtOutgoingDamageMultiplier";
+            this.txtOutgoingDamageMultiplier.Size = new System.Drawing.Size(49, 21);
+            this.txtOutgoingDamageMultiplier.TabIndex = 69;
+            this.txtOutgoingDamageMultiplier.TextChanged += new System.EventHandler(this.txtOutgoingDamageMultiplier_TextChanged);
+            // 
+            // tbOutgoingDamageMultiplier
+            // 
+            this.tbOutgoingDamageMultiplier.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbOutgoingDamageMultiplier.Location = new System.Drawing.Point(165, 44);
+            this.tbOutgoingDamageMultiplier.Maximum = 1000;
+            this.tbOutgoingDamageMultiplier.Name = "tbOutgoingDamageMultiplier";
+            this.tbOutgoingDamageMultiplier.Size = new System.Drawing.Size(534, 45);
+            this.tbOutgoingDamageMultiplier.TabIndex = 68;
+            this.tbOutgoingDamageMultiplier.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbOutgoingDamageMultiplier.Value = 30;
+            this.tbOutgoingDamageMultiplier.ValueChanged += new System.EventHandler(this.tbOutgoingDamageMultiplier_Scroll);
+            // 
+            // label102
+            // 
+            this.label102.AutoSize = true;
+            this.label102.Location = new System.Drawing.Point(4, 50);
+            this.label102.Name = "label102";
+            this.label102.Size = new System.Drawing.Size(162, 15);
+            this.label102.TabIndex = 67;
+            this.label102.Text = "Outgoing Damage Multiplier";
+            // 
+            // txtEnableCryopodNerfDuration
+            // 
+            this.txtEnableCryopodNerfDuration.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtEnableCryopodNerfDuration.Location = new System.Drawing.Point(705, 20);
+            this.txtEnableCryopodNerfDuration.Name = "txtEnableCryopodNerfDuration";
+            this.txtEnableCryopodNerfDuration.Size = new System.Drawing.Size(49, 21);
+            this.txtEnableCryopodNerfDuration.TabIndex = 65;
+            this.txtEnableCryopodNerfDuration.TextChanged += new System.EventHandler(this.txtEnableCryopodNerfDuration_TextChanged);
+            // 
+            // tbEnableCryopodNerfDuration
+            // 
+            this.tbEnableCryopodNerfDuration.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbEnableCryopodNerfDuration.Location = new System.Drawing.Point(165, 17);
+            this.tbEnableCryopodNerfDuration.Maximum = 600;
+            this.tbEnableCryopodNerfDuration.Name = "tbEnableCryopodNerfDuration";
+            this.tbEnableCryopodNerfDuration.Size = new System.Drawing.Size(534, 45);
+            this.tbEnableCryopodNerfDuration.TabIndex = 64;
+            this.tbEnableCryopodNerfDuration.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbEnableCryopodNerfDuration.Value = 30;
+            this.tbEnableCryopodNerfDuration.ValueChanged += new System.EventHandler(this.tbEnableCryopodNerfDuration_Scroll);
+            // 
+            // label103
+            // 
+            this.label103.AutoSize = true;
+            this.label103.Location = new System.Drawing.Point(4, 23);
+            this.label103.Name = "label103";
+            this.label103.Size = new System.Drawing.Size(54, 15);
+            this.label103.TabIndex = 63;
+            this.label103.Text = "Duration";
+            // 
+            // chkEnableCryopodNerf
+            // 
+            this.chkEnableCryopodNerf.AutoSize = true;
+            this.chkEnableCryopodNerf.Location = new System.Drawing.Point(7, 0);
+            this.chkEnableCryopodNerf.Name = "chkEnableCryopodNerf";
+            this.chkEnableCryopodNerf.Size = new System.Drawing.Size(139, 19);
+            this.chkEnableCryopodNerf.TabIndex = 9;
+            this.chkEnableCryopodNerf.Text = "Enable Cryopod Nerf";
+            this.chkEnableCryopodNerf.UseVisualStyleBackColor = true;
+            this.chkEnableCryopodNerf.CheckedChanged += new System.EventHandler(this.chkEnableCryopodNerf_CheckedChanged);
+            // 
+            // label96
+            // 
+            this.label96.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label96.AutoSize = true;
+            this.label96.Location = new System.Drawing.Point(794, 1937);
+            this.label96.Name = "label96";
+            this.label96.Size = new System.Drawing.Size(37, 15);
+            this.label96.TabIndex = 87;
+            this.label96.Text = "items";
+            // 
+            // label94
+            // 
+            this.label94.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label94.AutoSize = true;
+            this.label94.Location = new System.Drawing.Point(794, 1906);
+            this.label94.Name = "label94";
+            this.label94.Size = new System.Drawing.Size(33, 15);
+            this.label94.TabIndex = 83;
+            this.label94.Text = "units";
+            // 
+            // txtLimitNonPlayerDroppedItemsCount
+            // 
+            this.txtLimitNonPlayerDroppedItemsCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtLimitNonPlayerDroppedItemsCount.Location = new System.Drawing.Point(721, 1933);
+            this.txtLimitNonPlayerDroppedItemsCount.Name = "txtLimitNonPlayerDroppedItemsCount";
+            this.txtLimitNonPlayerDroppedItemsCount.Size = new System.Drawing.Size(49, 21);
+            this.txtLimitNonPlayerDroppedItemsCount.TabIndex = 86;
+            this.txtLimitNonPlayerDroppedItemsCount.TextChanged += new System.EventHandler(this.txtLimitNonPlayerDroppedItemsCount_TextChanged);
+            // 
+            // tbLimitNonPlayerDroppedItemsCount
+            // 
+            this.tbLimitNonPlayerDroppedItemsCount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbLimitNonPlayerDroppedItemsCount.Location = new System.Drawing.Point(182, 1931);
+            this.tbLimitNonPlayerDroppedItemsCount.Maximum = 5000;
+            this.tbLimitNonPlayerDroppedItemsCount.Name = "tbLimitNonPlayerDroppedItemsCount";
+            this.tbLimitNonPlayerDroppedItemsCount.Size = new System.Drawing.Size(534, 45);
+            this.tbLimitNonPlayerDroppedItemsCount.TabIndex = 85;
+            this.tbLimitNonPlayerDroppedItemsCount.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbLimitNonPlayerDroppedItemsCount.Value = 30;
+            this.tbLimitNonPlayerDroppedItemsCount.ValueChanged += new System.EventHandler(this.tbLimitNonPlayerDroppedItemsCount_Scroll);
+            // 
+            // label92
+            // 
+            this.label92.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label92.AutoSize = true;
+            this.label92.Location = new System.Drawing.Point(794, 1876);
+            this.label92.Name = "label92";
+            this.label92.Size = new System.Drawing.Size(13, 15);
+            this.label92.TabIndex = 83;
+            this.label92.Text = "x";
+            // 
+            // label97
+            // 
+            this.label97.Location = new System.Drawing.Point(13, 1929);
+            this.label97.Name = "label97";
+            this.label97.Size = new System.Drawing.Size(170, 38);
+            this.label97.TabIndex = 84;
+            this.label97.Text = "Limit Non Player Dropped Items Count";
+            // 
+            // txtLimitNonPlayerDroppedItemsRange
+            // 
+            this.txtLimitNonPlayerDroppedItemsRange.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtLimitNonPlayerDroppedItemsRange.Location = new System.Drawing.Point(721, 1902);
+            this.txtLimitNonPlayerDroppedItemsRange.Name = "txtLimitNonPlayerDroppedItemsRange";
+            this.txtLimitNonPlayerDroppedItemsRange.Size = new System.Drawing.Size(49, 21);
+            this.txtLimitNonPlayerDroppedItemsRange.TabIndex = 82;
+            this.txtLimitNonPlayerDroppedItemsRange.TextChanged += new System.EventHandler(this.txtLimitNonPlayerDroppedItemsRange_TextChanged);
+            // 
+            // tbLimitNonPlayerDroppedItemsRange
+            // 
+            this.tbLimitNonPlayerDroppedItemsRange.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbLimitNonPlayerDroppedItemsRange.Location = new System.Drawing.Point(182, 1900);
+            this.tbLimitNonPlayerDroppedItemsRange.Maximum = 5000;
+            this.tbLimitNonPlayerDroppedItemsRange.Name = "tbLimitNonPlayerDroppedItemsRange";
+            this.tbLimitNonPlayerDroppedItemsRange.Size = new System.Drawing.Size(534, 45);
+            this.tbLimitNonPlayerDroppedItemsRange.TabIndex = 81;
+            this.tbLimitNonPlayerDroppedItemsRange.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbLimitNonPlayerDroppedItemsRange.Value = 30;
+            this.tbLimitNonPlayerDroppedItemsRange.ValueChanged += new System.EventHandler(this.tbLimitNonPlayerDroppedItemsRange_Scroll);
+            // 
+            // label90
+            // 
+            this.label90.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label90.AutoSize = true;
+            this.label90.Location = new System.Drawing.Point(794, 1845);
+            this.label90.Name = "label90";
+            this.label90.Size = new System.Drawing.Size(13, 15);
+            this.label90.TabIndex = 83;
+            this.label90.Text = "x";
+            // 
+            // label95
+            // 
+            this.label95.Location = new System.Drawing.Point(13, 1898);
+            this.label95.Name = "label95";
+            this.label95.Size = new System.Drawing.Size(170, 38);
+            this.label95.TabIndex = 80;
+            this.label95.Text = "Limit Non Player Dropped Items Range";
+            // 
+            // txtFuelConsumptionIntervalMultiplier
+            // 
+            this.txtFuelConsumptionIntervalMultiplier.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtFuelConsumptionIntervalMultiplier.Location = new System.Drawing.Point(721, 1872);
+            this.txtFuelConsumptionIntervalMultiplier.Name = "txtFuelConsumptionIntervalMultiplier";
+            this.txtFuelConsumptionIntervalMultiplier.Size = new System.Drawing.Size(49, 21);
+            this.txtFuelConsumptionIntervalMultiplier.TabIndex = 82;
+            this.txtFuelConsumptionIntervalMultiplier.TextChanged += new System.EventHandler(this.txtFuelConsumptionIntervalMultiplier_TextChanged);
+            // 
+            // tbFuelConsumptionIntervalMultiplier
+            // 
+            this.tbFuelConsumptionIntervalMultiplier.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbFuelConsumptionIntervalMultiplier.Location = new System.Drawing.Point(182, 1870);
+            this.tbFuelConsumptionIntervalMultiplier.Maximum = 1000;
+            this.tbFuelConsumptionIntervalMultiplier.Name = "tbFuelConsumptionIntervalMultiplier";
+            this.tbFuelConsumptionIntervalMultiplier.Size = new System.Drawing.Size(534, 45);
+            this.tbFuelConsumptionIntervalMultiplier.TabIndex = 81;
+            this.tbFuelConsumptionIntervalMultiplier.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbFuelConsumptionIntervalMultiplier.Value = 30;
+            this.tbFuelConsumptionIntervalMultiplier.ValueChanged += new System.EventHandler(this.tbFuelConsumptionIntervalMultiplier_Scroll);
+            // 
+            // label88
+            // 
+            this.label88.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label88.AutoSize = true;
+            this.label88.Location = new System.Drawing.Point(794, 1814);
+            this.label88.Name = "label88";
+            this.label88.Size = new System.Drawing.Size(53, 15);
+            this.label88.TabIndex = 83;
+            this.label88.Text = "seconds";
+            // 
+            // label93
+            // 
+            this.label93.Location = new System.Drawing.Point(13, 1868);
+            this.label93.Name = "label93";
+            this.label93.Size = new System.Drawing.Size(170, 38);
+            this.label93.TabIndex = 80;
+            this.label93.Text = "Fuel Consumption Interval Mutliplier";
+            // 
+            // txtGlobalPoweredBatteryDurability
+            // 
+            this.txtGlobalPoweredBatteryDurability.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtGlobalPoweredBatteryDurability.Location = new System.Drawing.Point(721, 1841);
+            this.txtGlobalPoweredBatteryDurability.Name = "txtGlobalPoweredBatteryDurability";
+            this.txtGlobalPoweredBatteryDurability.Size = new System.Drawing.Size(49, 21);
+            this.txtGlobalPoweredBatteryDurability.TabIndex = 82;
+            this.txtGlobalPoweredBatteryDurability.TextChanged += new System.EventHandler(this.txtGlobalPoweredBatteryDurability_TextChanged);
+            // 
+            // tbGlobalPoweredBatteryDurability
+            // 
+            this.tbGlobalPoweredBatteryDurability.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbGlobalPoweredBatteryDurability.Location = new System.Drawing.Point(182, 1839);
+            this.tbGlobalPoweredBatteryDurability.Maximum = 1000;
+            this.tbGlobalPoweredBatteryDurability.Name = "tbGlobalPoweredBatteryDurability";
+            this.tbGlobalPoweredBatteryDurability.Size = new System.Drawing.Size(534, 45);
+            this.tbGlobalPoweredBatteryDurability.TabIndex = 81;
+            this.tbGlobalPoweredBatteryDurability.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbGlobalPoweredBatteryDurability.Value = 30;
+            this.tbGlobalPoweredBatteryDurability.ValueChanged += new System.EventHandler(this.tbGlobalPoweredBatteryDurability_Scroll);
+            // 
+            // label86
+            // 
+            this.label86.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label86.AutoSize = true;
+            this.label86.Location = new System.Drawing.Point(794, 1782);
+            this.label86.Name = "label86";
+            this.label86.Size = new System.Drawing.Size(13, 15);
+            this.label86.TabIndex = 83;
+            this.label86.Text = "x";
+            // 
+            // label91
+            // 
+            this.label91.Location = new System.Drawing.Point(13, 1837);
+            this.label91.Name = "label91";
+            this.label91.Size = new System.Drawing.Size(170, 38);
+            this.label91.TabIndex = 80;
+            this.label91.Text = "Global Powered Battery Durability";
+            // 
+            // txtFjordhawkInventoryCooldown
+            // 
+            this.txtFjordhawkInventoryCooldown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtFjordhawkInventoryCooldown.Location = new System.Drawing.Point(721, 1810);
+            this.txtFjordhawkInventoryCooldown.Name = "txtFjordhawkInventoryCooldown";
+            this.txtFjordhawkInventoryCooldown.Size = new System.Drawing.Size(49, 21);
+            this.txtFjordhawkInventoryCooldown.TabIndex = 82;
+            this.txtFjordhawkInventoryCooldown.TextChanged += new System.EventHandler(this.txtFjordhawkInventoryCooldown_TextChanged);
+            // 
+            // tbFjordhawkInventoryCooldown
+            // 
+            this.tbFjordhawkInventoryCooldown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbFjordhawkInventoryCooldown.Location = new System.Drawing.Point(182, 1808);
+            this.tbFjordhawkInventoryCooldown.Maximum = 86400;
+            this.tbFjordhawkInventoryCooldown.Name = "tbFjordhawkInventoryCooldown";
+            this.tbFjordhawkInventoryCooldown.Size = new System.Drawing.Size(534, 45);
+            this.tbFjordhawkInventoryCooldown.TabIndex = 81;
+            this.tbFjordhawkInventoryCooldown.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbFjordhawkInventoryCooldown.Value = 30;
+            this.tbFjordhawkInventoryCooldown.ValueChanged += new System.EventHandler(this.tbFjordhawkInventoryCooldown_Scroll);
+            // 
+            // label84
+            // 
+            this.label84.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label84.AutoSize = true;
+            this.label84.Location = new System.Drawing.Point(794, 1751);
+            this.label84.Name = "label84";
+            this.label84.Size = new System.Drawing.Size(13, 15);
+            this.label84.TabIndex = 79;
+            this.label84.Text = "x";
+            // 
+            // label89
+            // 
+            this.label89.Location = new System.Drawing.Point(13, 1806);
+            this.label89.Name = "label89";
+            this.label89.Size = new System.Drawing.Size(170, 38);
+            this.label89.TabIndex = 80;
+            this.label89.Text = "Fjordhawk Inventory Cooldown";
+            // 
+            // groupBox22
+            // 
+            this.groupBox22.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox22.Controls.Add(this.label82);
+            this.groupBox22.Controls.Add(this.txtScaleMaximum);
+            this.groupBox22.Controls.Add(this.tbScaleMaximum);
+            this.groupBox22.Controls.Add(this.label83);
+            this.groupBox22.Controls.Add(this.label81);
+            this.groupBox22.Controls.Add(this.label80);
+            this.groupBox22.Controls.Add(this.txtOnlinePlayerCountEnd);
+            this.groupBox22.Controls.Add(this.tbOnlinePlayerCountEnd);
+            this.groupBox22.Controls.Add(this.label78);
+            this.groupBox22.Controls.Add(this.txtOnlinePlayerCountStart);
+            this.groupBox22.Controls.Add(this.tbOnlinePlayerCountStart);
+            this.groupBox22.Controls.Add(this.label79);
+            this.groupBox22.Controls.Add(this.chkOverrideNPCNetworkStasisRangeScale);
+            this.groupBox22.ForeColor = System.Drawing.Color.SteelBlue;
+            this.groupBox22.Location = new System.Drawing.Point(16, 1624);
+            this.groupBox22.Name = "groupBox22";
+            this.groupBox22.Size = new System.Drawing.Size(842, 118);
+            this.groupBox22.TabIndex = 76;
+            this.groupBox22.TabStop = false;
+            // 
+            // label82
+            // 
+            this.label82.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label82.AutoSize = true;
+            this.label82.Location = new System.Drawing.Point(778, 77);
+            this.label82.Name = "label82";
+            this.label82.Size = new System.Drawing.Size(18, 15);
+            this.label82.TabIndex = 75;
+            this.label82.Text = "%";
+            // 
+            // txtScaleMaximum
+            // 
+            this.txtScaleMaximum.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtScaleMaximum.Location = new System.Drawing.Point(705, 74);
+            this.txtScaleMaximum.Name = "txtScaleMaximum";
+            this.txtScaleMaximum.Size = new System.Drawing.Size(49, 21);
+            this.txtScaleMaximum.TabIndex = 74;
+            this.txtScaleMaximum.TextChanged += new System.EventHandler(this.txtScaleMaximum_TextChanged);
+            // 
+            // tbScaleMaximum
+            // 
+            this.tbScaleMaximum.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbScaleMaximum.Location = new System.Drawing.Point(165, 71);
+            this.tbScaleMaximum.Minimum = 1;
+            this.tbScaleMaximum.Name = "tbScaleMaximum";
+            this.tbScaleMaximum.Size = new System.Drawing.Size(534, 45);
+            this.tbScaleMaximum.TabIndex = 73;
+            this.tbScaleMaximum.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbScaleMaximum.Value = 1;
+            this.tbScaleMaximum.ValueChanged += new System.EventHandler(this.tbScaleMaximum_Scroll);
+            // 
+            // label83
+            // 
+            this.label83.AutoSize = true;
+            this.label83.Location = new System.Drawing.Point(4, 77);
+            this.label83.Name = "label83";
+            this.label83.Size = new System.Drawing.Size(97, 15);
+            this.label83.TabIndex = 72;
+            this.label83.Text = "Scale Maximum";
+            // 
+            // label81
+            // 
+            this.label81.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label81.AutoSize = true;
+            this.label81.Location = new System.Drawing.Point(778, 50);
+            this.label81.Name = "label81";
+            this.label81.Size = new System.Drawing.Size(46, 15);
+            this.label81.TabIndex = 71;
+            this.label81.Text = "players";
+            // 
+            // label80
+            // 
+            this.label80.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label80.AutoSize = true;
+            this.label80.Location = new System.Drawing.Point(777, 23);
+            this.label80.Name = "label80";
+            this.label80.Size = new System.Drawing.Size(46, 15);
+            this.label80.TabIndex = 70;
+            this.label80.Text = "players";
+            // 
+            // txtOnlinePlayerCountEnd
+            // 
+            this.txtOnlinePlayerCountEnd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtOnlinePlayerCountEnd.Location = new System.Drawing.Point(705, 47);
+            this.txtOnlinePlayerCountEnd.Name = "txtOnlinePlayerCountEnd";
+            this.txtOnlinePlayerCountEnd.Size = new System.Drawing.Size(49, 21);
+            this.txtOnlinePlayerCountEnd.TabIndex = 69;
+            this.txtOnlinePlayerCountEnd.TextChanged += new System.EventHandler(this.txtOnlinePlayerCountEnd_TextChanged);
+            // 
+            // tbOnlinePlayerCountEnd
+            // 
+            this.tbOnlinePlayerCountEnd.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbOnlinePlayerCountEnd.Location = new System.Drawing.Point(165, 44);
+            this.tbOnlinePlayerCountEnd.Maximum = 200;
+            this.tbOnlinePlayerCountEnd.Minimum = 1;
+            this.tbOnlinePlayerCountEnd.Name = "tbOnlinePlayerCountEnd";
+            this.tbOnlinePlayerCountEnd.Size = new System.Drawing.Size(534, 45);
+            this.tbOnlinePlayerCountEnd.TabIndex = 68;
+            this.tbOnlinePlayerCountEnd.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbOnlinePlayerCountEnd.Value = 30;
+            this.tbOnlinePlayerCountEnd.ValueChanged += new System.EventHandler(this.tbOnlinePlayerCountEnd_Scroll);
+            // 
+            // label78
+            // 
+            this.label78.AutoSize = true;
+            this.label78.Location = new System.Drawing.Point(4, 50);
+            this.label78.Name = "label78";
+            this.label78.Size = new System.Drawing.Size(140, 15);
+            this.label78.TabIndex = 67;
+            this.label78.Text = "Online Player Count End";
+            // 
+            // txtOnlinePlayerCountStart
+            // 
+            this.txtOnlinePlayerCountStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtOnlinePlayerCountStart.Location = new System.Drawing.Point(705, 20);
+            this.txtOnlinePlayerCountStart.Name = "txtOnlinePlayerCountStart";
+            this.txtOnlinePlayerCountStart.Size = new System.Drawing.Size(49, 21);
+            this.txtOnlinePlayerCountStart.TabIndex = 65;
+            this.txtOnlinePlayerCountStart.TextChanged += new System.EventHandler(this.txtOnlinePlayerCountStart_TextChanged);
+            // 
+            // tbOnlinePlayerCountStart
+            // 
+            this.tbOnlinePlayerCountStart.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbOnlinePlayerCountStart.Location = new System.Drawing.Point(165, 17);
+            this.tbOnlinePlayerCountStart.Maximum = 200;
+            this.tbOnlinePlayerCountStart.Minimum = 1;
+            this.tbOnlinePlayerCountStart.Name = "tbOnlinePlayerCountStart";
+            this.tbOnlinePlayerCountStart.Size = new System.Drawing.Size(534, 45);
+            this.tbOnlinePlayerCountStart.TabIndex = 64;
+            this.tbOnlinePlayerCountStart.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbOnlinePlayerCountStart.Value = 30;
+            this.tbOnlinePlayerCountStart.ValueChanged += new System.EventHandler(this.tbOnlinePlayerCountStart_Scroll);
+            // 
+            // label79
+            // 
+            this.label79.AutoSize = true;
+            this.label79.Location = new System.Drawing.Point(4, 23);
+            this.label79.Name = "label79";
+            this.label79.Size = new System.Drawing.Size(143, 15);
+            this.label79.TabIndex = 63;
+            this.label79.Text = "Online Player Count Start";
+            // 
+            // chkOverrideNPCNetworkStasisRangeScale
+            // 
+            this.chkOverrideNPCNetworkStasisRangeScale.AutoSize = true;
+            this.chkOverrideNPCNetworkStasisRangeScale.Location = new System.Drawing.Point(7, 0);
+            this.chkOverrideNPCNetworkStasisRangeScale.Name = "chkOverrideNPCNetworkStasisRangeScale";
+            this.chkOverrideNPCNetworkStasisRangeScale.Size = new System.Drawing.Size(258, 19);
+            this.chkOverrideNPCNetworkStasisRangeScale.TabIndex = 9;
+            this.chkOverrideNPCNetworkStasisRangeScale.Text = "Override NPC Network Stasis Range Scale";
+            this.chkOverrideNPCNetworkStasisRangeScale.UseVisualStyleBackColor = true;
+            this.chkOverrideNPCNetworkStasisRangeScale.CheckedChanged += new System.EventHandler(this.chkOverrideNPCNetworkStasisRangeScale_CheckedChanged);
+            // 
+            // txtUseCorpseLifeSpanMultiplier
+            // 
+            this.txtUseCorpseLifeSpanMultiplier.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtUseCorpseLifeSpanMultiplier.Location = new System.Drawing.Point(721, 1778);
+            this.txtUseCorpseLifeSpanMultiplier.Name = "txtUseCorpseLifeSpanMultiplier";
+            this.txtUseCorpseLifeSpanMultiplier.Size = new System.Drawing.Size(49, 21);
+            this.txtUseCorpseLifeSpanMultiplier.TabIndex = 82;
+            this.txtUseCorpseLifeSpanMultiplier.TextChanged += new System.EventHandler(this.txtUseCorpseLifeSpanMultiplier_TextChanged);
+            // 
+            // txtOxygenSwimSpeedStatMultiplier
+            // 
+            this.txtOxygenSwimSpeedStatMultiplier.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtOxygenSwimSpeedStatMultiplier.Location = new System.Drawing.Point(721, 1747);
+            this.txtOxygenSwimSpeedStatMultiplier.Name = "txtOxygenSwimSpeedStatMultiplier";
+            this.txtOxygenSwimSpeedStatMultiplier.Size = new System.Drawing.Size(49, 21);
+            this.txtOxygenSwimSpeedStatMultiplier.TabIndex = 78;
+            this.txtOxygenSwimSpeedStatMultiplier.TextChanged += new System.EventHandler(this.txtOxygenSwimSpeedStatMultiplier_TextChanged);
+            // 
+            // groupBox21
+            // 
+            this.groupBox21.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox21.Controls.Add(this.chkNonPermanentDiseases);
+            this.groupBox21.Controls.Add(this.chkEnableDiseases);
+            this.groupBox21.ForeColor = System.Drawing.Color.SteelBlue;
+            this.groupBox21.Location = new System.Drawing.Point(16, 1565);
+            this.groupBox21.Name = "groupBox21";
+            this.groupBox21.Size = new System.Drawing.Size(842, 53);
+            this.groupBox21.TabIndex = 75;
+            this.groupBox21.TabStop = false;
+            // 
+            // chkNonPermanentDiseases
+            // 
+            this.chkNonPermanentDiseases.AutoSize = true;
+            this.chkNonPermanentDiseases.Location = new System.Drawing.Point(7, 25);
+            this.chkNonPermanentDiseases.Name = "chkNonPermanentDiseases";
+            this.chkNonPermanentDiseases.Size = new System.Drawing.Size(167, 19);
+            this.chkNonPermanentDiseases.TabIndex = 10;
+            this.chkNonPermanentDiseases.Text = "Non Permanent Diseases";
+            this.chkNonPermanentDiseases.UseVisualStyleBackColor = true;
+            // 
+            // chkEnableDiseases
+            // 
+            this.chkEnableDiseases.AutoSize = true;
+            this.chkEnableDiseases.Location = new System.Drawing.Point(7, 0);
+            this.chkEnableDiseases.Name = "chkEnableDiseases";
+            this.chkEnableDiseases.Size = new System.Drawing.Size(119, 19);
+            this.chkEnableDiseases.TabIndex = 9;
+            this.chkEnableDiseases.Text = "Enable Diseases";
+            this.chkEnableDiseases.UseVisualStyleBackColor = true;
+            this.chkEnableDiseases.CheckedChanged += new System.EventHandler(this.chkEnableDiseases_CheckedChanged);
+            // 
+            // tbUseCorpseLifeSpanMultiplier
+            // 
+            this.tbUseCorpseLifeSpanMultiplier.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbUseCorpseLifeSpanMultiplier.Location = new System.Drawing.Point(182, 1776);
+            this.tbUseCorpseLifeSpanMultiplier.Maximum = 100;
+            this.tbUseCorpseLifeSpanMultiplier.Name = "tbUseCorpseLifeSpanMultiplier";
+            this.tbUseCorpseLifeSpanMultiplier.Size = new System.Drawing.Size(534, 45);
+            this.tbUseCorpseLifeSpanMultiplier.TabIndex = 81;
+            this.tbUseCorpseLifeSpanMultiplier.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbUseCorpseLifeSpanMultiplier.Value = 30;
+            this.tbUseCorpseLifeSpanMultiplier.ValueChanged += new System.EventHandler(this.tbUseCorpseLifeSpanMultiplier_Scroll);
+            // 
+            // label87
+            // 
+            this.label87.Location = new System.Drawing.Point(13, 1774);
+            this.label87.Name = "label87";
+            this.label87.Size = new System.Drawing.Size(170, 38);
+            this.label87.TabIndex = 80;
+            this.label87.Text = "Use Corpse File Span Multiplyer";
+            // 
+            // tbOxygenSwimSpeedStatMultiplier
+            // 
+            this.tbOxygenSwimSpeedStatMultiplier.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbOxygenSwimSpeedStatMultiplier.Location = new System.Drawing.Point(182, 1745);
+            this.tbOxygenSwimSpeedStatMultiplier.Maximum = 100;
+            this.tbOxygenSwimSpeedStatMultiplier.Name = "tbOxygenSwimSpeedStatMultiplier";
+            this.tbOxygenSwimSpeedStatMultiplier.Size = new System.Drawing.Size(534, 45);
+            this.tbOxygenSwimSpeedStatMultiplier.TabIndex = 77;
+            this.tbOxygenSwimSpeedStatMultiplier.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbOxygenSwimSpeedStatMultiplier.Value = 30;
+            this.tbOxygenSwimSpeedStatMultiplier.ValueChanged += new System.EventHandler(this.tbOxygenSwimSpeedStatMultiplier_Scroll);
+            // 
+            // label85
+            // 
+            this.label85.Location = new System.Drawing.Point(13, 1743);
+            this.label85.Name = "label85";
+            this.label85.Size = new System.Drawing.Size(170, 38);
+            this.label85.TabIndex = 76;
+            this.label85.Text = "Oxygen Swim Speed Stat Multiplier";
+            // 
+            // groupBox20
+            // 
+            this.groupBox20.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox20.Controls.Add(this.label76);
+            this.groupBox20.Controls.Add(this.label74);
+            this.groupBox20.Controls.Add(this.txtCostumRecipesSkillMultiplier);
+            this.groupBox20.Controls.Add(this.tbCostumRecipesSkillMultiplier);
+            this.groupBox20.Controls.Add(this.label72);
+            this.groupBox20.Controls.Add(this.txtCostumRecipesEffectivenessMultiplier);
+            this.groupBox20.Controls.Add(this.tbCostumRecipesEffectivenessMultiplier);
+            this.groupBox20.Controls.Add(this.label73);
+            this.groupBox20.Controls.Add(this.chkAllowCostumRecipes);
+            this.groupBox20.ForeColor = System.Drawing.Color.SteelBlue;
+            this.groupBox20.Location = new System.Drawing.Point(16, 1470);
+            this.groupBox20.Name = "groupBox20";
+            this.groupBox20.Size = new System.Drawing.Size(842, 93);
+            this.groupBox20.TabIndex = 74;
+            this.groupBox20.TabStop = false;
+            // 
+            // label76
+            // 
+            this.label76.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label76.AutoSize = true;
+            this.label76.Location = new System.Drawing.Point(778, 50);
+            this.label76.Name = "label76";
+            this.label76.Size = new System.Drawing.Size(13, 15);
+            this.label76.TabIndex = 72;
+            this.label76.Text = "x";
+            // 
+            // label74
+            // 
+            this.label74.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label74.AutoSize = true;
+            this.label74.Location = new System.Drawing.Point(778, 23);
+            this.label74.Name = "label74";
+            this.label74.Size = new System.Drawing.Size(13, 15);
+            this.label74.TabIndex = 71;
+            this.label74.Text = "x";
+            // 
+            // txtCostumRecipesSkillMultiplier
+            // 
+            this.txtCostumRecipesSkillMultiplier.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCostumRecipesSkillMultiplier.Location = new System.Drawing.Point(705, 47);
+            this.txtCostumRecipesSkillMultiplier.Name = "txtCostumRecipesSkillMultiplier";
+            this.txtCostumRecipesSkillMultiplier.Size = new System.Drawing.Size(49, 21);
+            this.txtCostumRecipesSkillMultiplier.TabIndex = 69;
+            this.txtCostumRecipesSkillMultiplier.TextChanged += new System.EventHandler(this.txtCostumRecipesSkillMultiplier_TextChanged);
+            // 
+            // tbCostumRecipesSkillMultiplier
+            // 
+            this.tbCostumRecipesSkillMultiplier.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbCostumRecipesSkillMultiplier.Location = new System.Drawing.Point(165, 44);
+            this.tbCostumRecipesSkillMultiplier.Maximum = 1200;
+            this.tbCostumRecipesSkillMultiplier.Minimum = 30;
+            this.tbCostumRecipesSkillMultiplier.Name = "tbCostumRecipesSkillMultiplier";
+            this.tbCostumRecipesSkillMultiplier.Size = new System.Drawing.Size(534, 45);
+            this.tbCostumRecipesSkillMultiplier.TabIndex = 68;
+            this.tbCostumRecipesSkillMultiplier.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbCostumRecipesSkillMultiplier.Value = 30;
+            this.tbCostumRecipesSkillMultiplier.ValueChanged += new System.EventHandler(this.tbCostumRecipesSkillMultiplier_Scroll);
+            // 
+            // label72
+            // 
+            this.label72.AutoSize = true;
+            this.label72.Location = new System.Drawing.Point(4, 50);
+            this.label72.Name = "label72";
+            this.label72.Size = new System.Drawing.Size(81, 15);
+            this.label72.TabIndex = 67;
+            this.label72.Text = "Skill Multipier";
+            // 
+            // txtCostumRecipesEffectivenessMultiplier
+            // 
+            this.txtCostumRecipesEffectivenessMultiplier.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCostumRecipesEffectivenessMultiplier.Location = new System.Drawing.Point(705, 20);
+            this.txtCostumRecipesEffectivenessMultiplier.Name = "txtCostumRecipesEffectivenessMultiplier";
+            this.txtCostumRecipesEffectivenessMultiplier.Size = new System.Drawing.Size(49, 21);
+            this.txtCostumRecipesEffectivenessMultiplier.TabIndex = 65;
+            this.txtCostumRecipesEffectivenessMultiplier.TextChanged += new System.EventHandler(this.txtCostumRecipesEffectivenessMultiplier_TextChanged);
+            // 
+            // tbCostumRecipesEffectivenessMultiplier
+            // 
+            this.tbCostumRecipesEffectivenessMultiplier.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbCostumRecipesEffectivenessMultiplier.Location = new System.Drawing.Point(165, 17);
+            this.tbCostumRecipesEffectivenessMultiplier.Maximum = 1200;
+            this.tbCostumRecipesEffectivenessMultiplier.Minimum = 30;
+            this.tbCostumRecipesEffectivenessMultiplier.Name = "tbCostumRecipesEffectivenessMultiplier";
+            this.tbCostumRecipesEffectivenessMultiplier.Size = new System.Drawing.Size(534, 45);
+            this.tbCostumRecipesEffectivenessMultiplier.TabIndex = 64;
+            this.tbCostumRecipesEffectivenessMultiplier.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbCostumRecipesEffectivenessMultiplier.Value = 30;
+            this.tbCostumRecipesEffectivenessMultiplier.ValueChanged += new System.EventHandler(this.tbCostumRecipesEffectivenessMultiplier_Scroll);
+            // 
+            // label73
+            // 
+            this.label73.AutoSize = true;
+            this.label73.Location = new System.Drawing.Point(4, 23);
+            this.label73.Name = "label73";
+            this.label73.Size = new System.Drawing.Size(132, 15);
+            this.label73.TabIndex = 63;
+            this.label73.Text = "Effectiveness Multiplier";
+            // 
+            // chkAllowCostumRecipes
+            // 
+            this.chkAllowCostumRecipes.AutoSize = true;
+            this.chkAllowCostumRecipes.Location = new System.Drawing.Point(7, 0);
+            this.chkAllowCostumRecipes.Name = "chkAllowCostumRecipes";
+            this.chkAllowCostumRecipes.Size = new System.Drawing.Size(148, 19);
+            this.chkAllowCostumRecipes.TabIndex = 9;
+            this.chkAllowCostumRecipes.Text = "Allow Costum Recipes";
+            this.chkAllowCostumRecipes.UseVisualStyleBackColor = true;
+            this.chkAllowCostumRecipes.CheckedChanged += new System.EventHandler(this.chkAllowCostumRecipes_CheckedChanged);
+            // 
+            // groupBox19
+            // 
+            this.groupBox19.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox19.Controls.Add(this.chkAllowCancelingTribeWarfare);
+            this.groupBox19.Controls.Add(this.chkAllowTribeWarfare);
+            this.groupBox19.ForeColor = System.Drawing.Color.SteelBlue;
+            this.groupBox19.Location = new System.Drawing.Point(16, 1411);
+            this.groupBox19.Name = "groupBox19";
+            this.groupBox19.Size = new System.Drawing.Size(842, 53);
+            this.groupBox19.TabIndex = 73;
+            this.groupBox19.TabStop = false;
+            this.groupBox19.Text = "PvE \"Tribe Warfare\" options";
+            // 
+            // chkAllowCancelingTribeWarfare
+            // 
+            this.chkAllowCancelingTribeWarfare.AutoSize = true;
+            this.chkAllowCancelingTribeWarfare.Location = new System.Drawing.Point(243, 19);
+            this.chkAllowCancelingTribeWarfare.Name = "chkAllowCancelingTribeWarfare";
+            this.chkAllowCancelingTribeWarfare.Size = new System.Drawing.Size(190, 19);
+            this.chkAllowCancelingTribeWarfare.TabIndex = 10;
+            this.chkAllowCancelingTribeWarfare.Text = "Allow Canceling Tribe Warfare";
+            this.chkAllowCancelingTribeWarfare.UseVisualStyleBackColor = true;
+            // 
+            // chkAllowTribeWarfare
+            // 
+            this.chkAllowTribeWarfare.AutoSize = true;
+            this.chkAllowTribeWarfare.Location = new System.Drawing.Point(7, 19);
+            this.chkAllowTribeWarfare.Name = "chkAllowTribeWarfare";
+            this.chkAllowTribeWarfare.Size = new System.Drawing.Size(132, 19);
+            this.chkAllowTribeWarfare.TabIndex = 9;
+            this.chkAllowTribeWarfare.Text = "Allow Tribe Warfare";
+            this.chkAllowTribeWarfare.UseVisualStyleBackColor = true;
+            // 
+            // groupBox18
+            // 
+            this.groupBox18.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox18.Controls.Add(this.txtMaxTribesPerAlliance);
+            this.groupBox18.Controls.Add(this.tbMaxTribesPerAlliance);
+            this.groupBox18.Controls.Add(this.label75);
+            this.groupBox18.Controls.Add(this.txtMaxAlliancesPerTribe);
+            this.groupBox18.Controls.Add(this.tbMaxAlliancesPerTribe);
+            this.groupBox18.Controls.Add(this.label77);
+            this.groupBox18.Controls.Add(this.chkAllowTribeAlliances);
+            this.groupBox18.ForeColor = System.Drawing.Color.SteelBlue;
+            this.groupBox18.Location = new System.Drawing.Point(16, 1316);
+            this.groupBox18.Name = "groupBox18";
+            this.groupBox18.Size = new System.Drawing.Size(842, 93);
+            this.groupBox18.TabIndex = 72;
+            this.groupBox18.TabStop = false;
+            // 
+            // txtMaxTribesPerAlliance
+            // 
+            this.txtMaxTribesPerAlliance.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtMaxTribesPerAlliance.Location = new System.Drawing.Point(705, 47);
+            this.txtMaxTribesPerAlliance.Name = "txtMaxTribesPerAlliance";
+            this.txtMaxTribesPerAlliance.Size = new System.Drawing.Size(49, 21);
+            this.txtMaxTribesPerAlliance.TabIndex = 69;
+            this.txtMaxTribesPerAlliance.TextChanged += new System.EventHandler(this.txtMaxTribesPerAlliance_TextChanged);
+            // 
+            // tbMaxTribesPerAlliance
+            // 
+            this.tbMaxTribesPerAlliance.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbMaxTribesPerAlliance.Location = new System.Drawing.Point(165, 44);
+            this.tbMaxTribesPerAlliance.Maximum = 100;
+            this.tbMaxTribesPerAlliance.Name = "tbMaxTribesPerAlliance";
+            this.tbMaxTribesPerAlliance.Size = new System.Drawing.Size(534, 45);
+            this.tbMaxTribesPerAlliance.TabIndex = 68;
+            this.tbMaxTribesPerAlliance.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbMaxTribesPerAlliance.Value = 30;
+            this.tbMaxTribesPerAlliance.ValueChanged += new System.EventHandler(this.tbMaxTribesPerAlliance_Scroll);
+            // 
+            // label75
+            // 
+            this.label75.AutoSize = true;
+            this.label75.Location = new System.Drawing.Point(4, 50);
+            this.label75.Name = "label75";
+            this.label75.Size = new System.Drawing.Size(136, 15);
+            this.label75.TabIndex = 67;
+            this.label75.Text = "Max Tribes Per Alliance";
+            // 
+            // txtMaxAlliancesPerTribe
+            // 
+            this.txtMaxAlliancesPerTribe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtMaxAlliancesPerTribe.Location = new System.Drawing.Point(705, 20);
+            this.txtMaxAlliancesPerTribe.Name = "txtMaxAlliancesPerTribe";
+            this.txtMaxAlliancesPerTribe.Size = new System.Drawing.Size(49, 21);
+            this.txtMaxAlliancesPerTribe.TabIndex = 65;
+            this.txtMaxAlliancesPerTribe.TextChanged += new System.EventHandler(this.txtMaxAlliancesPerTribe_TextChanged);
+            // 
+            // tbMaxAlliancesPerTribe
+            // 
+            this.tbMaxAlliancesPerTribe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbMaxAlliancesPerTribe.Location = new System.Drawing.Point(165, 17);
+            this.tbMaxAlliancesPerTribe.Maximum = 100;
+            this.tbMaxAlliancesPerTribe.Name = "tbMaxAlliancesPerTribe";
+            this.tbMaxAlliancesPerTribe.Size = new System.Drawing.Size(534, 45);
+            this.tbMaxAlliancesPerTribe.TabIndex = 64;
+            this.tbMaxAlliancesPerTribe.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbMaxAlliancesPerTribe.Value = 30;
+            this.tbMaxAlliancesPerTribe.ValueChanged += new System.EventHandler(this.tbMaxAlliancesPerTribe_Scroll);
+            // 
+            // label77
+            // 
+            this.label77.AutoSize = true;
+            this.label77.Location = new System.Drawing.Point(4, 23);
+            this.label77.Name = "label77";
+            this.label77.Size = new System.Drawing.Size(136, 15);
+            this.label77.TabIndex = 63;
+            this.label77.Text = "Max Alliances Per Tribe";
+            // 
+            // chkAllowTribeAlliances
+            // 
+            this.chkAllowTribeAlliances.AutoSize = true;
+            this.chkAllowTribeAlliances.Location = new System.Drawing.Point(7, 0);
+            this.chkAllowTribeAlliances.Name = "chkAllowTribeAlliances";
+            this.chkAllowTribeAlliances.Size = new System.Drawing.Size(138, 19);
+            this.chkAllowTribeAlliances.TabIndex = 9;
+            this.chkAllowTribeAlliances.Text = "Allow Tribe Alliances";
+            this.chkAllowTribeAlliances.UseVisualStyleBackColor = true;
+            this.chkAllowTribeAlliances.CheckedChanged += new System.EventHandler(this.chkAllowTribeAlliances_CheckedChanged);
+            // 
+            // label70
+            // 
+            this.label70.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label70.AutoSize = true;
+            this.label70.Location = new System.Drawing.Point(788, 1287);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(51, 15);
+            this.label70.TabIndex = 71;
+            this.label70.Text = "minutes";
+            // 
+            // txtTribeSlotReuseCooldown
+            // 
+            this.txtTribeSlotReuseCooldown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTribeSlotReuseCooldown.Location = new System.Drawing.Point(721, 1282);
+            this.txtTribeSlotReuseCooldown.Name = "txtTribeSlotReuseCooldown";
+            this.txtTribeSlotReuseCooldown.Size = new System.Drawing.Size(49, 21);
+            this.txtTribeSlotReuseCooldown.TabIndex = 70;
+            this.txtTribeSlotReuseCooldown.TextChanged += new System.EventHandler(this.txtTribeSlotReuseCooldown_TextChanged);
+            // 
+            // tbTribeSlotReuseCooldown
+            // 
+            this.tbTribeSlotReuseCooldown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbTribeSlotReuseCooldown.Location = new System.Drawing.Point(181, 1278);
+            this.tbTribeSlotReuseCooldown.Maximum = 300;
+            this.tbTribeSlotReuseCooldown.Name = "tbTribeSlotReuseCooldown";
+            this.tbTribeSlotReuseCooldown.Size = new System.Drawing.Size(534, 45);
+            this.tbTribeSlotReuseCooldown.TabIndex = 69;
+            this.tbTribeSlotReuseCooldown.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbTribeSlotReuseCooldown.Value = 30;
+            this.tbTribeSlotReuseCooldown.ValueChanged += new System.EventHandler(this.tbTribeSlotReuseCooldown_Scroll);
+            // 
+            // label71
+            // 
+            this.label71.AutoSize = true;
+            this.label71.Location = new System.Drawing.Point(12, 1285);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(156, 15);
+            this.label71.TabIndex = 68;
+            this.label71.Text = "Tribe Slot Reuse Cooldown";
+            // 
+            // groupBox17
+            // 
+            this.groupBox17.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox17.Controls.Add(this.label68);
+            this.groupBox17.Controls.Add(this.txtIntervalBaseAmount);
+            this.groupBox17.Controls.Add(this.tbIntervalBaseAmount);
+            this.groupBox17.Controls.Add(this.label69);
+            this.groupBox17.Controls.Add(this.label66);
+            this.groupBox17.Controls.Add(this.txtIntervalMultiplier);
+            this.groupBox17.Controls.Add(this.tbIntervalMultiplier);
+            this.groupBox17.Controls.Add(this.label67);
+            this.groupBox17.Controls.Add(this.label64);
+            this.groupBox17.Controls.Add(this.txtIntervalCheckPeriod);
+            this.groupBox17.Controls.Add(this.tbIntervalCheckPeriod);
+            this.groupBox17.Controls.Add(this.label65);
+            this.groupBox17.Controls.Add(this.chkIncreasePVPRespawnInterval);
+            this.groupBox17.ForeColor = System.Drawing.Color.SteelBlue;
+            this.groupBox17.Location = new System.Drawing.Point(16, 1094);
+            this.groupBox17.Name = "groupBox17";
+            this.groupBox17.Size = new System.Drawing.Size(842, 118);
+            this.groupBox17.TabIndex = 67;
+            this.groupBox17.TabStop = false;
+            // 
+            // label68
+            // 
+            this.label68.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label68.AutoSize = true;
+            this.label68.Location = new System.Drawing.Point(779, 79);
+            this.label68.Name = "label68";
+            this.label68.Size = new System.Drawing.Size(53, 15);
+            this.label68.TabIndex = 74;
+            this.label68.Text = "seconds";
+            // 
+            // txtIntervalBaseAmount
+            // 
+            this.txtIntervalBaseAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtIntervalBaseAmount.Location = new System.Drawing.Point(705, 74);
+            this.txtIntervalBaseAmount.Name = "txtIntervalBaseAmount";
+            this.txtIntervalBaseAmount.Size = new System.Drawing.Size(49, 21);
+            this.txtIntervalBaseAmount.TabIndex = 73;
+            this.txtIntervalBaseAmount.TextChanged += new System.EventHandler(this.txtIntervalBaseAmount_TextChanged);
+            // 
+            // tbIntervalBaseAmount
+            // 
+            this.tbIntervalBaseAmount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbIntervalBaseAmount.Location = new System.Drawing.Point(165, 71);
+            this.tbIntervalBaseAmount.Maximum = 1800;
+            this.tbIntervalBaseAmount.Name = "tbIntervalBaseAmount";
+            this.tbIntervalBaseAmount.Size = new System.Drawing.Size(534, 45);
+            this.tbIntervalBaseAmount.TabIndex = 72;
+            this.tbIntervalBaseAmount.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbIntervalBaseAmount.Value = 30;
+            this.tbIntervalBaseAmount.ValueChanged += new System.EventHandler(this.tbIntervalBaseAmount_Scroll);
+            // 
+            // label69
+            // 
+            this.label69.AutoSize = true;
+            this.label69.Location = new System.Drawing.Point(4, 77);
+            this.label69.Name = "label69";
+            this.label69.Size = new System.Drawing.Size(122, 15);
+            this.label69.TabIndex = 71;
+            this.label69.Text = "Interval Base Amount";
+            // 
+            // label66
+            // 
+            this.label66.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label66.AutoSize = true;
+            this.label66.Location = new System.Drawing.Point(779, 52);
+            this.label66.Name = "label66";
+            this.label66.Size = new System.Drawing.Size(13, 15);
+            this.label66.TabIndex = 70;
+            this.label66.Text = "x";
+            // 
+            // txtIntervalMultiplier
+            // 
+            this.txtIntervalMultiplier.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtIntervalMultiplier.Location = new System.Drawing.Point(705, 47);
+            this.txtIntervalMultiplier.Name = "txtIntervalMultiplier";
+            this.txtIntervalMultiplier.Size = new System.Drawing.Size(49, 21);
+            this.txtIntervalMultiplier.TabIndex = 69;
+            this.txtIntervalMultiplier.TextChanged += new System.EventHandler(this.txtIntervalMultiplier_TextChanged);
+            // 
+            // tbIntervalMultiplier
+            // 
+            this.tbIntervalMultiplier.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbIntervalMultiplier.Location = new System.Drawing.Point(165, 44);
+            this.tbIntervalMultiplier.Maximum = 10000;
+            this.tbIntervalMultiplier.Minimum = 100;
+            this.tbIntervalMultiplier.Name = "tbIntervalMultiplier";
+            this.tbIntervalMultiplier.Size = new System.Drawing.Size(534, 45);
+            this.tbIntervalMultiplier.TabIndex = 68;
+            this.tbIntervalMultiplier.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbIntervalMultiplier.Value = 100;
+            this.tbIntervalMultiplier.ValueChanged += new System.EventHandler(this.tbIntervalMultiplier_Scroll);
+            // 
+            // label67
+            // 
+            this.label67.AutoSize = true;
+            this.label67.Location = new System.Drawing.Point(4, 50);
+            this.label67.Name = "label67";
+            this.label67.Size = new System.Drawing.Size(100, 15);
+            this.label67.TabIndex = 67;
+            this.label67.Text = "Interval Multiplier";
+            // 
+            // label64
+            // 
+            this.label64.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label64.AutoSize = true;
+            this.label64.Location = new System.Drawing.Point(779, 25);
+            this.label64.Name = "label64";
+            this.label64.Size = new System.Drawing.Size(53, 15);
+            this.label64.TabIndex = 66;
+            this.label64.Text = "seconds";
+            // 
+            // txtIntervalCheckPeriod
+            // 
+            this.txtIntervalCheckPeriod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtIntervalCheckPeriod.Location = new System.Drawing.Point(705, 20);
+            this.txtIntervalCheckPeriod.Name = "txtIntervalCheckPeriod";
+            this.txtIntervalCheckPeriod.Size = new System.Drawing.Size(49, 21);
+            this.txtIntervalCheckPeriod.TabIndex = 65;
+            this.txtIntervalCheckPeriod.TextChanged += new System.EventHandler(this.txtIntervalCheckPeriod_TextChanged);
+            // 
+            // tbIntervalCheckPeriod
+            // 
+            this.tbIntervalCheckPeriod.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbIntervalCheckPeriod.Location = new System.Drawing.Point(165, 17);
+            this.tbIntervalCheckPeriod.Maximum = 1800;
+            this.tbIntervalCheckPeriod.Name = "tbIntervalCheckPeriod";
+            this.tbIntervalCheckPeriod.Size = new System.Drawing.Size(534, 45);
+            this.tbIntervalCheckPeriod.TabIndex = 64;
+            this.tbIntervalCheckPeriod.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbIntervalCheckPeriod.Value = 30;
+            this.tbIntervalCheckPeriod.ValueChanged += new System.EventHandler(this.tbIntervalCheckPeriod_Scroll);
+            // 
+            // label65
+            // 
+            this.label65.AutoSize = true;
+            this.label65.Location = new System.Drawing.Point(4, 23);
+            this.label65.Name = "label65";
+            this.label65.Size = new System.Drawing.Size(122, 15);
+            this.label65.TabIndex = 63;
+            this.label65.Text = "Interval Check Period";
+            // 
+            // chkIncreasePVPRespawnInterval
+            // 
+            this.chkIncreasePVPRespawnInterval.AutoSize = true;
+            this.chkIncreasePVPRespawnInterval.Location = new System.Drawing.Point(7, 0);
+            this.chkIncreasePVPRespawnInterval.Name = "chkIncreasePVPRespawnInterval";
+            this.chkIncreasePVPRespawnInterval.Size = new System.Drawing.Size(194, 19);
+            this.chkIncreasePVPRespawnInterval.TabIndex = 9;
+            this.chkIncreasePVPRespawnInterval.Text = "Increase PvP Respawn Interval";
+            this.chkIncreasePVPRespawnInterval.UseVisualStyleBackColor = true;
+            this.chkIncreasePVPRespawnInterval.CheckedChanged += new System.EventHandler(this.chkIncreasePVPRespawnInterval_CheckedChanged);
+            // 
+            // label62
+            // 
+            this.label62.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label62.AutoSize = true;
+            this.label62.Location = new System.Drawing.Point(788, 1254);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(51, 15);
+            this.label62.TabIndex = 66;
+            this.label62.Text = "minutes";
+            // 
+            // txtTribeNameChangeCooldDown
+            // 
+            this.txtTribeNameChangeCooldDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTribeNameChangeCooldDown.Location = new System.Drawing.Point(721, 1249);
+            this.txtTribeNameChangeCooldDown.Name = "txtTribeNameChangeCooldDown";
+            this.txtTribeNameChangeCooldDown.Size = new System.Drawing.Size(49, 21);
+            this.txtTribeNameChangeCooldDown.TabIndex = 65;
+            this.txtTribeNameChangeCooldDown.TextChanged += new System.EventHandler(this.txtTribeNameChangeCooldDown_TextChanged);
+            // 
+            // tbTribeNameChangeCooldDown
+            // 
+            this.tbTribeNameChangeCooldDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbTribeNameChangeCooldDown.Location = new System.Drawing.Point(181, 1245);
+            this.tbTribeNameChangeCooldDown.Maximum = 300;
+            this.tbTribeNameChangeCooldDown.Minimum = 1;
+            this.tbTribeNameChangeCooldDown.Name = "tbTribeNameChangeCooldDown";
+            this.tbTribeNameChangeCooldDown.Size = new System.Drawing.Size(534, 45);
+            this.tbTribeNameChangeCooldDown.TabIndex = 64;
+            this.tbTribeNameChangeCooldDown.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbTribeNameChangeCooldDown.Value = 30;
+            this.tbTribeNameChangeCooldDown.ValueChanged += new System.EventHandler(this.tbTribeNameChangeCooldDown_Scroll);
+            // 
+            // label63
+            // 
+            this.label63.AutoSize = true;
+            this.label63.Location = new System.Drawing.Point(12, 1252);
+            this.label63.Name = "label63";
+            this.label63.Size = new System.Drawing.Size(176, 15);
+            this.label63.TabIndex = 63;
+            this.label63.Text = "Tribe Name Change Cooldown";
+            // 
+            // label60
+            // 
+            this.label60.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label60.AutoSize = true;
+            this.label60.Location = new System.Drawing.Point(788, 1227);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(46, 15);
+            this.label60.TabIndex = 62;
+            this.label60.Text = "players";
+            // 
+            // txtMaxPlayersInTribe
+            // 
+            this.txtMaxPlayersInTribe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtMaxPlayersInTribe.Location = new System.Drawing.Point(720, 1218);
+            this.txtMaxPlayersInTribe.Name = "txtMaxPlayersInTribe";
+            this.txtMaxPlayersInTribe.Size = new System.Drawing.Size(49, 21);
+            this.txtMaxPlayersInTribe.TabIndex = 61;
+            this.txtMaxPlayersInTribe.TextChanged += new System.EventHandler(this.txtMaxPlayersInTribe_TextChanged);
+            // 
+            // tbMaxPlayersInTribe
+            // 
+            this.tbMaxPlayersInTribe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbMaxPlayersInTribe.Location = new System.Drawing.Point(181, 1216);
+            this.tbMaxPlayersInTribe.Maximum = 100;
+            this.tbMaxPlayersInTribe.Name = "tbMaxPlayersInTribe";
+            this.tbMaxPlayersInTribe.Size = new System.Drawing.Size(534, 45);
+            this.tbMaxPlayersInTribe.TabIndex = 60;
+            this.tbMaxPlayersInTribe.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbMaxPlayersInTribe.Value = 30;
+            this.tbMaxPlayersInTribe.ValueChanged += new System.EventHandler(this.tbMaxPlayersInTribe_Scroll);
+            // 
+            // label61
+            // 
+            this.label61.AutoSize = true;
+            this.label61.Location = new System.Drawing.Point(13, 1225);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(118, 15);
+            this.label61.TabIndex = 59;
+            this.label61.Text = "Max Players in Tribe";
+            // 
+            // groupBox16
+            // 
+            this.groupBox16.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox16.Controls.Add(this.label59);
+            this.groupBox16.Controls.Add(this.txtPVPEndTime);
+            this.groupBox16.Controls.Add(this.label58);
+            this.groupBox16.Controls.Add(this.txtPVPStartTime);
+            this.groupBox16.Controls.Add(this.chkUseServerTime);
+            this.groupBox16.Controls.Add(this.chkPVESchedule);
+            this.groupBox16.ForeColor = System.Drawing.Color.SteelBlue;
+            this.groupBox16.Location = new System.Drawing.Point(16, 956);
+            this.groupBox16.Name = "groupBox16";
+            this.groupBox16.Size = new System.Drawing.Size(842, 53);
+            this.groupBox16.TabIndex = 57;
+            this.groupBox16.TabStop = false;
+            // 
+            // label59
+            // 
+            this.label59.AutoSize = true;
+            this.label59.Location = new System.Drawing.Point(351, 23);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(60, 15);
+            this.label59.TabIndex = 14;
+            this.label59.Text = "End Time";
+            // 
+            // txtPVPEndTime
+            // 
+            this.txtPVPEndTime.Location = new System.Drawing.Point(420, 20);
+            this.txtPVPEndTime.Mask = "00:00";
+            this.txtPVPEndTime.Name = "txtPVPEndTime";
+            this.txtPVPEndTime.Size = new System.Drawing.Size(59, 21);
+            this.txtPVPEndTime.TabIndex = 13;
+            this.txtPVPEndTime.Text = "0100";
+            this.txtPVPEndTime.ValidatingType = typeof(System.DateTime);
+            // 
+            // label58
+            // 
+            this.label58.AutoSize = true;
+            this.label58.Location = new System.Drawing.Point(204, 23);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(63, 15);
+            this.label58.TabIndex = 12;
+            this.label58.Text = "Start Time";
+            // 
+            // txtPVPStartTime
+            // 
+            this.txtPVPStartTime.Location = new System.Drawing.Point(273, 20);
+            this.txtPVPStartTime.Mask = "00:00";
+            this.txtPVPStartTime.Name = "txtPVPStartTime";
+            this.txtPVPStartTime.Size = new System.Drawing.Size(59, 21);
+            this.txtPVPStartTime.TabIndex = 11;
+            this.txtPVPStartTime.Text = "0100";
+            this.txtPVPStartTime.ValidatingType = typeof(System.DateTime);
+            // 
+            // chkUseServerTime
+            // 
+            this.chkUseServerTime.AutoSize = true;
+            this.chkUseServerTime.Location = new System.Drawing.Point(7, 25);
+            this.chkUseServerTime.Name = "chkUseServerTime";
+            this.chkUseServerTime.Size = new System.Drawing.Size(117, 19);
+            this.chkUseServerTime.TabIndex = 10;
+            this.chkUseServerTime.Text = "Use Server Time";
+            this.chkUseServerTime.UseVisualStyleBackColor = true;
+            // 
+            // chkPVESchedule
+            // 
+            this.chkPVESchedule.AutoSize = true;
+            this.chkPVESchedule.Location = new System.Drawing.Point(7, 0);
+            this.chkPVESchedule.Name = "chkPVESchedule";
+            this.chkPVESchedule.Size = new System.Drawing.Size(102, 19);
+            this.chkPVESchedule.TabIndex = 9;
+            this.chkPVESchedule.Text = "PvE Schedule";
+            this.chkPVESchedule.UseVisualStyleBackColor = true;
+            this.chkPVESchedule.CheckedChanged += new System.EventHandler(this.chkPVESchedule_CheckedChanged);
+            // 
+            // groupBox15
+            // 
+            this.groupBox15.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox15.Controls.Add(this.chkOverrideMinimumDinoReUploadInterval);
+            this.groupBox15.Controls.Add(this.label57);
+            this.groupBox15.Controls.Add(this.txtOverrideMinimumDinoReUploadIntervalValue);
+            this.groupBox15.Controls.Add(this.tbOverrideMinimumDinoReUploadIntervalValue);
+            this.groupBox15.Controls.Add(this.chkOverrideDinoUploadExpiration);
+            this.groupBox15.Controls.Add(this.label52);
+            this.groupBox15.Controls.Add(this.txtOverrideDinoUploadExpirationValue);
+            this.groupBox15.Controls.Add(this.tbOverrideDinoUploadExpirationValue);
+            this.groupBox15.Controls.Add(this.chkOverrideItemUploadExpiration);
+            this.groupBox15.Controls.Add(this.label50);
+            this.groupBox15.Controls.Add(this.txtOverrideItemUploadExpirationValue);
+            this.groupBox15.Controls.Add(this.tbOverrideItemUploadExpirationValue);
+            this.groupBox15.Controls.Add(this.chkOverrideSurvivorUploadExpiration);
+            this.groupBox15.Controls.Add(this.label49);
+            this.groupBox15.Controls.Add(this.txtOverrideSurvivorUploadExpirationValue);
+            this.groupBox15.Controls.Add(this.tbOverrideSurvivorUploadExpirationValue);
+            this.groupBox15.Controls.Add(this.chkNoTransferFromFiltering);
+            this.groupBox15.ForeColor = System.Drawing.Color.SteelBlue;
+            this.groupBox15.Location = new System.Drawing.Point(16, 755);
+            this.groupBox15.Name = "groupBox15";
+            this.groupBox15.Size = new System.Drawing.Size(842, 195);
+            this.groupBox15.TabIndex = 56;
+            this.groupBox15.TabStop = false;
+            this.groupBox15.Text = "Cluster Tribute Options";
+            // 
+            // chkOverrideMinimumDinoReUploadInterval
+            // 
+            this.chkOverrideMinimumDinoReUploadInterval.AutoSize = true;
+            this.chkOverrideMinimumDinoReUploadInterval.Location = new System.Drawing.Point(8, 155);
+            this.chkOverrideMinimumDinoReUploadInterval.Name = "chkOverrideMinimumDinoReUploadInterval";
+            this.chkOverrideMinimumDinoReUploadInterval.Size = new System.Drawing.Size(260, 19);
+            this.chkOverrideMinimumDinoReUploadInterval.TabIndex = 70;
+            this.chkOverrideMinimumDinoReUploadInterval.Text = "Override Minimum Dino Re-upload Interval";
+            this.chkOverrideMinimumDinoReUploadInterval.UseVisualStyleBackColor = true;
+            // 
+            // label57
+            // 
+            this.label57.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label57.AutoSize = true;
+            this.label57.Location = new System.Drawing.Point(779, 156);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(51, 15);
+            this.label57.TabIndex = 69;
+            this.label57.Text = "minutes";
+            // 
+            // txtOverrideMinimumDinoReUploadIntervalValue
+            // 
+            this.txtOverrideMinimumDinoReUploadIntervalValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtOverrideMinimumDinoReUploadIntervalValue.Location = new System.Drawing.Point(705, 151);
+            this.txtOverrideMinimumDinoReUploadIntervalValue.Name = "txtOverrideMinimumDinoReUploadIntervalValue";
+            this.txtOverrideMinimumDinoReUploadIntervalValue.Size = new System.Drawing.Size(49, 21);
+            this.txtOverrideMinimumDinoReUploadIntervalValue.TabIndex = 68;
+            this.txtOverrideMinimumDinoReUploadIntervalValue.TextChanged += new System.EventHandler(this.txtOverrideMinimumDinoReUploadIntervalValue_TextChanged);
+            // 
+            // tbOverrideMinimumDinoReUploadIntervalValue
+            // 
+            this.tbOverrideMinimumDinoReUploadIntervalValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbOverrideMinimumDinoReUploadIntervalValue.Location = new System.Drawing.Point(274, 148);
+            this.tbOverrideMinimumDinoReUploadIntervalValue.Maximum = 20000;
+            this.tbOverrideMinimumDinoReUploadIntervalValue.Minimum = 1;
+            this.tbOverrideMinimumDinoReUploadIntervalValue.Name = "tbOverrideMinimumDinoReUploadIntervalValue";
+            this.tbOverrideMinimumDinoReUploadIntervalValue.Size = new System.Drawing.Size(425, 45);
+            this.tbOverrideMinimumDinoReUploadIntervalValue.TabIndex = 67;
+            this.tbOverrideMinimumDinoReUploadIntervalValue.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbOverrideMinimumDinoReUploadIntervalValue.Value = 30;
+            this.tbOverrideMinimumDinoReUploadIntervalValue.ValueChanged += new System.EventHandler(this.tbOverrideMinimumDinoReUploadIntervalValue_Scroll);
+            // 
+            // chkOverrideDinoUploadExpiration
+            // 
+            this.chkOverrideDinoUploadExpiration.AutoSize = true;
+            this.chkOverrideDinoUploadExpiration.Location = new System.Drawing.Point(8, 124);
+            this.chkOverrideDinoUploadExpiration.Name = "chkOverrideDinoUploadExpiration";
+            this.chkOverrideDinoUploadExpiration.Size = new System.Drawing.Size(202, 19);
+            this.chkOverrideDinoUploadExpiration.TabIndex = 66;
+            this.chkOverrideDinoUploadExpiration.Text = "Override Dino Upload Expiration";
+            this.chkOverrideDinoUploadExpiration.UseVisualStyleBackColor = true;
+            // 
+            // label52
+            // 
+            this.label52.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label52.AutoSize = true;
+            this.label52.Location = new System.Drawing.Point(779, 125);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(51, 15);
+            this.label52.TabIndex = 65;
+            this.label52.Text = "minutes";
+            // 
+            // txtOverrideDinoUploadExpirationValue
+            // 
+            this.txtOverrideDinoUploadExpirationValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtOverrideDinoUploadExpirationValue.Location = new System.Drawing.Point(705, 120);
+            this.txtOverrideDinoUploadExpirationValue.Name = "txtOverrideDinoUploadExpirationValue";
+            this.txtOverrideDinoUploadExpirationValue.Size = new System.Drawing.Size(49, 21);
+            this.txtOverrideDinoUploadExpirationValue.TabIndex = 64;
+            this.txtOverrideDinoUploadExpirationValue.TextChanged += new System.EventHandler(this.txtOverrideDinoUploadExpirationValue_TextChanged);
+            // 
+            // tbOverrideDinoUploadExpirationValue
+            // 
+            this.tbOverrideDinoUploadExpirationValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbOverrideDinoUploadExpirationValue.Location = new System.Drawing.Point(274, 117);
+            this.tbOverrideDinoUploadExpirationValue.Maximum = 20000;
+            this.tbOverrideDinoUploadExpirationValue.Minimum = 1;
+            this.tbOverrideDinoUploadExpirationValue.Name = "tbOverrideDinoUploadExpirationValue";
+            this.tbOverrideDinoUploadExpirationValue.Size = new System.Drawing.Size(425, 45);
+            this.tbOverrideDinoUploadExpirationValue.TabIndex = 63;
+            this.tbOverrideDinoUploadExpirationValue.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbOverrideDinoUploadExpirationValue.Value = 30;
+            this.tbOverrideDinoUploadExpirationValue.ValueChanged += new System.EventHandler(this.tbOverrideDinoUploadExpirationValue_Scroll);
+            // 
+            // chkOverrideItemUploadExpiration
+            // 
+            this.chkOverrideItemUploadExpiration.AutoSize = true;
+            this.chkOverrideItemUploadExpiration.Location = new System.Drawing.Point(8, 90);
+            this.chkOverrideItemUploadExpiration.Name = "chkOverrideItemUploadExpiration";
+            this.chkOverrideItemUploadExpiration.Size = new System.Drawing.Size(200, 19);
+            this.chkOverrideItemUploadExpiration.TabIndex = 62;
+            this.chkOverrideItemUploadExpiration.Text = "Override Item Upload Expiration";
+            this.chkOverrideItemUploadExpiration.UseVisualStyleBackColor = true;
+            // 
+            // label50
+            // 
+            this.label50.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label50.AutoSize = true;
+            this.label50.Location = new System.Drawing.Point(779, 91);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(51, 15);
+            this.label50.TabIndex = 61;
+            this.label50.Text = "minutes";
+            // 
+            // txtOverrideItemUploadExpirationValue
+            // 
+            this.txtOverrideItemUploadExpirationValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtOverrideItemUploadExpirationValue.Location = new System.Drawing.Point(705, 86);
+            this.txtOverrideItemUploadExpirationValue.Name = "txtOverrideItemUploadExpirationValue";
+            this.txtOverrideItemUploadExpirationValue.Size = new System.Drawing.Size(49, 21);
+            this.txtOverrideItemUploadExpirationValue.TabIndex = 60;
+            this.txtOverrideItemUploadExpirationValue.TextChanged += new System.EventHandler(this.txtOverrideItemUploadExpirationValue_TextChanged);
+            // 
+            // tbOverrideItemUploadExpirationValue
+            // 
+            this.tbOverrideItemUploadExpirationValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbOverrideItemUploadExpirationValue.Location = new System.Drawing.Point(274, 83);
+            this.tbOverrideItemUploadExpirationValue.Maximum = 20000;
+            this.tbOverrideItemUploadExpirationValue.Minimum = 1;
+            this.tbOverrideItemUploadExpirationValue.Name = "tbOverrideItemUploadExpirationValue";
+            this.tbOverrideItemUploadExpirationValue.Size = new System.Drawing.Size(425, 45);
+            this.tbOverrideItemUploadExpirationValue.TabIndex = 59;
+            this.tbOverrideItemUploadExpirationValue.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbOverrideItemUploadExpirationValue.Value = 30;
+            this.tbOverrideItemUploadExpirationValue.ValueChanged += new System.EventHandler(this.tbOverrideItemUploadExpirationValue_Scroll);
+            // 
+            // chkOverrideSurvivorUploadExpiration
+            // 
+            this.chkOverrideSurvivorUploadExpiration.AutoSize = true;
+            this.chkOverrideSurvivorUploadExpiration.Location = new System.Drawing.Point(8, 59);
+            this.chkOverrideSurvivorUploadExpiration.Name = "chkOverrideSurvivorUploadExpiration";
+            this.chkOverrideSurvivorUploadExpiration.Size = new System.Drawing.Size(219, 19);
+            this.chkOverrideSurvivorUploadExpiration.TabIndex = 58;
+            this.chkOverrideSurvivorUploadExpiration.Text = "Override Survivor Upload Expiration";
+            this.chkOverrideSurvivorUploadExpiration.UseVisualStyleBackColor = true;
+            // 
+            // label49
+            // 
+            this.label49.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label49.AutoSize = true;
+            this.label49.Location = new System.Drawing.Point(779, 60);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(51, 15);
+            this.label49.TabIndex = 57;
+            this.label49.Text = "minutes";
+            // 
+            // txtOverrideSurvivorUploadExpirationValue
+            // 
+            this.txtOverrideSurvivorUploadExpirationValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtOverrideSurvivorUploadExpirationValue.Location = new System.Drawing.Point(705, 55);
+            this.txtOverrideSurvivorUploadExpirationValue.Name = "txtOverrideSurvivorUploadExpirationValue";
+            this.txtOverrideSurvivorUploadExpirationValue.Size = new System.Drawing.Size(49, 21);
+            this.txtOverrideSurvivorUploadExpirationValue.TabIndex = 56;
+            this.txtOverrideSurvivorUploadExpirationValue.TextChanged += new System.EventHandler(this.txtOverrideSurvivorUploadExpirationValue_TextChanged);
+            // 
+            // tbOverrideSurvivorUploadExpirationValue
+            // 
+            this.tbOverrideSurvivorUploadExpirationValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbOverrideSurvivorUploadExpirationValue.Location = new System.Drawing.Point(274, 52);
+            this.tbOverrideSurvivorUploadExpirationValue.Maximum = 20000;
+            this.tbOverrideSurvivorUploadExpirationValue.Minimum = 1;
+            this.tbOverrideSurvivorUploadExpirationValue.Name = "tbOverrideSurvivorUploadExpirationValue";
+            this.tbOverrideSurvivorUploadExpirationValue.Size = new System.Drawing.Size(425, 45);
+            this.tbOverrideSurvivorUploadExpirationValue.TabIndex = 55;
+            this.tbOverrideSurvivorUploadExpirationValue.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbOverrideSurvivorUploadExpirationValue.Value = 30;
+            this.tbOverrideSurvivorUploadExpirationValue.ValueChanged += new System.EventHandler(this.tbOverrideSurvivorUploadExpirationValue_Scroll);
+            // 
+            // chkNoTransferFromFiltering
+            // 
+            this.chkNoTransferFromFiltering.AutoSize = true;
+            this.chkNoTransferFromFiltering.Location = new System.Drawing.Point(8, 27);
+            this.chkNoTransferFromFiltering.Name = "chkNoTransferFromFiltering";
+            this.chkNoTransferFromFiltering.Size = new System.Drawing.Size(165, 19);
+            this.chkNoTransferFromFiltering.TabIndex = 54;
+            this.chkNoTransferFromFiltering.Text = "No Transfer from Filtering";
+            this.chkNoTransferFromFiltering.UseVisualStyleBackColor = true;
+            // 
             // groupBox14
             // 
             this.groupBox14.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox14.Controls.Add(this.checkBox27);
+            this.groupBox14.Controls.Add(this.chkLimitTributeItems);
             this.groupBox14.Controls.Add(this.label53);
-            this.groupBox14.Controls.Add(this.textBox10);
-            this.groupBox14.Controls.Add(this.trackBar10);
+            this.groupBox14.Controls.Add(this.txtMaxTributeItems);
+            this.groupBox14.Controls.Add(this.tbMaxTributeItems);
             this.groupBox14.Controls.Add(this.label54);
-            this.groupBox14.Controls.Add(this.checkBox28);
+            this.groupBox14.Controls.Add(this.chkLimitMaxTributeDinos);
             this.groupBox14.Controls.Add(this.label55);
-            this.groupBox14.Controls.Add(this.textBox11);
-            this.groupBox14.Controls.Add(this.trackBar11);
+            this.groupBox14.Controls.Add(this.txtMaxTributeDinos);
+            this.groupBox14.Controls.Add(this.tbMaxTributeDinos);
             this.groupBox14.Controls.Add(this.label56);
-            this.groupBox14.Controls.Add(this.checkBox30);
-            this.groupBox14.Controls.Add(this.checkBox31);
-            this.groupBox14.Controls.Add(this.checkBox32);
+            this.groupBox14.Controls.Add(this.chkNoDinoUploads);
+            this.groupBox14.Controls.Add(this.chkNoItemUploads);
+            this.groupBox14.Controls.Add(this.chkNoSurvivorUploads);
             this.groupBox14.ForeColor = System.Drawing.Color.SteelBlue;
             this.groupBox14.Location = new System.Drawing.Point(16, 601);
             this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Size = new System.Drawing.Size(791, 148);
+            this.groupBox14.Size = new System.Drawing.Size(842, 148);
             this.groupBox14.TabIndex = 55;
             this.groupBox14.TabStop = false;
             this.groupBox14.Text = "Tribute Uploads";
             // 
-            // checkBox27
+            // chkLimitTributeItems
             // 
-            this.checkBox27.AutoSize = true;
-            this.checkBox27.Location = new System.Drawing.Point(144, 98);
-            this.checkBox27.Name = "checkBox27";
-            this.checkBox27.Size = new System.Drawing.Size(15, 14);
-            this.checkBox27.TabIndex = 59;
-            this.checkBox27.UseVisualStyleBackColor = true;
+            this.chkLimitTributeItems.AutoSize = true;
+            this.chkLimitTributeItems.Location = new System.Drawing.Point(144, 98);
+            this.chkLimitTributeItems.Name = "chkLimitTributeItems";
+            this.chkLimitTributeItems.Size = new System.Drawing.Size(15, 14);
+            this.chkLimitTributeItems.TabIndex = 59;
+            this.chkLimitTributeItems.UseVisualStyleBackColor = true;
             // 
             // label53
             // 
             this.label53.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label53.AutoSize = true;
-            this.label53.Location = new System.Drawing.Point(728, 99);
+            this.label53.Location = new System.Drawing.Point(779, 99);
             this.label53.Name = "label53";
             this.label53.Size = new System.Drawing.Size(37, 15);
             this.label53.TabIndex = 58;
             this.label53.Text = "items";
             // 
-            // textBox10
+            // txtMaxTributeItems
             // 
-            this.textBox10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox10.Enabled = false;
-            this.textBox10.Location = new System.Drawing.Point(654, 94);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(49, 21);
-            this.textBox10.TabIndex = 57;
+            this.txtMaxTributeItems.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtMaxTributeItems.Location = new System.Drawing.Point(705, 94);
+            this.txtMaxTributeItems.Name = "txtMaxTributeItems";
+            this.txtMaxTributeItems.Size = new System.Drawing.Size(49, 21);
+            this.txtMaxTributeItems.TabIndex = 57;
+            this.txtMaxTributeItems.TextChanged += new System.EventHandler(this.txtMaxTributeItems_TextChanged);
             // 
-            // trackBar10
+            // tbMaxTributeItems
             // 
-            this.trackBar10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbMaxTributeItems.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBar10.Location = new System.Drawing.Point(165, 91);
-            this.trackBar10.Maximum = 1200;
-            this.trackBar10.Minimum = 30;
-            this.trackBar10.Name = "trackBar10";
-            this.trackBar10.Size = new System.Drawing.Size(483, 45);
-            this.trackBar10.TabIndex = 56;
-            this.trackBar10.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBar10.Value = 30;
+            this.tbMaxTributeItems.Location = new System.Drawing.Point(165, 91);
+            this.tbMaxTributeItems.Maximum = 150;
+            this.tbMaxTributeItems.Name = "tbMaxTributeItems";
+            this.tbMaxTributeItems.Size = new System.Drawing.Size(534, 45);
+            this.tbMaxTributeItems.TabIndex = 56;
+            this.tbMaxTributeItems.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbMaxTributeItems.Value = 30;
+            this.tbMaxTributeItems.ValueChanged += new System.EventHandler(this.tbMaxTributeItems_Scroll);
             // 
             // label54
             // 
@@ -2500,46 +5223,46 @@
             this.label54.TabIndex = 55;
             this.label54.Text = "Max Tribute Dinos";
             // 
-            // checkBox28
+            // chkLimitMaxTributeDinos
             // 
-            this.checkBox28.AutoSize = true;
-            this.checkBox28.Location = new System.Drawing.Point(144, 62);
-            this.checkBox28.Name = "checkBox28";
-            this.checkBox28.Size = new System.Drawing.Size(15, 14);
-            this.checkBox28.TabIndex = 54;
-            this.checkBox28.UseVisualStyleBackColor = true;
+            this.chkLimitMaxTributeDinos.AutoSize = true;
+            this.chkLimitMaxTributeDinos.Location = new System.Drawing.Point(144, 62);
+            this.chkLimitMaxTributeDinos.Name = "chkLimitMaxTributeDinos";
+            this.chkLimitMaxTributeDinos.Size = new System.Drawing.Size(15, 14);
+            this.chkLimitMaxTributeDinos.TabIndex = 54;
+            this.chkLimitMaxTributeDinos.UseVisualStyleBackColor = true;
             // 
             // label55
             // 
             this.label55.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label55.AutoSize = true;
-            this.label55.Location = new System.Drawing.Point(728, 63);
+            this.label55.Location = new System.Drawing.Point(779, 63);
             this.label55.Name = "label55";
             this.label55.Size = new System.Drawing.Size(37, 15);
             this.label55.TabIndex = 53;
             this.label55.Text = "dinos";
             // 
-            // textBox11
+            // txtMaxTributeDinos
             // 
-            this.textBox11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox11.Enabled = false;
-            this.textBox11.Location = new System.Drawing.Point(654, 58);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(49, 21);
-            this.textBox11.TabIndex = 52;
+            this.txtMaxTributeDinos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtMaxTributeDinos.Location = new System.Drawing.Point(705, 58);
+            this.txtMaxTributeDinos.Name = "txtMaxTributeDinos";
+            this.txtMaxTributeDinos.Size = new System.Drawing.Size(49, 21);
+            this.txtMaxTributeDinos.TabIndex = 52;
+            this.txtMaxTributeDinos.TextChanged += new System.EventHandler(this.txtMaxTributeDinos_TextChanged);
             // 
-            // trackBar11
+            // tbMaxTributeDinos
             // 
-            this.trackBar11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbMaxTributeDinos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBar11.Location = new System.Drawing.Point(165, 55);
-            this.trackBar11.Maximum = 1200;
-            this.trackBar11.Minimum = 30;
-            this.trackBar11.Name = "trackBar11";
-            this.trackBar11.Size = new System.Drawing.Size(483, 45);
-            this.trackBar11.TabIndex = 51;
-            this.trackBar11.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBar11.Value = 30;
+            this.tbMaxTributeDinos.Location = new System.Drawing.Point(165, 55);
+            this.tbMaxTributeDinos.Maximum = 150;
+            this.tbMaxTributeDinos.Name = "tbMaxTributeDinos";
+            this.tbMaxTributeDinos.Size = new System.Drawing.Size(534, 45);
+            this.tbMaxTributeDinos.TabIndex = 51;
+            this.tbMaxTributeDinos.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbMaxTributeDinos.Value = 30;
+            this.tbMaxTributeDinos.ValueChanged += new System.EventHandler(this.tbMaxTributeDinos_Scroll);
             // 
             // label56
             // 
@@ -2550,133 +5273,134 @@
             this.label56.TabIndex = 50;
             this.label56.Text = "Max Tribute Dinos";
             // 
-            // checkBox30
+            // chkNoDinoUploads
             // 
-            this.checkBox30.AutoSize = true;
-            this.checkBox30.Location = new System.Drawing.Point(503, 25);
-            this.checkBox30.Name = "checkBox30";
-            this.checkBox30.Size = new System.Drawing.Size(120, 19);
-            this.checkBox30.TabIndex = 12;
-            this.checkBox30.Text = "No Dino Uploads";
-            this.checkBox30.UseVisualStyleBackColor = true;
+            this.chkNoDinoUploads.AutoSize = true;
+            this.chkNoDinoUploads.Location = new System.Drawing.Point(503, 25);
+            this.chkNoDinoUploads.Name = "chkNoDinoUploads";
+            this.chkNoDinoUploads.Size = new System.Drawing.Size(120, 19);
+            this.chkNoDinoUploads.TabIndex = 12;
+            this.chkNoDinoUploads.Text = "No Dino Uploads";
+            this.chkNoDinoUploads.UseVisualStyleBackColor = true;
             // 
-            // checkBox31
+            // chkNoItemUploads
             // 
-            this.checkBox31.AutoSize = true;
-            this.checkBox31.Location = new System.Drawing.Point(255, 25);
-            this.checkBox31.Name = "checkBox31";
-            this.checkBox31.Size = new System.Drawing.Size(118, 19);
-            this.checkBox31.TabIndex = 11;
-            this.checkBox31.Text = "No Item Uploads";
-            this.checkBox31.UseVisualStyleBackColor = true;
+            this.chkNoItemUploads.AutoSize = true;
+            this.chkNoItemUploads.Location = new System.Drawing.Point(255, 25);
+            this.chkNoItemUploads.Name = "chkNoItemUploads";
+            this.chkNoItemUploads.Size = new System.Drawing.Size(118, 19);
+            this.chkNoItemUploads.TabIndex = 11;
+            this.chkNoItemUploads.Text = "No Item Uploads";
+            this.chkNoItemUploads.UseVisualStyleBackColor = true;
             // 
-            // checkBox32
+            // chkNoSurvivorUploads
             // 
-            this.checkBox32.AutoSize = true;
-            this.checkBox32.Location = new System.Drawing.Point(8, 25);
-            this.checkBox32.Name = "checkBox32";
-            this.checkBox32.Size = new System.Drawing.Size(137, 19);
-            this.checkBox32.TabIndex = 10;
-            this.checkBox32.Text = "No Survivor Uploads";
-            this.checkBox32.UseVisualStyleBackColor = true;
+            this.chkNoSurvivorUploads.AutoSize = true;
+            this.chkNoSurvivorUploads.Location = new System.Drawing.Point(8, 25);
+            this.chkNoSurvivorUploads.Name = "chkNoSurvivorUploads";
+            this.chkNoSurvivorUploads.Size = new System.Drawing.Size(137, 19);
+            this.chkNoSurvivorUploads.TabIndex = 10;
+            this.chkNoSurvivorUploads.Text = "No Survivor Uploads";
+            this.chkNoSurvivorUploads.UseVisualStyleBackColor = true;
             // 
             // groupBox13
             // 
             this.groupBox13.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox13.Controls.Add(this.checkBox24);
-            this.groupBox13.Controls.Add(this.checkBox23);
-            this.groupBox13.Controls.Add(this.checkBox22);
-            this.groupBox13.Controls.Add(this.checkBox21);
-            this.groupBox13.Controls.Add(this.checkBox20);
+            this.groupBox13.Controls.Add(this.chkAllowForeignDinoDownloads);
+            this.groupBox13.Controls.Add(this.chkNoDinoDownloads);
+            this.groupBox13.Controls.Add(this.chkNoItemDownloads);
+            this.groupBox13.Controls.Add(this.chkNoSurvivorDownloads);
+            this.groupBox13.Controls.Add(this.chkEnableTributeDownloads);
             this.groupBox13.ForeColor = System.Drawing.Color.SteelBlue;
             this.groupBox13.Location = new System.Drawing.Point(17, 516);
             this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(791, 79);
+            this.groupBox13.Size = new System.Drawing.Size(842, 79);
             this.groupBox13.TabIndex = 54;
             this.groupBox13.TabStop = false;
             // 
-            // checkBox24
+            // chkAllowForeignDinoDownloads
             // 
-            this.checkBox24.AutoSize = true;
-            this.checkBox24.Location = new System.Drawing.Point(503, 50);
-            this.checkBox24.Name = "checkBox24";
-            this.checkBox24.Size = new System.Drawing.Size(194, 19);
-            this.checkBox24.TabIndex = 13;
-            this.checkBox24.Text = "Allow Foreign Dino Downloads";
-            this.checkBox24.UseVisualStyleBackColor = true;
+            this.chkAllowForeignDinoDownloads.AutoSize = true;
+            this.chkAllowForeignDinoDownloads.Location = new System.Drawing.Point(503, 50);
+            this.chkAllowForeignDinoDownloads.Name = "chkAllowForeignDinoDownloads";
+            this.chkAllowForeignDinoDownloads.Size = new System.Drawing.Size(194, 19);
+            this.chkAllowForeignDinoDownloads.TabIndex = 13;
+            this.chkAllowForeignDinoDownloads.Text = "Allow Foreign Dino Downloads";
+            this.chkAllowForeignDinoDownloads.UseVisualStyleBackColor = true;
             // 
-            // checkBox23
+            // chkNoDinoDownloads
             // 
-            this.checkBox23.AutoSize = true;
-            this.checkBox23.Location = new System.Drawing.Point(503, 25);
-            this.checkBox23.Name = "checkBox23";
-            this.checkBox23.Size = new System.Drawing.Size(136, 19);
-            this.checkBox23.TabIndex = 12;
-            this.checkBox23.Text = "No Dino Downloads";
-            this.checkBox23.UseVisualStyleBackColor = true;
+            this.chkNoDinoDownloads.AutoSize = true;
+            this.chkNoDinoDownloads.Location = new System.Drawing.Point(503, 25);
+            this.chkNoDinoDownloads.Name = "chkNoDinoDownloads";
+            this.chkNoDinoDownloads.Size = new System.Drawing.Size(136, 19);
+            this.chkNoDinoDownloads.TabIndex = 12;
+            this.chkNoDinoDownloads.Text = "No Dino Downloads";
+            this.chkNoDinoDownloads.UseVisualStyleBackColor = true;
             // 
-            // checkBox22
+            // chkNoItemDownloads
             // 
-            this.checkBox22.AutoSize = true;
-            this.checkBox22.Location = new System.Drawing.Point(255, 25);
-            this.checkBox22.Name = "checkBox22";
-            this.checkBox22.Size = new System.Drawing.Size(134, 19);
-            this.checkBox22.TabIndex = 11;
-            this.checkBox22.Text = "No Item Downloads";
-            this.checkBox22.UseVisualStyleBackColor = true;
+            this.chkNoItemDownloads.AutoSize = true;
+            this.chkNoItemDownloads.Location = new System.Drawing.Point(255, 25);
+            this.chkNoItemDownloads.Name = "chkNoItemDownloads";
+            this.chkNoItemDownloads.Size = new System.Drawing.Size(134, 19);
+            this.chkNoItemDownloads.TabIndex = 11;
+            this.chkNoItemDownloads.Text = "No Item Downloads";
+            this.chkNoItemDownloads.UseVisualStyleBackColor = true;
             // 
-            // checkBox21
+            // chkNoSurvivorDownloads
             // 
-            this.checkBox21.AutoSize = true;
-            this.checkBox21.Location = new System.Drawing.Point(7, 25);
-            this.checkBox21.Name = "checkBox21";
-            this.checkBox21.Size = new System.Drawing.Size(153, 19);
-            this.checkBox21.TabIndex = 10;
-            this.checkBox21.Text = "No Survivor Downloads";
-            this.checkBox21.UseVisualStyleBackColor = true;
+            this.chkNoSurvivorDownloads.AutoSize = true;
+            this.chkNoSurvivorDownloads.Location = new System.Drawing.Point(7, 25);
+            this.chkNoSurvivorDownloads.Name = "chkNoSurvivorDownloads";
+            this.chkNoSurvivorDownloads.Size = new System.Drawing.Size(153, 19);
+            this.chkNoSurvivorDownloads.TabIndex = 10;
+            this.chkNoSurvivorDownloads.Text = "No Survivor Downloads";
+            this.chkNoSurvivorDownloads.UseVisualStyleBackColor = true;
             // 
-            // checkBox20
+            // chkEnableTributeDownloads
             // 
-            this.checkBox20.AutoSize = true;
-            this.checkBox20.Location = new System.Drawing.Point(7, 0);
-            this.checkBox20.Name = "checkBox20";
-            this.checkBox20.Size = new System.Drawing.Size(171, 19);
-            this.checkBox20.TabIndex = 9;
-            this.checkBox20.Text = "Enable Tribute Downloads";
-            this.checkBox20.UseVisualStyleBackColor = true;
+            this.chkEnableTributeDownloads.AutoSize = true;
+            this.chkEnableTributeDownloads.Location = new System.Drawing.Point(7, 0);
+            this.chkEnableTributeDownloads.Name = "chkEnableTributeDownloads";
+            this.chkEnableTributeDownloads.Size = new System.Drawing.Size(171, 19);
+            this.chkEnableTributeDownloads.TabIndex = 9;
+            this.chkEnableTributeDownloads.Text = "Enable Tribute Downloads";
+            this.chkEnableTributeDownloads.UseVisualStyleBackColor = true;
+            this.chkEnableTributeDownloads.CheckedChanged += new System.EventHandler(this.chkEnableTributeDownloads_CheckedChanged);
             // 
             // label47
             // 
             this.label47.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label47.AutoSize = true;
-            this.label47.Location = new System.Drawing.Point(743, 494);
+            this.label47.Location = new System.Drawing.Point(794, 494);
             this.label47.Name = "label47";
             this.label47.Size = new System.Drawing.Size(42, 15);
             this.label47.TabIndex = 53;
             this.label47.Text = "Levels";
             // 
-            // textBox7
+            // txtDestroyTamesOverLevel
             // 
-            this.textBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox7.Enabled = false;
-            this.textBox7.Location = new System.Drawing.Point(669, 489);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(49, 21);
-            this.textBox7.TabIndex = 52;
+            this.txtDestroyTamesOverLevel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDestroyTamesOverLevel.Location = new System.Drawing.Point(720, 489);
+            this.txtDestroyTamesOverLevel.Name = "txtDestroyTamesOverLevel";
+            this.txtDestroyTamesOverLevel.Size = new System.Drawing.Size(49, 21);
+            this.txtDestroyTamesOverLevel.TabIndex = 52;
+            this.txtDestroyTamesOverLevel.TextChanged += new System.EventHandler(this.txtDestroyTamesOverLevel_TextChanged);
             // 
-            // trackBar7
+            // tbDestroyTamesOverLevel
             // 
-            this.trackBar7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbDestroyTamesOverLevel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBar7.Location = new System.Drawing.Point(180, 486);
-            this.trackBar7.Maximum = 1200;
-            this.trackBar7.Minimum = 30;
-            this.trackBar7.Name = "trackBar7";
-            this.trackBar7.Size = new System.Drawing.Size(483, 45);
-            this.trackBar7.TabIndex = 51;
-            this.trackBar7.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBar7.Value = 30;
+            this.tbDestroyTamesOverLevel.Location = new System.Drawing.Point(180, 486);
+            this.tbDestroyTamesOverLevel.Maximum = 5000;
+            this.tbDestroyTamesOverLevel.Name = "tbDestroyTamesOverLevel";
+            this.tbDestroyTamesOverLevel.Size = new System.Drawing.Size(534, 45);
+            this.tbDestroyTamesOverLevel.TabIndex = 51;
+            this.tbDestroyTamesOverLevel.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbDestroyTamesOverLevel.Value = 30;
+            this.tbDestroyTamesOverLevel.ValueChanged += new System.EventHandler(this.tbDestroyTamesOverLevel_Scroll);
             // 
             // label48
             // 
@@ -2691,42 +5415,43 @@
             // 
             this.groupBox12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox12.Controls.Add(this.textBox6);
-            this.groupBox12.Controls.Add(this.trackBar6);
+            this.groupBox12.Controls.Add(this.txtDifficultyOffset);
+            this.groupBox12.Controls.Add(this.tbDifficultyOffset);
             this.groupBox12.Controls.Add(this.label46);
             this.groupBox12.Controls.Add(this.label44);
-            this.groupBox12.Controls.Add(this.textBox5);
-            this.groupBox12.Controls.Add(this.trackBar5);
+            this.groupBox12.Controls.Add(this.txtMaxDinoLevel);
+            this.groupBox12.Controls.Add(this.tbMaxDinoLevel);
             this.groupBox12.Controls.Add(this.label45);
-            this.groupBox12.Controls.Add(this.checkBox19);
+            this.groupBox12.Controls.Add(this.chkEnableDifficultOverride);
             this.groupBox12.ForeColor = System.Drawing.Color.SteelBlue;
             this.groupBox12.Location = new System.Drawing.Point(17, 369);
             this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(791, 114);
+            this.groupBox12.Size = new System.Drawing.Size(842, 114);
             this.groupBox12.TabIndex = 49;
             this.groupBox12.TabStop = false;
             // 
-            // textBox6
+            // txtDifficultyOffset
             // 
-            this.textBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox6.Enabled = false;
-            this.textBox6.Location = new System.Drawing.Point(652, 70);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(49, 21);
-            this.textBox6.TabIndex = 52;
+            this.txtDifficultyOffset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDifficultyOffset.Location = new System.Drawing.Point(703, 70);
+            this.txtDifficultyOffset.Name = "txtDifficultyOffset";
+            this.txtDifficultyOffset.Size = new System.Drawing.Size(49, 21);
+            this.txtDifficultyOffset.TabIndex = 52;
+            this.txtDifficultyOffset.TextChanged += new System.EventHandler(this.txtDifficultyOffset_TextChanged);
             // 
-            // trackBar6
+            // tbDifficultyOffset
             // 
-            this.trackBar6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbDifficultyOffset.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBar6.Location = new System.Drawing.Point(163, 67);
-            this.trackBar6.Maximum = 1000;
-            this.trackBar6.Minimum = 100;
-            this.trackBar6.Name = "trackBar6";
-            this.trackBar6.Size = new System.Drawing.Size(483, 45);
-            this.trackBar6.TabIndex = 51;
-            this.trackBar6.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBar6.Value = 100;
+            this.tbDifficultyOffset.Location = new System.Drawing.Point(163, 67);
+            this.tbDifficultyOffset.Maximum = 1000;
+            this.tbDifficultyOffset.Minimum = 1;
+            this.tbDifficultyOffset.Name = "tbDifficultyOffset";
+            this.tbDifficultyOffset.Size = new System.Drawing.Size(534, 45);
+            this.tbDifficultyOffset.TabIndex = 51;
+            this.tbDifficultyOffset.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbDifficultyOffset.Value = 100;
+            this.tbDifficultyOffset.ValueChanged += new System.EventHandler(this.tbDifficultyOffset_Scroll);
             // 
             // label46
             // 
@@ -2741,33 +5466,34 @@
             // 
             this.label44.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label44.AutoSize = true;
-            this.label44.Location = new System.Drawing.Point(726, 33);
+            this.label44.Location = new System.Drawing.Point(777, 33);
             this.label44.Name = "label44";
             this.label44.Size = new System.Drawing.Size(42, 15);
             this.label44.TabIndex = 49;
             this.label44.Text = "Levels";
             // 
-            // textBox5
+            // txtMaxDinoLevel
             // 
-            this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox5.Enabled = false;
-            this.textBox5.Location = new System.Drawing.Point(652, 28);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(49, 21);
-            this.textBox5.TabIndex = 48;
+            this.txtMaxDinoLevel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtMaxDinoLevel.Location = new System.Drawing.Point(703, 28);
+            this.txtMaxDinoLevel.Name = "txtMaxDinoLevel";
+            this.txtMaxDinoLevel.Size = new System.Drawing.Size(49, 21);
+            this.txtMaxDinoLevel.TabIndex = 48;
+            this.txtMaxDinoLevel.TextChanged += new System.EventHandler(this.txtMaxDinoLevel_TextChanged);
             // 
-            // trackBar5
+            // tbMaxDinoLevel
             // 
-            this.trackBar5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbMaxDinoLevel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBar5.Location = new System.Drawing.Point(163, 25);
-            this.trackBar5.Maximum = 1200;
-            this.trackBar5.Minimum = 30;
-            this.trackBar5.Name = "trackBar5";
-            this.trackBar5.Size = new System.Drawing.Size(483, 45);
-            this.trackBar5.TabIndex = 47;
-            this.trackBar5.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBar5.Value = 30;
+            this.tbMaxDinoLevel.Location = new System.Drawing.Point(163, 25);
+            this.tbMaxDinoLevel.Maximum = 1200;
+            this.tbMaxDinoLevel.Minimum = 30;
+            this.tbMaxDinoLevel.Name = "tbMaxDinoLevel";
+            this.tbMaxDinoLevel.Size = new System.Drawing.Size(534, 45);
+            this.tbMaxDinoLevel.TabIndex = 47;
+            this.tbMaxDinoLevel.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbMaxDinoLevel.Value = 30;
+            this.tbMaxDinoLevel.ValueChanged += new System.EventHandler(this.tbMaxDinoLevel_Scroll);
             // 
             // label45
             // 
@@ -2778,76 +5504,65 @@
             this.label45.TabIndex = 46;
             this.label45.Text = "Max Dino Level";
             // 
-            // checkBox19
+            // chkEnableDifficultOverride
             // 
-            this.checkBox19.AutoSize = true;
-            this.checkBox19.Location = new System.Drawing.Point(8, 0);
-            this.checkBox19.Name = "checkBox19";
-            this.checkBox19.Size = new System.Drawing.Size(162, 19);
-            this.checkBox19.TabIndex = 9;
-            this.checkBox19.Text = "Enable Difficulty Override";
-            this.checkBox19.UseVisualStyleBackColor = true;
+            this.chkEnableDifficultOverride.AutoSize = true;
+            this.chkEnableDifficultOverride.Location = new System.Drawing.Point(8, 0);
+            this.chkEnableDifficultOverride.Name = "chkEnableDifficultOverride";
+            this.chkEnableDifficultOverride.Size = new System.Drawing.Size(162, 19);
+            this.chkEnableDifficultOverride.TabIndex = 9;
+            this.chkEnableDifficultOverride.Text = "Enable Difficulty Override";
+            this.chkEnableDifficultOverride.UseVisualStyleBackColor = true;
+            this.chkEnableDifficultOverride.CheckedChanged += new System.EventHandler(this.chkEnableDifficultOverride_CheckedChanged);
             // 
-            // textBox4
+            // txtMaxGatewaysOnSaddles
             // 
-            this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox4.Enabled = false;
-            this.textBox4.Location = new System.Drawing.Point(723, 327);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(49, 21);
-            this.textBox4.TabIndex = 48;
+            this.txtMaxGatewaysOnSaddles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtMaxGatewaysOnSaddles.Location = new System.Drawing.Point(774, 327);
+            this.txtMaxGatewaysOnSaddles.Name = "txtMaxGatewaysOnSaddles";
+            this.txtMaxGatewaysOnSaddles.Size = new System.Drawing.Size(49, 21);
+            this.txtMaxGatewaysOnSaddles.TabIndex = 48;
+            this.txtMaxGatewaysOnSaddles.TextChanged += new System.EventHandler(this.txtMaxGatewaysOnSaddles_TextChanged);
             // 
-            // trackBar4
+            // tbMaxGatewaysOnSaddles
             // 
-            this.trackBar4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbMaxGatewaysOnSaddles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBar4.Location = new System.Drawing.Point(219, 324);
-            this.trackBar4.Maximum = 5;
-            this.trackBar4.Name = "trackBar4";
-            this.trackBar4.Size = new System.Drawing.Size(483, 45);
-            this.trackBar4.TabIndex = 47;
-            this.trackBar4.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBar4.Value = 1;
+            this.tbMaxGatewaysOnSaddles.Location = new System.Drawing.Point(219, 324);
+            this.tbMaxGatewaysOnSaddles.Name = "tbMaxGatewaysOnSaddles";
+            this.tbMaxGatewaysOnSaddles.Size = new System.Drawing.Size(534, 45);
+            this.tbMaxGatewaysOnSaddles.TabIndex = 47;
+            this.tbMaxGatewaysOnSaddles.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbMaxGatewaysOnSaddles.Value = 1;
+            this.tbMaxGatewaysOnSaddles.ValueChanged += new System.EventHandler(this.tbMaxGatewaysOnSaddles_Scroll);
             // 
             // label43
             // 
             this.label43.AutoSize = true;
             this.label43.Location = new System.Drawing.Point(17, 331);
             this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(162, 15);
+            this.label43.Size = new System.Drawing.Size(152, 15);
             this.label43.TabIndex = 46;
-            this.label43.Text = "Platform Saddle Multi Floors";
+            this.label43.Text = "Max Gateways on Saddles";
             // 
             // label41
             // 
             this.label41.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(797, 281);
+            this.label41.Location = new System.Drawing.Point(848, 281);
             this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(15, 15);
+            this.label41.Size = new System.Drawing.Size(13, 15);
             this.label41.TabIndex = 45;
-            this.label41.Text = "X";
+            this.label41.Text = "x";
             // 
-            // textBox3
+            // txtPlatformSaddleBuildAreaBoundsMultiplier
             // 
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.Enabled = false;
-            this.textBox3.Location = new System.Drawing.Point(723, 276);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(49, 21);
-            this.textBox3.TabIndex = 44;
-            // 
-            // trackBar3
-            // 
-            this.trackBar3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBar3.Location = new System.Drawing.Point(219, 273);
-            this.trackBar3.Maximum = 5;
-            this.trackBar3.Name = "trackBar3";
-            this.trackBar3.Size = new System.Drawing.Size(483, 45);
-            this.trackBar3.TabIndex = 43;
-            this.trackBar3.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBar3.Value = 1;
+            this.txtPlatformSaddleBuildAreaBoundsMultiplier.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPlatformSaddleBuildAreaBoundsMultiplier.Location = new System.Drawing.Point(774, 276);
+            this.txtPlatformSaddleBuildAreaBoundsMultiplier.Name = "txtPlatformSaddleBuildAreaBoundsMultiplier";
+            this.txtPlatformSaddleBuildAreaBoundsMultiplier.Size = new System.Drawing.Size(49, 21);
+            this.txtPlatformSaddleBuildAreaBoundsMultiplier.TabIndex = 44;
+            this.txtPlatformSaddleBuildAreaBoundsMultiplier.TextChanged += new System.EventHandler(this.txtPlatformSaddleBuildAreaBoundsMultiplier_TextChanged);
             // 
             // label42
             // 
@@ -2858,66 +5573,68 @@
             this.label42.TabIndex = 42;
             this.label42.Text = "Platform Saddle Multi Floors";
             // 
-            // checkBox18
+            // chkAllowUnlimitedRespecs
             // 
-            this.checkBox18.AutoSize = true;
-            this.checkBox18.Location = new System.Drawing.Point(520, 248);
-            this.checkBox18.Name = "checkBox18";
-            this.checkBox18.Size = new System.Drawing.Size(162, 19);
-            this.checkBox18.TabIndex = 41;
-            this.checkBox18.Text = "Allow Unlimited Respecs";
-            this.checkBox18.UseVisualStyleBackColor = true;
+            this.chkAllowUnlimitedRespecs.AutoSize = true;
+            this.chkAllowUnlimitedRespecs.Location = new System.Drawing.Point(520, 248);
+            this.chkAllowUnlimitedRespecs.Name = "chkAllowUnlimitedRespecs";
+            this.chkAllowUnlimitedRespecs.Size = new System.Drawing.Size(162, 19);
+            this.chkAllowUnlimitedRespecs.TabIndex = 41;
+            this.chkAllowUnlimitedRespecs.Text = "Allow Unlimited Respecs";
+            this.chkAllowUnlimitedRespecs.UseVisualStyleBackColor = true;
             // 
-            // checkBox17
+            // chkPreventSpawnAnimations
             // 
-            this.checkBox17.AutoSize = true;
-            this.checkBox17.Location = new System.Drawing.Point(272, 248);
-            this.checkBox17.Name = "checkBox17";
-            this.checkBox17.Size = new System.Drawing.Size(172, 19);
-            this.checkBox17.TabIndex = 40;
-            this.checkBox17.Text = "Prevent Spawn Animations";
-            this.checkBox17.UseVisualStyleBackColor = true;
+            this.chkPreventSpawnAnimations.AutoSize = true;
+            this.chkPreventSpawnAnimations.Location = new System.Drawing.Point(272, 248);
+            this.chkPreventSpawnAnimations.Name = "chkPreventSpawnAnimations";
+            this.chkPreventSpawnAnimations.Size = new System.Drawing.Size(172, 19);
+            this.chkPreventSpawnAnimations.TabIndex = 40;
+            this.chkPreventSpawnAnimations.Text = "Prevent Spawn Animations";
+            this.chkPreventSpawnAnimations.UseVisualStyleBackColor = true;
             // 
-            // checkBox16
+            // chkUseCorpseLocation
             // 
-            this.checkBox16.AutoSize = true;
-            this.checkBox16.Location = new System.Drawing.Point(17, 248);
-            this.checkBox16.Name = "checkBox16";
-            this.checkBox16.Size = new System.Drawing.Size(128, 19);
-            this.checkBox16.TabIndex = 39;
-            this.checkBox16.Text = "Use Corpe Locator";
-            this.checkBox16.UseVisualStyleBackColor = true;
+            this.chkUseCorpseLocation.AutoSize = true;
+            this.chkUseCorpseLocation.Location = new System.Drawing.Point(17, 248);
+            this.chkUseCorpseLocation.Name = "chkUseCorpseLocation";
+            this.chkUseCorpseLocation.Size = new System.Drawing.Size(128, 19);
+            this.chkUseCorpseLocation.TabIndex = 39;
+            this.chkUseCorpseLocation.Text = "Use Corpe Locator";
+            this.chkUseCorpseLocation.UseVisualStyleBackColor = true;
             // 
             // label39
             // 
             this.label39.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(797, 225);
+            this.label39.Location = new System.Drawing.Point(848, 225);
             this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(15, 15);
+            this.label39.Size = new System.Drawing.Size(13, 15);
             this.label39.TabIndex = 38;
-            this.label39.Text = "X";
+            this.label39.Text = "x";
             // 
-            // textBox2
+            // txtFishingLootQualityMultiplier
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(723, 220);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(49, 21);
-            this.textBox2.TabIndex = 37;
+            this.txtFishingLootQualityMultiplier.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtFishingLootQualityMultiplier.Location = new System.Drawing.Point(774, 220);
+            this.txtFishingLootQualityMultiplier.Name = "txtFishingLootQualityMultiplier";
+            this.txtFishingLootQualityMultiplier.Size = new System.Drawing.Size(49, 21);
+            this.txtFishingLootQualityMultiplier.TabIndex = 37;
+            this.txtFishingLootQualityMultiplier.TextChanged += new System.EventHandler(this.txtFishingLootQualityMultiplier_TextChanged);
+            this.txtFishingLootQualityMultiplier.Validated += new System.EventHandler(this.txtFishingLootQualityMultiplier_Validated);
             // 
-            // trackBar2
+            // tbFishingLootQualityMultiplier
             // 
-            this.trackBar2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbFishingLootQualityMultiplier.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBar2.Location = new System.Drawing.Point(219, 217);
-            this.trackBar2.Maximum = 5;
-            this.trackBar2.Name = "trackBar2";
-            this.trackBar2.Size = new System.Drawing.Size(483, 45);
-            this.trackBar2.TabIndex = 36;
-            this.trackBar2.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBar2.Value = 1;
+            this.tbFishingLootQualityMultiplier.Location = new System.Drawing.Point(219, 217);
+            this.tbFishingLootQualityMultiplier.Maximum = 50;
+            this.tbFishingLootQualityMultiplier.Name = "tbFishingLootQualityMultiplier";
+            this.tbFishingLootQualityMultiplier.Size = new System.Drawing.Size(534, 45);
+            this.tbFishingLootQualityMultiplier.TabIndex = 36;
+            this.tbFishingLootQualityMultiplier.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbFishingLootQualityMultiplier.Value = 1;
+            this.tbFishingLootQualityMultiplier.ValueChanged += new System.EventHandler(this.tbFishingLootQualityMultiplier_Scroll);
             // 
             // label40
             // 
@@ -2932,32 +5649,34 @@
             // 
             this.label38.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(796, 177);
+            this.label38.Location = new System.Drawing.Point(847, 177);
             this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(15, 15);
+            this.label38.Size = new System.Drawing.Size(13, 15);
             this.label38.TabIndex = 34;
-            this.label38.Text = "X";
+            this.label38.Text = "x";
             // 
-            // textBox1
+            // txtSupplyCrateLootQualityMultiplier
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(722, 172);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(49, 21);
-            this.textBox1.TabIndex = 33;
+            this.txtSupplyCrateLootQualityMultiplier.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSupplyCrateLootQualityMultiplier.Location = new System.Drawing.Point(773, 172);
+            this.txtSupplyCrateLootQualityMultiplier.Name = "txtSupplyCrateLootQualityMultiplier";
+            this.txtSupplyCrateLootQualityMultiplier.Size = new System.Drawing.Size(49, 21);
+            this.txtSupplyCrateLootQualityMultiplier.TabIndex = 33;
+            this.txtSupplyCrateLootQualityMultiplier.TextChanged += new System.EventHandler(this.txtSupplyCrateLootQualityMultiplier_TextChanged_1);
+            this.txtSupplyCrateLootQualityMultiplier.Validated += new System.EventHandler(this.txtSupplyCrateLootQualityMultiplier_TextChanged);
             // 
-            // trackBar1
+            // tbSupplyCrateLootQualityMultiplier
             // 
-            this.trackBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbSupplyCrateLootQualityMultiplier.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBar1.Location = new System.Drawing.Point(218, 169);
-            this.trackBar1.Maximum = 5;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(483, 45);
-            this.trackBar1.TabIndex = 32;
-            this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBar1.Value = 1;
+            this.tbSupplyCrateLootQualityMultiplier.Location = new System.Drawing.Point(218, 169);
+            this.tbSupplyCrateLootQualityMultiplier.Maximum = 50;
+            this.tbSupplyCrateLootQualityMultiplier.Name = "tbSupplyCrateLootQualityMultiplier";
+            this.tbSupplyCrateLootQualityMultiplier.Size = new System.Drawing.Size(534, 45);
+            this.tbSupplyCrateLootQualityMultiplier.TabIndex = 32;
+            this.tbSupplyCrateLootQualityMultiplier.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbSupplyCrateLootQualityMultiplier.Value = 1;
+            this.tbSupplyCrateLootQualityMultiplier.ValueChanged += new System.EventHandler(this.tbSupplyCrateLootQualityMultiplier_Scroll);
             // 
             // label37
             // 
@@ -2968,1030 +5687,162 @@
             this.label37.TabIndex = 31;
             this.label37.Text = "Supply Crate Loot Quality Multiplier";
             // 
-            // checkBox15
-            // 
-            this.checkBox15.AutoSize = true;
-            this.checkBox15.Location = new System.Drawing.Point(520, 33);
-            this.checkBox15.Name = "checkBox15";
-            this.checkBox15.Size = new System.Drawing.Size(147, 19);
-            this.checkBox15.TabIndex = 18;
-            this.checkBox15.Text = "Enable Creative Mode";
-            this.checkBox15.UseVisualStyleBackColor = true;
-            // 
-            // checkBox14
-            // 
-            this.checkBox14.AutoSize = true;
-            this.checkBox14.Location = new System.Drawing.Point(520, 58);
-            this.checkBox14.Name = "checkBox14";
-            this.checkBox14.Size = new System.Drawing.Size(168, 19);
-            this.checkBox14.TabIndex = 17;
-            this.checkBox14.Text = "Enable PvE Cryo Sickness";
-            this.checkBox14.UseVisualStyleBackColor = true;
-            // 
-            // checkBox13
-            // 
-            this.checkBox13.AutoSize = true;
-            this.checkBox13.Location = new System.Drawing.Point(520, 83);
-            this.checkBox13.Name = "checkBox13";
-            this.checkBox13.Size = new System.Drawing.Size(138, 19);
-            this.checkBox13.TabIndex = 16;
-            this.checkBox13.Text = "Disable PvP Railgun";
-            this.checkBox13.UseVisualStyleBackColor = true;
-            // 
-            // checkBox12
-            // 
-            this.checkBox12.AutoSize = true;
-            this.checkBox12.Location = new System.Drawing.Point(520, 108);
-            this.checkBox12.Name = "checkBox12";
-            this.checkBox12.Size = new System.Drawing.Size(198, 19);
-            this.checkBox12.TabIndex = 15;
-            this.checkBox12.Text = "Disable Custom Tribute Folders";
-            this.checkBox12.UseVisualStyleBackColor = true;
-            // 
-            // checkBox11
-            // 
-            this.checkBox11.AutoSize = true;
-            this.checkBox11.Location = new System.Drawing.Point(520, 135);
-            this.checkBox11.Name = "checkBox11";
-            this.checkBox11.Size = new System.Drawing.Size(183, 19);
-            this.checkBox11.TabIndex = 8;
-            this.checkBox11.Text = "Random Supply Crate Points";
-            this.checkBox11.UseVisualStyleBackColor = true;
-            // 
-            // checkBox10
-            // 
-            this.checkBox10.AutoSize = true;
-            this.checkBox10.Location = new System.Drawing.Point(272, 133);
-            this.checkBox10.Name = "checkBox10";
-            this.checkBox10.Size = new System.Drawing.Size(242, 19);
-            this.checkBox10.TabIndex = 14;
-            this.checkBox10.Text = "Allow Crate Spawns on top of Structures";
-            this.checkBox10.UseVisualStyleBackColor = true;
-            // 
-            // checkBox9
-            // 
-            this.checkBox9.AutoSize = true;
-            this.checkBox9.Location = new System.Drawing.Point(272, 108);
-            this.checkBox9.Name = "checkBox9";
-            this.checkBox9.Size = new System.Drawing.Size(187, 19);
-            this.checkBox9.TabIndex = 13;
-            this.checkBox9.Text = "Enable Single Player Settings";
-            this.checkBox9.UseVisualStyleBackColor = true;
-            // 
-            // checkBox8
-            // 
-            this.checkBox8.AutoSize = true;
-            this.checkBox8.Location = new System.Drawing.Point(272, 83);
-            this.checkBox8.Name = "checkBox8";
-            this.checkBox8.Size = new System.Drawing.Size(169, 19);
-            this.checkBox8.TabIndex = 12;
-            this.checkBox8.Text = "Enable PVP Cave Building";
-            this.checkBox8.UseVisualStyleBackColor = true;
-            // 
-            // checkBox7
-            // 
-            this.checkBox7.AutoSize = true;
-            this.checkBox7.Location = new System.Drawing.Point(272, 58);
-            this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(167, 19);
-            this.checkBox7.TabIndex = 11;
-            this.checkBox7.Text = "Enable PvE Cave Building";
-            this.checkBox7.UseVisualStyleBackColor = true;
-            // 
-            // checkBox6
-            // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(272, 33);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(89, 19);
-            this.checkBox6.TabIndex = 10;
-            this.checkBox6.Text = "Enable PvP";
-            this.checkBox6.UseVisualStyleBackColor = true;
-            // 
-            // checkBox5
-            // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(18, 133);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(146, 19);
-            this.checkBox5.TabIndex = 8;
-            this.checkBox5.Text = "Disable Supply Crates";
-            this.checkBox5.UseVisualStyleBackColor = true;
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(17, 108);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(246, 19);
-            this.checkBox4.TabIndex = 9;
-            this.checkBox4.Text = "Prevent Building in Resource Rich Areas";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(17, 83);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(162, 19);
-            this.checkBox3.TabIndex = 8;
-            this.checkBox3.Text = "Disable PvP Friendly Fire";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(17, 58);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(163, 19);
-            this.checkBox2.TabIndex = 8;
-            this.checkBox2.Text = "Disable PVE Friendly File";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(18, 33);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(154, 19);
-            this.checkBox1.TabIndex = 7;
-            this.checkBox1.Text = "Enable Hardcore Mode";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // groupBox15
-            // 
-            this.groupBox15.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox15.Controls.Add(this.checkBox34);
-            this.groupBox15.Controls.Add(this.label57);
-            this.groupBox15.Controls.Add(this.textBox14);
-            this.groupBox15.Controls.Add(this.trackBar14);
-            this.groupBox15.Controls.Add(this.checkBox33);
-            this.groupBox15.Controls.Add(this.label52);
-            this.groupBox15.Controls.Add(this.textBox13);
-            this.groupBox15.Controls.Add(this.trackBar13);
-            this.groupBox15.Controls.Add(this.checkBox29);
-            this.groupBox15.Controls.Add(this.label50);
-            this.groupBox15.Controls.Add(this.textBox12);
-            this.groupBox15.Controls.Add(this.trackBar12);
-            this.groupBox15.Controls.Add(this.checkBox25);
-            this.groupBox15.Controls.Add(this.label49);
-            this.groupBox15.Controls.Add(this.textBox8);
-            this.groupBox15.Controls.Add(this.trackBar8);
-            this.groupBox15.Controls.Add(this.checkBox26);
-            this.groupBox15.Controls.Add(this.label51);
-            this.groupBox15.Controls.Add(this.textBox9);
-            this.groupBox15.Controls.Add(this.trackBar9);
-            this.groupBox15.ForeColor = System.Drawing.Color.SteelBlue;
-            this.groupBox15.Location = new System.Drawing.Point(16, 755);
-            this.groupBox15.Name = "groupBox15";
-            this.groupBox15.Size = new System.Drawing.Size(791, 195);
-            this.groupBox15.TabIndex = 56;
-            this.groupBox15.TabStop = false;
-            this.groupBox15.Text = "Cluster Tribute Options";
-            // 
-            // checkBox26
-            // 
-            this.checkBox26.AutoSize = true;
-            this.checkBox26.Location = new System.Drawing.Point(8, 27);
-            this.checkBox26.Name = "checkBox26";
-            this.checkBox26.Size = new System.Drawing.Size(165, 19);
-            this.checkBox26.TabIndex = 54;
-            this.checkBox26.Text = "No Transfer from Filtering";
-            this.checkBox26.UseVisualStyleBackColor = true;
-            // 
-            // label51
-            // 
-            this.label51.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label51.AutoSize = true;
-            this.label51.Location = new System.Drawing.Point(728, 28);
-            this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(51, 15);
-            this.label51.TabIndex = 53;
-            this.label51.Text = "minutes";
-            // 
-            // textBox9
-            // 
-            this.textBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox9.Enabled = false;
-            this.textBox9.Location = new System.Drawing.Point(654, 23);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(49, 21);
-            this.textBox9.TabIndex = 52;
-            // 
-            // trackBar9
-            // 
-            this.trackBar9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBar9.Location = new System.Drawing.Point(274, 20);
-            this.trackBar9.Maximum = 1200;
-            this.trackBar9.Minimum = 30;
-            this.trackBar9.Name = "trackBar9";
-            this.trackBar9.Size = new System.Drawing.Size(374, 45);
-            this.trackBar9.TabIndex = 51;
-            this.trackBar9.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBar9.Value = 30;
-            // 
-            // checkBox25
-            // 
-            this.checkBox25.AutoSize = true;
-            this.checkBox25.Location = new System.Drawing.Point(8, 59);
-            this.checkBox25.Name = "checkBox25";
-            this.checkBox25.Size = new System.Drawing.Size(219, 19);
-            this.checkBox25.TabIndex = 58;
-            this.checkBox25.Text = "Override Survivor Upload Expiration";
-            this.checkBox25.UseVisualStyleBackColor = true;
-            // 
-            // label49
-            // 
-            this.label49.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label49.AutoSize = true;
-            this.label49.Location = new System.Drawing.Point(728, 60);
-            this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(51, 15);
-            this.label49.TabIndex = 57;
-            this.label49.Text = "minutes";
-            // 
-            // textBox8
-            // 
-            this.textBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox8.Enabled = false;
-            this.textBox8.Location = new System.Drawing.Point(654, 55);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(49, 21);
-            this.textBox8.TabIndex = 56;
-            // 
-            // trackBar8
-            // 
-            this.trackBar8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBar8.Location = new System.Drawing.Point(274, 52);
-            this.trackBar8.Maximum = 1200;
-            this.trackBar8.Minimum = 30;
-            this.trackBar8.Name = "trackBar8";
-            this.trackBar8.Size = new System.Drawing.Size(374, 45);
-            this.trackBar8.TabIndex = 55;
-            this.trackBar8.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBar8.Value = 30;
-            // 
-            // checkBox29
-            // 
-            this.checkBox29.AutoSize = true;
-            this.checkBox29.Location = new System.Drawing.Point(8, 90);
-            this.checkBox29.Name = "checkBox29";
-            this.checkBox29.Size = new System.Drawing.Size(200, 19);
-            this.checkBox29.TabIndex = 62;
-            this.checkBox29.Text = "Override Item Upload Expiration";
-            this.checkBox29.UseVisualStyleBackColor = true;
-            // 
-            // label50
-            // 
-            this.label50.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label50.AutoSize = true;
-            this.label50.Location = new System.Drawing.Point(728, 91);
-            this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(51, 15);
-            this.label50.TabIndex = 61;
-            this.label50.Text = "minutes";
-            // 
-            // textBox12
-            // 
-            this.textBox12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox12.Enabled = false;
-            this.textBox12.Location = new System.Drawing.Point(654, 86);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(49, 21);
-            this.textBox12.TabIndex = 60;
-            // 
-            // trackBar12
-            // 
-            this.trackBar12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBar12.Location = new System.Drawing.Point(274, 83);
-            this.trackBar12.Maximum = 1200;
-            this.trackBar12.Minimum = 30;
-            this.trackBar12.Name = "trackBar12";
-            this.trackBar12.Size = new System.Drawing.Size(374, 45);
-            this.trackBar12.TabIndex = 59;
-            this.trackBar12.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBar12.Value = 30;
-            // 
-            // checkBox33
-            // 
-            this.checkBox33.AutoSize = true;
-            this.checkBox33.Location = new System.Drawing.Point(8, 124);
-            this.checkBox33.Name = "checkBox33";
-            this.checkBox33.Size = new System.Drawing.Size(202, 19);
-            this.checkBox33.TabIndex = 66;
-            this.checkBox33.Text = "Override Dino Upload Expiration";
-            this.checkBox33.UseVisualStyleBackColor = true;
-            // 
-            // label52
-            // 
-            this.label52.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label52.AutoSize = true;
-            this.label52.Location = new System.Drawing.Point(728, 125);
-            this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(51, 15);
-            this.label52.TabIndex = 65;
-            this.label52.Text = "minutes";
-            // 
-            // textBox13
-            // 
-            this.textBox13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox13.Enabled = false;
-            this.textBox13.Location = new System.Drawing.Point(654, 120);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(49, 21);
-            this.textBox13.TabIndex = 64;
-            // 
-            // trackBar13
-            // 
-            this.trackBar13.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBar13.Location = new System.Drawing.Point(274, 117);
-            this.trackBar13.Maximum = 1200;
-            this.trackBar13.Minimum = 30;
-            this.trackBar13.Name = "trackBar13";
-            this.trackBar13.Size = new System.Drawing.Size(374, 45);
-            this.trackBar13.TabIndex = 63;
-            this.trackBar13.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBar13.Value = 30;
-            // 
-            // checkBox34
-            // 
-            this.checkBox34.AutoSize = true;
-            this.checkBox34.Location = new System.Drawing.Point(8, 155);
-            this.checkBox34.Name = "checkBox34";
-            this.checkBox34.Size = new System.Drawing.Size(260, 19);
-            this.checkBox34.TabIndex = 70;
-            this.checkBox34.Text = "Override Minimum Dino Re-upload Interval";
-            this.checkBox34.UseVisualStyleBackColor = true;
-            // 
-            // label57
-            // 
-            this.label57.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label57.AutoSize = true;
-            this.label57.Location = new System.Drawing.Point(728, 156);
-            this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(51, 15);
-            this.label57.TabIndex = 69;
-            this.label57.Text = "minutes";
-            // 
-            // textBox14
-            // 
-            this.textBox14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox14.Enabled = false;
-            this.textBox14.Location = new System.Drawing.Point(654, 151);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(49, 21);
-            this.textBox14.TabIndex = 68;
-            // 
-            // trackBar14
-            // 
-            this.trackBar14.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBar14.Location = new System.Drawing.Point(274, 148);
-            this.trackBar14.Maximum = 1200;
-            this.trackBar14.Minimum = 30;
-            this.trackBar14.Name = "trackBar14";
-            this.trackBar14.Size = new System.Drawing.Size(374, 45);
-            this.trackBar14.TabIndex = 67;
-            this.trackBar14.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBar14.Value = 30;
-            // 
-            // checkBox35
-            // 
-            this.checkBox35.AutoSize = true;
-            this.checkBox35.Location = new System.Drawing.Point(7, 0);
-            this.checkBox35.Name = "checkBox35";
-            this.checkBox35.Size = new System.Drawing.Size(129, 19);
-            this.checkBox35.TabIndex = 9;
-            this.checkBox35.Text = "Prevent Offline PvP";
-            this.checkBox35.UseVisualStyleBackColor = true;
-            // 
-            // groupBox16
-            // 
-            this.groupBox16.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox16.Controls.Add(this.label59);
-            this.groupBox16.Controls.Add(this.maskedTextBox2);
-            this.groupBox16.Controls.Add(this.label58);
-            this.groupBox16.Controls.Add(this.maskedTextBox1);
-            this.groupBox16.Controls.Add(this.checkBox39);
-            this.groupBox16.Controls.Add(this.checkBox35);
-            this.groupBox16.ForeColor = System.Drawing.Color.SteelBlue;
-            this.groupBox16.Location = new System.Drawing.Point(16, 956);
-            this.groupBox16.Name = "groupBox16";
-            this.groupBox16.Size = new System.Drawing.Size(791, 53);
-            this.groupBox16.TabIndex = 57;
-            this.groupBox16.TabStop = false;
-            // 
-            // checkBox39
-            // 
-            this.checkBox39.AutoSize = true;
-            this.checkBox39.Location = new System.Drawing.Point(7, 25);
-            this.checkBox39.Name = "checkBox39";
-            this.checkBox39.Size = new System.Drawing.Size(117, 19);
-            this.checkBox39.TabIndex = 10;
-            this.checkBox39.Text = "Use Server Time";
-            this.checkBox39.UseVisualStyleBackColor = true;
-            // 
-            // maskedTextBox1
-            // 
-            this.maskedTextBox1.Enabled = false;
-            this.maskedTextBox1.Location = new System.Drawing.Point(273, 20);
-            this.maskedTextBox1.Mask = "00:00";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(59, 21);
-            this.maskedTextBox1.TabIndex = 11;
-            this.maskedTextBox1.Text = "0100";
-            this.maskedTextBox1.ValidatingType = typeof(System.DateTime);
-            // 
-            // label58
-            // 
-            this.label58.AutoSize = true;
-            this.label58.Location = new System.Drawing.Point(204, 23);
-            this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(63, 15);
-            this.label58.TabIndex = 12;
-            this.label58.Text = "Start Time";
-            // 
-            // label59
-            // 
-            this.label59.AutoSize = true;
-            this.label59.Location = new System.Drawing.Point(351, 23);
-            this.label59.Name = "label59";
-            this.label59.Size = new System.Drawing.Size(60, 15);
-            this.label59.TabIndex = 14;
-            this.label59.Text = "End Time";
-            // 
-            // maskedTextBox2
-            // 
-            this.maskedTextBox2.Enabled = false;
-            this.maskedTextBox2.Location = new System.Drawing.Point(420, 20);
-            this.maskedTextBox2.Mask = "00:00";
-            this.maskedTextBox2.Name = "maskedTextBox2";
-            this.maskedTextBox2.Size = new System.Drawing.Size(59, 21);
-            this.maskedTextBox2.TabIndex = 13;
-            this.maskedTextBox2.Text = "0100";
-            this.maskedTextBox2.ValidatingType = typeof(System.DateTime);
-            // 
-            // label60
-            // 
-            this.label60.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label60.AutoSize = true;
-            this.label60.Location = new System.Drawing.Point(737, 1148);
-            this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(47, 15);
-            this.label60.TabIndex = 62;
-            this.label60.Text = "Players";
-            // 
-            // textBox15
-            // 
-            this.textBox15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox15.Enabled = false;
-            this.textBox15.Location = new System.Drawing.Point(669, 1139);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(49, 21);
-            this.textBox15.TabIndex = 61;
-            // 
-            // trackBar15
-            // 
-            this.trackBar15.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBar15.Location = new System.Drawing.Point(181, 1137);
-            this.trackBar15.Maximum = 1200;
-            this.trackBar15.Minimum = 30;
-            this.trackBar15.Name = "trackBar15";
-            this.trackBar15.Size = new System.Drawing.Size(483, 45);
-            this.trackBar15.TabIndex = 60;
-            this.trackBar15.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBar15.Value = 30;
-            // 
-            // label61
-            // 
-            this.label61.AutoSize = true;
-            this.label61.Location = new System.Drawing.Point(13, 1146);
-            this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(118, 15);
-            this.label61.TabIndex = 59;
-            this.label61.Text = "Max Players in Tribe";
-            // 
-            // label62
-            // 
-            this.label62.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label62.AutoSize = true;
-            this.label62.Location = new System.Drawing.Point(737, 1175);
-            this.label62.Name = "label62";
-            this.label62.Size = new System.Drawing.Size(51, 15);
-            this.label62.TabIndex = 66;
-            this.label62.Text = "minutes";
-            // 
-            // textBox16
-            // 
-            this.textBox16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox16.Enabled = false;
-            this.textBox16.Location = new System.Drawing.Point(670, 1170);
-            this.textBox16.Name = "textBox16";
-            this.textBox16.Size = new System.Drawing.Size(49, 21);
-            this.textBox16.TabIndex = 65;
-            // 
-            // trackBar16
-            // 
-            this.trackBar16.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBar16.Location = new System.Drawing.Point(181, 1166);
-            this.trackBar16.Maximum = 1200;
-            this.trackBar16.Minimum = 30;
-            this.trackBar16.Name = "trackBar16";
-            this.trackBar16.Size = new System.Drawing.Size(483, 45);
-            this.trackBar16.TabIndex = 64;
-            this.trackBar16.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBar16.Value = 30;
-            // 
-            // label63
-            // 
-            this.label63.AutoSize = true;
-            this.label63.Location = new System.Drawing.Point(12, 1173);
-            this.label63.Name = "label63";
-            this.label63.Size = new System.Drawing.Size(176, 15);
-            this.label63.TabIndex = 63;
-            this.label63.Text = "Tribe Name Change Cooldown";
-            // 
-            // groupBox17
-            // 
-            this.groupBox17.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox17.Controls.Add(this.label68);
-            this.groupBox17.Controls.Add(this.textBox19);
-            this.groupBox17.Controls.Add(this.trackBar19);
-            this.groupBox17.Controls.Add(this.label69);
-            this.groupBox17.Controls.Add(this.label66);
-            this.groupBox17.Controls.Add(this.textBox18);
-            this.groupBox17.Controls.Add(this.trackBar18);
-            this.groupBox17.Controls.Add(this.label67);
-            this.groupBox17.Controls.Add(this.label64);
-            this.groupBox17.Controls.Add(this.textBox17);
-            this.groupBox17.Controls.Add(this.trackBar17);
-            this.groupBox17.Controls.Add(this.label65);
-            this.groupBox17.Controls.Add(this.checkBox37);
-            this.groupBox17.ForeColor = System.Drawing.Color.SteelBlue;
-            this.groupBox17.Location = new System.Drawing.Point(16, 1015);
-            this.groupBox17.Name = "groupBox17";
-            this.groupBox17.Size = new System.Drawing.Size(791, 118);
-            this.groupBox17.TabIndex = 67;
-            this.groupBox17.TabStop = false;
-            // 
-            // checkBox37
-            // 
-            this.checkBox37.AutoSize = true;
-            this.checkBox37.Location = new System.Drawing.Point(7, 0);
-            this.checkBox37.Name = "checkBox37";
-            this.checkBox37.Size = new System.Drawing.Size(194, 19);
-            this.checkBox37.TabIndex = 9;
-            this.checkBox37.Text = "Increase PvP Respawn Interval";
-            this.checkBox37.UseVisualStyleBackColor = true;
-            // 
-            // label64
-            // 
-            this.label64.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label64.AutoSize = true;
-            this.label64.Location = new System.Drawing.Point(728, 25);
-            this.label64.Name = "label64";
-            this.label64.Size = new System.Drawing.Size(53, 15);
-            this.label64.TabIndex = 66;
-            this.label64.Text = "seconds";
-            // 
-            // textBox17
-            // 
-            this.textBox17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox17.Enabled = false;
-            this.textBox17.Location = new System.Drawing.Point(654, 20);
-            this.textBox17.Name = "textBox17";
-            this.textBox17.Size = new System.Drawing.Size(49, 21);
-            this.textBox17.TabIndex = 65;
-            // 
-            // trackBar17
-            // 
-            this.trackBar17.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBar17.Location = new System.Drawing.Point(165, 17);
-            this.trackBar17.Maximum = 1200;
-            this.trackBar17.Minimum = 30;
-            this.trackBar17.Name = "trackBar17";
-            this.trackBar17.Size = new System.Drawing.Size(483, 45);
-            this.trackBar17.TabIndex = 64;
-            this.trackBar17.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBar17.Value = 30;
-            // 
-            // label65
-            // 
-            this.label65.AutoSize = true;
-            this.label65.Location = new System.Drawing.Point(4, 23);
-            this.label65.Name = "label65";
-            this.label65.Size = new System.Drawing.Size(122, 15);
-            this.label65.TabIndex = 63;
-            this.label65.Text = "Interval Check Period";
-            // 
-            // label66
-            // 
-            this.label66.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label66.AutoSize = true;
-            this.label66.Location = new System.Drawing.Point(728, 52);
-            this.label66.Name = "label66";
-            this.label66.Size = new System.Drawing.Size(13, 15);
-            this.label66.TabIndex = 70;
-            this.label66.Text = "x";
-            // 
-            // textBox18
-            // 
-            this.textBox18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox18.Enabled = false;
-            this.textBox18.Location = new System.Drawing.Point(654, 47);
-            this.textBox18.Name = "textBox18";
-            this.textBox18.Size = new System.Drawing.Size(49, 21);
-            this.textBox18.TabIndex = 69;
-            // 
-            // trackBar18
-            // 
-            this.trackBar18.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBar18.Location = new System.Drawing.Point(165, 44);
-            this.trackBar18.Maximum = 1200;
-            this.trackBar18.Minimum = 30;
-            this.trackBar18.Name = "trackBar18";
-            this.trackBar18.Size = new System.Drawing.Size(483, 45);
-            this.trackBar18.TabIndex = 68;
-            this.trackBar18.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBar18.Value = 30;
-            // 
-            // label67
-            // 
-            this.label67.AutoSize = true;
-            this.label67.Location = new System.Drawing.Point(4, 50);
-            this.label67.Name = "label67";
-            this.label67.Size = new System.Drawing.Size(100, 15);
-            this.label67.TabIndex = 67;
-            this.label67.Text = "Interval Multiplier";
-            // 
-            // label68
-            // 
-            this.label68.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label68.AutoSize = true;
-            this.label68.Location = new System.Drawing.Point(728, 79);
-            this.label68.Name = "label68";
-            this.label68.Size = new System.Drawing.Size(53, 15);
-            this.label68.TabIndex = 74;
-            this.label68.Text = "seconds";
-            // 
-            // textBox19
-            // 
-            this.textBox19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox19.Enabled = false;
-            this.textBox19.Location = new System.Drawing.Point(654, 74);
-            this.textBox19.Name = "textBox19";
-            this.textBox19.Size = new System.Drawing.Size(49, 21);
-            this.textBox19.TabIndex = 73;
-            // 
-            // trackBar19
-            // 
-            this.trackBar19.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBar19.Location = new System.Drawing.Point(165, 71);
-            this.trackBar19.Maximum = 1200;
-            this.trackBar19.Minimum = 30;
-            this.trackBar19.Name = "trackBar19";
-            this.trackBar19.Size = new System.Drawing.Size(483, 45);
-            this.trackBar19.TabIndex = 72;
-            this.trackBar19.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBar19.Value = 30;
-            // 
-            // label69
-            // 
-            this.label69.AutoSize = true;
-            this.label69.Location = new System.Drawing.Point(4, 77);
-            this.label69.Name = "label69";
-            this.label69.Size = new System.Drawing.Size(122, 15);
-            this.label69.TabIndex = 71;
-            this.label69.Text = "Interval Base Amount";
-            // 
-            // label70
-            // 
-            this.label70.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label70.AutoSize = true;
-            this.label70.Location = new System.Drawing.Point(737, 1208);
-            this.label70.Name = "label70";
-            this.label70.Size = new System.Drawing.Size(51, 15);
-            this.label70.TabIndex = 71;
-            this.label70.Text = "minutes";
-            // 
-            // textBox20
-            // 
-            this.textBox20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox20.Enabled = false;
-            this.textBox20.Location = new System.Drawing.Point(670, 1203);
-            this.textBox20.Name = "textBox20";
-            this.textBox20.Size = new System.Drawing.Size(49, 21);
-            this.textBox20.TabIndex = 70;
-            // 
-            // trackBar20
-            // 
-            this.trackBar20.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBar20.Location = new System.Drawing.Point(181, 1199);
-            this.trackBar20.Maximum = 1200;
-            this.trackBar20.Minimum = 30;
-            this.trackBar20.Name = "trackBar20";
-            this.trackBar20.Size = new System.Drawing.Size(483, 45);
-            this.trackBar20.TabIndex = 69;
-            this.trackBar20.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBar20.Value = 30;
-            // 
-            // label71
-            // 
-            this.label71.AutoSize = true;
-            this.label71.Location = new System.Drawing.Point(12, 1206);
-            this.label71.Name = "label71";
-            this.label71.Size = new System.Drawing.Size(156, 15);
-            this.label71.TabIndex = 68;
-            this.label71.Text = "Tribe Slot Reuse Cooldown";
-            // 
-            // groupBox18
-            // 
-            this.groupBox18.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox18.Controls.Add(this.textBox22);
-            this.groupBox18.Controls.Add(this.trackBar22);
-            this.groupBox18.Controls.Add(this.label75);
-            this.groupBox18.Controls.Add(this.textBox23);
-            this.groupBox18.Controls.Add(this.trackBar23);
-            this.groupBox18.Controls.Add(this.label77);
-            this.groupBox18.Controls.Add(this.checkBox36);
-            this.groupBox18.ForeColor = System.Drawing.Color.SteelBlue;
-            this.groupBox18.Location = new System.Drawing.Point(16, 1237);
-            this.groupBox18.Name = "groupBox18";
-            this.groupBox18.Size = new System.Drawing.Size(791, 93);
-            this.groupBox18.TabIndex = 72;
-            this.groupBox18.TabStop = false;
-            // 
-            // textBox22
-            // 
-            this.textBox22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox22.Enabled = false;
-            this.textBox22.Location = new System.Drawing.Point(654, 47);
-            this.textBox22.Name = "textBox22";
-            this.textBox22.Size = new System.Drawing.Size(49, 21);
-            this.textBox22.TabIndex = 69;
-            // 
-            // trackBar22
-            // 
-            this.trackBar22.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBar22.Location = new System.Drawing.Point(165, 44);
-            this.trackBar22.Maximum = 1200;
-            this.trackBar22.Minimum = 30;
-            this.trackBar22.Name = "trackBar22";
-            this.trackBar22.Size = new System.Drawing.Size(483, 45);
-            this.trackBar22.TabIndex = 68;
-            this.trackBar22.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBar22.Value = 30;
-            // 
-            // label75
-            // 
-            this.label75.AutoSize = true;
-            this.label75.Location = new System.Drawing.Point(4, 50);
-            this.label75.Name = "label75";
-            this.label75.Size = new System.Drawing.Size(136, 15);
-            this.label75.TabIndex = 67;
-            this.label75.Text = "Max Tribes Per Alliance";
-            // 
-            // textBox23
-            // 
-            this.textBox23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox23.Enabled = false;
-            this.textBox23.Location = new System.Drawing.Point(654, 20);
-            this.textBox23.Name = "textBox23";
-            this.textBox23.Size = new System.Drawing.Size(49, 21);
-            this.textBox23.TabIndex = 65;
-            // 
-            // trackBar23
-            // 
-            this.trackBar23.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBar23.Location = new System.Drawing.Point(165, 17);
-            this.trackBar23.Maximum = 1200;
-            this.trackBar23.Minimum = 30;
-            this.trackBar23.Name = "trackBar23";
-            this.trackBar23.Size = new System.Drawing.Size(483, 45);
-            this.trackBar23.TabIndex = 64;
-            this.trackBar23.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBar23.Value = 30;
-            // 
-            // label77
-            // 
-            this.label77.AutoSize = true;
-            this.label77.Location = new System.Drawing.Point(4, 23);
-            this.label77.Name = "label77";
-            this.label77.Size = new System.Drawing.Size(136, 15);
-            this.label77.TabIndex = 63;
-            this.label77.Text = "Max Alliances Per Tribe";
-            // 
-            // checkBox36
-            // 
-            this.checkBox36.AutoSize = true;
-            this.checkBox36.Location = new System.Drawing.Point(7, 0);
-            this.checkBox36.Name = "checkBox36";
-            this.checkBox36.Size = new System.Drawing.Size(138, 19);
-            this.checkBox36.TabIndex = 9;
-            this.checkBox36.Text = "Allow Tribe Alliances";
-            this.checkBox36.UseVisualStyleBackColor = true;
-            // 
-            // groupBox19
-            // 
-            this.groupBox19.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox19.Controls.Add(this.checkBox38);
-            this.groupBox19.Controls.Add(this.checkBox40);
-            this.groupBox19.ForeColor = System.Drawing.Color.SteelBlue;
-            this.groupBox19.Location = new System.Drawing.Point(16, 1332);
-            this.groupBox19.Name = "groupBox19";
-            this.groupBox19.Size = new System.Drawing.Size(791, 53);
-            this.groupBox19.TabIndex = 73;
-            this.groupBox19.TabStop = false;
-            this.groupBox19.Text = "PvE \"Tribe Warfare\" options";
-            // 
-            // checkBox38
-            // 
-            this.checkBox38.AutoSize = true;
-            this.checkBox38.Location = new System.Drawing.Point(243, 19);
-            this.checkBox38.Name = "checkBox38";
-            this.checkBox38.Size = new System.Drawing.Size(190, 19);
-            this.checkBox38.TabIndex = 10;
-            this.checkBox38.Text = "Allow Canceling Tribe Warfare";
-            this.checkBox38.UseVisualStyleBackColor = true;
-            // 
-            // checkBox40
-            // 
-            this.checkBox40.AutoSize = true;
-            this.checkBox40.Location = new System.Drawing.Point(7, 19);
-            this.checkBox40.Name = "checkBox40";
-            this.checkBox40.Size = new System.Drawing.Size(132, 19);
-            this.checkBox40.TabIndex = 9;
-            this.checkBox40.Text = "Allow Tribe Warfare";
-            this.checkBox40.UseVisualStyleBackColor = true;
-            // 
-            // groupBox20
-            // 
-            this.groupBox20.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox20.Controls.Add(this.label76);
-            this.groupBox20.Controls.Add(this.label74);
-            this.groupBox20.Controls.Add(this.textBox21);
-            this.groupBox20.Controls.Add(this.trackBar21);
-            this.groupBox20.Controls.Add(this.label72);
-            this.groupBox20.Controls.Add(this.textBox24);
-            this.groupBox20.Controls.Add(this.trackBar24);
-            this.groupBox20.Controls.Add(this.label73);
-            this.groupBox20.Controls.Add(this.checkBox41);
-            this.groupBox20.ForeColor = System.Drawing.Color.SteelBlue;
-            this.groupBox20.Location = new System.Drawing.Point(16, 1391);
-            this.groupBox20.Name = "groupBox20";
-            this.groupBox20.Size = new System.Drawing.Size(791, 93);
-            this.groupBox20.TabIndex = 74;
-            this.groupBox20.TabStop = false;
-            // 
-            // textBox21
-            // 
-            this.textBox21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox21.Enabled = false;
-            this.textBox21.Location = new System.Drawing.Point(654, 47);
-            this.textBox21.Name = "textBox21";
-            this.textBox21.Size = new System.Drawing.Size(49, 21);
-            this.textBox21.TabIndex = 69;
-            // 
-            // trackBar21
-            // 
-            this.trackBar21.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBar21.Location = new System.Drawing.Point(165, 44);
-            this.trackBar21.Maximum = 1200;
-            this.trackBar21.Minimum = 30;
-            this.trackBar21.Name = "trackBar21";
-            this.trackBar21.Size = new System.Drawing.Size(483, 45);
-            this.trackBar21.TabIndex = 68;
-            this.trackBar21.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBar21.Value = 30;
-            // 
-            // label72
-            // 
-            this.label72.AutoSize = true;
-            this.label72.Location = new System.Drawing.Point(4, 50);
-            this.label72.Name = "label72";
-            this.label72.Size = new System.Drawing.Size(81, 15);
-            this.label72.TabIndex = 67;
-            this.label72.Text = "Skill Multipier";
-            // 
-            // textBox24
-            // 
-            this.textBox24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox24.Enabled = false;
-            this.textBox24.Location = new System.Drawing.Point(654, 20);
-            this.textBox24.Name = "textBox24";
-            this.textBox24.Size = new System.Drawing.Size(49, 21);
-            this.textBox24.TabIndex = 65;
-            // 
-            // trackBar24
-            // 
-            this.trackBar24.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBar24.Location = new System.Drawing.Point(165, 17);
-            this.trackBar24.Maximum = 1200;
-            this.trackBar24.Minimum = 30;
-            this.trackBar24.Name = "trackBar24";
-            this.trackBar24.Size = new System.Drawing.Size(483, 45);
-            this.trackBar24.TabIndex = 64;
-            this.trackBar24.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBar24.Value = 30;
-            // 
-            // label73
-            // 
-            this.label73.AutoSize = true;
-            this.label73.Location = new System.Drawing.Point(4, 23);
-            this.label73.Name = "label73";
-            this.label73.Size = new System.Drawing.Size(132, 15);
-            this.label73.TabIndex = 63;
-            this.label73.Text = "Effectiveness Multiplier";
-            // 
-            // checkBox41
-            // 
-            this.checkBox41.AutoSize = true;
-            this.checkBox41.Location = new System.Drawing.Point(7, 0);
-            this.checkBox41.Name = "checkBox41";
-            this.checkBox41.Size = new System.Drawing.Size(148, 19);
-            this.checkBox41.TabIndex = 9;
-            this.checkBox41.Text = "Allow Costum Recipes";
-            this.checkBox41.UseVisualStyleBackColor = true;
-            // 
-            // label74
-            // 
-            this.label74.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label74.AutoSize = true;
-            this.label74.Location = new System.Drawing.Point(727, 23);
-            this.label74.Name = "label74";
-            this.label74.Size = new System.Drawing.Size(13, 15);
-            this.label74.TabIndex = 71;
-            this.label74.Text = "x";
-            // 
-            // label76
-            // 
-            this.label76.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label76.AutoSize = true;
-            this.label76.Location = new System.Drawing.Point(727, 50);
-            this.label76.Name = "label76";
-            this.label76.Size = new System.Drawing.Size(13, 15);
-            this.label76.TabIndex = 72;
-            this.label76.Text = "x";
-            // 
-            // checkBox42
-            // 
-            this.checkBox42.AutoSize = true;
-            this.checkBox42.Location = new System.Drawing.Point(7, 0);
-            this.checkBox42.Name = "checkBox42";
-            this.checkBox42.Size = new System.Drawing.Size(119, 19);
-            this.checkBox42.TabIndex = 9;
-            this.checkBox42.Text = "Enable Diseases";
-            this.checkBox42.UseVisualStyleBackColor = true;
-            // 
-            // groupBox21
-            // 
-            this.groupBox21.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox21.Controls.Add(this.checkBox43);
-            this.groupBox21.Controls.Add(this.checkBox42);
-            this.groupBox21.ForeColor = System.Drawing.Color.SteelBlue;
-            this.groupBox21.Location = new System.Drawing.Point(16, 1486);
-            this.groupBox21.Name = "groupBox21";
-            this.groupBox21.Size = new System.Drawing.Size(791, 53);
-            this.groupBox21.TabIndex = 75;
-            this.groupBox21.TabStop = false;
-            // 
-            // checkBox43
-            // 
-            this.checkBox43.AutoSize = true;
-            this.checkBox43.Location = new System.Drawing.Point(7, 25);
-            this.checkBox43.Name = "checkBox43";
-            this.checkBox43.Size = new System.Drawing.Size(167, 19);
-            this.checkBox43.TabIndex = 10;
-            this.checkBox43.Text = "Non Permanent Diseases";
-            this.checkBox43.UseVisualStyleBackColor = true;
+            // chkEnableCreativeMode
+            // 
+            this.chkEnableCreativeMode.AutoSize = true;
+            this.chkEnableCreativeMode.Location = new System.Drawing.Point(520, 33);
+            this.chkEnableCreativeMode.Name = "chkEnableCreativeMode";
+            this.chkEnableCreativeMode.Size = new System.Drawing.Size(147, 19);
+            this.chkEnableCreativeMode.TabIndex = 18;
+            this.chkEnableCreativeMode.Text = "Enable Creative Mode";
+            this.chkEnableCreativeMode.UseVisualStyleBackColor = true;
+            // 
+            // chkEnablePVECryoSickness
+            // 
+            this.chkEnablePVECryoSickness.AutoSize = true;
+            this.chkEnablePVECryoSickness.Location = new System.Drawing.Point(520, 58);
+            this.chkEnablePVECryoSickness.Name = "chkEnablePVECryoSickness";
+            this.chkEnablePVECryoSickness.Size = new System.Drawing.Size(168, 19);
+            this.chkEnablePVECryoSickness.TabIndex = 17;
+            this.chkEnablePVECryoSickness.Text = "Enable PvE Cryo Sickness";
+            this.chkEnablePVECryoSickness.UseVisualStyleBackColor = true;
+            // 
+            // chkDisablePVPRailGun
+            // 
+            this.chkDisablePVPRailGun.AutoSize = true;
+            this.chkDisablePVPRailGun.Location = new System.Drawing.Point(520, 83);
+            this.chkDisablePVPRailGun.Name = "chkDisablePVPRailGun";
+            this.chkDisablePVPRailGun.Size = new System.Drawing.Size(138, 19);
+            this.chkDisablePVPRailGun.TabIndex = 16;
+            this.chkDisablePVPRailGun.Text = "Disable PvP Railgun";
+            this.chkDisablePVPRailGun.UseVisualStyleBackColor = true;
+            // 
+            // chkDisableCostumTributeFolders
+            // 
+            this.chkDisableCostumTributeFolders.AutoSize = true;
+            this.chkDisableCostumTributeFolders.Location = new System.Drawing.Point(520, 108);
+            this.chkDisableCostumTributeFolders.Name = "chkDisableCostumTributeFolders";
+            this.chkDisableCostumTributeFolders.Size = new System.Drawing.Size(198, 19);
+            this.chkDisableCostumTributeFolders.TabIndex = 15;
+            this.chkDisableCostumTributeFolders.Text = "Disable Custom Tribute Folders";
+            this.chkDisableCostumTributeFolders.UseVisualStyleBackColor = true;
+            // 
+            // chkRandomSupplyCratePoints
+            // 
+            this.chkRandomSupplyCratePoints.AutoSize = true;
+            this.chkRandomSupplyCratePoints.Location = new System.Drawing.Point(520, 135);
+            this.chkRandomSupplyCratePoints.Name = "chkRandomSupplyCratePoints";
+            this.chkRandomSupplyCratePoints.Size = new System.Drawing.Size(183, 19);
+            this.chkRandomSupplyCratePoints.TabIndex = 8;
+            this.chkRandomSupplyCratePoints.Text = "Random Supply Crate Points";
+            this.chkRandomSupplyCratePoints.UseVisualStyleBackColor = true;
+            // 
+            // chkAllowCrateSpawnsOnTopOfStructures
+            // 
+            this.chkAllowCrateSpawnsOnTopOfStructures.AutoSize = true;
+            this.chkAllowCrateSpawnsOnTopOfStructures.Location = new System.Drawing.Point(272, 133);
+            this.chkAllowCrateSpawnsOnTopOfStructures.Name = "chkAllowCrateSpawnsOnTopOfStructures";
+            this.chkAllowCrateSpawnsOnTopOfStructures.Size = new System.Drawing.Size(242, 19);
+            this.chkAllowCrateSpawnsOnTopOfStructures.TabIndex = 14;
+            this.chkAllowCrateSpawnsOnTopOfStructures.Text = "Allow Crate Spawns on top of Structures";
+            this.chkAllowCrateSpawnsOnTopOfStructures.UseVisualStyleBackColor = true;
+            // 
+            // chkEnableSinglePlayerSettings
+            // 
+            this.chkEnableSinglePlayerSettings.AutoSize = true;
+            this.chkEnableSinglePlayerSettings.Location = new System.Drawing.Point(272, 108);
+            this.chkEnableSinglePlayerSettings.Name = "chkEnableSinglePlayerSettings";
+            this.chkEnableSinglePlayerSettings.Size = new System.Drawing.Size(187, 19);
+            this.chkEnableSinglePlayerSettings.TabIndex = 13;
+            this.chkEnableSinglePlayerSettings.Text = "Enable Single Player Settings";
+            this.chkEnableSinglePlayerSettings.UseVisualStyleBackColor = true;
+            // 
+            // chkEnablePVPCaveBuilding
+            // 
+            this.chkEnablePVPCaveBuilding.AutoSize = true;
+            this.chkEnablePVPCaveBuilding.Location = new System.Drawing.Point(272, 83);
+            this.chkEnablePVPCaveBuilding.Name = "chkEnablePVPCaveBuilding";
+            this.chkEnablePVPCaveBuilding.Size = new System.Drawing.Size(169, 19);
+            this.chkEnablePVPCaveBuilding.TabIndex = 12;
+            this.chkEnablePVPCaveBuilding.Text = "Enable PVP Cave Building";
+            this.chkEnablePVPCaveBuilding.UseVisualStyleBackColor = true;
+            // 
+            // chkEnablePVECaveBuilding
+            // 
+            this.chkEnablePVECaveBuilding.AutoSize = true;
+            this.chkEnablePVECaveBuilding.Location = new System.Drawing.Point(272, 58);
+            this.chkEnablePVECaveBuilding.Name = "chkEnablePVECaveBuilding";
+            this.chkEnablePVECaveBuilding.Size = new System.Drawing.Size(167, 19);
+            this.chkEnablePVECaveBuilding.TabIndex = 11;
+            this.chkEnablePVECaveBuilding.Text = "Enable PvE Cave Building";
+            this.chkEnablePVECaveBuilding.UseVisualStyleBackColor = true;
+            // 
+            // chkEnablePVP
+            // 
+            this.chkEnablePVP.AutoSize = true;
+            this.chkEnablePVP.Location = new System.Drawing.Point(272, 33);
+            this.chkEnablePVP.Name = "chkEnablePVP";
+            this.chkEnablePVP.Size = new System.Drawing.Size(89, 19);
+            this.chkEnablePVP.TabIndex = 10;
+            this.chkEnablePVP.Text = "Enable PvP";
+            this.chkEnablePVP.UseVisualStyleBackColor = true;
+            // 
+            // chkDisableSupplyCrates
+            // 
+            this.chkDisableSupplyCrates.AutoSize = true;
+            this.chkDisableSupplyCrates.Location = new System.Drawing.Point(18, 133);
+            this.chkDisableSupplyCrates.Name = "chkDisableSupplyCrates";
+            this.chkDisableSupplyCrates.Size = new System.Drawing.Size(146, 19);
+            this.chkDisableSupplyCrates.TabIndex = 8;
+            this.chkDisableSupplyCrates.Text = "Disable Supply Crates";
+            this.chkDisableSupplyCrates.UseVisualStyleBackColor = true;
+            // 
+            // chkPreventBuildingInResourceRichAreas
+            // 
+            this.chkPreventBuildingInResourceRichAreas.AutoSize = true;
+            this.chkPreventBuildingInResourceRichAreas.Location = new System.Drawing.Point(17, 108);
+            this.chkPreventBuildingInResourceRichAreas.Name = "chkPreventBuildingInResourceRichAreas";
+            this.chkPreventBuildingInResourceRichAreas.Size = new System.Drawing.Size(246, 19);
+            this.chkPreventBuildingInResourceRichAreas.TabIndex = 9;
+            this.chkPreventBuildingInResourceRichAreas.Text = "Prevent Building in Resource Rich Areas";
+            this.chkPreventBuildingInResourceRichAreas.UseVisualStyleBackColor = true;
+            // 
+            // chkDisablePVPFriendlyFire
+            // 
+            this.chkDisablePVPFriendlyFire.AutoSize = true;
+            this.chkDisablePVPFriendlyFire.Location = new System.Drawing.Point(17, 83);
+            this.chkDisablePVPFriendlyFire.Name = "chkDisablePVPFriendlyFire";
+            this.chkDisablePVPFriendlyFire.Size = new System.Drawing.Size(162, 19);
+            this.chkDisablePVPFriendlyFire.TabIndex = 8;
+            this.chkDisablePVPFriendlyFire.Text = "Disable PvP Friendly Fire";
+            this.chkDisablePVPFriendlyFire.UseVisualStyleBackColor = true;
+            // 
+            // chkDisablePVEFriendlyFire
+            // 
+            this.chkDisablePVEFriendlyFire.AutoSize = true;
+            this.chkDisablePVEFriendlyFire.Location = new System.Drawing.Point(17, 58);
+            this.chkDisablePVEFriendlyFire.Name = "chkDisablePVEFriendlyFire";
+            this.chkDisablePVEFriendlyFire.Size = new System.Drawing.Size(163, 19);
+            this.chkDisablePVEFriendlyFire.TabIndex = 8;
+            this.chkDisablePVEFriendlyFire.Text = "Disable PVE Friendly File";
+            this.chkDisablePVEFriendlyFire.UseVisualStyleBackColor = true;
+            // 
+            // chkEnableHardcoreMode
+            // 
+            this.chkEnableHardcoreMode.AutoSize = true;
+            this.chkEnableHardcoreMode.Location = new System.Drawing.Point(18, 33);
+            this.chkEnableHardcoreMode.Name = "chkEnableHardcoreMode";
+            this.chkEnableHardcoreMode.Size = new System.Drawing.Size(154, 19);
+            this.chkEnableHardcoreMode.TabIndex = 7;
+            this.chkEnableHardcoreMode.Text = "Enable Hardcore Mode";
+            this.chkEnableHardcoreMode.UseVisualStyleBackColor = true;
             // 
             // FrmArk
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(851, 1100);
+            this.ClientSize = new System.Drawing.Size(902, 1100);
             this.Controls.Add(this.expandCollapsePanel3);
             this.Controls.Add(this.expandCollapsePanel2);
             this.Controls.Add(this.expandCollapsePanel1);
@@ -4038,370 +5889,565 @@
             this.groupBox1.PerformLayout();
             this.expandCollapsePanel3.ResumeLayout(false);
             this.expandCollapsePanel3.PerformLayout();
-            this.groupBox14.ResumeLayout(false);
-            this.groupBox14.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar11)).EndInit();
-            this.groupBox13.ResumeLayout(false);
-            this.groupBox13.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar7)).EndInit();
-            this.groupBox12.ResumeLayout(false);
-            this.groupBox12.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
-            this.groupBox15.ResumeLayout(false);
-            this.groupBox15.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar13)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar14)).EndInit();
-            this.groupBox16.ResumeLayout(false);
-            this.groupBox16.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar15)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar16)).EndInit();
-            this.groupBox17.ResumeLayout(false);
-            this.groupBox17.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar17)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar18)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar19)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar20)).EndInit();
-            this.groupBox18.ResumeLayout(false);
-            this.groupBox18.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar22)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar23)).EndInit();
-            this.groupBox19.ResumeLayout(false);
-            this.groupBox19.PerformLayout();
-            this.groupBox20.ResumeLayout(false);
-            this.groupBox20.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar21)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar24)).EndInit();
+            this.groupBox30.ResumeLayout(false);
+            this.groupBox30.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbVolcanoIntensity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbVolcanoInterval)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbUnicornSpawnInterval)).EndInit();
+            this.groupBox29.ResumeLayout(false);
+            this.groupBox29.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbHexagonCostMultiplier)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbHexagonRewardMultiplier)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbMaxHexagonsPerCharacter)).EndInit();
+            this.groupBox28.ResumeLayout(false);
+            this.groupBox28.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbConnectionInvicibleInterval)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbLogoutInterval)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbPlatformSaddleBuildAreaBoundsMultiplier)).EndInit();
+            this.groupBox27.ResumeLayout(false);
+            this.groupBox27.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbHyperInsulationClamp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbWeaponClipAmmoClamp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbMaxDurabilityClamp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbWeightClamp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbHypoInsulationClamp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbWeaponDamagePercentClamp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbArmorClamp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbGenericQualityClamp)).EndInit();
+            this.groupBox26.ResumeLayout(false);
+            this.groupBox26.PerformLayout();
+            this.groupBox25.ResumeLayout(false);
+            this.groupBox25.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbMutagemSpawnDelayMultiplier)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbWorldBuffScanlingEfficacy)).EndInit();
+            this.groupBox24.ResumeLayout(false);
+            this.groupBox24.PerformLayout();
+            this.groupBox23.ResumeLayout(false);
+            this.groupBox23.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbIncomingDamageMultiplierPercent)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbOutgoingDamageMultiplier)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbEnableCryopodNerfDuration)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbLimitNonPlayerDroppedItemsCount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbLimitNonPlayerDroppedItemsRange)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbFuelConsumptionIntervalMultiplier)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbGlobalPoweredBatteryDurability)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbFjordhawkInventoryCooldown)).EndInit();
+            this.groupBox22.ResumeLayout(false);
+            this.groupBox22.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbScaleMaximum)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbOnlinePlayerCountEnd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbOnlinePlayerCountStart)).EndInit();
             this.groupBox21.ResumeLayout(false);
             this.groupBox21.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbUseCorpseLifeSpanMultiplier)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbOxygenSwimSpeedStatMultiplier)).EndInit();
+            this.groupBox20.ResumeLayout(false);
+            this.groupBox20.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbCostumRecipesSkillMultiplier)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbCostumRecipesEffectivenessMultiplier)).EndInit();
+            this.groupBox19.ResumeLayout(false);
+            this.groupBox19.PerformLayout();
+            this.groupBox18.ResumeLayout(false);
+            this.groupBox18.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbMaxTribesPerAlliance)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbMaxAlliancesPerTribe)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbTribeSlotReuseCooldown)).EndInit();
+            this.groupBox17.ResumeLayout(false);
+            this.groupBox17.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbIntervalBaseAmount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbIntervalMultiplier)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbIntervalCheckPeriod)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbTribeNameChangeCooldDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbMaxPlayersInTribe)).EndInit();
+            this.groupBox16.ResumeLayout(false);
+            this.groupBox16.PerformLayout();
+            this.groupBox15.ResumeLayout(false);
+            this.groupBox15.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbOverrideMinimumDinoReUploadIntervalValue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbOverrideDinoUploadExpirationValue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbOverrideItemUploadExpirationValue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbOverrideSurvivorUploadExpirationValue)).EndInit();
+            this.groupBox14.ResumeLayout(false);
+            this.groupBox14.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbMaxTributeItems)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbMaxTributeDinos)).EndInit();
+            this.groupBox13.ResumeLayout(false);
+            this.groupBox13.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbDestroyTamesOverLevel)).EndInit();
+            this.groupBox12.ResumeLayout(false);
+            this.groupBox12.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbDifficultyOffset)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbMaxDinoLevel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbMaxGatewaysOnSaddles)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbFishingLootQualityMultiplier)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbSupplyCrateLootQualityMultiplier)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox txtProfileID;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtProfileName;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btSync;
-        private System.Windows.Forms.Button btSave;
-        private System.Windows.Forms.Button btChooseFolder;
-        private System.Windows.Forms.TextBox txtLocation;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btUpdate;
-        private System.Windows.Forms.Button btRCON;
-        private System.Windows.Forms.Button btStart;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.TextBox txtServerType;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtVersion;
-        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Panel                         panel1;
+        private System.Windows.Forms.TextBox                       txtProfileID;
+        private System.Windows.Forms.Label                         label1;
+        private System.Windows.Forms.TextBox                       txtProfileName;
+        private System.Windows.Forms.Label                         label2;
+        private System.Windows.Forms.Button                        btSync;
+        private System.Windows.Forms.Button                        btSave;
+        private System.Windows.Forms.Button                        btChooseFolder;
+        private System.Windows.Forms.TextBox                       txtLocation;
+        private System.Windows.Forms.Label                         label3;
+        private System.Windows.Forms.Button                        btUpdate;
+        private System.Windows.Forms.Button                        btRCON;
+        private System.Windows.Forms.Button                        btStart;
+        private System.Windows.Forms.Button                        button5;
+        private System.Windows.Forms.TextBox                       txtServerType;
+        private System.Windows.Forms.Label                         label4;
+        private System.Windows.Forms.TextBox                       txtVersion;
+        private System.Windows.Forms.Label                         label16;
         private MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel expandCollapsePanel1;
-        private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.CheckBox chkEnableInterval;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.TextBox txtMOTDInterval;
-        private System.Windows.Forms.TrackBar tbMOTDInterval;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.TextBox txtMOTD;
-        private System.Windows.Forms.TextBox txtMOTDDuration;
-        private System.Windows.Forms.TrackBar tbMOTDDuration;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.TextBox txtAutoSavePeriod;
-        private System.Windows.Forms.TrackBar tbAutoSavePeriod;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.ComboBox cbBranch;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox txtMods;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.ComboBox txtTotalConversion;
-        private System.Windows.Forms.ComboBox cboMap;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox txtRCONBuffer;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox txtRCONPort;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.CheckBox chkEnableRCON;
-        private System.Windows.Forms.ComboBox txtLocalIP;
-        private System.Windows.Forms.TextBox txtQueryPort;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtPeerPort;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txtServerPort;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox txtSpePwd;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtAdminPass;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtServerPWD;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtServerName;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.GroupBox                      groupBox6;
+        private System.Windows.Forms.CheckBox                      chkEnableInterval;
+        private System.Windows.Forms.Label                         label24;
+        private System.Windows.Forms.TextBox                       txtMOTDInterval;
+        private System.Windows.Forms.TrackBar                      tbMOTDInterval;
+        private System.Windows.Forms.Label                         label21;
+        private System.Windows.Forms.TextBox                       txtMOTD;
+        private System.Windows.Forms.TextBox                       txtMOTDDuration;
+        private System.Windows.Forms.TrackBar                      tbMOTDDuration;
+        private System.Windows.Forms.Label                         label23;
+        private System.Windows.Forms.GroupBox                      groupBox5;
+        private System.Windows.Forms.Label                         label20;
+        private System.Windows.Forms.TextBox                       txtAutoSavePeriod;
+        private System.Windows.Forms.TrackBar                      tbAutoSavePeriod;
+        private System.Windows.Forms.Label                         label19;
+        private System.Windows.Forms.GroupBox                      groupBox4;
+        private System.Windows.Forms.ComboBox                      cbBranch;
+        private System.Windows.Forms.Label                         label22;
+        private System.Windows.Forms.GroupBox                      groupBox3;
+        private System.Windows.Forms.TextBox                       txtMods;
+        private System.Windows.Forms.Label                         label15;
+        private System.Windows.Forms.ComboBox                      txtTotalConversion;
+        private System.Windows.Forms.ComboBox                      cboMap;
+        private System.Windows.Forms.Label                         label17;
+        private System.Windows.Forms.Label                         label18;
+        private System.Windows.Forms.GroupBox                      groupBox2;
+        private System.Windows.Forms.TextBox                       txtRCONBuffer;
+        private System.Windows.Forms.Label                         label13;
+        private System.Windows.Forms.TextBox                       txtRCONPort;
+        private System.Windows.Forms.Label                         label14;
+        private System.Windows.Forms.CheckBox                      chkEnableRCON;
+        private System.Windows.Forms.ComboBox                      txtLocalIP;
+        private System.Windows.Forms.TextBox                       txtQueryPort;
+        private System.Windows.Forms.Label                         label9;
+        private System.Windows.Forms.TextBox                       txtPeerPort;
+        private System.Windows.Forms.Label                         label10;
+        private System.Windows.Forms.TextBox                       txtServerPort;
+        private System.Windows.Forms.Label                         label11;
+        private System.Windows.Forms.Label                         label12;
+        private System.Windows.Forms.GroupBox                      groupBox1;
+        private System.Windows.Forms.TextBox                       txtSpePwd;
+        private System.Windows.Forms.Label                         label8;
+        private System.Windows.Forms.TextBox                       txtAdminPass;
+        private System.Windows.Forms.Label                         label7;
+        private System.Windows.Forms.TextBox                       txtServerPWD;
+        private System.Windows.Forms.Label                         label6;
+        private System.Windows.Forms.TextBox                       txtServerName;
+        private System.Windows.Forms.Label                         label5;
         private MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel expandCollapsePanel2;
-        private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.TextBox txtMaxPlayers;
-        private System.Windows.Forms.TrackBar tbMaxPlayers;
-        private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.TextBox txtIdleTimeout;
-        private System.Windows.Forms.TrackBar tbIdleTimeout;
-        private System.Windows.Forms.CheckBox chkEnableIdleTimeout;
-        private System.Windows.Forms.TextBox txtBanUrl;
-        private System.Windows.Forms.CheckBox chkUseBanUrl;
-        private System.Windows.Forms.CheckBox chkNoHang;
-        private System.Windows.Forms.CheckBox chkUseCache;
-        private System.Windows.Forms.CheckBox chkUseAllCores;
-        private System.Windows.Forms.CheckBox chkOutputLogToConsole;
-        private System.Windows.Forms.CheckBox chkDisablePlayerMove;
-        private System.Windows.Forms.CheckBox chkEnableBattleEye;
-        private System.Windows.Forms.CheckBox chkDisableVAC;
-        private System.Windows.Forms.CheckBox chkEnableForceRespawn;
-        private System.Windows.Forms.CheckBox chkRespawnDinosOnStartup;
-        private System.Windows.Forms.CheckBox chkAllowSharedConnections;
-        private System.Windows.Forms.CheckBox chkEnableVivox;
-        private System.Windows.Forms.CheckBox chkNoUnderMeshKilling;
-        private System.Windows.Forms.CheckBox chkNoUnderMeshChecking;
-        private System.Windows.Forms.CheckBox chkNoDinos;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.TextBox txtSpeedBias;
-        private System.Windows.Forms.TrackBar tbSpeedBias;
-        private System.Windows.Forms.CheckBox chkDisableSpeedHack;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.CheckBox chkStructuresOptimization;
-        private System.Windows.Forms.CheckBox chkAllowAnsel;
-        private System.Windows.Forms.CheckBox chkStasisKeepControllers;
-        private System.Windows.Forms.CheckBox chkUseNoMemoryBias;
-        private System.Windows.Forms.CheckBox chkForceNoManSky;
-        private System.Windows.Forms.CheckBox chkForceLowMemory;
-        private System.Windows.Forms.CheckBox chkForceM4;
-        private System.Windows.Forms.CheckBox chkForceDX10;
-        private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.TextBox txtRespawnInterval;
-        private System.Windows.Forms.TrackBar tbRespawnInterval;
-        private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.CheckBox ChkEpicOnly;
-        private System.Windows.Forms.CheckBox chkEnablPublicIPEpic;
-        private System.Windows.Forms.CheckBox chkEnableCrossPlay;
-        private System.Windows.Forms.TextBox txtAltSaveDirectory;
-        private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.TextBox txtClusterID;
-        private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.CheckBox chkClusterOverride;
-        private System.Windows.Forms.GroupBox groupBox9;
-        private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.ComboBox cboPriority;
-        private System.Windows.Forms.TextBox txtAffinity;
-        private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.Button btProcessorAffinity;
-        private System.Windows.Forms.TextBox txtBuild;
-        private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.GroupBox groupBox10;
-        private System.Windows.Forms.TextBox txtMaximumTribeLogs;
-        private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.CheckBox chkAllowHideDamageSourceFromLogs;
-        private System.Windows.Forms.CheckBox chkServerRCONOutputTribeLogs;
-        private System.Windows.Forms.CheckBox chkServerAdminLogsIncludeTribeLogs;
-        private System.Windows.Forms.CheckBox chkEnableServerAdminLogs;
-        private System.Windows.Forms.CheckBox chkLogAdminCommandstoAdmins;
-        private System.Windows.Forms.CheckBox chkLogAdminCommandsToPublic;
-        private System.Windows.Forms.CheckBox chkTribeLogDestroyedEnemyStructures;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox txtCommand;
-        private System.Windows.Forms.Timer timerGetProcess;
-        private System.Windows.Forms.GroupBox groupBox11;
-        private System.Windows.Forms.RadioButton rbOnLogin;
-        private System.Windows.Forms.RadioButton rbOnBoot;
-        private System.Windows.Forms.CheckBox chkAutoStart;
-        private System.Windows.Forms.CheckBox chkRestartIfShutdown;
-        private System.Windows.Forms.CheckBox chkAutoUpdate;
-        private System.Windows.Forms.CheckBox chkIncludeAutoBackup;
-        private System.Windows.Forms.CheckBox chkShutdown1;
-        private System.Windows.Forms.MaskedTextBox txtShutdow1;
-        private System.Windows.Forms.CheckBox chkThu1;
-        private System.Windows.Forms.CheckBox chkWed1;
-        private System.Windows.Forms.CheckBox chkTue1;
-        private System.Windows.Forms.CheckBox chkMon1;
-        private System.Windows.Forms.CheckBox chkSun1;
-        private System.Windows.Forms.CheckBox chkSat1;
-        private System.Windows.Forms.CheckBox chkFri1;
-        private System.Windows.Forms.CheckBox chkRestart1;
-        private System.Windows.Forms.CheckBox chkUpdate1;
-        private System.Windows.Forms.CheckBox chkRestart2;
-        private System.Windows.Forms.CheckBox chkUpdate2;
-        private System.Windows.Forms.CheckBox chkSat2;
-        private System.Windows.Forms.MaskedTextBox txtShutdow2;
-        private System.Windows.Forms.CheckBox chkFri2;
-        private System.Windows.Forms.CheckBox chkShutdown2;
-        private System.Windows.Forms.CheckBox chkThu2;
-        private System.Windows.Forms.CheckBox chkSun2;
-        private System.Windows.Forms.CheckBox chkWed2;
-        private System.Windows.Forms.CheckBox chkMon2;
-        private System.Windows.Forms.CheckBox chkTue2;
-        private System.Windows.Forms.CheckBox chkUseApi;
-        private System.Windows.Forms.Button btMods;
+        private System.Windows.Forms.GroupBox                      groupBox7;
+        private System.Windows.Forms.TextBox                       txtMaxPlayers;
+        private System.Windows.Forms.TrackBar                      tbMaxPlayers;
+        private System.Windows.Forms.Label                         label28;
+        private System.Windows.Forms.Label                         label25;
+        private System.Windows.Forms.TextBox                       txtIdleTimeout;
+        private System.Windows.Forms.TrackBar                      tbIdleTimeout;
+        private System.Windows.Forms.CheckBox                      chkEnableIdleTimeout;
+        private System.Windows.Forms.TextBox                       txtBanUrl;
+        private System.Windows.Forms.CheckBox                      chkUseBanUrl;
+        private System.Windows.Forms.CheckBox                      chkNoHang;
+        private System.Windows.Forms.CheckBox                      chkUseCache;
+        private System.Windows.Forms.CheckBox                      chkUseAllCores;
+        private System.Windows.Forms.CheckBox                      chkOutputLogToConsole;
+        private System.Windows.Forms.CheckBox                      chkDisablePlayerMove;
+        private System.Windows.Forms.CheckBox                      chkEnableBattleEye;
+        private System.Windows.Forms.CheckBox                      chkDisableVAC;
+        private System.Windows.Forms.CheckBox                      chkEnableForceRespawn;
+        private System.Windows.Forms.CheckBox                      chkRespawnDinosOnStartup;
+        private System.Windows.Forms.CheckBox                      chkAllowSharedConnections;
+        private System.Windows.Forms.CheckBox                      chkEnableVivox;
+        private System.Windows.Forms.CheckBox                      chkNoUnderMeshKilling;
+        private System.Windows.Forms.CheckBox                      chkNoUnderMeshChecking;
+        private System.Windows.Forms.CheckBox                      chkNoDinos;
+        private System.Windows.Forms.Label                         label26;
+        private System.Windows.Forms.TextBox                       txtSpeedBias;
+        private System.Windows.Forms.TrackBar                      tbSpeedBias;
+        private System.Windows.Forms.CheckBox                      chkDisableSpeedHack;
+        private System.Windows.Forms.Label                         label27;
+        private System.Windows.Forms.CheckBox                      chkStructuresOptimization;
+        private System.Windows.Forms.CheckBox                      chkAllowAnsel;
+        private System.Windows.Forms.CheckBox                      chkStasisKeepControllers;
+        private System.Windows.Forms.CheckBox                      chkUseNoMemoryBias;
+        private System.Windows.Forms.CheckBox                      chkForceNoManSky;
+        private System.Windows.Forms.CheckBox                      chkForceLowMemory;
+        private System.Windows.Forms.CheckBox                      chkForceM4;
+        private System.Windows.Forms.CheckBox                      chkForceDX10;
+        private System.Windows.Forms.Label                         label30;
+        private System.Windows.Forms.Label                         label29;
+        private System.Windows.Forms.TextBox                       txtRespawnInterval;
+        private System.Windows.Forms.TrackBar                      tbRespawnInterval;
+        private System.Windows.Forms.GroupBox                      groupBox8;
+        private System.Windows.Forms.CheckBox                      ChkEpicOnly;
+        private System.Windows.Forms.CheckBox                      chkEnablPublicIPEpic;
+        private System.Windows.Forms.CheckBox                      chkEnableCrossPlay;
+        private System.Windows.Forms.TextBox                       txtAltSaveDirectory;
+        private System.Windows.Forms.Label                         label31;
+        private System.Windows.Forms.TextBox                       txtClusterID;
+        private System.Windows.Forms.Label                         label32;
+        private System.Windows.Forms.CheckBox                      chkClusterOverride;
+        private System.Windows.Forms.GroupBox                      groupBox9;
+        private System.Windows.Forms.Label                         label33;
+        private System.Windows.Forms.ComboBox                      cboPriority;
+        private System.Windows.Forms.TextBox                       txtAffinity;
+        private System.Windows.Forms.Label                         label34;
+        private System.Windows.Forms.Button                        btProcessorAffinity;
+        private System.Windows.Forms.TextBox                       txtBuild;
+        private System.Windows.Forms.Label                         label35;
+        private System.Windows.Forms.GroupBox                      groupBox10;
+        private System.Windows.Forms.TextBox                       txtMaximumTribeLogs;
+        private System.Windows.Forms.Label                         label36;
+        private System.Windows.Forms.CheckBox                      chkAllowHideDamageSourceFromLogs;
+        private System.Windows.Forms.CheckBox                      chkServerRCONOutputTribeLogs;
+        private System.Windows.Forms.CheckBox                      chkServerAdminLogsIncludeTribeLogs;
+        private System.Windows.Forms.CheckBox                      chkEnableServerAdminLogs;
+        private System.Windows.Forms.CheckBox                      chkLogAdminCommandstoAdmins;
+        private System.Windows.Forms.CheckBox                      chkLogAdminCommandsToPublic;
+        private System.Windows.Forms.CheckBox                      chkTribeLogDestroyedEnemyStructures;
+        private System.Windows.Forms.Button                        button2;
+        private System.Windows.Forms.TextBox                       txtCommand;
+        private System.Windows.Forms.Timer                         timerGetProcess;
+        private System.Windows.Forms.GroupBox                      groupBox11;
+        private System.Windows.Forms.RadioButton                   rbOnLogin;
+        private System.Windows.Forms.RadioButton                   rbOnBoot;
+        private System.Windows.Forms.CheckBox                      chkAutoStart;
+        private System.Windows.Forms.CheckBox                      chkRestartIfShutdown;
+        private System.Windows.Forms.CheckBox                      chkAutoUpdate;
+        private System.Windows.Forms.CheckBox                      chkIncludeAutoBackup;
+        private System.Windows.Forms.CheckBox                      chkShutdown1;
+        private System.Windows.Forms.MaskedTextBox                 txtShutdow1;
+        private System.Windows.Forms.CheckBox                      chkThu1;
+        private System.Windows.Forms.CheckBox                      chkWed1;
+        private System.Windows.Forms.CheckBox                      chkTue1;
+        private System.Windows.Forms.CheckBox                      chkMon1;
+        private System.Windows.Forms.CheckBox                      chkSun1;
+        private System.Windows.Forms.CheckBox                      chkSat1;
+        private System.Windows.Forms.CheckBox                      chkFri1;
+        private System.Windows.Forms.CheckBox                      chkRestart1;
+        private System.Windows.Forms.CheckBox                      chkUpdate1;
+        private System.Windows.Forms.CheckBox                      chkRestart2;
+        private System.Windows.Forms.CheckBox                      chkUpdate2;
+        private System.Windows.Forms.CheckBox                      chkSat2;
+        private System.Windows.Forms.MaskedTextBox                 txtShutdow2;
+        private System.Windows.Forms.CheckBox                      chkFri2;
+        private System.Windows.Forms.CheckBox                      chkShutdown2;
+        private System.Windows.Forms.CheckBox                      chkThu2;
+        private System.Windows.Forms.CheckBox                      chkSun2;
+        private System.Windows.Forms.CheckBox                      chkWed2;
+        private System.Windows.Forms.CheckBox                      chkMon2;
+        private System.Windows.Forms.CheckBox                      chkTue2;
+        private System.Windows.Forms.CheckBox                      chkUseApi;
+        private System.Windows.Forms.Button                        btMods;
         private MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel expandCollapsePanel3;
-        private System.Windows.Forms.CheckBox checkBox6;
-        private System.Windows.Forms.CheckBox checkBox5;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox11;
-        private System.Windows.Forms.CheckBox checkBox10;
-        private System.Windows.Forms.CheckBox checkBox9;
-        private System.Windows.Forms.CheckBox checkBox8;
-        private System.Windows.Forms.CheckBox checkBox7;
-        private System.Windows.Forms.CheckBox checkBox15;
-        private System.Windows.Forms.CheckBox checkBox14;
-        private System.Windows.Forms.CheckBox checkBox13;
-        private System.Windows.Forms.CheckBox checkBox12;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TrackBar trackBar1;
-        private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.Label label39;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TrackBar trackBar2;
-        private System.Windows.Forms.Label label40;
-        private System.Windows.Forms.CheckBox checkBox18;
-        private System.Windows.Forms.CheckBox checkBox17;
-        private System.Windows.Forms.CheckBox checkBox16;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TrackBar trackBar4;
-        private System.Windows.Forms.Label label43;
-        private System.Windows.Forms.Label label41;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TrackBar trackBar3;
-        private System.Windows.Forms.Label label42;
-        private System.Windows.Forms.GroupBox groupBox12;
-        private System.Windows.Forms.Label label44;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TrackBar trackBar5;
-        private System.Windows.Forms.Label label45;
-        private System.Windows.Forms.CheckBox checkBox19;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TrackBar trackBar6;
-        private System.Windows.Forms.Label label46;
-        private System.Windows.Forms.Label label47;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TrackBar trackBar7;
-        private System.Windows.Forms.Label label48;
-        private System.Windows.Forms.GroupBox groupBox13;
-        private System.Windows.Forms.CheckBox checkBox24;
-        private System.Windows.Forms.CheckBox checkBox23;
-        private System.Windows.Forms.CheckBox checkBox22;
-        private System.Windows.Forms.CheckBox checkBox21;
-        private System.Windows.Forms.CheckBox checkBox20;
-        private System.Windows.Forms.GroupBox groupBox14;
-        private System.Windows.Forms.CheckBox checkBox27;
-        private System.Windows.Forms.Label label53;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TrackBar trackBar10;
-        private System.Windows.Forms.Label label54;
-        private System.Windows.Forms.CheckBox checkBox28;
-        private System.Windows.Forms.Label label55;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TrackBar trackBar11;
-        private System.Windows.Forms.Label label56;
-        private System.Windows.Forms.CheckBox checkBox30;
-        private System.Windows.Forms.CheckBox checkBox31;
-        private System.Windows.Forms.CheckBox checkBox32;
-        private System.Windows.Forms.GroupBox groupBox15;
-        private System.Windows.Forms.CheckBox checkBox33;
-        private System.Windows.Forms.Label label52;
-        private System.Windows.Forms.TextBox textBox13;
-        private System.Windows.Forms.TrackBar trackBar13;
-        private System.Windows.Forms.CheckBox checkBox29;
-        private System.Windows.Forms.Label label50;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.TrackBar trackBar12;
-        private System.Windows.Forms.CheckBox checkBox25;
-        private System.Windows.Forms.Label label49;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TrackBar trackBar8;
-        private System.Windows.Forms.CheckBox checkBox26;
-        private System.Windows.Forms.Label label51;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TrackBar trackBar9;
-        private System.Windows.Forms.CheckBox checkBox34;
-        private System.Windows.Forms.Label label57;
-        private System.Windows.Forms.TextBox textBox14;
-        private System.Windows.Forms.TrackBar trackBar14;
-        private System.Windows.Forms.GroupBox groupBox16;
-        private System.Windows.Forms.CheckBox checkBox39;
-        private System.Windows.Forms.CheckBox checkBox35;
-        private System.Windows.Forms.Label label59;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox2;
-        private System.Windows.Forms.Label label58;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
-        private System.Windows.Forms.Label label62;
-        private System.Windows.Forms.TextBox textBox16;
-        private System.Windows.Forms.TrackBar trackBar16;
-        private System.Windows.Forms.Label label63;
-        private System.Windows.Forms.Label label60;
-        private System.Windows.Forms.TextBox textBox15;
-        private System.Windows.Forms.TrackBar trackBar15;
-        private System.Windows.Forms.Label label61;
-        private System.Windows.Forms.GroupBox groupBox17;
-        private System.Windows.Forms.CheckBox checkBox37;
-        private System.Windows.Forms.Label label68;
-        private System.Windows.Forms.TextBox textBox19;
-        private System.Windows.Forms.TrackBar trackBar19;
-        private System.Windows.Forms.Label label69;
-        private System.Windows.Forms.Label label66;
-        private System.Windows.Forms.TextBox textBox18;
-        private System.Windows.Forms.TrackBar trackBar18;
-        private System.Windows.Forms.Label label67;
-        private System.Windows.Forms.Label label64;
-        private System.Windows.Forms.TextBox textBox17;
-        private System.Windows.Forms.TrackBar trackBar17;
-        private System.Windows.Forms.Label label65;
-        private System.Windows.Forms.Label label70;
-        private System.Windows.Forms.TextBox textBox20;
-        private System.Windows.Forms.TrackBar trackBar20;
-        private System.Windows.Forms.Label label71;
-        private System.Windows.Forms.GroupBox groupBox18;
-        private System.Windows.Forms.TextBox textBox22;
-        private System.Windows.Forms.TrackBar trackBar22;
-        private System.Windows.Forms.Label label75;
-        private System.Windows.Forms.TextBox textBox23;
-        private System.Windows.Forms.TrackBar trackBar23;
-        private System.Windows.Forms.Label label77;
-        private System.Windows.Forms.CheckBox checkBox36;
-        private System.Windows.Forms.GroupBox groupBox19;
-        private System.Windows.Forms.CheckBox checkBox38;
-        private System.Windows.Forms.CheckBox checkBox40;
-        private System.Windows.Forms.GroupBox groupBox20;
-        private System.Windows.Forms.Label label76;
-        private System.Windows.Forms.Label label74;
-        private System.Windows.Forms.TextBox textBox21;
-        private System.Windows.Forms.TrackBar trackBar21;
-        private System.Windows.Forms.Label label72;
-        private System.Windows.Forms.TextBox textBox24;
-        private System.Windows.Forms.TrackBar trackBar24;
-        private System.Windows.Forms.Label label73;
-        private System.Windows.Forms.CheckBox checkBox41;
-        private System.Windows.Forms.GroupBox groupBox21;
-        private System.Windows.Forms.CheckBox checkBox43;
-        private System.Windows.Forms.CheckBox checkBox42;
+        private System.Windows.Forms.CheckBox                      chkEnablePVP;
+        private System.Windows.Forms.CheckBox                      chkDisableSupplyCrates;
+        private System.Windows.Forms.CheckBox                      chkPreventBuildingInResourceRichAreas;
+        private System.Windows.Forms.CheckBox                      chkDisablePVPFriendlyFire;
+        private System.Windows.Forms.CheckBox                      chkDisablePVEFriendlyFire;
+        private System.Windows.Forms.CheckBox                      chkEnableHardcoreMode;
+        private System.Windows.Forms.CheckBox                      chkRandomSupplyCratePoints;
+        private System.Windows.Forms.CheckBox                      chkAllowCrateSpawnsOnTopOfStructures;
+        private System.Windows.Forms.CheckBox                      chkEnableSinglePlayerSettings;
+        private System.Windows.Forms.CheckBox                      chkEnablePVPCaveBuilding;
+        private System.Windows.Forms.CheckBox                      chkEnablePVECaveBuilding;
+        private System.Windows.Forms.CheckBox                      chkEnableCreativeMode;
+        private System.Windows.Forms.CheckBox                      chkEnablePVECryoSickness;
+        private System.Windows.Forms.CheckBox                      chkDisablePVPRailGun;
+        private System.Windows.Forms.CheckBox                      chkDisableCostumTributeFolders;
+        private System.Windows.Forms.TextBox                       txtSupplyCrateLootQualityMultiplier;
+        private System.Windows.Forms.TrackBar                      tbSupplyCrateLootQualityMultiplier;
+        private System.Windows.Forms.Label                         label37;
+        private System.Windows.Forms.Label                         label38;
+        private System.Windows.Forms.Label                         label39;
+        private System.Windows.Forms.TextBox                       txtFishingLootQualityMultiplier;
+        private System.Windows.Forms.TrackBar                      tbFishingLootQualityMultiplier;
+        private System.Windows.Forms.Label                         label40;
+        private System.Windows.Forms.CheckBox                      chkAllowUnlimitedRespecs;
+        private System.Windows.Forms.CheckBox                      chkPreventSpawnAnimations;
+        private System.Windows.Forms.CheckBox                      chkUseCorpseLocation;
+        private System.Windows.Forms.TextBox                       txtMaxGatewaysOnSaddles;
+        private System.Windows.Forms.TrackBar                      tbMaxGatewaysOnSaddles;
+        private System.Windows.Forms.Label                         label43;
+        private System.Windows.Forms.Label                         label41;
+        private System.Windows.Forms.TextBox                       txtPlatformSaddleBuildAreaBoundsMultiplier;
+        private System.Windows.Forms.TrackBar                      tbPlatformSaddleBuildAreaBoundsMultiplier;
+        private System.Windows.Forms.Label                         label42;
+        private System.Windows.Forms.GroupBox                      groupBox12;
+        private System.Windows.Forms.Label                         label44;
+        private System.Windows.Forms.TextBox                       txtMaxDinoLevel;
+        private System.Windows.Forms.TrackBar                      tbMaxDinoLevel;
+        private System.Windows.Forms.Label                         label45;
+        private System.Windows.Forms.CheckBox                      chkEnableDifficultOverride;
+        private System.Windows.Forms.TextBox                       txtDifficultyOffset;
+        private System.Windows.Forms.TrackBar                      tbDifficultyOffset;
+        private System.Windows.Forms.Label                         label46;
+        private System.Windows.Forms.Label                         label47;
+        private System.Windows.Forms.TextBox                       txtDestroyTamesOverLevel;
+        private System.Windows.Forms.TrackBar                      tbDestroyTamesOverLevel;
+        private System.Windows.Forms.Label                         label48;
+        private System.Windows.Forms.GroupBox                      groupBox13;
+        private System.Windows.Forms.CheckBox                      chkAllowForeignDinoDownloads;
+        private System.Windows.Forms.CheckBox                      chkNoDinoDownloads;
+        private System.Windows.Forms.CheckBox                      chkNoItemDownloads;
+        private System.Windows.Forms.CheckBox                      chkNoSurvivorDownloads;
+        private System.Windows.Forms.CheckBox                      chkEnableTributeDownloads;
+        private System.Windows.Forms.GroupBox                      groupBox14;
+        private System.Windows.Forms.CheckBox                      chkLimitTributeItems;
+        private System.Windows.Forms.Label                         label53;
+        private System.Windows.Forms.TextBox                       txtMaxTributeItems;
+        private System.Windows.Forms.TrackBar                      tbMaxTributeItems;
+        private System.Windows.Forms.Label                         label54;
+        private System.Windows.Forms.CheckBox                      chkLimitMaxTributeDinos;
+        private System.Windows.Forms.Label                         label55;
+        private System.Windows.Forms.TextBox                       txtMaxTributeDinos;
+        private System.Windows.Forms.TrackBar                      tbMaxTributeDinos;
+        private System.Windows.Forms.Label                         label56;
+        private System.Windows.Forms.CheckBox                      chkNoDinoUploads;
+        private System.Windows.Forms.CheckBox                      chkNoItemUploads;
+        private System.Windows.Forms.CheckBox                      chkNoSurvivorUploads;
+        private System.Windows.Forms.GroupBox                      groupBox15;
+        private System.Windows.Forms.CheckBox                      chkOverrideDinoUploadExpiration;
+        private System.Windows.Forms.Label                         label52;
+        private System.Windows.Forms.TextBox                       txtOverrideDinoUploadExpirationValue;
+        private System.Windows.Forms.TrackBar                      tbOverrideDinoUploadExpirationValue;
+        private System.Windows.Forms.CheckBox                      chkOverrideItemUploadExpiration;
+        private System.Windows.Forms.Label                         label50;
+        private System.Windows.Forms.TextBox                       txtOverrideItemUploadExpirationValue;
+        private System.Windows.Forms.TrackBar                      tbOverrideItemUploadExpirationValue;
+        private System.Windows.Forms.CheckBox                      chkOverrideSurvivorUploadExpiration;
+        private System.Windows.Forms.Label                         label49;
+        private System.Windows.Forms.TextBox                       txtOverrideSurvivorUploadExpirationValue;
+        private System.Windows.Forms.TrackBar                      tbOverrideSurvivorUploadExpirationValue;
+        private System.Windows.Forms.CheckBox                      chkNoTransferFromFiltering;
+        private System.Windows.Forms.CheckBox                      chkOverrideMinimumDinoReUploadInterval;
+        private System.Windows.Forms.Label                         label57;
+        private System.Windows.Forms.TextBox                       txtOverrideMinimumDinoReUploadIntervalValue;
+        private System.Windows.Forms.TrackBar                      tbOverrideMinimumDinoReUploadIntervalValue;
+        private System.Windows.Forms.GroupBox                      groupBox16;
+        private System.Windows.Forms.CheckBox                      chkUseServerTime;
+        private System.Windows.Forms.CheckBox                      chkPVESchedule;
+        private System.Windows.Forms.Label                         label59;
+        private System.Windows.Forms.MaskedTextBox                 txtPVPEndTime;
+        private System.Windows.Forms.Label                         label58;
+        private System.Windows.Forms.MaskedTextBox                 txtPVPStartTime;
+        private System.Windows.Forms.Label                         label62;
+        private System.Windows.Forms.TextBox                       txtTribeNameChangeCooldDown;
+        private System.Windows.Forms.TrackBar                      tbTribeNameChangeCooldDown;
+        private System.Windows.Forms.Label                         label63;
+        private System.Windows.Forms.Label                         label60;
+        private System.Windows.Forms.TextBox                       txtMaxPlayersInTribe;
+        private System.Windows.Forms.TrackBar                      tbMaxPlayersInTribe;
+        private System.Windows.Forms.Label                         label61;
+        private System.Windows.Forms.GroupBox                      groupBox17;
+        private System.Windows.Forms.CheckBox                      chkIncreasePVPRespawnInterval;
+        private System.Windows.Forms.Label                         label68;
+        private System.Windows.Forms.TextBox                       txtIntervalBaseAmount;
+        private System.Windows.Forms.TrackBar                      tbIntervalBaseAmount;
+        private System.Windows.Forms.Label                         label69;
+        private System.Windows.Forms.Label                         label66;
+        private System.Windows.Forms.TextBox                       txtIntervalMultiplier;
+        private System.Windows.Forms.TrackBar                      tbIntervalMultiplier;
+        private System.Windows.Forms.Label                         label67;
+        private System.Windows.Forms.Label                         label64;
+        private System.Windows.Forms.TextBox                       txtIntervalCheckPeriod;
+        private System.Windows.Forms.TrackBar                      tbIntervalCheckPeriod;
+        private System.Windows.Forms.Label                         label65;
+        private System.Windows.Forms.Label                         label70;
+        private System.Windows.Forms.TextBox                       txtTribeSlotReuseCooldown;
+        private System.Windows.Forms.TrackBar                      tbTribeSlotReuseCooldown;
+        private System.Windows.Forms.Label                         label71;
+        private System.Windows.Forms.GroupBox                      groupBox18;
+        private System.Windows.Forms.TextBox                       txtMaxTribesPerAlliance;
+        private System.Windows.Forms.TrackBar                      tbMaxTribesPerAlliance;
+        private System.Windows.Forms.Label                         label75;
+        private System.Windows.Forms.TextBox                       txtMaxAlliancesPerTribe;
+        private System.Windows.Forms.TrackBar                      tbMaxAlliancesPerTribe;
+        private System.Windows.Forms.Label                         label77;
+        private System.Windows.Forms.CheckBox                      chkAllowTribeAlliances;
+        private System.Windows.Forms.GroupBox                      groupBox19;
+        private System.Windows.Forms.CheckBox                      chkAllowCancelingTribeWarfare;
+        private System.Windows.Forms.CheckBox                      chkAllowTribeWarfare;
+        private System.Windows.Forms.GroupBox                      groupBox20;
+        private System.Windows.Forms.Label                         label76;
+        private System.Windows.Forms.Label                         label74;
+        private System.Windows.Forms.TextBox                       txtCostumRecipesSkillMultiplier;
+        private System.Windows.Forms.TrackBar                      tbCostumRecipesSkillMultiplier;
+        private System.Windows.Forms.Label                         label72;
+        private System.Windows.Forms.TextBox                       txtCostumRecipesEffectivenessMultiplier;
+        private System.Windows.Forms.TrackBar                      tbCostumRecipesEffectivenessMultiplier;
+        private System.Windows.Forms.Label                         label73;
+        private System.Windows.Forms.CheckBox                      chkAllowCostumRecipes;
+        private System.Windows.Forms.GroupBox                      groupBox21;
+        private System.Windows.Forms.CheckBox                      chkNonPermanentDiseases;
+        private System.Windows.Forms.CheckBox                      chkEnableDiseases;
+        private System.Windows.Forms.GroupBox                      groupBox22;
+        private System.Windows.Forms.TextBox                       txtOnlinePlayerCountEnd;
+        private System.Windows.Forms.TrackBar                      tbOnlinePlayerCountEnd;
+        private System.Windows.Forms.Label                         label78;
+        private System.Windows.Forms.TextBox                       txtOnlinePlayerCountStart;
+        private System.Windows.Forms.TrackBar                      tbOnlinePlayerCountStart;
+        private System.Windows.Forms.Label                         label79;
+        private System.Windows.Forms.CheckBox                      chkOverrideNPCNetworkStasisRangeScale;
+        private System.Windows.Forms.Label                         label81;
+        private System.Windows.Forms.Label                         label80;
+        private System.Windows.Forms.Label                         label82;
+        private System.Windows.Forms.TextBox                       txtScaleMaximum;
+        private System.Windows.Forms.TrackBar                      tbScaleMaximum;
+        private System.Windows.Forms.Label                         label83;
+        private System.Windows.Forms.Label                         label84;
+        private System.Windows.Forms.TextBox                       txtOxygenSwimSpeedStatMultiplier;
+        private System.Windows.Forms.TrackBar                      tbOxygenSwimSpeedStatMultiplier;
+        private System.Windows.Forms.Label                         label85;
+        private System.Windows.Forms.Label                         label88;
+        private System.Windows.Forms.Label                         label86;
+        private System.Windows.Forms.TextBox                       txtFjordhawkInventoryCooldown;
+        private System.Windows.Forms.TrackBar                      tbFjordhawkInventoryCooldown;
+        private System.Windows.Forms.Label                         label89;
+        private System.Windows.Forms.TextBox                       txtUseCorpseLifeSpanMultiplier;
+        private System.Windows.Forms.TrackBar                      tbUseCorpseLifeSpanMultiplier;
+        private System.Windows.Forms.Label                         label87;
+        private System.Windows.Forms.Label                         label96;
+        private System.Windows.Forms.Label                         label94;
+        private System.Windows.Forms.TextBox                       txtLimitNonPlayerDroppedItemsCount;
+        private System.Windows.Forms.TrackBar                      tbLimitNonPlayerDroppedItemsCount;
+        private System.Windows.Forms.Label                         label92;
+        private System.Windows.Forms.Label                         label97;
+        private System.Windows.Forms.TextBox                       txtLimitNonPlayerDroppedItemsRange;
+        private System.Windows.Forms.TrackBar                      tbLimitNonPlayerDroppedItemsRange;
+        private System.Windows.Forms.Label                         label90;
+        private System.Windows.Forms.Label                         label95;
+        private System.Windows.Forms.TextBox                       txtFuelConsumptionIntervalMultiplier;
+        private System.Windows.Forms.TrackBar                      tbFuelConsumptionIntervalMultiplier;
+        private System.Windows.Forms.Label                         label93;
+        private System.Windows.Forms.TextBox                       txtGlobalPoweredBatteryDurability;
+        private System.Windows.Forms.TrackBar                      tbGlobalPoweredBatteryDurability;
+        private System.Windows.Forms.Label                         label91;
+        private System.Windows.Forms.GroupBox                      groupBox23;
+        private System.Windows.Forms.Label                         label98;
+        private System.Windows.Forms.TextBox                       txtIncomingDamageMultiplierPercent;
+        private System.Windows.Forms.TrackBar                      tbIncomingDamageMultiplierPercent;
+        private System.Windows.Forms.Label                         label99;
+        private System.Windows.Forms.Label                         label100;
+        private System.Windows.Forms.Label                         label101;
+        private System.Windows.Forms.TextBox                       txtOutgoingDamageMultiplier;
+        private System.Windows.Forms.TrackBar                      tbOutgoingDamageMultiplier;
+        private System.Windows.Forms.Label                         label102;
+        private System.Windows.Forms.TextBox                       txtEnableCryopodNerfDuration;
+        private System.Windows.Forms.TrackBar                      tbEnableCryopodNerfDuration;
+        private System.Windows.Forms.Label                         label103;
+        private System.Windows.Forms.CheckBox                      chkEnableCryopodNerf;
+        private System.Windows.Forms.GroupBox                      groupBox24;
+        private System.Windows.Forms.CheckBox                      chkGen1AllowTekSuitPowers;
+        private System.Windows.Forms.CheckBox                      chkGen1DisableMissions;
+        private System.Windows.Forms.GroupBox                      groupBox25;
+        private System.Windows.Forms.Label                         label104;
+        private System.Windows.Forms.TextBox                       txtMutagemSpawnDelayMultiplier;
+        private System.Windows.Forms.TrackBar                      tbMutagemSpawnDelayMultiplier;
+        private System.Windows.Forms.Label                         label105;
+        private System.Windows.Forms.Label                         label106;
+        private System.Windows.Forms.TextBox                       txtWorldBuffScanlingEfficacy;
+        private System.Windows.Forms.TrackBar                      tbWorldBuffScanlingEfficacy;
+        private System.Windows.Forms.Label                         label107;
+        private System.Windows.Forms.CheckBox                      chkEnableWorldBuffScaling;
+        private System.Windows.Forms.CheckBox                      chkGen2DisableWorldBuffs;
+        private System.Windows.Forms.CheckBox                      chkGen2DisableTEKSuitonSpawn;
+        private System.Windows.Forms.GroupBox                      groupBox26;
+        private System.Windows.Forms.CheckBox                      chkEnableFjordurBiomeTeleport;
+        private System.Windows.Forms.CheckBox                      chkEnableFjordurSettings;
+        private System.Windows.Forms.GroupBox                      groupBox27;
+        private System.Windows.Forms.Label                         label114;
+        private System.Windows.Forms.TextBox                       txtWeaponDamagePercentClamp;
+        private System.Windows.Forms.TrackBar                      tbWeaponDamagePercentClamp;
+        private System.Windows.Forms.Label                         label109;
+        private System.Windows.Forms.TextBox                       txtArmorClamp;
+        private System.Windows.Forms.TrackBar                      tbArmorClamp;
+        private System.Windows.Forms.Label                         label112;
+        private System.Windows.Forms.TextBox                       txtGenericQualityClamp;
+        private System.Windows.Forms.TrackBar                      tbGenericQualityClamp;
+        private System.Windows.Forms.Label                         label113;
+        private System.Windows.Forms.CheckBox                      chkEnableHyperInsulationClamp;
+        private System.Windows.Forms.TextBox                       txtHyperInsulationClamp;
+        private System.Windows.Forms.TrackBar                      tbHyperInsulationClamp;
+        private System.Windows.Forms.Label                         label110;
+        private System.Windows.Forms.CheckBox                      chkEnableWeaponClipAmmoClamp;
+        private System.Windows.Forms.CheckBox                      chkEnableMaxDurabilityClamp;
+        private System.Windows.Forms.CheckBox                      chkEnableWeightClamp;
+        private System.Windows.Forms.TextBox                       txtWeaponClipAmmoClamp;
+        private System.Windows.Forms.TrackBar                      tbWeaponClipAmmoClamp;
+        private System.Windows.Forms.Label                         label111;
+        private System.Windows.Forms.TextBox                       txtMaxDurabilityClamp;
+        private System.Windows.Forms.TrackBar                      tbMaxDurabilityClamp;
+        private System.Windows.Forms.Label                         label115;
+        private System.Windows.Forms.TextBox                       txtWeightClamp;
+        private System.Windows.Forms.TrackBar                      tbWeightClamp;
+        private System.Windows.Forms.Label                         label116;
+        private System.Windows.Forms.CheckBox                      chkEnableHypoInsulationClamp;
+        private System.Windows.Forms.TextBox                       txtHypoInsulationClamp;
+        private System.Windows.Forms.TrackBar                      tbHypoInsulationClamp;
+        private System.Windows.Forms.Label                         label108;
+        private System.Windows.Forms.CheckBox                      chkEnableWeaponDamagePercentClamp;
+        private System.Windows.Forms.CheckBox                      chkEnableArmorClamp;
+        private System.Windows.Forms.CheckBox                      chkEnableGenericQualityClamp;
+        private System.Windows.Forms.CheckBox                      chkAllowPlatformSaddleMultiFloors;
+        private System.Windows.Forms.GroupBox                      groupBox28;
+        private System.Windows.Forms.TrackBar                      tbConnectionInvicibleInterval;
+        private System.Windows.Forms.Label                         label118;
+        private System.Windows.Forms.TextBox                       txtConnectionInvicibleInterval;
+        private System.Windows.Forms.Label                         label119;
+        private System.Windows.Forms.Label                         label120;
+        private System.Windows.Forms.TextBox                       txtLogoutInterval;
+        private System.Windows.Forms.TrackBar                      tbLogoutInterval;
+        private System.Windows.Forms.Label                         label121;
+        private System.Windows.Forms.CheckBox                      chkPreventOfflinePVP;
+        private System.Windows.Forms.GroupBox                      groupBox29;
+        private System.Windows.Forms.Label                         label124;
+        private System.Windows.Forms.TextBox                       txtHexagonCostMultiplier;
+        private System.Windows.Forms.TrackBar                      tbHexagonCostMultiplier;
+        private System.Windows.Forms.Label                         label125;
+        private System.Windows.Forms.Label                         label122;
+        private System.Windows.Forms.TextBox                       txtHexagonRewardMultiplier;
+        private System.Windows.Forms.TrackBar                      tbHexagonRewardMultiplier;
+        private System.Windows.Forms.Label                         label123;
+        private System.Windows.Forms.Label                         label51;
+        private System.Windows.Forms.TextBox                       txtMaxHexagonsPerCharacter;
+        private System.Windows.Forms.TrackBar                      tbMaxHexagonsPerCharacter;
+        private System.Windows.Forms.Label                         label117;
+        private System.Windows.Forms.CheckBox                      chkAllowOnlyEngramPointsTrade;
+        private System.Windows.Forms.CheckBox                      chkDisableHexagonStore;
+        private System.Windows.Forms.GroupBox                      groupBox30;
+        private System.Windows.Forms.CheckBox                      chkEnableRagnarokSettings;
+        private System.Windows.Forms.Label                         label126;
+        private System.Windows.Forms.TextBox                       txtVolcanoIntensity;
+        private System.Windows.Forms.TrackBar                      tbVolcanoIntensity;
+        private System.Windows.Forms.Label                         label127;
+        private System.Windows.Forms.Label                         label128;
+        private System.Windows.Forms.TextBox                       txtVolcanoInterval;
+        private System.Windows.Forms.TrackBar                      tbVolcanoInterval;
+        private System.Windows.Forms.Label                         label129;
+        private System.Windows.Forms.Label                         label130;
+        private System.Windows.Forms.TextBox                       txtUnicornSpawnInterval;
+        private System.Windows.Forms.TrackBar                      tbUnicornSpawnInterval;
+        private System.Windows.Forms.Label                         label131;
+        private System.Windows.Forms.CheckBox                      chkEnableVolcano;
+        private System.Windows.Forms.CheckBox                      chkAllowMultipleTamedUnicorns;
     }
 }

@@ -47,7 +47,7 @@
             this.copyIDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyPlayerIDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button3 = new System.Windows.Forms.Button();
-            this.exListBox1 = new OphiussaServerManager.exListBox();
+            this.exListBox1 = new OphiussaServerManager.ExListBox();
             this.button4 = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -237,7 +237,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private exListBox exListBox1;
+        private ExListBox exListBox1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem chatToPlayerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem renamePlayerToolStripMenuItem;

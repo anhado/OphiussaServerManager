@@ -1,224 +1,176 @@
-﻿using Clifton.Core.Pipes;
-using CoreRCON;
-using Newtonsoft.Json;
-using OphiussaServerManager.Common;
-using OphiussaServerManager.Common.Models;
-using OphiussaServerManager.Common.Models.Profiles;
-using OphiussaServerManager.Properties;
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
-using System.IO.Pipelines;
-using System.Linq;
 using System.Net;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Interop;
+using Clifton.Core.Pipes;
+using CoreRCON;
+using Newtonsoft.Json;
+using OphiussaServerManager.Common.Models;
+using OphiussaServerManager.Common.Models.Profiles;
+using OphiussaServerManager.Common.Models.SupportedServers;
 
-namespace OphiussaServerManager.Tools
-{
-    internal class NotificationController
-    {
-        Common.Models.Settings Settings;
-        List<Profile> profiles = new List<Profile>();
-        List<Task> tasks = new List<Task>();
-        ConcurrentQueue<string> serversToReload = new ConcurrentQueue<string>();
+namespace OphiussaServerManager.Tools {
+    internal class NotificationController {
+        private readonly Dictionary<string, CancellationTokenSource> _cancelationTokens = new Dictionary<string, CancellationTokenSource>();
 
-        private bool closing = false;
+        private readonly CancellationTokenSource _cancellationTokenPipeServer = new CancellationTokenSource();
+        private readonly List<Profile>           _profiles                    = new List<Profile>();
+        private readonly ConcurrentQueue<string> _serversToReload             = new ConcurrentQueue<string>();
+        private readonly Settings                _settings;
+        private readonly List<Task>              _tasks = new List<Task>();
+        private          ClientPipe              _clientPipe;
 
-        CancellationTokenSource cancellationTokenPipeServer = new CancellationTokenSource();
-        Dictionary<string, CancellationTokenSource> cancelationTokens = new Dictionary<string, CancellationTokenSource>();
+        private bool _closing;
 
-        ServerPipe serverPipe;
-        ClientPipe clientPipe;
+        private ServerPipe _serverPipe;
 
-        internal bool IsClientConnected { get { return clientPipe == null ? false : (clientPipe.IsConnected); } }
-        internal bool IsServerConnected { get { return serverPipe == null ? false : (serverPipe.IsConnected); } }
-
-        internal NotificationController()
-        {
-            Settings = JsonConvert.DeserializeObject<Common.Models.Settings>(File.ReadAllText(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json")));
-            string dir = Settings.DataFolder + "Profiles\\";
-            if (!Directory.Exists(dir))
-            {
-                return;
-            }
+        internal NotificationController() {
+            _settings = JsonConvert.DeserializeObject<Settings>(File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json")));
+            string dir = _settings.DataFolder + "Profiles\\";
+            if (!Directory.Exists(dir)) return;
 
             string[] files = Directory.GetFiles(dir);
-            foreach (string file in files)
-            {
-                Profile p = JsonConvert.DeserializeObject<Profile>(File.ReadAllText(file));
-                profiles.Add(p);
-                cancelationTokens.Add(p.Key, new CancellationTokenSource());
+            foreach (string file in files) {
+                var p = JsonConvert.DeserializeObject<Profile>(File.ReadAllText(file));
+                _profiles.Add(p);
+                _cancelationTokens.Add(p.Key, new CancellationTokenSource());
             }
         }
 
-        internal bool SendCloseCommand()
-        {
-            try
-            {
-                if (!clientPipe.IsConnected) ConnectClient();
+        internal bool IsClientConnected => _clientPipe == null ? false : _clientPipe.IsConnected;
+        internal bool IsServerConnected => _serverPipe == null ? false : _serverPipe.IsConnected;
 
-                clientPipe.WriteString("/close");
+        internal bool SendCloseCommand() {
+            try {
+                if (!_clientPipe.IsConnected) ConnectClient();
+
+                _clientPipe.WriteString("/close");
 
                 return true;
             }
-            catch (Exception ex)
-            {
-                OphiussaLogger.logger.Error(ex);
+            catch (Exception ex) {
+                OphiussaLogger.Logger.Error(ex);
                 return false;
             }
         }
 
-        internal bool SendReloadCommand(string key)
-        {
-            try
-            {
-                if (!clientPipe.IsConnected) ConnectClient();
+        internal bool SendReloadCommand(string key) {
+            try {
+                if (!_clientPipe.IsConnected) ConnectClient();
 
-                clientPipe.WriteString($"/Reload=>{key}");
+                _clientPipe.WriteString($"/Reload=>{key}");
 
                 return true;
             }
-            catch (Exception ex)
-            {
-                OphiussaLogger.logger.Error(ex);
+            catch (Exception ex) {
+                OphiussaLogger.Logger.Error(ex);
                 return false;
             }
         }
 
 
-        internal void ConnectClient()
-        {
-            clientPipe = new ClientPipe(".", Settings.GUID, p => p.StartStringReaderAsync());
-            clientPipe.DataReceived += (sndr, args) =>
-            {
-                OphiussaLogger.logger.Info("Client recieved:" + args.String);
-                MessageBox.Show(args.String);
-            };
-            clientPipe.Connect();
-        }
-        internal void CloseClient()
-        {
-            clientPipe.Close();
+        internal void ConnectClient() {
+            _clientPipe = new ClientPipe(".", _settings.Guid, p => p.StartStringReaderAsync());
+            _clientPipe.DataReceived += (sndr, args) => {
+                                            OphiussaLogger.Logger.Info("Client recieved:" + args.String);
+                                            MessageBox.Show(args.String);
+                                        };
+            _clientPipe.Connect();
         }
 
-        internal void StartServer()
-        {
-            try
-            {
-                OphiussaLogger.logger.Info("Notifications Service is Starting");
-                serverPipe = new ServerPipe(Settings.GUID, p => p.StartStringReaderAsync());
-                serverPipe.DataReceived += (sndr, args) =>
-                {
-                    OphiussaLogger.logger.Info("Server recieved:" + args.String);
-                    if (args.String == "/close")
-                    {
-                        serverPipe.WriteString("Notifications Service is Closing");
-                        closing = true;
-                    }
-                    else if (args.String.StartsWith("/Reload=>"))
-                    {
-                        string[] str = args.String.Split('>');
-                        serversToReload.Enqueue(str[1]);
-                    }
-                    else
-                    {
-                        OphiussaLogger.logger.Info("Command not recognized:" + args.String);
-                    }
-                };
-                serverPipe.Connected += (sndr, args) =>
-                {
-                    OphiussaLogger.logger.Info("Client Connected");
-                };
-                serverPipe.PipeClosed += (sndr, args) =>
-                {
-                    OphiussaLogger.logger.Info("Server Closed");
-                };
-                Task t = Task.Run(() =>
-                {
-                    while (true)
-                    {
-                        if (closing) serverPipe.Close();
-                        //run until receive command to close;
-                        if (closing) break;
-                        if (cancellationTokenPipeServer.IsCancellationRequested) break;
-                        Thread.Sleep(1000);
-                    }
-                }, cancellationTokenPipeServer.Token);
-                tasks.Add(t);
+        internal void CloseClient() {
+            _clientPipe.Close();
+        }
 
-                profiles.ForEach(p =>
-                {
-                    switch (p.Type.ServerType)
-                    {
-                        case Common.Models.SupportedServers.EnumServerType.ArkSurviveEvolved:
-                        case Common.Models.SupportedServers.EnumServerType.ArkSurviveAscended:
-                            Task t2 = Task.Run(() => SendArkNotifications(p), cancellationTokenPipeServer.Token);
-                            tasks.Add(t2);
-                            break;
-                        case Common.Models.SupportedServers.EnumServerType.Valheim:
-                            //dont do nothing
-                            break;
-                    }
+        internal void StartServer() {
+            try {
+                OphiussaLogger.Logger.Info("Notifications Service is Starting");
+                _serverPipe = new ServerPipe(_settings.Guid, p => p.StartStringReaderAsync());
+                _serverPipe.DataReceived += (sndr, args) => {
+                                                OphiussaLogger.Logger.Info("Server recieved:" + args.String);
+                                                if (args.String == "/close") {
+                                                    _serverPipe.WriteString("Notifications Service is Closing");
+                                                    _closing = true;
+                                                }
+                                                else if (args.String.StartsWith("/Reload=>")) {
+                                                    string[] str = args.String.Split('>');
+                                                    _serversToReload.Enqueue(str[1]);
+                                                }
+                                                else {
+                                                    OphiussaLogger.Logger.Info("Command not recognized:" + args.String);
+                                                }
+                                            };
+                _serverPipe.Connected  += (sndr, args) => { OphiussaLogger.Logger.Info("Client Connected"); };
+                _serverPipe.PipeClosed += (sndr, args) => { OphiussaLogger.Logger.Info("Server Closed"); };
+                var t = Task.Run(() => {
+                                     while (true) {
+                                         if (_closing) _serverPipe.Close();
+                                         //run until receive command to close;
+                                         if (_closing) break;
+                                         if (_cancellationTokenPipeServer.IsCancellationRequested) break;
+                                         Thread.Sleep(1000);
+                                     }
+                                 }, _cancellationTokenPipeServer.Token);
+                _tasks.Add(t);
 
-                });
+                _profiles.ForEach(p => {
+                                      switch (p.Type.ServerType) {
+                                          case EnumServerType.ArkSurviveEvolved:
+                                          case EnumServerType.ArkSurviveAscended:
+                                              var t2 = Task.Run(() => SendArkNotifications(p), _cancellationTokenPipeServer.Token);
+                                              _tasks.Add(t2);
+                                              break;
+                                          case EnumServerType.Valheim:
+                                              //dont do nothing
+                                              break;
+                                      }
+                                  });
 
-                Task.WaitAll(tasks.ToArray());
-
+                Task.WaitAll(_tasks.ToArray());
             }
-            catch (Exception ex)
-            {
-                OphiussaLogger.logger.Error(ex);
+            catch (Exception ex) {
+                OphiussaLogger.Logger.Error(ex);
             }
         }
 
-        private async void SendArkNotifications(Profile profile)
-        {
-            DateTime lastSend = DateTime.Now;
+        private async void SendArkNotifications(Profile profile) {
+            var lastSend = DateTime.Now;
             while (true)
-            {
-                try
-                {
-                    Profile p = profile;
-                    if (p.ARKConfiguration.Administration.EnableInterval)
-                    {
-                        if (p.IsRunning)
-                        {
-                            foreach (var key in serversToReload)
-                            {
-                                if (serversToReload.TryDequeue(out var key2))
-                                {
-                                    if (key2 == p.Key) { p.LoadProfile(true); } else { serversToReload.Enqueue(key2); }
+                try {
+                    var p = profile;
+                    if (p.ArkConfiguration.Administration.EnableInterval)
+                        if (p.IsRunning) {
+                            foreach (string key in _serversToReload)
+                                if (_serversToReload.TryDequeue(out string key2)) {
+                                    if (key2 == p.Key)
+                                        p.LoadProfile();
+                                    else
+                                        _serversToReload.Enqueue(key2);
 
-                                    OphiussaLogger.logger.Info("Reloaded Profile " + p.Name);
+                                    OphiussaLogger.Logger.Info("Reloaded Profile " + p.Name);
                                 }
-                            }
-                            TimeSpan ts = DateTime.Now - lastSend;
-                            if (ts.TotalMinutes >= p.ARKConfiguration.Administration.MODInterval)
-                            {
-                                RCON rcon = new RCON(IPAddress.Parse(p.ARKConfiguration.Administration.LocalIP), ushort.Parse(p.ARKConfiguration.Administration.RCONPort), p.ARKConfiguration.Administration.ServerAdminPassword);
+
+                            var ts = DateTime.Now - lastSend;
+                            if (ts.TotalMinutes >= p.ArkConfiguration.Administration.ModInterval) {
+                                var rcon = new RCON(IPAddress.Parse(p.ArkConfiguration.Administration.LocalIp), ushort.Parse(p.ArkConfiguration.Administration.RconPort), p.ArkConfiguration.Administration.ServerAdminPassword);
                                 await rcon.ConnectAsync();
 
-                                string respnose = await rcon.SendCommandAsync($"Broadcast {p.ARKConfiguration.Administration.MOD}");
+                                string respnose = await rcon.SendCommandAsync($"Broadcast {p.ArkConfiguration.Administration.Mod}");
                                 lastSend = DateTime.Now;
                             }
                         }
-                    }
 
-                    if (closing) break;
-                    if (cancelationTokens[p.Key].IsCancellationRequested) break;
+                    if (_closing) break;
+                    if (_cancelationTokens[p.Key].IsCancellationRequested) break;
                     Thread.Sleep(1000);
-
                 }
-                catch (Exception ex)
-                {
-                    OphiussaLogger.logger.Error(ex.Message);
+                catch (Exception ex) {
+                    OphiussaLogger.Logger.Error(ex.Message);
                 }
-            }
         }
     }
 }

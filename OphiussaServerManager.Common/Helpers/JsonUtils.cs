@@ -1,151 +1,116 @@
-﻿
+﻿using System.IO;
 using Newtonsoft.Json;
-using System.IO;
 
-
-namespace OphiussaServerManager.Common.Helpers
-{
-
-    public static class JsonUtils
-    {
-        public static string Serialize<T>(T value, JsonSerializerSettings settings = null)
-        {
-            if ((object)value == null)
+namespace OphiussaServerManager.Common.Helpers {
+    public static class JsonUtils {
+        public static string Serialize<T>(T value, JsonSerializerSettings settings = null) {
+            if (value == null)
                 return string.Empty;
-            try
-            {
-                return settings != null ? JsonConvert.SerializeObject((object)value, Formatting.Indented, settings) : JsonConvert.SerializeObject((object)value, Formatting.Indented);
+            try {
+                return settings != null ? JsonConvert.SerializeObject(value, Formatting.Indented, settings) : JsonConvert.SerializeObject(value, Formatting.Indented);
             }
-            catch
-            {
+            catch {
                 return string.Empty;
             }
         }
 
         public static bool SerializeToFile<T>(
-          T value,
-          string filename,
-          JsonSerializerSettings settings = null)
-        {
-            if ((object)value == null)
+            T                      value,
+            string                 filename,
+            JsonSerializerSettings settings = null) {
+            if (value == null)
                 return false;
-            try
-            {
-                string contents = JsonUtils.Serialize<T>(value, settings);
+            try {
+                string contents = Serialize(value, settings);
                 File.WriteAllText(filename, contents);
                 return true;
             }
-            catch
-            {
+            catch {
                 return false;
             }
         }
 
-        public static T Deserialize<T>(string jsonString, JsonSerializerSettings settings = null)
-        {
+        public static T Deserialize<T>(string jsonString, JsonSerializerSettings settings = null) {
             if (string.IsNullOrEmpty(jsonString))
-                return default(T);
-            try
-            {
+                return default;
+            try {
                 return settings != null ? JsonConvert.DeserializeObject<T>(jsonString, settings) : JsonConvert.DeserializeObject<T>(jsonString);
             }
-            catch
-            {
-                return default(T);
+            catch {
+                return default;
             }
         }
 
         public static T DeserializeAnonymousType<T>(
-          string jsonString,
-          T anonTypeObject,
-          JsonSerializerSettings settings = null)
-        {
+            string                 jsonString,
+            T                      anonTypeObject,
+            JsonSerializerSettings settings = null) {
             if (string.IsNullOrEmpty(jsonString))
                 return anonTypeObject;
-            try
-            {
-                return settings != null ? JsonConvert.DeserializeAnonymousType<T>(jsonString, anonTypeObject, settings) : JsonConvert.DeserializeAnonymousType<T>(jsonString, anonTypeObject);
+            try {
+                return settings != null ? JsonConvert.DeserializeAnonymousType(jsonString, anonTypeObject, settings) : JsonConvert.DeserializeAnonymousType(jsonString, anonTypeObject);
             }
-            catch
-            {
+            catch {
                 return anonTypeObject;
             }
         }
 
-        public static T DeserializeFromFile<T>(string file, JsonSerializerSettings settings = null)
-        {
+        public static T DeserializeFromFile<T>(string file, JsonSerializerSettings settings = null) {
             if (!string.IsNullOrEmpty(file))
-            {
                 if (File.Exists(file))
-                {
-                    try
-                    {
-                        return JsonUtils.Deserialize<T>(File.ReadAllText(file), settings);
+                    try {
+                        return Deserialize<T>(File.ReadAllText(file), settings);
                     }
-                    catch
-                    {
-                        return default(T);
+                    catch {
+                        return default;
                     }
-                }
-            }
-            return default(T);
+
+            return default;
         }
 
         public static T DeserializeFromFile<T>(
-          string file,
-          T anonTypeObject,
-          JsonSerializerSettings settings = null)
-        {
+            string                 file,
+            T                      anonTypeObject,
+            JsonSerializerSettings settings = null) {
             if (!string.IsNullOrEmpty(file))
-            {
                 if (File.Exists(file))
-                {
-                    try
-                    {
-                        return JsonUtils.DeserializeAnonymousType<T>(File.ReadAllText(file), anonTypeObject, settings);
+                    try {
+                        return DeserializeAnonymousType(File.ReadAllText(file), anonTypeObject, settings);
                     }
-                    catch
-                    {
+                    catch {
                         return anonTypeObject;
                     }
-                }
-            }
+
             return anonTypeObject;
         }
 
-        public static void Populate(string jsonString, object target, JsonSerializerSettings settings = null)
-        {
+        public static void Populate(string jsonString, object target, JsonSerializerSettings settings = null) {
             if (string.IsNullOrEmpty(jsonString))
                 return;
             if (target == null)
                 return;
-            try
-            {
+            try {
                 if (settings != null)
                     JsonConvert.PopulateObject(jsonString, target, settings);
                 else
                     JsonConvert.PopulateObject(jsonString, target);
             }
-            catch
-            {
+            catch {
             }
         }
 
         public static void PopulateFromFile(
-          string file,
-          object target,
-          JsonSerializerSettings settings = null)
-        {
+            string                 file,
+            object                 target,
+            JsonSerializerSettings settings = null) {
             if (string.IsNullOrEmpty(file) || !File.Exists(file))
                 return;
             if (target == null)
                 return;
-            try
-            {
-                JsonUtils.Populate(File.ReadAllText(file), target, settings);
+            try {
+                Populate(File.ReadAllText(file), target, settings);
             }
-            catch
-            {
+            catch {
             }
         }
     }

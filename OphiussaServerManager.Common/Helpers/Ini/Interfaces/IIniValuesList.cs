@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace OphiussaServerManager.Common.Ini
-{
-    public interface IIniValuesList
-    {
+namespace OphiussaServerManager.Common.Ini {
+    public interface IIniValuesList {
         IEnumerable<string> ToIniValues(object excludeIfValue);
     }
 }

@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace ArkData.Models
-{
-    internal class SteamPlayerResponse<T>
-    {
-        public List<T> players { get; set; }
+namespace ArkData.Models {
+    internal class SteamPlayerResponse<T> {
+        public List<T> Players { get; set; }
     }
 }

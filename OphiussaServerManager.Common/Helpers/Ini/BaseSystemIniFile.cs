@@ -1,392 +1,410 @@
-﻿using OphiussaServerManager.Common.Helpers;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
+using OphiussaServerManager.Common.Helpers;
 
-namespace OphiussaServerManager.Common.Ini
-{
-    public abstract class BaseSystemIniFile
-    {
-        protected BaseSystemIniFile(string iniPath) => this.BasePath = iniPath;
+namespace OphiussaServerManager.Common.Ini {
+    public abstract class BaseSystemIniFile {
+        protected BaseSystemIniFile(string iniPath) {
+            BasePath = iniPath;
+        }
 
-        public string BasePath { get; private set; }
+        public string BasePath { get; }
 
         public abstract Dictionary<Enum, string> FileNames { get; }
 
         public abstract Dictionary<Enum, string> SectionNames { get; }
 
-        public void Deserialize(object obj, IEnumerable<Enum> exclusions)
-        {
-            Dictionary<string, IniFile> iniFiles = new Dictionary<string, IniFile>();
-            IEnumerable<PropertyInfo> propertyInfos = ((IEnumerable<PropertyInfo>)obj.GetType().GetProperties()).Where<PropertyInfo>((Func<PropertyInfo, bool>)(f => f.IsDefined(typeof(BaseIniFileEntryAttribute), false)));
+        public void Deserialize(object obj, IEnumerable<Enum> exclusions) {
+            var iniFiles      = new Dictionary<string, IniFile>();
+            var propertyInfos = obj.GetType().GetProperties().Where(f => f.IsDefined(typeof(BaseIniFileEntryAttribute), false));
             if (exclusions == null)
-                exclusions = (IEnumerable<Enum>)new Enum[0];
-            foreach (PropertyInfo property in propertyInfos)
-            {
-                foreach (BaseIniFileEntryAttribute attribute in property.GetCustomAttributes(typeof(BaseIniFileEntryAttribute), false).OfType<BaseIniFileEntryAttribute>().Where<BaseIniFileEntryAttribute>((Func<BaseIniFileEntryAttribute, bool>)(a => !exclusions.Contains<Enum>(a.Category))))
-                {
-                    if (!exclusions.Contains<Enum>(attribute.Category))
-                    {
-                        try
-                        {
-                            if (attribute.IsCustom)
-                            {
-                                if (property.GetValue(obj) is IIniSectionCollection sectionCollection)
-                                {
-                                    this.ReadFile(iniFiles, attribute.File);
-                                    foreach (string customSectionName in this.ReadCustomSectionNames(iniFiles, attribute.File))
-                                    {
-                                        IEnumerable<string> values = this.ReadSection(iniFiles, attribute.File, customSectionName);
-                                        sectionCollection.Add(customSectionName, values);
-                                    }
-                                }
+                exclusions = new Enum[0];
+            foreach (var property in propertyInfos)
+            foreach (var attribute in property.GetCustomAttributes(typeof(BaseIniFileEntryAttribute), false).OfType<BaseIniFileEntryAttribute>().Where(a => !exclusions.Contains(a.Category)))
+                if (!exclusions.Contains(attribute.Category))
+                    if (attribute.IsCustom) {
+                        if (property.GetValue(obj) is IIniSectionCollection sectionCollection) {
+                            ReadFile(iniFiles, attribute.File);
+                            foreach (string customSectionName in ReadCustomSectionNames(iniFiles, attribute.File)) {
+                                var values = ReadSection(iniFiles, attribute.File, customSectionName);
+                                sectionCollection.Add(customSectionName, values);
                             }
-                            else
-                            {
-                                string keyName = string.IsNullOrWhiteSpace(attribute.Key) ? property.Name : attribute.Key;
-                                if (!attribute.WriteBoolValueIfNonEmpty)
-                                {
-                                    IIniValuesCollection collection = property.GetValue(obj) as IIniValuesCollection;
-                                    if (collection != null)
-                                    {
-                                        IEnumerable<string> source = this.ReadSection(iniFiles, attribute.File, attribute.Section);
-                                        IEnumerable<string> values = collection.IsArray ? source.Where<string>((Func<string, bool>)(s => s.StartsWith(collection.IniCollectionKey + "["))) : source.Where<string>((Func<string, bool>)(s => s.StartsWith(collection.IniCollectionKey + "=")));
-                                        collection.FromIniValues(values);
-                                    }
-                                    else
-                                    {
-                                        string str1 = this.ReadValue(iniFiles, attribute.File, attribute.Section, keyName);
-                                        Type propertyType = property.PropertyType;
-                                        if (propertyType == typeof(string))
-                                        {
-                                            string str2 = str1;
-                                            if (attribute.QuotedString == QuotedStringType.True)
-                                            {
-                                                if (str2.StartsWith("\""))
-                                                    str2 = str2.Substring(1);
-                                                if (str2.EndsWith("\""))
-                                                    str2 = str2.Substring(0, str2.Length - 1);
-                                            }
-                                            else if (attribute.QuotedString == QuotedStringType.Remove)
-                                            {
-                                                if (str2.StartsWith("\""))
-                                                    str2 = str2.Substring(1);
-                                                if (str2.EndsWith("\""))
-                                                    str2 = str2.Substring(0, str2.Length - 1);
-                                            }
-                                            if (attribute.Multiline)
-                                                str2 = str2.Replace(attribute.MultilineSeparator, Environment.NewLine);
-                                            property.SetValue(obj, (object)str2);
-                                        }
-                                        else if (!string.IsNullOrWhiteSpace(str1))
-                                        {
-                                            if (!string.IsNullOrWhiteSpace(attribute.ConditionedOn))
-                                                obj.GetType().GetProperty(attribute.ConditionedOn).SetValue(obj, (object)true);
-                                            if (!Utils.SetPropertyValue(str1, obj, property, attribute))
-                                                throw new ArgumentException(string.Format("Unexpected field type {0} for INI key {1} in section {2}.", (object)propertyType, (object)keyName, (object)attribute.Section));
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            throw;
                         }
                     }
-                }
-            }
+                    else {
+                        string keyName = string.IsNullOrWhiteSpace(attribute.Key) ? property.Name : attribute.Key;
+                        if (!attribute.WriteBoolValueIfNonEmpty) {
+                            var collection = property.GetValue(obj) as IIniValuesCollection;
+                            if (collection != null) {
+                                var source = ReadSection(iniFiles, attribute.File, attribute.Section);
+                                var values = collection.IsArray ? source.Where(s => s.StartsWith(collection.IniCollectionKey + "[")) : source.Where(s => s.StartsWith(collection.IniCollectionKey + "="));
+                                collection.FromIniValues(values);
+                            }
+                            else {
+                                string str1         = ReadValue(iniFiles, attribute.File, attribute.Section, keyName);
+                                var    propertyType = property.PropertyType;
+                                if (propertyType == typeof(string)) {
+                                    string str2 = str1;
+                                    if (attribute.QuotedString == QuotedStringType.True) {
+                                        if (str2.StartsWith("\""))
+                                            str2 = str2.Substring(1);
+                                        if (str2.EndsWith("\""))
+                                            str2 = str2.Substring(0, str2.Length - 1);
+                                    }
+                                    else if (attribute.QuotedString == QuotedStringType.Remove) {
+                                        if (str2.StartsWith("\""))
+                                            str2 = str2.Substring(1);
+                                        if (str2.EndsWith("\""))
+                                            str2 = str2.Substring(0, str2.Length - 1);
+                                    }
+
+                                    if (attribute.Multiline)
+                                        str2 = str2.Replace(attribute.MultilineSeparator, Environment.NewLine);
+                                    property.SetValue(obj, str2);
+                                }
+                                else if (!string.IsNullOrWhiteSpace(str1)) {
+                                    if (!string.IsNullOrWhiteSpace(attribute.ConditionedOn))
+                                        obj.GetType().GetProperty(attribute.ConditionedOn).SetValue(obj, true);
+                                    if (!Utils.SetPropertyValue(str1, obj, property, attribute))
+                                        throw new ArgumentException(string.Format("Unexpected field type {0} for INI key {1} in section {2}.", propertyType, keyName, attribute.Section));
+                                }
+                            }
+                        }
+                    }
         }
 
-        public void Serialize(object obj, IEnumerable<Enum> exclusions)
-        {
-            Dictionary<string, IniFile> iniFiles = new Dictionary<string, IniFile>();
-            IEnumerable<PropertyInfo> propertyInfos = ((IEnumerable<PropertyInfo>)obj.GetType().GetProperties()).Where<PropertyInfo>((Func<PropertyInfo, bool>)(f => f.IsDefined(typeof(BaseIniFileEntryAttribute), false)));
-            if (exclusions == null)
-                exclusions = (IEnumerable<Enum>)new Enum[0];
-            foreach (PropertyInfo property in propertyInfos)
-            {
-                foreach (BaseIniFileEntryAttribute fileEntryAttribute in property.GetCustomAttributes(typeof(BaseIniFileEntryAttribute), false).OfType<BaseIniFileEntryAttribute>().Where<BaseIniFileEntryAttribute>((Func<BaseIniFileEntryAttribute, bool>)(a => !exclusions.Contains<Enum>(a.Category))))
-                {
-                    try
-                    {
-                        if (fileEntryAttribute.IsCustom)
-                        {
-                            if (property.GetValue(obj) is IIniSectionCollection sectionCollection)
-                            {
-                                sectionCollection.Update();
-                                foreach (IIniValuesCollection section in sectionCollection.Sections)
-                                {
-                                    this.WriteValue(iniFiles, fileEntryAttribute.File, section.IniCollectionKey, (string)null, (string)null);
-                                    if (section.IsEnabled)
-                                        this.WriteSection(iniFiles, fileEntryAttribute.File, section.IniCollectionKey, section.ToIniValues());
+
+        public void Serialize(object obj, IEnumerable<Enum> exclusions) {
+            var iniFiles = new Dictionary<string, IniFile>();
+            var fields = obj.GetType()
+                            .GetProperties()
+                            .Where(f => f.IsDefined(typeof(BaseIniFileEntryAttribute), false));
+
+            if (exclusions == null) {
+                exclusions = new Enum[0];
+            }
+
+            foreach (var field in fields) {
+                var attributes = field
+                                .GetCustomAttributes(typeof(BaseIniFileEntryAttribute), false)
+                                .OfType<BaseIniFileEntryAttribute>()
+                                .Where(a => !exclusions.Contains(a.Category));
+
+                foreach (var attr in attributes) {
+                    try {
+                        if (attr.IsCustom) {
+                            // this code is to handle custom sections
+                            if (field.GetValue(obj) is IIniSectionCollection collection) {
+                                collection.Update();
+
+                                foreach (var section in collection.Sections) {
+                                    // clear the entire section
+                                    WriteValue(iniFiles, attr.File, section.IniCollectionKey, null, null);
+
+                                    if (section.IsEnabled) {
+                                        WriteSection(iniFiles, attr.File, section.IniCollectionKey, section.ToIniValues());
+                                    }
                                 }
                             }
                         }
-                        else
-                        {
-                            object obj1 = property.GetValue(obj);
-                            string keyName = string.IsNullOrWhiteSpace(fileEntryAttribute.Key) ? property.Name : fileEntryAttribute.Key;
-                            if (fileEntryAttribute.ClearSection)
-                            {
-                                this.WriteValue(iniFiles, fileEntryAttribute.File, fileEntryAttribute.Section, (string)null, (string)null);
-                                this.ClearSectionIfEmpty(iniFiles, fileEntryAttribute);
+                        else {
+                            var value   = field.GetValue(obj);
+                            var keyName = string.IsNullOrWhiteSpace(attr.Key) ? field.Name : attr.Key;
+
+                            if (attr.ClearSection) {
+                                WriteValue(iniFiles, attr.File, attr.Section, null, null);
+                                ClearSectionIfEmpty(iniFiles, attr);
                             }
-                            IIniValuesCollection collection = obj1 as IIniValuesCollection;
-                            if (collection != null)
-                            {
-                                IEnumerable<string> values = this.ReadSection(iniFiles, fileEntryAttribute.File, fileEntryAttribute.Section).Where<string>((Func<string, bool>)(s => !s.StartsWith(collection.IniCollectionKey + (collection.IsArray ? "[" : "="))));
-                                this.WriteSection(iniFiles, fileEntryAttribute.File, fileEntryAttribute.Section, values);
+
+                            //
+                            // If this is a collection, we need to first remove all of its values from the INI.
+                            //
+                            var collection = value as IIniValuesCollection;
+                            if (collection != null) {
+                                var section = ReadSection(iniFiles, attr.File, attr.Section);
+                                var filteredSection = section
+                                   .Where(s => !s.StartsWith(collection.IniCollectionKey + (collection.IsArray ? "[" : "=")));
+                                WriteSection(iniFiles, attr.File, attr.Section, filteredSection);
                             }
-                            if (!string.IsNullOrEmpty(fileEntryAttribute.ConditionedOn) && obj.GetType().GetProperty(fileEntryAttribute.ConditionedOn).GetValue(obj) is bool flag1 && !flag1)
-                            {
-                                this.WriteValue(iniFiles, fileEntryAttribute.File, fileEntryAttribute.Section, keyName, (string)null);
-                                this.ClearSectionIfEmpty(iniFiles, fileEntryAttribute);
-                                continue;
-                            }
-                            if (!string.IsNullOrEmpty(fileEntryAttribute.ClearWhenOff))
-                            {
-                                if (obj.GetType().GetProperty(fileEntryAttribute.ClearWhenOff).GetValue(obj) is bool flag2)
-                                {
-                                    if (!flag2)
-                                    {
-                                        this.WriteValue(iniFiles, fileEntryAttribute.File, fileEntryAttribute.Section, keyName, (string)null);
-                                        this.ClearSectionIfEmpty(iniFiles, fileEntryAttribute);
-                                        continue;
-                                    }
+
+                            if (!string.IsNullOrEmpty(attr.ConditionedOn)) {
+                                var conditionField = obj.GetType().GetProperty(attr.ConditionedOn);
+                                var conditionValue = conditionField.GetValue(obj);
+                                if (conditionValue is bool && (bool)conditionValue == false) {
+                                    // The condition value was not set to true, so clear this attribute instead of writing it
+                                    WriteValue(iniFiles, attr.File, attr.Section, keyName, null);
+                                    ClearSectionIfEmpty(iniFiles, attr);
                                     continue;
                                 }
+                            }
+
+                            if (!string.IsNullOrEmpty(attr.ClearWhenOff)) {
+                                var updateOffField = obj.GetType().GetProperty(attr.ClearWhenOff);
+                                var updateOffValue = updateOffField.GetValue(obj);
+                                if (updateOffValue is bool && (bool)updateOffValue == false) {
+                                    // The attributed value was set to false, so clear this attribute instead of writing it
+                                    WriteValue(iniFiles, attr.File, attr.Section, keyName, null);
+                                    ClearSectionIfEmpty(iniFiles, attr);
+                                }
+
                                 continue;
                             }
-                            if (fileEntryAttribute.WriteBoolValueIfNonEmpty)
-                            {
-                                if (obj1 == null)
-                                {
-                                    string empty = string.Empty;
-                                    string keyValue = !fileEntryAttribute.WriteBooleanAsInteger ? "False" : "0";
-                                    this.WriteValue(iniFiles, fileEntryAttribute.File, fileEntryAttribute.Section, keyName, keyValue);
-                                }
-                                else
-                                {
-                                    string str = obj1 is string ? obj1 as string : throw new NotSupportedException("Unexpected IniFileEntry value type.");
-                                    string empty = string.Empty;
-                                    string keyValue = !fileEntryAttribute.WriteBooleanAsInteger ? (string.IsNullOrEmpty(str) ? "False" : "True") : (string.IsNullOrEmpty(str) ? "0" : "1");
-                                    this.WriteValue(iniFiles, fileEntryAttribute.File, fileEntryAttribute.Section, keyName, keyValue);
-                                }
-                            }
-                            else if (collection != null)
-                            {
-                                if (collection.IsEnabled)
-                                {
-                                    IEnumerable<string> source = this.ReadSection(iniFiles, fileEntryAttribute.File, fileEntryAttribute.Section);
-                                    IEnumerable<string> first = collection.IsArray ? source.Where<string>((Func<string, bool>)(s => !s.StartsWith(keyName + "["))) : source.Where<string>((Func<string, bool>)(s => !s.StartsWith(keyName + "=")));
-                                    object writeIfNotValue = fileEntryAttribute.WriteIfNotValue;
-                                    IEnumerable<string> values = writeIfNotValue == null || !(collection is IIniValuesList iniValuesList) ? first.Concat<string>(collection.ToIniValues()) : first.Concat<string>(iniValuesList.ToIniValues(writeIfNotValue));
-                                    this.WriteSection(iniFiles, fileEntryAttribute.File, fileEntryAttribute.Section, values);
-                                }
-                            }
-                            else
-                            {
-                                if (obj1 is INullableValue nullableValue && !nullableValue.HasValue)
-                                {
-                                    this.WriteValue(iniFiles, fileEntryAttribute.File, fileEntryAttribute.Section, keyName, (string)null);
-                                    this.ClearSectionIfEmpty(iniFiles, fileEntryAttribute);
-                                    continue;
-                                }
-                                string str = Utils.GetPropertyValue(obj1, property, fileEntryAttribute);
-                                object writeIfNotValue = fileEntryAttribute.WriteIfNotValue;
-                                if (writeIfNotValue != null)
-                                {
-                                    string propertyValue = Utils.GetPropertyValue(writeIfNotValue, property, fileEntryAttribute);
-                                    if (string.Equals(str, propertyValue, StringComparison.OrdinalIgnoreCase))
-                                    {
-                                        this.WriteValue(iniFiles, fileEntryAttribute.File, fileEntryAttribute.Section, keyName, (string)null);
-                                        this.ClearSectionIfEmpty(iniFiles, fileEntryAttribute);
-                                        continue;
-                                    }
-                                }
-                                if (fileEntryAttribute.QuotedString == QuotedStringType.True)
-                                {
-                                    if (str.IsEmpty<char>())
-                                    //if (str.IsEmpty<char>())
-                                    {
-                                        str = "\"\"";
-                                    }
+
+                            if (attr.WriteBoolValueIfNonEmpty) {
+                                if (value == null) {
+                                    var keyValue = string.Empty;
+                                    if (attr.WriteBooleanAsInteger)
+                                        keyValue = "0";
                                     else
-                                    {
-                                        if (!str.StartsWith("\""))
-                                            str = "\"" + str;
-                                        if (!str.EndsWith("\""))
-                                            str += "\"";
+                                        keyValue = "False";
+
+                                    WriteValue(iniFiles, attr.File, attr.Section, keyName, keyValue);
+                                }
+                                else {
+                                    if (value is string) {
+                                        var strValue = value as string;
+
+                                        var keyValue = string.Empty;
+                                        if (attr.WriteBooleanAsInteger)
+                                            keyValue = string.IsNullOrEmpty(strValue) ? "0" : "1";
+                                        else
+                                            keyValue = string.IsNullOrEmpty(strValue) ? "False" : "True";
+
+                                        WriteValue(iniFiles, attr.File, attr.Section, keyName, keyValue);
+                                    }
+                                    else {
+                                        // Not supported
+                                        throw new NotSupportedException("Unexpected IniFileEntry value type.");
                                     }
                                 }
-                                else if (fileEntryAttribute.QuotedString == QuotedStringType.Remove)
-                                {
-                                    if (str.StartsWith("\""))
-                                        str = str.Substring(1);
-                                    if (str.EndsWith("\""))
-                                        str = str.Substring(0, str.Length - 1);
+                            }
+                            else {
+                                if (collection != null) {
+                                    if (collection.IsEnabled) {
+                                        // Remove all the values in the collection with this key name
+                                        var section = ReadSection(iniFiles, attr.File, attr.Section);
+
+                                        var filteredSection = collection.IsArray
+                                                                  ? section.Where(s => !s.StartsWith(keyName + "["))
+                                                                  : section.Where(s => !s.StartsWith(keyName + "="));
+                                        var result = filteredSection;
+
+                                        var objValue = attr.WriteIfNotValue;
+                                        if (objValue != null && collection is IIniValuesList valueList) {
+                                            result = result.Concat(valueList.ToIniValues(objValue));
+                                        }
+                                        else {
+                                            result = result.Concat(collection.ToIniValues());
+                                        }
+
+                                        WriteSection(iniFiles, attr.File, attr.Section, result);
+                                    }
                                 }
-                                if (fileEntryAttribute.Multiline)
-                                    str = str.Replace(Environment.NewLine, fileEntryAttribute.MultilineSeparator);
-                                this.WriteValue(iniFiles, fileEntryAttribute.File, fileEntryAttribute.Section, keyName, str);
+                                else {
+                                    //
+                                    // If this is a NullableValue, we need to check if it has a value.
+                                    //
+                                    if (value is INullableValue nullableValue && !nullableValue.HasValue) {
+                                        // The attributed value does not have a value, so clear this attribute instead of writing it.
+                                        WriteValue(iniFiles, attr.File, attr.Section, keyName, null);
+                                        ClearSectionIfEmpty(iniFiles, attr);
+                                        continue;
+                                    }
+
+                                    var strValue = Utils.GetPropertyValue(value, field, attr);
+
+                                    var objValue = attr.WriteIfNotValue;
+                                    if (objValue != null) {
+                                        var strValue2 = Utils.GetPropertyValue(objValue, field, attr);
+                                        if (string.Equals(strValue, strValue2, StringComparison.OrdinalIgnoreCase)) {
+                                            // The attributed value is the same as the specified value, so clear this attribute instead of writing it.
+                                            WriteValue(iniFiles, attr.File, attr.Section, keyName, null);
+                                            ClearSectionIfEmpty(iniFiles, attr);
+                                            continue;
+                                        }
+                                    }
+
+                                    if (attr.QuotedString == QuotedStringType.True) {
+                                        // if the stValue is empty, return empty quoted string (parsing not needed)
+                                        // bug fix for 'property="' on a empty string
+                                        if (strValue.IsEmpty()) {
+                                            strValue = "\"\"";
+                                        }
+                                        else {
+                                            // add the leading and trailing quotes, if not already have them.
+                                            if (!strValue.StartsWith("\""))
+                                                strValue = "\"" + strValue;
+                                            if (!strValue.EndsWith("\""))
+                                                strValue = strValue + "\"";
+                                        }
+                                    }
+                                    else if (attr.QuotedString == QuotedStringType.Remove) {
+                                        // remove the leading and trailing quotes, if any
+                                        if (strValue.StartsWith("\""))
+                                            strValue = strValue.Substring(1);
+                                        if (strValue.EndsWith("\""))
+                                            strValue = strValue.Substring(0, strValue.Length - 1);
+                                    }
+
+                                    if (attr.Multiline) {
+                                        // substitutes the NewLine string with "\n"
+                                        strValue = strValue.Replace(Environment.NewLine, attr.MultilineSeparator);
+                                    }
+
+                                    WriteValue(iniFiles, attr.File, attr.Section, keyName, strValue);
+                                }
                             }
                         }
-                        this.ClearSectionIfEmpty(iniFiles, fileEntryAttribute);
+
+                        ClearSectionIfEmpty(iniFiles, attr);
                     }
-                    catch (Exception ex)
-                    {
+                    catch (Exception ex) {
+                        OphiussaLogger.Logger.Error(ex);
                         throw;
                     }
                 }
             }
-            this.SaveFiles(iniFiles);
+
+            SaveFiles(iniFiles);
         }
 
         private void ClearSectionIfEmpty(
-          Dictionary<string, IniFile> iniFiles,
-          BaseIniFileEntryAttribute attr)
-        {
+            Dictionary<string, IniFile> iniFiles,
+            BaseIniFileEntryAttribute   attr) {
             if (!attr.ClearSectionIfEmpty)
                 return;
-            IEnumerable<string> source = this.ReadSection(iniFiles, attr.File, attr.Section);
-            if ((source != null ? (source.Any<string>() ? 1 : 0) : 0) != 0)
+            var source = ReadSection(iniFiles, attr.File, attr.Section);
+            if ((source != null ? source.Any() ? 1 : 0 : 0) != 0)
                 return;
-            this.WriteValue(iniFiles, attr.File, attr.Section, (string)null, (string)null);
+            WriteValue(iniFiles, attr.File, attr.Section, null, null);
         }
 
-        public IEnumerable<string> ReadSection(Enum iniFile, Enum section) => this.ReadSection(iniFile, this.SectionNames[section]);
+        public IEnumerable<string> ReadSection(Enum iniFile, Enum section) {
+            return ReadSection(iniFile, SectionNames[section]);
+        }
 
-        public IEnumerable<string> ReadSection(Enum iniFile, string sectionName) => IniFileUtils.ReadSection(Path.Combine(this.BasePath, this.FileNames[iniFile]), sectionName);
+        public IEnumerable<string> ReadSection(Enum iniFile, string sectionName) {
+            return IniFileUtils.ReadSection(Path.Combine(BasePath, FileNames[iniFile]), sectionName);
+        }
 
 
-        public List<IniSection> GetAllSections(Enum iniFile)
-        {
-
-            IniFile ini = IniFileUtils.ReadFromFile(Path.Combine(this.BasePath, this.FileNames[iniFile]));
+        public List<IniSection> GetAllSections(Enum iniFile) {
+            var ini = IniFileUtils.ReadFromFile(Path.Combine(BasePath, FileNames[iniFile]));
             return ini.Sections;
         }
-        public void WriteSection(Enum iniFile, Enum section, IEnumerable<string> values) => this.WriteSection(iniFile, this.SectionNames[section], values);
 
-        public void WriteSection(Enum iniFile, string sectionName, IEnumerable<string> values) => IniFileUtils.WriteSection(Path.Combine(this.BasePath, this.FileNames[iniFile]), sectionName, values);
+        public void WriteSection(Enum iniFile, Enum section, IEnumerable<string> values) {
+            WriteSection(iniFile, SectionNames[section], values);
+        }
+
+        public void WriteSection(Enum iniFile, string sectionName, IEnumerable<string> values) {
+            IniFileUtils.WriteSection(Path.Combine(BasePath, FileNames[iniFile]), sectionName, values);
+        }
 
         private IEnumerable<string> ReadCustomSectionNames(
-          Dictionary<string, IniFile> iniFiles,
-          Enum iniFile)
-        {
-            if (!iniFiles.ContainsKey(this.FileNames[iniFile]))
-            {
-                this.ReadFile(iniFiles, iniFile);
-                if (!iniFiles.ContainsKey(this.FileNames[iniFile]))
-                    return (IEnumerable<string>)new string[0];
+            Dictionary<string, IniFile> iniFiles,
+            Enum                        iniFile) {
+            if (!iniFiles.ContainsKey(FileNames[iniFile])) {
+                ReadFile(iniFiles, iniFile);
+                if (!iniFiles.ContainsKey(FileNames[iniFile]))
+                    return new string[0];
             }
-            return iniFiles[this.FileNames[iniFile]].Sections.Select<IniSection, string>((Func<IniSection, string>)(s => s.SectionName)).Where<string>((Func<string, bool>)(s => !this.SectionNames.ContainsValue(s)));
-        }
-        private IEnumerable<string> ReadSection(
-        Dictionary<string, IniFile> iniFiles,
-        Enum iniFile,
-          Enum section)
-        {
-            return this.ReadSection(iniFiles, iniFile, this.SectionNames[section]);
+
+            return iniFiles[FileNames[iniFile]].Sections.Select(s => s.SectionName).Where(s => !SectionNames.ContainsValue(s));
         }
 
         private IEnumerable<string> ReadSection(
-          Dictionary<string, IniFile> iniFiles,
-          Enum iniFile,
-          string sectionName)
-        {
-            if (!iniFiles.ContainsKey(this.FileNames[iniFile]))
-            {
-                this.ReadFile(iniFiles, iniFile);
-                if (!iniFiles.ContainsKey(this.FileNames[iniFile]))
-                    return (IEnumerable<string>)new string[0];
+            Dictionary<string, IniFile> iniFiles,
+            Enum                        iniFile,
+            Enum                        section) {
+            return ReadSection(iniFiles, iniFile, SectionNames[section]);
+        }
+
+        private IEnumerable<string> ReadSection(
+            Dictionary<string, IniFile> iniFiles,
+            Enum                        iniFile,
+            string                      sectionName) {
+            if (!iniFiles.ContainsKey(FileNames[iniFile])) {
+                ReadFile(iniFiles, iniFile);
+                if (!iniFiles.ContainsKey(FileNames[iniFile]))
+                    return new string[0];
             }
-            return iniFiles[this.FileNames[iniFile]].GetSection(sectionName)?.KeysToStringEnumerable() ?? (IEnumerable<string>)new string[0];
+
+            return iniFiles[FileNames[iniFile]].GetSection(sectionName)?.KeysToStringEnumerable() ?? new string[0];
         }
 
         private string ReadValue(
-          Dictionary<string, IniFile> iniFiles,
-          Enum iniFile,
-          Enum section,
-          string keyName)
-        {
-            if (!iniFiles.ContainsKey(this.FileNames[iniFile]))
-            {
-                this.ReadFile(iniFiles, iniFile);
-                if (!iniFiles.ContainsKey(this.FileNames[iniFile]))
+            Dictionary<string, IniFile> iniFiles,
+            Enum                        iniFile,
+            Enum                        section,
+            string                      keyName) {
+            if (!iniFiles.ContainsKey(FileNames[iniFile])) {
+                ReadFile(iniFiles, iniFile);
+                if (!iniFiles.ContainsKey(FileNames[iniFile]))
                     return string.Empty;
             }
-            return iniFiles[this.FileNames[iniFile]].GetKey(this.SectionNames[section], keyName)?.KeyValue ?? string.Empty;
+
+            return iniFiles[FileNames[iniFile]].GetKey(SectionNames[section], keyName)?.KeyValue ?? string.Empty;
         }
 
         private void WriteSection(
-          Dictionary<string, IniFile> iniFiles,
-          Enum iniFile,
-          Enum section,
-          IEnumerable<string> values)
-        {
-            this.WriteSection(iniFiles, iniFile, this.SectionNames[section], values);
+            Dictionary<string, IniFile> iniFiles,
+            Enum                        iniFile,
+            Enum                        section,
+            IEnumerable<string>         values) {
+            WriteSection(iniFiles, iniFile, SectionNames[section], values);
         }
 
         private void WriteSection(
-          Dictionary<string, IniFile> iniFiles,
-          Enum iniFile,
-          string sectionName,
-          IEnumerable<string> values)
-        {
-            if (!iniFiles.ContainsKey(this.FileNames[iniFile]))
-            {
-                this.ReadFile(iniFiles, iniFile);
-                if (!iniFiles.ContainsKey(this.FileNames[iniFile]))
+            Dictionary<string, IniFile> iniFiles,
+            Enum                        iniFile,
+            string                      sectionName,
+            IEnumerable<string>         values) {
+            if (!iniFiles.ContainsKey(FileNames[iniFile])) {
+                ReadFile(iniFiles, iniFile);
+                if (!iniFiles.ContainsKey(FileNames[iniFile]))
                     return;
             }
-            iniFiles[this.FileNames[iniFile]].WriteSection(sectionName, values);
+
+            iniFiles[FileNames[iniFile]].WriteSection(sectionName, values);
         }
 
         private void WriteValue(
-          Dictionary<string, IniFile> iniFiles,
-          Enum iniFile,
-          Enum section,
-          string keyName,
-          string keyValue)
-        {
-            this.WriteValue(iniFiles, iniFile, this.SectionNames[section], keyName, keyValue);
+            Dictionary<string, IniFile> iniFiles,
+            Enum                        iniFile,
+            Enum                        section,
+            string                      keyName,
+            string                      keyValue) {
+            WriteValue(iniFiles, iniFile, SectionNames[section], keyName, keyValue);
         }
 
         private void WriteValue(
-          Dictionary<string, IniFile> iniFiles,
-          Enum iniFile,
-          string sectionName,
-          string keyName,
-          string keyValue)
-        {
-            if (!iniFiles.ContainsKey(this.FileNames[iniFile]))
-            {
-                this.ReadFile(iniFiles, iniFile);
-                if (!iniFiles.ContainsKey(this.FileNames[iniFile]))
+            Dictionary<string, IniFile> iniFiles,
+            Enum                        iniFile,
+            string                      sectionName,
+            string                      keyName,
+            string                      keyValue) {
+            if (!iniFiles.ContainsKey(FileNames[iniFile])) {
+                ReadFile(iniFiles, iniFile);
+                if (!iniFiles.ContainsKey(FileNames[iniFile]))
                     return;
             }
-            iniFiles[this.FileNames[iniFile]].WriteKey(sectionName, keyName, keyValue);
+
+            iniFiles[FileNames[iniFile]].WriteKey(sectionName, keyName, keyValue);
         }
 
-        private void ReadFile(Dictionary<string, IniFile> iniFiles, Enum iniFile)
-        {
-            if (iniFiles.ContainsKey(this.FileNames[iniFile]))
+        private void ReadFile(Dictionary<string, IniFile> iniFiles, Enum iniFile) {
+            if (iniFiles.ContainsKey(FileNames[iniFile]))
                 return;
-            string file = Path.Combine(this.BasePath, this.FileNames[iniFile]);
-            iniFiles.Add(this.FileNames[iniFile], IniFileUtils.ReadFromFile(file));
+            string file = Path.Combine(BasePath, FileNames[iniFile]);
+            iniFiles.Add(FileNames[iniFile], IniFileUtils.ReadFromFile(file));
         }
 
-        private void SaveFiles(Dictionary<string, IniFile> iniFiles)
-        {
-            foreach (KeyValuePair<string, IniFile> iniFile in iniFiles)
-                IniFileUtils.SaveToFile(Path.Combine(this.BasePath, iniFile.Key), iniFile.Value);
+        private void SaveFiles(Dictionary<string, IniFile> iniFiles) {
+            foreach (var iniFile in iniFiles)
+                IniFileUtils.SaveToFile(Path.Combine(BasePath, iniFile.Key), iniFile.Value);
         }
     }
 }

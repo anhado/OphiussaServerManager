@@ -1,21 +1,22 @@
-﻿using OphiussaServerManager.Common;
-using OphiussaServerManager.Common.Helpers;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using OphiussaServerManager.Common.Helpers;
 
-namespace OphiussaServerManager.Common.Models
-{  
-    public class WorkshopFileDetailResponse
-    {
-        public DateTime cached = DateTime.UtcNow;
+namespace OphiussaServerManager.Common.Models {
+    public class WorkshopFileDetailResponse {
+        public DateTime Cached = DateTime.UtcNow;
 
-        public int total { get; set; }
+        public int Total { get; set; }
 
-        public List<WorkshopFileDetail> publishedfiledetails { get; set; }
+        public List<WorkshopFileDetail> Publishedfiledetails { get; set; }
 
-        public static WorkshopFileDetailResponse Load(string file) => string.IsNullOrWhiteSpace(file) || !File.Exists(file) ? (WorkshopFileDetailResponse)null : JsonUtils.DeserializeFromFile<WorkshopFileDetailResponse>(file);
+        public static WorkshopFileDetailResponse Load(string file) {
+            return string.IsNullOrWhiteSpace(file) || !File.Exists(file) ? null : JsonUtils.DeserializeFromFile<WorkshopFileDetailResponse>(file);
+        }
 
-        public bool Save(string file) => !string.IsNullOrWhiteSpace(file) && JsonUtils.SerializeToFile<WorkshopFileDetailResponse>(this, file);
+        public bool Save(string file) {
+            return !string.IsNullOrWhiteSpace(file) && JsonUtils.SerializeToFile(this, file);
+        }
     }
 }

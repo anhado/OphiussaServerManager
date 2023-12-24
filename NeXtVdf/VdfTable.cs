@@ -1,282 +1,163 @@
-﻿using System.Collections.Generic;
-using System;
-using System.Text;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
-namespace NeXt.Vdf
-{
+namespace NeXt.Vdf {
     /// <summary>
-    /// A VdfValue that represents a table containing other VdfValues
+    ///     A VdfValue that represents a table containing other VdfValues
     /// </summary>
-    public sealed class VdfTable : VdfValue, IList<VdfValue>
-    {
-        public VdfTable(string name) : base(name) { }
+    public sealed class VdfTable : VdfValue, IList<VdfValue> {
+        private readonly Dictionary<string, VdfValue> _valuelookup = new Dictionary<string, VdfValue>();
 
-        public VdfTable(string name, IEnumerable<VdfValue> values) : this(name)
-        {
-            if (values == null)
-            {
-                throw new ArgumentNullException("values");
-            }
+        private readonly List<VdfValue> _values = new List<VdfValue>();
 
-            foreach(var val in values)
-            {
-                Add(val);
-            }
+        public VdfTable(string name) : base(name) {
         }
 
-        private List<VdfValue> values = new List<VdfValue>();
-        private Dictionary<string, VdfValue> valuelookup = new Dictionary<string,VdfValue>();
+        public VdfTable(string name, IEnumerable<VdfValue> values) : this(name) {
+            if (values == null) throw new ArgumentNullException("values");
 
-        public int IndexOf(VdfValue item)
-        {
-            return values.IndexOf(item);
+            foreach (var val in values) Add(val);
         }
 
-        public void Insert(int index, VdfValue item)
-        {
+        public VdfValue this[string name] => _valuelookup[name];
 
-            if(item == null)
-            {
-                throw new ArgumentNullException("item");
-            }
-            if(index < 0 || index >= values.Count)
-            {
-                throw new ArgumentOutOfRangeException("index");
-            }
-            if(string.IsNullOrEmpty(item.Name))
-            {
-                throw new ArgumentException("item name cannot be empty or null");
-            }
-            if (ContainsName(item.Name))
-            {
-                throw new ArgumentException("a value with name " + item.Name + " already exists in the table");
-            }
+        public int IndexOf(VdfValue item) {
+            return _values.IndexOf(item);
+        }
+
+        public void Insert(int index, VdfValue item) {
+            if (item == null) throw new ArgumentNullException("item");
+            if (index < 0 || index >= _values.Count) throw new ArgumentOutOfRangeException("index");
+            if (string.IsNullOrEmpty(item.Name)) throw new ArgumentException("item name cannot be empty or null");
+            if (ContainsName(item.Name)) throw new ArgumentException("a value with name " + item.Name + " already exists in the table");
 
 
             item.Parent = this;
 
-            values.Insert(index, item);
-            valuelookup.Add(item.Name, item);
+            _values.Insert(index, item);
+            _valuelookup.Add(item.Name, item);
         }
 
-        public void InsertAfter(VdfValue item, VdfValue newitem)
-        {
-            if(!Contains(item))
-            {
-                throw new ArgumentException("item needs to exist in this table", "item");
-            }
+        public void RemoveAt(int index) {
+            var val = _values[index];
+            _values.RemoveAt(index);
+            _valuelookup.Remove(val.Name);
+        }
 
-            if (string.IsNullOrEmpty(newitem.Name))
-            {
-                throw new ArgumentException("newitem name cannot be empty or null");
-            }
-            if (ContainsName(newitem.Name))
-            {
-                throw new ArgumentException("a value with name " + newitem.Name + " already exists in the table");
-            }
+        public VdfValue this[int index] {
+            get => _values[index];
+            set {
+                if (_values[index].Name != value.Name) {
+                    _valuelookup.Remove(_values[index].Name);
+                    _valuelookup.Add(value.Name, value);
+                }
+                else {
+                    _valuelookup[value.Name] = value;
+                }
 
-            int i = -1;
-            for(i = 0; i < values.Count; i++)
-            {
-                if(values[i] == item)
-                {
-                    break;
-                }
-            }
-
-            if(i >= 0 && i < values.Count)
-            {
-                if(i == values.Count -1)
-                {
-                    Add(newitem);
-                }
-                else
-                {
-                    Insert(i + 1, newitem);
-                }
+                _values[index] = value;
             }
         }
 
-        public void RemoveAt(int index)
-        {
-            var val = values[index];
-            values.RemoveAt(index);
-            valuelookup.Remove(val.Name);
-            
-        }
+        public void Add(VdfValue item) {
+            if (item == null) throw new ArgumentNullException("item");
+            if (string.IsNullOrEmpty(item.Name)) throw new ArgumentException("item name cannot be empty or null");
+            if (ContainsName(item.Name)) throw new ArgumentException("a value with name " + item.Name + " already exists in the table");
 
-        public VdfValue this[int index]
-        {
-            get
-            {
-                return values[index];
-            }
-            set
-            {
-                if(values[index].Name != value.Name)
-                {
-                    valuelookup.Remove(values[index].Name);
-                    valuelookup.Add(value.Name, value);
-                }
-                else
-                {
-                valuelookup[value.Name] = value;
-                }
-                values[index] = value;
-            }
-        }
-
-        public VdfValue this[string name]
-        {
-            get
-            {
-                return valuelookup[name];
-            }
-        }
-
-        public void Add(VdfValue item)
-        {
-            if (item == null)
-            {
-                throw new ArgumentNullException("item");
-            }
-            if (string.IsNullOrEmpty(item.Name))
-            {
-                throw new ArgumentException("item name cannot be empty or null");
-            }
-            if (ContainsName(item.Name))
-            {
-                throw new ArgumentException("a value with name " + item.Name + " already exists in the table");
-            }
-            
             item.Parent = this;
 
-            values.Add(item);
-            valuelookup.Add(item.Name, item);
+            _values.Add(item);
+            _valuelookup.Add(item.Name, item);
         }
 
-        public void Clear()
-        {
-            values.Clear();
-            valuelookup.Clear();
+        public void Clear() {
+            _values.Clear();
+            _valuelookup.Clear();
         }
 
-        public bool Contains(VdfValue item)
-        {
-            if (item == null)
-            {
-                throw new ArgumentNullException("item");
-            }
-            if (string.IsNullOrEmpty(item.Name))
-            {
-                throw new ArgumentException("item name cannot be empty or null");
-            }
+        public bool Contains(VdfValue item) {
+            if (item == null) throw new ArgumentNullException("item");
+            if (string.IsNullOrEmpty(item.Name)) throw new ArgumentException("item name cannot be empty or null");
 
-            return valuelookup.ContainsKey(item.Name) && (valuelookup[item.Name] == item);
-        }
-        
-        public bool ContainsName(string name)
-        {
-            if (name == null)
-            {
-                throw new ArgumentNullException("name");
-            }
-            if (string.IsNullOrEmpty(name))
-            {
-                throw new ArgumentException("name cannot be empty");
-            }
-
-            return valuelookup.ContainsKey(name);
+            return _valuelookup.ContainsKey(item.Name) && _valuelookup[item.Name] == item;
         }
 
-        public VdfValue GetByName(string name)
-        {
-            if(ContainsName(name))
-            {
-                return valuelookup[name];
-            }
-            return null;
+        public void CopyTo(VdfValue[] array, int arrayIndex) {
+            _values.CopyTo(array, arrayIndex);
         }
 
-        public void CopyTo(VdfValue[] array, int arrayIndex)
-        {
-            values.CopyTo(array, arrayIndex);
-        }
+        public int Count => _values.Count;
 
-        public int Count
-        {
-            get { return values.Count; }
-        }
-
-        public bool Remove(VdfValue item)
-        {
-            if (item == null)
-            {
-                throw new ArgumentNullException("item");
-            }
-            if (string.IsNullOrEmpty(item.Name))
-            {
-                throw new ArgumentException("item name cannot be empty or null");
-            }
-            if(Contains(item))
-            {
-                valuelookup.Remove(item.Name);
-                values.Remove(item);
+        public bool Remove(VdfValue item) {
+            if (item == null) throw new ArgumentNullException("item");
+            if (string.IsNullOrEmpty(item.Name)) throw new ArgumentException("item name cannot be empty or null");
+            if (Contains(item)) {
+                _valuelookup.Remove(item.Name);
+                _values.Remove(item);
                 return true;
             }
+
             return false;
         }
 
-        public IEnumerator<VdfValue> GetEnumerator()
-        {
-            return values.GetEnumerator();
+        public IEnumerator<VdfValue> GetEnumerator() {
+            return _values.GetEnumerator();
         }
 
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        {
-            return values.GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator() {
+            return _values.GetEnumerator();
         }
 
-        bool ICollection<VdfValue>.IsReadOnly
-        {
-            get { return false; }
-        }
+        bool ICollection<VdfValue>.IsReadOnly => false;
 
-        public void Traverse(Func<VdfValue, bool> call)
-        {
-            if (call == null)
-            {
-                throw new ArgumentNullException("call");
-            }
-            foreach (var value in values)
-            {
-                if (!call(value))
-                {
+        public void InsertAfter(VdfValue item, VdfValue newitem) {
+            if (!Contains(item)) throw new ArgumentException("item needs to exist in this table", "item");
+
+            if (string.IsNullOrEmpty(newitem.Name)) throw new ArgumentException("newitem name cannot be empty or null");
+            if (ContainsName(newitem.Name)) throw new ArgumentException("a value with name " + newitem.Name + " already exists in the table");
+
+            int i = -1;
+            for (i = 0; i < _values.Count; i++)
+                if (_values[i] == item)
                     break;
-                }
+
+            if (i >= 0 && i < _values.Count) {
+                if (i == _values.Count - 1)
+                    Add(newitem);
+                else
+                    Insert(i + 1, newitem);
             }
         }
 
-        public void TraverseRecursive(Func<VdfValue, bool> call)
-        {
-            if (call == null)
-            {
-                throw new ArgumentNullException("call");
-            }
-            foreach (var value in values)
-            {
-                if (value is VdfTable)
-                {
+        public bool ContainsName(string name) {
+            if (name == null) throw new ArgumentNullException("name");
+            if (string.IsNullOrEmpty(name)) throw new ArgumentException("name cannot be empty");
+
+            return _valuelookup.ContainsKey(name);
+        }
+
+        public VdfValue GetByName(string name) {
+            if (ContainsName(name)) return _valuelookup[name];
+            return null;
+        }
+
+        public void Traverse(Func<VdfValue, bool> call) {
+            if (call == null) throw new ArgumentNullException("call");
+            foreach (var value in _values)
+                if (!call(value))
+                    break;
+        }
+
+        public void TraverseRecursive(Func<VdfValue, bool> call) {
+            if (call == null) throw new ArgumentNullException("call");
+            foreach (var value in _values)
+                if (value is VdfTable) {
                     ((VdfTable)value).TraverseRecursive(call);
                 }
-                else
-                {
-                    if (!call(value))
-                    {
-                        break;
-                    }
+                else {
+                    if (!call(value)) break;
                 }
-            }
         }
     }
 }

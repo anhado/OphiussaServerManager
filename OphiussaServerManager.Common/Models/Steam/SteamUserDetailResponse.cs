@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace OphiussaServerManager.Common.Models
-{
-    public class SteamUserDetailResponse
-    {
-        public List<SteamUserDetail> players { get; set; }
+namespace OphiussaServerManager.Common.Models {
+    public class SteamUserDetailResponse {
+        public List<SteamUserDetail> Players { get; set; }
     }
 }

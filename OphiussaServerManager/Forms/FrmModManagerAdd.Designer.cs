@@ -74,7 +74,7 @@
             // 
             // button2
             // 
-            this.button2.Image = global::OphiussaServerManager.Properties.Resources.Filter_icon_icon;
+            this.button2.Image = global::OphiussaServerManager.Properties.Resources.FilterIcon;
             this.button2.Location = new System.Drawing.Point(176, 45);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(26, 25);
@@ -134,7 +134,7 @@
             // 
             // button1
             // 
-            this.button1.Image = global::OphiussaServerManager.Properties.Resources.refresh_icon_icon__4_;
+            this.button1.Image = global::OphiussaServerManager.Properties.Resources.RefeshIcon;
             this.button1.Location = new System.Drawing.Point(12, 12);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(32, 32);
@@ -171,7 +171,7 @@
             // btaddo
             // 
             this.btaddo.HeaderText = "";
-            this.btaddo.Image = global::OphiussaServerManager.Properties.Resources.add_icon_icon_16x16;
+            this.btaddo.Image = global::OphiussaServerManager.Properties.Resources.AddIcon16x16;
             this.btaddo.Name = "btaddo";
             this.btaddo.Width = 32;
             // 
@@ -236,7 +236,7 @@
             // dataGridViewImageColumn1
             // 
             this.dataGridViewImageColumn1.HeaderText = "";
-            this.dataGridViewImageColumn1.Image = global::OphiussaServerManager.Properties.Resources.Add_icon_icon;
+            this.dataGridViewImageColumn1.Image = global::OphiussaServerManager.Properties.Resources.AddIcon32x32;
             this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
             this.dataGridViewImageColumn1.Width = 32;
             // 
