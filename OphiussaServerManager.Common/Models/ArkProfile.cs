@@ -45,7 +45,7 @@ namespace OphiussaServerManager.Common.Models.Profiles.ArkProfile {
             Administration.ServerSpectatorPassword = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadStringValue("SpectatorPassword", Administration.ServerSpectatorPassword);
             Administration.ServerName              = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusSessionSettings).ReadStringValue("SessionName", Administration.ServerName);
             Administration.ServerPort              = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusSessionSettings).ReadStringValue("Port",        Administration.ServerPort);
-            Administration.PeerPort                = (systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusSessionSettings).ReadIntValue("Port", int.Parse(Administration.ServerPort)) + 1).ToString();
+            Administration.PeerPort                = (systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusSessionSettings).ReadIntValue("Port", Administration.ServerPort.ToInt()) + 1).ToString();
             Administration.QueryPort               = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusSessionSettings).ReadStringValue("QueryPort", Administration.QueryPort);
             Administration.Mod                     = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusMessageOfTheDay).ReadStringValue("Message", Administration.Mod);
             Administration.ModDuration             = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusMessageOfTheDay).ReadIntValue("Duration", Administration.ModDuration);
