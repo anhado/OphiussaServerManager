@@ -23,4 +23,5 @@ Functionalities:
 
 I used some code from:
 https://github.com/Bletch1971/ServerManagers
-Thanks for this project Bletch1971
+
+Thanks for this project Bletch1971 and some libraries in your project :)
