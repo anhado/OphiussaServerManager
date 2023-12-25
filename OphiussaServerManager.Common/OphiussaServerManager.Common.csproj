@@ -124,6 +124,7 @@
 		<Reference Include="WindowsBase"/>
 	</ItemGroup>
 	<ItemGroup>
+		<Compile Include="Helpers\DifficultyOffsetValueConverter.cs" />
 		<Compile Include="Helpers\EncryptionUtils.cs"/>
 		<Compile Include="Helpers\FileComparer.cs"/>
 		<Compile Include="Helpers\Ini\AggregateIniValue.cs"/>
@@ -143,6 +144,7 @@
 		<Compile Include="Helpers\INullableValue.cs"/>
 		<Compile Include="Helpers\IOUtils.cs"/>
 		<Compile Include="Helpers\JsonUtils.cs"/>
+		<Compile Include="Helpers\OfficialDifficultyValueConverter.cs" />
 		<Compile Include="Helpers\OphiussaLogger.cs"/>
 		<Compile Include="Helpers\NetworkTools.cs"/>
 		<Compile Include="Helpers\NullableValue.cs"/>

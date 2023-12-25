@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net;
+using System.Security;
 using System.Threading.Tasks;
 using System.Web.Security;
 using CoreRCON;
@@ -50,17 +51,126 @@ namespace OphiussaServerManager.Common.Models.Profiles.ArkProfile {
             Administration.Mod                     = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusMessageOfTheDay).ReadStringValue("Message", Administration.Mod);
             Administration.ModDuration             = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusMessageOfTheDay).ReadIntValue("Duration", Administration.ModDuration);
 
-            Rules.EnableHardcoreMode                 = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadBoolValue("ServerHardcore",                        Rules.EnableHardcoreMode);
-            Rules.PreventBuildingInResourceRichAreas = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadBoolValue("EnableExtraStructurePreventionVolumes", Rules.PreventBuildingInResourceRichAreas);
-            Rules.EnablePvp                          = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadBoolValue("serverPVE",                             Rules.EnablePvp);
-            Rules.EnablePveCaveBuilding              = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadBoolValue("AllowCaveBuildingPvE",                  Rules.EnablePveCaveBuilding);
-            Rules.EnablePvpCaveBuilding              = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadBoolValue("AllowCaveBuildingPvP",                  Rules.EnablePvpCaveBuilding);
-            Rules.AllowCrateSpawnsOnTopOfStructures  = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadBoolValue("AllowCrateSpawnsOnTopOfStructures",     Rules.AllowCrateSpawnsOnTopOfStructures);
+            Rules.EnableHardcoreMode                       = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadBoolValue("ServerHardcore", Rules.EnableHardcoreMode);
+            Rules.DisablePveFriendlyFire                   = systemIniFile.ReadSection(IniFiles.Game,             IniSections.GameShooterGameMode).ReadBoolValue("bPvEDisableFriendlyFire", Rules.DisablePveFriendlyFire);
+            Rules.DisablePvpFriendlyFire                   = systemIniFile.ReadSection(IniFiles.Game,             IniSections.GameShooterGameMode).ReadBoolValue("bDisableFriendlyFire",    Rules.DisablePvpFriendlyFire);
+            Rules.PreventBuildingInResourceRichAreas       = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadBoolValue("EnableExtraStructurePreventionVolumes", Rules.PreventBuildingInResourceRichAreas);
+            Rules.DisableSupplyCrates                      = systemIniFile.ReadSection(IniFiles.Game,             IniSections.GameShooterGameMode).ReadBoolValue("bDisableLootCrates", Rules.DisableSupplyCrates);
+            Rules.EnablePvp                                = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadBoolValue("serverPVE",            Rules.EnablePvp);
+            Rules.EnablePveCaveBuilding                    = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadBoolValue("AllowCaveBuildingPvE", Rules.EnablePveCaveBuilding);
+            Rules.EnablePvpCaveBuilding                    = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadBoolValue("AllowCaveBuildingPvP", Rules.EnablePvpCaveBuilding);
+            Rules.EnableSinglePlayerSettings               = systemIniFile.ReadSection(IniFiles.Game,             IniSections.GameShooterGameMode).ReadBoolValue("bUseSingleplayerSettings", Rules.EnableSinglePlayerSettings);
+            Rules.AllowCrateSpawnsOnTopOfStructures        = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadBoolValue("AllowCrateSpawnsOnTopOfStructures", Rules.AllowCrateSpawnsOnTopOfStructures);
+            Rules.EnableCreativeMode                       = systemIniFile.ReadSection(IniFiles.Game,             IniSections.GameShooterGameMode).ReadBoolValue("bShowCreativeMode", Rules.EnableCreativeMode);
+            Rules.EnablePveCryoSickness                    = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadBoolValue("EnableCryoSicknessPVE",   Rules.EnablePveCryoSickness);
+            Rules.RandomSupplyCratePoints                  = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadBoolValue("RandomSupplyCratePoints", Rules.RandomSupplyCratePoints);
+            Rules.SupplyCrateLootQualityMultiplier         = systemIniFile.ReadSection(IniFiles.Game,             IniSections.GameShooterGameMode).ReadFloatValue("SupplyCrateLootQualityMultiplier", Rules.SupplyCrateLootQualityMultiplier);
+            Rules.FishingLootQualityMultiplier             = systemIniFile.ReadSection(IniFiles.Game,             IniSections.GameShooterGameMode).ReadFloatValue("FishingLootQualityMultiplier",     Rules.FishingLootQualityMultiplier);
+            Rules.UseCorpseLocation                        = systemIniFile.ReadSection(IniFiles.Game,             IniSections.GameShooterGameMode).ReadBoolValue("bUseCorpseLocator", Rules.UseCorpseLocation);
+            Rules.PreventSpawnAnimations                   = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadBoolValue("PreventSpawnAnimations", Rules.PreventSpawnAnimations);
+            Rules.AllowUnlimitedRespecs                    = systemIniFile.ReadSection(IniFiles.Game,             IniSections.GameShooterGameMode).ReadBoolValue("bAllowUnlimitedRespecs",          Rules.AllowUnlimitedRespecs);
+            Rules.AllowPlatformSaddleMultiFloors           = systemIniFile.ReadSection(IniFiles.Game,             IniSections.GameShooterGameMode).ReadBoolValue("bAllowPlatformSaddleMultiFloors", Rules.AllowPlatformSaddleMultiFloors);
+            Rules.PlatformSaddleBuildAreaBoundsMultiplier  = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadFloatValue("PlatformSaddleBuildAreaBoundsMultiplier", Rules.PlatformSaddleBuildAreaBoundsMultiplier);
+            Rules.MaxGatewaysOnSaddles                     = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadIntValue("MaxGateFrameOnSaddles", Rules.MaxGatewaysOnSaddles);
+            Rules.DifficultyOffset                         = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadFloatValue("DifficultyOffset", Rules.DifficultyOffset);
+            Rules.MaxDinoLevel                             = OfficialDifficultyValueConverter.Convert(systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadIntValue("OverrideOfficialDifficulty", Rules.MaxDinoLevel));
+            Rules.EnableDifficultOverride                  = (Rules.MaxDinoLevel != 120 || Rules.DifficultyOffset != 1f);
+            Rules.DestroyTamesOverLevel                    = systemIniFile.ReadSection(IniFiles.Game, IniSections.GameShooterGameMode).ReadIntValue("DestroyTamesOverLevelClamp", Rules.DestroyTamesOverLevel);
+            Rules.EnableTributeDownloads                   = !systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadBoolValue("noTributeDownloads", Rules.EnableTributeDownloads);
+            Rules.NoSurvivorDownloads                      = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadBoolValue("PreventDownloadSurvivors",          Rules.NoSurvivorDownloads);
+            Rules.NoItemDownloads                          = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadBoolValue("PreventDownloadItems",              Rules.NoItemDownloads);
+            Rules.NoDinoDownloads                          = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadBoolValue("PreventDownloadDinos",              Rules.NoDinoDownloads);
+            Rules.AllowForeignDinoDownloads                = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadBoolValue("CrossARKAllowForeignDinoDownloads", Rules.AllowForeignDinoDownloads);
+            Rules.NoSurvivorUploads                        = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadBoolValue("PreventUploadSurvivors",            Rules.NoSurvivorUploads);
+            Rules.NoItemUploads                            = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadBoolValue("PreventUploadItems",                Rules.NoItemUploads);
+            Rules.MaxTributeDinos                          = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadIntValue("MaxTributeDinos", Rules.MaxTributeDinos);
+            Rules.LimitMaxTributeDinos                     = Rules.MaxTributeDinos != 20;
+            Rules.MaxTributeItems                          = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadIntValue("MaxTributeItems", Rules.MaxTributeItems);
+            Rules.LimitTributeItems                        = Rules.MaxTributeDinos != 50;
+            Rules.OverrideSurvivorUploadExpirationValue    = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadIntValue("TributeCharacterExpirationSeconds", Rules.OverrideSurvivorUploadExpirationValue);
+            Rules.OverrideDinoUploadExpirationValue        = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadIntValue("TributeDinoExpirationSeconds",      Rules.OverrideDinoUploadExpirationValue);
+            Rules.OverrideItemUploadExpirationValue        = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadIntValue("TributeItemExpirationSeconds",      Rules.OverrideItemUploadExpirationValue);
+            Rules.OverrideMinimumDinoReUploadIntervalValue = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadIntValue("MinimumDinoReuploadInterval",       Rules.OverrideMinimumDinoReUploadIntervalValue);
+            Rules.OverrideSurvivorUploadExpiration         = Rules.OverrideSurvivorUploadExpirationValue    != 86400 || Rules.OverrideSurvivorUploadExpirationValue    == 0;
+            Rules.OverrideDinoUploadExpiration             = Rules.OverrideDinoUploadExpirationValue        != 86400 || Rules.OverrideDinoUploadExpirationValue        == 0;
+            Rules.OverrideItemUploadExpiration             = Rules.OverrideItemUploadExpirationValue        != 86400 || Rules.OverrideItemUploadExpirationValue        == 0;
+            Rules.OverrideMinimumDinoReUploadInterval      = Rules.OverrideMinimumDinoReUploadIntervalValue != 43200 || Rules.OverrideMinimumDinoReUploadIntervalValue == 0;
+            Rules.PveSchedule                              = systemIniFile.ReadSection(IniFiles.Game, IniSections.GameShooterGameMode).ReadBoolValue("bAutoPvETimer", Rules.PveSchedule);
+            ;
+            Rules.UseServerTime                        = systemIniFile.ReadSection(IniFiles.Game,             IniSections.GameShooterGameMode).ReadBoolValue("bAutoPvEUseSystemTime", Rules.UseServerTime);
+            Rules.PvpStartTime                         = systemIniFile.ReadSection(IniFiles.Game,             IniSections.GameShooterGameMode).ReadIntValue("bAutoPvEUseSystemTime", Rules.PvpStartTime.ConvertHourToSeconds()).ConvertSecondsToHour();
+            Rules.PvpEndTime                           = systemIniFile.ReadSection(IniFiles.Game,             IniSections.GameShooterGameMode).ReadIntValue("bAutoPvEUseSystemTime", Rules.PvpEndTime.ConvertHourToSeconds()).ConvertSecondsToHour();
+            Rules.PreventOfflinePvp                    = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadBoolValue("PreventOfflinePvP", Rules.PreventOfflinePvp);
+            Rules.LogoutInterval                       = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadIntValue("PreventOfflinePvPInterval",                     Rules.LogoutInterval);
+            Rules.ConnectionInvicibleInterval          = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadIntValue("PreventOfflinePvPConnectionInvincibleInterval", Rules.ConnectionInvicibleInterval);
+            Rules.IncreasePvpRespawnInterval           = systemIniFile.ReadSection(IniFiles.Game,             IniSections.GameShooterGameMode).ReadBoolValue("bIncreasePvPRespawnInterval", Rules.IncreasePvpRespawnInterval);
+            Rules.IntervalBaseAmount                   = systemIniFile.ReadSection(IniFiles.Game,             IniSections.GameShooterGameMode).ReadIntValue("IncreasePvPRespawnIntervalBaseAmount",  Rules.IntervalBaseAmount);
+            Rules.IntervalCheckPeriod                  = systemIniFile.ReadSection(IniFiles.Game,             IniSections.GameShooterGameMode).ReadIntValue("IncreasePvPRespawnIntervalCheckPeriod", Rules.IntervalCheckPeriod);
+            Rules.IntervalMultiplier                   = systemIniFile.ReadSection(IniFiles.Game,             IniSections.GameShooterGameMode).ReadFloatValue("IncreasePvPRespawnIntervalMultiplier", Rules.IntervalMultiplier);
+            Rules.MaxPlayersInTribe                    = systemIniFile.ReadSection(IniFiles.Game,             IniSections.GameShooterGameMode).ReadIntValue("MaxNumberOfPlayersInTribe", Rules.MaxPlayersInTribe);
+            Rules.TribeNameChangeCooldDown             = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadIntValue("TribeNameChangeCooldown", Rules.TribeNameChangeCooldDown);
+            Rules.TribeSlotReuseCooldown               = systemIniFile.ReadSection(IniFiles.Game,             IniSections.GameShooterGameMode).ReadIntValue("TribeSlotReuseCooldown", Rules.TribeSlotReuseCooldown);
+            Rules.AllowTribeAlliances                  = !systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadBoolValue("PreventTribeAlliances", Rules.AllowTribeAlliances);
+            Rules.MaxAlliancesPerTribe                 = systemIniFile.ReadSection(IniFiles.Game, IniSections.GameShooterGameMode).ReadIntValue("MaxAlliancesPerTribe", Rules.MaxAlliancesPerTribe);
+            Rules.MaxTribesPerAlliance                 = systemIniFile.ReadSection(IniFiles.Game, IniSections.GameShooterGameMode).ReadIntValue("MaxTribesPerAlliance", Rules.MaxTribesPerAlliance);
+            Rules.AllowTribeWarfare                    = systemIniFile.ReadSection(IniFiles.Game, IniSections.GameShooterGameMode).ReadBoolValue("bPvEAllowTribeWar",       Rules.AllowTribeWarfare);
+            Rules.AllowCancelingTribeWarfare           = systemIniFile.ReadSection(IniFiles.Game, IniSections.GameShooterGameMode).ReadBoolValue("bPvEAllowTribeWarCancel", Rules.AllowCancelingTribeWarfare);
+            Rules.AllowCostumRecipes                   = systemIniFile.ReadSection(IniFiles.Game, IniSections.GameShooterGameMode).ReadBoolValue("bAllowCustomRecipes",     Rules.AllowCostumRecipes);
+            Rules.CostumRecipesEffectivenessMultiplier = systemIniFile.ReadSection(IniFiles.Game, IniSections.GameShooterGameMode).ReadFloatValue("CustomRecipeEffectivenessMultiplier", Rules.CostumRecipesEffectivenessMultiplier);
+            Rules.CostumRecipesSkillMultiplier         = systemIniFile.ReadSection(IniFiles.Game, IniSections.GameShooterGameMode).ReadFloatValue("CustomRecipeSkillMultiplier",         Rules.CostumRecipesSkillMultiplier);
+            Rules.EnableDiseases                       = !systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadBoolValue("PreventDiseases", Rules.EnableDiseases);
+            Rules.NonPermanentDiseases                 = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadBoolValue("NonPermanentDiseases", Rules.NonPermanentDiseases);
+            Rules.OnlinePlayerCountStart               = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadIntValue("NPCNetworkStasisRangeScalePlayerCountStart", Rules.OnlinePlayerCountStart);
+            Rules.OnlinePlayerCountEnd                 = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadIntValue("NPCNetworkStasisRangeScalePlayerCountEnd",   Rules.OnlinePlayerCountEnd);
+            Rules.ScaleMaximum                         = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadFloatValue("NPCNetworkStasisRangeScalePercentEnd", Rules.ScaleMaximum);
+            Rules.OverrideNpcNetworkStasisRangeScale   = (Rules.OnlinePlayerCountStart != 0 && Rules.OnlinePlayerCountStart != 70) && (Rules.OnlinePlayerCountEnd != 0 && Rules.OnlinePlayerCountEnd != 120) && (Math.Round(Rules.ScaleMaximum, 2) != 0.5f && Rules.ScaleMaximum != 0.5f);
+            Rules.OxygenSwimSpeedStatMultiplier        = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadFloatValue("OxygenSwimSpeedStatMultiplier", Rules.OxygenSwimSpeedStatMultiplier);
+            Rules.UseCorpseLifeSpanMultiplier          = systemIniFile.ReadSection(IniFiles.Game,             IniSections.GameShooterGameMode).ReadFloatValue("UseCorpseLifeSpanMultiplier",                     Rules.UseCorpseLifeSpanMultiplier);
+            Rules.GlobalPoweredBatteryDurability       = systemIniFile.ReadSection(IniFiles.Game,             IniSections.GameShooterGameMode).ReadFloatValue("GlobalPoweredBatteryDurabilityDecreasePerSecond", Rules.GlobalPoweredBatteryDurability);
+            Rules.FuelConsumptionIntervalMultiplier    = systemIniFile.ReadSection(IniFiles.Game,             IniSections.GameShooterGameMode).ReadFloatValue("FuelConsumptionIntervalMultiplier",               Rules.FuelConsumptionIntervalMultiplier);
+            Rules.LimitNonPlayerDroppedItemsRange      = systemIniFile.ReadSection(IniFiles.Game,             IniSections.GameShooterGameMode).ReadIntValue("LimitNonPlayerDroppedItemsRange", Rules.LimitNonPlayerDroppedItemsRange);
+            Rules.LimitNonPlayerDroppedItemsCount      = systemIniFile.ReadSection(IniFiles.Game,             IniSections.GameShooterGameMode).ReadIntValue("LimitNonPlayerDroppedItemsCount", Rules.LimitNonPlayerDroppedItemsCount);
+            Rules.EnableCryopodNerf                    = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadBoolValue("EnableCryopodNerf", Rules.EnableCryopodNerf);
+            Rules.EnableCryopodNerfDuration            = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadIntValue("CryopodNerfDuration", Rules.EnableCryopodNerfDuration);
+            Rules.IncomingDamageMultiplierPercent      = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadFloatValue("CryopodNerfIncomingDamageMultPercent", Rules.IncomingDamageMultiplierPercent);
+            Rules.OutgoingDamageMultiplier             = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadFloatValue("CryopodNerfDamageMult",                Rules.OutgoingDamageMultiplier);
+            Rules.Gen2DisableTekSuitonSpawn            = systemIniFile.ReadSection(IniFiles.Game,             IniSections.GameShooterGameMode).ReadBoolValue("bDisableGenesisMissions", Rules.Gen2DisableTekSuitonSpawn);
+            Rules.Gen1AllowTekSuitPowers               = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadBoolValue("AllowTekSuitPowersInGenesis", Rules.Gen1AllowTekSuitPowers);
+            Rules.Gen2DisableTekSuitonSpawn            = systemIniFile.ReadSection(IniFiles.Game,             IniSections.GameShooterGameMode).ReadBoolValue("bDisableDefaultMapItemSets", Rules.Gen2DisableTekSuitonSpawn);
+            Rules.Gen2DisableWorldBuffs                = systemIniFile.ReadSection(IniFiles.Game,             IniSections.GameShooterGameMode).ReadBoolValue("bDisableWorldBuffs",         Rules.Gen2DisableWorldBuffs);
+            Rules.EnableWorldBuffScaling               = systemIniFile.ReadSection(IniFiles.Game,             IniSections.GameShooterGameMode).ReadBoolValue("bEnableWorldBuffScaling",    Rules.EnableWorldBuffScaling);
+            Rules.WorldBuffScanlingEfficacy            = systemIniFile.ReadSection(IniFiles.Game,             IniSections.GameShooterGameMode).ReadFloatValue("WorldBuffScalingEfficacy",              Rules.WorldBuffScanlingEfficacy);
+            Rules.MutagemSpawnDelayMultiplier          = systemIniFile.ReadSection(IniFiles.Game,             IniSections.GameShooterGameMode).ReadFloatValue("AdjustableMutagenSpawnDelayMultiplier", Rules.MutagemSpawnDelayMultiplier);
+            Rules.DisableHexagonStore                  = systemIniFile.ReadSection(IniFiles.Game,             IniSections.GameShooterGameMode).ReadBoolValue("bDisableHexagonStore",                Rules.DisableHexagonStore);
+            Rules.AllowOnlyEngramPointsTrade           = systemIniFile.ReadSection(IniFiles.Game,             IniSections.GameShooterGameMode).ReadBoolValue("bHexStoreAllowOnlyEngramTradeOption", Rules.AllowOnlyEngramPointsTrade);
+            Rules.MaxHexagonsPerCharacter              = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadIntValue("MaxHexagonsPerCharacter", Rules.MaxHexagonsPerCharacter);
+            Rules.HexagonRewardMultiplier              = systemIniFile.ReadSection(IniFiles.Game,             IniSections.GameShooterGameMode).ReadFloatValue("HexagonRewardMultiplier", Rules.HexagonRewardMultiplier);
+            Rules.HexagonCostMultiplier                = systemIniFile.ReadSection(IniFiles.Game,             IniSections.GameShooterGameMode).ReadFloatValue("HexagonCostMultiplier",   Rules.HexagonCostMultiplier);
+            Rules.AllowMultipleTamedUnicorns           = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusRagnarok).ReadBoolValue("AllowMultipleTamedUnicorns", Rules.AllowMultipleTamedUnicorns);
+            Rules.UnicornSpawnInterval                 = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusRagnarok).ReadIntValue("HexagonCostMultiplier", Rules.UnicornSpawnInterval);
+            Rules.EnableVolcano                        = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusRagnarok).ReadBoolValue("EnableVolcano", Rules.EnableVolcano);
+            Rules.VolcanoInterval                      = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusRagnarok).ReadFloatValue("VolcanoInterval",  Rules.VolcanoInterval);
+            Rules.VolcanoIntensity                     = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusRagnarok).ReadFloatValue("VolcanoIntensity", Rules.VolcanoIntensity);
+            Rules.EnableRagnarokSettings               = (Rules.AllowMultipleTamedUnicorns || Rules.UnicornSpawnInterval != 24 || !Rules.EnableVolcano || Rules.VolcanoInterval != 1f || Rules.VolcanoIntensity != 1f);
+            Rules.EnableFjordurBiomeTeleport           = systemIniFile.ReadSection(IniFiles.GameUserSettings, IniSections.GusServerSettings).ReadBoolValue("UseFjordurTraversalBuff", Rules.EnableFjordurBiomeTeleport);
+            Rules.EnableFjordurSettings                = !Rules.EnableFjordurBiomeTeleport;
+            Rules.GenericQualityClamp                  = systemIniFile.ReadSection(IniFiles.Game, IniSections.GameShooterGameMode).ReadIntValue("ItemStatClamps[0]", Rules.GenericQualityClamp);
+            Rules.EnableGenericQualityClamp            = Rules.GenericQualityClamp != 0;
+            Rules.ArmorClamp                           = systemIniFile.ReadSection(IniFiles.Game, IniSections.GameShooterGameMode).ReadIntValue("ItemStatClamps[1]", Rules.ArmorClamp);
+            Rules.EnableArmorClamp                     = Rules.ArmorClamp != 0;
+            Rules.MaxDurabilityClamp                   = systemIniFile.ReadSection(IniFiles.Game, IniSections.GameShooterGameMode).ReadIntValue("ItemStatClamps[2]", Rules.MaxDurabilityClamp);
+            Rules.EnableMaxDurabilityClamp             = Rules.MaxDurabilityClamp != 0;
+            Rules.WeaponDamagePercentClamp             = systemIniFile.ReadSection(IniFiles.Game, IniSections.GameShooterGameMode).ReadIntValue("ItemStatClamps[3]", Rules.WeaponDamagePercentClamp);
+            Rules.EnableWeaponDamagePercentClamp       = Rules.WeaponDamagePercentClamp != 0;
+            Rules.WeaponClipAmmoClamp                  = systemIniFile.ReadSection(IniFiles.Game, IniSections.GameShooterGameMode).ReadIntValue("ItemStatClamps[4]", Rules.WeaponClipAmmoClamp);
+            Rules.EnableWeaponClipAmmoClamp            = Rules.WeaponClipAmmoClamp != 0;
+            Rules.HypoInsulationClamp                  = systemIniFile.ReadSection(IniFiles.Game, IniSections.GameShooterGameMode).ReadIntValue("ItemStatClamps[5]", Rules.HypoInsulationClamp);
+            Rules.EnableHypoInsulationClamp            = Rules.HypoInsulationClamp != 0;
+            Rules.WeightClamp                          = systemIniFile.ReadSection(IniFiles.Game, IniSections.GameShooterGameMode).ReadIntValue("ItemStatClamps[6]", Rules.WeightClamp);
+            Rules.EnableWeightClamp                    = Rules.WeightClamp != 0;
+            Rules.HyperInsulationClamp                 = systemIniFile.ReadSection(IniFiles.Game, IniSections.GameShooterGameMode).ReadIntValue("ItemStatClamps[7]", Rules.HyperInsulationClamp);
+            Rules.EnableHyperInsulationClamp           = Rules.HyperInsulationClamp != 0;
 
-            Rules.EnableSinglePlayerSettings = systemIniFile.ReadSection(IniFiles.Game, IniSections.GameShooterGameMode).ReadBoolValue("bUseSingleplayerSettings", Rules.EnableSinglePlayerSettings);
-            Rules.DisableSupplyCrates        = systemIniFile.ReadSection(IniFiles.Game, IniSections.GameShooterGameMode).ReadBoolValue("bDisableLootCrates",       Rules.DisableSupplyCrates);
-            Rules.DisablePveFriendlyFire     = systemIniFile.ReadSection(IniFiles.Game, IniSections.GameShooterGameMode).ReadBoolValue("bPvEDisableFriendlyFire",  Rules.DisablePveFriendlyFire);
-            Rules.DisablePvpFriendlyFire     = systemIniFile.ReadSection(IniFiles.Game, IniSections.GameShooterGameMode).ReadBoolValue("bDisableFriendlyFire",     Rules.DisablePvpFriendlyFire);
             return this;
         }
 
@@ -133,8 +243,8 @@ namespace OphiussaServerManager.Common.Models.Profiles.ArkProfile {
                 if (Administration.EnablePublicIpForEpic)
                     hifenArgs.Add($" -PublicIPForEpic={publicIp}"); //Only For ASE
             //if (this.Administration.LogsLanguage) hifenArgs.Add($" -culture=<lang_code>");
-            //if (this.Administration.DisableCustomFoldersInTributeInventories) hifenArgs.Add(" -DisableCustomFoldersInTributeInventories");
-            //if (this.Administration.DisableRailgunPVP) hifenArgs.Add(" -DisableRailgunPVP");
+            if (Rules.DisableCostumTributeFolders) hifenArgs.Add(" -DisableCustomFoldersInTributeInventories");
+            if (Rules.DisablePvpRailGun) hifenArgs.Add(" -DisableRailgunPVP");
             if (Administration.EnablIdleTimeOut) hifenArgs.Add(" -EnableIdlePlayerKick");
             if (prf.Type.ServerType == EnumServerType.ArkSurviveEvolved)
                 if (Administration.EpicStorePlayersOnly)
@@ -151,8 +261,8 @@ namespace OphiussaServerManager.Common.Models.Profiles.ArkProfile {
             //if (this.Administration.MapModID) hifenArgs.Add(" -MapModID=<ModID>");//Dont Use This
             //if (this.Administration.MaxNumOfSaveBackups) hifenArgs.Add($" -MaxNumOfSaveBackups={this.Administration.MaxNumOfSaveBackups}");
             //if (this.Administration.MapPlayerLocation != "") InterrogationArgs.Add($"?AltSaveDirectoryName=\"{(this.Administration.MapPlayerLocation ? "True" : "False")}\"");
-            //if (this.Administration.MinimumTimeBetweenInventoryRetrieval) hifenArgs.Add($" -MinimumTimeBetweenInventoryRetrieval={this.Administration.MinimumTimeBetweenInventoryRetrieval}");
-            if (Administration.LocalIp.Trim() != "") interrogationArgs.Add($"?MultiHome={Administration.LocalIp.Trim()}");
+            if (Rules.FjordhawkInventoryCooldown != 3600) hifenArgs.Add($" -MinimumTimeBetweenInventoryRetrieval={Rules.FjordhawkInventoryCooldown}");
+            if (Administration.LocalIp.Trim()    != "") interrogationArgs.Add($"?MultiHome={Administration.LocalIp.Trim()}");
             if (Administration.DisableAntiSpeedHackDetection) hifenArgs.Add(" -noantispeedhack");
             if (!Administration.EnableBattleEye) hifenArgs.Add(" -NoBattlEye");
             if (Administration.DisablePlayerMovePhysics) hifenArgs.Add(" -nocombineclientmoves");
@@ -161,7 +271,7 @@ namespace OphiussaServerManager.Common.Models.Profiles.ArkProfile {
             if (Administration.LogAdminCommandsToAdmins) hifenArgs.Add(" -NotifyAdminCommandsInChat");
             if (Administration.NoUnderMeshChecking) hifenArgs.Add(" -noundermeshchecking");
             if (Administration.NoUnderMeshKilling) hifenArgs.Add(" -noundermeshkilling");
-            //if (this.Administration.PVEDisallowTribeWar) hifenArgs.Add(" -pvedisallowtribewar");
+            if (!Rules.AllowTribeWarfare) hifenArgs.Add(" -pvedisallowtribewar");
             //if (this.Administration.SecureSendArKPayload) hifenArgs.Add(" -SecureSendArKPayload");
             if (prf.Type.ServerType == EnumServerType.ArkSurviveAscended)
                 if (Administration.ServerAllowAnsel)
@@ -197,6 +307,7 @@ namespace OphiussaServerManager.Common.Models.Profiles.ArkProfile {
             if (Administration.ForceNoManSky) hifenArgs.Add(" -nomansky");
             if (!Administration.UseNoMemoryBias) hifenArgs.Add(" -nomemorybias");
             if (Administration.UseCache) hifenArgs.Add(" -usecache");
+            if (Rules.NoTransferFromFiltering) hifenArgs.Add(" -NoTransferFromFiltering");
             //if (this.Administration.PreventHibernation) hifenArgs.Add($" -PreventHibernation");
 
             interrogationArgs.Add($"?Port={Administration.ServerPort}");
@@ -207,10 +318,9 @@ namespace OphiussaServerManager.Common.Models.Profiles.ArkProfile {
             hifenArgs.Add(" -server");
             hifenArgs.Add(" -log");
 
-            hifenArgs.Add(" -ForceAllowCaveFlyers"); //Remove later
-            //?AllowCrateSpawnsOnTopOfStructures=True 
+            if (Rules.AllowCrateSpawnsOnTopOfStructures) interrogationArgs.Add($"?AllowCrateSpawnsOnTopOfStructures=True");
+            hifenArgs.Add(" -ForceAllowCaveFlyers"); //Remove later 
             //-ForceAllowCaveFlyers
-            //-NoTransferFromFiltering
             //-exclusivejoin
 
             // Olympus?listen?MultiHome=192.168.1.250?Port=8799?QueryPort=27036?MaxPlayers=50?AllowCrateSpawnsOnTopOfStructures=True 
@@ -338,13 +448,13 @@ namespace OphiussaServerManager.Common.Models.Profiles.ArkProfile {
         public int    MaxTributeItems                          { get; set; } = 0;
         public bool   NoTransferFromFiltering                  { get; set; } = false;
         public bool   OverrideSurvivorUploadExpiration         { get; set; } = false;
-        public int    OverrideSurvivorUploadExpirationValue    { get; set; } = 1440;
+        public int    OverrideSurvivorUploadExpirationValue    { get; set; } = 86400;
         public bool   OverrideItemUploadExpiration             { get; set; } = false;
-        public int    OverrideItemUploadExpirationValue        { get; set; } = 1440;
+        public int    OverrideItemUploadExpirationValue        { get; set; } = 86400;
         public bool   OverrideDinoUploadExpiration             { get; set; } = false;
-        public int    OverrideDinoUploadExpirationValue        { get; set; } = 1440;
+        public int    OverrideDinoUploadExpirationValue        { get; set; } = 86400;
         public bool   OverrideMinimumDinoReUploadInterval      { get; set; } = false;
-        public int    OverrideMinimumDinoReUploadIntervalValue { get; set; } = 720;
+        public int    OverrideMinimumDinoReUploadIntervalValue { get; set; } = 43200;
         public bool   PveSchedule                              { get; set; } = false;
         public bool   UseServerTime                            { get; set; } = false;
         public string PvpStartTime                             { get; set; } = "0000";

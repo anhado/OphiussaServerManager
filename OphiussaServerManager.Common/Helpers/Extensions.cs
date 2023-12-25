@@ -39,7 +39,20 @@ namespace OphiussaServerManager.Common.Helpers {
             if (prop != null) {
                 int    firstIndex                            = prop.IndexOf("=");
                 string value                                 = prop.Substring(firstIndex + 1);
-                if (int.TryParse(value, out int res)) result = res;
+                if (int.TryParse(value, NumberStyles.Any, CultureInfo.InvariantCulture, out int res)){ result = res;}
+            }
+
+            return result;
+        }
+
+        public static float ReadFloatValue(this IEnumerable<string> strings, string paramName, float defaultValue = 0) {
+            float result = defaultValue;
+
+            string prop = strings.FirstOrDefault(x => x.StartsWith(paramName));
+            if (prop != null) {
+                int    firstIndex                                                                                    = prop.IndexOf("=");
+                string value                                                                                         = prop.Substring(firstIndex + 1);
+                if (float.TryParse(value, NumberStyles.Any, CultureInfo.InvariantCulture, out float res)) result = res;
             }
 
             return result;
@@ -217,6 +230,22 @@ namespace OphiussaServerManager.Common.Helpers {
             }else if (value > tb.Maximum) {
                 tb.Value = tb.Maximum;
             }
+        }
+
+        public static int ConvertHourToSeconds(this string value, bool haveSeparator = false) {
+            int      result = 0;
+            TimeSpan t      = TimeSpan.FromHours(value.Substring(0, 2).ToInt()) + TimeSpan.FromMinutes(value.Substring( 2, 2).ToInt());
+            return t.Seconds;
+        }
+
+        public static string ConvertSecondsToHour(this int value, bool haveSeparator = false) {
+            string   result = "0000";
+            TimeSpan t      = TimeSpan.FromSeconds( value );
+
+            result = string.Format("{0:D2}{1:D2}", 
+                                   t.Hours, 
+                                   t.Minutes);
+            return result;
         }
     }
 }

@@ -62,9 +62,7 @@ namespace OphiussaServerManager.Forms {
             _profile = profile;
             _tab     = tab;
             LoadDefaultFieldValues();
-
-            ForceTrackBarValues(Controls);
-
+  
             txtProfileID.Text                           = profile.Key;
             txtProfileName.Text                         = profile.Name;
             tab.Text                                    = txtProfileName.Text + "          ";
@@ -255,7 +253,6 @@ namespace OphiussaServerManager.Forms {
             txtIncomingDamageMultiplierPercent.Text          = (profile.ArkConfiguration.Rules.IncomingDamageMultiplierPercent).ToString(CultureInfo.InvariantCulture);
             chkGen1DisableMissions.Checked                   = profile.ArkConfiguration.Rules.Gen1DisableMissions;
             chkGen1AllowTekSuitPowers.Checked                = profile.ArkConfiguration.Rules.Gen1AllowTekSuitPowers;
-            chkGen1AllowTekSuitPowers.Checked                = profile.ArkConfiguration.Rules.Gen1AllowTekSuitPowers;
             chkGen2DisableTEKSuitonSpawn.Checked             = profile.ArkConfiguration.Rules.Gen2DisableTekSuitonSpawn;
             chkGen2DisableWorldBuffs.Checked                 = profile.ArkConfiguration.Rules.Gen2DisableWorldBuffs;
             chkEnableWorldBuffScaling.Checked                = profile.ArkConfiguration.Rules.EnableWorldBuffScaling;
@@ -265,8 +262,7 @@ namespace OphiussaServerManager.Forms {
             chkAllowOnlyEngramPointsTrade.Checked            = profile.ArkConfiguration.Rules.AllowOnlyEngramPointsTrade;
             txtMaxHexagonsPerCharacter.Text                  = profile.ArkConfiguration.Rules.MaxHexagonsPerCharacter.ToString(CultureInfo.InvariantCulture);
             txtHexagonRewardMultiplier.Text                  = (profile.ArkConfiguration.Rules.HexagonRewardMultiplier).ToString(CultureInfo.InvariantCulture);
-            txtHexagonCostMultiplier.Text                    = (profile.ArkConfiguration.Rules.HexagonCostMultiplier).ToString(CultureInfo.InvariantCulture);
-            chkAllowOnlyEngramPointsTrade.Checked            = profile.ArkConfiguration.Rules.AllowOnlyEngramPointsTrade;
+            txtHexagonCostMultiplier.Text                    = (profile.ArkConfiguration.Rules.HexagonCostMultiplier).ToString(CultureInfo.InvariantCulture); 
             chkAllowMultipleTamedUnicorns.Checked            = profile.ArkConfiguration.Rules.AllowMultipleTamedUnicorns;
             txtUnicornSpawnInterval.Text                     = profile.ArkConfiguration.Rules.UnicornSpawnInterval.ToString(CultureInfo.InvariantCulture);
             chkEnableVolcano.Checked                         = profile.ArkConfiguration.Rules.EnableVolcano;
@@ -341,7 +337,7 @@ namespace OphiussaServerManager.Forms {
             txtCommand.Text =
                 profile.ArkConfiguration.GetCommandLinesArguments(MainForm.Settings, profile, MainForm.LocaIp);
 
-            //profile.ARKConfiguration.LoadGameINI(profile);
+            ForceTextBoxValues(Controls);
         }
 
         private void ForceTrackBarValues(Control.ControlCollection controls) {
@@ -354,6 +350,19 @@ namespace OphiussaServerManager.Forms {
                     if (item.HasChildren) ForceTrackBarValues(item.Controls);
                 }
         }
+        
+        private void ForceTextBoxValues(Control.ControlCollection controls) {
+            foreach (Control item in controls)
+                if (item is System.Windows.Forms.TextBox txt) {
+                    string oldText = txt.Text;
+                    txt.Text = "";
+                    txt.Text = oldText;
+                }
+                else {
+                    if (item.HasChildren) ForceTextBoxValues(item.Controls);
+                }
+        }
+        
 
         private void txtProfileName_Validated(object sender, EventArgs e) {
             _tab.Text = txtProfileName.Text + "          ";
@@ -398,6 +407,7 @@ namespace OphiussaServerManager.Forms {
                         }
                     }
                 }
+                ForceTextBoxValues(Controls);
             }
             catch (Exception exception) {
                 OphiussaLogger.Logger.Error(exception);
@@ -1616,7 +1626,7 @@ namespace OphiussaServerManager.Forms {
             try {
                 float  fValue = ((System.Windows.Forms.TextBox)sender).Text.ToFloat();
                 string value  = Math.Round(fValue, 0).ToString(CultureInfo.InvariantCulture);
-                tbOverrideSurvivorUploadExpirationValue.SetValueEx(value.ToInt());
+                tbOverrideDinoUploadExpirationValue.SetValueEx(value.ToInt());
             }
             catch (Exception exception) {
                 Console.WriteLine(exception);

@@ -4894,9 +4894,9 @@
             this.label57.AutoSize = true;
             this.label57.Location = new System.Drawing.Point(779, 156);
             this.label57.Name     = "label57";
-            this.label57.Size     = new System.Drawing.Size(51, 15);
+            this.label57.Size     = new System.Drawing.Size(53, 15);
             this.label57.TabIndex = 69;
-            this.label57.Text     = "minutes";
+            this.label57.Text     = "seconds";
             // 
             // txtOverrideMinimumDinoReUploadIntervalValue
             // 
@@ -4911,7 +4911,7 @@
             // 
             this.tbOverrideMinimumDinoReUploadIntervalValue.Anchor    =  ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.tbOverrideMinimumDinoReUploadIntervalValue.Location  =  new System.Drawing.Point(274, 148);
-            this.tbOverrideMinimumDinoReUploadIntervalValue.Maximum   =  20000;
+            this.tbOverrideMinimumDinoReUploadIntervalValue.Maximum   =  1200000;
             this.tbOverrideMinimumDinoReUploadIntervalValue.Minimum   =  1;
             this.tbOverrideMinimumDinoReUploadIntervalValue.Name      =  "tbOverrideMinimumDinoReUploadIntervalValue";
             this.tbOverrideMinimumDinoReUploadIntervalValue.Size      =  new System.Drawing.Size(425, 45);
@@ -4936,9 +4936,9 @@
             this.label52.AutoSize = true;
             this.label52.Location = new System.Drawing.Point(779, 125);
             this.label52.Name     = "label52";
-            this.label52.Size     = new System.Drawing.Size(51, 15);
+            this.label52.Size     = new System.Drawing.Size(53, 15);
             this.label52.TabIndex = 65;
-            this.label52.Text     = "minutes";
+            this.label52.Text     = "seconds";
             // 
             // txtOverrideDinoUploadExpirationValue
             // 
@@ -4953,7 +4953,7 @@
             // 
             this.tbOverrideDinoUploadExpirationValue.Anchor    =  ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.tbOverrideDinoUploadExpirationValue.Location  =  new System.Drawing.Point(274, 117);
-            this.tbOverrideDinoUploadExpirationValue.Maximum   =  20000;
+            this.tbOverrideDinoUploadExpirationValue.Maximum   =  1200000;
             this.tbOverrideDinoUploadExpirationValue.Minimum   =  1;
             this.tbOverrideDinoUploadExpirationValue.Name      =  "tbOverrideDinoUploadExpirationValue";
             this.tbOverrideDinoUploadExpirationValue.Size      =  new System.Drawing.Size(425, 45);
@@ -4978,9 +4978,9 @@
             this.label50.AutoSize = true;
             this.label50.Location = new System.Drawing.Point(779, 91);
             this.label50.Name     = "label50";
-            this.label50.Size     = new System.Drawing.Size(51, 15);
+            this.label50.Size     = new System.Drawing.Size(53, 15);
             this.label50.TabIndex = 61;
-            this.label50.Text     = "minutes";
+            this.label50.Text     = "seconds";
             // 
             // txtOverrideItemUploadExpirationValue
             // 
@@ -4995,7 +4995,7 @@
             // 
             this.tbOverrideItemUploadExpirationValue.Anchor    =  ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.tbOverrideItemUploadExpirationValue.Location  =  new System.Drawing.Point(274, 83);
-            this.tbOverrideItemUploadExpirationValue.Maximum   =  20000;
+            this.tbOverrideItemUploadExpirationValue.Maximum   =  1200000;
             this.tbOverrideItemUploadExpirationValue.Minimum   =  1;
             this.tbOverrideItemUploadExpirationValue.Name      =  "tbOverrideItemUploadExpirationValue";
             this.tbOverrideItemUploadExpirationValue.Size      =  new System.Drawing.Size(425, 45);
@@ -5020,9 +5020,9 @@
             this.label49.AutoSize = true;
             this.label49.Location = new System.Drawing.Point(779, 60);
             this.label49.Name     = "label49";
-            this.label49.Size     = new System.Drawing.Size(51, 15);
+            this.label49.Size     = new System.Drawing.Size(53, 15);
             this.label49.TabIndex = 57;
-            this.label49.Text     = "minutes";
+            this.label49.Text     = "seconds";
             // 
             // txtOverrideSurvivorUploadExpirationValue
             // 
@@ -5037,7 +5037,7 @@
             // 
             this.tbOverrideSurvivorUploadExpirationValue.Anchor    =  ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.tbOverrideSurvivorUploadExpirationValue.Location  =  new System.Drawing.Point(274, 52);
-            this.tbOverrideSurvivorUploadExpirationValue.Maximum   =  20000;
+            this.tbOverrideSurvivorUploadExpirationValue.Maximum   =  1200000;
             this.tbOverrideSurvivorUploadExpirationValue.Minimum   =  1;
             this.tbOverrideSurvivorUploadExpirationValue.Name      =  "tbOverrideSurvivorUploadExpirationValue";
             this.tbOverrideSurvivorUploadExpirationValue.Size      =  new System.Drawing.Size(425, 45);
