@@ -488,7 +488,7 @@ namespace OphiussaServerManager.Tools.Update {
                 changedMods = cachedmods.Publishedfiledetails;
             }
             else {
-                changedMods = cachedmods.Publishedfiledetails.FindAll(m => CheckMod(m, mods) != null);
+                changedMods = cachedmods.Publishedfiledetails?.FindAll(m => CheckMod(m, mods) != null);
 
                 PublishedFileDetail CheckMod(PublishedFileDetail mod, PublishedFileDetailsResponse modList) {
                     var m = modList.Publishedfiledetails.Find(mm => mm.Publishedfileid == mod.Publishedfileid);

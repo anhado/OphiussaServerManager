@@ -83,6 +83,11 @@ namespace OphiussaServerManager.Common.Ini {
         public static bool SaveToFile(string file, IniFile iniFile) {
             if (string.IsNullOrWhiteSpace(file) || iniFile == null)
                 return false;
+            
+            string path = new FileInfo(file).Directory.FullName;
+            if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+            //if (!File.Exists(file)) File.Create(file);
+            
             using (var streamWriter = new StreamWriter(file, false)) {
                 foreach (var section in iniFile.Sections) {
                     streamWriter.WriteLine("[" + section.SectionName + "]");

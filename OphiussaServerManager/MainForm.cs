@@ -45,6 +45,7 @@ namespace OphiussaServerManager {
 #else
             testsToolStripMenuItem.Visible = false;
 #endif
+ 
             try {
                 if (!File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json"))) {
                     var settings = new FrmSettings();

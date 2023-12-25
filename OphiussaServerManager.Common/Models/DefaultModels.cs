@@ -17,6 +17,7 @@ namespace OphiussaServerManager.Common.Models {
     public class ConfigFile {
         public string PropertyValue { get; set; }
         public string PropertyName  { get; set; }
+        public bool   Ignore        { get; set; } = false;
     }
 
     public class ProcessEventArg {

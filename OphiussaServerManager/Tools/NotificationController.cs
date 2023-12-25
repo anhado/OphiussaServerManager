@@ -159,7 +159,7 @@ namespace OphiussaServerManager.Tools {
                                 var rcon = new RCON(IPAddress.Parse(p.ArkConfiguration.Administration.LocalIp), ushort.Parse(p.ArkConfiguration.Administration.RconPort), p.ArkConfiguration.Administration.ServerAdminPassword);
                                 await rcon.ConnectAsync();
 
-                                string respnose = await rcon.SendCommandAsync($"Broadcast {p.ArkConfiguration.Administration.Mod}");
+                                string respnose = await rcon.SendCommandAsync($"Broadcast {p.ArkConfiguration.Administration.Motd}");
                                 lastSend = DateTime.Now;
                             }
                         }

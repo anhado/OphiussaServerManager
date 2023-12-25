@@ -85,7 +85,7 @@ namespace OphiussaServerManager.Forms {
             txtMods.Text                                = string.Join(",", profile.ArkConfiguration.Administration.ModIDs.ToArray());
             txtTotalConversion.Text                     = profile.ArkConfiguration.Administration.TotalConversionId;
             txtAutoSavePeriod.Text                      = profile.ArkConfiguration.Administration.AutoSavePeriod.ToString(CultureInfo.InvariantCulture);
-            txtMOTD.Text                                = profile.ArkConfiguration.Administration.Mod;
+            txtMOTD.Text                                = profile.ArkConfiguration.Administration.Motd;
             txtMOTDDuration.Text                        = profile.ArkConfiguration.Administration.ModDuration.ToString(CultureInfo.InvariantCulture);
             txtMOTDInterval.Text                        = profile.ArkConfiguration.Administration.ModInterval.ToString(CultureInfo.InvariantCulture);
             chkEnableInterval.Checked                   = profile.ArkConfiguration.Administration.EnableInterval;
@@ -666,7 +666,7 @@ namespace OphiussaServerManager.Forms {
             _profile.ArkConfiguration.Administration.ModIDs                           = txtMods.Text.Split(',').ToList();
             _profile.ArkConfiguration.Administration.TotalConversionId                = txtTotalConversion.Text;
             _profile.ArkConfiguration.Administration.AutoSavePeriod                   = txtAutoSavePeriod.Text.ToInt();
-            _profile.ArkConfiguration.Administration.Mod                              = txtMOTD.Text;
+            _profile.ArkConfiguration.Administration.Motd                             = txtMOTD.Text;
             _profile.ArkConfiguration.Administration.ModDuration                      = txtMOTDDuration.Text.ToInt();
             _profile.ArkConfiguration.Administration.ModInterval                      = txtMOTDInterval.Text.ToInt();
             _profile.ArkConfiguration.Administration.EnableInterval                   = chkEnableInterval.Checked;
