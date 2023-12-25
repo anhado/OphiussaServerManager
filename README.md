@@ -12,10 +12,15 @@ Supported Server Types:
   - Rust - Coming Soon
 
 Functionalities:
-  - Server Installation in SteamCMD - Completed
+  - Server Installation via SteamCMD - Completed
   - Auto-Restart Servers - Completed
   - Auto-Backup Servers - Completed
   - Auto-Update Servers - Completed
   - Manage Firewall - Completed (Only tested in a home network)
   - Manage Router Portforwarding - Completed (Only tested in a home network)
   - More...  - Coming soon
+
+
+I used some code from:
+https://github.com/Bletch1971/ServerManagers
+Thanks for this project Bletch1971
