@@ -62,7 +62,7 @@ namespace OphiussaServerManager.Forms {
             _profile = profile;
             _tab     = tab;
             LoadDefaultFieldValues();
-  
+
             txtProfileID.Text                           = profile.Key;
             txtProfileName.Text                         = profile.Name;
             tab.Text                                    = txtProfileName.Text + "          ";
@@ -262,7 +262,7 @@ namespace OphiussaServerManager.Forms {
             chkAllowOnlyEngramPointsTrade.Checked            = profile.ArkConfiguration.Rules.AllowOnlyEngramPointsTrade;
             txtMaxHexagonsPerCharacter.Text                  = profile.ArkConfiguration.Rules.MaxHexagonsPerCharacter.ToString(CultureInfo.InvariantCulture);
             txtHexagonRewardMultiplier.Text                  = (profile.ArkConfiguration.Rules.HexagonRewardMultiplier).ToString(CultureInfo.InvariantCulture);
-            txtHexagonCostMultiplier.Text                    = (profile.ArkConfiguration.Rules.HexagonCostMultiplier).ToString(CultureInfo.InvariantCulture); 
+            txtHexagonCostMultiplier.Text                    = (profile.ArkConfiguration.Rules.HexagonCostMultiplier).ToString(CultureInfo.InvariantCulture);
             chkAllowMultipleTamedUnicorns.Checked            = profile.ArkConfiguration.Rules.AllowMultipleTamedUnicorns;
             txtUnicornSpawnInterval.Text                     = profile.ArkConfiguration.Rules.UnicornSpawnInterval.ToString(CultureInfo.InvariantCulture);
             chkEnableVolcano.Checked                         = profile.ArkConfiguration.Rules.EnableVolcano;
@@ -350,7 +350,7 @@ namespace OphiussaServerManager.Forms {
                     if (item.HasChildren) ForceTrackBarValues(item.Controls);
                 }
         }
-        
+
         private void ForceTextBoxValues(Control.ControlCollection controls) {
             foreach (Control item in controls)
                 if (item is System.Windows.Forms.TextBox txt) {
@@ -362,7 +362,7 @@ namespace OphiussaServerManager.Forms {
                     if (item.HasChildren) ForceTextBoxValues(item.Controls);
                 }
         }
-        
+
 
         private void txtProfileName_Validated(object sender, EventArgs e) {
             _tab.Text = txtProfileName.Text + "          ";
@@ -407,6 +407,7 @@ namespace OphiussaServerManager.Forms {
                         }
                     }
                 }
+
                 ForceTextBoxValues(Controls);
             }
             catch (Exception exception) {

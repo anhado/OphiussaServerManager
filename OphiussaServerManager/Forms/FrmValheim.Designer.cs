@@ -1,7 +1,5 @@
-﻿namespace OphiussaServerManager.Forms
-{
-    partial class FrmValheim
-    {
+﻿namespace OphiussaServerManager.Forms {
+    partial class FrmValheim {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -11,10 +9,8 @@
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
+        protected override void Dispose(bool disposing) {
+            if (disposing && (components != null)) {
                 components.Dispose();
             }
             base.Dispose(disposing);
@@ -26,9 +22,9 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
-        {
+        private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmValheim));
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtBuild = new System.Windows.Forms.TextBox();
             this.label35 = new System.Windows.Forms.Label();
@@ -1926,8 +1922,8 @@
             this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.Color.SteelBlue;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmValheim";
-            this.Text = "FrmValheim";
             this.Load += new System.EventHandler(this.FrmValheim_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
