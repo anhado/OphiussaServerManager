@@ -29,11 +29,11 @@ namespace OphiussaServerManager.Common.Models.Profiles {
             Type = type;
             switch (type.ServerType) {
                 case EnumServerType.ArkSurviveEvolved:
-                    ArkConfiguration     = new ArkProfile.ArkProfile();
+                    ArkConfiguration     = new ArkProfile();
                     ValheimConfiguration = null;
                     break;
                 case EnumServerType.ArkSurviveAscended:
-                    ArkConfiguration     = new ArkProfile.ArkProfile();
+                    ArkConfiguration     = new ArkProfile();
                     ValheimConfiguration = null;
                     break;
                 case EnumServerType.Valheim:
@@ -60,7 +60,7 @@ namespace OphiussaServerManager.Common.Models.Profiles {
         [JsonProperty("Type")]            public SupportedServersType Type            { get; set; }
 
         [JsonProperty("ARKConfiguration", NullValueHandling = NullValueHandling.Ignore)]
-        public ArkProfile.ArkProfile ArkConfiguration { get; set; } = new ArkProfile.ArkProfile();
+        public ArkProfile ArkConfiguration { get; set; } = new ArkProfile();
 
         [JsonProperty("ValheimConfiguration", NullValueHandling = NullValueHandling.Ignore)]
         public ValheimProfile.ValheimProfile ValheimConfiguration { get; set; } = new ValheimProfile.ValheimProfile();

@@ -7,15 +7,11 @@ using System.Web.Security;
 using CoreRCON;
 using OphiussaServerManager.Common.Helpers;
 using OphiussaServerManager.Common.Ini;
+using OphiussaServerManager.Common.Models.Profiles;
 using OphiussaServerManager.Common.Models.SupportedServers;
 
-namespace OphiussaServerManager.Common.Models.Profiles.ArkProfile {
+namespace OphiussaServerManager.Common.Models {
     public class ArkProfile : Configs /*: BaseProfile*/ {
-        public ArkProfile() {
-            //Administration = new Administration();
-            //Rules          = new Rules();
-        }
-
         //public Administration Administration { get; set; }
         //public Rules          Rules          { get; set; }
 
