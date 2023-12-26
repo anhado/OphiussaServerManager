@@ -61,152 +61,37 @@ namespace OphiussaServerManager.Common.Helpers {
             return result;
         }
 
-        public static void WriteBoolValue(this List<ConfigFile> settings, string paramName, bool value, IEnumerable<Attribute> attributes, bool isUsed = true) {
+        public static void WriteBoolValue(this List<ConfigFile> settings, string paramName, bool value) {
             var config = settings.FirstOrDefault(x => x.PropertyName == paramName);
 
-            ValueBehavior         behavior    = null;
-            DefaultValueAttribute dflt        = null;
-            bool                  newValue    = value;
-            bool                  ignoreValue = false;
-
-            foreach (var item in attributes) {
-                if (typeof(ValueBehavior)         == item.GetType()) behavior = (ValueBehavior)item;
-                if (typeof(DefaultValueAttribute) == item.GetType()) dflt     = (DefaultValueAttribute)item;
-            }
-
-            if (behavior == null) behavior = new ValueBehavior(DeleteEnumOption.KeepValue);
-            if (dflt     == null) dflt     = new DefaultValueAttribute(false);
-
-            switch (behavior.Value) {
-                case DeleteEnumOption.KeepValue:
-                    //do nothing is to keep value 
-                    break;
-                case DeleteEnumOption.DeleteIfDefault:
-                    if (newValue == (bool)dflt.Value) ignoreValue = true;
-                    break;
-                case DeleteEnumOption.DeleteIfNotUsed:
-                    if (!isUsed) ignoreValue = true;
-                    break;
-                case DeleteEnumOption.ForceDefaultIfNotUsed:
-                    if (!isUsed) newValue = (bool)dflt.Value;
-                    break;
-            }
-
             if (config != null)
-                if (ignoreValue) settings.First(x => x.PropertyName == paramName).Ignore        = true;
-                else settings.First(x => x.PropertyName             == paramName).PropertyValue = newValue ? "True" : "False";
-            else if (!ignoreValue) settings.Add(new ConfigFile { PropertyName = paramName, PropertyValue = newValue ? "True" : "False" });
+                settings.First(x => x.PropertyName == paramName).PropertyValue = value ? "True" : "False";
+            else settings.Add(new ConfigFile { PropertyName = paramName, PropertyValue = value ? "True" : "False" });
         }
 
-        public static void WriteStringValue(this List<ConfigFile> settings, string paramName, string value, IEnumerable<Attribute> attributes, bool isUsed = true) {
+        public static void WriteStringValue(this List<ConfigFile> settings, string paramName, string value) {
             var config = settings.FirstOrDefault(x => x.PropertyName == paramName);
-
-            ValueBehavior         behavior    = null;
-            DefaultValueAttribute dflt        = null;
-            string                newValue    = value;
-            bool                  ignoreValue = false;
-
-            foreach (var item in attributes) {
-                if (typeof(ValueBehavior)         == item.GetType()) behavior = (ValueBehavior)item;
-                if (typeof(DefaultValueAttribute) == item.GetType()) dflt     = (DefaultValueAttribute)item;
-            }
-
-            if (behavior == null) behavior = new ValueBehavior(DeleteEnumOption.KeepValue);
-            if (dflt     == null) dflt     = new DefaultValueAttribute(false);
-
-            switch (behavior.Value) {
-                case DeleteEnumOption.KeepValue:
-                    //do nothing is to keep value 
-                    break;
-                case DeleteEnumOption.DeleteIfDefault:
-                    if (newValue == dflt.Value.ToString()) ignoreValue = true;
-                    break;
-                case DeleteEnumOption.DeleteIfNotUsed:
-                    if (!isUsed) ignoreValue = true;
-                    break;
-                case DeleteEnumOption.ForceDefaultIfNotUsed:
-                    if (!isUsed) newValue = dflt.Value.ToString();
-                    break;
-            }
-
+ 
             if (config != null)
-                if (ignoreValue) settings.First(x => x.PropertyName == paramName).Ignore        = true;
-                else settings.First(x => x.PropertyName             == paramName).PropertyValue = newValue;
-            else if (!ignoreValue) settings.Add(new ConfigFile { PropertyName = paramName, PropertyValue = newValue });
+                settings.First(x => x.PropertyName == paramName).PropertyValue = value;
+            else   settings.Add(new ConfigFile { PropertyName = paramName, PropertyValue = value });
         }
 
-        public static void WriteIntValue(this List<ConfigFile> settings, string paramName, int value, IEnumerable<Attribute> attributes, bool isUsed = true) {
+        public static void WriteIntValue(this List<ConfigFile> settings, string paramName, int value) {
             var config = settings.FirstOrDefault(x => x.PropertyName == paramName);
 
-            ValueBehavior         behavior    = null;
-            DefaultValueAttribute dflt        = null;
-            int                   newValue    = value;
-            bool                  ignoreValue = false;
-
-            foreach (var item in attributes) {
-                if (typeof(ValueBehavior)         == item.GetType()) behavior = (ValueBehavior)item;
-                if (typeof(DefaultValueAttribute) == item.GetType()) dflt     = (DefaultValueAttribute)item;
-            }
-
-            if (behavior == null) behavior = new ValueBehavior(DeleteEnumOption.KeepValue);
-            if (dflt     == null) dflt     = new DefaultValueAttribute(false);
-
-            switch (behavior.Value) {
-                case DeleteEnumOption.KeepValue:
-                    //do nothing is to keep value 
-                    break;
-                case DeleteEnumOption.DeleteIfDefault:
-                    if (newValue == (int)dflt.Value) ignoreValue = true;
-                    break;
-                case DeleteEnumOption.DeleteIfNotUsed:
-                    if (!isUsed) ignoreValue = true;
-                    break;
-                case DeleteEnumOption.ForceDefaultIfNotUsed:
-                    if (!isUsed) newValue = (int)dflt.Value;
-                    break;
-            }
-
             if (config != null)
-                if (ignoreValue) settings.First(x => x.PropertyName == paramName).Ignore        = true;
-                else settings.First(x => x.PropertyName             == paramName).PropertyValue = newValue.ToString(CultureInfo.InvariantCulture);
-            else if (!ignoreValue) settings.Add(new ConfigFile { PropertyName = paramName, PropertyValue = newValue.ToString(CultureInfo.InvariantCulture) });
+                settings.First(x => x.PropertyName == paramName).PropertyValue = value.ToString(CultureInfo.InvariantCulture);
+            else  settings.Add(new ConfigFile { PropertyName = paramName, PropertyValue = value.ToString(CultureInfo.InvariantCulture) });
         }
 
-        public static void WriteFloatValue(this List<ConfigFile> settings, string paramName, float value, IEnumerable<Attribute> attributes, bool isUsed = true) {
+        public static void WriteFloatValue(this List<ConfigFile> settings, string paramName, float value) {
             var config = settings.FirstOrDefault(x => x.PropertyName == paramName);
 
-            ValueBehavior         behavior    = null;
-            DefaultValueAttribute dflt        = null;
-            float                 newValue    = value;
-            bool                  ignoreValue = false;
-
-            foreach (var item in attributes) {
-                if (typeof(ValueBehavior)         == item.GetType()) behavior = (ValueBehavior)item;
-                if (typeof(DefaultValueAttribute) == item.GetType()) dflt     = (DefaultValueAttribute)item;
-            }
-
-            if (behavior == null) behavior = new ValueBehavior(DeleteEnumOption.KeepValue);
-            if (dflt     == null) dflt     = new DefaultValueAttribute(false);
-
-            switch (behavior.Value) {
-                case DeleteEnumOption.KeepValue:
-                    //do nothing is to keep value 
-                    break;
-                case DeleteEnumOption.DeleteIfDefault:
-                    if (newValue == (float)dflt.Value) ignoreValue = true;
-                    break;
-                case DeleteEnumOption.DeleteIfNotUsed:
-                    if (!isUsed) ignoreValue = true;
-                    break;
-                case DeleteEnumOption.ForceDefaultIfNotUsed:
-                    if (!isUsed) newValue = (float)dflt.Value;
-                    break;
-            }
-
+             
             if (config != null)
-                if (ignoreValue) settings.First(x => x.PropertyName == paramName).Ignore        = true;
-                else settings.First(x => x.PropertyName             == paramName).PropertyValue = Math.Round(newValue, 2).ToString(CultureInfo.InvariantCulture);
-            else if (!ignoreValue) settings.Add(new ConfigFile { PropertyName = paramName, PropertyValue = Math.Round(newValue, 2).ToString(CultureInfo.InvariantCulture) });
+                settings.First(x => x.PropertyName == paramName).PropertyValue = Math.Round(value, 2).ToString(CultureInfo.InvariantCulture);
+            else settings.Add(new ConfigFile { PropertyName = paramName, PropertyValue = Math.Round(value, 2).ToString(CultureInfo.InvariantCulture) });
         }
 
         public static List<ConfigFile> ToListConfigFile(this IEnumerable<string> strings) {

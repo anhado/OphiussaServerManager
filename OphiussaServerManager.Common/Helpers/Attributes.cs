@@ -32,23 +32,7 @@ namespace OphiussaServerManager.Common.Helpers {
         PGM,
         SOTF,
     }
-    
-    public enum DeleteEnumOption {
-        KeepValue             = 1,
-        DeleteIfNotUsed       = 2,
-        DeleteIfDefault       = 3,
-        ForceDefaultIfNotUsed = 4
-    }
-
-    [AttributeUsage(AttributeTargets.Property)]
-    public class ValueBehavior : Attribute {
-        public DeleteEnumOption Value { get; set; } = DeleteEnumOption.KeepValue;
-
-        public ValueBehavior(DeleteEnumOption behavior) {
-            Value = behavior;
-        }
-    }
-    
+      
     public class IniFileEntryAttribute : BaseIniFileEntryAttribute
     {
         public IniFileEntryAttribute(

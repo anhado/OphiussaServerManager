@@ -270,843 +270,811 @@ TODO:CHECK THIS OPTIONS
     }
          */
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
         [DefaultValue(false)]
         public bool UseServerApi { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Administration, "ServerAdminPassword")]
         public string ServerAdminPassword { get; set; } = Membership.GeneratePassword(10, 6);
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
         [DefaultValue("")]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Administration, "SpectatorPassword")]
         public string ServerSpectatorPassword { get; set; } = "";
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
         [DefaultValue("27015")]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_SessionSettings, ServerProfileCategory.Administration, "QueryPort")]
         public string QueryPort { get; set; } = "27015";
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
         [DefaultValue(false)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Administration, "RCONEnabled")]
         public bool UseRcon { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
         [DefaultValue("32330")]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Administration, "RCONPort")]
         public string RconPort { get; set; } = "32330";
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
         [DefaultValue(600)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Administration, "RCONServerGameLogBuffer")]
         public int RconServerLogBuffer { get; set; } = 600;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
         [DefaultValue("")]
         public string MapName { get; set; } = "";
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
         [DefaultValue("")]
         public string TotalConversionId { get; set; } = "";
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
         [DefaultValue("15")]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Administration, "AutoSavePeriodMinutes")]
         public int AutoSavePeriod { get; set; } = 15;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
         [DefaultValue("")]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_MessageOfTheDay, ServerProfileCategory.Administration, "Message", ClearSection = true, Multiline = true, QuotedString = QuotedStringType.Remove)]
         public string Motd { get; set; } = "";
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
         [DefaultValue(20)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_MessageOfTheDay, ServerProfileCategory.Administration, "Duration")]
         public int ModDuration { get; set; } = 20;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
         [DefaultValue(true)]
         public bool EnableInterval { get; set; } = true;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
         [DefaultValue(60)]
         public int ModInterval { get; set; } = 60;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
         [DefaultValue("Live")]
         public string Branch { get; set; } = "Live";
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
         [DefaultValue(true)]
         public bool EnablIdleTimeOut { get; set; } = true;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfNotUsed)]
         [DefaultValue(3600)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Administration, "KickIdlePlayersPeriod")]
         public int IdleTimout { get; set; } = 3600;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
         [DefaultValue(false)]
         public bool UseBanListUrl { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
         [DefaultValue("http://arkdedicated.com/banlist.txt")]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Administration, "", ConditionedOn = "UseBanListUrl", QuotedString = QuotedStringType.True)]
         public string BanListUrl { get; set; } = "http://arkdedicated.com/banlist.txt";
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
         [DefaultValue(false)]
         public bool DisableVac { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
         [DefaultValue(false)]
         public bool EnableBattleEye { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
         [DefaultValue(false)]
         public bool DisablePlayerMovePhysics { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
         [DefaultValue(true)]
         public bool OutputLogToConsole { get; set; } = true;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
         [DefaultValue(false)]
         public bool UseAllCores { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
         [DefaultValue(false)]
         public bool UseCache { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
         [DefaultValue(false)]
         public bool NoHandDetection { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
         [DefaultValue(false)]
         public bool NoDinos { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
         [DefaultValue(false)]
         public bool NoUnderMeshChecking { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
         [DefaultValue(false)]
         public bool NoUnderMeshKilling { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
         [DefaultValue(false)]
         public bool EnableVivox { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
         [DefaultValue(true)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Administration, "AllowSharedConnections")]
         public bool AllowSharedConnections { get; set; } = true;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
         [DefaultValue(false)]
         public bool RespawnDinosOnStartUp { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         public bool EnableAutoForceRespawnDinos { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(24)]
         public int AutoForceRespawnDinosInterval { get; set; } = 24;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         public bool DisableAntiSpeedHackDetection { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(1)]
         public int AntiSpeedHackBias { get; set; } = 1;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         public bool ForceDirectX10 { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         public bool ForceLowMemory { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         public bool ForceNoManSky { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         public bool UseNoMemoryBias { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         public bool StasisKeepController { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         public bool ServerAllowAnsel { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         public bool StructureMemoryOptimizations { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         public bool EnableCrossPlay { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         public bool EnablePublicIpForEpic { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         public bool EpicStorePlayersOnly { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue("")]
         public string AlternateSaveDirectoryName { get; set; } = "";
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue("")]
         public string ClusterId { get; set; } = "";
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         public bool ClusterDirectoryOverride { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfDefault)]
+        
         [DefaultValue(true)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Administration, "servergamelog")]
         public bool EnableServerAdminLogs { get; set; } = true;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(true)]
         public bool ServerAdminLogsIncludeTribeLogs { get; set; } = true;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(true)]
         public bool ServerRconOutputTribeLogs { get; set; } = true;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(true)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Administration, "AllowHideDamageSourceFromLogs")]
         public bool AllowHideDamageSourceFromLogs { get; set; } = true;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(100)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Administration, "MaxTribeLogs")]
         public int MaximumTribeLogs { get; set; } = 100;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Administration, "AdminLogging")]
         public bool LogAdminCommandsToPublic { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         public bool LogAdminCommandsToAdmins { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(true)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Administration, "TribeLogDestroyedEnemyStructures")]
         public bool TribeLogDestroyedEnemyStructures { get; set; } = true;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, "ServerHardcore")]
         public bool EnableHardcoreMode { get; set; }
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "bPvEDisableFriendlyFire")]
         public bool DisablePveFriendlyFire { get; set; }
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "bDisableFriendlyFire")]
         public bool DisablePvpFriendlyFire { get; set; }
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, "EnableExtraStructurePreventionVolumes")]
         public bool PreventBuildingInResourceRichAreas { get; set; }
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "bDisableLootCrates")]
         public bool DisableSupplyCrates { get; set; }
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, "ServerPVE", InvertBoolean = true)]
         public bool EnablePvp { get; set; }
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, "AllowCaveBuildingPvE")]
         public bool EnablePveCaveBuilding { get; set; }
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(true)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, "AllowCaveBuildingPvP")]
         public bool EnablePvpCaveBuilding { get; set; } = true;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfDefault)]
+        
         [DefaultValue(false)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "bUseSingleplayerSettings", ConditionedOn = "EnableSinglePlayerSettings")]
         public bool EnableSinglePlayerSettings { get; set; }
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfDefault)]
+        
         [DefaultValue(true)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "AllowCrateSpawnsOnTopOfStructures", ConditionedOn = "AllowCrateSpawnsOnTopOfStructures")]
         public bool AllowCrateSpawnsOnTopOfStructures { get; set; } = true;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfDefault)]
+        
         [DefaultValue(false)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "bShowCreativeMode", WriteIfNotValue = false)]
         public bool EnableCreativeMode { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, "EnableCryoSicknessPVE")]
         public bool EnablePveCryoSickness { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         public bool DisablePvpRailGun { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         public bool DisableCostumTributeFolders { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, "RandomSupplyCratePoints")]
         public bool RandomSupplyCratePoints { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfDefault)]
+        
         [DefaultValue(1f)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "SupplyCrateLootQualityMultiplier", WriteIfNotValue = 1f)]
         public float SupplyCrateLootQualityMultiplier { get; set; } = 1;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfDefault)]
+        
         [DefaultValue(1f)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "FishingLootQualityMultiplier", WriteIfNotValue = 1f)]
         public float FishingLootQualityMultiplier { get; set; } = 1;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "bUseCorpseLocator")]
         public bool UseCorpseLocation { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, "PreventSpawnAnimations")]
         public bool PreventSpawnAnimations { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "bAllowUnlimitedRespecs")]
         public bool AllowUnlimitedRespecs { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "bAllowPlatformSaddleMultiFloors")]
         public bool AllowPlatformSaddleMultiFloors { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(1f)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, "PlatformSaddleBuildAreaBoundsMultiplier")]
         public float PlatformSaddleBuildAreaBoundsMultiplier { get; set; } = 1;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(2)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, "MaxGateFrameOnSaddles")]
         public int MaxGatewaysOnSaddles { get; set; } = 2;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         public bool EnableDifficultOverride { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfNotUsed)]
+        
         [DefaultValue(4)] //This is 4 because is the default value in settings instead of level
         public int MaxDinoLevel { get; set; } = 120;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfNotUsed)]
+        
         [DefaultValue(4f)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, "OverrideOfficialDifficulty", ConditionedOn = "EnableDifficultOverride")]
         public float OverrideOfficialDifficulty { get; set; } = 4f;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfNotUsed)]
+        
         [DefaultValue(1f)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, "", ConditionedOn = "EnableDifficultOverride")]
         public float DifficultyOffset { get; set; } = 1;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfDefault)]
+        
         [DefaultValue(0)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "DestroyTamesOverLevelClamp", WriteIfNotValue = 0)]
         public int DestroyTamesOverLevel { get; set; } = 0;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfDefault)]
+        
         [DefaultValue(true)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, "NoTributeDownloads", InvertBoolean = true)]
         public bool EnableTributeDownloads { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.ForceDefaultIfNotUsed)]
+        
         [DefaultValue(true)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, "PreventDownloadSurvivors", ConditionedOn = "EnableTributeDownloads")]
         public bool NoSurvivorDownloads { get; set; } = true;
 
-        [ValueBehavior(DeleteEnumOption.ForceDefaultIfNotUsed)]
+        
         [DefaultValue(true)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, "PreventDownloadItems", ConditionedOn = "EnableTributeDownloads")]
         public bool NoItemDownloads { get; set; } = true;
 
-        [ValueBehavior(DeleteEnumOption.ForceDefaultIfNotUsed)]
+        
         [DefaultValue(true)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, "PreventDownloadDinos", ConditionedOn = "EnableTributeDownloads")]
         public bool NoDinoDownloads { get; set; } = true;
 
-        [ValueBehavior(DeleteEnumOption.ForceDefaultIfNotUsed)]
+        
         [DefaultValue(false)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, "CrossARKAllowForeignDinoDownloads")]
         public bool AllowForeignDinoDownloads { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(true)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, "PreventUploadSurvivors")]
         public bool NoSurvivorUploads { get; set; } = true;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(true)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, "PreventUploadItems")]
         public bool NoItemUploads { get; set; } = true;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(true)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, "PreventUploadDinos")]
         public bool NoDinoUploads { get; set; } = true;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         public bool LimitMaxTributeDinos { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfNotUsed)]
+        
         [DefaultValue(0)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, "MaxTributeDinos", ConditionedOn = "LimitMaxTributeDinos")]
         public int MaxTributeDinos { get; set; } = 0;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         public bool LimitTributeItems { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfNotUsed)]
+        
         [DefaultValue(0)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, "MaxTributeItems", ConditionedOn = "LimitTributeItems")]
         public int MaxTributeItems { get; set; } = 0;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         public bool NoTransferFromFiltering { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         public bool OverrideSurvivorUploadExpiration { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfNotUsed)]
+        
         [DefaultValue(86400)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, "TributeCharacterExpirationSeconds", ConditionedOn = "OverrideSurvivorUploadExpiration")]
         public int OverrideSurvivorUploadExpirationValue { get; set; } = 86400;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         public bool OverrideItemUploadExpiration { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfNotUsed)]
+        
         [DefaultValue(86400)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, "TributeItemExpirationSeconds", ConditionedOn = "OverrideItemUploadExpiration")]
         public int OverrideItemUploadExpirationValue { get; set; } = 86400;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         public bool OverrideDinoUploadExpiration { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfNotUsed)]
+        
         [DefaultValue(86400)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, "TributeDinoExpirationSeconds", ConditionedOn = "OverrideDinoUploadExpiration")]
         public int OverrideDinoUploadExpirationValue { get; set; } = 86400;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         public bool OverrideMinimumDinoReUploadInterval { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfNotUsed)]
+        
         [DefaultValue(43200)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, "MinimumDinoReuploadInterval", ConditionedOn = "OverrideMinimumDinoReUploadInterval")]
         public int OverrideMinimumDinoReUploadIntervalValue { get; set; } = 43200;
 
-        [ValueBehavior(DeleteEnumOption.ForceDefaultIfNotUsed)]
+        
         [DefaultValue(false)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "bAutoPvETimer")]
         public bool PveSchedule { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfNotUsed)]
+        
         [DefaultValue(false)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "bAutoPvEUseSystemTime", ConditionedOn = "PveSchedule")]
         public bool UseServerTime { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfNotUsed)]
+        
         [DefaultValue(0)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "AutoPvEStartTimeSeconds", ConditionedOn = "PveSchedule")]
         public int PvpStartTime { get; set; } = 0;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfNotUsed)]
+        
         [DefaultValue(0)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "AutoPvEStopTimeSeconds", ConditionedOn = "PveSchedule")]
         public int PvpEndTime { get; set; } = 0;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, "PreventOfflinePvp")]
         public bool PreventOfflinePvp { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfNotUsed)]
+        
         [DefaultValue(900)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, "PreventOfflinePvPInterval", ConditionedOn = "PreventOfflinePvp")]
         public int LogoutInterval { get; set; } = 900;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfNotUsed)]
+        
         [DefaultValue(5)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "PreventOfflinePvPConnectionInvincibleInterval", ConditionedOn = "PreventOfflinePvp")]
         public int ConnectionInvicibleInterval { get; set; } = 5;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "bIncreasePvPRespawnInterval")]
         public bool IncreasePvpRespawnInterval { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfNotUsed)]
+        
         [DefaultValue(300)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "IncreasePvPRespawnIntervalCheckPeriod", ConditionedOn = "IncreasePvpRespawnInterval")]
         public int IntervalCheckPeriod { get; set; } = 300;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfNotUsed)]
+        
         [DefaultValue(1f)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "IncreasePvPRespawnIntervalMultiplier", ConditionedOn = "IncreasePvpRespawnInterval")]
         public float IntervalMultiplier { get; set; } = 1;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfNotUsed)]
+        
         [DefaultValue(60)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "IncreasePvPRespawnIntervalBaseAmount", ConditionedOn = "IncreasePvpRespawnInterval")]
         public int IntervalBaseAmount { get; set; } = 60;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(70)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "MaxNumberOfPlayersInTribe")]
         public int MaxPlayersInTribe { get; set; } = 70;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(15)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, "TribeNameChangeCooldown")]
         public int TribeNameChangeCooldDown { get; set; } = 15;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(0.0f)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "TribeSlotReuseCooldown", WriteIfNotValue = 0.0f)]
         public float TribeSlotReuseCooldown { get; set; } = 0.0f;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(true)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, "PreventTribeAlliances", InvertBoolean = true)]
         public bool AllowTribeAlliances { get; set; } = true;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(10)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "MaxAlliancesPerTribe", ConditionedOn = "AllowTribeAlliances")]
         public int MaxAlliancesPerTribe { get; set; } = 10;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(10)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "MaxTribesPerAlliance", ConditionedOn = "AllowTribeAlliances")]
         public int MaxTribesPerAlliance { get; set; } = 10;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(true)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "bPvEAllowTribeWar")]
         public bool AllowTribeWarfare { get; set; } = true;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "bPvEAllowTribeWarCancel")]
         public bool AllowCancelingTribeWarfare { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(true)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "bAllowCustomRecipes")]
         public bool AllowCostumRecipes { get; set; } = true;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfDefault)]
+        
         [DefaultValue(1f)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "CustomRecipeEffectivenessMultiplier", WriteIfNotValue = 1f)]
         public float CostumRecipesEffectivenessMultiplier { get; set; } = 1f;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfDefault)]
+        
         [DefaultValue(1f)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "CustomRecipeSkillMultiplier", WriteIfNotValue = 1f)]
         public float CostumRecipesSkillMultiplier { get; set; } = 1f;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(true)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, "PreventDiseases", InvertBoolean = true)]
         public bool EnableDiseases { get; set; } = true;
 
-        [ValueBehavior(DeleteEnumOption.ForceDefaultIfNotUsed)]
+        
         [DefaultValue(false)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, "NonPermanentDiseases", ConditionedOn = "EnableDiseases")]
         public bool NonPermanentDiseases { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         public bool OverrideNpcNetworkStasisRangeScale { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfNotUsed)]
+        
         [DefaultValue(70)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, "NPCNetworkStasisRangeScalePlayerCountStart", ConditionedOn = "OverrideNpcNetworkStasisRangeScale")]
         public int OnlinePlayerCountStart { get; set; } = 70;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfNotUsed)]
+        
         [DefaultValue(120)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, "NPCNetworkStasisRangeScalePlayerCountEnd", ConditionedOn = "OverrideNpcNetworkStasisRangeScale")]
         public int OnlinePlayerCountEnd { get; set; } = 120;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfNotUsed)]
+        
         [DefaultValue(0.5f)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, "NPCNetworkStasisRangeScalePercentEnd", ConditionedOn = "OverrideNpcNetworkStasisRangeScale")]
         public float ScaleMaximum { get; set; } = 0.5f;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfDefault)]
+        
         [DefaultValue(1f)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, "OxygenSwimSpeedStatMultiplier", WriteIfNotValue = 1f)]
         public float OxygenSwimSpeedStatMultiplier { get; set; } = 1;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfDefault)]
+        
         [DefaultValue(1f)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "UseCorpseLifeSpanMultiplier", WriteIfNotValue = 1f)]
         public float UseCorpseLifeSpanMultiplier { get; set; } = 1;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(3600)]
         public int FjordhawkInventoryCooldown { get; set; } = 3600;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(4f)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "GlobalPoweredBatteryDurabilityDecreasePerSecond", WriteIfNotValue = 4f)]
         public float GlobalPoweredBatteryDurability { get; set; } = 4f;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfDefault)]
+        
         [DefaultValue(1f)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "FuelConsumptionIntervalMultiplier", WriteIfNotValue = 1f)]
         public float FuelConsumptionIntervalMultiplier { get; set; } = 1;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfDefault)]
+        
         [DefaultValue(0)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "LimitNonPlayerDroppedItemsRange", WriteIfNotValue = 0)]
         public int LimitNonPlayerDroppedItemsRange { get; set; } = 0;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfDefault)]
+        
         [DefaultValue(0)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "LimitNonPlayerDroppedItemsCount", WriteIfNotValue = 0)]
         public int LimitNonPlayerDroppedItemsCount { get; set; } = 0;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfDefault)]
+        
         [DefaultValue(false)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, "EnableCryopodNerf", ConditionedOn = "EnableCryopodNerf")]
         public bool EnableCryopodNerf { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfDefault)]
+        
         [DefaultValue(10)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, "CryopodNerfDuration", ConditionedOn = "EnableCryopodNerf")]
         public int EnableCryopodNerfDuration { get; set; } = 10;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfDefault)]
+        
         [DefaultValue(1f)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, "CryopodNerfDamageMult", ConditionedOn = "EnableCryopodNerf")]
         public float OutgoingDamageMultiplier { get; set; } = 1;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfDefault)]
+        
         [DefaultValue(0f)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, "CryopodNerfIncomingDamageMultPercent", ConditionedOn = "EnableCryopodNerf")]
         public float IncomingDamageMultiplierPercent { get; set; } = 0;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "bDisableGenesisMissions")]
         public bool Gen1DisableMissions { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, "AllowTekSuitPowersInGenesis")]
         public bool Gen1AllowTekSuitPowers { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "bDisableDefaultMapItemSets")]
         public bool Gen2DisableTekSuitonSpawn { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "bDisableWorldBuffs")]
         public bool Gen2DisableWorldBuffs { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "bEnableWorldBuffScaling")]
         public bool EnableWorldBuffScaling { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfNotUsed)]
+        
         [DefaultValue(1f)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "WorldBuffScalingEfficacy", ConditionedOn = "EnableWorldBuffScaling")]
         public float WorldBuffScanlingEfficacy { get; set; } = 1;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(1f)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "AdjustableMutagenSpawnDelayMultiplier")]
         public float MutagemSpawnDelayMultiplier { get; set; } = 1;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfNotUsed)]
+        
         [DefaultValue(false)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "bDisableHexagonStore", ConditionedOn = "DisableHexagonStore")]
         public bool DisableHexagonStore { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfNotUsed)]
+        
         [DefaultValue(false)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "bHexStoreAllowOnlyEngramTradeOption", ConditionedOn = "AllowOnlyEngramPointsTrade")]
         public bool AllowOnlyEngramPointsTrade { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(2000000000)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, "MaxHexagonsPerCharacter")]
         public int MaxHexagonsPerCharacter { get; set; } = 2000000000;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(1f)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "BaseHexagonRewardMultiplier")]
         public float HexagonRewardMultiplier { get; set; } = 1;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(1f)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "HexagonCostMultiplier")]
         public float HexagonCostMultiplier { get; set; } = 1;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfNotUsed)]
+        
         [DefaultValue(false)]
         public bool EnableRagnarokSettings { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfNotUsed)]
+        
         [DefaultValue(false)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_Ragnarok, ServerProfileCategory.Rules, "AllowMultipleTamedUnicorns", ConditionedOn = "EnableRagnarokSettings", ClearSectionIfEmpty = true)]
         public bool AllowMultipleTamedUnicorns { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfNotUsed)]
+        
         [DefaultValue(24)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_Ragnarok, ServerProfileCategory.Rules, "UnicornSpawnInterval", ConditionedOn = "EnableRagnarokSettings", ClearSectionIfEmpty = true)]
         public int UnicornSpawnInterval { get; set; } = 24;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfNotUsed)]
+        
         [DefaultValue(true)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_Ragnarok, ServerProfileCategory.Rules, "EnableVolcano", ConditionedOn = "EnableRagnarokSettings", ClearSectionIfEmpty = true)]
         public bool EnableVolcano { get; set; } = true;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfNotUsed)]
+        
         [DefaultValue(1f)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_Ragnarok, ServerProfileCategory.Rules, "VolcanoInterval", ConditionedOn = "EnableRagnarokSettings", ClearSectionIfEmpty = true)]
         public float VolcanoInterval { get; set; } = 1;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfNotUsed)]
+        
         [DefaultValue(1f)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_Ragnarok, ServerProfileCategory.Rules, "VolcanoIntensity", ConditionedOn = "EnableRagnarokSettings", ClearSectionIfEmpty = true)]
         public float VolcanoIntensity { get; set; } = 1;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         public bool EnableFjordurSettings { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfNotUsed)]
+        
         [DefaultValue(true)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, "UseFjordurTraversalBuff", ConditionedOn = "EnableFjordurSettings")]
         public bool EnableFjordurBiomeTeleport { get; set; } = true;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         public bool EnableGenericQualityClamp { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfNotUsed)]
+        
         [DefaultValue(0)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "ItemStatClamps[0]", ConditionedOn = "EnableGenericQualityClamp", WriteIfNotValue = 0)]
         public int GenericQualityClamp { get; set; } = 0;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         public bool EnableArmorClamp { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfNotUsed)]
+        
         [DefaultValue(0)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "ItemStatClamps[1]", ConditionedOn = "EnableArmorClamp", WriteIfNotValue = 0)]
         public int ArmorClamp { get; set; } = 0;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         public bool EnableWeaponDamagePercentClamp { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfNotUsed)]
+        
         [DefaultValue(0)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "ItemStatClamps[3]", ConditionedOn = "EnableWeaponDamagePercentClamp", WriteIfNotValue = 0)]
         public int WeaponDamagePercentClamp { get; set; } = 0;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         public bool EnableHypoInsulationClamp { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfNotUsed)]
+        
         [DefaultValue(0)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "ItemStatClamps[5]", ConditionedOn = "EnableHypoInsulationClamp", WriteIfNotValue = 0)]
         public int HypoInsulationClamp { get; set; } = 0;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         public bool EnableWeightClamp { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfNotUsed)]
+        
         [DefaultValue(0)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "ItemStatClamps[6]", ConditionedOn = "EnableWeightClamp", WriteIfNotValue = 0)]
         public int WeightClamp { get; set; } = 0;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         public bool EnableMaxDurabilityClamp { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfNotUsed)]
+        
         [DefaultValue(0)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "ItemStatClamps[2]", ConditionedOn = "EnableMaxDurabilityClamp", WriteIfNotValue = 0)]
         public int MaxDurabilityClamp { get; set; } = 0;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         public bool EnableWeaponClipAmmoClamp { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfNotUsed)]
+        
         [DefaultValue(0)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "ItemStatClamps[4]", ConditionedOn = "EnableWeaponClipAmmoClamp", WriteIfNotValue = 0)]
         public int WeaponClipAmmoClamp { get; set; } = 0;
 
-        [ValueBehavior(DeleteEnumOption.KeepValue)]
+        
         [DefaultValue(false)]
         public bool EnableHyperInsulationClamp { get; set; } = false;
 
-        [ValueBehavior(DeleteEnumOption.DeleteIfNotUsed)]
+        
         [DefaultValue(0)]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "ItemStatClamps[7]", ConditionedOn = "EnableHyperInsulationClamp", WriteIfNotValue = 0)]
         public int HyperInsulationClamp { get; set; } = 0;
