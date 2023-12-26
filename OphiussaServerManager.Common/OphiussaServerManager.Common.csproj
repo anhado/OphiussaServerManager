@@ -137,10 +137,13 @@
 		<Compile Include="Helpers\Ini\IniFileUtils.cs"/>
 		<Compile Include="Helpers\Ini\IniKey.cs"/>
 		<Compile Include="Helpers\Ini\IniSection.cs"/>
+		<Compile Include="Helpers\Ini\Interfaces\FloatIniValueArray.cs" />
 		<Compile Include="Helpers\Ini\Interfaces\IIniSectionCollection.cs"/>
 		<Compile Include="Helpers\Ini\Interfaces\IIniValuesCollection.cs"/>
 		<Compile Include="Helpers\Ini\Interfaces\IIniValuesList.cs"/>
+		<Compile Include="Helpers\Ini\Interfaces\IniValueList.cs" />
 		<Compile Include="Helpers\Ini\QuotedStringType.cs"/>
+		<Compile Include="Helpers\Ini\SortableObservableCollection.cs" />
 		<Compile Include="Helpers\Ini\SystemIniFile.cs"/>
 		<Compile Include="Helpers\INullableValue.cs"/>
 		<Compile Include="Helpers\IOUtils.cs"/>
@@ -177,6 +180,7 @@
 		<Compile Include="Models\ResourceMonitor.cs"/>
 		<Compile Include="Models\Settings.cs"/>
 		<Compile Include="Models\SortableBindingList.cs"/>
+		<Compile Include="Models\StatsMultiplierFloatArray.cs" />
 		<Compile Include="Models\Steam\PublishedFileDetail.cs"/>
 		<Compile Include="Models\Steam\PublishedFileDetailsResponse.cs"/>
 		<Compile Include="Models\Steam\PublishedFileDetailsResult.cs"/>

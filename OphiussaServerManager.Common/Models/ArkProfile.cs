@@ -11,13 +11,12 @@ using OphiussaServerManager.Common.Models.Profiles;
 using OphiussaServerManager.Common.Models.SupportedServers;
 
 namespace OphiussaServerManager.Common.Models {
-    public class ArkProfile : Configs /*: BaseProfile*/ {
-        //public Administration Administration { get; set; }
-        //public Rules          Rules          { get; set; }
-
-        public string DefaultGameUserSettingsIniLocation => "ShooterGame\\Saved\\Config\\WindowsServer\\GameUserSettings.ini";
-
-        public string DefaultGameIniLocation => "ShooterGame\\Saved\\Config\\WindowsServer\\Game.ini";
+    public class ArkProfile : Configs {
+       
+        public ArkProfile() {
+            this.PlayerBaseStatMultipliers      = new StatsMultiplierFloatArray(nameof(PlayerBaseStatMultipliers),      Extensions.GetBaseStatMultipliers_Player,      Extensions.GetStatMultiplierInclusions_PlayerBase(),     true);
+            this.PerLevelStatsMultiplier_Player = new StatsMultiplierFloatArray(nameof(PerLevelStatsMultiplier_Player), Extensions.GetPerLevelStatsMultipliers_Player, Extensions.GetStatMultiplierInclusions_PlayerPerLevel(), true);
+        }
 
         public ArkProfile LoadGameIni(Profile prf) {
             SystemIniFile systemIniFile = new SystemIniFile(prf.InstallLocation);
@@ -1047,5 +1046,44 @@ TODO:CHECK THIS OPTIONS
         [DefaultValue(true)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.HudAndVisuals, "AllowHitMarkers")]
         public bool AllowHitMarkers { get; set; } = true;
+        
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Players, "AllowFlyerCarryPVE")]
+    public bool EnableFlyerCarry { get; set; } = false;
+
+    [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Players, "XPMultiplier", WriteIfNotValue = 1f)]
+    public float XPMultiplier { get; set; } = 1f;
+
+    [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Players, "PlayerDamageMultiplier", WriteIfNotValue = 1f)]
+    public float PlayerDamageMultiplier { get; set; } = 1f;
+
+    [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Players, "PlayerResistanceMultiplier", WriteIfNotValue = 1f)]
+    public float PlayerResistanceMultiplier { get; set; } = 1f;
+
+    [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Players, "PlayerCharacterWaterDrainMultiplier", WriteIfNotValue = 1f)]
+    public float PlayerCharacterWaterDrainMultiplier { get; set; } = 1f;
+
+    [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Players, "PlayerCharacterFoodDrainMultiplier", WriteIfNotValue = 1f)]
+    public float PlayerCharacterFoodDrainMultiplier { get; set; } = 1f;
+
+    [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Players, "PlayerCharacterStaminaDrainMultiplier", WriteIfNotValue = 1f)]
+    public float PlayerCharacterStaminaDrainMultiplier { get; set; } = 1f;
+
+    [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Players, "PlayerCharacterHealthRecoveryMultiplier", WriteIfNotValue = 1f)]
+    public float PlayerCharacterHealthRecoveryMultiplier { get; set; } = 1f;
+
+    [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Players, "PlayerHarvestingDamageMultiplier", WriteIfNotValue = 1f)]
+    public float PlayerHarvestingDamageMultiplier { get; set; } = 1f;
+
+    [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Players, "CraftingSkillBonusMultiplier", WriteIfNotValue = 1f)]
+    public float CraftingSkillBonusMultiplier { get; set; } = 1f;
+
+    [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Players, "MaxFallSpeedMultiplier", WriteIfNotValue = 1f)]
+    public float MaxFallSpeedMultiplier { get; set; } = 1f;
+
+    [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Players, "PlayerBaseStatMultipliers")]
+    public StatsMultiplierFloatArray PlayerBaseStatMultipliers { get; set; }
+
+    [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Players, "PerLevelStatsMultiplier_Player")]
+    public StatsMultiplierFloatArray PerLevelStatsMultiplier_Player { get; set; }
     }
 }

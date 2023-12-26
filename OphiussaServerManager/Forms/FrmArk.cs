@@ -82,7 +82,7 @@ namespace OphiussaServerManager.Forms {
             txtRCONBuffer.Text                          = profile.ArkConfiguration.RconServerLogBuffer.ToString(CultureInfo.InvariantCulture);
             cboMap.SelectedValue                        = profile.ArkConfiguration.MapName;
             cbBranch.Text                               = profile.ArkConfiguration.Branch;
-            txtMods.Text                                = string.Join(",", profile.ArkConfiguration.ModIDs.ToArray());
+            txtMods.Text                                = string.Join(",", profile.ArkConfiguration.ModIDs.FindAll(m => !string.IsNullOrEmpty(m)).ToArray());
             txtTotalConversion.Text                     = profile.ArkConfiguration.TotalConversionId;
             txtAutoSavePeriod.Text                      = profile.ArkConfiguration.AutoSavePeriod.ToString(CultureInfo.InvariantCulture);
             txtMOTD.Text                                = profile.ArkConfiguration.Motd;
@@ -298,6 +298,43 @@ namespace OphiussaServerManager.Forms {
             chkAllowHitMarkers.Checked                       = profile.ArkConfiguration.AllowHitMarkers;
             chkAllowGammaPvP.Checked                         = profile.ArkConfiguration.AllowPVPGamma;
             chkAllowGammaPvE.Checked                         = profile.ArkConfiguration.AllowPvEGamma;
+            chkFlyerCarry.Checked                            = profile.ArkConfiguration.EnableFlyerCarry;
+            txtXPMultiplier.Text                             = profile.ArkConfiguration.XPMultiplier.ToString(CultureInfo.InvariantCulture);
+            txtDamage.Text                                   = profile.ArkConfiguration.PlayerDamageMultiplier.ToString(CultureInfo.InvariantCulture);
+            txtResistance.Text                               = profile.ArkConfiguration.PlayerResistanceMultiplier.ToString(CultureInfo.InvariantCulture);
+            txtWaterDrain.Text                               = profile.ArkConfiguration.PlayerCharacterWaterDrainMultiplier.ToString(CultureInfo.InvariantCulture);
+            txtFoodDrain.Text                                = profile.ArkConfiguration.PlayerCharacterFoodDrainMultiplier.ToString(CultureInfo.InvariantCulture);
+            txtStaminaDrain.Text                             = profile.ArkConfiguration.PlayerCharacterStaminaDrainMultiplier.ToString(CultureInfo.InvariantCulture);
+            txtHealthRecovery.Text                           = profile.ArkConfiguration.PlayerCharacterHealthRecoveryMultiplier.ToString(CultureInfo.InvariantCulture);
+            txtHarvestDamage.Text                            = profile.ArkConfiguration.PlayerHarvestingDamageMultiplier.ToString(CultureInfo.InvariantCulture);
+            txtCraftingSkillMultiplier.Text                  = profile.ArkConfiguration.CraftingSkillBonusMultiplier.ToString(CultureInfo.InvariantCulture);
+            txtMaxFallSpeed.Text                             = profile.ArkConfiguration.MaxFallSpeedMultiplier.ToString(CultureInfo.InvariantCulture);
+            chkBaseStatMultiplier.Checked                    = profile.ArkConfiguration.PlayerBaseStatMultipliers.IsEnabled;
+            txtBSHealth.Text                                 = profile.ArkConfiguration.PlayerBaseStatMultipliers[0].ToString(CultureInfo.InvariantCulture);
+            txtBSStamina.Text                                = profile.ArkConfiguration.PlayerBaseStatMultipliers[1].ToString(CultureInfo.InvariantCulture);
+            txtBSTorpidity.Text                              = profile.ArkConfiguration.PlayerBaseStatMultipliers[2].ToString(CultureInfo.InvariantCulture);
+            txtBSOxygen.Text                                 = profile.ArkConfiguration.PlayerBaseStatMultipliers[3].ToString(CultureInfo.InvariantCulture);
+            txtBSFood.Text                                   = profile.ArkConfiguration.PlayerBaseStatMultipliers[4].ToString(CultureInfo.InvariantCulture);
+            txtBSWater.Text                                  = profile.ArkConfiguration.PlayerBaseStatMultipliers[5].ToString(CultureInfo.InvariantCulture);
+            txtBSTemperature.Text                            = profile.ArkConfiguration.PlayerBaseStatMultipliers[6].ToString(CultureInfo.InvariantCulture);
+            txtBSWeigth.Text                                 = profile.ArkConfiguration.PlayerBaseStatMultipliers[7].ToString(CultureInfo.InvariantCulture);
+            txtBSDamage.Text                                 = profile.ArkConfiguration.PlayerBaseStatMultipliers[8].ToString(CultureInfo.InvariantCulture);
+            txtBSSpeed.Text                                  = profile.ArkConfiguration.PlayerBaseStatMultipliers[9].ToString(CultureInfo.InvariantCulture);
+            txtBSFortitude.Text                              = profile.ArkConfiguration.PlayerBaseStatMultipliers[10].ToString(CultureInfo.InvariantCulture);
+            txtBSCrafting.Text                               = profile.ArkConfiguration.PlayerBaseStatMultipliers[11].ToString(CultureInfo.InvariantCulture);
+            chkPerLeveStatMultiplier.Checked                 = profile.ArkConfiguration.PlayerBaseStatMultipliers.IsEnabled;
+            txtPLHealth.Text                                 = profile.ArkConfiguration.PerLevelStatsMultiplier_Player[0].ToString(CultureInfo.InvariantCulture);
+            txtPLStamina.Text                                = profile.ArkConfiguration.PerLevelStatsMultiplier_Player[1].ToString(CultureInfo.InvariantCulture);
+            txtPLTorpidity.Text                              = profile.ArkConfiguration.PerLevelStatsMultiplier_Player[2].ToString(CultureInfo.InvariantCulture);
+            txtPLOxygen.Text                                 = profile.ArkConfiguration.PerLevelStatsMultiplier_Player[3].ToString(CultureInfo.InvariantCulture);
+            txtPLFood.Text                                   = profile.ArkConfiguration.PerLevelStatsMultiplier_Player[4].ToString(CultureInfo.InvariantCulture);
+            txtPLWater.Text                                  = profile.ArkConfiguration.PerLevelStatsMultiplier_Player[5].ToString(CultureInfo.InvariantCulture);
+            txtPLTemperature.Text                            = profile.ArkConfiguration.PerLevelStatsMultiplier_Player[6].ToString(CultureInfo.InvariantCulture);
+            txtPLWeigth.Text                                 = profile.ArkConfiguration.PerLevelStatsMultiplier_Player[7].ToString(CultureInfo.InvariantCulture);
+            txtPLDamage.Text                                 = profile.ArkConfiguration.PerLevelStatsMultiplier_Player[8].ToString(CultureInfo.InvariantCulture);
+            txtPLSpeed.Text                                  = profile.ArkConfiguration.PerLevelStatsMultiplier_Player[9].ToString(CultureInfo.InvariantCulture);
+            txtPLFortitude.Text                              = profile.ArkConfiguration.PerLevelStatsMultiplier_Player[10].ToString(CultureInfo.InvariantCulture);
+            txtPLCrafting.Text                               = profile.ArkConfiguration.PerLevelStatsMultiplier_Player[11].ToString(CultureInfo.InvariantCulture);
 
             #region Validations
 
@@ -313,6 +350,8 @@ namespace OphiussaServerManager.Forms {
             ManageCheckGroupBox(chkIncreasePVPRespawnInterval,         groupBox17);
             ManageCheckGroupBox(chkEnableRagnarokSettings,             groupBox30);
             ManageCheckGroupBox(chkEnableFjordurSettings,              groupBox26);
+            ManageCheckGroupBox(chkPerLeveStatMultiplier,              groupBox32);
+            ManageCheckGroupBox(chkBaseStatMultiplier,                 groupBox31);
 
             txtRCONPort.Enabled    = chkEnableRCON.Checked;
             txtRCONBuffer.Enabled  = chkEnableRCON.Checked;
@@ -891,6 +930,45 @@ namespace OphiussaServerManager.Forms {
             _profile.ArkConfiguration.AllowHitMarkers                          = chkAllowHitMarkers.Checked;
             _profile.ArkConfiguration.AllowPVPGamma                            = chkAllowGammaPvP.Checked;
             _profile.ArkConfiguration.AllowPvEGamma                            = chkAllowGammaPvE.Checked;
+            _profile.ArkConfiguration.EnableFlyerCarry                         = chkFlyerCarry.Checked;
+            _profile.ArkConfiguration.XPMultiplier                             = txtXPMultiplier.Text.ToFloat();
+            _profile.ArkConfiguration.PlayerDamageMultiplier                   = txtDamage.Text.ToFloat();
+            _profile.ArkConfiguration.PlayerResistanceMultiplier               = txtResistance.Text.ToFloat();
+            _profile.ArkConfiguration.PlayerCharacterWaterDrainMultiplier      = txtWaterDrain.Text.ToFloat();
+            _profile.ArkConfiguration.PlayerCharacterFoodDrainMultiplier       = txtFoodDrain.Text.ToFloat();
+            _profile.ArkConfiguration.PlayerCharacterStaminaDrainMultiplier    = txtStaminaDrain.Text.ToFloat();
+            _profile.ArkConfiguration.PlayerCharacterHealthRecoveryMultiplier  = txtHealthRecovery.Text.ToFloat();
+            _profile.ArkConfiguration.PlayerHarvestingDamageMultiplier         = txtHarvestDamage.Text.ToFloat();
+            _profile.ArkConfiguration.CraftingSkillBonusMultiplier             = txtCraftingSkillMultiplier.Text.ToFloat();
+            _profile.ArkConfiguration.MaxFallSpeedMultiplier                   = txtMaxFallSpeed.Text.ToFloat();
+            _profile.ArkConfiguration.PlayerBaseStatMultipliers                = new StatsMultiplierFloatArray(nameof(_profile.ArkConfiguration.PlayerBaseStatMultipliers), Extensions.GetBaseStatMultipliers_Player, Extensions.GetStatMultiplierInclusions_PlayerBase(), true);
+            _profile.ArkConfiguration.PlayerBaseStatMultipliers.IsEnabled      = chkBaseStatMultiplier.Checked;
+            _profile.ArkConfiguration.PlayerBaseStatMultipliers[0]             = txtBSHealth.Text.ToFloat();
+            _profile.ArkConfiguration.PlayerBaseStatMultipliers[1]             = txtBSStamina.Text.ToFloat();
+            _profile.ArkConfiguration.PlayerBaseStatMultipliers[2]             = txtBSTorpidity.Text.ToFloat();
+            _profile.ArkConfiguration.PlayerBaseStatMultipliers[3]             = txtBSOxygen.Text.ToFloat();
+            _profile.ArkConfiguration.PlayerBaseStatMultipliers[4]             = txtBSFood.Text.ToFloat();
+            _profile.ArkConfiguration.PlayerBaseStatMultipliers[5]             = txtBSWater.Text.ToFloat();
+            _profile.ArkConfiguration.PlayerBaseStatMultipliers[6]             = txtBSTemperature.Text.ToFloat();
+            _profile.ArkConfiguration.PlayerBaseStatMultipliers[7]             = txtBSWeigth.Text.ToFloat();
+            _profile.ArkConfiguration.PlayerBaseStatMultipliers[8]             = txtBSDamage.Text.ToFloat();
+            _profile.ArkConfiguration.PlayerBaseStatMultipliers[9]             = txtBSSpeed.Text.ToFloat();
+            _profile.ArkConfiguration.PlayerBaseStatMultipliers[10]            = txtBSFortitude.Text.ToFloat();
+            _profile.ArkConfiguration.PlayerBaseStatMultipliers[11]            = txtBSCrafting.Text.ToFloat();
+            _profile.ArkConfiguration.PerLevelStatsMultiplier_Player           = new StatsMultiplierFloatArray(nameof(_profile.ArkConfiguration.PerLevelStatsMultiplier_Player), Extensions.GetPerLevelStatsMultipliers_Player, Extensions.GetStatMultiplierInclusions_PlayerPerLevel(), true);
+            _profile.ArkConfiguration.PerLevelStatsMultiplier_Player.IsEnabled = chkPerLeveStatMultiplier.Checked;
+            _profile.ArkConfiguration.PerLevelStatsMultiplier_Player[0]        = txtPLHealth.Text.ToFloat();
+            _profile.ArkConfiguration.PerLevelStatsMultiplier_Player[1]        = txtPLStamina.Text.ToFloat();
+            _profile.ArkConfiguration.PerLevelStatsMultiplier_Player[2]        = txtPLTorpidity.Text.ToFloat();
+            _profile.ArkConfiguration.PerLevelStatsMultiplier_Player[3]        = txtPLOxygen.Text.ToFloat();
+            _profile.ArkConfiguration.PerLevelStatsMultiplier_Player[4]        = txtPLFood.Text.ToFloat();
+            _profile.ArkConfiguration.PerLevelStatsMultiplier_Player[5]        = txtPLWater.Text.ToFloat();
+            _profile.ArkConfiguration.PerLevelStatsMultiplier_Player[6]        = txtPLTemperature.Text.ToFloat();
+            _profile.ArkConfiguration.PerLevelStatsMultiplier_Player[7]        = txtPLWeigth.Text.ToFloat();
+            _profile.ArkConfiguration.PerLevelStatsMultiplier_Player[8]        = txtPLDamage.Text.ToFloat();
+            _profile.ArkConfiguration.PerLevelStatsMultiplier_Player[9]        = txtPLSpeed.Text.ToFloat();
+            _profile.ArkConfiguration.PerLevelStatsMultiplier_Player[10]       = txtPLFortitude.Text.ToFloat();
+            _profile.ArkConfiguration.PerLevelStatsMultiplier_Player[11]       = txtPLCrafting.Text.ToFloat();
 
             _profile.SaveProfile(MainForm.Settings);
 
@@ -2101,6 +2179,561 @@ namespace OphiussaServerManager.Forms {
                 Console.WriteLine(exception);
                 MessageBox.Show(exception.Message);
             }
+        }
+
+        private void checkBox3_CheckedChanged(object sender, EventArgs e) {
+            ManageCheckGroupBox((System.Windows.Forms.CheckBox)sender, groupBox32);
+        }
+
+        private void chkBaseStatMultiplier_CheckedChanged(object sender, EventArgs e) {
+            ManageCheckGroupBox((System.Windows.Forms.CheckBox)sender, groupBox31);
+        }
+
+        private void txtXPMultiplier_TextChanged_1(object sender, EventArgs e) {
+            try {
+                float  fValue = ((System.Windows.Forms.TextBox)sender).Text.ToFloat() * 100.0f;
+                string value  = Math.Round(fValue, 0).ToString(CultureInfo.InvariantCulture);
+                tbXPMultiplier.SetValueEx(value.ToInt());
+            }
+            catch (Exception exception) {
+                Console.WriteLine(exception);
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void txtDamage_TextChanged(object sender, EventArgs e) {
+            try {
+                float  fValue = ((System.Windows.Forms.TextBox)sender).Text.ToFloat() * 100.0f;
+                string value  = Math.Round(fValue, 0).ToString(CultureInfo.InvariantCulture);
+                tbDamage.SetValueEx(value.ToInt());
+            }
+            catch (Exception exception) {
+                Console.WriteLine(exception);
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void txtResistance_TextChanged(object sender, EventArgs e) {
+            try {
+                float  fValue = ((System.Windows.Forms.TextBox)sender).Text.ToFloat() * 100.0f;
+                string value  = Math.Round(fValue, 0).ToString(CultureInfo.InvariantCulture);
+                tbResistance.SetValueEx(value.ToInt());
+            }
+            catch (Exception exception) {
+                Console.WriteLine(exception);
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void txtWaterDrain_TextChanged(object sender, EventArgs e) {
+            try {
+                float  fValue = ((System.Windows.Forms.TextBox)sender).Text.ToFloat() * 100.0f;
+                string value  = Math.Round(fValue, 0).ToString(CultureInfo.InvariantCulture);
+                tbWaterDrain.SetValueEx(value.ToInt());
+            }
+            catch (Exception exception) {
+                Console.WriteLine(exception);
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void txtFoodDrain_TextChanged(object sender, EventArgs e) {
+            try {
+                float  fValue = ((System.Windows.Forms.TextBox)sender).Text.ToFloat() * 100.0f;
+                string value  = Math.Round(fValue, 0).ToString(CultureInfo.InvariantCulture);
+                tbFoodDrain.SetValueEx(value.ToInt());
+            }
+            catch (Exception exception) {
+                Console.WriteLine(exception);
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void txtStaminaDrain_TextChanged(object sender, EventArgs e) {
+            try {
+                float  fValue = ((System.Windows.Forms.TextBox)sender).Text.ToFloat() * 100.0f;
+                string value  = Math.Round(fValue, 0).ToString(CultureInfo.InvariantCulture);
+                tbStaminaDrain.SetValueEx(value.ToInt());
+            }
+            catch (Exception exception) {
+                Console.WriteLine(exception);
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void txtHealthRecovery_TextChanged(object sender, EventArgs e) {
+            try {
+                float  fValue = ((System.Windows.Forms.TextBox)sender).Text.ToFloat() * 100.0f;
+                string value  = Math.Round(fValue, 0).ToString(CultureInfo.InvariantCulture);
+                tbHealthRecovery.SetValueEx(value.ToInt());
+            }
+            catch (Exception exception) {
+                Console.WriteLine(exception);
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void txtHarvestDamage_TextChanged(object sender, EventArgs e) {
+            try {
+                float  fValue = ((System.Windows.Forms.TextBox)sender).Text.ToFloat() * 100.0f;
+                string value  = Math.Round(fValue, 0).ToString(CultureInfo.InvariantCulture);
+                tbHarvestDamage.SetValueEx(value.ToInt());
+            }
+            catch (Exception exception) {
+                Console.WriteLine(exception);
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void txtCraftingSkillMultiplier_TextChanged(object sender, EventArgs e) {
+            try {
+                float  fValue = ((System.Windows.Forms.TextBox)sender).Text.ToFloat() * 100.0f;
+                string value  = Math.Round(fValue, 0).ToString(CultureInfo.InvariantCulture);
+                tbCraftingSkillMultiplier.SetValueEx(value.ToInt());
+            }
+            catch (Exception exception) {
+                Console.WriteLine(exception);
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void expandCollapsePanel6_Paint(object sender, PaintEventArgs e) {
+        }
+
+        private void txtMaxFallSpeed_TextChanged(object sender, EventArgs e) {
+            try {
+                float  fValue = ((System.Windows.Forms.TextBox)sender).Text.ToFloat() * 100.0f;
+                string value  = Math.Round(fValue, 0).ToString(CultureInfo.InvariantCulture);
+                tbMaxFallSpeed.SetValueEx(value.ToInt());
+            }
+            catch (Exception exception) {
+                Console.WriteLine(exception);
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void txtBSHealth_TextChanged(object sender, EventArgs e) {
+            try {
+                float  fValue = ((System.Windows.Forms.TextBox)sender).Text.ToFloat() * 100.0f;
+                string value  = Math.Round(fValue, 0).ToString(CultureInfo.InvariantCulture);
+                tbBSHealth.SetValueEx(value.ToInt());
+            }
+            catch (Exception exception) {
+                Console.WriteLine(exception);
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void txtBSStamina_TextChanged(object sender, EventArgs e) {
+            try {
+                float  fValue = ((System.Windows.Forms.TextBox)sender).Text.ToFloat() * 100.0f;
+                string value  = Math.Round(fValue, 0).ToString(CultureInfo.InvariantCulture);
+                tbBSStamina.SetValueEx(value.ToInt());
+            }
+            catch (Exception exception) {
+                Console.WriteLine(exception);
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void txtBSTorpidity_TextChanged(object sender, EventArgs e) {
+            try {
+                float  fValue = ((System.Windows.Forms.TextBox)sender).Text.ToFloat() * 100.0f;
+                string value  = Math.Round(fValue, 0).ToString(CultureInfo.InvariantCulture);
+                tbBSTorpidity.SetValueEx(value.ToInt());
+            }
+            catch (Exception exception) {
+                Console.WriteLine(exception);
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void txtBSOxygen_TextChanged(object sender, EventArgs e) {
+            try {
+                float  fValue = ((System.Windows.Forms.TextBox)sender).Text.ToFloat() * 100.0f;
+                string value  = Math.Round(fValue, 0).ToString(CultureInfo.InvariantCulture);
+                tbBSOxygen.SetValueEx(value.ToInt());
+            }
+            catch (Exception exception) {
+                Console.WriteLine(exception);
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void txtBSFood_TextChanged(object sender, EventArgs e) {
+            try {
+                float  fValue = ((System.Windows.Forms.TextBox)sender).Text.ToFloat() * 100.0f;
+                string value  = Math.Round(fValue, 0).ToString(CultureInfo.InvariantCulture);
+                tbBSFood.SetValueEx(value.ToInt());
+            }
+            catch (Exception exception) {
+                Console.WriteLine(exception);
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void txtBSWater_TextChanged(object sender, EventArgs e) {
+            try {
+                float  fValue = ((System.Windows.Forms.TextBox)sender).Text.ToFloat() * 100.0f;
+                string value  = Math.Round(fValue, 0).ToString(CultureInfo.InvariantCulture);
+                tbBSWater.SetValueEx(value.ToInt());
+            }
+            catch (Exception exception) {
+                Console.WriteLine(exception);
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void txtBSTemperature_TextChanged(object sender, EventArgs e) {
+            try {
+                float  fValue = ((System.Windows.Forms.TextBox)sender).Text.ToFloat() * 100.0f;
+                string value  = Math.Round(fValue, 0).ToString(CultureInfo.InvariantCulture);
+                tbBSTemperature.SetValueEx(value.ToInt());
+            }
+            catch (Exception exception) {
+                Console.WriteLine(exception);
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void txtBSWeigth_TextChanged(object sender, EventArgs e) {
+            try {
+                float  fValue = ((System.Windows.Forms.TextBox)sender).Text.ToFloat() * 100.0f;
+                string value  = Math.Round(fValue, 0).ToString(CultureInfo.InvariantCulture);
+                tbBSWeigth.SetValueEx(value.ToInt());
+            }
+            catch (Exception exception) {
+                Console.WriteLine(exception);
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void txtBSDamage_TextChanged(object sender, EventArgs e) {
+            try {
+                float  fValue = ((System.Windows.Forms.TextBox)sender).Text.ToFloat() * 100.0f;
+                string value  = Math.Round(fValue, 0).ToString(CultureInfo.InvariantCulture);
+                tbBSDamage.SetValueEx(value.ToInt());
+            }
+            catch (Exception exception) {
+                Console.WriteLine(exception);
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void txtBSSpeed_TextChanged(object sender, EventArgs e) {
+            try {
+                float  fValue = ((System.Windows.Forms.TextBox)sender).Text.ToFloat() * 100.0f;
+                string value  = Math.Round(fValue, 0).ToString(CultureInfo.InvariantCulture);
+                tbBSSpeed.SetValueEx(value.ToInt());
+            }
+            catch (Exception exception) {
+                Console.WriteLine(exception);
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void txtBSFortitude_TextChanged(object sender, EventArgs e) {
+            try {
+                float  fValue = ((System.Windows.Forms.TextBox)sender).Text.ToFloat() * 100.0f;
+                string value  = Math.Round(fValue, 0).ToString(CultureInfo.InvariantCulture);
+                tbBSFortitude.SetValueEx(value.ToInt());
+            }
+            catch (Exception exception) {
+                Console.WriteLine(exception);
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void txtBSCrafting_TextChanged(object sender, EventArgs e) {
+            try {
+                float  fValue = ((System.Windows.Forms.TextBox)sender).Text.ToFloat() * 100.0f;
+                string value  = Math.Round(fValue, 0).ToString(CultureInfo.InvariantCulture);
+                tbBSCrafting.SetValueEx(value.ToInt());
+            }
+            catch (Exception exception) {
+                Console.WriteLine(exception);
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void txtPLHealth_TextChanged(object sender, EventArgs e) {
+            try {
+                float  fValue = ((System.Windows.Forms.TextBox)sender).Text.ToFloat() * 100.0f;
+                string value  = Math.Round(fValue, 0).ToString(CultureInfo.InvariantCulture);
+                tbPLHealth.SetValueEx(value.ToInt());
+            }
+            catch (Exception exception) {
+                Console.WriteLine(exception);
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void txtPLStamina_TextChanged(object sender, EventArgs e) {
+            try {
+                float  fValue = ((System.Windows.Forms.TextBox)sender).Text.ToFloat() * 100.0f;
+                string value  = Math.Round(fValue, 0).ToString(CultureInfo.InvariantCulture);
+                tbPLStamina.SetValueEx(value.ToInt());
+            }
+            catch (Exception exception) {
+                Console.WriteLine(exception);
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void txtPLTorpidity_TextChanged(object sender, EventArgs e) {
+            try {
+                float  fValue = ((System.Windows.Forms.TextBox)sender).Text.ToFloat() * 100.0f;
+                string value  = Math.Round(fValue, 0).ToString(CultureInfo.InvariantCulture);
+                tbPLTorpidity.SetValueEx(value.ToInt());
+            }
+            catch (Exception exception) {
+                Console.WriteLine(exception);
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void txtPLOxygen_TextChanged(object sender, EventArgs e) {
+            try {
+                float  fValue = ((System.Windows.Forms.TextBox)sender).Text.ToFloat() * 100.0f;
+                string value  = Math.Round(fValue, 0).ToString(CultureInfo.InvariantCulture);
+                tbPLOxygen.SetValueEx(value.ToInt());
+            }
+            catch (Exception exception) {
+                Console.WriteLine(exception);
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void txtPLFood_TextChanged(object sender, EventArgs e) {
+            try {
+                float  fValue = ((System.Windows.Forms.TextBox)sender).Text.ToFloat() * 100.0f;
+                string value  = Math.Round(fValue, 0).ToString(CultureInfo.InvariantCulture);
+                tbPLFood.SetValueEx(value.ToInt());
+            }
+            catch (Exception exception) {
+                Console.WriteLine(exception);
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void txtPLWater_TextChanged(object sender, EventArgs e) {
+            try {
+                float  fValue = ((System.Windows.Forms.TextBox)sender).Text.ToFloat() * 100.0f;
+                string value  = Math.Round(fValue, 0).ToString(CultureInfo.InvariantCulture);
+                tbPLWater.SetValueEx(value.ToInt());
+            }
+            catch (Exception exception) {
+                Console.WriteLine(exception);
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void txtPLTemperature_TextChanged(object sender, EventArgs e) {
+            try {
+                float  fValue = ((System.Windows.Forms.TextBox)sender).Text.ToFloat() * 100.0f;
+                string value  = Math.Round(fValue, 0).ToString(CultureInfo.InvariantCulture);
+                tbPLTemperature.SetValueEx(value.ToInt());
+            }
+            catch (Exception exception) {
+                Console.WriteLine(exception);
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void txtPLWeigth_TextChanged(object sender, EventArgs e) {
+            try {
+                float  fValue = ((System.Windows.Forms.TextBox)sender).Text.ToFloat() * 100.0f;
+                string value  = Math.Round(fValue, 0).ToString(CultureInfo.InvariantCulture);
+                tbPLWeight.SetValueEx(value.ToInt());
+            }
+            catch (Exception exception) {
+                Console.WriteLine(exception);
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void txtPLDamage_TextChanged(object sender, EventArgs e) {
+            try {
+                float  fValue = ((System.Windows.Forms.TextBox)sender).Text.ToFloat() * 100.0f;
+                string value  = Math.Round(fValue, 0).ToString(CultureInfo.InvariantCulture);
+                tbPLDamage.SetValueEx(value.ToInt());
+            }
+            catch (Exception exception) {
+                Console.WriteLine(exception);
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void txtPLSpeed_TextChanged(object sender, EventArgs e) {
+            try {
+                float  fValue = ((System.Windows.Forms.TextBox)sender).Text.ToFloat() * 100.0f;
+                string value  = Math.Round(fValue, 0).ToString(CultureInfo.InvariantCulture);
+                tbPLSpeed.SetValueEx(value.ToInt());
+            }
+            catch (Exception exception) {
+                Console.WriteLine(exception);
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void txtPLFortitude_TextChanged(object sender, EventArgs e) {
+            try {
+                float  fValue = ((System.Windows.Forms.TextBox)sender).Text.ToFloat() * 100.0f;
+                string value  = Math.Round(fValue, 0).ToString(CultureInfo.InvariantCulture);
+                tbPLFortitude.SetValueEx(value.ToInt());
+            }
+            catch (Exception exception) {
+                Console.WriteLine(exception);
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void txtPLCrafting_TextChanged(object sender, EventArgs e) {
+            try {
+                float  fValue = ((System.Windows.Forms.TextBox)sender).Text.ToFloat() * 100.0f;
+                string value  = Math.Round(fValue, 0).ToString(CultureInfo.InvariantCulture);
+                tbPLCrafting.SetValueEx(value.ToInt());
+            }
+            catch (Exception exception) {
+                Console.WriteLine(exception);
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void tbXPMultiplier_Scroll(object sender, EventArgs e) {
+            txtXPMultiplier.Text = (((TrackBar)sender).Value / 100.0f).ToString(CultureInfo.InvariantCulture);
+        }
+
+        private void tbDamage_Scroll(object sender, EventArgs e) {
+            txtDamage.Text = (((TrackBar)sender).Value / 100.0f).ToString(CultureInfo.InvariantCulture);
+        }
+
+        private void tbResistance_Scroll(object sender, EventArgs e) {
+            txtResistance.Text = (((TrackBar)sender).Value / 100.0f).ToString(CultureInfo.InvariantCulture);
+        }
+
+        private void tbWaterDrain_Scroll(object sender, EventArgs e) {
+            txtWaterDrain.Text = (((TrackBar)sender).Value / 100.0f).ToString(CultureInfo.InvariantCulture);
+        }
+
+        private void tbFoodDrain_Scroll(object sender, EventArgs e) {
+            txtFoodDrain.Text = (((TrackBar)sender).Value / 100.0f).ToString(CultureInfo.InvariantCulture);
+        }
+
+        private void tbStaminaDrain_Scroll(object sender, EventArgs e) {
+            txtStaminaDrain.Text = (((TrackBar)sender).Value / 100.0f).ToString(CultureInfo.InvariantCulture);
+        }
+
+        private void tbHealthRecovery_Scroll(object sender, EventArgs e) {
+            txtHealthRecovery.Text = (((TrackBar)sender).Value / 100.0f).ToString(CultureInfo.InvariantCulture);
+        }
+
+        private void tbHarvestDamage_Scroll(object sender, EventArgs e) {
+            txtHarvestDamage.Text = (((TrackBar)sender).Value / 100.0f).ToString(CultureInfo.InvariantCulture);
+        }
+
+        private void tbCraftingSkillMultiplier_Scroll(object sender, EventArgs e) {
+            txtCraftingSkillMultiplier.Text = (((TrackBar)sender).Value / 100.0f).ToString(CultureInfo.InvariantCulture);
+        }
+
+        private void tbMaxFallSpeed_Scroll(object sender, EventArgs e) {
+            txtMaxFallSpeed.Text = (((TrackBar)sender).Value / 100.0f).ToString(CultureInfo.InvariantCulture);
+        }
+
+        private void tbBSHealth_Scroll(object sender, EventArgs e) {
+            txtBSHealth.Text = (((TrackBar)sender).Value / 100.0f).ToString(CultureInfo.InvariantCulture);
+        }
+
+        private void tbBSStamina_Scroll(object sender, EventArgs e) {
+            txtBSStamina.Text = (((TrackBar)sender).Value / 100.0f).ToString(CultureInfo.InvariantCulture);
+        }
+
+        private void tbBSTorpidity_Scroll(object sender, EventArgs e) {
+            txtBSTorpidity.Text = (((TrackBar)sender).Value / 100.0f).ToString(CultureInfo.InvariantCulture);
+        }
+
+        private void tbBSOxygen_Scroll(object sender, EventArgs e) {
+            txtBSOxygen.Text = (((TrackBar)sender).Value / 100.0f).ToString(CultureInfo.InvariantCulture);
+        }
+
+        private void tbBSFood_Scroll(object sender, EventArgs e) {
+            txtBSFood.Text = (((TrackBar)sender).Value / 100.0f).ToString(CultureInfo.InvariantCulture);
+        }
+
+        private void tbBSWater_Scroll(object sender, EventArgs e) {
+            txtBSWater.Text = (((TrackBar)sender).Value / 100.0f).ToString(CultureInfo.InvariantCulture);
+        }
+
+        private void tbBSTemperature_Scroll(object sender, EventArgs e) {
+            txtBSTemperature.Text = (((TrackBar)sender).Value / 100.0f).ToString(CultureInfo.InvariantCulture);
+        }
+
+        private void tbBSWeigth_Scroll(object sender, EventArgs e) {
+            txtBSWeigth.Text = (((TrackBar)sender).Value / 100.0f).ToString(CultureInfo.InvariantCulture);
+        }
+
+        private void tbBSDamage_Scroll(object sender, EventArgs e) {
+            txtBSDamage.Text = (((TrackBar)sender).Value / 100.0f).ToString(CultureInfo.InvariantCulture);
+        }
+
+        private void tbBSSpeed_Scroll(object sender, EventArgs e) {
+            txtBSSpeed.Text = (((TrackBar)sender).Value / 100.0f).ToString(CultureInfo.InvariantCulture);
+        }
+
+        private void tbBSFortitude_Scroll(object sender, EventArgs e) {
+            txtBSFortitude.Text = (((TrackBar)sender).Value / 100.0f).ToString(CultureInfo.InvariantCulture);
+        }
+
+        private void tbBSCrafting_Scroll(object sender, EventArgs e) {
+            txtBSCrafting.Text = (((TrackBar)sender).Value / 100.0f).ToString(CultureInfo.InvariantCulture);
+        }
+
+        private void tbPLHealth_Scroll(object sender, EventArgs e) {
+            txtPLHealth.Text = (((TrackBar)sender).Value / 100.0f).ToString(CultureInfo.InvariantCulture);
+        }
+
+        private void tbPLStamina_Scroll(object sender, EventArgs e) {
+            txtPLStamina.Text = (((TrackBar)sender).Value / 100.0f).ToString(CultureInfo.InvariantCulture);
+        }
+
+        private void tbPLTorpidity_Scroll(object sender, EventArgs e) {
+            txtPLTorpidity.Text = (((TrackBar)sender).Value / 100.0f).ToString(CultureInfo.InvariantCulture);
+        }
+
+        private void tbPLOxygen_Scroll(object sender, EventArgs e) {
+            txtPLOxygen.Text = (((TrackBar)sender).Value / 100.0f).ToString(CultureInfo.InvariantCulture);
+        }
+
+        private void tbPLFood_Scroll(object sender, EventArgs e) {
+            txtPLFood.Text = (((TrackBar)sender).Value / 100.0f).ToString(CultureInfo.InvariantCulture);
+        }
+
+        private void tbPLWater_Scroll(object sender, EventArgs e) {
+            txtPLWater.Text = (((TrackBar)sender).Value / 100.0f).ToString(CultureInfo.InvariantCulture);
+        }
+
+        private void tbPLTemperature_Scroll(object sender, EventArgs e) {
+            txtPLTemperature.Text = (((TrackBar)sender).Value / 100.0f).ToString(CultureInfo.InvariantCulture);
+        }
+
+        private void tbPLWeight_Scroll(object sender, EventArgs e) {
+            txtPLWeigth.Text = (((TrackBar)sender).Value / 100.0f).ToString(CultureInfo.InvariantCulture);
+        }
+
+        private void tbPLDamage_Scroll(object sender, EventArgs e) {
+            txtPLDamage.Text = (((TrackBar)sender).Value / 100.0f).ToString(CultureInfo.InvariantCulture);
+        }
+
+        private void tbPLSpeed_Scroll(object sender, EventArgs e) {
+            txtPLSpeed.Text = (((TrackBar)sender).Value / 100.0f).ToString(CultureInfo.InvariantCulture);
+        }
+
+        private void tbPLFortitude_Scroll(object sender, EventArgs e) {
+            txtPLFortitude.Text = (((TrackBar)sender).Value / 100.0f).ToString(CultureInfo.InvariantCulture);
+        }
+
+        private void tbPLCrafting_Scroll(object sender, EventArgs e) {
+            txtPLCrafting.Text = (((TrackBar)sender).Value / 100.0f).ToString(CultureInfo.InvariantCulture);
         }
     }
 }

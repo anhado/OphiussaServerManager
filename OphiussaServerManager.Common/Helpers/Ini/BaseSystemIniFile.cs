@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using OphiussaServerManager.Common.Helpers;
+using OphiussaServerManager.Common.Models;
 
 namespace OphiussaServerManager.Common.Ini {
     public abstract class BaseSystemIniFile {
@@ -174,6 +175,9 @@ namespace OphiussaServerManager.Common.Ini {
                 foreach (var attr in attributes) {
                     try {
                         Console.WriteLine(field.Name);
+                        if (field.Name == "PlayerBaseStatMultipliers" || field.Name == "PerLevelStatsMultiplier_Player" ) {
+                            var x = 1f;
+                        }
                         if (attr.IsCustom) {
                             // this code is to handle custom sections
                             if (field.GetValue(obj) is IIniSectionCollection collection) {
