@@ -286,6 +286,10 @@ namespace OphiussaServerManager.Forms {
             txtWeaponClipAmmoClamp.Text                      = profile.ArkConfiguration.WeaponClipAmmoClamp.ToString(CultureInfo.InvariantCulture);
             chkEnableHyperInsulationClamp.Checked            = profile.ArkConfiguration.EnableHyperInsulationClamp;
             txtHyperInsulationClamp.Text                     = profile.ArkConfiguration.HyperInsulationClamp.ToString(CultureInfo.InvariantCulture);
+            chkEnableGlobalVoiceChat.Checked                 = profile.ArkConfiguration.EnableGlobalVoiceChat;
+            chkEnableProximityTextChat.Checked               = profile.ArkConfiguration.EnableProximityChat;
+            chkEnableLeftNotifications.Checked               = profile.ArkConfiguration.EnablePlayerLeaveNotifications;
+            chkEnableJoinNotifications.Checked               = profile.ArkConfiguration.EnablePlayerJoinedNotifications;
 
             #region Validations
 
@@ -648,8 +652,8 @@ namespace OphiussaServerManager.Forms {
                 MainForm.Settings.SaveSettings();
             }
 
-            _profile.Name                                                             = txtProfileName.Text;
-            _profile.InstallLocation                                                  = txtLocation.Text;
+            _profile.Name                                              = txtProfileName.Text;
+            _profile.InstallLocation                                   = txtLocation.Text;
             _profile.ArkConfiguration.UseServerApi                     = chkUseApi.Checked;
             _profile.ArkConfiguration.ServerName                       = txtServerName.Text;
             _profile.ArkConfiguration.ServerPassword                   = txtServerPWD.Text;
@@ -867,6 +871,10 @@ namespace OphiussaServerManager.Forms {
             _profile.ArkConfiguration.WeaponClipAmmoClamp                      = txtWeaponClipAmmoClamp.Text.ToInt();
             _profile.ArkConfiguration.EnableHyperInsulationClamp               = chkEnableHyperInsulationClamp.Checked;
             _profile.ArkConfiguration.HyperInsulationClamp                     = txtHyperInsulationClamp.Text.ToInt();
+            _profile.ArkConfiguration.EnableGlobalVoiceChat                    = chkEnableGlobalVoiceChat.Checked;
+            _profile.ArkConfiguration.EnableProximityChat                      = chkEnableProximityTextChat.Checked;
+            _profile.ArkConfiguration.EnablePlayerLeaveNotifications           = chkEnableLeftNotifications.Checked;
+            _profile.ArkConfiguration.EnablePlayerJoinedNotifications          = chkEnableJoinNotifications.Checked;
 
             _profile.SaveProfile(MainForm.Settings);
 
@@ -1039,10 +1047,10 @@ namespace OphiussaServerManager.Forms {
                                         _profile.ArkConfiguration.CpuAffinityList);
             frm.UpdateCpuAffinity = (all, lst) => {
                                         _profile.ArkConfiguration.CpuAffinity = all
-                                                                                                   ? "All"
-                                                                                                   : string.Join(",", lst.FindAll(x => x.Selected).Select(x => x.ProcessorNumber.ToString()));
+                                                                                    ? "All"
+                                                                                    : string.Join(",", lst.FindAll(x => x.Selected).Select(x => x.ProcessorNumber.ToString()));
                                         _profile.ArkConfiguration.CpuAffinityList = lst;
-                                        txtAffinity.Text                                         = _profile.ArkConfiguration.CpuAffinity;
+                                        txtAffinity.Text                          = _profile.ArkConfiguration.CpuAffinity;
                                     };
             frm.ShowDialog();
         }
