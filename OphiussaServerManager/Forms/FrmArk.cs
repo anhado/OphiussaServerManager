@@ -290,6 +290,14 @@ namespace OphiussaServerManager.Forms {
             chkEnableProximityTextChat.Checked               = profile.ArkConfiguration.EnableProximityChat;
             chkEnableLeftNotifications.Checked               = profile.ArkConfiguration.EnablePlayerLeaveNotifications;
             chkEnableJoinNotifications.Checked               = profile.ArkConfiguration.EnablePlayerJoinedNotifications;
+            chkAllowCrossHair.Checked                        = profile.ArkConfiguration.AllowCrosshair;
+            chkAllowHUD.Checked                              = profile.ArkConfiguration.AllowHUD;
+            chkAllowMapPlayerLocation.Checked                = profile.ArkConfiguration.AllowMapPlayerLocation;
+            chkAllowthirdPerson.Checked                      = profile.ArkConfiguration.AllowThirdPersonView;
+            chkShowFloatingDamage.Checked                    = profile.ArkConfiguration.ShowFloatingDamageText;
+            chkAllowHitMarkers.Checked                       = profile.ArkConfiguration.AllowHitMarkers;
+            chkAllowGammaPvP.Checked                         = profile.ArkConfiguration.AllowPVPGamma;
+            chkAllowGammaPvE.Checked                         = profile.ArkConfiguration.AllowPvEGamma;
 
             #region Validations
 
@@ -875,6 +883,14 @@ namespace OphiussaServerManager.Forms {
             _profile.ArkConfiguration.EnableProximityChat                      = chkEnableProximityTextChat.Checked;
             _profile.ArkConfiguration.EnablePlayerLeaveNotifications           = chkEnableLeftNotifications.Checked;
             _profile.ArkConfiguration.EnablePlayerJoinedNotifications          = chkEnableJoinNotifications.Checked;
+            _profile.ArkConfiguration.AllowCrosshair                           = chkAllowCrossHair.Checked;
+            _profile.ArkConfiguration.AllowHUD                                 = chkAllowHUD.Checked;
+            _profile.ArkConfiguration.AllowMapPlayerLocation                   = chkAllowMapPlayerLocation.Checked;
+            _profile.ArkConfiguration.AllowThirdPersonView                     = chkAllowthirdPerson.Checked;
+            _profile.ArkConfiguration.ShowFloatingDamageText                   = chkShowFloatingDamage.Checked;
+            _profile.ArkConfiguration.AllowHitMarkers                          = chkAllowHitMarkers.Checked;
+            _profile.ArkConfiguration.AllowPVPGamma                            = chkAllowGammaPvP.Checked;
+            _profile.ArkConfiguration.AllowPvEGamma                            = chkAllowGammaPvE.Checked;
 
             _profile.SaveProfile(MainForm.Settings);
 

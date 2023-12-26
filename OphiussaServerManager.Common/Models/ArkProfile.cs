@@ -1015,5 +1015,37 @@ TODO:CHECK THIS OPTIONS
         [DefaultValue(true)]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.ChatAndNotifications, "DontAlwaysNotifyPlayerJoined")]
         public bool EnablePlayerJoinedNotifications { get; set; } = true;
+ 
+        [DefaultValue(true)]
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.HudAndVisuals, "ServerCrosshair")]
+        public bool AllowCrosshair { get; set; } = true;
+
+        [DefaultValue(true)]
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.HudAndVisuals, "ServerForceNoHud", InvertBoolean = true)]
+        public bool AllowHUD { get; set; } = true;
+
+        [DefaultValue(false)]
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.HudAndVisuals, "AllowThirdPersonPlayer")]
+        public bool AllowThirdPersonView { get; set; } = false;
+
+        [DefaultValue(false)]
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.HudAndVisuals, "ShowMapPlayerLocation")]
+        public bool AllowMapPlayerLocation { get; set; } = false;
+
+        [DefaultValue(false)]
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.HudAndVisuals, "EnablePVPGamma")]
+        public bool AllowPVPGamma { get; set; } = false;
+
+        [DefaultValue(false)]
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.HudAndVisuals, "DisablePvEGamma", InvertBoolean = true)]
+        public bool AllowPvEGamma { get; set; } = false;
+
+        [DefaultValue(false)]
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.HudAndVisuals, "ShowFloatingDamageText")]
+        public bool ShowFloatingDamageText { get; set; } = false;
+
+        [DefaultValue(true)]
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.HudAndVisuals, "AllowHitMarkers")]
+        public bool AllowHitMarkers { get; set; } = true;
     }
 }
