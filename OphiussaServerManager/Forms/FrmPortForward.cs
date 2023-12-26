@@ -52,26 +52,26 @@ namespace OphiussaServerManager.Forms {
                     switch (profile.Type.ServerType) {
                         case EnumServerType.ArkSurviveEvolved:
                         case EnumServerType.ArkSurviveAscended:
-                            serverName = profile.ArkConfiguration.Administration.ServerName;
+                            serverName = profile.ArkConfiguration.ServerName;
 
                             useServerPort = true;
                             usePeerPort   = true;
                             useQueryPort  = true;
-                            useRconPort   = profile.ArkConfiguration.Administration.UseRcon;
+                            useRconPort   = profile.ArkConfiguration.UseRcon;
 
-                            serverMapping = await device.GetSpecificMappingAsync(Protocol.TcpUpd, profile.ArkConfiguration.Administration.ServerPort.ToInt());
-                            peerMapping   = await device.GetSpecificMappingAsync(Protocol.TcpUpd, profile.ArkConfiguration.Administration.PeerPort.ToInt());
-                            queryMapping  = await device.GetSpecificMappingAsync(Protocol.TcpUpd, profile.ArkConfiguration.Administration.QueryPort.ToInt());
-                            if (profile.ArkConfiguration.Administration.UseRcon) rconMapping = await device.GetSpecificMappingAsync(Protocol.TcpUpd, profile.ArkConfiguration.Administration.RconPort.ToInt());
+                            serverMapping = await device.GetSpecificMappingAsync(Protocol.TcpUpd, profile.ArkConfiguration.ServerPort.ToInt());
+                            peerMapping   = await device.GetSpecificMappingAsync(Protocol.TcpUpd, profile.ArkConfiguration.PeerPort.ToInt());
+                            queryMapping  = await device.GetSpecificMappingAsync(Protocol.TcpUpd, profile.ArkConfiguration.QueryPort.ToInt());
+                            if (profile.ArkConfiguration.UseRcon) rconMapping = await device.GetSpecificMappingAsync(Protocol.TcpUpd, profile.ArkConfiguration.RconPort.ToInt());
 
-                            firewallServerPort = NetworkTools.IsPortOpen(profile.Name, profile.ArkConfiguration.Administration.ServerPort.ToInt());
-                            firewallPeerPort   = NetworkTools.IsPortOpen(profile.Name, profile.ArkConfiguration.Administration.PeerPort.ToInt());
-                            firewallQueryPort  = NetworkTools.IsPortOpen(profile.Name, profile.ArkConfiguration.Administration.QueryPort.ToInt());
-                            if (profile.ArkConfiguration.Administration.UseRcon) firewallRconPort = NetworkTools.IsPortOpen(profile.Name, profile.ArkConfiguration.Administration.RconPort.ToInt());
-                            vServerPort = profile.ArkConfiguration.Administration.ServerPort.ToUShort();
-                            vPeerPort   = profile.ArkConfiguration.Administration.PeerPort.ToUShort();
-                            vQueryPort  = profile.ArkConfiguration.Administration.QueryPort.ToUShort();
-                            if (profile.ArkConfiguration.Administration.UseRcon) vRconPort = profile.ArkConfiguration.Administration.RconPort.ToUShort();
+                            firewallServerPort = NetworkTools.IsPortOpen(profile.Name, profile.ArkConfiguration.ServerPort.ToInt());
+                            firewallPeerPort   = NetworkTools.IsPortOpen(profile.Name, profile.ArkConfiguration.PeerPort.ToInt());
+                            firewallQueryPort  = NetworkTools.IsPortOpen(profile.Name, profile.ArkConfiguration.QueryPort.ToInt());
+                            if (profile.ArkConfiguration.UseRcon) firewallRconPort = NetworkTools.IsPortOpen(profile.Name, profile.ArkConfiguration.RconPort.ToInt());
+                            vServerPort = profile.ArkConfiguration.ServerPort.ToUShort();
+                            vPeerPort   = profile.ArkConfiguration.PeerPort.ToUShort();
+                            vQueryPort  = profile.ArkConfiguration.QueryPort.ToUShort();
+                            if (profile.ArkConfiguration.UseRcon) vRconPort = profile.ArkConfiguration.RconPort.ToUShort();
                             break;
                         case EnumServerType.Valheim:
                             serverName = profile.ValheimConfiguration.Administration.ServerName;

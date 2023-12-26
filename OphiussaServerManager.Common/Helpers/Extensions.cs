@@ -9,21 +9,6 @@ using System.Windows.Forms;
 using OphiussaServerManager.Common.Models;
 
 namespace OphiussaServerManager.Common.Helpers {
-    public enum DeleteEnumOption {
-        KeepValue             = 1,
-        DeleteIfNotUsed       = 2,
-        DeleteIfDefault       = 3,
-        ForceDefaultIfNotUsed = 4
-    }
-
-    [AttributeUsage(AttributeTargets.Property)]
-    public class ValueBehavior : Attribute {
-        public DeleteEnumOption Value { get; set; } = DeleteEnumOption.KeepValue;
-
-        public ValueBehavior(DeleteEnumOption behavior) {
-            Value = behavior;
-        }
-    }
 
     public static class EnumerableExtensions {
         public static bool ReadBoolValue(this IEnumerable<string> strings, string paramName, bool defaultValue = false) {

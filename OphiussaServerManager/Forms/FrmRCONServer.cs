@@ -56,7 +56,7 @@ namespace OphiussaServerManager.Forms {
         }
 
         private async void UpdatePlayerDetailsAsync() {
-            string        profileSavePath = Profile.GetProfileSavePath(Profile, Profile.InstallLocation, Profile.ArkConfiguration?.Administration.AlternateSaveDirectoryName);
+            string        profileSavePath = Profile.GetProfileSavePath(Profile, Profile.InstallLocation, Profile.ArkConfiguration?.AlternateSaveDirectoryName);
             DataContainer dataContainer   = null;
             var           minValue        = DateTime.MinValue;
 
@@ -210,7 +210,7 @@ namespace OphiussaServerManager.Forms {
 
         private async void InitConnection() {
             try {
-                _rcon = new RCON(IPAddress.Parse(Profile.ArkConfiguration.Administration.LocalIp), ushort.Parse(Profile.ArkConfiguration.Administration.RconPort), Profile.ArkConfiguration.Administration.ServerAdminPassword);
+                _rcon = new RCON(IPAddress.Parse(Profile.ArkConfiguration.LocalIp), ushort.Parse(Profile.ArkConfiguration.RconPort), Profile.ArkConfiguration.ServerAdminPassword);
                 await _rcon.ConnectAsync();
                 txtChat.AppendTextWithTimeStamp("Connection established.", Color.Orange);
                 SetStatus(true);
@@ -290,7 +290,7 @@ namespace OphiussaServerManager.Forms {
                 _playerLists.Clear();
                 string respnose = await _rcon.SendCommandAsync("ListPlayers");
                 if (respnose == "No Players Connected") {
-                    lblPlayers.Text = $"0/{Profile.ArkConfiguration.Administration.MaxPlayers}";
+                    lblPlayers.Text = $"0/{Profile.ArkConfiguration.MaxPlayers}";
                 }
                 else {
                     string[] players = respnose.Split('\r');
@@ -310,7 +310,7 @@ namespace OphiussaServerManager.Forms {
                     lbPlayers.ValueMember   = "SteamID";
                     lbPlayers.DisplayMember = "Name";
                     //TODO: link to players from disk files
-                    lblPlayers.Text = $"{lbPlayers.Items.Count}/{Profile.ArkConfiguration.Administration.MaxPlayers}";
+                    lblPlayers.Text = $"{lbPlayers.Items.Count}/{Profile.ArkConfiguration.MaxPlayers}";
                 }
 
                 SetStatus(true);

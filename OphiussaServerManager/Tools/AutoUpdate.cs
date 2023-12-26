@@ -292,7 +292,7 @@ namespace OphiussaServerManager.Tools.Update {
             //if (currentServerBuild == currentCacheBuild)
             //{
 
-            //    if (p.IsRunning || p.AutoManageSettings.AutoStartServer) Utils.ExecuteAsAdmin(System.IO.Path.Combine(p.InstallLocation, p.Type.ExecutablePath), p.ARKConfiguration.GetCommandLinesArguments(Settings, p, p.ARKConfiguration.Administration.LocalIP), false);
+            //    if (p.IsRunning || p.AutoManageSettings.AutoStartServer) Utils.ExecuteAsAdmin(System.IO.Path.Combine(p.InstallLocation, p.Type.ExecutablePath), p.ARKConfiguration.GetCommandLinesArguments(Settings, p, p.ArkConfiguration.LocalIP), false);
             //    return;
             //}
 
@@ -466,9 +466,9 @@ namespace OphiussaServerManager.Tools.Update {
 
         public List<PublishedFileDetail> CheckSteamMods(Profile p, Settings settings, string cacheFolder) {
             var    steamUtils = new SteamUtils(settings);
-            var    mods       = steamUtils.GetSteamModDetails(p.ArkConfiguration.Administration.ModIDs.FindAll(x => x != ""));
+            var    mods       = steamUtils.GetSteamModDetails(p.ArkConfiguration.ModIDs.FindAll(x => x != ""));
             bool   isFirstRun = false;
-            string cache      = Path.Combine(settings.DataFolder, "cache", "SteamModsCache", p.ArkConfiguration.Administration.Branch);
+            string cache      = Path.Combine(settings.DataFolder, "cache", "SteamModsCache", p.ArkConfiguration.Branch);
             if (!Directory.Exists(cache)) {
                 Directory.CreateDirectory(cache);
 
@@ -506,9 +506,9 @@ namespace OphiussaServerManager.Tools.Update {
 
         public List<CurseForgeFileDetail> CheckSCurseForgeMods(Profile p, Settings settings, string cacheFolder) {
             var curseForgeUtils = new CurseForgeUtils(settings);
-            var mods            = curseForgeUtils.GetCurseForgeModDetails(p.ArkConfiguration.Administration.ModIDs.FindAll(x => x != ""));
+            var mods            = curseForgeUtils.GetCurseForgeModDetails(p.ArkConfiguration.ModIDs.FindAll(x => x != ""));
 
-            string cache = Path.Combine(settings.DataFolder, "cache", "CFCache", p.ArkConfiguration.Administration.Branch);
+            string cache = Path.Combine(settings.DataFolder, "cache", "CFCache", p.ArkConfiguration.Branch);
             if (!Directory.Exists(cache)) Directory.CreateDirectory(cache);
 
             var fileInfo = new FileInfo(Path.Combine(cache, $"CurseForgeModCache_{p.Key}.json"));

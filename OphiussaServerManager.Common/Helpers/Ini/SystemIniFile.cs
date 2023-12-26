@@ -9,15 +9,15 @@ namespace OphiussaServerManager.Common.Ini {
     }
 
     public enum IniSections {
-        GusServerSettings,
+        GUS_ServerSettings,
         GusShooterGameUserSettings,
         GusScalabilityGroups,
-        GusSessionSettings,
-        GusGameSession,
-        GusMultiHome,
-        GusMessageOfTheDay,
-        GusRagnarok,
-        GameShooterGameMode,
+        GUS_SessionSettings,
+        GUS_GameSession,
+        GUS_MultiHome,
+        GUS_MessageOfTheDay,
+        GUS_Ragnarok,
+        Game_ShooterGameMode,
         Custom
     }
 
@@ -37,7 +37,7 @@ namespace OphiussaServerManager.Common.Ini {
 
         public static readonly Dictionary<Enum, string> IniSectionNames = new Dictionary<Enum, string> {
                                                                                                            {
-                                                                                                               IniSections.GusServerSettings,
+                                                                                                               IniSections.GUS_ServerSettings,
                                                                                                                "ServerSettings"
                                                                                                            }, {
                                                                                                                IniSections.GusShooterGameUserSettings,
@@ -46,22 +46,22 @@ namespace OphiussaServerManager.Common.Ini {
                                                                                                                IniSections.GusScalabilityGroups,
                                                                                                                "ScalabilityGroups"
                                                                                                            }, {
-                                                                                                               IniSections.GusSessionSettings,
+                                                                                                               IniSections.GUS_SessionSettings,
                                                                                                                "SessionSettings"
                                                                                                            }, {
-                                                                                                               IniSections.GusGameSession,
+                                                                                                               IniSections.GUS_GameSession,
                                                                                                                "/Script/Engine.GameSession"
                                                                                                            }, {
-                                                                                                               IniSections.GusMultiHome,
+                                                                                                               IniSections.GUS_MultiHome,
                                                                                                                "MultiHome"
                                                                                                            }, {
-                                                                                                               IniSections.GusMessageOfTheDay,
+                                                                                                               IniSections.GUS_MessageOfTheDay,
                                                                                                                "MessageOfTheDay"
                                                                                                            }, {
-                                                                                                               IniSections.GusRagnarok,
+                                                                                                               IniSections.GUS_Ragnarok,
                                                                                                                "Ragnarok"
                                                                                                            }, {
-                                                                                                               IniSections.GameShooterGameMode,
+                                                                                                               IniSections.Game_ShooterGameMode,
                                                                                                                "/script/shootergame.shootergamemode"
                                                                                                            }
                                                                                                        };

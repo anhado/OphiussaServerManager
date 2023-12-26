@@ -102,7 +102,7 @@ namespace OphiussaServerManager.Forms {
 
                     Addform(new FrmUsedResourcesStatusWindow(new ResourceMonitor {
                                                                                      Type               = ResourceType.Cpu,
-                                                                                     Description        = p.ArkConfiguration.Administration.ServerName,
+                                                                                     Description        = p.ArkConfiguration.ServerName,
                                                                                      CalculateUsage     = false,
                                                                                      CategoryName       = "Processor",
                                                                                      CounterName        = "% Processor Time",
@@ -118,7 +118,7 @@ namespace OphiussaServerManager.Forms {
 
                     Addform(new FrmUsedResourcesStatusWindow(new ResourceMonitor {
                                                                                      Type               = ResourceType.Memory,
-                                                                                     Description        = p.ArkConfiguration.Administration.ServerName,
+                                                                                     Description        = p.ArkConfiguration.ServerName,
                                                                                      CalculateUsage     = true,
                                                                                      CategoryName       = "Memory",
                                                                                      CounterName        = "Available MBytes",
@@ -133,7 +133,7 @@ namespace OphiussaServerManager.Forms {
 
                     Addform(new FrmUsedResourcesStatusWindow(new ResourceMonitor {
                                                                                      Type               = ResourceType.DiskUsed,
-                                                                                     Description        = p.ArkConfiguration.Administration.ServerName,
+                                                                                     Description        = p.ArkConfiguration.ServerName,
                                                                                      CalculateUsage     = true,
                                                                                      CategoryName       = "",
                                                                                      CounterName        = "",

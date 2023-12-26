@@ -141,13 +141,13 @@ namespace OphiussaServerManager.Common.Models.Profiles {
                 case EnumServerType.ArkSurviveAscended:
                     ArkConfiguration.SaveGameIni(this);
 
-                    string priority = ArkConfiguration.Administration.CpuPriority.ToString().ToLower();
+                    string priority = ArkConfiguration.CpuPriority.ToString().ToLower();
                     string affinity = GetCpuAffinity();
 
                     if (!string.IsNullOrEmpty(affinity)) affinity = "/affinity " + affinity;
 
                     File.WriteAllText(sett.DataFolder + $"StartServer\\Run_{Key.Replace("-", "")}.cmd",
-                                      $"start \"{Name}\" /{priority} {affinity} \"{Path.Combine(InstallLocation, ArkConfiguration.Administration.UseServerApi ? Type.ExecutablePathApi : Type.ExecutablePath)}\" {ArkConfiguration.GetCommandLinesArguments(sett, this, ArkConfiguration.Administration.LocalIp)}");
+                                      $"start \"{Name}\" /{priority} {affinity} \"{Path.Combine(InstallLocation, ArkConfiguration.UseServerApi ? Type.ExecutablePathApi : Type.ExecutablePath)}\" {ArkConfiguration.GetCommandLinesArguments(sett, this, ArkConfiguration.LocalIp)}");
                     break;
                 case EnumServerType.Valheim:
 
@@ -203,15 +203,15 @@ namespace OphiussaServerManager.Common.Models.Profiles {
         }
 
         public async Task CloseServerArk(Settings settings, Func<ProcessEventArg, bool> onProgressChanged, bool forceKillProcess = false) {
-            if (!ArkConfiguration.Administration.UseRcon || forceKillProcess) {
-                if (!ArkConfiguration.Administration.UseRcon) onProgressChanged(new ProcessEventArg { Message = "No RCON configured, server process will be killed", IsStarting              = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
+            if (!ArkConfiguration.UseRcon || forceKillProcess) {
+                if (!ArkConfiguration.UseRcon) onProgressChanged(new ProcessEventArg { Message = "No RCON configured, server process will be killed", IsStarting              = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
                 if (forceKillProcess) onProgressChanged(new ProcessEventArg { Message                         = "Process didnt respond to command, the processed will be killed", IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
                 var pro = Utils.GetProcessRunning(Path.Combine(InstallLocation, Type.ExecutablePath));
                 pro.Kill();
             }
             else {
                 try {
-                    var rcon = new RCON(IPAddress.Parse(ArkConfiguration.Administration.LocalIp), ushort.Parse(ArkConfiguration.Administration.RconPort), ArkConfiguration.Administration.ServerAdminPassword);
+                    var rcon = new RCON(IPAddress.Parse(ArkConfiguration.LocalIp), ushort.Parse(ArkConfiguration.RconPort), ArkConfiguration.ServerAdminPassword);
                     await rcon.ConnectAsync();
 
 
@@ -273,7 +273,7 @@ namespace OphiussaServerManager.Common.Models.Profiles {
         }
 
         public string GetProfileSavePath(Profile profile) {
-            return profile.GetProfileSavePath(profile, profile?.InstallLocation, profile?.ArkConfiguration.Administration.AlternateSaveDirectoryName);
+            return profile.GetProfileSavePath(profile, profile?.InstallLocation, profile?.ArkConfiguration.AlternateSaveDirectoryName);
         }
 
         public string GetProfileSavePath(
@@ -283,9 +283,9 @@ namespace OphiussaServerManager.Common.Models.Profiles {
             switch (profile.Type.ServerType) {
                 case EnumServerType.ArkSurviveAscended:
 
-                    if (!string.IsNullOrWhiteSpace(altSaveDirectoryName)) return Path.Combine(installDirectory ?? string.Empty, Type.SavedRelativePath, altSaveDirectoryName, profile.ArkConfiguration.Administration.MapName);
+                    if (!string.IsNullOrWhiteSpace(altSaveDirectoryName)) return Path.Combine(installDirectory ?? string.Empty, Type.SavedRelativePath, altSaveDirectoryName, profile.ArkConfiguration.MapName);
 
-                    return Path.Combine(installDirectory ?? string.Empty, Type.SavedFilesRelativePath, profile.ArkConfiguration.Administration.MapName);
+                    return Path.Combine(installDirectory ?? string.Empty, Type.SavedFilesRelativePath, profile.ArkConfiguration.MapName);
 
                 case EnumServerType.ArkSurviveEvolved:
                     if (!string.IsNullOrWhiteSpace(altSaveDirectoryName)) return Path.Combine(installDirectory ?? string.Empty, Type.SavedRelativePath, altSaveDirectoryName);
@@ -320,7 +320,7 @@ namespace OphiussaServerManager.Common.Models.Profiles {
             switch (Type.ServerType) {
                 case EnumServerType.ArkSurviveEvolved:
                 case EnumServerType.ArkSurviveAscended:
-                    return base.GetCpuAffinity(ArkConfiguration.Administration.CpuAffinity, ArkConfiguration.Administration.CpuAffinityList);
+                    return base.GetCpuAffinity(ArkConfiguration.CpuAffinity, ArkConfiguration.CpuAffinityList);
                 case EnumServerType.Valheim:
                     return base.GetCpuAffinity(ValheimConfiguration.Administration.CpuAffinity, ValheimConfiguration.Administration.CpuAffinityList);
             }
@@ -334,7 +334,7 @@ namespace OphiussaServerManager.Common.Models.Profiles {
             switch (Type.ServerType) {
                 case EnumServerType.ArkSurviveEvolved:
                 case EnumServerType.ArkSurviveAscended:
-                    if (ArkConfiguration.Administration.UseRcon) {
+                    if (ArkConfiguration.UseRcon) {
                         Task t2 = Task.Run(() => ArkConfiguration.SaveWorldRcon(settings), _cancellationToken.Token);
                         t2.Wait();
                         Task t3 = Task.Run(() => CreateServerBackup(settings, saveGamesFolder), _cancellationToken.Token);
@@ -403,7 +403,7 @@ namespace OphiussaServerManager.Common.Models.Profiles {
                 switch (Type.ServerType) {
                     case EnumServerType.ArkSurviveEvolved:
                     case EnumServerType.ArkSurviveAscended:
-                        files.Add($"{saveGamesFolder}\\{ArkConfiguration.Administration.MapName}.ark");
+                        files.Add($"{saveGamesFolder}\\{ArkConfiguration.MapName}.ark");
                         if (settings.IncludeSaveGamesFolder) {
                             string                savegameFolder = Path.Combine(InstallLocation, "ShooterGame\\Saved\\SaveGames");
                             var                   dir1           = new DirectoryInfo(savegameFolder);

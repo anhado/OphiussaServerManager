@@ -142,7 +142,7 @@ namespace OphiussaServerManager.Tools {
             while (true)
                 try {
                     var p = profile;
-                    if (p.ArkConfiguration.Administration.EnableInterval)
+                    if (p.ArkConfiguration.EnableInterval)
                         if (p.IsRunning) {
                             foreach (string key in _serversToReload)
                                 if (_serversToReload.TryDequeue(out string key2)) {
@@ -155,11 +155,11 @@ namespace OphiussaServerManager.Tools {
                                 }
 
                             var ts = DateTime.Now - lastSend;
-                            if (ts.TotalMinutes >= p.ArkConfiguration.Administration.ModInterval) {
-                                var rcon = new RCON(IPAddress.Parse(p.ArkConfiguration.Administration.LocalIp), ushort.Parse(p.ArkConfiguration.Administration.RconPort), p.ArkConfiguration.Administration.ServerAdminPassword);
+                            if (ts.TotalMinutes >= p.ArkConfiguration.ModInterval) {
+                                var rcon = new RCON(IPAddress.Parse(p.ArkConfiguration.LocalIp), ushort.Parse(p.ArkConfiguration.RconPort), p.ArkConfiguration.ServerAdminPassword);
                                 await rcon.ConnectAsync();
 
-                                string respnose = await rcon.SendCommandAsync($"Broadcast {p.ArkConfiguration.Administration.Motd}");
+                                string respnose = await rcon.SendCommandAsync($"Broadcast {p.ArkConfiguration.Motd}");
                                 lastSend = DateTime.Now;
                             }
                         }

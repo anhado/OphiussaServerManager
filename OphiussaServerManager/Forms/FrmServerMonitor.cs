@@ -44,13 +44,13 @@ namespace OphiussaServerManager.Forms {
                                                              new MonitorGrid {
                                                                                  Select     = false,
                                                                                  Profile    = p.Name,
-                                                                                 ServerName = p.ArkConfiguration.Administration.ServerName,
-                                                                                 Map        = p.ArkConfiguration.Administration.MapName,
-                                                                                 Mods       = p.ArkConfiguration.Administration.ModIDs.Count,
+                                                                                 ServerName = p.ArkConfiguration.ServerName,
+                                                                                 Map        = p.ArkConfiguration.MapName,
+                                                                                 Mods       = p.ArkConfiguration.ModIDs.Count,
                                                                                  Status     = !p.IsInstalled ? "Uninstalled" : p.IsRunning ? "Running" : "Stopped",
                                                                                  Version    = p.GetVersion() == "" ? p.GetBuild() : p.GetVersion(),
-                                                                                 Ports      = p.ArkConfiguration.Administration.ServerPort + "," + p.ArkConfiguration.Administration.PeerPort + "," + p.ArkConfiguration.Administration.QueryPort,
-                                                                                 Players    = p.ArkConfiguration.Administration.MaxPlayers.ToString()
+                                                                                 Ports      = p.ArkConfiguration.ServerPort + "," + p.ArkConfiguration.PeerPort + "," + p.ArkConfiguration.QueryPort,
+                                                                                 Players    = p.ArkConfiguration.MaxPlayers.ToString()
                                                                              }
                                                             );
                                 break;
