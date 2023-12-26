@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
@@ -107,15 +106,13 @@ namespace OphiussaServerManager.Common.Helpers {
         }
 
         public static IEnumerable<string> ToEnumerableConfigFile(this List<ConfigFile> lst) {
-            IEnumerable<string> ret = null;
-
             var strings = new List<string>();
 
             foreach (var c in lst) {
                 if (!c.Ignore) strings.Add(c.PropertyName + "=" + c.PropertyValue);
             }
 
-            ret = strings;
+            IEnumerable<string> ret = strings;
 
             return ret;
         }
@@ -140,20 +137,17 @@ namespace OphiussaServerManager.Common.Helpers {
         }
 
         public static float ToFloat(this string prop) {
-            float val = 0;
-            if (float.TryParse(prop, NumberStyles.Any, CultureInfo.InvariantCulture, out val)) return val;
+            if (float.TryParse(prop, NumberStyles.Any, CultureInfo.InvariantCulture, out float val)) return val;
             return 0;
         }
 
         public static int ToInt(this string prop) {
-            int val = 0;
-            if (int.TryParse(prop, NumberStyles.Any, CultureInfo.InvariantCulture, out val)) return val;
+            if (int.TryParse(prop, NumberStyles.Any, CultureInfo.InvariantCulture, out int val)) return val;
             return 0;
         }
 
         public static ushort ToUShort(this string prop) {
-            ushort val = 0;
-            if (ushort.TryParse(prop, NumberStyles.Any, CultureInfo.InvariantCulture, out val)) return val;
+            if (ushort.TryParse(prop, NumberStyles.Any, CultureInfo.InvariantCulture, out ushort val)) return val;
             return 0;
         }
 
@@ -174,7 +168,8 @@ namespace OphiussaServerManager.Common.Helpers {
                 box.AppendText(text);
                 box.SelectionColor = box.ForeColor;
             }
-            catch (Exception) {
+            catch (Exception ex) {
+                OphiussaLogger.Logger.Error(ex);
             }
         }
 
@@ -238,28 +233,23 @@ namespace OphiussaServerManager.Common.Helpers {
         }
 
         public static int ConvertHourToSeconds(this string value, bool haveSeparator = false) {
-            int      result = 0;
             TimeSpan t      = TimeSpan.FromHours(value.Substring(0, 2).ToInt()) + TimeSpan.FromMinutes(value.Substring(2, 2).ToInt());
             return t.Seconds;
         }
 
         public static string ConvertSecondsToHour(this int value, bool haveSeparator = false) {
-            string   result = "0000";
-            TimeSpan t      = TimeSpan.FromSeconds(value);
+            TimeSpan t = TimeSpan.FromSeconds(value);
 
-            result = string.Format("{0:D2}{1:D2}",
-                                   t.Hours,
-                                   t.Minutes);
+            string result = string.Format("{0:D2}{1:D2}",
+                                          t.Hours,
+                                          t.Minutes);
             return result;
         }
 
         public static IEnumerable<Attribute> GetAllAttributes(this Type type, string propertyName) {
             var propertyInfos = type.GetProperties();
 
-            var prp =  propertyInfos.FirstOrDefault(x => x.Name == propertyName)?.GetCustomAttributes();
-            if (prp==null) {
-                prp = new List<Attribute>();
-            }
+            var prp =  propertyInfos.FirstOrDefault(x => x.Name == propertyName)?.GetCustomAttributes() ?? new List<Attribute>();
             return prp;
         }
     }
