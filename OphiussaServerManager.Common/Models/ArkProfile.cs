@@ -1087,42 +1087,42 @@ TODO:CHECK THIS OPTIONS
         public StatsMultiplierFloatArray PerLevelStatsMultiplier_Player { get; set; }
 
 
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, "", WriteIfNotValue = 1f)]
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, "DinoDamageMultiplier", WriteIfNotValue = 1f)]
         public float DinoDamageMultiplier { get; set; } = 1f;
 
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, "", WriteIfNotValue = 1f)]
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, "TamedDinoDamageMultiplier", WriteIfNotValue = 1f)]
         public float TamedDinoDamageMultiplier { get; set; } = 1f;
 
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, "", WriteIfNotValue = 1f)]
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, "DinoResistanceMultiplier", WriteIfNotValue = 1f)]
         public float DinoResistanceMultiplier { get; set; } = 1f;
 
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, "", WriteIfNotValue = 1f)]
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, "TamedDinoResistanceMultiplier", WriteIfNotValue = 1f)]
         public float TamedDinoResistanceMultiplier { get; set; } = 1f;
 
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, "", WriteIfNotValue = 1f)]
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, "DinoCharacterFoodDrainMultiplier", WriteIfNotValue = 1f)]
         public float DinoCharacterFoodDrainMultiplier { get; set; } = 1f;
 
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, "", WriteIfNotValue = 1f)]
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, "DinoCharacterStaminaDrainMultiplier", WriteIfNotValue = 1f)]
         public float DinoCharacterStaminaDrainMultiplier { get; set; } = 1f;
 
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, "", WriteIfNotValue = 1f)]
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, "DinoCharacterHealthRecoveryMultiplier", WriteIfNotValue = 1f)]
         public float DinoCharacterHealthRecoveryMultiplier { get; set; } = 1f;
 
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "", WriteIfNotValue = 3f)]
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "DinoHarvestingDamageMultiplier", WriteIfNotValue = 3f)]
         public float DinoHarvestingDamageMultiplier { get; set; } = 1f;
 
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "", WriteIfNotValue = 1f)]
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "DinoTurretDamageMultiplier", WriteIfNotValue = 1f)]
         public float DinoTurretDamageMultiplier { get; set; } = 1f;
 
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, "")]
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, "AllowRaidDinoFeeding")]
         public bool AllowRaidDinoFeeding { get; set; } = false;
 
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, "", WriteIfNotValue = 1f)]
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, "RaidDinoCharacterFoodDrainMultiplier", WriteIfNotValue = 1f)]
         public float RaidDinoCharacterFoodDrainMultiplier { get; set; } = 1f;
 
         public bool EnableAllowCaveFlyers { get; set; } = false;
 
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, "", ConditionedOn = "AllowFlyingStaminaRecovery")]
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, "AllowFlyingStaminaRecovery", ConditionedOn = "AllowFlyingStaminaRecovery")]
         public bool AllowFlyingStaminaRecovery { get; set; } = false;
 
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "bAllowFlyerSpeedLeveling", ConditionedOn = "AllowFlyerSpeedLeveling")]
@@ -1131,22 +1131,22 @@ TODO:CHECK THIS OPTIONS
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, "", ConditionedOn = "PreventMateBoost")]
         public bool PreventMateBoost { get; set; } = false;
 
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, "")]
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, "DisableDinoDecayPvE")]
         public bool DisableDinoDecayPvE { get; set; } = false;
 
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, "PvPDinoDecay", InvertBoolean = true)]
         public bool DisableDinoDecayPvP { get; set; } = true;
 
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, "")]
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, "AutoDestroyDecayedDinos")]
         public bool AutoDestroyDecayedDinos { get; set; } = false;
 
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "bUseDinoLevelUpAnimations")]
         public bool UseDinoLevelUpAnimations { get; set; } = true;
 
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, "", WriteIfNotValue = 1f)]
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, "PvEDinoDecayPeriodMultiplier", WriteIfNotValue = 1f)]
         public float PvEDinoDecayPeriodMultiplier { get; set; } = 1f;
 
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, "", ConditionedOn = "AllowMultipleAttachedC4")]
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, "AllowMultipleAttachedC4", ConditionedOn = "AllowMultipleAttachedC4")]
         public bool AllowMultipleAttachedC4 { get; set; } = false;
 
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "bAllowUnclaimDinos")]
@@ -1161,13 +1161,13 @@ TODO:CHECK THIS OPTIONS
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "bDisableDinoBreeding", ConditionedOn = "DisableDinoBreeding")]
         public bool DisableDinoBreeding { get; set; } = false;
 
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, "")]
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, "MaxTamedDinos")]
         public int MaxTamedDinos { get; set; } = 5000;
 
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, "")]
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, "MaxPersonalTamedDinos")]
         public float MaxPersonalTamedDinos { get; set; } = 40;
 
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, "")]
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, "PersonalTamedDinosSaddleStructureCost")]
         public int PersonalTamedDinosSaddleStructureCost { get; set; } = 19;
 
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "bUseTameLimitForStructuresOnly", ConditionedOn = "UseTameLimitForStructuresOnly")]
@@ -1177,99 +1177,99 @@ TODO:CHECK THIS OPTIONS
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, "bForceCanRideFliers", ConditionedOn = "EnableForceCanRideFliers")]
         public bool ForceCanRideFliers { get; set; } = true;
 
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "", WriteIfNotValue = 1f)]
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "MatingIntervalMultiplier", WriteIfNotValue = 1f)]
         public float MatingIntervalMultiplier { get; set; } = 1f;
 
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "", WriteIfNotValue = 1f)]
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "MatingSpeedMultiplier", WriteIfNotValue = 1f)]
         public float MatingSpeedMultiplier { get; set; } = 1f;
 
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "", WriteIfNotValue = 1f)]
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "EggHatchSpeedMultiplier", WriteIfNotValue = 1f)]
         public float EggHatchSpeedMultiplier { get; set; } = 1f;
 
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "", WriteIfNotValue = 1f)]
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "BabyMatureSpeedMultiplier", WriteIfNotValue = 1f)]
         public float BabyMatureSpeedMultiplier { get; set; } = 1f;
 
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "", WriteIfNotValue = 1f)]
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "BabyFoodConsumptionSpeedMultiplier", WriteIfNotValue = 1f)]
         public float BabyFoodConsumptionSpeedMultiplier { get; set; } = 1f;
 
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, "")]
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, "DisableImprintDinoBuff")]
         public bool DisableImprintDinoBuff { get; set; } = false;
 
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, "")]
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, "AllowAnyoneBabyImprintCuddle")]
         public bool AllowAnyoneBabyImprintCuddle { get; set; } = false;
 
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "", WriteIfNotValue = 1f)]
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "BabyImprintingStatScaleMultiplier", WriteIfNotValue = 1f)]
         public float BabyImprintingStatScaleMultiplier { get; set; } = 1f;
 
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "", WriteIfNotValue = 1f)]
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "BabyImprintAmountMultiplier", WriteIfNotValue = 1f)]
         public float BabyImprintAmountMultiplier { get; set; } = 1f;
 
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "", WriteIfNotValue = 1f)]
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "BabyCuddleIntervalMultiplier", WriteIfNotValue = 1f)]
         public float BabyCuddleIntervalMultiplier { get; set; } = 1f;
 
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "", WriteIfNotValue = 1f)]
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "BabyCuddleGracePeriodMultiplier", WriteIfNotValue = 1f)]
         public float BabyCuddleGracePeriodMultiplier { get; set; } = 1f;
 
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "", WriteIfNotValue = 1f)]
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "BabyCuddleLoseImprintQualitySpeedMultiplier", WriteIfNotValue = 1f)]
         public float BabyCuddleLoseImprintQualitySpeedMultiplier { get; set; } = 1f;
 
         public int Imprintlimit { get; set; } = 101;
         
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "", WriteIfNotValue = 1f)]
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "WildDinoCharacterFoodDrainMultiplier", WriteIfNotValue = 1f)]
         public float WildDinoCharacterFoodDrainMultiplier { get; set; } = 1f;
 
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "", WriteIfNotValue = 1f)]
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "TamedDinoCharacterFoodDrainMultiplier", WriteIfNotValue = 1f)]
         public float TamedDinoCharacterFoodDrainMultiplier { get; set; } = 1f;
 
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "", WriteIfNotValue = 1f)]
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "WildDinoTorporDrainMultiplier", WriteIfNotValue = 1f)]
         public float WildDinoTorporDrainMultiplier { get; set; } = 1f;
 
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "", WriteIfNotValue = 1f)]
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "TamedDinoTorporDrainMultiplier", WriteIfNotValue = 1f)]
         public float TamedDinoTorporDrainMultiplier { get; set; } = 1f;
 
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "", WriteIfNotValue = 1f)]
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "PassiveTameIntervalMultiplier", WriteIfNotValue = 1f)]
         public float PassiveTameIntervalMultiplier { get; set; } = 1f;
 
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "")]
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "PerLevelStatsMultiplier_DinoWild")]
         public StatsMultiplierFloatArray PerLevelStatsMultiplier_DinoWild { get; set; }
 
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "")]
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "PerLevelStatsMultiplier_DinoTamed")]
         public StatsMultiplierFloatArray PerLevelStatsMultiplier_DinoTamed { get; set; }
 
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "")]
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "PerLevelStatsMultiplier_DinoTamed_Add")]
         public StatsMultiplierFloatArray PerLevelStatsMultiplier_DinoTamed_Add { get; set; }
 
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "")]
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "PerLevelStatsMultiplier_DinoTamed_Affinity")]
         public StatsMultiplierFloatArray PerLevelStatsMultiplier_DinoTamed_Affinity { get; set; }
 
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "")]
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "MutagenLevelBoost")]
         public StatsMultiplierIntegerArray MutagenLevelBoost { get; set; }
 
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "")]
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "MutagenLevelBoost_Bred")]
         public StatsMultiplierIntegerArray MutagenLevelBoost_Bred { get; set; }
 
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "")]
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "DinoSpawnWeightMultipliers")]
         public AggregateIniValueList<DinoSpawn> DinoSpawnWeightMultipliers { get; set; }
 
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "")]
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "TamedDinoClassDamageMultipliers")]
         public AggregateIniValueList<ClassMultiplier> TamedDinoClassDamageMultipliers { get; set; }
 
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "")]
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "TamedDinoClassResistanceMultipliers")]
         public AggregateIniValueList<ClassMultiplier> TamedDinoClassResistanceMultipliers { get; set; }
 
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "")]
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "DinoClassDamageMultipliers")]
         public AggregateIniValueList<ClassMultiplier> DinoClassDamageMultipliers { get; set; }
 
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "")]
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "DinoClassResistanceMultipliers")]
         public AggregateIniValueList<ClassMultiplier> DinoClassResistanceMultipliers { get; set; }
 
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "")]
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "NPCReplacements")]
         public AggregateIniValueList<NPCReplacement> NPCReplacements { get; set; }
 
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "")]
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "PreventDinoTameClassNames")]
         public StringIniValueList PreventDinoTameClassNames { get; set; }
 
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "")]
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "PreventBreedingForClassNames")]
         public StringIniValueList PreventBreedingForClassNames { get; set; }
 
         public DinoSettingsList DinoSettings { get; set; }
