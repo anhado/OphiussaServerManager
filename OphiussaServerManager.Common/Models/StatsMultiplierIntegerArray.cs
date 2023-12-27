@@ -24,6 +24,24 @@ namespace OphiussaServerManager.Common.Models {
         }
     }
 
+    public bool IsEnabled {
+        get {
+            for (int i = 0; i < DefaultValues.Count; i++) {
+                if (Count == DefaultValues.Count) {
+                    if (this[i] != DefaultValues[i]) {
+                        base.IsEnabled = true;
+                        break;
+                    }
+                }
+            }
+
+            return base.IsEnabled;
+        }
+        set {
+            base.IsEnabled = value; 
+        }
+    }
+
     public bool[] Inclusions { get; private set; } = null;
 
     private StatsMultiplierIntegerArray DefaultValues { get; set; } = null;

@@ -6343,7 +6343,7 @@
             this.expandCollapsePanel6.Size           =  new System.Drawing.Size(902, 35);
             this.expandCollapsePanel6.TabIndex       =  7;
             this.expandCollapsePanel6.Text           =  "Player Settings";
-            this.expandCollapsePanel6.UseAnimation   =  true;
+            this.expandCollapsePanel6.UseAnimation   =  false;
             this.expandCollapsePanel6.Paint          += new System.Windows.Forms.PaintEventHandler(this.expandCollapsePanel6_Paint);
             // 
             // groupBox32

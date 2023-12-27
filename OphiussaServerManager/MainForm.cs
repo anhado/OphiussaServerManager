@@ -130,7 +130,9 @@ namespace OphiussaServerManager {
                     foreach (var profileOrder in Settings.ProfileOrders.OrderBy(x => x.Order)) {
                         string file = files.First(f => f.Contains(profileOrder.Key));
                         if (!string.IsNullOrEmpty(file)) {
-                            var p = JsonConvert.DeserializeObject<Profile>(File.ReadAllText(file));
+                            var serializerSettings = new JsonSerializerSettings {ObjectCreationHandling = ObjectCreationHandling.Replace};
+
+                            var p = JsonConvert.DeserializeObject<Profile>(File.ReadAllText(file) , serializerSettings);
                             switch (p.Type.ServerType) {
                                 case EnumServerType.ArkSurviveEvolved:
                                 case EnumServerType.ArkSurviveAscended:

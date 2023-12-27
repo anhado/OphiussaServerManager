@@ -322,7 +322,7 @@ namespace OphiussaServerManager.Forms {
             txtBSSpeed.Text                                  = profile.ArkConfiguration.PlayerBaseStatMultipliers[9].ToString(CultureInfo.InvariantCulture);
             txtBSFortitude.Text                              = profile.ArkConfiguration.PlayerBaseStatMultipliers[10].ToString(CultureInfo.InvariantCulture);
             txtBSCrafting.Text                               = profile.ArkConfiguration.PlayerBaseStatMultipliers[11].ToString(CultureInfo.InvariantCulture);
-            chkPerLeveStatMultiplier.Checked                 = profile.ArkConfiguration.PlayerBaseStatMultipliers.IsEnabled;
+            chkPerLeveStatMultiplier.Checked                 = profile.ArkConfiguration.PerLevelStatsMultiplier_Player.IsEnabled;
             txtPLHealth.Text                                 = profile.ArkConfiguration.PerLevelStatsMultiplier_Player[0].ToString(CultureInfo.InvariantCulture);
             txtPLStamina.Text                                = profile.ArkConfiguration.PerLevelStatsMultiplier_Player[1].ToString(CultureInfo.InvariantCulture);
             txtPLTorpidity.Text                              = profile.ArkConfiguration.PerLevelStatsMultiplier_Player[2].ToString(CultureInfo.InvariantCulture);
@@ -941,34 +941,44 @@ namespace OphiussaServerManager.Forms {
             _profile.ArkConfiguration.PlayerHarvestingDamageMultiplier         = txtHarvestDamage.Text.ToFloat();
             _profile.ArkConfiguration.CraftingSkillBonusMultiplier             = txtCraftingSkillMultiplier.Text.ToFloat();
             _profile.ArkConfiguration.MaxFallSpeedMultiplier                   = txtMaxFallSpeed.Text.ToFloat();
-            _profile.ArkConfiguration.PlayerBaseStatMultipliers                = new StatsMultiplierFloatArray(nameof(_profile.ArkConfiguration.PlayerBaseStatMultipliers), GameData.GetBaseStatMultipliers_Player, GameData.GetStatMultiplierInclusions_PlayerBase(), true);
-            _profile.ArkConfiguration.PlayerBaseStatMultipliers.IsEnabled      = chkBaseStatMultiplier.Checked;
-            _profile.ArkConfiguration.PlayerBaseStatMultipliers[0]             = txtBSHealth.Text.ToFloat();
-            _profile.ArkConfiguration.PlayerBaseStatMultipliers[1]             = txtBSStamina.Text.ToFloat();
-            _profile.ArkConfiguration.PlayerBaseStatMultipliers[2]             = txtBSTorpidity.Text.ToFloat();
-            _profile.ArkConfiguration.PlayerBaseStatMultipliers[3]             = txtBSOxygen.Text.ToFloat();
-            _profile.ArkConfiguration.PlayerBaseStatMultipliers[4]             = txtBSFood.Text.ToFloat();
-            _profile.ArkConfiguration.PlayerBaseStatMultipliers[5]             = txtBSWater.Text.ToFloat();
-            _profile.ArkConfiguration.PlayerBaseStatMultipliers[6]             = txtBSTemperature.Text.ToFloat();
-            _profile.ArkConfiguration.PlayerBaseStatMultipliers[7]             = txtBSWeigth.Text.ToFloat();
-            _profile.ArkConfiguration.PlayerBaseStatMultipliers[8]             = txtBSDamage.Text.ToFloat();
-            _profile.ArkConfiguration.PlayerBaseStatMultipliers[9]             = txtBSSpeed.Text.ToFloat();
-            _profile.ArkConfiguration.PlayerBaseStatMultipliers[10]            = txtBSFortitude.Text.ToFloat();
-            _profile.ArkConfiguration.PlayerBaseStatMultipliers[11]            = txtBSCrafting.Text.ToFloat();
-            _profile.ArkConfiguration.PerLevelStatsMultiplier_Player           = new StatsMultiplierFloatArray(nameof(_profile.ArkConfiguration.PerLevelStatsMultiplier_Player), GameData.GetPerLevelStatsMultipliers_Player, GameData.GetStatMultiplierInclusions_PlayerPerLevel(), true);
+            
+            _profile.ArkConfiguration.PlayerBaseStatMultipliers.IsEnabled = chkBaseStatMultiplier.Checked;
+            if (_profile.ArkConfiguration.PerLevelStatsMultiplier_Player.IsEnabled) {
+                _profile.ArkConfiguration.PlayerBaseStatMultipliers[0]  = txtBSHealth.Text.ToFloat();
+                _profile.ArkConfiguration.PlayerBaseStatMultipliers[1]  = txtBSStamina.Text.ToFloat();
+                _profile.ArkConfiguration.PlayerBaseStatMultipliers[2]  = txtBSTorpidity.Text.ToFloat();
+                _profile.ArkConfiguration.PlayerBaseStatMultipliers[3]  = txtBSOxygen.Text.ToFloat();
+                _profile.ArkConfiguration.PlayerBaseStatMultipliers[4]  = txtBSFood.Text.ToFloat();
+                _profile.ArkConfiguration.PlayerBaseStatMultipliers[5]  = txtBSWater.Text.ToFloat();
+                _profile.ArkConfiguration.PlayerBaseStatMultipliers[6]  = txtBSTemperature.Text.ToFloat();
+                _profile.ArkConfiguration.PlayerBaseStatMultipliers[7]  = txtBSWeigth.Text.ToFloat();
+                _profile.ArkConfiguration.PlayerBaseStatMultipliers[8]  = txtBSDamage.Text.ToFloat();
+                _profile.ArkConfiguration.PlayerBaseStatMultipliers[9]  = txtBSSpeed.Text.ToFloat();
+                _profile.ArkConfiguration.PlayerBaseStatMultipliers[10] = txtBSFortitude.Text.ToFloat();
+                _profile.ArkConfiguration.PlayerBaseStatMultipliers[11] = txtBSCrafting.Text.ToFloat();
+            }
+            else {
+                _profile.ArkConfiguration.PlayerBaseStatMultipliers.Reset();
+            }
+
             _profile.ArkConfiguration.PerLevelStatsMultiplier_Player.IsEnabled = chkPerLeveStatMultiplier.Checked;
-            _profile.ArkConfiguration.PerLevelStatsMultiplier_Player[0]        = txtPLHealth.Text.ToFloat();
-            _profile.ArkConfiguration.PerLevelStatsMultiplier_Player[1]        = txtPLStamina.Text.ToFloat();
-            _profile.ArkConfiguration.PerLevelStatsMultiplier_Player[2]        = txtPLTorpidity.Text.ToFloat();
-            _profile.ArkConfiguration.PerLevelStatsMultiplier_Player[3]        = txtPLOxygen.Text.ToFloat();
-            _profile.ArkConfiguration.PerLevelStatsMultiplier_Player[4]        = txtPLFood.Text.ToFloat();
-            _profile.ArkConfiguration.PerLevelStatsMultiplier_Player[5]        = txtPLWater.Text.ToFloat();
-            _profile.ArkConfiguration.PerLevelStatsMultiplier_Player[6]        = txtPLTemperature.Text.ToFloat();
-            _profile.ArkConfiguration.PerLevelStatsMultiplier_Player[7]        = txtPLWeigth.Text.ToFloat();
-            _profile.ArkConfiguration.PerLevelStatsMultiplier_Player[8]        = txtPLDamage.Text.ToFloat();
-            _profile.ArkConfiguration.PerLevelStatsMultiplier_Player[9]        = txtPLSpeed.Text.ToFloat();
-            _profile.ArkConfiguration.PerLevelStatsMultiplier_Player[10]       = txtPLFortitude.Text.ToFloat();
-            _profile.ArkConfiguration.PerLevelStatsMultiplier_Player[11]       = txtPLCrafting.Text.ToFloat();
+            if (_profile.ArkConfiguration.PerLevelStatsMultiplier_Player.IsEnabled) {
+                _profile.ArkConfiguration.PerLevelStatsMultiplier_Player[0]  = txtPLHealth.Text.ToFloat();
+                _profile.ArkConfiguration.PerLevelStatsMultiplier_Player[1]  = txtPLStamina.Text.ToFloat();
+                _profile.ArkConfiguration.PerLevelStatsMultiplier_Player[2]  = txtPLTorpidity.Text.ToFloat();
+                _profile.ArkConfiguration.PerLevelStatsMultiplier_Player[3]  = txtPLOxygen.Text.ToFloat();
+                _profile.ArkConfiguration.PerLevelStatsMultiplier_Player[4]  = txtPLFood.Text.ToFloat();
+                _profile.ArkConfiguration.PerLevelStatsMultiplier_Player[5]  = txtPLWater.Text.ToFloat();
+                _profile.ArkConfiguration.PerLevelStatsMultiplier_Player[6]  = txtPLTemperature.Text.ToFloat();
+                _profile.ArkConfiguration.PerLevelStatsMultiplier_Player[7]  = txtPLWeigth.Text.ToFloat();
+                _profile.ArkConfiguration.PerLevelStatsMultiplier_Player[8]  = txtPLDamage.Text.ToFloat();
+                _profile.ArkConfiguration.PerLevelStatsMultiplier_Player[9]  = txtPLSpeed.Text.ToFloat();
+                _profile.ArkConfiguration.PerLevelStatsMultiplier_Player[10] = txtPLFortitude.Text.ToFloat();
+                _profile.ArkConfiguration.PerLevelStatsMultiplier_Player[11] = txtPLCrafting.Text.ToFloat();
+            }
+            else {
+                _profile.ArkConfiguration.PerLevelStatsMultiplier_Player.Reset();
+            }
 
             _profile.SaveProfile(MainForm.Settings);
 

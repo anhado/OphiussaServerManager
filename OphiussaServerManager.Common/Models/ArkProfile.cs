@@ -14,14 +14,29 @@ using OphiussaServerManager.Common.Models.SupportedServers;
 namespace OphiussaServerManager.Common.Models {
     public class ArkProfile : Configs {
         public ArkProfile() {
-            this.PlayerBaseStatMultipliers      = new StatsMultiplierFloatArray(nameof(PlayerBaseStatMultipliers),      GameData.GetBaseStatMultipliers_Player,      GameData.GetStatMultiplierInclusions_PlayerBase(), true);
-            this.PerLevelStatsMultiplier_Player = new StatsMultiplierFloatArray(nameof(PerLevelStatsMultiplier_Player), GameData.GetPerLevelStatsMultipliers_Player, GameData.GetStatMultiplierInclusions_PlayerPerLevel(), true);
+            PlayerBaseStatMultipliers                  = new StatsMultiplierFloatArray(nameof(PlayerBaseStatMultipliers),                  GameData.GetBaseStatMultipliers_Player,                 GameData.GetStatMultiplierInclusions_PlayerBase(),        true);
+            PerLevelStatsMultiplier_Player             = new StatsMultiplierFloatArray(nameof(PerLevelStatsMultiplier_Player),             GameData.GetPerLevelStatsMultipliers_Player,            GameData.GetStatMultiplierInclusions_PlayerPerLevel(),    true);
+            PerLevelStatsMultiplier_DinoWild           = new StatsMultiplierFloatArray(nameof(PerLevelStatsMultiplier_DinoWild),           GameData.GetPerLevelStatsMultipliers_DinoWild,          GameData.GetStatMultiplierInclusions_DinoWildPerLevel(),  true);
+            PerLevelStatsMultiplier_DinoTamed          = new StatsMultiplierFloatArray(nameof(PerLevelStatsMultiplier_DinoTamed),          GameData.GetPerLevelStatsMultipliers_DinoTamed,         GameData.GetStatMultiplierInclusions_DinoTamedPerLevel(), true);
+            PerLevelStatsMultiplier_DinoTamed_Add      = new StatsMultiplierFloatArray(nameof(PerLevelStatsMultiplier_DinoTamed_Add),      GameData.GetPerLevelStatsMultipliers_DinoTamedAdd,      GameData.GetStatMultiplierInclusions_DinoTamedAdd(),      true);
+            PerLevelStatsMultiplier_DinoTamed_Affinity = new StatsMultiplierFloatArray(nameof(PerLevelStatsMultiplier_DinoTamed_Affinity), GameData.GetPerLevelStatsMultipliers_DinoTamedAffinity, GameData.GetStatMultiplierInclusions_DinoTamedAffinity(), true);
+            MutagenLevelBoost                          = new StatsMultiplierIntegerArray(nameof(MutagenLevelBoost),      GameData.GetPerLevelMutagenLevelBoost_DinoWild,  GameData.GetMutagenLevelBoostInclusions_DinoWild(),  true);
+            MutagenLevelBoost_Bred                     = new StatsMultiplierIntegerArray(nameof(MutagenLevelBoost_Bred), GameData.GetPerLevelMutagenLevelBoost_DinoTamed, GameData.GetMutagenLevelBoostInclusions_DinoTamed(), true);
+            PlayerBaseStatMultipliers.Clear();
+            PerLevelStatsMultiplier_Player.Clear();
+            PerLevelStatsMultiplier_DinoWild.Clear();
+            PerLevelStatsMultiplier_DinoTamed.Clear();
+            PerLevelStatsMultiplier_DinoTamed_Add.Clear();
+            PerLevelStatsMultiplier_DinoTamed_Affinity.Clear();
+            MutagenLevelBoost.Clear();
+            MutagenLevelBoost_Bred.Clear();
+            var x = PlayerBaseStatMultipliers.IsEnabled;
         }
 
         public ArkProfile LoadGameIni(Profile prf) {
             SystemIniFile systemIniFile = new SystemIniFile(prf.InstallLocation);
 
-            systemIniFile.Deserialize((object)this, new List<Enum>());
+            systemIniFile.Deserialize(this, new List<Enum>());
 
             return this;
         }
@@ -29,7 +44,7 @@ namespace OphiussaServerManager.Common.Models {
         internal void SaveGameIni(Profile profile) {
             SystemIniFile systemIniFile = new SystemIniFile(profile.InstallLocation);
 
-            systemIniFile.Serialize((object)this, null);
+            systemIniFile.Serialize(this, null);
         }
 
         public string GetCommandLinesArguments(Settings settings, Profile prf, string publicIp) {
@@ -124,7 +139,7 @@ namespace OphiussaServerManager.Common.Models {
             hifenArgs.Add(" -server");
             hifenArgs.Add(" -log");
 
-            if (AllowCrateSpawnsOnTopOfStructures) interrogationArgs.Add($"?AllowCrateSpawnsOnTopOfStructures=True");
+            if (AllowCrateSpawnsOnTopOfStructures) interrogationArgs.Add("?AllowCrateSpawnsOnTopOfStructures=True");
             hifenArgs.Add(" -ForceAllowCaveFlyers"); //Remove later 
             //-ForceAllowCaveFlyers
             //-exclusivejoin
@@ -316,7 +331,7 @@ TODO:CHECK THIS OPTIONS
         [DefaultValue(false)] public bool UseBanListUrl { get; set; } = false;
 
         [DefaultValue("http://arkdedicated.com/banlist.txt")]
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Administration, "", ConditionedOn = "UseBanListUrl", QuotedString = QuotedStringType.True)]
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Administration, ConditionedOn = "UseBanListUrl", QuotedString = QuotedStringType.True)]
         public string BanListUrl { get; set; } = "http://arkdedicated.com/banlist.txt";
 
         [DefaultValue(false)] public bool DisableVac { get; set; } = false;
@@ -557,7 +572,7 @@ TODO:CHECK THIS OPTIONS
 
 
         [DefaultValue(1f)]
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, "", ConditionedOn = "EnableDifficultOverride")]
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, ConditionedOn = "EnableDifficultOverride")]
         public float DifficultyOffset { get; set; } = 1;
 
 
@@ -1079,13 +1094,12 @@ TODO:CHECK THIS OPTIONS
 
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Players, "MaxFallSpeedMultiplier", WriteIfNotValue = 1f)]
         public float MaxFallSpeedMultiplier { get; set; } = 1f;
-
+        
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Players, "PlayerBaseStatMultipliers")]
         public StatsMultiplierFloatArray PlayerBaseStatMultipliers { get; set; }
 
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Players, "PerLevelStatsMultiplier_Player")]
         public StatsMultiplierFloatArray PerLevelStatsMultiplier_Player { get; set; }
-
 
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, "DinoDamageMultiplier", WriteIfNotValue = 1f)]
         public float DinoDamageMultiplier { get; set; } = 1f;
@@ -1128,7 +1142,7 @@ TODO:CHECK THIS OPTIONS
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "bAllowFlyerSpeedLeveling", ConditionedOn = "AllowFlyerSpeedLeveling")]
         public bool AllowFlyerSpeedLeveling { get; set; } = false;
 
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, "", ConditionedOn = "PreventMateBoost")]
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, ConditionedOn = "PreventMateBoost")]
         public bool PreventMateBoost { get; set; } = false;
 
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, "DisableDinoDecayPvE")]
@@ -1172,7 +1186,8 @@ TODO:CHECK THIS OPTIONS
 
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "bUseTameLimitForStructuresOnly", ConditionedOn = "UseTameLimitForStructuresOnly")]
         public bool UseTameLimitForStructuresOnly { get; set; } = false;
-        public bool EnableForceCanRideFliers { get;      set; } = false;
+
+        public bool EnableForceCanRideFliers { get; set; } = false;
 
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, "bForceCanRideFliers", ConditionedOn = "EnableForceCanRideFliers")]
         public bool ForceCanRideFliers { get; set; } = true;
@@ -1214,7 +1229,7 @@ TODO:CHECK THIS OPTIONS
         public float BabyCuddleLoseImprintQualitySpeedMultiplier { get; set; } = 1f;
 
         public int Imprintlimit { get; set; } = 101;
-        
+
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "WildDinoCharacterFoodDrainMultiplier", WriteIfNotValue = 1f)]
         public float WildDinoCharacterFoodDrainMultiplier { get; set; } = 1f;
 

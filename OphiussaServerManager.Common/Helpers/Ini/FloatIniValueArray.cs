@@ -9,6 +9,7 @@ namespace OphiussaServerManager.Common.Ini {
         public FloatIniValueArray(string iniKeyName, Func<IEnumerable<float>> resetFunc) : 
             base(iniKeyName, resetFunc, (a, b) => a == b, m => m, ToIniValueInternal, FromIniValueInternal)
         {
+            
         }
 
         public override bool IsArray => true;
