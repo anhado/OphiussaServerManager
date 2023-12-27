@@ -82,7 +82,7 @@ namespace OphiussaServerManager.Forms {
             txtRCONBuffer.Text                          = profile.ArkConfiguration.RconServerLogBuffer.ToString(CultureInfo.InvariantCulture);
             cboMap.SelectedValue                        = profile.ArkConfiguration.MapName;
             cbBranch.Text                               = profile.ArkConfiguration.Branch;
-            txtMods.Text                                = string.Join(",", profile.ArkConfiguration.ModIDs.FindAll(m => !string.IsNullOrEmpty(m)).ToArray());
+            txtMods.Text                                = profile.ArkConfiguration.ActiveMods;
             txtTotalConversion.Text                     = profile.ArkConfiguration.TotalConversionId;
             txtAutoSavePeriod.Text                      = profile.ArkConfiguration.AutoSavePeriod.ToString(CultureInfo.InvariantCulture);
             txtMOTD.Text                                = profile.ArkConfiguration.Motd;
@@ -715,7 +715,7 @@ namespace OphiussaServerManager.Forms {
             _profile.ArkConfiguration.RconServerLogBuffer              = int.Parse(txtRCONBuffer.Text);
             _profile.ArkConfiguration.MapName                          = cboMap.SelectedValue.ToString();
             _profile.ArkConfiguration.Branch                           = cbBranch.Text;
-            _profile.ArkConfiguration.ModIDs                           = txtMods.Text.Split(',').ToList();
+            _profile.ArkConfiguration.ActiveMods                       = txtMods.Text;
             _profile.ArkConfiguration.TotalConversionId                = txtTotalConversion.Text;
             _profile.ArkConfiguration.AutoSavePeriod                   = txtAutoSavePeriod.Text.ToInt();
             _profile.ArkConfiguration.Motd                             = txtMOTD.Text;

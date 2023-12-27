@@ -111,7 +111,7 @@ namespace OphiussaServerManager.Common.Models.Profiles {
             string clientFile = Path.Combine(InstallLocation, Type.ExecutablePath);
             if (string.IsNullOrWhiteSpace(clientFile) || !File.Exists(clientFile))
                 return null;
-            string  a               = IoUtils.NormalizePath(clientFile);
+            string  a               = IOUtils.NormalizePath(clientFile);
             var     processesByName = Process.GetProcessesByName(Type.ProcessName);
             Process steamProcess    = null;
             foreach (var process in processesByName) {

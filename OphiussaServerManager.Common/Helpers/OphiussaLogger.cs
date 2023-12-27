@@ -22,11 +22,11 @@ namespace OphiussaServerManager {
         }
 
         public static string GetLogFolder(Settings settings) {
-            return IoUtils.NormalizePath(Path.Combine(settings.DataFolder, "Logs"));
+            return IOUtils.NormalizePath(Path.Combine(settings.DataFolder, "Logs"));
         }
 
         public static string GetProfileLogFolder(Settings settings, string profileId) {
-            return IoUtils.NormalizePath(Path.Combine(settings.DataFolder, "Logs", profileId.ToLower()));
+            return IOUtils.NormalizePath(Path.Combine(settings.DataFolder, "Logs", profileId.ToLower()));
         }
 
         public static Logger GetProfileLogger(

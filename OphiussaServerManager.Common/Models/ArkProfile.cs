@@ -60,8 +60,8 @@ namespace OphiussaServerManager.Common.Models {
             //if (this.Administration.ForceAllowCaveFlyers) hifenArgs.Add(" -ForceAllowCaveFlyers");
             if (EnableAutoForceRespawnDinos) hifenArgs.Add(" -ForceRespawnDinos");
             if (prf.Type.ServerType == EnumServerType.ArkSurviveAscended)
-                if (ModIDs.Count > 0 && string.Join(",", ModIDs.ToArray()) != "")
-                    hifenArgs.Add($" -mods={string.Join(",", ModIDs.ToArray())}");
+                if (!string.IsNullOrEmpty(ActiveMods))
+                    hifenArgs.Add($" -mods={ActiveMods}");
             //if (this.Administration.imprintlimit) hifenArgs.Add(" -imprintlimit=101");
             if (DisableVac) hifenArgs.Add(" -insecure");
             //if (this.Administration.MapModID) hifenArgs.Add(" -MapModID=<ModID>");//Dont Use This

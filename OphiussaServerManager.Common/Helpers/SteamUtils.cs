@@ -85,17 +85,19 @@ namespace OphiussaServerManager.Common {
             try {
                 if (appMods == null || appMods.Count == 0)
                     return new PublishedFileDetailsResponse();
-                foreach (var appMod in appMods)
-                    if (appMod.ModIdList.Count != 0) {
+                foreach (var appMod in appMods) {
+                    var appModsModIdList = appMod.ModIdList.FindAll(m => !string.IsNullOrWhiteSpace(m));
+
+                    if (appModsModIdList.Count != 0) {
                         int result;
-                        int num1 = Math.DivRem(appMod.ModIdList.Count, 20, out result);
+                        int num1 = Math.DivRem(appModsModIdList.Count, 20, out result);
                         if (result > 0)
                             ++num1;
                         for (int index1 = 0; index1 < num1; ++index1) {
                             int    num2 = 0;
                             string str  = "";
-                            for (int index2 = index1 * 20; num2 < 20 && index2 < appMod.ModIdList.Count; ++index2) {
-                                str += string.Format("&publishedfileids[{0}]={1}", num2, appMod.ModIdList[index2]);
+                            for (int index2 = index1 * 20; num2 < 20 && index2 < appModsModIdList.Count; ++index2) {
+                                str += string.Format("&publishedfileids[{0}]={1}", num2, appModsModIdList[index2]);
                                 ++num2;
                             }
 
@@ -121,6 +123,7 @@ namespace OphiussaServerManager.Common {
                             }
                         }
                     }
+                }
 
                 return steamModDetails ?? new PublishedFileDetailsResponse();
             }
@@ -186,7 +189,7 @@ namespace OphiussaServerManager.Common {
             string steamClientFile = Path.Combine(_settings.SteamCmdLocation, "steamcmd.exe");
             if (string.IsNullOrWhiteSpace(steamClientFile) || !File.Exists(steamClientFile))
                 return null;
-            string  a               = IoUtils.NormalizePath(steamClientFile);
+            string  a               = IOUtils.NormalizePath(steamClientFile);
             var     processesByName = Process.GetProcessesByName(Path.GetFileNameWithoutExtension(steamClientFile));
             Process steamProcess    = null;
             foreach (var process in processesByName) {

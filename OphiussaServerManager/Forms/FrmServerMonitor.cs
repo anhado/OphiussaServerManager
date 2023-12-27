@@ -46,7 +46,7 @@ namespace OphiussaServerManager.Forms {
                                                                                  Profile    = p.Name,
                                                                                  ServerName = p.ArkConfiguration.ServerName,
                                                                                  Map        = p.ArkConfiguration.MapName,
-                                                                                 Mods       = p.ArkConfiguration.ModIDs.Count,
+                                                                                 Mods       = p.ArkConfiguration.ActiveMods.Split(',').Length,
                                                                                  Status     = !p.IsInstalled ? "Uninstalled" : p.IsRunning ? "Running" : "Stopped",
                                                                                  Version    = p.GetVersion() == "" ? p.GetBuild() : p.GetVersion(),
                                                                                  Ports      = p.ArkConfiguration.ServerPort + "," + p.ArkConfiguration.PeerPort + "," + p.ArkConfiguration.QueryPort,

@@ -21,14 +21,12 @@ namespace OphiussaServerManager.Common.Models {
         public string ServerPort { get; set; } = "7777";
 
         public string PeerPort { get; set; } = "7778";
+        
+        //public List<string> ModIDs { get; set; } = new List<string>();
 
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Administration, "ActiveMods")] //TODO:CHECK THIS BECAUSE IS SUPPOSED TO BE A STRING SPLITTED BY ,
-        public string ActiveMods {
-            get => string.Join(",", ModIDs.FindAll(m => !string.IsNullOrEmpty(m)).ToArray());
-            set => ModIDs = value.Split(',').ToList().FindAll(m => !string.IsNullOrEmpty(m));
-        }
+        public string ActiveMods { get; set; } = "";
 
-        public List<string> ModIDs { get; set; } = new List<string>();
 
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_GameSession, ServerProfileCategory.Administration, "MaxPlayers")]
         public int MaxPlayers { get; set; } = 70;

@@ -317,7 +317,7 @@ namespace OphiussaServerManager.Common {
             string clientFile   = executablePath;
             if (string.IsNullOrWhiteSpace(clientFile) || !File.Exists(clientFile))
                 return null;
-            string  a               = IoUtils.NormalizePath(clientFile);
+            string  a               = IOUtils.NormalizePath(clientFile);
             var     processesByName = Process.GetProcessesByName(processeName);
             Process processInfo     = null;
             foreach (var process in processesByName) {

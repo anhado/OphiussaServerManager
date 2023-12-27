@@ -64,7 +64,7 @@ namespace OphiussaServerManager.Forms {
             autoUpdate.ProgressChanged  += OnProgressChanged;
             autoUpdate.ProcessCompleted += OnProcessCompleted;
             Task.Factory.StartNew(_ => {
-                                      autoUpdate.UpdateSingleServerManually(Profile.Key, chkUpdateCache.Checked, chkStartServer.Checked);
+                                      autoUpdate.UpdateSingleServerManually(Profile.Key, chkUpdateCache.Checked, chkStartServer.Checked, chkForceUpdateMods.Checked);
                                       _isUpdating = false;
                                   }, null);
         }
