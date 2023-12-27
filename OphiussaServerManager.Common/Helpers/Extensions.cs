@@ -251,26 +251,6 @@ namespace OphiussaServerManager.Common.Helpers {
 
             var prp =  propertyInfos.FirstOrDefault(x => x.Name == propertyName)?.GetCustomAttributes() ?? new List<Attribute>();
             return prp;
-        }
-        
-        public static IEnumerable<float> GetBaseStatMultipliers_Player()
-        {
-            return new float[] { 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f };
-        }
-
-        public static IEnumerable<float> GetPerLevelStatsMultipliers_Player()
-        {
-            return new float[] { 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f };
-        }
-        
-        public static bool[] GetStatMultiplierInclusions_PlayerBase()
-        {
-            return new bool[] { true, true, true, true, true, true, true, true, true, true, true, true };
-        }
-
-        public static bool[] GetStatMultiplierInclusions_PlayerPerLevel()
-        {
-            return new bool[] { true, true, false, true, true, true, true, true, true, true, true, true };
-        }
+        } 
     }
 }

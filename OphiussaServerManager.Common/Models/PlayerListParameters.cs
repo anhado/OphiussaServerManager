@@ -1,13 +1,9 @@
-﻿using System.Windows;
+﻿using System.Dynamic;
+using System.Windows;
 
 namespace OphiussaServerManager.Common.Models {
-    public class PlayerListParameters : DependencyObject {
-        public static readonly DependencyProperty ProfileNameProperty = DependencyProperty.Register(nameof(ProfileName), typeof(string), typeof(PlayerListParameters), new PropertyMetadata(string.Empty));
-
-        public string ProfileName {
-            get => (string)GetValue(ProfileNameProperty);
-            set => SetValue(ProfileNameProperty, value);
-        }
+    public class PlayerListParameters {
+        public string ProfileName { get; set; } = "";
 
         public string ProfileId { get; set; }
 

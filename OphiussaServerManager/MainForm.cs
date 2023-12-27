@@ -13,6 +13,7 @@ using Microsoft.Win32.TaskScheduler;
 using Newtonsoft.Json;
 using Open.Nat;
 using OphiussaServerManager.Common;
+using OphiussaServerManager.Common.Helpers;
 using OphiussaServerManager.Common.Models;
 using OphiussaServerManager.Common.Models.Profiles;
 using OphiussaServerManager.Common.Models.SupportedServers;
@@ -45,7 +46,7 @@ namespace OphiussaServerManager {
 #else
             testsToolStripMenuItem.Visible = false;
 #endif
- 
+
             try {
                 if (!File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json"))) {
                     var settings = new FrmSettings();
@@ -54,6 +55,8 @@ namespace OphiussaServerManager {
 
                 Settings = JsonConvert.DeserializeObject<Settings>(File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json")));
                 OphiussaLogger.ReconfigureLogging(Settings);
+
+                GameData.Initialize(Settings.DataFolder);
 
                 if (Settings.UpdateSteamCmdOnStartup) NetworkTools.DownloadSteamCmd();
                 var assembly = Assembly.GetExecutingAssembly();

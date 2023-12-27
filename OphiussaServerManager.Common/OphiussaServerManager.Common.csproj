@@ -121,6 +121,9 @@
 		<Reference Include="System.Data"/>
 		<Reference Include="System.Net.Http"/>
 		<Reference Include="System.Xml"/>
+		<Reference Include="TinyCsvParser, Version=2.7.0.0, Culture=neutral, PublicKeyToken=d7df35b038077099, processorArchitecture=MSIL">
+		  <HintPath>..\packages\TinyCsvParser.2.7.0\lib\netstandard2.0\TinyCsvParser.dll</HintPath>
+		</Reference>
 		<Reference Include="WindowsBase"/>
 	</ItemGroup>
 	<ItemGroup>
@@ -128,22 +131,27 @@
 		<Compile Include="Helpers\DifficultyOffsetValueConverter.cs" />
 		<Compile Include="Helpers\EncryptionUtils.cs"/>
 		<Compile Include="Helpers\FileComparer.cs"/>
+		<Compile Include="Helpers\GameData.cs" />
+		<Compile Include="Helpers\GameDataUtils.cs" />
 		<Compile Include="Helpers\Ini\AggregateIniValue.cs"/>
 		<Compile Include="Helpers\Extensions.cs"/>
 		<Compile Include="Helpers\Ini\AggregateIniValueEntryAttribute.cs"/>
+		<Compile Include="Helpers\Ini\AggregateIniValueList.cs" />
 		<Compile Include="Helpers\Ini\BaseIniFileEntryAttribute.cs"/>
 		<Compile Include="Helpers\Ini\BaseSystemIniFile.cs"/>
+		<Compile Include="Helpers\Ini\FloatIniValueArray.cs" />
 		<Compile Include="Helpers\Ini\IniFile.cs"/>
 		<Compile Include="Helpers\Ini\IniFileUtils.cs"/>
 		<Compile Include="Helpers\Ini\IniKey.cs"/>
 		<Compile Include="Helpers\Ini\IniSection.cs"/>
-		<Compile Include="Helpers\Ini\Interfaces\FloatIniValueArray.cs" />
+		<Compile Include="Helpers\Ini\IntegerIniValueArray.cs" />
 		<Compile Include="Helpers\Ini\Interfaces\IIniSectionCollection.cs"/>
 		<Compile Include="Helpers\Ini\Interfaces\IIniValuesCollection.cs"/>
 		<Compile Include="Helpers\Ini\Interfaces\IIniValuesList.cs"/>
 		<Compile Include="Helpers\Ini\Interfaces\IniValueList.cs" />
 		<Compile Include="Helpers\Ini\QuotedStringType.cs"/>
 		<Compile Include="Helpers\Ini\SortableObservableCollection.cs" />
+		<Compile Include="Helpers\Ini\StringIniValueList.cs" />
 		<Compile Include="Helpers\Ini\SystemIniFile.cs"/>
 		<Compile Include="Helpers\INullableValue.cs"/>
 		<Compile Include="Helpers\IOUtils.cs"/>
@@ -164,12 +172,23 @@
 		<Compile Include="Models\AutoManageSettings.cs"/>
 		<Compile Include="Models\BaseAdministration.cs"/>
 		<Compile Include="Models\CacheServerTypes.cs"/>
+		<Compile Include="Models\ClassMultiplier.cs" />
 		<Compile Include="Models\Curseforge\CurseForgeFileDetailResponse.cs"/>
 		<Compile Include="Models\Curseforge\CurseForgeFileDetailResult.cs"/>
 		<Compile Include="Models\Curseforge\CurseForgeFileDetail.cs"/>
+		<Compile Include="Models\DefaultEnums.cs" />
 		<Compile Include="Models\DefaultModels.cs"/>
+		<Compile Include="Models\DinoSettings.cs" />
+		<Compile Include="Models\DinoSettingsList.cs" />
+		<Compile Include="Models\DinoSpawn.cs" />
 		<Compile Include="Models\DriveInfoDisplay.cs"/>
+		<Compile Include="Models\Engram.cs" />
+		<Compile Include="Models\EngramEntry.cs" />
+		<Compile Include="Models\Level.cs" />
+		<Compile Include="Models\MapSpawner.cs" />
 		<Compile Include="Models\ModListDetails.cs"/>
+		<Compile Include="Models\NPCReplacement.cs" />
+		<Compile Include="Models\PrimalItem.cs" />
 		<Compile Include="Models\ProfileOrderGrid.cs"/>
 		<Compile Include="Models\MonitorGrid.cs"/>
 		<Compile Include="Models\PlayerInfo.cs"/>
@@ -177,10 +196,12 @@
 		<Compile Include="Models\PortForwardGrid.cs"/>
 		<Compile Include="Models\ProcessorAffinity.cs"/>
 		<Compile Include="Models\Profile.cs"/>
+		<Compile Include="Models\ResourceClassMultiplier.cs" />
 		<Compile Include="Models\ResourceMonitor.cs"/>
 		<Compile Include="Models\Settings.cs"/>
 		<Compile Include="Models\SortableBindingList.cs"/>
 		<Compile Include="Models\StatsMultiplierFloatArray.cs" />
+		<Compile Include="Models\StatsMultiplierIntegerArray.cs" />
 		<Compile Include="Models\Steam\PublishedFileDetail.cs"/>
 		<Compile Include="Models\Steam\PublishedFileDetailsResponse.cs"/>
 		<Compile Include="Models\Steam\PublishedFileDetailsResult.cs"/>
@@ -197,6 +218,7 @@
 		<Compile Include="Models\Steam\WorkshopFileDetail.cs"/>
 		<Compile Include="Models\Steam\WorkshopFileDetailResponse.cs"/>
 		<Compile Include="Models\Steam\WorkshopFileDetailResult.cs"/>
+		<Compile Include="Models\SupplyCrate.cs" />
 		<Compile Include="Models\SupportedServers.cs"/>
 		<Compile Include="Models\ValheimProfile.cs"/>
 		<Compile Include="Properties\AssemblyInfo.cs"/>

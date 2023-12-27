@@ -941,7 +941,7 @@ namespace OphiussaServerManager.Forms {
             _profile.ArkConfiguration.PlayerHarvestingDamageMultiplier         = txtHarvestDamage.Text.ToFloat();
             _profile.ArkConfiguration.CraftingSkillBonusMultiplier             = txtCraftingSkillMultiplier.Text.ToFloat();
             _profile.ArkConfiguration.MaxFallSpeedMultiplier                   = txtMaxFallSpeed.Text.ToFloat();
-            _profile.ArkConfiguration.PlayerBaseStatMultipliers                = new StatsMultiplierFloatArray(nameof(_profile.ArkConfiguration.PlayerBaseStatMultipliers), Extensions.GetBaseStatMultipliers_Player, Extensions.GetStatMultiplierInclusions_PlayerBase(), true);
+            _profile.ArkConfiguration.PlayerBaseStatMultipliers                = new StatsMultiplierFloatArray(nameof(_profile.ArkConfiguration.PlayerBaseStatMultipliers), GameData.GetBaseStatMultipliers_Player, GameData.GetStatMultiplierInclusions_PlayerBase(), true);
             _profile.ArkConfiguration.PlayerBaseStatMultipliers.IsEnabled      = chkBaseStatMultiplier.Checked;
             _profile.ArkConfiguration.PlayerBaseStatMultipliers[0]             = txtBSHealth.Text.ToFloat();
             _profile.ArkConfiguration.PlayerBaseStatMultipliers[1]             = txtBSStamina.Text.ToFloat();
@@ -955,7 +955,7 @@ namespace OphiussaServerManager.Forms {
             _profile.ArkConfiguration.PlayerBaseStatMultipliers[9]             = txtBSSpeed.Text.ToFloat();
             _profile.ArkConfiguration.PlayerBaseStatMultipliers[10]            = txtBSFortitude.Text.ToFloat();
             _profile.ArkConfiguration.PlayerBaseStatMultipliers[11]            = txtBSCrafting.Text.ToFloat();
-            _profile.ArkConfiguration.PerLevelStatsMultiplier_Player           = new StatsMultiplierFloatArray(nameof(_profile.ArkConfiguration.PerLevelStatsMultiplier_Player), Extensions.GetPerLevelStatsMultipliers_Player, Extensions.GetStatMultiplierInclusions_PlayerPerLevel(), true);
+            _profile.ArkConfiguration.PerLevelStatsMultiplier_Player           = new StatsMultiplierFloatArray(nameof(_profile.ArkConfiguration.PerLevelStatsMultiplier_Player), GameData.GetPerLevelStatsMultipliers_Player, GameData.GetStatMultiplierInclusions_PlayerPerLevel(), true);
             _profile.ArkConfiguration.PerLevelStatsMultiplier_Player.IsEnabled = chkPerLeveStatMultiplier.Checked;
             _profile.ArkConfiguration.PerLevelStatsMultiplier_Player[0]        = txtPLHealth.Text.ToFloat();
             _profile.ArkConfiguration.PerLevelStatsMultiplier_Player[1]        = txtPLStamina.Text.ToFloat();
