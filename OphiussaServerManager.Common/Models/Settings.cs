@@ -69,5 +69,12 @@ namespace OphiussaServerManager.Common.Models {
             string jsonString = JsonConvert.SerializeObject(this, Formatting.Indented);
             File.WriteAllText(fileName, jsonString);
         }
+
+        public static string GetDataFolder() {
+            
+            Settings Settings = JsonConvert.DeserializeObject<Settings>(File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json")));
+            OphiussaLogger.ReconfigureLogging(Settings);
+            return Settings.DataFolder;
+        }
     }
 }

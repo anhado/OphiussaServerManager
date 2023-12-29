@@ -6,8 +6,7 @@ using System.Runtime.CompilerServices;
 using OphiussaServerManager.Common.Models;
 
 namespace OphiussaServerManager.Common.Helpers {
-    public static class GameData {
-        public static string DataDir     = "";
+    public static class GameData { 
         public const  string MOD_ALL     = "All";
         public const  string MOD_UNKNOWN = "Unknown";
 
@@ -16,7 +15,7 @@ namespace OphiussaServerManager.Common.Helpers {
         public static event EventHandler GameDataLoaded;
 
         public static string MainDataFolder = Path.Combine(Environment.CurrentDirectory, "GameData");
-        public static string UserDataFolder = Path.Combine(DataDir,                      "GameData");
+        public static string UserDataFolder = Path.Combine(Settings.GetDataFolder(),     "GameData");
 
         public static long DefaultMaxExperiencePointsDino   = 10;
         public static long DefaultMaxExperiencePointsPlayer = 5;
@@ -24,8 +23,7 @@ namespace OphiussaServerManager.Common.Helpers {
         public static MainGameData gameData = null;
         public static List<string> OfficialMods { get; set; } = new List<string>();
 
-        public static void Initialize(string dataDir) {
-            DataDir = dataDir;
+        public static void Initialize() {
             Load();
             OnGameDataLoaded();
         }
@@ -48,7 +46,7 @@ namespace OphiussaServerManager.Common.Helpers {
 
             // read user game data
             MainGameData userGameData = new MainGameData();
-            if (!UserDataFolder.Equals(MainDataFolder, StringComparison.OrdinalIgnoreCase)) {
+            if (!UserDataFolder.Equals(UserDataFolder, StringComparison.OrdinalIgnoreCase)) {
                 GameDataUtils.ReadAllData(out userGameData, UserDataFolder, ".gamedata", "ark", true);
             }
 

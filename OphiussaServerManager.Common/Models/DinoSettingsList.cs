@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using OphiussaServerManager.Common.Helpers;
 using OphiussaServerManager.Common.Helpers.Ini;
@@ -72,13 +73,29 @@ namespace OphiussaServerManager.Common.Models {
             return ds;
         }
 
-        public DinoSettingsList GetChangedSettingsList() {
-            DinoSettingsList ret = new DinoSettingsList();
+        public List<DinoSettingsJSON> GetChangedSettingsList() {
+            List<DinoSettingsJSON> ret = new List<DinoSettingsJSON>();
             ret.Clear();
 
             foreach (DinoSettings currSetting in this) {
                 DinoSettings origSetting = (DinoSettings)currSetting.OriginalSetting;
-                if (!isEqual(origSetting, currSetting)) ret.Add(origSetting);
+                if (!isEqual(origSetting, currSetting)) {
+                    //origSetting.OriginalSetting = null;
+                    ret.Add(new DinoSettingsJSON() {
+                                                       ClassName                    = origSetting.ClassName,
+                                                       ReplacementClass             = origSetting.ReplacementClass,
+                                                       WildDamageMultiplier         = origSetting.WildDamageMultiplier,
+                                                       TamedDamageMultiplier        = origSetting.TamedDamageMultiplier,
+                                                       TamedResistanceMultiplier    = origSetting.TamedResistanceMultiplier,
+                                                       WildResistanceMultiplier     = origSetting.WildResistanceMultiplier,
+                                                       SpawnWeightMultiplier        = origSetting.SpawnWeightMultiplier,
+                                                       SpawnLimitPercentage         = origSetting.SpawnLimitPercentage,
+                                                       CanBreeding                  = origSetting.CanBreeding,
+                                                       OverrideSpawnLimitPercentage = origSetting.OverrideSpawnLimitPercentage,
+                                                       CanSpawn                     = origSetting.CanSpawn,
+                                                       CanTame                      = origSetting.CanSpawn
+                                                   });
+                }
             }
 
             return ret;
@@ -90,9 +107,9 @@ namespace OphiussaServerManager.Common.Models {
                    orig.Mod                          == setting.Mod                                       &&
                    orig.KnownDino                    == setting.KnownDino                                 &&
                    orig.NameTag                      == setting.NameTag                                   &&
-                   orig.CanSpawn                     == setting.IsSpawnable                               &&
-                   orig.CanTame                      == (orig.IsTameable     != DinoTamable.False)        &&
-                   orig.CanBreeding                  == (orig.IsBreedingable != DinoBreedingable.False)   &&
+                   orig.CanSpawn                     == setting.CanSpawn                                  &&
+                   orig.CanTame                      == setting.CanTame                                   &&
+                   orig.CanBreeding                  == setting.CanBreeding                               &&
                    orig.ReplacementClass             == setting.ReplacementClass                          &&
                    orig.SpawnWeightMultiplier        == DinoSpawn.DEFAULT_SPAWN_WEIGHT_MULTIPLIER         &&
                    orig.OverrideSpawnLimitPercentage == DinoSpawn.DEFAULT_OVERRIDE_SPAWN_LIMIT_PERCENTAGE &&

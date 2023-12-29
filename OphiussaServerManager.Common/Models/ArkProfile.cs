@@ -1315,7 +1315,7 @@ TODO:CHECK THIS OPTIONS
 
         
         [JsonIgnore] 
-        public DinoSettingsList DinoSettings { get; set; }
-        public DinoSettingsList ChangedDinoSettings { get; set; }
+        public DinoSettingsList DinoSettings { get;              set; }
+        public List<DinoSettingsJSON> ChangedDinoSettings { get; set; }
     }
 }

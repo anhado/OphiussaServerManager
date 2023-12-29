@@ -26,7 +26,7 @@ using Task = System.Threading.Tasks.Task;
 namespace OphiussaServerManager {
     public partial class MainForm : Form {
         private const    int                                 TcmSetmintabwidth      = 0x1300 + 49;
-        internal static  NotificationController              NotificationController = new NotificationController();
+        internal static  NotificationController              NotificationController;
         internal static  Settings                            Settings;
         private readonly Dictionary<string, LinkProfileForm> _linkProfileForms = new Dictionary<string, LinkProfileForm>();
         private readonly Dictionary<string, Profile>         _profiles         = new Dictionary<string, Profile>();
@@ -56,8 +56,8 @@ namespace OphiussaServerManager {
                 Settings = JsonConvert.DeserializeObject<Settings>(File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json")));
                 OphiussaLogger.ReconfigureLogging(Settings);
 
-                GameData.Initialize(Settings.DataFolder);
-
+                GameData.Initialize();
+                NotificationController = new NotificationController();
                 if (Settings.UpdateSteamCmdOnStartup) NetworkTools.DownloadSteamCmd();
                 var assembly = Assembly.GetExecutingAssembly();
                 var fvi      = FileVersionInfo.GetVersionInfo(assembly.Location);

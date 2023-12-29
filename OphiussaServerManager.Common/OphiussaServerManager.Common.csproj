@@ -179,6 +179,7 @@
 		<Compile Include="Models\DefaultEnums.cs" />
 		<Compile Include="Models\DefaultModels.cs"/>
 		<Compile Include="Models\DinoSettings.cs" />
+		<Compile Include="Models\DinoSettingsJSON.cs" />
 		<Compile Include="Models\DinoSettingsList.cs" />
 		<Compile Include="Models\DinoSpawn.cs" />
 		<Compile Include="Models\DriveInfoDisplay.cs"/>
