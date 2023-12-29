@@ -381,6 +381,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\OphiussaServerManager.Common.Models.DinoSettings.datasource" />
     <None Include="Properties\DataSources\OphiussaServerManager.Common.Models.ModListDetails.datasource" />
     <None Include="Properties\DataSources\OphiussaServerManager.Common.Models.MonitorGrid.datasource" />
     <None Include="Properties\DataSources\OphiussaServerManager.Common.Models.PortForwardGrid.datasource" />

@@ -379,7 +379,7 @@ namespace OphiussaServerManager.Tools.Update {
                     }
                 }
 
-                UpdateSteamMods(settings, p, steamFileDetails);
+                if (p.Type.ModsSource == ModSource.SteamWorkshop) UpdateSteamMods(settings, p, steamFileDetails);
 
                 int i = 1;
                 foreach (var file in changedFiles) {
@@ -506,24 +506,23 @@ namespace OphiussaServerManager.Tools.Update {
         }
 
         private void UpdateSteamMods(Settings settings, Profile p, List<PublishedFileDetail> steamFileDetails) {
-
             string modPaths = Path.Combine(p.InstallLocation, "ShooterGame\\Content\\Mods");
 
             DirectoryInfo d = new DirectoryInfo(modPaths);
-            
+
             var modFiles = d.GetFiles("*.*", SearchOption.TopDirectoryOnly).ToList();
             //DELETE OLD MODS
 
             List<string> modsToDelete = new List<string>();
             modFiles.ForEach(f => {
-                                 var modDet = steamFileDetails.Find(m => m.Publishedfileid == f.Name.Replace(".mod",""));
-                                 if (modDet ==null) modsToDelete.Add(f.Name.Replace(".mod", ""));
+                                 var modDet = steamFileDetails.Find(m => m.Publishedfileid == f.Name.Replace(".mod", ""));
+                                 if (modDet == null) modsToDelete.Add(f.Name.Replace(".mod", ""));
                              });
-            
+
             foreach (string mod in modsToDelete) {
                 if (mod == "111111111") continue;
-                File.Delete(Path.Combine(modPaths, mod + ".mod")); 
-                Directory.Delete(Path.Combine(modPaths, mod ),true); 
+                File.Delete(Path.Combine(modPaths,      mod + ".mod"));
+                Directory.Delete(Path.Combine(modPaths, mod), true);
             }
 
             foreach (var mod in steamFileDetails) {

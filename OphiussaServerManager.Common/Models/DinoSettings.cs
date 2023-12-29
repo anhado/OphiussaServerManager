@@ -4,6 +4,7 @@ using OphiussaServerManager.Common.Helpers;
 
 namespace OphiussaServerManager.Common.Models {
     public class DinoSettings {
+        public object OriginalSetting { get; set; }
         public string ClassName { get; set; } = "";
 
         public string Mod { get; set; } = "";
@@ -16,7 +17,7 @@ namespace OphiussaServerManager.Common.Models {
 
         public bool CanSpawn { get; set; } = true;
 
-        public string ReplacementClass = "";
+        public string ReplacementClass { get; set; } = "";
 
         public float SpawnWeightMultiplier { get; set; } = DinoSpawn.DEFAULT_SPAWN_WEIGHT_MULTIPLIER;
 

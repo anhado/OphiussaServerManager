@@ -5,6 +5,7 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web.Security;
 using CoreRCON;
+using Newtonsoft.Json;
 using OphiussaServerManager.Common.Helpers;
 using OphiussaServerManager.Common.Helpers.Ini;
 using OphiussaServerManager.Common.Ini;
@@ -30,7 +31,17 @@ namespace OphiussaServerManager.Common.Models {
             PerLevelStatsMultiplier_DinoTamed_Affinity.Clear();
             MutagenLevelBoost.Clear();
             MutagenLevelBoost_Bred.Clear();
-            var x = PlayerBaseStatMultipliers.IsEnabled;
+            
+            this.DinoSpawnWeightMultipliers = new AggregateIniValueList<DinoSpawn>(nameof(DinoSpawnWeightMultipliers), GameData.GetDinoSpawns);
+            this.PreventDinoTameClassNames = new StringIniValueList(nameof(PreventDinoTameClassNames), () => new string[0] );
+            this.PreventBreedingForClassNames = new StringIniValueList(nameof(PreventBreedingForClassNames), () => new string[0]);
+            this.NPCReplacements = new AggregateIniValueList<NPCReplacement>(nameof(NPCReplacements), GameData.GetNPCReplacements);
+            this.TamedDinoClassDamageMultipliers = new AggregateIniValueList<ClassMultiplier>(nameof(TamedDinoClassDamageMultipliers), GameData.GetDinoMultipliers);
+            this.TamedDinoClassResistanceMultipliers = new AggregateIniValueList<ClassMultiplier>(nameof(TamedDinoClassResistanceMultipliers), GameData.GetDinoMultipliers);
+            this.DinoClassDamageMultipliers = new AggregateIniValueList<ClassMultiplier>(nameof(DinoClassDamageMultipliers), GameData.GetDinoMultipliers);
+            this.DinoClassResistanceMultipliers = new AggregateIniValueList<ClassMultiplier>(nameof(DinoClassResistanceMultipliers), GameData.GetDinoMultipliers);
+            this.DinoSettings = new DinoSettingsList(this.DinoSpawnWeightMultipliers, this.PreventDinoTameClassNames, this.PreventBreedingForClassNames, this.NPCReplacements, this.TamedDinoClassDamageMultipliers, this.TamedDinoClassResistanceMultipliers, this.DinoClassDamageMultipliers, this.DinoClassResistanceMultipliers);
+            
         }
 
         public ArkProfile LoadGameIni(Profile prf) {
@@ -1262,31 +1273,49 @@ TODO:CHECK THIS OPTIONS
 
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "MutagenLevelBoost_Bred")]
         public StatsMultiplierIntegerArray MutagenLevelBoost_Bred { get; set; }
-
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "DinoSpawnWeightMultipliers")]
+        
+        [JsonIgnore] 
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "DinoSpawnWeightMultipliers", WriteIfNotValue = 1f)]
         public AggregateIniValueList<DinoSpawn> DinoSpawnWeightMultipliers { get; set; }
+        
+        [JsonIgnore] 
 
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "TamedDinoClassDamageMultipliers")]
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "TamedDinoClassDamageMultipliers", WriteIfNotValue = 1f)]
         public AggregateIniValueList<ClassMultiplier> TamedDinoClassDamageMultipliers { get; set; }
+        
+        [JsonIgnore] 
 
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "TamedDinoClassResistanceMultipliers")]
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "TamedDinoClassResistanceMultipliers", WriteIfNotValue = 1f)]
         public AggregateIniValueList<ClassMultiplier> TamedDinoClassResistanceMultipliers { get; set; }
+        
+        [JsonIgnore] 
 
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "DinoClassDamageMultipliers")]
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "DinoClassDamageMultipliers", WriteIfNotValue = 1f)]
         public AggregateIniValueList<ClassMultiplier> DinoClassDamageMultipliers { get; set; }
+        
+        [JsonIgnore] 
 
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "DinoClassResistanceMultipliers")]
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "DinoClassResistanceMultipliers", WriteIfNotValue = 1f)]
         public AggregateIniValueList<ClassMultiplier> DinoClassResistanceMultipliers { get; set; }
+        
+        [JsonIgnore] 
 
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "NPCReplacements")]
         public AggregateIniValueList<NPCReplacement> NPCReplacements { get; set; }
+        
+        [JsonIgnore] 
 
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "PreventDinoTameClassNames")]
         public StringIniValueList PreventDinoTameClassNames { get; set; }
+        
+        [JsonIgnore] 
 
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "PreventBreedingForClassNames")]
         public StringIniValueList PreventBreedingForClassNames { get; set; }
 
+        
+        [JsonIgnore] 
         public DinoSettingsList DinoSettings { get; set; }
+        public DinoSettingsList ChangedDinoSettings { get; set; }
     }
 }
