@@ -8,7 +8,6 @@ using System.Windows.Forms;
 using OphiussaServerManager.Common.Models;
 
 namespace OphiussaServerManager.Common.Helpers {
-
     public static class Extensions {
         public static bool ReadBoolValue(this IEnumerable<string> strings, string paramName, bool defaultValue = false) {
             bool result = defaultValue;
@@ -37,11 +36,9 @@ namespace OphiussaServerManager.Common.Helpers {
 
             string prop = strings.FirstOrDefault(x => x.StartsWith(paramName));
             if (prop != null) {
-                int    firstIndex = prop.IndexOf("=", StringComparison.Ordinal);
-                string value      = prop.Substring(firstIndex + 1);
-                if (int.TryParse(value, NumberStyles.Any, CultureInfo.InvariantCulture, out int res)) {
-                    result = res;
-                }
+                int    firstIndex                                                                            = prop.IndexOf("=", StringComparison.Ordinal);
+                string value                                                                                 = prop.Substring(firstIndex + 1);
+                if (int.TryParse(value, NumberStyles.Any, CultureInfo.InvariantCulture, out int res)) result = res;
             }
 
             return result;
@@ -70,10 +67,10 @@ namespace OphiussaServerManager.Common.Helpers {
 
         public static void WriteStringValue(this List<ConfigFile> settings, string paramName, string value) {
             var config = settings.FirstOrDefault(x => x.PropertyName == paramName);
- 
+
             if (config != null)
                 settings.First(x => x.PropertyName == paramName).PropertyValue = value;
-            else   settings.Add(new ConfigFile { PropertyName = paramName, PropertyValue = value });
+            else settings.Add(new ConfigFile { PropertyName = paramName, PropertyValue = value });
         }
 
         public static void WriteIntValue(this List<ConfigFile> settings, string paramName, int value) {
@@ -81,13 +78,13 @@ namespace OphiussaServerManager.Common.Helpers {
 
             if (config != null)
                 settings.First(x => x.PropertyName == paramName).PropertyValue = value.ToString(CultureInfo.InvariantCulture);
-            else  settings.Add(new ConfigFile { PropertyName = paramName, PropertyValue = value.ToString(CultureInfo.InvariantCulture) });
+            else settings.Add(new ConfigFile { PropertyName = paramName, PropertyValue = value.ToString(CultureInfo.InvariantCulture) });
         }
 
         public static void WriteFloatValue(this List<ConfigFile> settings, string paramName, float value) {
             var config = settings.FirstOrDefault(x => x.PropertyName == paramName);
 
-             
+
             if (config != null)
                 settings.First(x => x.PropertyName == paramName).PropertyValue = Math.Round(value, 2).ToString(CultureInfo.InvariantCulture);
             else settings.Add(new ConfigFile { PropertyName = paramName, PropertyValue = Math.Round(value, 2).ToString(CultureInfo.InvariantCulture) });
@@ -108,9 +105,9 @@ namespace OphiussaServerManager.Common.Helpers {
         public static IEnumerable<string> ToEnumerableConfigFile(this List<ConfigFile> lst) {
             var strings = new List<string>();
 
-            foreach (var c in lst) {
-                if (!c.Ignore) strings.Add(c.PropertyName + "=" + c.PropertyValue);
-            }
+            foreach (var c in lst)
+                if (!c.Ignore)
+                    strings.Add(c.PropertyName + "=" + c.PropertyValue);
 
             IEnumerable<string> ret = strings;
 
@@ -221,24 +218,20 @@ namespace OphiussaServerManager.Common.Helpers {
         }
 
         public static void SetValueEx(this TrackBar tb, int value) {
-            if (value >= tb.Minimum && value <= tb.Maximum) {
+            if (value >= tb.Minimum && value <= tb.Maximum)
                 tb.Value = value;
-            }
-            else if (value < tb.Minimum) {
-                tb.Value = tb.Minimum;
-            }
-            else if (value > tb.Maximum) {
-                tb.Value = tb.Maximum;
-            }
+            else if (value < tb.Minimum)
+                tb.Value                          = tb.Minimum;
+            else if (value > tb.Maximum) tb.Value = tb.Maximum;
         }
 
         public static int ConvertHourToSeconds(this string value, bool haveSeparator = false) {
-            TimeSpan t      = TimeSpan.FromHours(value.Substring(0, 2).ToInt()) + TimeSpan.FromMinutes(value.Substring(2, 2).ToInt());
+            var t = TimeSpan.FromHours(value.Substring(0, 2).ToInt()) + TimeSpan.FromMinutes(value.Substring(2, 2).ToInt());
             return t.Seconds;
         }
 
         public static string ConvertSecondsToHour(this int value, bool haveSeparator = false) {
-            TimeSpan t = TimeSpan.FromSeconds(value);
+            var t = TimeSpan.FromSeconds(value);
 
             string result = string.Format("{0:D2}{1:D2}",
                                           t.Hours,
@@ -249,8 +242,8 @@ namespace OphiussaServerManager.Common.Helpers {
         public static IEnumerable<Attribute> GetAllAttributes(this Type type, string propertyName) {
             var propertyInfos = type.GetProperties();
 
-            var prp =  propertyInfos.FirstOrDefault(x => x.Name == propertyName)?.GetCustomAttributes() ?? new List<Attribute>();
+            var prp = propertyInfos.FirstOrDefault(x => x.Name == propertyName)?.GetCustomAttributes() ?? new List<Attribute>();
             return prp;
-        } 
+        }
     }
 }

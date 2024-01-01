@@ -193,7 +193,7 @@ namespace MakarovDev.ExpandCollapsePanel {
                     pictureBox1.Image = bmp;
                     break;
                 case ExpandButtonStyle.Circle:
-                    bmp = Resources.icon_expand;
+                    bmp               = Resources.icon_expand;
                     pictureBox1.Image = bmp;
                     break;
                 case ExpandButtonStyle.Triangle:
@@ -263,21 +263,21 @@ namespace MakarovDev.ExpandCollapsePanel {
             switch (_expandButtonSize) {
                 case ExpandButtonSize.Small:
                     pictureBox1.Location = new Point(0, 3);
-                    pictureBox1.Size = new Size(16, 16);
-                    lblLine.Location = new Point(20, 18);
-                    lblHeader.Location = new Point(20, 1);
+                    pictureBox1.Size     = new Size(16, 16);
+                    lblLine.Location     = new Point(20, 18);
+                    lblHeader.Location   = new Point(20, 1);
                     break;
                 case ExpandButtonSize.Normal:
                     pictureBox1.Location = new Point(0, 3);
-                    pictureBox1.Size = new Size(24, 24);
-                    lblLine.Location = new Point(30, 22);
-                    lblHeader.Location = new Point(30, 3);
+                    pictureBox1.Size     = new Size(24, 24);
+                    lblLine.Location     = new Point(30, 22);
+                    lblHeader.Location   = new Point(30, 3);
                     break;
                 case ExpandButtonSize.Large:
                     pictureBox1.Location = new Point(0, 3);
-                    pictureBox1.Size = new Size(35, 35);
-                    lblLine.Location = new Point(41, 28);
-                    lblHeader.Location = new Point(41, 3);
+                    pictureBox1.Size     = new Size(35, 35);
+                    lblLine.Location     = new Point(41, 28);
+                    lblHeader.Location   = new Point(41, 3);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

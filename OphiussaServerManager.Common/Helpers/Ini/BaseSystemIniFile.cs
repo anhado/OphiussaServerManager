@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using OphiussaServerManager.Common.Helpers;
-using OphiussaServerManager.Common.Models;
 
 namespace OphiussaServerManager.Common.Ini {
     public abstract class BaseSystemIniFile {
@@ -18,132 +17,89 @@ namespace OphiussaServerManager.Common.Ini {
         public abstract Dictionary<Enum, string> SectionNames { get; }
 
 
-        public void Deserialize(object obj, IEnumerable<Enum> exclusions)
-        {
+        public void Deserialize(object obj, IEnumerable<Enum> exclusions) {
             var iniFiles = new Dictionary<string, IniFile>();
             var fields = obj.GetType()
-                .GetProperties()
-                .Where(f => f.IsDefined(typeof(BaseIniFileEntryAttribute), false));
+                            .GetProperties()
+                            .Where(f => f.IsDefined(typeof(BaseIniFileEntryAttribute), false));
 
-            if (exclusions == null)
-            {
-                exclusions = new Enum[0];
-            }
+            if (exclusions == null) exclusions = new Enum[0];
 
-            foreach (var field in fields)
-            {
+            foreach (var field in fields) {
                 var attributes = field
-                    .GetCustomAttributes(typeof(BaseIniFileEntryAttribute), false)
-                    .OfType<BaseIniFileEntryAttribute>()
-                    .Where(a => !exclusions.Contains(a.Category));
+                                .GetCustomAttributes(typeof(BaseIniFileEntryAttribute), false)
+                                .OfType<BaseIniFileEntryAttribute>()
+                                .Where(a => !exclusions.Contains(a.Category));
 
                 Console.WriteLine(field.Name);
-                
-                foreach (var attr in attributes)
-                {
-                    if (exclusions.Contains(attr.Category))
-                    {
-                        continue;
-                    }
 
-                    try
-                    {
-                        if (attr.IsCustom)
-                        {
+                foreach (var attr in attributes) {
+                    if (exclusions.Contains(attr.Category)) continue;
+
+                    try {
+                        if (attr.IsCustom) {
                             // this code is to handle custom sections
-                            if (field.GetValue(obj) is IIniSectionCollection collection)
-                            {
+                            if (field.GetValue(obj) is IIniSectionCollection collection) {
                                 ReadFile(iniFiles, attr.File);
 
                                 var sectionNames = ReadCustomSectionNames(iniFiles, attr.File);
-                                foreach (var sectionName in sectionNames)
-                                {
+                                foreach (string sectionName in sectionNames) {
                                     var sectionValues = ReadSection(iniFiles, attr.File, sectionName);
                                     collection.Add(sectionName, sectionValues);
                                 }
                             }
                         }
-                        else
-                        {
-                            var keyName = string.IsNullOrWhiteSpace(attr.Key) ? field.Name : attr.Key;
+                        else {
+                            string keyName = string.IsNullOrWhiteSpace(attr.Key) ? field.Name : attr.Key;
 
-                            if (attr.WriteBoolValueIfNonEmpty)
-                            {
+                            if (attr.WriteBoolValueIfNonEmpty) {
                                 // Don't really need to do anything here, we don't care about this on reading it.
                                 // extraBoolValue = Convert.ToBoolean(IniReadValue(SectionNames[attr.Section], attr.Key));
                             }
-                            else
-                            {
-                                if (field.GetValue(obj) is IIniValuesCollection collection)
-                                {
+                            else {
+                                if (field.GetValue(obj) is IIniValuesCollection collection) {
                                     var section = ReadSection(iniFiles, attr.File, attr.Section);
                                     var filteredSection = collection.IsArray
-                                        ? section.Where(s => s.StartsWith(collection.IniCollectionKey + "["))
-                                        : section.Where(s => s.StartsWith(collection.IniCollectionKey + "="));
+                                                              ? section.Where(s => s.StartsWith(collection.IniCollectionKey + "["))
+                                                              : section.Where(s => s.StartsWith(collection.IniCollectionKey + "="));
                                     collection.FromIniValues(filteredSection);
                                 }
-                                else
-                                {
-                                    var iniValue = ReadValue(iniFiles, attr.File, attr.Section, keyName);
+                                else {
+                                    string iniValue = ReadValue(iniFiles, attr.File, attr.Section, keyName);
 
                                     var fieldType = field.PropertyType;
-                                    if (fieldType == typeof(string))
-                                    {
-                                        var stringValue = iniValue;
-                                        if (attr.QuotedString == QuotedStringType.True)
-                                        {
+                                    if (fieldType == typeof(string)) {
+                                        string stringValue = iniValue;
+                                        if (attr.QuotedString == QuotedStringType.True) {
                                             // remove the leading and trailing quotes, if any
-                                            if (stringValue.StartsWith("\""))
-                                            {
-                                                stringValue = stringValue.Substring(1);
-                                            }
+                                            if (stringValue.StartsWith("\"")) stringValue = stringValue.Substring(1);
 
-                                            if (stringValue.EndsWith("\""))
-                                            {
-                                                stringValue = stringValue.Substring(0, stringValue.Length - 1);
-                                            }
+                                            if (stringValue.EndsWith("\"")) stringValue = stringValue.Substring(0, stringValue.Length - 1);
                                         }
-                                        else if (attr.QuotedString == QuotedStringType.Remove)
-                                        {
+                                        else if (attr.QuotedString == QuotedStringType.Remove) {
                                             // remove the leading and trailing quotes, if any
-                                            if (stringValue.StartsWith("\""))
-                                            {
-                                                stringValue = stringValue.Substring(1);
-                                            }
+                                            if (stringValue.StartsWith("\"")) stringValue = stringValue.Substring(1);
 
-                                            if (stringValue.EndsWith("\""))
-                                            {
-                                                stringValue = stringValue.Substring(0, stringValue.Length - 1);
-                                            }
+                                            if (stringValue.EndsWith("\"")) stringValue = stringValue.Substring(0, stringValue.Length - 1);
                                         }
-                                        if (attr.Multiline)
-                                        {
-                                            stringValue = stringValue.Replace(attr.MultilineSeparator, Environment.NewLine);
-                                        }
+
+                                        if (attr.Multiline) stringValue = stringValue.Replace(attr.MultilineSeparator, Environment.NewLine);
                                         field.SetValue(obj, stringValue);
                                     }
-                                    else
-                                    {
+                                    else {
                                         if (string.IsNullOrWhiteSpace(iniValue))
-                                        {
                                             // Skip non-string values which are not found
                                             continue;
-                                        }
 
                                         // Update the ConditionedOn flag, if this field has one.
-                                        if (!string.IsNullOrWhiteSpace(attr.ConditionedOn))
-                                        {
+                                        if (!string.IsNullOrWhiteSpace(attr.ConditionedOn)) {
                                             var conditionField = obj.GetType().GetProperty(attr.ConditionedOn);
                                             conditionField.SetValue(obj, true);
                                         }
 
-                                        var valueSet = Utils.SetPropertyValue(iniValue, obj, field, attr);
-                                        if (!valueSet)
-                                        {
-                                            throw new ArgumentException($"Unexpected field type {fieldType} for INI key {keyName} in section {attr.Section}.");
-                                        }
+                                        bool valueSet = Utils.SetPropertyValue(iniValue, obj, field, attr);
+                                        if (!valueSet) throw new ArgumentException($"Unexpected field type {fieldType} for INI key {keyName} in section {attr.Section}.");
                                     }
-
                                 }
                             }
                         }
@@ -162,9 +118,7 @@ namespace OphiussaServerManager.Common.Ini {
                             .GetProperties()
                             .Where(f => f.IsDefined(typeof(BaseIniFileEntryAttribute), false));
 
-            if (exclusions == null) {
-                exclusions = new Enum[0];
-            }
+            if (exclusions == null) exclusions = new Enum[0];
 
             foreach (var field in fields) {
                 var attributes = field
@@ -172,12 +126,13 @@ namespace OphiussaServerManager.Common.Ini {
                                 .OfType<BaseIniFileEntryAttribute>()
                                 .Where(a => !exclusions.Contains(a.Category));
 
-                foreach (var attr in attributes) {
+                foreach (var attr in attributes)
                     try {
                         Console.WriteLine(field.Name);
-                        if (field.Name == "PlayerBaseStatMultipliers" || field.Name == "PerLevelStatsMultiplier_Player" ) {
-                            var x = 1f;
+                        if (field.Name == "PlayerBaseStatMultipliers" || field.Name == "PerLevelStatsMultiplier_Player") {
+                            float x = 1f;
                         }
+
                         if (attr.IsCustom) {
                             // this code is to handle custom sections
                             if (field.GetValue(obj) is IIniSectionCollection collection) {
@@ -187,15 +142,13 @@ namespace OphiussaServerManager.Common.Ini {
                                     // clear the entire section
                                     WriteValue(iniFiles, attr.File, section.IniCollectionKey, null, null);
 
-                                    if (section.IsEnabled) {
-                                        WriteSection(iniFiles, attr.File, section.IniCollectionKey, section.ToIniValues());
-                                    }
+                                    if (section.IsEnabled) WriteSection(iniFiles, attr.File, section.IniCollectionKey, section.ToIniValues());
                                 }
                             }
                         }
                         else {
-                            var value   = field.GetValue(obj);
-                            var keyName = string.IsNullOrWhiteSpace(attr.Key) ? field.Name : attr.Key;
+                            object value   = field.GetValue(obj);
+                            string keyName = string.IsNullOrWhiteSpace(attr.Key) ? field.Name : attr.Key;
 
                             if (attr.ClearSection) {
                                 WriteValue(iniFiles, attr.File, attr.Section, null, null);
@@ -214,8 +167,8 @@ namespace OphiussaServerManager.Common.Ini {
                             }
 
                             if (!string.IsNullOrEmpty(attr.ConditionedOn)) {
-                                var conditionField = obj.GetType().GetProperty(attr.ConditionedOn);
-                                var conditionValue = conditionField.GetValue(obj);
+                                var    conditionField = obj.GetType().GetProperty(attr.ConditionedOn);
+                                object conditionValue = conditionField.GetValue(obj);
                                 if (conditionValue is bool && (bool)conditionValue == false) {
                                     // The condition value was not set to true, so clear this attribute instead of writing it
                                     WriteValue(iniFiles, attr.File, attr.Section, keyName, null);
@@ -225,8 +178,8 @@ namespace OphiussaServerManager.Common.Ini {
                             }
 
                             if (!string.IsNullOrEmpty(attr.ClearWhenOff)) {
-                                var updateOffField = obj.GetType().GetProperty(attr.ClearWhenOff);
-                                var updateOffValue = updateOffField.GetValue(obj);
+                                var    updateOffField = obj.GetType().GetProperty(attr.ClearWhenOff);
+                                object updateOffValue = updateOffField.GetValue(obj);
                                 if (updateOffValue is bool && (bool)updateOffValue == false) {
                                     // The attributed value was set to false, so clear this attribute instead of writing it
                                     WriteValue(iniFiles, attr.File, attr.Section, keyName, null);
@@ -238,7 +191,7 @@ namespace OphiussaServerManager.Common.Ini {
 
                             if (attr.WriteBoolValueIfNonEmpty) {
                                 if (value == null) {
-                                    var keyValue = string.Empty;
+                                    string keyValue = string.Empty;
                                     if (attr.WriteBooleanAsInteger)
                                         keyValue = "0";
                                     else
@@ -248,9 +201,9 @@ namespace OphiussaServerManager.Common.Ini {
                                 }
                                 else {
                                     if (value is string) {
-                                        var strValue = value as string;
+                                        string strValue = value as string;
 
-                                        var keyValue = string.Empty;
+                                        string keyValue = string.Empty;
                                         if (attr.WriteBooleanAsInteger)
                                             keyValue = string.IsNullOrEmpty(strValue) ? "0" : "1";
                                         else
@@ -275,13 +228,11 @@ namespace OphiussaServerManager.Common.Ini {
                                                                   : section.Where(s => !s.StartsWith(keyName + "="));
                                         var result = filteredSection;
 
-                                        var objValue = attr.WriteIfNotValue;
-                                        if (objValue != null && collection is IIniValuesList valueList) {
+                                        object objValue = attr.WriteIfNotValue;
+                                        if (objValue != null && collection is IIniValuesList valueList)
                                             result = result.Concat(valueList.ToIniValues(objValue));
-                                        }
-                                        else {
+                                        else
                                             result = result.Concat(collection.ToIniValues());
-                                        }
 
                                         WriteSection(iniFiles, attr.File, attr.Section, result);
                                     }
@@ -297,11 +248,11 @@ namespace OphiussaServerManager.Common.Ini {
                                         continue;
                                     }
 
-                                    var strValue = Utils.GetPropertyValue(value, field, attr);
+                                    string strValue = Utils.GetPropertyValue(value, field, attr);
 
-                                    var objValue = attr.WriteIfNotValue;
+                                    object objValue = attr.WriteIfNotValue;
                                     if (objValue != null) {
-                                        var strValue2 = Utils.GetPropertyValue(objValue, field, attr);
+                                        string strValue2 = Utils.GetPropertyValue(objValue, field, attr);
                                         if (string.Equals(strValue, strValue2, StringComparison.OrdinalIgnoreCase)) {
                                             // The attributed value is the same as the specified value, so clear this attribute instead of writing it.
                                             WriteValue(iniFiles, attr.File, attr.Section, keyName, null);
@@ -332,10 +283,9 @@ namespace OphiussaServerManager.Common.Ini {
                                             strValue = strValue.Substring(0, strValue.Length - 1);
                                     }
 
-                                    if (attr.Multiline) {
+                                    if (attr.Multiline)
                                         // substitutes the NewLine string with "\n"
                                         strValue = strValue.Replace(Environment.NewLine, attr.MultilineSeparator);
-                                    }
 
                                     WriteValue(iniFiles, attr.File, attr.Section, keyName, strValue);
                                 }
@@ -348,7 +298,6 @@ namespace OphiussaServerManager.Common.Ini {
                         OphiussaLogger.Logger.Error(ex);
                         throw;
                     }
-                }
             }
 
             SaveFiles(iniFiles);

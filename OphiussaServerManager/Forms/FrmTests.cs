@@ -33,8 +33,8 @@ As you can see, everything fits nicely.
 If it's shown correctly, that's should be last line, that you see.
 If you can see this line, it looks like it overlaps something and there's a bug in the code.
 ", null));
-            exListBox2.Items.Add(new ExListBoxItem("99", "Bill", "phone +345645464\n fax +6546546546\n email email@email.com", null));
-            exListBox2.Items.Add(new ExListBoxItem("71", "Peter", "ICQ 56465464\n msn hot@hotmail.com\n phone +5465464654", null));
+            exListBox2.Items.Add(new ExListBoxItem("99", "Bill",  "phone +345645464\n fax +6546546546\n email email@email.com", null));
+            exListBox2.Items.Add(new ExListBoxItem("71", "Peter", "ICQ 56465464\n msn hot@hotmail.com\n phone +5465464654",     null));
 
             foreach (var item in new ManagementObjectSearcher("Select * from Win32_ComputerSystem").Get()) Console.WriteLine("Number Of Logical Processors: {0}", item["NumberOfLogicalProcessors"]);
         }

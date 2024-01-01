@@ -247,7 +247,7 @@
             // 
             // timerGetProcess
             // 
-            this.timerGetProcess.Enabled = true;
+            this.timerGetProcess.Enabled = false;
             this.timerGetProcess.Interval = 500;
             this.timerGetProcess.Tick += new System.EventHandler(this.timerGetProcess_Tick);
             // 

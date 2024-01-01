@@ -8,13 +8,20 @@ using System.Threading.Tasks;
 using Ionic.Zlib;
 using Newtonsoft.Json;
 using OphiussaServerManager.Common;
+using OphiussaServerManager.Common.Helpers;
 using OphiussaServerManager.Common.Models;
 using OphiussaServerManager.Common.Models.Profiles;
 using OphiussaServerManager.Common.Models.SupportedServers;
-using OphiussaServerManager.Common.Helpers;
 
 namespace OphiussaServerManager.Tools.Update {
     public class AutoUpdate {
+        public const string MODTYPE_UNKNOWN = "0";
+        public const string MODTYPE_MAP     = "2";
+        public const string MODTYPE_MAPEXT  = "4";
+        public const string MODTYPE_MOD     = "1";
+        public const string MODTYPE_TOTCONV = "3";
+
+        private static List<string>                OfficialMods { get; set; } = new List<string>();
         public event EventHandler<ProcessEventArg> ProgressChanged;
         public event EventHandler<ProcessEventArg> ProcessStarted;
         public event EventHandler<ProcessEventArg> ProcessCompleted;
@@ -508,12 +515,12 @@ namespace OphiussaServerManager.Tools.Update {
         private void UpdateSteamMods(Settings settings, Profile p, List<PublishedFileDetail> steamFileDetails) {
             string modPaths = Path.Combine(p.InstallLocation, "ShooterGame\\Content\\Mods");
 
-            DirectoryInfo d = new DirectoryInfo(modPaths);
+            var d = new DirectoryInfo(modPaths);
 
             var modFiles = d.GetFiles("*.*", SearchOption.TopDirectoryOnly).ToList();
             //DELETE OLD MODS
 
-            List<string> modsToDelete = new List<string>();
+            var modsToDelete = new List<string>();
             modFiles.ForEach(f => {
                                  var modDet = steamFileDetails.Find(m => m.Publishedfileid == f.Name.Replace(".mod", ""));
                                  if (modDet == null) modsToDelete.Add(f.Name.Replace(".mod", ""));
@@ -538,10 +545,10 @@ namespace OphiussaServerManager.Tools.Update {
 
                 string OrignFolder = Path.Combine(serverType.InstallCacheFolder, $"steamapps\\workshop\\content\\{p.Type.SteamClientId}");
 
-                var modCachePath  = GetModCachePath(serverType.InstallCacheFolder, mod.Publishedfileid, p.Type.SteamClientId.ToString());
-                var cacheTimeFile = GetLatestModCacheTimeFile(serverType.InstallCacheFolder, mod.Publishedfileid, p.Type.SteamClientId.ToString());
-                var modPath       = GetModPath(p.InstallLocation, mod.Publishedfileid);
-                var modTimeFile   = GetLatestModTimeFile(p.InstallLocation, mod.Publishedfileid);
+                string modCachePath  = GetModCachePath(serverType.InstallCacheFolder, mod.Publishedfileid, p.Type.SteamClientId.ToString());
+                string cacheTimeFile = GetLatestModCacheTimeFile(serverType.InstallCacheFolder, mod.Publishedfileid, p.Type.SteamClientId.ToString());
+                string modPath       = GetModPath(p.InstallLocation, mod.Publishedfileid);
+                string modTimeFile   = GetLatestModTimeFile(p.InstallLocation, mod.Publishedfileid);
 
                 CopyMod(modCachePath, modPath, mod.Publishedfileid);
                 /*      var dir1 = new DirectoryInfo(Path.Combine(serverType.InstallCacheFolder, $"steamapps\\workshop\\content\\{p.Type.SteamClientId}\\{mod.Publishedfileid}"));
@@ -570,12 +577,12 @@ namespace OphiussaServerManager.Tools.Update {
             if (string.IsNullOrWhiteSpace(sourceFolder) || !Directory.Exists(sourceFolder))
                 throw new DirectoryNotFoundException($"Source folder was not found.\r\n{sourceFolder}");
 
-            var modSourceFolder = sourceFolder;
+            string modSourceFolder = sourceFolder;
 
             // progressCallback?.Invoke(0, "Reading mod base information.");
 
-            var fileName = IOUtils.NormalizePath(Path.Combine(modSourceFolder, "mod.info"));
-            var list     = new List<string>();
+            string fileName = IOUtils.NormalizePath(Path.Combine(modSourceFolder, "mod.info"));
+            var    list     = new List<string>();
             ParseBaseInformation(fileName, list);
 
             //   progressCallback?.Invoke(0, "Reading mod meta information.");
@@ -585,7 +592,7 @@ namespace OphiussaServerManager.Tools.Update {
             if (ParseMetaInformation(fileName, metaInformation))
                 modSourceFolder = IOUtils.NormalizePath(Path.Combine(modSourceFolder, "WindowsNoEditor"));
 
-            var modFile = $"{destinationFolder}.mod";
+            string modFile = $"{destinationFolder}.mod";
 
             //   progressCallback?.Invoke(0, "Deleting existing mod files.");
 
@@ -598,7 +605,7 @@ namespace OphiussaServerManager.Tools.Update {
             //    progressCallback?.Invoke(0, "Copying mod files.");
 
             // update the mod files from the cache.
-            var flag = Copy(modSourceFolder, destinationFolder, true);
+            bool flag = Copy(modSourceFolder, destinationFolder, true);
 
             if (metaInformation.Count == 0 && flag)
                 metaInformation["ModType"] = "1";
@@ -613,17 +620,17 @@ namespace OphiussaServerManager.Tools.Update {
             if (File.Exists(fileName)) {
                 //       progressCallback?.Invoke(0, "Copying mod version file.");
 
-                var tempFile = IOUtils.NormalizePath(fileName.Replace(sourceFolder, destinationFolder));
+                string tempFile = IOUtils.NormalizePath(fileName.Replace(sourceFolder, destinationFolder));
                 File.Copy(fileName, tempFile, true);
             }
         }
 
         private static void UE4ChunkUnzip(string source, string destination) {
-            using (BinaryReader inReader = new BinaryReader(File.Open(source, FileMode.Open))) {
-                using (BinaryWriter binaryWriter = new BinaryWriter(File.Open(destination, FileMode.Create))) {
-                    FCompressedChunkInfo fcompressedChunkInfo1 = new FCompressedChunkInfo();
+            using (var inReader = new BinaryReader(File.Open(source, FileMode.Open))) {
+                using (var binaryWriter = new BinaryWriter(File.Open(destination, FileMode.Create))) {
+                    var fcompressedChunkInfo1 = new FCompressedChunkInfo();
                     fcompressedChunkInfo1.Serialize(inReader);
-                    FCompressedChunkInfo fcompressedChunkInfo2 = new FCompressedChunkInfo();
+                    var fcompressedChunkInfo2 = new FCompressedChunkInfo();
                     fcompressedChunkInfo2.Serialize(inReader);
 
                     long num1 = fcompressedChunkInfo1.CompressedSize;
@@ -632,8 +639,8 @@ namespace OphiussaServerManager.Tools.Update {
                         num2 = 131072L;
                     long length = (fcompressedChunkInfo2.UncompressedSize + num2 - 1L) / num2;
 
-                    FCompressedChunkInfo[] fcompressedChunkInfoArray = new FCompressedChunkInfo[length];
-                    long                   val2                      = 0L;
+                    var  fcompressedChunkInfoArray = new FCompressedChunkInfo[length];
+                    long val2                      = 0L;
 
                     for (int index = 0; index < length; ++index) {
                         fcompressedChunkInfoArray[index] = new FCompressedChunkInfo();
@@ -642,8 +649,8 @@ namespace OphiussaServerManager.Tools.Update {
                     }
 
                     for (long index = 0L; index < length; ++index) {
-                        FCompressedChunkInfo fcompressedChunkInfo3 = fcompressedChunkInfoArray[index];
-                        byte[]               buffer                = ZlibStream.UncompressBuffer(inReader.ReadBytes((int)fcompressedChunkInfo3.CompressedSize));
+                        var    fcompressedChunkInfo3 = fcompressedChunkInfoArray[index];
+                        byte[] buffer                = ZlibStream.UncompressBuffer(inReader.ReadBytes((int)fcompressedChunkInfo3.CompressedSize));
                         binaryWriter.Write(buffer);
                     }
                 }
@@ -654,11 +661,11 @@ namespace OphiussaServerManager.Tools.Update {
             if (!Directory.Exists(sourceFolder))
                 return false;
 
-            var flag = false;
+            bool flag = false;
 
-            foreach (var sourceFile in Directory.GetFiles(sourceFolder, "*.*", copySubFolders ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly)) {
-                var modFile     = IOUtils.NormalizePath(sourceFile.Replace(sourceFolder, destinationFolder));
-                var modFilePath = Path.GetDirectoryName(modFile);
+            foreach (string sourceFile in Directory.GetFiles(sourceFolder, "*.*", copySubFolders ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly)) {
+                string modFile     = IOUtils.NormalizePath(sourceFile.Replace(sourceFolder, destinationFolder));
+                string modFilePath = Path.GetDirectoryName(modFile);
 
                 if (!Directory.Exists(modFilePath))
                     Directory.CreateDirectory(modFilePath);
@@ -686,16 +693,14 @@ namespace OphiussaServerManager.Tools.Update {
         }
 
         public static void WriteModFile(string fileName, string modId, Dictionary<string, string> metaInformation, List<string> mapNames) {
-            using (BinaryWriter outWriter = new BinaryWriter(File.Open(fileName, FileMode.Create))) {
+            using (var outWriter = new BinaryWriter(File.Open(fileName, FileMode.Create))) {
                 ulong num1 = ulong.Parse(modId);
                 outWriter.Write(num1);
                 WriteUE4String("ModName",    outWriter);
                 WriteUE4String(string.Empty, outWriter);
                 int count1 = mapNames.Count;
                 outWriter.Write(count1);
-                for (int index = 0; index < mapNames.Count; ++index) {
-                    WriteUE4String(mapNames[index], outWriter);
-                }
+                for (int index = 0; index < mapNames.Count; ++index) WriteUE4String(mapNames[index], outWriter);
 
                 uint num2 = 4280483635U;
                 outWriter.Write(num2);
@@ -705,7 +710,7 @@ namespace OphiussaServerManager.Tools.Update {
                 outWriter.Write(num4);
                 int count2 = metaInformation.Count;
                 outWriter.Write(count2);
-                foreach (KeyValuePair<string, string> keyValuePair in metaInformation) {
+                foreach (var keyValuePair in metaInformation) {
                     WriteUE4String(keyValuePair.Key,   outWriter);
                     WriteUE4String(keyValuePair.Value, outWriter);
                 }
@@ -725,7 +730,7 @@ namespace OphiussaServerManager.Tools.Update {
             if (!File.Exists(fileName))
                 return false;
 
-            using (BinaryReader binaryReader = new BinaryReader(File.Open(fileName, FileMode.Open))) {
+            using (var binaryReader = new BinaryReader(File.Open(fileName, FileMode.Open))) {
                 int num = binaryReader.ReadInt32();
                 for (int index1 = 0; index1 < num; ++index1) {
                     string index2 = string.Empty;
@@ -765,7 +770,7 @@ namespace OphiussaServerManager.Tools.Update {
             if (!File.Exists(fileName))
                 return false;
 
-            using (BinaryReader reader = new BinaryReader(File.Open(fileName, FileMode.Open))) {
+            using (var reader = new BinaryReader(File.Open(fileName, FileMode.Open))) {
                 string readString1;
                 ReadUE4String(reader, out readString1);
 
@@ -795,13 +800,22 @@ namespace OphiussaServerManager.Tools.Update {
             readString = Encoding.UTF8.GetString(bytes, 0, bytes.Length - 1);
         }
 
-        public const string MODTYPE_UNKNOWN = "0";
-        public const string MODTYPE_MAP     = "2";
-        public const string MODTYPE_MAPEXT  = "4";
-        public const string MODTYPE_MOD     = "1";
-        public const string MODTYPE_TOTCONV = "3";
+        public static string GetModCachePath(string installCacheDir, string modId, string appId) {
+            string workshopPath = string.Format("steamapps\\workshop\\content\\{0}\\", appId);
+            return IOUtils.NormalizePath(Path.Combine(installCacheDir, workshopPath, modId));
+        }
 
-        private static List<string> OfficialMods { get; set; } = new List<string>();
+        public static string GetModPath(string installDirectory, string modId) {
+            return IOUtils.NormalizePath(Path.Combine(installDirectory, "ShooterGame\\Content\\Mods", modId));
+        }
+
+        public static string GetLatestModCacheTimeFile(string installCacheDir, string modId, string appId) {
+            return IOUtils.NormalizePath(Path.Combine(GetModCachePath(installCacheDir, modId, appId), "LastUpdatedOSM.txt"));
+        }
+
+        public static string GetLatestModTimeFile(string installDirectory, string modId) {
+            return IOUtils.NormalizePath(Path.Combine(installDirectory, "ShooterGame\\Content\\Mods", modId, "LastUpdatedOSM.txt"));
+        }
 
         private class FCompressedChunkInfo {
             public const uint LOADING_COMPRESSION_CHUNK_SIZE = 131072U;
@@ -816,16 +830,5 @@ namespace OphiussaServerManager.Tools.Update {
                 UncompressedSize = reader.ReadInt64();
             }
         }
-
-        public static string GetModCachePath(string installCacheDir, string modId, string appId) {
-            var workshopPath = string.Format("steamapps\\workshop\\content\\{0}\\", appId);
-            return IOUtils.NormalizePath(Path.Combine(installCacheDir, workshopPath, modId));
-        }
-
-        public static string GetModPath(string installDirectory, string modId) => IOUtils.NormalizePath(Path.Combine(installDirectory, "ShooterGame\\Content\\Mods", modId));
-
-        public static string GetLatestModCacheTimeFile(string installCacheDir, string modId, string appId) => IOUtils.NormalizePath(Path.Combine(GetModCachePath(installCacheDir, modId, appId), "LastUpdatedOSM.txt"));
-
-        public static string GetLatestModTimeFile(string installDirectory, string modId) => IOUtils.NormalizePath(Path.Combine(installDirectory, "ShooterGame\\Content\\Mods", modId, "LastUpdatedOSM.txt"));
     }
 }

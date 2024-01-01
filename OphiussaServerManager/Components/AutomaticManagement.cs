@@ -1,59 +1,49 @@
-﻿using OphiussaServerManager.Common.Models.Profiles;
+﻿using System;
+using System.Diagnostics;
+using System.Windows.Forms;
 using OphiussaServerManager.Common.Models;
 using OphiussaServerManager.Tools;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace OphiussaServerManager.Components {
     public partial class AutomaticManagement : UserControl {
         internal AutoManageSettings _profile;
+
         public AutomaticManagement() {
             InitializeComponent();
         }
 
         public void LoadData(ref AutoManageSettings profile) {
             _profile = profile;
-            Stopwatch sw = new Stopwatch();
+            var sw = new Stopwatch();
 
-            rbOnBoot.Checked = profile.AutoStartOn == AutoStart.OnBoot;
+            rbOnBoot.Checked  = profile.AutoStartOn == AutoStart.OnBoot;
             rbOnLogin.Checked = profile.AutoStartOn == AutoStart.OnLogin;
             sw.Start();
-            UsefullTools.LoadValuesToFields(_profile, this.Controls);
+            UsefullTools.LoadValuesToFields(_profile, Controls);
 
             sw.Stop();
 
-            Console.WriteLine("Elapsed={0}", sw.Elapsed.TotalSeconds);
+            Console.WriteLine("AutomaticManagement={0}", sw.Elapsed.TotalSeconds);
         }
 
         public void GetData(ref AutoManageSettings _profile) {
-            Stopwatch sw = new Stopwatch();
+            var sw = new Stopwatch();
 
             _profile.AutoStartOn = rbOnBoot.Checked ? AutoStart.OnBoot : AutoStart.OnLogin;
             sw.Start();
-            UsefullTools.LoadFieldsToObject(ref _profile, this.Controls);
+            UsefullTools.LoadFieldsToObject(ref _profile, Controls);
 
             sw.Stop();
 
-            Console.WriteLine("Elapsed={0}", sw.Elapsed.TotalSeconds);
-
+            Console.WriteLine("AutomaticManagement={0}", sw.Elapsed.TotalSeconds);
         }
 
         private void chkAutoStart_CheckedChanged(object sender, EventArgs e) {
-
             rbOnBoot.Enabled  = chkAutoStart.Checked;
             rbOnLogin.Enabled = chkAutoStart.Checked;
         }
 
         private void chkShutdown1_CheckedChanged(object sender, EventArgs e) {
-
             txtShutdow1.Enabled = chkShutdown1.Checked;
             chkSun1.Enabled     = chkShutdown1.Checked;
             chkMon1.Enabled     = chkShutdown1.Checked;
@@ -67,7 +57,6 @@ namespace OphiussaServerManager.Components {
         }
 
         private void chkShutdown2_CheckedChanged(object sender, EventArgs e) {
-
             txtShutdow2.Enabled = chkShutdown2.Checked;
             chkSun2.Enabled     = chkShutdown2.Checked;
             chkMon2.Enabled     = chkShutdown2.Checked;

@@ -1,27 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Win32.TaskScheduler;
 using Newtonsoft.Json;
 using OphiussaServerManager.Common.Models;
 using OphiussaServerManager.Common.Models.Profiles;
-using OphiussaServerManager.Components;
 using OphiussaServerManager.Tools.Update;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TreeView;
 
 namespace OphiussaServerManager.Forms {
-
     public partial class FrmArkV2 : Form {
-
         private Profile _profile;
         private TabPage _tab;
 
@@ -32,10 +21,10 @@ namespace OphiussaServerManager.Forms {
         public void LoadProfile(Profile profile, TabPage tab) {
             try {
                 _profile = profile;
-                _tab = tab;
+                _tab     = tab;
                 profileHeader1.LoadData(ref _tab, ref _profile);
 
-                ArkProfile prf = _profile.ArkConfiguration;
+                var prf = _profile.ArkConfiguration;
                 arkAdministration1.LoadData(ref prf, ref _profile);
                 arkRules1.LoadData(ref prf);
                 arkChatAndNotifications1.LoadData(ref prf);
@@ -44,9 +33,8 @@ namespace OphiussaServerManager.Forms {
                 arkDinoSettings1.LoadData(ref prf);
                 ucArkEnvironment1.LoadData(ref prf);
 
-                AutoManageSettings auto = _profile.AutoManageSettings;
+                var auto = _profile.AutoManageSettings;
                 automaticManagement1.LoadData(ref auto);
-
             }
             catch (Exception e) {
                 OphiussaLogger.Logger.Error(e);
@@ -63,7 +51,7 @@ namespace OphiussaServerManager.Forms {
             profileHeader1.GetData(ref _profile); //Get Data from Profile Header
 
 
-            ArkProfile prf = _profile.ArkConfiguration; //Get Administration Data
+            var prf = _profile.ArkConfiguration; //Get Administration Data
             arkAdministration1.GetData(ref prf);
             arkRules1.GetData(ref prf);
             arkChatAndNotifications1.GetData(ref prf);
@@ -78,7 +66,6 @@ namespace OphiussaServerManager.Forms {
         }
 
         private async void profileHeader1_StopClickStart(object sender, EventArgs e) {
-
             try {
                 if (_profile.IsRunning) {
                     //TODO: remove from here and place and use the profile closeserver
@@ -101,7 +88,6 @@ namespace OphiussaServerManager.Forms {
         }
 
         private void profileHeader1_ClickReload(object sender, EventArgs e) {
-
             try {
                 if (MessageBox.Show("Do you want reload from Server Config Files?", "Reload Option",
                                     MessageBoxButtons.OKCancel) == DialogResult.OK) {
@@ -122,7 +108,6 @@ namespace OphiussaServerManager.Forms {
                         }
                     }
                 }
-
             }
             catch (Exception exception) {
                 OphiussaLogger.Logger.Error(exception);
@@ -131,7 +116,6 @@ namespace OphiussaServerManager.Forms {
         }
 
         private void profileHeader1_ClickSave(object sender, EventArgs e) {
-
             try {
                 SaveProfile();
                 CreateWindowsTasks();
@@ -145,11 +129,9 @@ namespace OphiussaServerManager.Forms {
         }
 
         private void profileHeader1_ClickSync(object sender, EventArgs e) {
-
         }
 
         private void profileHeader1_ClickUpgrade(object sender, EventArgs e) {
-
             SaveProfile();
 
             var frm = new FrmProgress(MainForm.Settings, _profile);
@@ -159,14 +141,13 @@ namespace OphiussaServerManager.Forms {
         }
 
 
-
         private void CreateWindowsTasks() {
             #region AutoStartServer
 
             if (_profile.AutoManageSettings.AutoStartServer) {
-                string fileName = MainForm.Settings.DataFolder + $"StartServer\\Run_{_profile.Key.Replace("-", "")}.cmd";
+                string fileName = MainForm.Settings.DataFolder        + $"StartServer\\Run_{_profile.Key.Replace("-", "")}.cmd";
                 string taskName = "OphiussaServerManager\\AutoStart_" + _profile.Key;
-                var task = TaskService.Instance.GetTask(taskName);
+                var    task     = TaskService.Instance.GetTask(taskName);
                 if (task != null) {
                     task.Definition.Triggers.Clear();
                     if (_profile.AutoManageSettings.AutoStartOn == AutoStart.OnBoot) {
@@ -179,13 +160,13 @@ namespace OphiussaServerManager.Forms {
                     }
 
                     task.Definition.Principal.RunLevel = TaskRunLevel.Highest;
-                    task.Definition.Settings.Priority = ProcessPriorityClass.Normal;
+                    task.Definition.Settings.Priority  = ProcessPriorityClass.Normal;
                     task.RegisterChanges();
                 }
                 else {
                     var td = TaskService.Instance.NewTask();
                     td.RegistrationInfo.Description = "Server Auto-Start - " + _profile.Name;
-                    td.Principal.LogonType = TaskLogonType.InteractiveToken;
+                    td.Principal.LogonType          = TaskLogonType.InteractiveToken;
                     if (_profile.AutoManageSettings.AutoStartOn == AutoStart.OnBoot) {
                         var bt1 = new BootTrigger { Delay = TimeSpan.FromMinutes(1) };
                         td.Triggers.Add(bt1);
@@ -197,13 +178,13 @@ namespace OphiussaServerManager.Forms {
 
                     td.Actions.Add(fileName);
                     td.Principal.RunLevel = TaskRunLevel.Highest;
-                    td.Settings.Priority = ProcessPriorityClass.Normal;
+                    td.Settings.Priority  = ProcessPriorityClass.Normal;
                     TaskService.Instance.RootFolder.RegisterTaskDefinition(taskName, td);
                 }
             }
             else {
                 string taskName = "OphiussaServerManager\\AutoStart_" + _profile.Key;
-                var task = TaskService.Instance.GetTask(taskName);
+                var    task     = TaskService.Instance.GetTask(taskName);
                 if (task != null) TaskService.Instance.RootFolder.DeleteTask(taskName);
             }
 
@@ -214,7 +195,7 @@ namespace OphiussaServerManager.Forms {
             if (_profile.AutoManageSettings.ShutdownServer1) {
                 string fileName = Assembly.GetExecutingAssembly().Location;
                 string taskName = "OphiussaServerManager\\AutoShutDown1_" + _profile.Key;
-                var task = TaskService.Instance.GetTask(taskName);
+                var    task     = TaskService.Instance.GetTask(taskName);
 
                 if (task != null) {
                     task.Definition.Triggers.Clear();
@@ -237,19 +218,19 @@ namespace OphiussaServerManager.Forms {
                         weekday += 1;
                     var tt = new WeeklyTrigger();
 
-                    int hour = short.Parse(_profile.AutoManageSettings.ShutdownServer1Hour.Split(':')[0]);
+                    int hour   = short.Parse(_profile.AutoManageSettings.ShutdownServer1Hour.Split(':')[0]);
                     int minute = short.Parse(_profile.AutoManageSettings.ShutdownServer1Hour.Split(':')[1]);
                     tt.StartBoundary = DateTime.Today + TimeSpan.FromHours(hour) + TimeSpan.FromMinutes(minute);
-                    tt.DaysOfWeek = weekday;
+                    tt.DaysOfWeek    = weekday;
                     task.Definition.Triggers.Add(tt);
                     task.Definition.Principal.RunLevel = TaskRunLevel.Highest;
-                    task.Definition.Settings.Priority = ProcessPriorityClass.Normal;
+                    task.Definition.Settings.Priority  = ProcessPriorityClass.Normal;
                     task.RegisterChanges();
                 }
                 else {
                     var td = TaskService.Instance.NewTask();
                     td.RegistrationInfo.Description = "Server Auto-ShutDown 1 - " + _profile.Name;
-                    td.Principal.LogonType = TaskLogonType.InteractiveToken;
+                    td.Principal.LogonType          = TaskLogonType.InteractiveToken;
                     DaysOfTheWeek weekday = 0;
 
                     if (_profile.AutoManageSettings.ShutdownServer1Monday)
@@ -268,21 +249,21 @@ namespace OphiussaServerManager.Forms {
                         weekday += 1;
                     var tt = new WeeklyTrigger();
 
-                    int hour = short.Parse(_profile.AutoManageSettings.ShutdownServer1Hour.Split(':')[0]);
+                    int hour   = short.Parse(_profile.AutoManageSettings.ShutdownServer1Hour.Split(':')[0]);
                     int minute = short.Parse(_profile.AutoManageSettings.ShutdownServer1Hour.Split(':')[1]);
                     tt.StartBoundary = DateTime.Today + TimeSpan.FromHours(hour) + TimeSpan.FromMinutes(minute);
-                    tt.DaysOfWeek = weekday;
+                    tt.DaysOfWeek    = weekday;
                     td.Triggers.Add(tt);
                     td.Actions.Add(fileName, " -as1" + _profile.Key);
                     td.Principal.RunLevel = TaskRunLevel.Highest;
-                    td.Settings.Priority = ProcessPriorityClass.Normal;
+                    td.Settings.Priority  = ProcessPriorityClass.Normal;
 
                     TaskService.Instance.RootFolder.RegisterTaskDefinition(taskName, td);
                 }
             }
             else {
                 string taskName = "OphiussaServerManager\\AutoShutDown1_" + _profile.Key;
-                var task = TaskService.Instance.GetTask(taskName);
+                var    task     = TaskService.Instance.GetTask(taskName);
                 if (task != null) TaskService.Instance.RootFolder.DeleteTask(taskName);
             }
 
@@ -293,7 +274,7 @@ namespace OphiussaServerManager.Forms {
             if (_profile.AutoManageSettings.ShutdownServer2) {
                 string fileName = Assembly.GetExecutingAssembly().Location;
                 string taskName = "OphiussaServerManager\\AutoShutDown2_" + _profile.Key;
-                var task = TaskService.Instance.GetTask(taskName);
+                var    task     = TaskService.Instance.GetTask(taskName);
                 if (task != null) {
                     task.Definition.Triggers.Clear();
 
@@ -315,19 +296,19 @@ namespace OphiussaServerManager.Forms {
                         weekday += 1;
                     var tt = new WeeklyTrigger();
 
-                    int hour = short.Parse(_profile.AutoManageSettings.ShutdownServer2Hour.Split(':')[0]);
+                    int hour   = short.Parse(_profile.AutoManageSettings.ShutdownServer2Hour.Split(':')[0]);
                     int minute = short.Parse(_profile.AutoManageSettings.ShutdownServer2Hour.Split(':')[1]);
                     tt.StartBoundary = DateTime.Today + TimeSpan.FromHours(hour) + TimeSpan.FromMinutes(minute);
-                    tt.DaysOfWeek = weekday;
+                    tt.DaysOfWeek    = weekday;
                     task.Definition.Triggers.Add(tt);
                     task.Definition.Principal.RunLevel = TaskRunLevel.Highest;
-                    task.Definition.Settings.Priority = ProcessPriorityClass.Normal;
+                    task.Definition.Settings.Priority  = ProcessPriorityClass.Normal;
                     task.RegisterChanges();
                 }
                 else {
                     var td = TaskService.Instance.NewTask();
                     td.RegistrationInfo.Description = "Server Auto-ShutDown 2 - " + _profile.Name;
-                    td.Principal.LogonType = TaskLogonType.InteractiveToken;
+                    td.Principal.LogonType          = TaskLogonType.InteractiveToken;
 
                     DaysOfTheWeek weekday = 0;
 
@@ -347,20 +328,20 @@ namespace OphiussaServerManager.Forms {
                         weekday += 1;
                     var tt = new WeeklyTrigger();
 
-                    int hour = short.Parse(_profile.AutoManageSettings.ShutdownServer2Hour.Split(':')[0]);
+                    int hour   = short.Parse(_profile.AutoManageSettings.ShutdownServer2Hour.Split(':')[0]);
                     int minute = short.Parse(_profile.AutoManageSettings.ShutdownServer2Hour.Split(':')[1]);
                     tt.StartBoundary = DateTime.Today + TimeSpan.FromHours(hour) + TimeSpan.FromMinutes(minute);
-                    tt.DaysOfWeek = weekday;
+                    tt.DaysOfWeek    = weekday;
                     td.Triggers.Add(tt);
                     td.Actions.Add(fileName, " -as2" + _profile.Key);
                     td.Principal.RunLevel = TaskRunLevel.Highest;
-                    td.Settings.Priority = ProcessPriorityClass.Normal;
+                    td.Settings.Priority  = ProcessPriorityClass.Normal;
                     TaskService.Instance.RootFolder.RegisterTaskDefinition(taskName, td);
                 }
             }
             else {
                 string taskName = "OphiussaServerManager\\AutoShutDown2_" + _profile.Key;
-                var task = TaskService.Instance.GetTask(taskName);
+                var    task     = TaskService.Instance.GetTask(taskName);
                 if (task != null) TaskService.Instance.RootFolder.DeleteTask(taskName);
             }
 

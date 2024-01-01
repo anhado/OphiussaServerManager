@@ -205,7 +205,7 @@ namespace OphiussaServerManager.Common.Models.Profiles {
         public async Task CloseServerArk(Settings settings, Func<ProcessEventArg, bool> onProgressChanged, bool forceKillProcess = false) {
             if (!ArkConfiguration.UseRcon || forceKillProcess) {
                 if (!ArkConfiguration.UseRcon) onProgressChanged(new ProcessEventArg { Message = "No RCON configured, server process will be killed", IsStarting              = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
-                if (forceKillProcess) onProgressChanged(new ProcessEventArg { Message                         = "Process didnt respond to command, the processed will be killed", IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
+                if (forceKillProcess) onProgressChanged(new ProcessEventArg { Message          = "Process didnt respond to command, the processed will be killed", IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
                 var pro = Utils.GetProcessRunning(Path.Combine(InstallLocation, Type.ExecutablePath));
                 pro.Kill();
             }

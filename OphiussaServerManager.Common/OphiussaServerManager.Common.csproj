@@ -1,248 +1,248 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9CBA1CBF-F015-48D2-8754-67E1377EE7A0}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OphiussaServerManager.Common</RootNamespace>
-    <AssemblyName>OphiussaServerManager.Common</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="CoreRCON, Version=5.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CoreRCON.5.2.1\lib\netstandard2.0\CoreRCON.dll</HintPath>
-    </Reference>
-    <Reference Include="FirewallManager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FirewallManager.1.0.2\lib\FirewallManager.dll</HintPath>
-    </Reference>
-    <Reference Include="Interop.NATUPNPLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FirewallManager.1.0.2\lib\Interop.NATUPNPLib.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="Interop.NETCONLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FirewallManager.1.0.2\lib\Interop.NETCONLib.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="Interop.NetFwTypeLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FirewallManager.1.0.2\lib\Interop.NetFwTypeLib.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.8.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.8.0.0\lib\net462\Microsoft.Extensions.DependencyInjection.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.8.0.0\lib\net462\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Logging, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.Logging.8.0.0\lib\net462\Microsoft.Extensions.Logging.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.8.0.0\lib\net462\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Options, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.Options.8.0.0\lib\net462\Microsoft.Extensions.Options.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Primitives, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.Primitives.8.0.0\lib\net462\Microsoft.Extensions.Primitives.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <HintPath>..\packages\NLog.5.2.6\lib\net46\NLog.dll</HintPath>
-    </Reference>
-    <Reference Include="PresentationFramework" />
-    <Reference Include="System" />
-    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
-    </Reference>
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Diagnostics.DiagnosticSource, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.8.0.0\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.IO.Compression" />
-    <Reference Include="System.IO.Compression.FileSystem" />
-    <Reference Include="System.IO.Pipelines, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.IO.Pipelines.8.0.0\lib\net462\System.IO.Pipelines.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Management" />
-    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Numerics" />
-    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web" />
-    <Reference Include="System.Windows" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
-    <Reference Include="TinyCsvParser, Version=2.7.0.0, Culture=neutral, PublicKeyToken=d7df35b038077099, processorArchitecture=MSIL">
-      <HintPath>..\packages\TinyCsvParser.2.7.0\lib\netstandard2.0\TinyCsvParser.dll</HintPath>
-    </Reference>
-    <Reference Include="WindowsBase" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Helpers\Attributes.cs" />
-    <Compile Include="Helpers\DifficultyOffsetValueConverter.cs" />
-    <Compile Include="Helpers\EncryptionUtils.cs" />
-    <Compile Include="Helpers\FileComparer.cs" />
-    <Compile Include="Helpers\GameData.cs" />
-    <Compile Include="Helpers\GameDataUtils.cs" />
-    <Compile Include="Helpers\Ini\AggregateIniValue.cs" />
-    <Compile Include="Helpers\Extensions.cs" />
-    <Compile Include="Helpers\Ini\AggregateIniValueEntryAttribute.cs" />
-    <Compile Include="Helpers\Ini\AggregateIniValueList.cs" />
-    <Compile Include="Helpers\Ini\BaseIniFileEntryAttribute.cs" />
-    <Compile Include="Helpers\Ini\BaseSystemIniFile.cs" />
-    <Compile Include="Helpers\Ini\FloatIniValueArray.cs" />
-    <Compile Include="Helpers\Ini\IniFile.cs" />
-    <Compile Include="Helpers\Ini\IniFileUtils.cs" />
-    <Compile Include="Helpers\Ini\IniKey.cs" />
-    <Compile Include="Helpers\Ini\IniSection.cs" />
-    <Compile Include="Helpers\Ini\IntegerIniValueArray.cs" />
-    <Compile Include="Helpers\Ini\Interfaces\IIniSectionCollection.cs" />
-    <Compile Include="Helpers\Ini\Interfaces\IIniValuesCollection.cs" />
-    <Compile Include="Helpers\Ini\Interfaces\IIniValuesList.cs" />
-    <Compile Include="Helpers\Ini\Interfaces\IniValueList.cs" />
-    <Compile Include="Helpers\Ini\QuotedStringType.cs" />
-    <Compile Include="Helpers\Ini\SortableObservableCollection.cs" />
-    <Compile Include="Helpers\Ini\StringIniValueList.cs" />
-    <Compile Include="Helpers\Ini\SystemIniFile.cs" />
-    <Compile Include="Helpers\INullableValue.cs" />
-    <Compile Include="Helpers\IOUtils.cs" />
-    <Compile Include="Helpers\JsonUtils.cs" />
-    <Compile Include="Helpers\OfficialDifficultyValueConverter.cs" />
-    <Compile Include="Helpers\OphiussaLogger.cs" />
-    <Compile Include="Helpers\NetworkTools.cs" />
-    <Compile Include="Helpers\NullableValue.cs" />
-    <Compile Include="Helpers\ProcessUtils.cs" />
-    <Compile Include="Helpers\CurseForgeUtils.cs" />
-    <Compile Include="Helpers\ReadFileInChunksAndCompareVector.cs" />
-    <Compile Include="Helpers\ReadIntoByteBufferInChunks.cs" />
-    <Compile Include="Helpers\ReadWholeFileAtOnce.cs" />
-    <Compile Include="Helpers\SteamUtils.cs" />
-    <Compile Include="Helpers\TaskUtils.cs" />
-    <Compile Include="Helpers\Utils.cs" />
-    <Compile Include="Models\ArkProfile.cs" />
-    <Compile Include="Models\AutoManageSettings.cs" />
-    <Compile Include="Models\BaseAdministration.cs" />
-    <Compile Include="Models\CacheServerTypes.cs" />
-    <Compile Include="Models\ASM\ClassMultiplier.cs" />
-    <Compile Include="Models\Curseforge\CurseForgeFileDetailResponse.cs" />
-    <Compile Include="Models\Curseforge\CurseForgeFileDetailResult.cs" />
-    <Compile Include="Models\Curseforge\CurseForgeFileDetail.cs" />
-    <Compile Include="Models\DefaultEnums.cs" />
-    <Compile Include="Models\DefaultModels.cs" />
-    <Compile Include="Models\ASM\DinoSettings.cs" />
-    <Compile Include="Models\DinoSettingsJSON.cs" />
-    <Compile Include="Models\ASM\DinoSettingsList.cs" />
-    <Compile Include="Models\ASM\DinoSpawn.cs" />
-    <Compile Include="Models\ASM\DriveInfoDisplay.cs" />
-    <Compile Include="Models\ASM\Engram.cs" />
-    <Compile Include="Models\ASM\EngramEntry.cs" />
-    <Compile Include="Models\ASM\Level.cs" />
-    <Compile Include="Models\ASM\MapSpawner.cs" />
-    <Compile Include="Models\DefaultUserControl.cs" />
-    <Compile Include="Models\ModListDetails.cs" />
-    <Compile Include="Models\ASM\NPCReplacement.cs" />
-    <Compile Include="Models\ASM\PrimalItem.cs" />
-    <Compile Include="Models\ProfileOrderGrid.cs" />
-    <Compile Include="Models\MonitorGrid.cs" />
-    <Compile Include="Models\ASM\PlayerInfo.cs" />
-    <Compile Include="Models\ASM\PlayerListParameters.cs" />
-    <Compile Include="Models\PortForwardGrid.cs" />
-    <Compile Include="Models\ProcessorAffinity.cs" />
-    <Compile Include="Models\Profile.cs" />
-    <Compile Include="Models\ASM\ResourceClassMultiplier.cs" />
-    <Compile Include="Models\ResourceMonitor.cs" />
-    <Compile Include="Models\Settings.cs" />
-    <Compile Include="Models\SortableBindingList.cs" />
-    <Compile Include="Models\ASM\StatsMultiplierFloatArray.cs" />
-    <Compile Include="Models\ASM\StatsMultiplierIntegerArray.cs" />
-    <Compile Include="Models\Steam\PublishedFileDetail.cs" />
-    <Compile Include="Models\Steam\PublishedFileDetailsResponse.cs" />
-    <Compile Include="Models\Steam\PublishedFileDetailsResult.cs" />
-    <Compile Include="Models\Steam\SteamCmdAppManifest.cs" />
-    <Compile Include="Models\Steam\SteamCmdAppWorkshop.cs" />
-    <Compile Include="Models\Steam\SteamCmdManifestDetailsResult.cs" />
-    <Compile Include="Models\Steam\SteamCmdManifestUserConfig.cs" />
-    <Compile Include="Models\Steam\SteamCmdWorkshopDetailsResult.cs" />
-    <Compile Include="Models\Steam\SteamCmdWorkshopItemDetails.cs" />
-    <Compile Include="Models\Steam\SteamCmdWorkshopItemsInstalled.cs" />
-    <Compile Include="Models\Steam\SteamUserDetail.cs" />
-    <Compile Include="Models\Steam\SteamUserDetailResponse.cs" />
-    <Compile Include="Models\Steam\SteamUserDetailResult.cs" />
-    <Compile Include="Models\Steam\WorkshopFileDetail.cs" />
-    <Compile Include="Models\Steam\WorkshopFileDetailResponse.cs" />
-    <Compile Include="Models\Steam\WorkshopFileDetailResult.cs" />
-    <Compile Include="Models\ASM\SupplyCrate.cs" />
-    <Compile Include="Models\SupportedServers.cs" />
-    <Compile Include="Models\ValheimProfile.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Open.NAT\Open.Nat\Open.Nat.csproj">
-      <Project>{FDEACF87-8877-45D8-AD9F-AEE32A100544}</Project>
-      <Name>Open.Nat</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ArkData\ArkData.csproj">
-      <Project>{eb2f3774-da67-4772-b317-742247cec657}</Project>
-      <Name>ArkData</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\NeXtVdf\NeXt.Vdf.csproj">
-      <Project>{80c924b6-f167-4ad2-875b-5d6ae8652ccd}</Project>
-      <Name>NeXt.Vdf</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+	<Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')"/>
+	<PropertyGroup>
+		<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+		<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+		<ProjectGuid>{9CBA1CBF-F015-48D2-8754-67E1377EE7A0}</ProjectGuid>
+		<OutputType>Library</OutputType>
+		<AppDesignerFolder>Properties</AppDesignerFolder>
+		<RootNamespace>OphiussaServerManager.Common</RootNamespace>
+		<AssemblyName>OphiussaServerManager.Common</AssemblyName>
+		<TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+		<FileAlignment>512</FileAlignment>
+		<Deterministic>true</Deterministic>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+		<DebugSymbols>true</DebugSymbols>
+		<DebugType>full</DebugType>
+		<Optimize>false</Optimize>
+		<OutputPath>bin\Debug\</OutputPath>
+		<DefineConstants>DEBUG;TRACE</DefineConstants>
+		<ErrorReport>prompt</ErrorReport>
+		<WarningLevel>4</WarningLevel>
+		<AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+		<DebugType>pdbonly</DebugType>
+		<Optimize>true</Optimize>
+		<OutputPath>bin\Release\</OutputPath>
+		<DefineConstants>TRACE</DefineConstants>
+		<ErrorReport>prompt</ErrorReport>
+		<WarningLevel>4</WarningLevel>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	</PropertyGroup>
+	<ItemGroup>
+		<Reference Include="CoreRCON, Version=5.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+			<HintPath>..\packages\CoreRCON.5.2.1\lib\netstandard2.0\CoreRCON.dll</HintPath>
+		</Reference>
+		<Reference Include="FirewallManager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+			<HintPath>..\packages\FirewallManager.1.0.2\lib\FirewallManager.dll</HintPath>
+		</Reference>
+		<Reference Include="Interop.NATUPNPLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+			<HintPath>..\packages\FirewallManager.1.0.2\lib\Interop.NATUPNPLib.dll</HintPath>
+			<EmbedInteropTypes>True</EmbedInteropTypes>
+		</Reference>
+		<Reference Include="Interop.NETCONLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+			<HintPath>..\packages\FirewallManager.1.0.2\lib\Interop.NETCONLib.dll</HintPath>
+			<EmbedInteropTypes>True</EmbedInteropTypes>
+		</Reference>
+		<Reference Include="Interop.NetFwTypeLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+			<HintPath>..\packages\FirewallManager.1.0.2\lib\Interop.NetFwTypeLib.dll</HintPath>
+			<EmbedInteropTypes>True</EmbedInteropTypes>
+		</Reference>
+		<Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+			<HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.8.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+		</Reference>
+		<Reference Include="Microsoft.Extensions.DependencyInjection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+			<HintPath>..\packages\Microsoft.Extensions.DependencyInjection.8.0.0\lib\net462\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+		</Reference>
+		<Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+			<HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.8.0.0\lib\net462\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+		</Reference>
+		<Reference Include="Microsoft.Extensions.Logging, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+			<HintPath>..\packages\Microsoft.Extensions.Logging.8.0.0\lib\net462\Microsoft.Extensions.Logging.dll</HintPath>
+		</Reference>
+		<Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+			<HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.8.0.0\lib\net462\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+		</Reference>
+		<Reference Include="Microsoft.Extensions.Options, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+			<HintPath>..\packages\Microsoft.Extensions.Options.8.0.0\lib\net462\Microsoft.Extensions.Options.dll</HintPath>
+		</Reference>
+		<Reference Include="Microsoft.Extensions.Primitives, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+			<HintPath>..\packages\Microsoft.Extensions.Primitives.8.0.0\lib\net462\Microsoft.Extensions.Primitives.dll</HintPath>
+		</Reference>
+		<Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+			<HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+		</Reference>
+		<Reference Include="NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+			<HintPath>..\packages\NLog.5.2.6\lib\net46\NLog.dll</HintPath>
+		</Reference>
+		<Reference Include="PresentationFramework"/>
+		<Reference Include="System"/>
+		<Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+			<HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+		</Reference>
+		<Reference Include="System.ComponentModel.DataAnnotations"/>
+		<Reference Include="System.Configuration"/>
+		<Reference Include="System.Core"/>
+		<Reference Include="System.Diagnostics.DiagnosticSource, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+			<HintPath>..\packages\System.Diagnostics.DiagnosticSource.8.0.0\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
+		</Reference>
+		<Reference Include="System.Drawing"/>
+		<Reference Include="System.IO.Compression"/>
+		<Reference Include="System.IO.Compression.FileSystem"/>
+		<Reference Include="System.IO.Pipelines, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+			<HintPath>..\packages\System.IO.Pipelines.8.0.0\lib\net462\System.IO.Pipelines.dll</HintPath>
+		</Reference>
+		<Reference Include="System.Management"/>
+		<Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+			<HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+		</Reference>
+		<Reference Include="System.Numerics"/>
+		<Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+			<HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+		</Reference>
+		<Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+			<HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+		</Reference>
+		<Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+			<HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+		</Reference>
+		<Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+			<HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+		</Reference>
+		<Reference Include="System.Web"/>
+		<Reference Include="System.Windows"/>
+		<Reference Include="System.Windows.Forms"/>
+		<Reference Include="System.Xml.Linq"/>
+		<Reference Include="System.Data.DataSetExtensions"/>
+		<Reference Include="Microsoft.CSharp"/>
+		<Reference Include="System.Data"/>
+		<Reference Include="System.Net.Http"/>
+		<Reference Include="System.Xml"/>
+		<Reference Include="TinyCsvParser, Version=2.7.0.0, Culture=neutral, PublicKeyToken=d7df35b038077099, processorArchitecture=MSIL">
+			<HintPath>..\packages\TinyCsvParser.2.7.0\lib\netstandard2.0\TinyCsvParser.dll</HintPath>
+		</Reference>
+		<Reference Include="WindowsBase"/>
+	</ItemGroup>
+	<ItemGroup>
+		<Compile Include="Helpers\Attributes.cs"/>
+		<Compile Include="Helpers\DifficultyOffsetValueConverter.cs"/>
+		<Compile Include="Helpers\EncryptionUtils.cs"/>
+		<Compile Include="Helpers\FileComparer.cs"/>
+		<Compile Include="Helpers\GameData.cs"/>
+		<Compile Include="Helpers\GameDataUtils.cs"/>
+		<Compile Include="Helpers\Ini\AggregateIniValue.cs"/>
+		<Compile Include="Helpers\Extensions.cs"/>
+		<Compile Include="Helpers\Ini\AggregateIniValueEntryAttribute.cs"/>
+		<Compile Include="Helpers\Ini\AggregateIniValueList.cs"/>
+		<Compile Include="Helpers\Ini\BaseIniFileEntryAttribute.cs"/>
+		<Compile Include="Helpers\Ini\BaseSystemIniFile.cs"/>
+		<Compile Include="Helpers\Ini\FloatIniValueArray.cs"/>
+		<Compile Include="Helpers\Ini\IniFile.cs"/>
+		<Compile Include="Helpers\Ini\IniFileUtils.cs"/>
+		<Compile Include="Helpers\Ini\IniKey.cs"/>
+		<Compile Include="Helpers\Ini\IniSection.cs"/>
+		<Compile Include="Helpers\Ini\IntegerIniValueArray.cs"/>
+		<Compile Include="Helpers\Ini\Interfaces\IIniSectionCollection.cs"/>
+		<Compile Include="Helpers\Ini\Interfaces\IIniValuesCollection.cs"/>
+		<Compile Include="Helpers\Ini\Interfaces\IIniValuesList.cs"/>
+		<Compile Include="Helpers\Ini\Interfaces\IniValueList.cs"/>
+		<Compile Include="Helpers\Ini\QuotedStringType.cs"/>
+		<Compile Include="Helpers\Ini\SortableObservableCollection.cs"/>
+		<Compile Include="Helpers\Ini\StringIniValueList.cs"/>
+		<Compile Include="Helpers\Ini\SystemIniFile.cs"/>
+		<Compile Include="Helpers\INullableValue.cs"/>
+		<Compile Include="Helpers\IOUtils.cs"/>
+		<Compile Include="Helpers\JsonUtils.cs"/>
+		<Compile Include="Helpers\OfficialDifficultyValueConverter.cs"/>
+		<Compile Include="Helpers\OphiussaLogger.cs"/>
+		<Compile Include="Helpers\NetworkTools.cs"/>
+		<Compile Include="Helpers\NullableValue.cs"/>
+		<Compile Include="Helpers\ProcessUtils.cs"/>
+		<Compile Include="Helpers\CurseForgeUtils.cs"/>
+		<Compile Include="Helpers\ReadFileInChunksAndCompareVector.cs"/>
+		<Compile Include="Helpers\ReadIntoByteBufferInChunks.cs"/>
+		<Compile Include="Helpers\ReadWholeFileAtOnce.cs"/>
+		<Compile Include="Helpers\SteamUtils.cs"/>
+		<Compile Include="Helpers\TaskUtils.cs"/>
+		<Compile Include="Helpers\Utils.cs"/>
+		<Compile Include="Models\ArkProfile.cs"/>
+		<Compile Include="Models\AutoManageSettings.cs"/>
+		<Compile Include="Models\BaseAdministration.cs"/>
+		<Compile Include="Models\CacheServerTypes.cs"/>
+		<Compile Include="Models\ASM\ClassMultiplier.cs"/>
+		<Compile Include="Models\Curseforge\CurseForgeFileDetailResponse.cs"/>
+		<Compile Include="Models\Curseforge\CurseForgeFileDetailResult.cs"/>
+		<Compile Include="Models\Curseforge\CurseForgeFileDetail.cs"/>
+		<Compile Include="Models\DefaultEnums.cs"/>
+		<Compile Include="Models\DefaultModels.cs"/>
+		<Compile Include="Models\ASM\DinoSettings.cs"/>
+		<Compile Include="Models\DinoSettingsJSON.cs"/>
+		<Compile Include="Models\ASM\DinoSettingsList.cs"/>
+		<Compile Include="Models\ASM\DinoSpawn.cs"/>
+		<Compile Include="Models\ASM\DriveInfoDisplay.cs"/>
+		<Compile Include="Models\ASM\Engram.cs"/>
+		<Compile Include="Models\ASM\EngramEntry.cs"/>
+		<Compile Include="Models\ASM\Level.cs"/>
+		<Compile Include="Models\ASM\MapSpawner.cs"/>
+		<Compile Include="Models\DefaultUserControl.cs"/>
+		<Compile Include="Models\ModListDetails.cs"/>
+		<Compile Include="Models\ASM\NPCReplacement.cs"/>
+		<Compile Include="Models\ASM\PrimalItem.cs"/>
+		<Compile Include="Models\ProfileOrderGrid.cs"/>
+		<Compile Include="Models\MonitorGrid.cs"/>
+		<Compile Include="Models\ASM\PlayerInfo.cs"/>
+		<Compile Include="Models\ASM\PlayerListParameters.cs"/>
+		<Compile Include="Models\PortForwardGrid.cs"/>
+		<Compile Include="Models\ProcessorAffinity.cs"/>
+		<Compile Include="Models\Profile.cs"/>
+		<Compile Include="Models\ASM\ResourceClassMultiplier.cs"/>
+		<Compile Include="Models\ResourceMonitor.cs"/>
+		<Compile Include="Models\Settings.cs"/>
+		<Compile Include="Models\SortableBindingList.cs"/>
+		<Compile Include="Models\ASM\StatsMultiplierFloatArray.cs"/>
+		<Compile Include="Models\ASM\StatsMultiplierIntegerArray.cs"/>
+		<Compile Include="Models\Steam\PublishedFileDetail.cs"/>
+		<Compile Include="Models\Steam\PublishedFileDetailsResponse.cs"/>
+		<Compile Include="Models\Steam\PublishedFileDetailsResult.cs"/>
+		<Compile Include="Models\Steam\SteamCmdAppManifest.cs"/>
+		<Compile Include="Models\Steam\SteamCmdAppWorkshop.cs"/>
+		<Compile Include="Models\Steam\SteamCmdManifestDetailsResult.cs"/>
+		<Compile Include="Models\Steam\SteamCmdManifestUserConfig.cs"/>
+		<Compile Include="Models\Steam\SteamCmdWorkshopDetailsResult.cs"/>
+		<Compile Include="Models\Steam\SteamCmdWorkshopItemDetails.cs"/>
+		<Compile Include="Models\Steam\SteamCmdWorkshopItemsInstalled.cs"/>
+		<Compile Include="Models\Steam\SteamUserDetail.cs"/>
+		<Compile Include="Models\Steam\SteamUserDetailResponse.cs"/>
+		<Compile Include="Models\Steam\SteamUserDetailResult.cs"/>
+		<Compile Include="Models\Steam\WorkshopFileDetail.cs"/>
+		<Compile Include="Models\Steam\WorkshopFileDetailResponse.cs"/>
+		<Compile Include="Models\Steam\WorkshopFileDetailResult.cs"/>
+		<Compile Include="Models\ASM\SupplyCrate.cs"/>
+		<Compile Include="Models\SupportedServers.cs"/>
+		<Compile Include="Models\ValheimProfile.cs"/>
+		<Compile Include="Properties\AssemblyInfo.cs"/>
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="app.config"/>
+		<None Include="packages.config"/>
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\Open.NAT\Open.Nat\Open.Nat.csproj">
+			<Project>{FDEACF87-8877-45D8-AD9F-AEE32A100544}</Project>
+			<Name>Open.Nat</Name>
+		</ProjectReference>
+		<ProjectReference Include="..\ArkData\ArkData.csproj">
+			<Project>{eb2f3774-da67-4772-b317-742247cec657}</Project>
+			<Name>ArkData</Name>
+		</ProjectReference>
+		<ProjectReference Include="..\NeXtVdf\NeXt.Vdf.csproj">
+			<Project>{80c924b6-f167-4ad2-875b-5d6ae8652ccd}</Project>
+			<Name>NeXt.Vdf</Name>
+		</ProjectReference>
+	</ItemGroup>
+	<ItemGroup/>
+	<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
 </Project>

@@ -42,20 +42,20 @@ namespace OphiussaServerManager {
             if (ItemImage != null) {
                 imgWidth  = imageSize.Value.Width;
                 imgHeight = imageSize.Value.Height;
-                e.Graphics.DrawImage(this.ItemImage, e.Bounds.X + margin.Left, e.Bounds.Y + margin.Top, imgWidth, imgHeight);
+                e.Graphics.DrawImage(ItemImage, e.Bounds.X + margin.Left, e.Bounds.Y + margin.Top, imgWidth, imgHeight);
             }
- 
+
             // calculate bounds for title text drawing
-            Rectangle titleBounds = new Rectangle(e.Bounds.X                 + margin.Horizontal + imgWidth,
-                                                  e.Bounds.Y                 + margin.Top,
-                                                  e.Bounds.Width             - margin.Right - imgWidth - margin.Horizontal,
-                                                  (int)titleFont.GetHeight() + 2);
+            var titleBounds = new Rectangle(e.Bounds.X                 + margin.Horizontal + imgWidth,
+                                            e.Bounds.Y                 + margin.Top,
+                                            e.Bounds.Width             - margin.Right - imgWidth - margin.Horizontal,
+                                            (int)titleFont.GetHeight() + 2);
 
             // calculate bounds for details text drawing
-            Rectangle detailBounds = new Rectangle(e.Bounds.X      + margin.Horizontal          + imgWidth,
-                                                   e.Bounds.Y      + (int)titleFont.GetHeight() + 2                          + margin.Vertical + margin.Top,
-                                                   e.Bounds.Width  - margin.Right               - imgWidth                   - margin.Horizontal,
-                                                   e.Bounds.Height - margin.Bottom              - (int)titleFont.GetHeight() - 2 - margin.Vertical - margin.Top);
+            var detailBounds = new Rectangle(e.Bounds.X      + margin.Horizontal          + imgWidth,
+                                             e.Bounds.Y      + (int)titleFont.GetHeight() + 2                          + margin.Vertical + margin.Top,
+                                             e.Bounds.Width  - margin.Right               - imgWidth                   - margin.Horizontal,
+                                             e.Bounds.Height - margin.Bottom              - (int)titleFont.GetHeight() - 2 - margin.Vertical - margin.Top);
 
             // draw the text within the bounds
             e.Graphics.DrawString(Title,   titleFont,   Brushes.Black,    titleBounds,  aligment);
@@ -68,9 +68,9 @@ namespace OphiussaServerManager {
 
     public partial class ExListBox : ListBox {
         private readonly Font _detailsFont;
-        private readonly Size _imageSize;
 
         private readonly StringFormat _fmt;
+        private readonly Size         _imageSize;
         private readonly Font         _titleFont;
 
         public ExListBox(Font            titleFont,
@@ -81,7 +81,7 @@ namespace OphiussaServerManager {
             _titleFont         = titleFont;
             _detailsFont       = detailsFont;
             _imageSize         = imageSize;
-            this.ItemHeight    = _imageSize.Height + this.Margin.Vertical;
+            ItemHeight         = _imageSize.Height + Margin.Vertical;
             _fmt               = new StringFormat();
             _fmt.Alignment     = aligment;
             _fmt.LineAlignment = lineAligment;
@@ -92,7 +92,7 @@ namespace OphiussaServerManager {
         public ExListBox() {
             InitializeComponent();
             _imageSize         = new Size(80, 60);
-            this.ItemHeight    = _imageSize.Height + this.Margin.Vertical;
+            ItemHeight         = _imageSize.Height + Margin.Vertical;
             _fmt               = new StringFormat();
             _fmt.Alignment     = StringAlignment.Near;
             _fmt.LineAlignment = StringAlignment.Near;
@@ -105,7 +105,7 @@ namespace OphiussaServerManager {
             // prevent from error Visual Designer
             if (Items.Count > 0 && e.Index >= 0) {
                 var item = (ExListBoxItem)Items[e.Index];
-                item.DrawItem(e, Margin, _titleFont, _detailsFont, _fmt, this._imageSize);
+                item.DrawItem(e, Margin, _titleFont, _detailsFont, _fmt, _imageSize);
             }
         }
 

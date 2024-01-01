@@ -2,18 +2,16 @@
 
 namespace OphiussaServerManager.Common.Models {
     [DefaultValue(False)]
-    public enum DinoBreedingable
-    {
+    public enum DinoBreedingable {
         False,
-        True,
+        True
     }
-    
+
     [DefaultValue(False)]
-    public enum DinoTamable
-    {
+    public enum DinoTamable {
         False,
         True,
         ByBreeding,
-        ByCrafting,
+        ByCrafting
     }
 }

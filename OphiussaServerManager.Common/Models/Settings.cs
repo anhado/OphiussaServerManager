@@ -71,8 +71,7 @@ namespace OphiussaServerManager.Common.Models {
         }
 
         public static string GetDataFolder() {
-            
-            Settings Settings = JsonConvert.DeserializeObject<Settings>(File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json")));
+            var Settings = JsonConvert.DeserializeObject<Settings>(File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json")));
             OphiussaLogger.ReconfigureLogging(Settings);
             return Settings.DataFolder;
         }

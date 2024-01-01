@@ -1,9 +1,6 @@
-﻿using System;
-using System.Windows;
-using OphiussaServerManager.Common.Helpers;
+﻿using OphiussaServerManager.Common.Helpers;
 
 namespace OphiussaServerManager.Common.Models {
-
     public class PrimalItem {
         public string ClassName { get; set; } = "";
 
@@ -18,13 +15,12 @@ namespace OphiussaServerManager.Common.Models {
         public string DisplayMod => GameData.FriendlyNameForClass($"Mod_{Mod}", true) ?? Mod;
 
         public PrimalItem Duplicate() {
-            var properties = this.GetType().GetProperties();
+            var properties = GetType().GetProperties();
 
             var result = new PrimalItem();
-            foreach (var prop in properties) {
+            foreach (var prop in properties)
                 if (prop.CanWrite)
                     prop.SetValue(result, prop.GetValue(this));
-            }
 
             return result;
         }

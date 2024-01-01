@@ -156,7 +156,7 @@ namespace OphiussaServerManager.Common {
             else if (property.PropertyType.IsSubclassOf(typeof(AggregateIniValue))) {
                 if (!(property.GetValue(obj) is AggregateIniValue aggregateIniValue))
                     return;
-                aggregateIniValue.InitializeFromINIValue(value);    
+                aggregateIniValue.InitializeFromINIValue(value);
             }
             else {
                 object obj1 = Convert.ChangeType(value, property.PropertyType, CultureInfo.GetCultureInfo("en-US"));

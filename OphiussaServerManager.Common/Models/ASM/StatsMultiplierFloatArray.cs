@@ -23,14 +23,12 @@ namespace OphiussaServerManager.Common.Models {
 
         public bool IsEnabled {
             get {
-                for (int i = 0; i < DefaultValues.Count; i++) {
-                    if (Count == DefaultValues.Count) {
+                for (int i = 0; i < DefaultValues.Count; i++)
+                    if (Count == DefaultValues.Count)
                         if (this[i] != DefaultValues[i]) {
                             base.IsEnabled = true;
                             break;
                         }
-                    }
-                }
 
                 return base.IsEnabled;
             }
@@ -40,9 +38,9 @@ namespace OphiussaServerManager.Common.Models {
             }
         }
 
-        public bool[] Inclusions { get; private set; }
+        public bool[] Inclusions { get; }
 
-        private StatsMultiplierFloatArray DefaultValues { get; set; }
+        private StatsMultiplierFloatArray DefaultValues { get; }
 
         public override void FromIniValues(IEnumerable<string> values) {
             Clear();
@@ -51,27 +49,24 @@ namespace OphiussaServerManager.Common.Models {
             if (ResetFunc != null)
                 list.AddRange(ResetFunc());
 
-            foreach (var v in values) {
-                var indexStart = v.IndexOf('[');
-                var indexEnd   = v.IndexOf(']');
+            foreach (string v in values) {
+                int indexStart = v.IndexOf('[');
+                int indexEnd   = v.IndexOf(']');
 
-                if (indexStart >= indexEnd) {
+                if (indexStart >= indexEnd)
                     // Invalid format
                     continue;
-                }
 
-                if (!int.TryParse(v.Substring(indexStart + 1, indexEnd - indexStart - 1), out int index)) {
+                if (!int.TryParse(v.Substring(indexStart + 1, indexEnd - indexStart - 1), out int index))
                     // Invalid index
                     continue;
-                }
 
-                if (index >= list.Count) {
+                if (index >= list.Count)
                     // Unexpected size
                     continue;
-                }
 
-                list[index]    = FromIniValue(v.Substring(v.IndexOf('=') + 1).Trim());
-                IsEnabled = true;
+                list[index] = FromIniValue(v.Substring(v.IndexOf('=') + 1).Trim());
+                IsEnabled   = true;
             }
 
             AddRange(list);
@@ -79,7 +74,7 @@ namespace OphiussaServerManager.Common.Models {
 
         public override IEnumerable<string> ToIniValues() {
             var values = new List<string>();
-            for (var i = 0; i < Count; i++) {
+            for (int i = 0; i < Count; i++) {
                 if (!(Inclusions?.ElementAtOrDefault(i) ?? true))
                     continue;
                 if (DefaultValues != null && Equals(DefaultValues[i], this[i]))

@@ -3,7 +3,6 @@ using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
-using OphiussaServerManager.Common;
 using OphiussaServerManager.Common.Helpers;
 using OphiussaServerManager.Common.Models;
 using OphiussaServerManager.Common.Models.Profiles;
@@ -33,7 +32,7 @@ namespace OphiussaServerManager.Tools {
                 // Adjust the CheckBox's location.
                 chk.Location = new Point(
                                          chk.Left + grp.Left,
-                                         chk.Top + grp.Top);
+                                         chk.Top  + grp.Top);
 
                 // Move the CheckBox to the top of the stacking order.
                 chk.BringToFront();
@@ -44,39 +43,33 @@ namespace OphiussaServerManager.Tools {
         }
 
         internal static string GetValueString(AutoManageSettings profile, string fieldName) {
-            string ret = "";
-            var fields = profile.GetType().GetProperties();
-            var pInfo = fields.FirstOrDefault(f => f.Name == fieldName);
-            if (pInfo != null) {
-                ret = pInfo.GetValue(profile).ToString();
-            }
+            string ret             = "";
+            var    fields          = profile.GetType().GetProperties();
+            var    pInfo           = fields.FirstOrDefault(f => f.Name == fieldName);
+            if (pInfo != null) ret = pInfo.GetValue(profile).ToString();
 
             return ret;
         }
 
         internal static float GetValueFloat(AutoManageSettings profile, string fieldName) {
-            float ret = 0;
-            var fields = profile.GetType().GetProperties();
-            var pInfo = fields.FirstOrDefault(f => f.Name == fieldName);
+            float ret    = 0;
+            var   fields = profile.GetType().GetProperties();
+            var   pInfo  = fields.FirstOrDefault(f => f.Name == fieldName);
             if (pInfo != null) {
-                string v = pInfo.GetValue(profile).ToString();
-                if (float.TryParse(v, NumberStyles.Any, CultureInfo.InvariantCulture, out float res)) {
-                    ret = res;
-                }
+                string v                                                                                  = pInfo.GetValue(profile).ToString();
+                if (float.TryParse(v, NumberStyles.Any, CultureInfo.InvariantCulture, out float res)) ret = res;
             }
 
             return ret;
         }
 
         internal static bool GetValueBool(AutoManageSettings profile, string fieldName) {
-            bool ret = false;
-            var fields = profile.GetType().GetProperties();
-            var pInfo = fields.FirstOrDefault(f => f.Name == fieldName);
+            bool ret    = false;
+            var  fields = profile.GetType().GetProperties();
+            var  pInfo  = fields.FirstOrDefault(f => f.Name == fieldName);
             if (pInfo != null) {
-                string v = pInfo.GetValue(profile).ToString();
-                if (bool.TryParse(v, out bool res)) {
-                    ret = res;
-                }
+                string v                                = pInfo.GetValue(profile).ToString();
+                if (bool.TryParse(v, out bool res)) ret = res;
             }
 
             return ret;
@@ -84,146 +77,150 @@ namespace OphiussaServerManager.Tools {
 
 
         private static void txt_Enter(object sender, EventArgs e) {
-            var txt = ((System.Windows.Forms.TextBox)sender);
+            var txt = (TextBox)sender;
 
             if (txt.ReadOnly == false && txt.Enabled) txt.BackColor = Color.LightSkyBlue;
         }
 
         private static void txt_Leave(object sender, EventArgs e) {
-            var txt = ((System.Windows.Forms.TextBox)sender);
+            var txt = (TextBox)sender;
 
             if (txt.ReadOnly == false && txt.Enabled) txt.BackColor = Color.White;
         }
 
         internal static void LoadValuesToFields(AutoManageSettings profile, Control.ControlCollection controls) {
-            foreach (Control item in controls) {
-                if (item is System.Windows.Forms.TextBox txt) {
-                    txt.Text = UsefullTools.GetValueString(profile, txt.Tag?.ToString());
+            foreach (Control item in controls)
+                if (item is TextBox txt) {
+                    txt.Text  =  GetValueString(profile, txt.Tag?.ToString());
                     txt.Enter += txt_Enter;
                     txt.Leave += txt_Leave;
                 }
-                else if (item is System.Windows.Forms.MaskedTextBox mtxt)
-                    mtxt.Text = UsefullTools.GetValueString(profile, mtxt.Tag?.ToString());
-                else if (item is Components.exTrackBar trackBar)
-                    trackBar.Value = UsefullTools.GetValueFloat(profile, trackBar.Tag?.ToString());
-                else if (item is System.Windows.Forms.CheckBox chk)
-                    chk.Checked = UsefullTools.GetValueBool(profile, chk.Tag?.ToString());
-                else if (item is System.Windows.Forms.ComboBox cbo)
-                    cbo.SelectedValue = UsefullTools.GetValueString(profile, cbo.Tag?.ToString());
-                else if (item is System.Windows.Forms.Label lbl ||
-                         item is System.Windows.Forms.Button btn ||
-                         item is System.Windows.Forms.RadioButton btn2) {
+                else if (item is MaskedTextBox mtxt) {
+                    mtxt.Text = GetValueString(profile, mtxt.Tag?.ToString());
+                }
+                else if (item is exTrackBar trackBar) {
+                    trackBar.Value = GetValueFloat(profile, trackBar.Tag?.ToString());
+                }
+                else if (item is CheckBox chk) {
+                    chk.Checked = GetValueBool(profile, chk.Tag?.ToString());
+                }
+                else if (item is ComboBox cbo) {
+                    cbo.SelectedValue = GetValueString(profile, cbo.Tag?.ToString());
+                }
+                else if (item is Label lbl  ||
+                         item is Button btn ||
+                         item is RadioButton btn2) {
                     //do nothing
                 }
-                else if (item.HasChildren)
+                else if (item.HasChildren) {
                     LoadValuesToFields(profile, item.Controls);
+                }
                 else {
                     throw new Exception("Not Supported");
                 }
-            }
         }
 
         internal static void LoadValuesToFields(ArkProfile profile, Control.ControlCollection controls) {
-            foreach (Control item in controls) {
-                if (item is System.Windows.Forms.TextBox txt) {
-                    txt.Text = UsefullTools.GetValueString(profile, txt.Tag?.ToString());
+            foreach (Control item in controls)
+                if (item is TextBox txt) {
+                    txt.Text  =  GetValueString(profile, txt.Tag?.ToString());
                     txt.Enter += txt_Enter;
                     txt.Leave += txt_Leave;
                 }
-                else if (item is System.Windows.Forms.MaskedTextBox mtxt)
-                    mtxt.Text = UsefullTools.GetValueString(profile, mtxt.Tag?.ToString());
-                else if (item is Components.exTrackBar trackBar) {
+                else if (item is MaskedTextBox mtxt) {
+                    mtxt.Text = GetValueString(profile, mtxt.Tag?.ToString());
+                }
+                else if (item is exTrackBar trackBar) {
                     if (trackBar.Tag?.ToString() == "MaxHexagonsPerCharacter") {
-                        var x = 1;
+                        int x = 1;
                     }
 
                     if (trackBar.Scale == 1)
-                        trackBar.Value = UsefullTools.GetValueInt(profile, trackBar.Tag?.ToString());
+                        trackBar.Value = GetValueInt(profile, trackBar.Tag?.ToString());
                     else
-                        trackBar.Value = UsefullTools.GetValueFloat(profile, trackBar.Tag?.ToString());
+                        trackBar.Value = GetValueFloat(profile, trackBar.Tag?.ToString());
                 }
-                else if (item is System.Windows.Forms.CheckBox chk)
-                    chk.Checked = UsefullTools.GetValueBool(profile, chk.Tag?.ToString());
-                else if (item is System.Windows.Forms.ComboBox cbo)
-                    cbo.SelectedValue = UsefullTools.GetValueString(profile, cbo.Tag?.ToString());
-                else if (item is System.Windows.Forms.Label lbl ||
-                         item is System.Windows.Forms.Button btn ||
-                         item is System.Windows.Forms.HScrollBar Hsb ||
-                         item is System.Windows.Forms.VScrollBar Vsb) {
+                else if (item is CheckBox chk) {
+                    chk.Checked = GetValueBool(profile, chk.Tag?.ToString());
+                }
+                else if (item is ComboBox cbo) {
+                    cbo.SelectedValue = GetValueString(profile, cbo.Tag?.ToString());
+                }
+                else if (item is Label lbl      ||
+                         item is Button btn     ||
+                         item is HScrollBar Hsb ||
+                         item is VScrollBar Vsb) {
                     //do nothing
                 }
-                else if (item.HasChildren)
+                else if (item.HasChildren) {
                     LoadValuesToFields(profile, item.Controls);
+                }
                 else {
                     throw new Exception("Not Supported");
                 }
-            }
         }
 
         internal static void LoadValuesToFields(Profile profile, Control.ControlCollection controls) {
-            foreach (Control item in controls) {
+            foreach (Control item in controls)
                 try {
-                    if (item is System.Windows.Forms.TextBox txt) {
-                        txt.Text = UsefullTools.GetValueString(profile, txt.Tag?.ToString());
+                    if (item is TextBox txt) {
+                        txt.Text  =  GetValueString(profile, txt.Tag?.ToString());
                         txt.Enter += txt_Enter;
                         txt.Leave += txt_Leave;
                     }
-                    else if (item is Components.exTrackBar trackBar)
-                        trackBar.Value = UsefullTools.GetValueFloat(profile, trackBar.Tag?.ToString());
-                    else if (item is System.Windows.Forms.CheckBox chk)
-                        chk.Checked = UsefullTools.GetValueBool(profile, chk.Tag?.ToString());
-                    else if (item is System.Windows.Forms.ComboBox cbo)
-                        cbo.SelectedValue = UsefullTools.GetValueString(profile, cbo.Tag?.ToString());
-                    else if (item is System.Windows.Forms.Label lbl ||
-                             item is System.Windows.Forms.Button btn) {
+                    else if (item is exTrackBar trackBar) {
+                        trackBar.Value = GetValueFloat(profile, trackBar.Tag?.ToString());
+                    }
+                    else if (item is CheckBox chk) {
+                        chk.Checked = GetValueBool(profile, chk.Tag?.ToString());
+                    }
+                    else if (item is ComboBox cbo) {
+                        cbo.SelectedValue = GetValueString(profile, cbo.Tag?.ToString());
+                    }
+                    else if (item is Label lbl ||
+                             item is Button btn) {
                         //do nothing
                     }
-                    else if (item.HasChildren)
+                    else if (item.HasChildren) {
                         LoadValuesToFields(profile, item.Controls);
+                    }
                     else {
                         throw new Exception("Not Supported");
                     }
-
                 }
                 catch (Exception e) {
                     OphiussaLogger.Logger.Error(e);
                 }
-            }
         }
+
         internal static string GetValueString(ArkProfile profile, string fieldName) {
-            string ret = "";
-            var fields = profile.GetType().GetProperties();
-            var pInfo = fields.FirstOrDefault(f => f.Name == fieldName);
-            if (pInfo != null) {
-                ret = pInfo.GetValue(profile)?.ToString();
-            }
+            string ret             = "";
+            var    fields          = profile.GetType().GetProperties();
+            var    pInfo           = fields.FirstOrDefault(f => f.Name == fieldName);
+            if (pInfo != null) ret = pInfo.GetValue(profile)?.ToString();
 
             return ret;
         }
 
         internal static float GetValueFloat(ArkProfile profile, string fieldName) {
-            float ret = 0;
-            var fields = profile.GetType().GetProperties();
-            var pInfo = fields.FirstOrDefault(f => f.Name == fieldName);
+            float ret    = 0;
+            var   fields = profile.GetType().GetProperties();
+            var   pInfo  = fields.FirstOrDefault(f => f.Name == fieldName);
             if (pInfo != null) {
-                string v = pInfo.GetValue(profile)?.ToString().Replace(",", ".");
-                if (float.TryParse(v, NumberStyles.Any, CultureInfo.InvariantCulture, out float res)) {
-                    ret = res;
-                }
+                string v                                                                                  = pInfo.GetValue(profile)?.ToString().Replace(",", ".");
+                if (float.TryParse(v, NumberStyles.Any, CultureInfo.InvariantCulture, out float res)) ret = res;
             }
 
             return ret;
         }
 
         internal static int GetValueInt(ArkProfile profile, string fieldName) {
-            int ret = 0;
+            int ret    = 0;
             var fields = profile.GetType().GetProperties();
-            var pInfo = fields.FirstOrDefault(f => f.Name == fieldName);
+            var pInfo  = fields.FirstOrDefault(f => f.Name == fieldName);
             if (pInfo != null) {
-                string v = pInfo.GetValue(profile)?.ToString().Replace(",", ".");
-                if (int.TryParse(v, NumberStyles.Any, CultureInfo.InvariantCulture, out int res)) {
-                    ret = res;
-                }
+                string v                                                                              = pInfo.GetValue(profile)?.ToString().Replace(",", ".");
+                if (int.TryParse(v, NumberStyles.Any, CultureInfo.InvariantCulture, out int res)) ret = res;
             }
 
             return ret;
@@ -231,14 +228,12 @@ namespace OphiussaServerManager.Tools {
 
 
         internal static bool GetValueBool(ArkProfile profile, string fieldName) {
-            bool ret = false;
-            var fields = profile.GetType().GetProperties();
-            var pInfo = fields.FirstOrDefault(f => f.Name == fieldName);
+            bool ret    = false;
+            var  fields = profile.GetType().GetProperties();
+            var  pInfo  = fields.FirstOrDefault(f => f.Name == fieldName);
             if (pInfo != null) {
-                string v = pInfo.GetValue(profile)?.ToString();
-                if (bool.TryParse(v, out bool res)) {
-                    ret = res;
-                }
+                string v                                = pInfo.GetValue(profile)?.ToString();
+                if (bool.TryParse(v, out bool res)) ret = res;
             }
 
             return ret;
@@ -246,39 +241,33 @@ namespace OphiussaServerManager.Tools {
 
 
         internal static string GetValueString(Profile profile, string fieldName) {
-            string ret = "";
-            var fields = profile.GetType().GetProperties();
-            var pInfo = fields.FirstOrDefault(f => f.Name == fieldName);
-            if (pInfo != null) {
-                ret = pInfo.GetValue(profile)?.ToString();
-            }
+            string ret             = "";
+            var    fields          = profile.GetType().GetProperties();
+            var    pInfo           = fields.FirstOrDefault(f => f.Name == fieldName);
+            if (pInfo != null) ret = pInfo.GetValue(profile)?.ToString();
 
             return ret;
         }
 
         internal static float GetValueFloat(Profile profile, string fieldName) {
-            float ret = 0;
-            var fields = profile.GetType().GetProperties();
-            var pInfo = fields.FirstOrDefault(f => f.Name == fieldName);
+            float ret    = 0;
+            var   fields = profile.GetType().GetProperties();
+            var   pInfo  = fields.FirstOrDefault(f => f.Name == fieldName);
             if (pInfo != null) {
-                string v = pInfo.GetValue(profile)?.ToString();
-                if (float.TryParse(v, NumberStyles.Any, CultureInfo.InvariantCulture, out float res)) {
-                    ret = res;
-                }
+                string v                                                                                  = pInfo.GetValue(profile)?.ToString();
+                if (float.TryParse(v, NumberStyles.Any, CultureInfo.InvariantCulture, out float res)) ret = res;
             }
 
             return ret;
         }
 
         internal static bool GetValueBool(Profile profile, string fieldName) {
-            bool ret = false;
-            var fields = profile.GetType().GetProperties();
-            var pInfo = fields.FirstOrDefault(f => f.Name == fieldName);
+            bool ret    = false;
+            var  fields = profile.GetType().GetProperties();
+            var  pInfo  = fields.FirstOrDefault(f => f.Name == fieldName);
             if (pInfo != null) {
-                string v = pInfo.GetValue(profile)?.ToString();
-                if (bool.TryParse(v, out bool res)) {
-                    ret = res;
-                }
+                string v                                = pInfo.GetValue(profile)?.ToString();
+                if (bool.TryParse(v, out bool res)) ret = res;
             }
 
             return ret;
@@ -287,7 +276,7 @@ namespace OphiussaServerManager.Tools {
         internal static void SetValueString(ref ArkProfile profile, string fieldName, string value) {
             try {
                 var fields = profile.GetType().GetProperties();
-                var pInfo = fields.FirstOrDefault(f => f.Name == fieldName);
+                var pInfo  = fields.FirstOrDefault(f => f.Name == fieldName);
                 if (pInfo != null) {
                     if (pInfo.PropertyType.Name == "String")
                         pInfo.SetValue(profile, value);
@@ -295,9 +284,8 @@ namespace OphiussaServerManager.Tools {
                         pInfo.SetValue(profile, value);
                     else if (pInfo.PropertyType.Name == "Int32")
                         pInfo.SetValue(profile, value.ToString(CultureInfo.InvariantCulture).ToInt());
-                    else {
+                    else
                         throw new Exception("Not Supported");
-                    }
                 }
             }
             catch (Exception e) {
@@ -309,15 +297,14 @@ namespace OphiussaServerManager.Tools {
         internal static void SetValueFloat(ref ArkProfile profile, string fieldName, float value) {
             try {
                 var fields = profile.GetType().GetProperties();
-                var pInfo = fields.FirstOrDefault(f => f.Name == fieldName);
+                var pInfo  = fields.FirstOrDefault(f => f.Name == fieldName);
                 if (pInfo != null) {
                     if (pInfo.PropertyType.Name == "Single")
                         pInfo.SetValue(profile, value);
                     else if (pInfo.PropertyType.Name == "Int32")
                         pInfo.SetValue(profile, value.ToString(CultureInfo.InvariantCulture).ToInt());
-                    else {
+                    else
                         throw new Exception("Not Supported");
-                    }
                 }
             }
             catch (Exception e) {
@@ -328,10 +315,8 @@ namespace OphiussaServerManager.Tools {
         internal static void SetValueBool(ref ArkProfile profile, string fieldName, bool value) {
             try {
                 var fields = profile.GetType().GetProperties();
-                var pInfo = fields.FirstOrDefault(f => f.Name == fieldName);
-                if (pInfo != null) {
-                    pInfo.SetValue(profile, value);
-                }
+                var pInfo  = fields.FirstOrDefault(f => f.Name == fieldName);
+                if (pInfo != null) pInfo.SetValue(profile, value);
             }
             catch (Exception e) {
                 Console.WriteLine($"{fieldName}:" + e);
@@ -342,7 +327,7 @@ namespace OphiussaServerManager.Tools {
         internal static void SetValueString(ref AutoManageSettings profile, string fieldName, string value) {
             try {
                 var fields = profile.GetType().GetProperties();
-                var pInfo = fields.FirstOrDefault(f => f.Name == fieldName);
+                var pInfo  = fields.FirstOrDefault(f => f.Name == fieldName);
                 if (pInfo != null) {
                     if (pInfo.PropertyType.Name == "String")
                         pInfo.SetValue(profile, value);
@@ -350,9 +335,8 @@ namespace OphiussaServerManager.Tools {
                         pInfo.SetValue(profile, value);
                     else if (pInfo.PropertyType.Name == "Int32")
                         pInfo.SetValue(profile, value.ToString(CultureInfo.InvariantCulture).ToInt());
-                    else {
+                    else
                         throw new Exception("Not Supported");
-                    }
                 }
             }
             catch (Exception e) {
@@ -364,15 +348,14 @@ namespace OphiussaServerManager.Tools {
         internal static void SetValueFloat(ref AutoManageSettings profile, string fieldName, float value) {
             try {
                 var fields = profile.GetType().GetProperties();
-                var pInfo = fields.FirstOrDefault(f => f.Name == fieldName);
+                var pInfo  = fields.FirstOrDefault(f => f.Name == fieldName);
                 if (pInfo != null) {
                     if (pInfo.PropertyType.Name == "Single")
                         pInfo.SetValue(profile, value);
                     else if (pInfo.PropertyType.Name == "Int32")
                         pInfo.SetValue(profile, value.ToString(CultureInfo.InvariantCulture).ToInt());
-                    else {
+                    else
                         throw new Exception("Not Supported");
-                    }
                 }
             }
             catch (Exception e) {
@@ -383,10 +366,8 @@ namespace OphiussaServerManager.Tools {
         internal static void SetValueBool(ref AutoManageSettings profile, string fieldName, bool value) {
             try {
                 var fields = profile.GetType().GetProperties();
-                var pInfo = fields.FirstOrDefault(f => f.Name == fieldName);
-                if (pInfo != null) {
-                    pInfo.SetValue(profile, value);
-                }
+                var pInfo  = fields.FirstOrDefault(f => f.Name == fieldName);
+                if (pInfo != null) pInfo.SetValue(profile, value);
             }
             catch (Exception e) {
                 Console.WriteLine($"{fieldName}:" + e);
@@ -396,7 +377,7 @@ namespace OphiussaServerManager.Tools {
         internal static void SetValueString(ref Profile profile, string fieldName, string value) {
             try {
                 var fields = profile.GetType().GetProperties();
-                var pInfo = fields.FirstOrDefault(f => f.Name == fieldName);
+                var pInfo  = fields.FirstOrDefault(f => f.Name == fieldName);
                 if (pInfo != null) {
                     if (pInfo.PropertyType.Name == "String")
                         pInfo.SetValue(profile, value);
@@ -404,9 +385,8 @@ namespace OphiussaServerManager.Tools {
                         pInfo.SetValue(profile, value);
                     else if (pInfo.PropertyType.Name == "Int32")
                         pInfo.SetValue(profile, value.ToString(CultureInfo.InvariantCulture).ToInt());
-                    else {
+                    else
                         throw new Exception("Not Supported");
-                    }
                 }
             }
             catch (Exception e) {
@@ -417,15 +397,14 @@ namespace OphiussaServerManager.Tools {
         internal static void SetValueFloat(ref Profile profile, string fieldName, float value) {
             try {
                 var fields = profile.GetType().GetProperties();
-                var pInfo = fields.FirstOrDefault(f => f.Name == fieldName);
+                var pInfo  = fields.FirstOrDefault(f => f.Name == fieldName);
                 if (pInfo != null) {
                     if (pInfo.PropertyType.Name == "Single")
                         pInfo.SetValue(profile, value);
                     else if (pInfo.PropertyType.Name == "Int32")
                         pInfo.SetValue(profile, value.ToString(CultureInfo.InvariantCulture).ToInt());
-                    else {
+                    else
                         throw new Exception("Not Supported");
-                    }
                 }
             }
             catch (Exception e) {
@@ -436,10 +415,8 @@ namespace OphiussaServerManager.Tools {
         internal static void SetValueBool(ref Profile profile, string fieldName, bool value) {
             try {
                 var fields = profile.GetType().GetProperties();
-                var pInfo = fields.FirstOrDefault(f => f.Name == fieldName);
-                if (pInfo != null) {
-                    pInfo.SetValue(profile, value);
-                }
+                var pInfo  = fields.FirstOrDefault(f => f.Name == fieldName);
+                if (pInfo != null) pInfo.SetValue(profile, value);
             }
             catch (Exception e) {
                 Console.WriteLine($"{fieldName}:" + e);
@@ -448,13 +425,13 @@ namespace OphiussaServerManager.Tools {
 
         internal static void LoadFieldsToObject(ref ArkProfile profile, Control.ControlCollection controls) {
             foreach (Control item in controls)
-                if (item is System.Windows.Forms.TextBox txt) {
+                if (item is TextBox txt) {
                     SetValueString(ref profile, txt.Tag?.ToString(), txt.Text);
                 }
-                else if (item is Components.exTrackBar trackBar) {
+                else if (item is exTrackBar trackBar) {
                     SetValueFloat(ref profile, trackBar.Tag?.ToString(), trackBar.Value);
                 }
-                else if (item is System.Windows.Forms.CheckBox chk) {
+                else if (item is CheckBox chk) {
                     SetValueBool(ref profile, chk.Tag?.ToString(), chk.Checked);
                 }
                 else {
@@ -464,13 +441,13 @@ namespace OphiussaServerManager.Tools {
 
         internal static void LoadFieldsToObject(ref AutoManageSettings profile, Control.ControlCollection controls) {
             foreach (Control item in controls)
-                if (item is System.Windows.Forms.TextBox txt) {
+                if (item is TextBox txt) {
                     SetValueString(ref profile, txt.Tag?.ToString(), txt.Text);
                 }
-                else if (item is Components.exTrackBar trackBar) {
+                else if (item is exTrackBar trackBar) {
                     SetValueFloat(ref profile, trackBar.Tag?.ToString(), trackBar.Value);
                 }
-                else if (item is System.Windows.Forms.CheckBox chk) {
+                else if (item is CheckBox chk) {
                     SetValueBool(ref profile, chk.Tag?.ToString(), chk.Checked);
                 }
                 else {
@@ -480,13 +457,13 @@ namespace OphiussaServerManager.Tools {
 
         internal static void LoadFieldsToObject(ref Profile profile, Control.ControlCollection controls) {
             foreach (Control item in controls)
-                if (item is System.Windows.Forms.TextBox txt) {
+                if (item is TextBox txt) {
                     SetValueString(ref profile, txt.Tag?.ToString(), txt.Text);
                 }
-                else if (item is Components.exTrackBar trackBar) {
+                else if (item is exTrackBar trackBar) {
                     SetValueFloat(ref profile, trackBar.Tag?.ToString(), trackBar.Value);
                 }
-                else if (item is System.Windows.Forms.CheckBox chk) {
+                else if (item is CheckBox chk) {
                     SetValueBool(ref profile, chk.Tag?.ToString(), chk.Checked);
                 }
                 else {

@@ -1,11 +1,9 @@
-﻿using System;
-using System.Windows;
-using OphiussaServerManager.Common.Helpers;
+﻿using OphiussaServerManager.Common.Helpers;
 
 namespace OphiussaServerManager.Common.Models {
     public class DinoSettings {
         public object OriginalSetting { get; set; }
-        public string ClassName { get; set; } = "";
+        public string ClassName       { get; set; } = "";
 
         public string Mod { get; set; } = "";
 

@@ -1,5 +1,4 @@
-﻿using System.Dynamic;
-using System.Windows;
+﻿using System.Windows;
 
 namespace OphiussaServerManager.Common.Models {
     public class PlayerListParameters {

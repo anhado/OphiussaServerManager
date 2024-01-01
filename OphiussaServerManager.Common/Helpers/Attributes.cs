@@ -1,10 +1,7 @@
-﻿using System;
-using OphiussaServerManager.Common.Ini;
+﻿using OphiussaServerManager.Common.Ini;
 
 namespace OphiussaServerManager.Common.Helpers {
-    
-    public enum ServerProfileCategory
-    {
+    public enum ServerProfileCategory {
         Unknown,
         Administration,
         AutomaticManagement,
@@ -30,18 +27,16 @@ namespace OphiussaServerManager.Common.Helpers {
         StackSizeOverrides,
         PreventTransferOverrides,
         PGM,
-        SOTF,
+        SOTF
     }
-      
-    public class IniFileEntryAttribute : BaseIniFileEntryAttribute
-    {
+
+    public class IniFileEntryAttribute : BaseIniFileEntryAttribute {
         public IniFileEntryAttribute(
             IniFiles              file,
             IniSections           section,
             ServerProfileCategory category,
             string                key = "")
-            : base((Enum) file, (Enum) section, (Enum) category, key)
-        {
+            : base(file, section, category, key) {
         }
-    } 
+    }
 }
