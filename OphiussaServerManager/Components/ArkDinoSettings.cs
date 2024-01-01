@@ -170,48 +170,48 @@ namespace OphiussaServerManager.Components {
 
                 if (ds != null) {
                     if (setting.OverrideSpawnLimitPercentage != ds.OriginalOverrideSpawnLimitPercentage ||
-                        setting.SpawnLimitPercentage != ds.OriginalSpawnLimitPercentage ||
-                        setting.SpawnWeightMultiplier != ds.OriginalSpawnWeightMultiplier)
+                        setting.SpawnLimitPercentage         != ds.OriginalSpawnLimitPercentage         ||
+                        setting.SpawnWeightMultiplier        != ds.OriginalSpawnWeightMultiplier)
                         _profile.DinoSpawnWeightMultipliers.Add(new DinoSpawn() {
-                            ClassName = ds.ClassName,
-                            OverrideSpawnLimitPercentage = setting.OverrideSpawnLimitPercentage,
-                            SpawnLimitPercentage = setting.SpawnLimitPercentage,
-                            SpawnWeightMultiplier = setting.SpawnWeightMultiplier,
-                            Mod = ds.Mod,
-                            KnownDino = ds.KnownDino,
-                            DinoNameTag = ds.NameTag
-                        });
+                                                                                    ClassName                    = ds.ClassName,
+                                                                                    OverrideSpawnLimitPercentage = setting.OverrideSpawnLimitPercentage,
+                                                                                    SpawnLimitPercentage         = setting.SpawnLimitPercentage,
+                                                                                    SpawnWeightMultiplier        = setting.SpawnWeightMultiplier,
+                                                                                    Mod                          = ds.Mod,
+                                                                                    KnownDino                    = ds.KnownDino,
+                                                                                    DinoNameTag                  = ds.NameTag
+                                                                                });
 
                     if (setting.TamedDamageMultiplier != DinoSpawn.DEFAULT_SPAWN_WEIGHT_MULTIPLIER)
                         _profile.TamedDinoClassDamageMultipliers.Add(new ClassMultiplier() {
-                            ClassName = ds.ClassName,
-                            Multiplier = setting.TamedDamageMultiplier
-                        });
+                                                                                               ClassName  = ds.ClassName,
+                                                                                               Multiplier = setting.TamedDamageMultiplier
+                                                                                           });
 
                     if (setting.TamedResistanceMultiplier != DinoSpawn.DEFAULT_SPAWN_WEIGHT_MULTIPLIER)
                         _profile.TamedDinoClassResistanceMultipliers.Add(new ClassMultiplier() {
-                            ClassName = ds.ClassName,
-                            Multiplier = setting.TamedResistanceMultiplier
-                        });
+                                                                                                   ClassName  = ds.ClassName,
+                                                                                                   Multiplier = setting.TamedResistanceMultiplier
+                                                                                               });
 
                     if (setting.WildDamageMultiplier != DinoSpawn.DEFAULT_SPAWN_WEIGHT_MULTIPLIER)
                         _profile.DinoClassDamageMultipliers.Add(new ClassMultiplier() {
-                            ClassName = ds.ClassName,
-                            Multiplier = setting.WildDamageMultiplier
-                        });
+                                                                                          ClassName  = ds.ClassName,
+                                                                                          Multiplier = setting.WildDamageMultiplier
+                                                                                      });
 
                     if (setting.WildResistanceMultiplier != DinoSpawn.DEFAULT_SPAWN_WEIGHT_MULTIPLIER)
                         _profile.DinoClassResistanceMultipliers.Add(new ClassMultiplier() {
-                            ClassName = ds.ClassName,
-                            Multiplier = setting.WildResistanceMultiplier
-                        });
+                                                                                              ClassName  = ds.ClassName,
+                                                                                              Multiplier = setting.WildResistanceMultiplier
+                                                                                          });
 
 
                     if (setting.ClassName != setting.ReplacementClass)
                         _profile.NPCReplacements.Add(new NPCReplacement() {
-                            FromClassName = ds.ClassName,
-                            ToClassName = setting.ReplacementClass
-                        });
+                                                                              FromClassName = ds.ClassName,
+                                                                              ToClassName   = setting.ReplacementClass
+                                                                          });
 
                     if (!setting.CanSpawn && ds.IsSpawnable == true) {
                         _profile.PreventDinoTameClassNames.Add(setting.ReplacementClass);
@@ -261,16 +261,16 @@ namespace OphiussaServerManager.Components {
 
             _profile.PerLevelStatsMultiplier_DinoTamed_Add.IsEnabled = chkPerLevelStatMultiplierTamedAdd.Checked;
             if (_profile.PerLevelStatsMultiplier_DinoTamed_Add.IsEnabled) {
-                _profile.PerLevelStatsMultiplier_DinoTamed_Add[0] = txttbPerLevelStatsMultiplierTamedAddHealth.Value;
-                _profile.PerLevelStatsMultiplier_DinoTamed_Add[1] = txttbPerLevelStatsMultiplierTamedAddStamina.Value;
-                _profile.PerLevelStatsMultiplier_DinoTamed_Add[2] = txttbPerLevelStatsMultiplierTamedAddTorpidity.Value;
-                _profile.PerLevelStatsMultiplier_DinoTamed_Add[3] = txttbPerLevelStatsMultiplierTamedAddOxygen.Value;
-                _profile.PerLevelStatsMultiplier_DinoTamed_Add[4] = txttbPerLevelStatsMultiplierTamedAddFood.Value;
-                _profile.PerLevelStatsMultiplier_DinoTamed_Add[5] = txttbPerLevelStatsMultiplierTamedAddWater.Value;
-                _profile.PerLevelStatsMultiplier_DinoTamed_Add[6] = txttbPerLevelStatsMultiplierTamedAddTemperature.Value;
-                _profile.PerLevelStatsMultiplier_DinoTamed_Add[7] = txttbPerLevelStatsMultiplierTamedAddWeight.Value;
-                _profile.PerLevelStatsMultiplier_DinoTamed_Add[8] = txttbPerLevelStatsMultiplierTamedAddDamage.Value;
-                _profile.PerLevelStatsMultiplier_DinoTamed_Add[9] = txttbPerLevelStatsMultiplierTamedAddSpeed.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed_Add[0]  = txttbPerLevelStatsMultiplierTamedAddHealth.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed_Add[1]  = txttbPerLevelStatsMultiplierTamedAddStamina.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed_Add[2]  = txttbPerLevelStatsMultiplierTamedAddTorpidity.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed_Add[3]  = txttbPerLevelStatsMultiplierTamedAddOxygen.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed_Add[4]  = txttbPerLevelStatsMultiplierTamedAddFood.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed_Add[5]  = txttbPerLevelStatsMultiplierTamedAddWater.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed_Add[6]  = txttbPerLevelStatsMultiplierTamedAddTemperature.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed_Add[7]  = txttbPerLevelStatsMultiplierTamedAddWeight.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed_Add[8]  = txttbPerLevelStatsMultiplierTamedAddDamage.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed_Add[9]  = txttbPerLevelStatsMultiplierTamedAddSpeed.Value;
                 _profile.PerLevelStatsMultiplier_DinoTamed_Add[10] = txttbPerLevelStatsMultiplierTamedAddFortitude.Value;
                 _profile.PerLevelStatsMultiplier_DinoTamed_Add[11] = txttbPerLevelStatsMultiplierTamedAddCrafting.Value;
             }
@@ -280,16 +280,16 @@ namespace OphiussaServerManager.Components {
 
             _profile.PerLevelStatsMultiplier_DinoTamed_Affinity.IsEnabled = chkPerLevelStatsMultiplierTamedAffinity.Checked;
             if (_profile.PerLevelStatsMultiplier_DinoTamed_Affinity.IsEnabled) {
-                _profile.PerLevelStatsMultiplier_DinoTamed_Affinity[0] = txttbPerLevelStatsMultiplierTamedAffinityHealth.Value;
-                _profile.PerLevelStatsMultiplier_DinoTamed_Affinity[1] = txttbPerLevelStatsMultiplierTamedAffinityStamina.Value;
-                _profile.PerLevelStatsMultiplier_DinoTamed_Affinity[2] = txttbPerLevelStatsMultiplierTamedAffinityTorpidity.Value;
-                _profile.PerLevelStatsMultiplier_DinoTamed_Affinity[3] = txttbPerLevelStatsMultiplierTamedAffinityOxygen.Value;
-                _profile.PerLevelStatsMultiplier_DinoTamed_Affinity[4] = txttbPerLevelStatsMultiplierTamedAffinityFood.Value;
-                _profile.PerLevelStatsMultiplier_DinoTamed_Affinity[5] = txttbPerLevelStatsMultiplierTamedAffinityWater.Value;
-                _profile.PerLevelStatsMultiplier_DinoTamed_Affinity[6] = txttbPerLevelStatsMultiplierTamedAffinityTemperature.Value;
-                _profile.PerLevelStatsMultiplier_DinoTamed_Affinity[7] = txttbPerLevelStatsMultiplierTamedAffinityWeight.Value;
-                _profile.PerLevelStatsMultiplier_DinoTamed_Affinity[8] = txttbPerLevelStatsMultiplierTamedAffinityDamage.Value;
-                _profile.PerLevelStatsMultiplier_DinoTamed_Affinity[9] = txttbPerLevelStatsMultiplierTamedAffinitySpeed.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed_Affinity[0]  = txttbPerLevelStatsMultiplierTamedAffinityHealth.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed_Affinity[1]  = txttbPerLevelStatsMultiplierTamedAffinityStamina.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed_Affinity[2]  = txttbPerLevelStatsMultiplierTamedAffinityTorpidity.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed_Affinity[3]  = txttbPerLevelStatsMultiplierTamedAffinityOxygen.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed_Affinity[4]  = txttbPerLevelStatsMultiplierTamedAffinityFood.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed_Affinity[5]  = txttbPerLevelStatsMultiplierTamedAffinityWater.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed_Affinity[6]  = txttbPerLevelStatsMultiplierTamedAffinityTemperature.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed_Affinity[7]  = txttbPerLevelStatsMultiplierTamedAffinityWeight.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed_Affinity[8]  = txttbPerLevelStatsMultiplierTamedAffinityDamage.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed_Affinity[9]  = txttbPerLevelStatsMultiplierTamedAffinitySpeed.Value;
                 _profile.PerLevelStatsMultiplier_DinoTamed_Affinity[10] = txttbPerLevelStatsMultiplierTamedAffinityFortitude.Value;
                 _profile.PerLevelStatsMultiplier_DinoTamed_Affinity[11] = txttbPerLevelStatsMultiplierTamedAffinityCrafting.Value;
             }
@@ -334,7 +334,7 @@ namespace OphiussaServerManager.Components {
             else {
                 _profile.MutagenLevelBoost_Bred.Reset();
             }
- 
+
             sw.Stop();
 
             Console.WriteLine("ArkDinoSettings={0}", sw.Elapsed.TotalSeconds);
@@ -373,6 +373,103 @@ namespace OphiussaServerManager.Components {
 
         private void chkMutagenLevelBoostBred_CheckedChanged(object sender, EventArgs e) {
             UsefullTools.ManageCheckGroupBox(chkMutagenLevelBoostBred, groupBox5);
+        }
+
+        private void dataGridView1_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e) {
+        }
+
+        private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e) {
+            try {
+                var obj = (DinoSettings)bindingSource2[e.RowIndex];
+                if (obj != null) {
+                    if (obj.IsSpawnable == false && e.ColumnIndex == 2) {
+                        e.PaintBackground(e.ClipBounds, true);
+                        e.Handled = true;
+                    }
+
+                    if (obj.IsTameable == DinoTamable.False && e.ColumnIndex == 3) {
+                        e.PaintBackground(e.ClipBounds, true);
+                        e.Handled = true;
+                    }
+
+                    if (obj.IsBreedingable == DinoBreedingable.False && e.ColumnIndex == 4) {
+                        e.PaintBackground(e.ClipBounds, true);
+                        e.Handled = true;
+                    }
+
+                    if (obj.IsSpawnable == false && e.ColumnIndex == 6) {
+                        e.PaintBackground(e.ClipBounds, true);
+                        e.Handled = true;
+                    }
+
+                    if (obj.IsSpawnable == false && e.ColumnIndex == 7) {
+                        e.PaintBackground(e.ClipBounds, true);
+                        e.Handled = true;
+                    }
+
+                    if (obj.IsSpawnable == false && e.ColumnIndex == 8) {
+                        e.PaintBackground(e.ClipBounds, true);
+                        e.Handled = true;
+                    }
+
+                    if (obj.IsTameable == DinoTamable.False && e.ColumnIndex == 9) {
+                        e.PaintBackground(e.ClipBounds, true);
+                        e.Handled = true;
+                    }
+
+                    if (obj.IsTameable == DinoTamable.False && e.ColumnIndex == 10) {
+                        e.PaintBackground(e.ClipBounds, true);
+                        e.Handled = true;
+                    }
+                }
+            }
+            catch (Exception exception) {
+                Console.WriteLine(exception);
+                OphiussaLogger.Logger.Error(exception);
+            }
+        }
+
+        private void dataGridView1_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e) {
+            try {
+                var obj = (DinoSettings)bindingSource2[e.RowIndex];
+                if (obj != null) {
+                    if (obj.IsSpawnable == false && e.ColumnIndex == 2) {
+                        e.Cancel = true;
+                    }
+
+                    if (obj.IsTameable == DinoTamable.False && e.ColumnIndex == 3) {
+                        e.Cancel = true;
+                    }
+
+                    if (obj.IsBreedingable == DinoBreedingable.False && e.ColumnIndex == 4) {
+                        e.Cancel = true;
+                    }
+
+                    if (obj.IsSpawnable == false && e.ColumnIndex == 6) {
+                        e.Cancel = true;
+                    }
+
+                    if (obj.IsSpawnable == false && e.ColumnIndex == 7) {
+                        e.Cancel = true;
+                    }
+
+                    if (obj.IsSpawnable == false && e.ColumnIndex == 8) {
+                        e.Cancel = true;
+                    }
+
+                    if (obj.IsTameable == DinoTamable.False && e.ColumnIndex == 9) {
+                        e.Cancel = true;
+                    }
+
+                    if (obj.IsTameable == DinoTamable.False && e.ColumnIndex == 10) {
+                        e.Cancel = true;
+                    }
+                }
+            }
+            catch (Exception exception) {
+                Console.WriteLine(exception);
+                OphiussaLogger.Logger.Error(exception);
+            }
         }
     }
 }
