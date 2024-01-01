@@ -25,20 +25,20 @@ using Task = System.Threading.Tasks.Task;
 
 namespace OphiussaServerManager {
     public partial class MainForm : Form {
-        private const    int                                 TcmSetmintabwidth      = 0x1300 + 49;
-        internal static  NotificationController              NotificationController;
-        internal static  Settings                            Settings;
+        private const int TcmSetmintabwidth = 0x1300 + 49;
+        internal static NotificationController NotificationController;
+        internal static Settings Settings;
         private readonly Dictionary<string, LinkProfileForm> _linkProfileForms = new Dictionary<string, LinkProfileForm>();
-        private readonly Dictionary<string, Profile>         _profiles         = new Dictionary<string, Profile>();
-        private readonly Dictionary<TabPage, Color>          _tabColors        = new Dictionary<TabPage, Color>();
-        private          int                                 _hoverIndex       = -1;
+        private readonly Dictionary<string, Profile> _profiles = new Dictionary<string, Profile>();
+        private readonly Dictionary<TabPage, Color> _tabColors = new Dictionary<TabPage, Color>();
+        private int _hoverIndex = -1;
 
         public MainForm() {
             InitializeComponent();
         }
 
         internal static string PublicIp { get; set; }
-        internal static string LocaIp   { get; set; }
+        internal static string LocaIp { get; set; }
 
         private async void Form1_Load(object sender, EventArgs e) {
 #if DEBUG
@@ -60,7 +60,7 @@ namespace OphiussaServerManager {
                 NotificationController = new NotificationController();
                 if (Settings.UpdateSteamCmdOnStartup) NetworkTools.DownloadSteamCmd();
                 var assembly = Assembly.GetExecutingAssembly();
-                var fvi      = FileVersionInfo.GetVersionInfo(assembly.Location);
+                var fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
                 txtVersion.Text = fvi.FileVersion;
 
                 UsefullTools.MainForm = this;
@@ -71,8 +71,8 @@ namespace OphiussaServerManager {
 
                 try {
                     var discoverer = new NatDiscoverer();
-                    var device     = await discoverer.DiscoverDeviceAsync();
-                    var ip         = await device.GetExternalIpAsync();
+                    var device = await discoverer.DiscoverDeviceAsync();
+                    var ip = await device.GetExternalIpAsync();
                     txtPublicIP.Text = ip.ToString();
                 }
                 catch (Exception ex) {
@@ -86,8 +86,8 @@ namespace OphiussaServerManager {
                     OphiussaLogger.Logger.Error(ex);
                 }
 
-                timerCheckTask.Enabled    =  true;
-                tabControl1.SelectedIndex =  0;
+                timerCheckTask.Enabled = true;
+                tabControl1.SelectedIndex = 0;
                 tabControl1.HandleCreated += tabControl1_HandleCreated;
 
                 try {
@@ -95,20 +95,20 @@ namespace OphiussaServerManager {
                         client.DownloadFile("https://www.ophiussa.eu/OSM/latest.txt", "latest.txt");
                     }
 
-                    string lastversion    = File.ReadAllText("latest.txt");
-                    var    versionInfo    = FileVersionInfo.GetVersionInfo("OphiussaServerManager.exe");
+                    string lastversion = File.ReadAllText("latest.txt");
+                    var versionInfo = FileVersionInfo.GetVersionInfo("OphiussaServerManager.exe");
                     string currentVersion = versionInfo.FileVersion;
 
                     var version1 = new Version(lastversion);
                     var version2 = new Version(currentVersion);
-                    int result   = version1.CompareTo(version2);
+                    int result = version1.CompareTo(version2);
                     if (result > 0) {
-                        lblLast.Text      = lastversion;
-                        lblLast.Visible   = true;
+                        lblLast.Text = lastversion;
+                        lblLast.Visible = true;
                         lblLast.ForeColor = Color.Crimson;
                     }
                     else {
-                        lblLast.Visible   = false;
+                        lblLast.Visible = false;
                         lblLast.ForeColor = SystemColors.ControlText;
                     }
                 }
@@ -130,9 +130,9 @@ namespace OphiussaServerManager {
                     foreach (var profileOrder in Settings.ProfileOrders.OrderBy(x => x.Order)) {
                         string file = files.First(f => f.Contains(profileOrder.Key));
                         if (!string.IsNullOrEmpty(file)) {
-                            var serializerSettings = new JsonSerializerSettings {ObjectCreationHandling = ObjectCreationHandling.Replace};
+                            var serializerSettings = new JsonSerializerSettings { ObjectCreationHandling = ObjectCreationHandling.Replace };
 
-                            var p = JsonConvert.DeserializeObject<Profile>(File.ReadAllText(file) , serializerSettings);
+                            var p = JsonConvert.DeserializeObject<Profile>(File.ReadAllText(file), serializerSettings);
                             switch (p.Type.ServerType) {
                                 case EnumServerType.ArkSurviveEvolved:
                                 case EnumServerType.ArkSurviveAscended:
@@ -175,16 +175,16 @@ namespace OphiussaServerManager {
                     var frm = new FrmServerTypeSelection();
                     frm.TotalPageCount = tabControl1.TabPages.Count;
                     frm.AddNewTabPage += newServer => {
-                                             switch (newServer.serversType.ServerType) {
-                                                 case EnumServerType.ArkSurviveEvolved:
-                                                 case EnumServerType.ArkSurviveAscended:
-                                                     AddNewArkServer(guid.ToString(), newServer.serversType, newServer.installDir, null);
-                                                     break;
-                                                 case EnumServerType.Valheim:
-                                                     AddNewValheimServer(guid.ToString(), newServer.serversType, newServer.installDir, null);
-                                                     break;
-                                             }
-                                         };
+                        switch (newServer.serversType.ServerType) {
+                            case EnumServerType.ArkSurviveEvolved:
+                            case EnumServerType.ArkSurviveAscended:
+                                AddNewArkServer(guid.ToString(), newServer.serversType, newServer.installDir, null);
+                                break;
+                            case EnumServerType.Valheim:
+                                AddNewValheimServer(guid.ToString(), newServer.serversType, newServer.installDir, null);
+                                break;
+                        }
+                    };
                     frm.ShowDialog();
                 }
             }
@@ -197,16 +197,16 @@ namespace OphiussaServerManager {
                     var frm = new FrmServerTypeSelection();
                     frm.TotalPageCount = tabControl1.TabPages.Count;
                     frm.AddNewTabPage += newServer => {
-                                             switch (newServer.serversType.ServerType) {
-                                                 case EnumServerType.ArkSurviveEvolved:
-                                                 case EnumServerType.ArkSurviveAscended:
-                                                     AddNewArkServer(guid.ToString(), newServer.serversType, newServer.installDir, null);
-                                                     break;
-                                                 case EnumServerType.Valheim:
-                                                     AddNewValheimServer(guid.ToString(), newServer.serversType, newServer.installDir, null);
-                                                     break;
-                                             }
-                                         };
+                        switch (newServer.serversType.ServerType) {
+                            case EnumServerType.ArkSurviveEvolved:
+                            case EnumServerType.ArkSurviveAscended:
+                                AddNewArkServer(guid.ToString(), newServer.serversType, newServer.installDir, null);
+                                break;
+                            case EnumServerType.Valheim:
+                                AddNewValheimServer(guid.ToString(), newServer.serversType, newServer.installDir, null);
+                                break;
+                        }
+                    };
                     frm.ShowDialog();
                 }
             }
@@ -214,19 +214,19 @@ namespace OphiussaServerManager {
 
         private void AddNewValheimServer(string guid, SupportedServersType serverType, string installLocation, Profile p) {
             try {
-                string tabName = "Server "                             + tabControl1.TabPages.Count;
+                string tabName = "Server " + tabControl1.TabPages.Count;
                 tabControl1.TabPages.Insert(tabControl1.TabPages.Count - 1, guid, tabName);
                 int index = tabControl1.TabPages.IndexOfKey(guid);
-                var tab   = tabControl1.TabPages[index];
+                var tab = tabControl1.TabPages[index];
 
                 Profile prf;
                 if (p == null) {
-                    prf                 = new Profile(guid, tabName, serverType);
+                    prf = new Profile(guid, tabName, serverType);
                     prf.InstallLocation = installLocation;
                     prf.SaveProfile(Settings);
                 }
                 else {
-                    prf      = p;
+                    prf = p;
                     tab.Text = p.Name + "          ";
                 }
 
@@ -249,27 +249,27 @@ namespace OphiussaServerManager {
 
         private void AddNewArkServer(string guid, SupportedServersType serverType, string installLocation, Profile p) {
             try {
-                string tabName = "Server "                             + tabControl1.TabPages.Count;
+                string tabName = "Server " + tabControl1.TabPages.Count;
                 tabControl1.TabPages.Insert(tabControl1.TabPages.Count - 1, guid, tabName);
                 int index = tabControl1.TabPages.IndexOfKey(guid);
-                var tab   = tabControl1.TabPages[index];
+                var tab = tabControl1.TabPages[index];
                 _tabColors.Add(tab, SystemColors.Control);
 
                 Profile prf;
                 if (p == null) {
-                    prf                 = new Profile(guid, tabName, serverType);
+                    prf = new Profile(guid, tabName, serverType);
                     prf.InstallLocation = installLocation;
                     prf.SaveProfile(Settings);
                 }
                 else {
-                    prf      = p;
+                    prf = p;
                     tab.Text = p.Name + "          ";
                 }
 
                 _profiles.Add(prf.Key, prf);
 
-                var frm = new FrmArk();
-                frm.LoadSettings(prf, tab);
+                var frm = new FrmArkV2();
+                frm.LoadProfile(prf, tab);
                 Addform(tab, frm);
 
                 _linkProfileForms.Add(prf.Key, new LinkProfileForm { Form = frm, Profile = prf, Tab = tab });
@@ -286,7 +286,7 @@ namespace OphiussaServerManager {
             f.TopLevel = false;
             //no border if needed
             f.FormBorderStyle = FormBorderStyle.None;
-            f.AutoScaleMode   = AutoScaleMode.Dpi;
+            f.AutoScaleMode = AutoScaleMode.Dpi;
 
             if (!tp.Controls.Contains(f)) {
                 tp.Controls.Add(f);
@@ -324,8 +324,8 @@ namespace OphiussaServerManager {
         private async void refreshPublicIPToolStripMenuItem1_Click(object sender, EventArgs e) {
             try {
                 var discoverer = new NatDiscoverer();
-                var device     = await discoverer.DiscoverDeviceAsync();
-                var ip         = await device.GetExternalIpAsync();
+                var device = await discoverer.DiscoverDeviceAsync();
+                var ip = await device.GetExternalIpAsync();
                 txtPublicIP.Text = ip.ToString();
                 Console.WriteLine("The external IP Address is: {0} ", ip);
             }
@@ -353,30 +353,30 @@ namespace OphiussaServerManager {
                 var lTasks = TaskService.Instance.GetRunningTasks().ToList();
 
                 string taskName = "OphiussaServerManager\\AutoBackup_" + Settings.Guid;
-                var    task     = TaskService.Instance.GetTask(taskName);
+                var task = TaskService.Instance.GetTask(taskName);
                 if (task != null) {
                     task.Definition.Principal.RunLevel = TaskRunLevel.Highest;
-                    task.Definition.Settings.Priority  = ProcessPriorityClass.Normal;
+                    task.Definition.Settings.Priority = ProcessPriorityClass.Normal;
                     var x = lTasks.Find(xc => xc?.Name == "AutoBackup_" + Settings.Guid);
 
                     if (x != null) {
-                        lblAutoBackup.Text      = "Is Running";
+                        lblAutoBackup.Text = "Is Running";
                         lblAutoBackup.ForeColor = Color.GreenYellow;
-                        btRun1.Visible          = false;
-                        btDisable1.Visible      = false;
+                        btRun1.Visible = false;
+                        btDisable1.Visible = false;
                     }
                     else {
-                        lblAutoBackup.Text      = "Ready";
+                        lblAutoBackup.Text = "Ready";
                         lblAutoBackup.ForeColor = Color.White;
-                        btRun1.Visible          = true;
-                        btDisable1.Visible      = true;
+                        btRun1.Visible = true;
+                        btDisable1.Visible = true;
                     }
                 }
                 else {
-                    lblAutoBackup.Text      = "Not Running";
+                    lblAutoBackup.Text = "Not Running";
                     lblAutoBackup.ForeColor = Color.White;
-                    btRun1.Visible          = false;
-                    btDisable1.Visible      = false;
+                    btRun1.Visible = false;
+                    btDisable1.Visible = false;
                 }
 
                 string taskName2 = "OphiussaServerManager\\AutoUpdate_" + Settings.Guid;
@@ -386,50 +386,50 @@ namespace OphiussaServerManager {
                     var x = lTasks.Find(xc => xc?.Name == "AutoUpdate_" + Settings.Guid);
 
                     if (x != null) {
-                        lblAutoUpdate.Text      = "Is Running";
+                        lblAutoUpdate.Text = "Is Running";
                         lblAutoUpdate.ForeColor = Color.GreenYellow;
-                        btRun2.Visible          = false;
-                        btDisable2.Visible      = false;
+                        btRun2.Visible = false;
+                        btDisable2.Visible = false;
                     }
                     else {
-                        lblAutoUpdate.Text      = "Ready";
+                        lblAutoUpdate.Text = "Ready";
                         lblAutoUpdate.ForeColor = Color.White;
-                        btRun2.Visible          = true;
-                        btDisable2.Visible      = true;
+                        btRun2.Visible = true;
+                        btDisable2.Visible = true;
                     }
                 }
                 else {
-                    lblAutoUpdate.Text      = "Not Running";
+                    lblAutoUpdate.Text = "Not Running";
                     lblAutoUpdate.ForeColor = Color.White;
-                    btRun2.Visible          = false;
-                    btDisable2.Visible      = false;
+                    btRun2.Visible = false;
+                    btDisable2.Visible = false;
                 }
                 //}).Wait();
 
 
                 string taskName3 = "OphiussaServerManager\\Notification_" + Settings.Guid;
-                var    task3     = TaskService.Instance.GetTask(taskName3);
+                var task3 = TaskService.Instance.GetTask(taskName3);
                 if (task3 != null) {
                     var x = lTasks.Find(xc => xc?.Name == "Notification_" + Settings.Guid);
 
                     if (x != null) {
-                        lblNotifications.Text      = "Is Running";
+                        lblNotifications.Text = "Is Running";
                         lblNotifications.ForeColor = Color.GreenYellow;
-                        btRun3.Visible             = false;
-                        btDisable3.Visible         = true;
+                        btRun3.Visible = false;
+                        btDisable3.Visible = true;
                     }
                     else {
-                        lblNotifications.Text      = "Ready";
+                        lblNotifications.Text = "Ready";
                         lblNotifications.ForeColor = Color.White;
-                        btRun3.Visible             = true;
-                        btDisable3.Visible         = false;
+                        btRun3.Visible = true;
+                        btDisable3.Visible = false;
                     }
                 }
                 else {
-                    lblNotifications.Text      = "Not Running";
+                    lblNotifications.Text = "Not Running";
                     lblNotifications.ForeColor = Color.White;
-                    btRun3.Visible             = true;
-                    btDisable3.Visible         = false;
+                    btRun3.Visible = true;
+                    btDisable3.Visible = false;
                 }
             }
             catch (Exception ex) {
@@ -456,7 +456,7 @@ namespace OphiussaServerManager {
             var task2 = TaskService.Instance.GetTask(taskName2);
             if (task2 != null) {
                 task2.Run();
-                btRun1.Visible     = false;
+                btRun1.Visible = false;
                 btDisable1.Visible = false;
             }
         }
@@ -466,7 +466,7 @@ namespace OphiussaServerManager {
 
             var task = TaskService.Instance.GetTask(taskName);
             if (task != null) {
-                btRun2.Visible     = false;
+                btRun2.Visible = false;
                 btDisable2.Visible = false;
                 task.Run();
             }
@@ -518,14 +518,14 @@ namespace OphiussaServerManager {
             if (e.Index == tabControl1.TabCount - 1) {
                 var addImage = Resources.AddIcon16x16;
                 e.Graphics.DrawImage(addImage,
-                                     tabRect.Left + (tabRect.Width  - addImage.Width)  / 2,
-                                     tabRect.Top  + (tabRect.Height - addImage.Height) / 2);
+                                     tabRect.Left + (tabRect.Width - addImage.Width) / 2,
+                                     tabRect.Top + (tabRect.Height - addImage.Height) / 2);
             }
             else {
                 var closeImage = Resources.CloseIcon;
                 e.Graphics.DrawImage(closeImage,
                                      tabRect.Right - closeImage.Width,
-                                     tabRect.Top   + (tabRect.Height - closeImage.Height) / 2);
+                                     tabRect.Top + (tabRect.Height - closeImage.Height) / 2);
                 TextRenderer.DrawText(e.Graphics, tabPage.Text, tabPage.Font,
                                       tabRect, tabPage.ForeColor, TextFormatFlags.Left);
                 /*
@@ -633,7 +633,7 @@ namespace OphiussaServerManager {
                     var closeImage = Resources.CloseIcon;
                     var imageRect = new Rectangle(
                                                   tabRect.Right - closeImage.Width,
-                                                  tabRect.Top   + (tabRect.Height - closeImage.Height) / 2,
+                                                  tabRect.Top + (tabRect.Height - closeImage.Height) / 2,
                                                   closeImage.Width,
                                                   closeImage.Height);
                     if (imageRect.Contains(e.Location))
@@ -686,7 +686,7 @@ namespace OphiussaServerManager {
             link.SetPath(Assembly.GetEntryAssembly().Location);
 
             // save it
-            var    file        = (IPersistFile)link;
+            var file = (IPersistFile)link;
             string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
             file.Save(Path.Combine(desktopPath, "Ophiussa Server Manager.lnk"), false);
         }
@@ -699,7 +699,7 @@ namespace OphiussaServerManager {
             link.SetPath(Assembly.GetEntryAssembly().Location);
             link.SetArguments(" -monitor");
             // save it
-            var    file        = (IPersistFile)link;
+            var file = (IPersistFile)link;
             string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
             file.Save(Path.Combine(desktopPath, "Ophiussa Server Manager Monitor.lnk"), false);
         }
@@ -709,7 +709,7 @@ namespace OphiussaServerManager {
 
             var task = TaskService.Instance.GetTask(taskName);
             if (task != null) {
-                btRun3.Visible     = false;
+                btRun3.Visible = false;
                 btDisable3.Visible = true;
                 task.Run();
             }
@@ -721,9 +721,9 @@ namespace OphiussaServerManager {
             if (NotificationController.IsClientConnected) NotificationController.CloseClient();
 
             string taskName = "OphiussaServerManager\\Notification_" + Settings.Guid;
-            var    task     = TaskService.Instance.GetTask(taskName);
+            var task = TaskService.Instance.GetTask(taskName);
             if (task != null) {
-                btRun3.Visible     = true;
+                btRun3.Visible = true;
                 btDisable3.Visible = false;
                 task.Stop();
             }
@@ -742,10 +742,10 @@ namespace OphiussaServerManager {
                 var lTasks = TaskService.Instance.GetRunningTasks().ToList();
 
                 string taskName = "OphiussaServerManager\\AutoBackup_" + Settings.Guid;
-                var    task     = TaskService.Instance.GetTask(taskName);
+                var task = TaskService.Instance.GetTask(taskName);
                 if (task != null) {
                     task.Definition.Principal.RunLevel = TaskRunLevel.Highest;
-                    task.Definition.Settings.Priority  = ProcessPriorityClass.Normal;
+                    task.Definition.Settings.Priority = ProcessPriorityClass.Normal;
                     var x = lTasks.Find(xc => xc?.Name == "AutoBackup_" + Settings.Guid);
 
                     if (x != null) task.Stop();
@@ -761,7 +761,7 @@ namespace OphiussaServerManager {
                 }
 
                 string taskName3 = "OphiussaServerManager\\Notification_" + Settings.Guid;
-                var    task3     = TaskService.Instance.GetTask(taskName3);
+                var task3 = TaskService.Instance.GetTask(taskName3);
                 if (task3 != null) {
                     var x = lTasks.Find(xc => xc?.Name == "Notification_" + Settings.Guid);
 

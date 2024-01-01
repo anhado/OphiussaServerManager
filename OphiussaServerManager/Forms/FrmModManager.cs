@@ -12,30 +12,25 @@ using OphiussaServerManager.Common.Models.SupportedServers;
 
 namespace OphiussaServerManager.Forms {
     public partial class FrmModManager : Form {
-        private FrmArk                       _frmParent;
-        private Profile                      _profile1;
-        public  Action<List<ModListDetails>> UpdateModList;
+        private Profile _profile1;
+        public Action<List<ModListDetails>> UpdateModList;
 
         public FrmModManager() {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e) {
         }
 
         private void FrmModManager_Load(object sender, EventArgs e) {
             btSavetooltip.SetToolTip(button1, "Save changes");
         }
 
-        public void LoadMods(ref Profile profile, string modIDs, FrmArk owner) {
-            _frmParent = owner;
+        public void LoadMods(ref Profile profile, string modIDs) {
 
             _profile1 = profile;
-            var    curseForgeUtils       = new CurseForgeUtils(MainForm.Settings);
-            var    steamUtils            = new SteamUtils(MainForm.Settings);
-            var    curseForgeFileDetails = new CurseForgeFileDetailResponse();
-            var    steamFileDetails      = new PublishedFileDetailsResponse();
-            string cacheFolder           = Path.Combine(MainForm.Settings.DataFolder, "cache", profile.Type.KeyName);
+            var curseForgeUtils = new CurseForgeUtils(MainForm.Settings);
+            var steamUtils = new SteamUtils(MainForm.Settings);
+            var curseForgeFileDetails = new CurseForgeFileDetailResponse();
+            var steamFileDetails = new PublishedFileDetailsResponse();
+            string cacheFolder = Path.Combine(MainForm.Settings.DataFolder, "cache", profile.Type.KeyName);
 
             var modlst = modIDs.Split(',').ToList();
             modListDetailsBindingSource.Clear();
@@ -56,16 +51,16 @@ namespace OphiussaServerManager.Forms {
 
                                 modListDetailsBindingSource.Add(
                                                                 new ModListDetails {
-                                                                                       Order             = i,
-                                                                                       Name              = item.Title,
-                                                                                       ModId             = item.Publishedfileid,
-                                                                                       LastUpdatedAuthor = item.TimeUpdated.UnixTimeStampToDateTime(),
-                                                                                       LastDownloaded    = item.TimeUpdated.UnixTimeStampToDateTime(),
-                                                                                       FolderSize        = item.FileSize,
-                                                                                       ModType           = string.Join(",", lstTags.ToArray()),
-                                                                                       TimeStamp         = item.TimeUpdated,
-                                                                                       Link              = $"https://steamcommunity.com/sharedfiles/filedetails/?id={item.Publishedfileid}"
-                                                                                   }
+                                                                    Order = i,
+                                                                    Name = item.Title,
+                                                                    ModId = item.Publishedfileid,
+                                                                    LastUpdatedAuthor = item.TimeUpdated.UnixTimeStampToDateTime(),
+                                                                    LastDownloaded = item.TimeUpdated.UnixTimeStampToDateTime(),
+                                                                    FolderSize = item.FileSize,
+                                                                    ModType = string.Join(",", lstTags.ToArray()),
+                                                                    TimeStamp = item.TimeUpdated,
+                                                                    Link = $"https://steamcommunity.com/sharedfiles/filedetails/?id={item.Publishedfileid}"
+                                                                }
                                                                );
                                 i++;
                             }
@@ -80,16 +75,16 @@ namespace OphiussaServerManager.Forms {
                             foreach (var item in curseForgeFileDetails.Data) {
                                 modListDetailsBindingSource.Add(
                                                                 new ModListDetails {
-                                                                                       Order             = i,
-                                                                                       Name              = item.Name,
-                                                                                       ModId             = item.Id.ToString(),
-                                                                                       LastUpdatedAuthor = item.DateModified,
-                                                                                       LastDownloaded    = item.DateModified,
-                                                                                       FolderSize        = item.LatestFiles.First().FileSizeOnDisk.ToString(),
-                                                                                       ModType           = string.Join(",", item.Categories.Select(x => x.Name)),
-                                                                                       TimeStamp         = item.DateModified.Ticks,
-                                                                                       Link              = item.Links.WebsiteUrl
-                                                                                   }
+                                                                    Order = i,
+                                                                    Name = item.Name,
+                                                                    ModId = item.Id.ToString(),
+                                                                    LastUpdatedAuthor = item.DateModified,
+                                                                    LastDownloaded = item.DateModified,
+                                                                    FolderSize = item.LatestFiles.First().FileSizeOnDisk.ToString(),
+                                                                    ModType = string.Join(",", item.Categories.Select(x => x.Name)),
+                                                                    TimeStamp = item.DateModified.Ticks,
+                                                                    Link = item.Links.WebsiteUrl
+                                                                }
                                                                );
                                 i++;
                             }

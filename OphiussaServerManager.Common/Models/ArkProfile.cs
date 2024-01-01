@@ -15,14 +15,14 @@ using OphiussaServerManager.Common.Models.SupportedServers;
 namespace OphiussaServerManager.Common.Models {
     public class ArkProfile : Configs {
         public ArkProfile() {
-            PlayerBaseStatMultipliers                  = new StatsMultiplierFloatArray(nameof(PlayerBaseStatMultipliers),                  GameData.GetBaseStatMultipliers_Player,                 GameData.GetStatMultiplierInclusions_PlayerBase(),        true);
-            PerLevelStatsMultiplier_Player             = new StatsMultiplierFloatArray(nameof(PerLevelStatsMultiplier_Player),             GameData.GetPerLevelStatsMultipliers_Player,            GameData.GetStatMultiplierInclusions_PlayerPerLevel(),    true);
-            PerLevelStatsMultiplier_DinoWild           = new StatsMultiplierFloatArray(nameof(PerLevelStatsMultiplier_DinoWild),           GameData.GetPerLevelStatsMultipliers_DinoWild,          GameData.GetStatMultiplierInclusions_DinoWildPerLevel(),  true);
-            PerLevelStatsMultiplier_DinoTamed          = new StatsMultiplierFloatArray(nameof(PerLevelStatsMultiplier_DinoTamed),          GameData.GetPerLevelStatsMultipliers_DinoTamed,         GameData.GetStatMultiplierInclusions_DinoTamedPerLevel(), true);
-            PerLevelStatsMultiplier_DinoTamed_Add      = new StatsMultiplierFloatArray(nameof(PerLevelStatsMultiplier_DinoTamed_Add),      GameData.GetPerLevelStatsMultipliers_DinoTamedAdd,      GameData.GetStatMultiplierInclusions_DinoTamedAdd(),      true);
+            PlayerBaseStatMultipliers = new StatsMultiplierFloatArray(nameof(PlayerBaseStatMultipliers), GameData.GetBaseStatMultipliers_Player, GameData.GetStatMultiplierInclusions_PlayerBase(), true);
+            PerLevelStatsMultiplier_Player = new StatsMultiplierFloatArray(nameof(PerLevelStatsMultiplier_Player), GameData.GetPerLevelStatsMultipliers_Player, GameData.GetStatMultiplierInclusions_PlayerPerLevel(), true);
+            PerLevelStatsMultiplier_DinoWild = new StatsMultiplierFloatArray(nameof(PerLevelStatsMultiplier_DinoWild), GameData.GetPerLevelStatsMultipliers_DinoWild, GameData.GetStatMultiplierInclusions_DinoWildPerLevel(), true);
+            PerLevelStatsMultiplier_DinoTamed = new StatsMultiplierFloatArray(nameof(PerLevelStatsMultiplier_DinoTamed), GameData.GetPerLevelStatsMultipliers_DinoTamed, GameData.GetStatMultiplierInclusions_DinoTamedPerLevel(), true);
+            PerLevelStatsMultiplier_DinoTamed_Add = new StatsMultiplierFloatArray(nameof(PerLevelStatsMultiplier_DinoTamed_Add), GameData.GetPerLevelStatsMultipliers_DinoTamedAdd, GameData.GetStatMultiplierInclusions_DinoTamedAdd(), true);
             PerLevelStatsMultiplier_DinoTamed_Affinity = new StatsMultiplierFloatArray(nameof(PerLevelStatsMultiplier_DinoTamed_Affinity), GameData.GetPerLevelStatsMultipliers_DinoTamedAffinity, GameData.GetStatMultiplierInclusions_DinoTamedAffinity(), true);
-            MutagenLevelBoost                          = new StatsMultiplierIntegerArray(nameof(MutagenLevelBoost),      GameData.GetPerLevelMutagenLevelBoost_DinoWild,  GameData.GetMutagenLevelBoostInclusions_DinoWild(),  true);
-            MutagenLevelBoost_Bred                     = new StatsMultiplierIntegerArray(nameof(MutagenLevelBoost_Bred), GameData.GetPerLevelMutagenLevelBoost_DinoTamed, GameData.GetMutagenLevelBoostInclusions_DinoTamed(), true);
+            MutagenLevelBoost = new StatsMultiplierIntegerArray(nameof(MutagenLevelBoost), GameData.GetPerLevelMutagenLevelBoost_DinoWild, GameData.GetMutagenLevelBoostInclusions_DinoWild(), true);
+            MutagenLevelBoost_Bred = new StatsMultiplierIntegerArray(nameof(MutagenLevelBoost_Bred), GameData.GetPerLevelMutagenLevelBoost_DinoTamed, GameData.GetMutagenLevelBoostInclusions_DinoTamed(), true);
             PlayerBaseStatMultipliers.Clear();
             PerLevelStatsMultiplier_Player.Clear();
             PerLevelStatsMultiplier_DinoWild.Clear();
@@ -31,9 +31,9 @@ namespace OphiussaServerManager.Common.Models {
             PerLevelStatsMultiplier_DinoTamed_Affinity.Clear();
             MutagenLevelBoost.Clear();
             MutagenLevelBoost_Bred.Clear();
-            
+
             this.DinoSpawnWeightMultipliers = new AggregateIniValueList<DinoSpawn>(nameof(DinoSpawnWeightMultipliers), GameData.GetDinoSpawns);
-            this.PreventDinoTameClassNames = new StringIniValueList(nameof(PreventDinoTameClassNames), () => new string[0] );
+            this.PreventDinoTameClassNames = new StringIniValueList(nameof(PreventDinoTameClassNames), () => new string[0]);
             this.PreventBreedingForClassNames = new StringIniValueList(nameof(PreventBreedingForClassNames), () => new string[0]);
             this.NPCReplacements = new AggregateIniValueList<NPCReplacement>(nameof(NPCReplacements), GameData.GetNPCReplacements);
             this.TamedDinoClassDamageMultipliers = new AggregateIniValueList<ClassMultiplier>(nameof(TamedDinoClassDamageMultipliers), GameData.GetDinoMultipliers);
@@ -41,7 +41,7 @@ namespace OphiussaServerManager.Common.Models {
             this.DinoClassDamageMultipliers = new AggregateIniValueList<ClassMultiplier>(nameof(DinoClassDamageMultipliers), GameData.GetDinoMultipliers);
             this.DinoClassResistanceMultipliers = new AggregateIniValueList<ClassMultiplier>(nameof(DinoClassResistanceMultipliers), GameData.GetDinoMultipliers);
             this.DinoSettings = new DinoSettingsList(this.DinoSpawnWeightMultipliers, this.PreventDinoTameClassNames, this.PreventBreedingForClassNames, this.NPCReplacements, this.TamedDinoClassDamageMultipliers, this.TamedDinoClassResistanceMultipliers, this.DinoClassDamageMultipliers, this.DinoClassResistanceMultipliers);
-            
+
         }
 
         public ArkProfile LoadGameIni(Profile prf) {
@@ -61,7 +61,7 @@ namespace OphiussaServerManager.Common.Models {
         public string GetCommandLinesArguments(Settings settings, Profile prf, string publicIp) {
             string cmd = string.Empty;
 
-            var hifenArgs         = new List<string>();
+            var hifenArgs = new List<string>();
             var interrogationArgs = new List<string>();
             interrogationArgs.Add("?listen");
             //if (this.Administration.AllowFlyerSpeedLeveling) hifenArgs.Add(" -AllowFlyerSpeedLeveling");
@@ -94,7 +94,7 @@ namespace OphiussaServerManager.Common.Models {
             //if (this.Administration.MaxNumOfSaveBackups) hifenArgs.Add($" -MaxNumOfSaveBackups={this.Administration.MaxNumOfSaveBackups}");
             //if (this.Administration.MapPlayerLocation != "") InterrogationArgs.Add($"?AltSaveDirectoryName=\"{(this.Administration.MapPlayerLocation ? "True" : "False")}\"");
             if (FjordhawkInventoryCooldown != 3600) hifenArgs.Add($" -MinimumTimeBetweenInventoryRetrieval={FjordhawkInventoryCooldown}");
-            if (LocalIp.Trim()             != "") interrogationArgs.Add($"?MultiHome={LocalIp.Trim()}");
+            if (LocalIp.Trim() != "") interrogationArgs.Add($"?MultiHome={LocalIp.Trim()}");
             if (DisableAntiSpeedHackDetection) hifenArgs.Add(" -noantispeedhack");
             if (!EnableBattleEye) hifenArgs.Add(" -NoBattlEye");
             if (DisablePlayerMovePhysics) hifenArgs.Add(" -nocombineclientmoves");
@@ -1105,7 +1105,7 @@ TODO:CHECK THIS OPTIONS
 
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Players, "MaxFallSpeedMultiplier", WriteIfNotValue = 1f)]
         public float MaxFallSpeedMultiplier { get; set; } = 1f;
-        
+
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Players, "PlayerBaseStatMultipliers")]
         public StatsMultiplierFloatArray PlayerBaseStatMultipliers { get; set; }
 
@@ -1273,49 +1273,134 @@ TODO:CHECK THIS OPTIONS
 
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "MutagenLevelBoost_Bred")]
         public StatsMultiplierIntegerArray MutagenLevelBoost_Bred { get; set; }
-        
-        [JsonIgnore] 
+
+        [JsonIgnore]
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "DinoSpawnWeightMultipliers", WriteIfNotValue = 1f)]
         public AggregateIniValueList<DinoSpawn> DinoSpawnWeightMultipliers { get; set; }
-        
-        [JsonIgnore] 
+
+        [JsonIgnore]
 
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "TamedDinoClassDamageMultipliers", WriteIfNotValue = 1f)]
         public AggregateIniValueList<ClassMultiplier> TamedDinoClassDamageMultipliers { get; set; }
-        
-        [JsonIgnore] 
+
+        [JsonIgnore]
 
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "TamedDinoClassResistanceMultipliers", WriteIfNotValue = 1f)]
         public AggregateIniValueList<ClassMultiplier> TamedDinoClassResistanceMultipliers { get; set; }
-        
-        [JsonIgnore] 
+
+        [JsonIgnore]
 
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "DinoClassDamageMultipliers", WriteIfNotValue = 1f)]
         public AggregateIniValueList<ClassMultiplier> DinoClassDamageMultipliers { get; set; }
-        
-        [JsonIgnore] 
+
+        [JsonIgnore]
 
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "DinoClassResistanceMultipliers", WriteIfNotValue = 1f)]
         public AggregateIniValueList<ClassMultiplier> DinoClassResistanceMultipliers { get; set; }
-        
-        [JsonIgnore] 
+
+        [JsonIgnore]
 
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "NPCReplacements")]
         public AggregateIniValueList<NPCReplacement> NPCReplacements { get; set; }
-        
-        [JsonIgnore] 
+
+        [JsonIgnore]
 
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "PreventDinoTameClassNames")]
         public StringIniValueList PreventDinoTameClassNames { get; set; }
-        
-        [JsonIgnore] 
+
+        [JsonIgnore]
 
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "PreventBreedingForClassNames")]
         public StringIniValueList PreventBreedingForClassNames { get; set; }
 
-        
-        [JsonIgnore] 
-        public DinoSettingsList DinoSettings { get;              set; }
+
+        [JsonIgnore]
+        public DinoSettingsList DinoSettings { get; set; }
         public List<DinoSettingsJSON> ChangedDinoSettings { get; set; }
+
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Environment, "", WriteIfNotValue = 1f)]
+        public float DinoCountMultiplier { get; set; } = 1f;
+
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Environment, "", WriteIfNotValue = 1f)]
+        public float TamingSpeedMultiplier { get; set; } = 1f;
+
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Environment, "", WriteIfNotValue = 1f)]
+        public float HarvestAmountMultiplier { get; set; } = 1f;
+
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Environment, "", WriteIfNotValue = 1f)]
+        public float ResourcesRespawnPeriodMultiplier { get; set; } = 1f;
+
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Environment, "", WriteIfNotValue = 1f)]
+        public float ResourceNoReplenishRadiusPlayers { get; set; } = 1f;
+
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Environment, "", WriteIfNotValue = 1f)]
+        public float ResourceNoReplenishRadiusStructures { get; set; } = 1f;
+
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Environment, "", WriteIfNotValue = 1f)]
+        public float HarvestHealthMultiplier { get; set; } = 1f;
+
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Environment, "")]
+        public bool UseOptimizedHarvestingHealth { get; set; } = false;
+
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Environment, "")]
+        public bool ClampResourceHarvestDamage { get; set; } = false;
+
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Environment, "")]
+        public bool ClampItemSpoilingTimes { get; set; } = false;
+
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Environment, "", WriteIfNotValue = 1f)]
+        public float BaseTemperatureMultiplier { get; set; } = 1f;
+
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Environment, "", WriteIfNotValue = 1f)]
+        public float DayCycleSpeedScale { get; set; } = 1f;
+
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Environment, "", WriteIfNotValue = 1f)]
+        public float DayTimeSpeedScale { get; set; } = 1f;
+
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Environment, "", WriteIfNotValue = 1f)]
+        public float NightTimeSpeedScale { get; set; } = 1f;
+
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Environment, "", ConditionedOn = "DisableWeatherFog")]
+        public bool DisableWeatherFog { get; set; } = false;
+
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Environment, "", WriteIfNotValue = 1f)]
+        public float GlobalSpoilingTimeMultiplier { get; set; } = 1f;
+
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Environment, "", WriteIfNotValue = 1f)]
+        public float GlobalItemDecompositionTimeMultiplier { get; set; } = 1f;
+
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Environment, "", WriteIfNotValue = 1f)]
+        public float GlobalCorpseDecompositionTimeMultiplier { get; set; } = 1f;
+
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Environment, "", WriteIfNotValue = 1f)]
+        public float CropDecaySpeedMultiplier { get; set; } = 1f;
+
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Environment, "", WriteIfNotValue = 1f)]
+        public float CropGrowthSpeedMultiplier { get; set; } = 1f;
+
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Environment, "", WriteIfNotValue = 1f)]
+        public float LayEggIntervalMultiplier { get; set; } = 1f;
+
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Environment, "", WriteIfNotValue = 1f)]
+        public float PoopIntervalMultiplier { get; set; } = 1f;
+
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Environment, "", WriteIfNotValue = 1f)]
+        public float HairGrowthSpeedMultiplier { get; set; } = 1f;
+
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Environment, "", WriteIfNotValue = 1f)]
+        public float CraftXPMultiplier { get; set; } = 1f;
+
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Environment, "", WriteIfNotValue = 1f)]
+        public float GenericXPMultiplier { get; set; } = 1f;
+
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Environment, "", WriteIfNotValue = 1f)]
+        public float HarvestXPMultiplier { get; set; } = 1f;
+
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Environment, "", WriteIfNotValue = 1f)]
+        public float KillXPMultiplier { get; set; } = 1f;
+
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Environment, "", WriteIfNotValue = 1f)]
+        public float SpecialXPMultiplier { get; set; } = 1f;
+
     }
 }

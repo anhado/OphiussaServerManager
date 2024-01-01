@@ -190,17 +190,77 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\ArkAdministration.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\ArkAdministration.Designer.cs">
+      <DependentUpon>ArkAdministration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\ArkChatAndNotifications.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\ArkChatAndNotifications.Designer.cs">
+      <DependentUpon>ArkChatAndNotifications.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\ArkDinoSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\ArkDinoSettings.Designer.cs">
+      <DependentUpon>ArkDinoSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\ArkHUDAndVisuals.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\ArkHUDAndVisuals.Designer.cs">
+      <DependentUpon>ArkHUDAndVisuals.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\ArkPlayerSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\ArkPlayerSettings.Designer.cs">
+      <DependentUpon>ArkPlayerSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\ArkRules.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\ArkRules.Designer.cs">
+      <DependentUpon>ArkRules.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\AutomaticManagement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\AutomaticManagement.Designer.cs">
+      <DependentUpon>AutomaticManagement.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\exListBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Components\exListBox.Designer.cs">
       <DependentUpon>exListBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmArk.cs">
+    <Compile Include="Components\ArkEnvironment.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\ArkEnvironment.Designer.cs">
+      <DependentUpon>ArkEnvironment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\exTrackBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\exTrackBar.Designer.cs">
+      <DependentUpon>exTrackBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\ProfileHeader.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\ProfileHeader.Designer.cs">
+      <DependentUpon>ProfileHeader.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmArkV2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmArk.Designer.cs">
-      <DependentUpon>FrmArk.cs</DependentUpon>
+    <Compile Include="Forms\FrmArkV2.Designer.cs">
+      <DependentUpon>FrmArkV2.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FrmDeleteProfile.cs">
       <SubType>Form</SubType>
@@ -317,8 +377,38 @@
     <Compile Include="Tools\ServerTools.cs" />
     <Compile Include="Tools\ShellLink.cs" />
     <Compile Include="Tools\UsefullTools.cs" />
-    <EmbeddedResource Include="Forms\FrmArk.resx">
-      <DependentUpon>FrmArk.cs</DependentUpon>
+    <EmbeddedResource Include="Components\ArkAdministration.resx">
+      <DependentUpon>ArkAdministration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\ArkChatAndNotifications.resx">
+      <DependentUpon>ArkChatAndNotifications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\ArkDinoSettings.resx">
+      <DependentUpon>ArkDinoSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\ArkEnvironment.resx">
+      <DependentUpon>ArkEnvironment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\ArkHUDAndVisuals.resx">
+      <DependentUpon>ArkHUDAndVisuals.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\ArkPlayerSettings.resx">
+      <DependentUpon>ArkPlayerSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\ArkRules.resx">
+      <DependentUpon>ArkRules.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\AutomaticManagement.resx">
+      <DependentUpon>AutomaticManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\exTrackBar.resx">
+      <DependentUpon>exTrackBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\ProfileHeader.resx">
+      <DependentUpon>ProfileHeader.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmArkV2.resx">
+      <DependentUpon>FrmArkV2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmDeleteProfile.resx">
       <DependentUpon>FrmDeleteProfile.cs</DependentUpon>

@@ -168,7 +168,7 @@ namespace MakarovDev.ExpandCollapsePanel {
             FatArrow
         }
 
-        private ExpandButtonStyle _expandButtonStyle = ExpandButtonStyle.Circle;
+        private ExpandButtonStyle _expandButtonStyle = ExpandButtonStyle.Classic;
 
         /// <summary>
         ///     Visual style of the expand-collapse button.
@@ -193,7 +193,7 @@ namespace MakarovDev.ExpandCollapsePanel {
                     pictureBox1.Image = bmp;
                     break;
                 case ExpandButtonStyle.Circle:
-                    bmp               = Resources.icon_expand;
+                    bmp = Resources.icon_expand;
                     pictureBox1.Image = bmp;
                     break;
                 case ExpandButtonStyle.Triangle:
@@ -238,7 +238,7 @@ namespace MakarovDev.ExpandCollapsePanel {
             Large
         }
 
-        private ExpandButtonSize _expandButtonSize = ExpandButtonSize.Normal;
+        private ExpandButtonSize _expandButtonSize = ExpandButtonSize.Small;
 
         /// <summary>
         ///     Size preset of the expand-collapse button.
@@ -263,21 +263,21 @@ namespace MakarovDev.ExpandCollapsePanel {
             switch (_expandButtonSize) {
                 case ExpandButtonSize.Small:
                     pictureBox1.Location = new Point(0, 3);
-                    pictureBox1.Size     = new Size(16, 16);
-                    lblLine.Location     = new Point(20, 18);
-                    lblHeader.Location   = new Point(20, 1);
+                    pictureBox1.Size = new Size(16, 16);
+                    lblLine.Location = new Point(20, 18);
+                    lblHeader.Location = new Point(20, 1);
                     break;
                 case ExpandButtonSize.Normal:
                     pictureBox1.Location = new Point(0, 3);
-                    pictureBox1.Size     = new Size(24, 24);
-                    lblLine.Location     = new Point(30, 22);
-                    lblHeader.Location   = new Point(30, 3);
+                    pictureBox1.Size = new Size(24, 24);
+                    lblLine.Location = new Point(30, 22);
+                    lblHeader.Location = new Point(30, 3);
                     break;
                 case ExpandButtonSize.Large:
                     pictureBox1.Location = new Point(0, 3);
-                    pictureBox1.Size     = new Size(35, 35);
-                    lblLine.Location     = new Point(41, 28);
-                    lblHeader.Location   = new Point(41, 3);
+                    pictureBox1.Size = new Size(35, 35);
+                    lblLine.Location = new Point(41, 28);
+                    lblHeader.Location = new Point(41, 3);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

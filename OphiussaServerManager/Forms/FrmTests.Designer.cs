@@ -1,7 +1,5 @@
-﻿namespace OphiussaServerManager.Forms
-{
-    partial class FrmTests
-    {
+﻿namespace OphiussaServerManager.Forms {
+    partial class FrmTests {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -11,10 +9,8 @@
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
+        protected override void Dispose(bool disposing) {
+            if (disposing && (components != null)) {
                 components.Dispose();
             }
             base.Dispose(disposing);
@@ -26,8 +22,7 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
-        {
+        private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmTests));
             this.label1 = new System.Windows.Forms.Label();
@@ -47,8 +42,9 @@
             this.copyIDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyPlayerIDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button3 = new System.Windows.Forms.Button();
-            this.exListBox1 = new OphiussaServerManager.ExListBox();
             this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.exListBox2 = new OphiussaServerManager.ExListBox();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -184,17 +180,6 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // exListBox1
-            // 
-            this.exListBox1.ContextMenuStrip = this.contextMenuStrip1;
-            this.exListBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.exListBox1.FormattingEnabled = true;
-            this.exListBox1.ItemHeight = 66;
-            this.exListBox1.Location = new System.Drawing.Point(15, 70);
-            this.exListBox1.Name = "exListBox1";
-            this.exListBox1.Size = new System.Drawing.Size(767, 170);
-            this.exListBox1.TabIndex = 6;
-            // 
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(12, 261);
@@ -205,14 +190,31 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(25, 45);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 12;
+            this.button5.Text = "button5";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // exListBox2
+            // 
+            this.exListBox2.FormattingEnabled = true;
+            this.exListBox2.Location = new System.Drawing.Point(12, 56);
+            this.exListBox2.Name = "exListBox2";
+            this.exListBox2.Size = new System.Drawing.Size(767, 199);
+            this.exListBox2.TabIndex = 9;
+            // 
             // FrmTests
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 706);
+            this.Controls.Add(this.exListBox2);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.exListBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox2);
@@ -250,5 +252,9 @@
         private System.Windows.Forms.ToolStripMenuItem copyPlayerIDToolStripMenuItem;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private ExListBox exListBox2;
+        private Common.Models.Configs configs1;
+        private Common.Models.Configs configs2;
     }
 }
