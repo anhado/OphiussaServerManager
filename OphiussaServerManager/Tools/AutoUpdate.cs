@@ -431,7 +431,7 @@ namespace OphiussaServerManager.Tools.Update {
                     }
             }
 
-            OnProcessCompleted(new ProcessEventArg { Message = $"Server {p.Name} updated", IsError = false, IsStarting = false, SendToDiscord = true, Sucessful = true });
+            OnProcessCompleted(new ProcessEventArg { Message = $"Server {p.Name} update finished", IsError = false, IsStarting = false, SendToDiscord = true, Sucessful = true });
         }
 
         public async Task CloseServer(Profile p, Settings settings, bool forceKillProcess = false) {
@@ -497,7 +497,7 @@ namespace OphiussaServerManager.Tools.Update {
 
             var cachedmods = JsonConvert.DeserializeObject<CurseForgeFileDetailResponse>(File.ReadAllText(Path.Combine(cache, $"CurseForgeModCache_{p.Key}.json")));
 
-            var changedMods = cachedmods.Data?.FindAll(m => CheckMod(m, mods) != null);
+            var changedMods = cachedmods?.Data?.FindAll(m => CheckMod(m, mods) != null);
 
             CurseForgeFileDetail CheckMod(CurseForgeFileDetail mod, CurseForgeFileDetailResponse modList) {
                 var m = modList.Data.Find(mm => mm.Id == mod.Id);
@@ -506,7 +506,7 @@ namespace OphiussaServerManager.Tools.Update {
                 return null;
             }
 
-            string jsonString1 = JsonConvert.SerializeObject(mods, Formatting.Indented);
+            string jsonString1               = JsonConvert.SerializeObject(mods, Formatting.Indented);
             File.WriteAllText(Path.Combine(cache, $"CurseForgeModCache_{p.Key}.json"), jsonString1);
 
             return changedMods ?? new List<CurseForgeFileDetail>();

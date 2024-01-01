@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using OphiussaServerManager.Common.Helpers;
@@ -155,7 +156,185 @@ namespace OphiussaServerManager.Components {
             sw.Start();
             UsefullTools.LoadFieldsToObject(ref _profile, Controls);
 
+            //TODO:FILL DINO COSTUMIZATION
+            _profile.DinoSettings.Clear();
+            foreach (object o in bindingSource2.List) {
+                _profile.DinoSettings.Add((DinoSettings)o);
+            }
 
+            _profile.ChangedDinoSettings = _profile.DinoSettings.GetChangedSettingsList();
+
+            _profile.PreventDinoTameClassNames.Clear();
+            foreach (var setting in _profile.ChangedDinoSettings) {
+                DinoSettings ds = _profile.DinoSettings.First(f => f.ClassName == setting.ClassName);
+
+                if (ds != null) {
+                    if (setting.OverrideSpawnLimitPercentage != ds.OriginalOverrideSpawnLimitPercentage ||
+                        setting.SpawnLimitPercentage != ds.OriginalSpawnLimitPercentage ||
+                        setting.SpawnWeightMultiplier != ds.OriginalSpawnWeightMultiplier)
+                        _profile.DinoSpawnWeightMultipliers.Add(new DinoSpawn() {
+                            ClassName = ds.ClassName,
+                            OverrideSpawnLimitPercentage = setting.OverrideSpawnLimitPercentage,
+                            SpawnLimitPercentage = setting.SpawnLimitPercentage,
+                            SpawnWeightMultiplier = setting.SpawnWeightMultiplier,
+                            Mod = ds.Mod,
+                            KnownDino = ds.KnownDino,
+                            DinoNameTag = ds.NameTag
+                        });
+
+                    if (setting.TamedDamageMultiplier != DinoSpawn.DEFAULT_SPAWN_WEIGHT_MULTIPLIER)
+                        _profile.TamedDinoClassDamageMultipliers.Add(new ClassMultiplier() {
+                            ClassName = ds.ClassName,
+                            Multiplier = setting.TamedDamageMultiplier
+                        });
+
+                    if (setting.TamedResistanceMultiplier != DinoSpawn.DEFAULT_SPAWN_WEIGHT_MULTIPLIER)
+                        _profile.TamedDinoClassResistanceMultipliers.Add(new ClassMultiplier() {
+                            ClassName = ds.ClassName,
+                            Multiplier = setting.TamedResistanceMultiplier
+                        });
+
+                    if (setting.WildDamageMultiplier != DinoSpawn.DEFAULT_SPAWN_WEIGHT_MULTIPLIER)
+                        _profile.DinoClassDamageMultipliers.Add(new ClassMultiplier() {
+                            ClassName = ds.ClassName,
+                            Multiplier = setting.WildDamageMultiplier
+                        });
+
+                    if (setting.WildResistanceMultiplier != DinoSpawn.DEFAULT_SPAWN_WEIGHT_MULTIPLIER)
+                        _profile.DinoClassResistanceMultipliers.Add(new ClassMultiplier() {
+                            ClassName = ds.ClassName,
+                            Multiplier = setting.WildResistanceMultiplier
+                        });
+
+
+                    if (setting.ClassName != setting.ReplacementClass)
+                        _profile.NPCReplacements.Add(new NPCReplacement() {
+                            FromClassName = ds.ClassName,
+                            ToClassName = setting.ReplacementClass
+                        });
+
+                    if (!setting.CanSpawn && ds.IsSpawnable == true) {
+                        _profile.PreventDinoTameClassNames.Add(setting.ReplacementClass);
+                    }
+
+                    if (!setting.CanTame && ds.IsTameable == DinoTamable.True) {
+                        _profile.PreventDinoTameClassNames.Add(setting.ReplacementClass);
+                    }
+
+                    if (!setting.CanBreeding && ds.IsBreedingable == DinoBreedingable.True) {
+                        _profile.PreventDinoTameClassNames.Add(setting.ReplacementClass);
+                    }
+                }
+            }
+
+            _profile.PerLevelStatsMultiplier_DinoWild.IsEnabled = chkPerLevelStatsMultiplierWild.Checked;
+            if (_profile.PerLevelStatsMultiplier_DinoWild.IsEnabled) {
+                _profile.PerLevelStatsMultiplier_DinoWild[0] = txttbPerLevelStatsMultiplierWildHealth.Value;
+                _profile.PerLevelStatsMultiplier_DinoWild[1] = txttbPerLevelStatsMultiplierWildStamina.Value;
+                _profile.PerLevelStatsMultiplier_DinoWild[2] = txttbPerLevelStatsMultiplierWildOxygen.Value;
+                _profile.PerLevelStatsMultiplier_DinoWild[3] = txttbPerLevelStatsMultiplierWildFood.Value;
+                _profile.PerLevelStatsMultiplier_DinoWild[4] = txttbPerLevelStatsMultiplierWildTemperature.Value;
+                _profile.PerLevelStatsMultiplier_DinoWild[5] = txttbPerLevelStatsMultiplierWildWeight.Value;
+                _profile.PerLevelStatsMultiplier_DinoWild[6] = txttbPerLevelStatsMultiplierWildDamage.Value;
+                _profile.PerLevelStatsMultiplier_DinoWild[7] = txttbPerLevelStatsMultiplierWildSped.Value;
+                _profile.PerLevelStatsMultiplier_DinoWild[8] = txttbPerLevelStatsMultiplierWildCrafting.Value;
+            }
+            else {
+                _profile.PerLevelStatsMultiplier_DinoWild.Reset();
+            }
+
+            _profile.PerLevelStatsMultiplier_DinoTamed.IsEnabled = chkPerLevelStatsMultiplierTamed.Checked;
+            if (_profile.PerLevelStatsMultiplier_DinoTamed.IsEnabled) {
+                _profile.PerLevelStatsMultiplier_DinoTamed[0] = txttbPerLevelStatsMultiplierTamedHealth.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed[1] = txttbPerLevelStatsMultiplierTamedStamina.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed[2] = txttbPerLevelStatsMultiplierTamedOxygen.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed[3] = txttbPerLevelStatsMultiplierTamedFood.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed[4] = txttbPerLevelStatsMultiplierTamedTemperature.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed[5] = txttbPerLevelStatsMultiplierTamedWeight.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed[6] = txttbPerLevelStatsMultiplierTamedDamage.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed[7] = txttbPerLevelStatsMultiplierTamedSpeed.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed[8] = txttbPerLevelStatsMultiplierTamedCrafting.Value;
+            }
+            else {
+                _profile.PerLevelStatsMultiplier_DinoWild.Reset();
+            }
+
+            _profile.PerLevelStatsMultiplier_DinoTamed_Add.IsEnabled = chkPerLevelStatMultiplierTamedAdd.Checked;
+            if (_profile.PerLevelStatsMultiplier_DinoTamed_Add.IsEnabled) {
+                _profile.PerLevelStatsMultiplier_DinoTamed_Add[0] = txttbPerLevelStatsMultiplierTamedAddHealth.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed_Add[1] = txttbPerLevelStatsMultiplierTamedAddStamina.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed_Add[2] = txttbPerLevelStatsMultiplierTamedAddTorpidity.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed_Add[3] = txttbPerLevelStatsMultiplierTamedAddOxygen.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed_Add[4] = txttbPerLevelStatsMultiplierTamedAddFood.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed_Add[5] = txttbPerLevelStatsMultiplierTamedAddWater.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed_Add[6] = txttbPerLevelStatsMultiplierTamedAddTemperature.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed_Add[7] = txttbPerLevelStatsMultiplierTamedAddWeight.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed_Add[8] = txttbPerLevelStatsMultiplierTamedAddDamage.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed_Add[9] = txttbPerLevelStatsMultiplierTamedAddSpeed.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed_Add[10] = txttbPerLevelStatsMultiplierTamedAddFortitude.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed_Add[11] = txttbPerLevelStatsMultiplierTamedAddCrafting.Value;
+            }
+            else {
+                _profile.PerLevelStatsMultiplier_DinoTamed_Add.Reset();
+            }
+
+            _profile.PerLevelStatsMultiplier_DinoTamed_Affinity.IsEnabled = chkPerLevelStatsMultiplierTamedAffinity.Checked;
+            if (_profile.PerLevelStatsMultiplier_DinoTamed_Affinity.IsEnabled) {
+                _profile.PerLevelStatsMultiplier_DinoTamed_Affinity[0] = txttbPerLevelStatsMultiplierTamedAffinityHealth.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed_Affinity[1] = txttbPerLevelStatsMultiplierTamedAffinityStamina.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed_Affinity[2] = txttbPerLevelStatsMultiplierTamedAffinityTorpidity.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed_Affinity[3] = txttbPerLevelStatsMultiplierTamedAffinityOxygen.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed_Affinity[4] = txttbPerLevelStatsMultiplierTamedAffinityFood.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed_Affinity[5] = txttbPerLevelStatsMultiplierTamedAffinityWater.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed_Affinity[6] = txttbPerLevelStatsMultiplierTamedAffinityTemperature.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed_Affinity[7] = txttbPerLevelStatsMultiplierTamedAffinityWeight.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed_Affinity[8] = txttbPerLevelStatsMultiplierTamedAffinityDamage.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed_Affinity[9] = txttbPerLevelStatsMultiplierTamedAffinitySpeed.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed_Affinity[10] = txttbPerLevelStatsMultiplierTamedAffinityFortitude.Value;
+                _profile.PerLevelStatsMultiplier_DinoTamed_Affinity[11] = txttbPerLevelStatsMultiplierTamedAffinityCrafting.Value;
+            }
+            else {
+                _profile.PerLevelStatsMultiplier_DinoTamed_Affinity.Reset();
+            }
+
+            _profile.MutagenLevelBoost.IsEnabled = chkMutagenLevelBoostWild.Checked;
+            if (_profile.MutagenLevelBoost.IsEnabled) {
+                _profile.MutagenLevelBoost[0]  = txttbMutagenLevelBoostWildHealth.Value.ToString(CultureInfo.InvariantCulture).ToInt();
+                _profile.MutagenLevelBoost[1]  = txttbMutagenLevelBoostWildStamina.Value.ToString(CultureInfo.InvariantCulture).ToInt();
+                _profile.MutagenLevelBoost[2]  = txttbMutagenLevelBoostWildTorpidity.Value.ToString(CultureInfo.InvariantCulture).ToInt();
+                _profile.MutagenLevelBoost[3]  = txttbMutagenLevelBoostWildOxygen.Value.ToString(CultureInfo.InvariantCulture).ToInt();
+                _profile.MutagenLevelBoost[4]  = txttbMutagenLevelBoostWildFood.Value.ToString(CultureInfo.InvariantCulture).ToInt();
+                _profile.MutagenLevelBoost[5]  = txttbMutagenLevelBoostWildWater.Value.ToString(CultureInfo.InvariantCulture).ToInt();
+                _profile.MutagenLevelBoost[6]  = txttbMutagenLevelBoostWildTemperature.Value.ToString(CultureInfo.InvariantCulture).ToInt();
+                _profile.MutagenLevelBoost[7]  = txttbMutagenLevelBoostWildWeight.Value.ToString(CultureInfo.InvariantCulture).ToInt();
+                _profile.MutagenLevelBoost[8]  = txttbMutagenLevelBoostWildDamage.Value.ToString(CultureInfo.InvariantCulture).ToInt();
+                _profile.MutagenLevelBoost[9]  = txttbMutagenLevelBoostWildSpeed.Value.ToString(CultureInfo.InvariantCulture).ToInt();
+                _profile.MutagenLevelBoost[10] = txttbMutagenLevelBoostWildFortitude.Value.ToString(CultureInfo.InvariantCulture).ToInt();
+                _profile.MutagenLevelBoost[11] = txttbMutagenLevelBoostWildCrafting.Value.ToString(CultureInfo.InvariantCulture).ToInt();
+            }
+            else {
+                _profile.MutagenLevelBoost.Reset();
+            }
+
+            _profile.MutagenLevelBoost_Bred.IsEnabled = chkMutagenLevelBoostBred.Checked;
+            if (_profile.MutagenLevelBoost_Bred.IsEnabled) {
+                _profile.MutagenLevelBoost_Bred[0]  = txttbMutagenLevelBoostBredHealth.Value.ToString(CultureInfo.InvariantCulture).ToInt();
+                _profile.MutagenLevelBoost_Bred[1]  = txttbMutagenLevelBoostBredStamina.Value.ToString(CultureInfo.InvariantCulture).ToInt();
+                _profile.MutagenLevelBoost_Bred[2]  = txttbMutagenLevelBoostBredTorpidity.Value.ToString(CultureInfo.InvariantCulture).ToInt();
+                _profile.MutagenLevelBoost_Bred[3]  = txttbMutagenLevelBoostBredOxygen.Value.ToString(CultureInfo.InvariantCulture).ToInt();
+                _profile.MutagenLevelBoost_Bred[4]  = txttbMutagenLevelBoostBredFood.Value.ToString(CultureInfo.InvariantCulture).ToInt();
+                _profile.MutagenLevelBoost_Bred[5]  = txttbMutagenLevelBoostBredWater.Value.ToString(CultureInfo.InvariantCulture).ToInt();
+                _profile.MutagenLevelBoost_Bred[6]  = txttbMutagenLevelBoostBredTemperature.Value.ToString(CultureInfo.InvariantCulture).ToInt();
+                _profile.MutagenLevelBoost_Bred[7]  = txttbMutagenLevelBoostBredWeigth.Value.ToString(CultureInfo.InvariantCulture).ToInt();
+                _profile.MutagenLevelBoost_Bred[8]  = txttbMutagenLevelBoostBredDamage.Value.ToString(CultureInfo.InvariantCulture).ToInt();
+                _profile.MutagenLevelBoost_Bred[9]  = txttbMutagenLevelBoostBredSpeed.Value.ToString(CultureInfo.InvariantCulture).ToInt();
+                _profile.MutagenLevelBoost_Bred[10] = txttbMutagenLevelBoostBredFortitude.Value.ToString(CultureInfo.InvariantCulture).ToInt();
+                _profile.MutagenLevelBoost_Bred[11] = txttbMutagenLevelBoostBredCrafting.Value.ToString(CultureInfo.InvariantCulture).ToInt();
+            }
+            else {
+                _profile.MutagenLevelBoost_Bred.Reset();
+            }
+ 
             sw.Stop();
 
             Console.WriteLine("ArkDinoSettings={0}", sw.Elapsed.TotalSeconds);
