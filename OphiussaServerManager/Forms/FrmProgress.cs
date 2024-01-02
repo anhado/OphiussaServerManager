@@ -24,6 +24,9 @@ namespace OphiussaServerManager.Forms {
 
         public void AddToMaxValue(int value) {
             progressBar1.Maximum = _max + value;
+            this.Refresh();
+            label1.Refresh();
+            progressBar1.Refresh();
         }
 
         public void CloseProgress() {

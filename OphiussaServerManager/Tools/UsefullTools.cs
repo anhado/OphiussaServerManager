@@ -90,26 +90,26 @@ namespace OphiussaServerManager.Tools {
 
         internal static void LoadValuesToFields(AutoManageSettings profile, Control.ControlCollection controls) {
             foreach (Control item in controls)
-                if (item is TextBox txt) {
+                if (item is System.Windows.Forms.TextBox txt) {
                     txt.Text  =  GetValueString(profile, txt.Tag?.ToString());
                     txt.Enter += txt_Enter;
                     txt.Leave += txt_Leave;
                 }
-                else if (item is MaskedTextBox mtxt) {
+                else if (item is System.Windows.Forms.MaskedTextBox mtxt) {
                     mtxt.Text = GetValueString(profile, mtxt.Tag?.ToString());
                 }
                 else if (item is exTrackBar trackBar) {
                     trackBar.Value = GetValueFloat(profile, trackBar.Tag?.ToString());
                 }
-                else if (item is CheckBox chk) {
+                else if (item is System.Windows.Forms.CheckBox chk) {
                     chk.Checked = GetValueBool(profile, chk.Tag?.ToString());
                 }
-                else if (item is ComboBox cbo) {
+                else if (item is System.Windows.Forms.ComboBox cbo) {
                     cbo.SelectedValue = GetValueString(profile, cbo.Tag?.ToString());
                 }
-                else if (item is Label lbl  ||
-                         item is Button btn ||
-                         item is RadioButton btn2) {
+                else if (item is System.Windows.Forms.Label lbl  ||
+                         item is System.Windows.Forms.Button btn ||
+                         item is System.Windows.Forms.RadioButton btn2) {
                     //do nothing
                 }
                 else if (item.HasChildren) {
@@ -121,49 +121,56 @@ namespace OphiussaServerManager.Tools {
         }
 
         internal static void LoadValuesToFields(ArkProfile profile, Control.ControlCollection controls) {
-            foreach (Control item in controls)
-                if (item is TextBox txt) {
-                    txt.Text  =  GetValueString(profile, txt.Tag?.ToString());
-                    txt.Enter += txt_Enter;
-                    txt.Leave += txt_Leave;
-                }
-                else if (item is MaskedTextBox mtxt) {
-                    mtxt.Text = GetValueString(profile, mtxt.Tag?.ToString());
-                }
-                else if (item is exTrackBar trackBar) {
-                    if (trackBar.Tag?.ToString() == "MaxHexagonsPerCharacter") {
-                        int x = 1;
+            //foreach (Control item in controls) {
+            for (int i = 0; i < controls.Count; i++) {
+                var item = controls[i];
+                try { 
+                    if (item is System.Windows.Forms.TextBox txt) {
+                        txt.Text  =  GetValueString(profile, txt.Tag?.ToString());
+                        txt.Enter += txt_Enter;
+                        txt.Leave += txt_Leave;
                     }
-
-                    if (trackBar.Scale == 1)
-                        trackBar.Value = GetValueInt(profile, trackBar.Tag?.ToString());
-                    else
-                        trackBar.Value = GetValueFloat(profile, trackBar.Tag?.ToString());
+                    else if (item is System.Windows.Forms.MaskedTextBox mtxt) {
+                        mtxt.Text = GetValueString(profile, mtxt.Tag?.ToString());
+                    }
+                    else if (item is exTrackBar trackBar) {
+                        if (trackBar.Scale == 1)
+                            trackBar.Value = GetValueInt(profile, trackBar.Tag?.ToString());
+                        else
+                            trackBar.Value = GetValueFloat(profile, trackBar.Tag?.ToString());
+                    }
+                    else if (item is System.Windows.Forms.CheckBox chk) {
+                        chk.Checked = GetValueBool(profile, chk.Tag?.ToString());
+                    }
+                    else if (item is System.Windows.Forms.ComboBox cbo) {
+                        cbo.SelectedValue = GetValueString(profile, cbo.Tag?.ToString());
+                    }
+                    else if (item is System.Windows.Forms.Label lbl      ||
+                             item is System.Windows.Forms.Button btn     ||
+                             item is System.Windows.Forms.HScrollBar Hsb ||
+                             item is System.Windows.Forms.VScrollBar Vsb ||
+                             item is System.Windows.Forms.GroupBox grp   ||
+                             item is System.Windows.Forms.TrackBar tb    ||
+                             item is System.Windows.Forms.DataGridView grd) {
+                        //do nothing 
+                    }
+                    else if (item.HasChildren) {
+                        LoadValuesToFields(profile, item.Controls);
+                    }
+                    else {
+                        throw new Exception("Not Supported");
+                    }
                 }
-                else if (item is CheckBox chk) {
-                    chk.Checked = GetValueBool(profile, chk.Tag?.ToString());
+                catch (Exception e) {
+                    Console.WriteLine(e);
                 }
-                else if (item is ComboBox cbo) {
-                    cbo.SelectedValue = GetValueString(profile, cbo.Tag?.ToString());
-                }
-                else if (item is Label lbl      ||
-                         item is Button btn     ||
-                         item is HScrollBar Hsb ||
-                         item is VScrollBar Vsb) {
-                    //do nothing
-                }
-                else if (item.HasChildren) {
-                    LoadValuesToFields(profile, item.Controls);
-                }
-                else {
-                    throw new Exception("Not Supported");
-                }
+            }
         }
 
         internal static void LoadValuesToFields(Profile profile, Control.ControlCollection controls) {
             foreach (Control item in controls)
                 try {
-                    if (item is TextBox txt) {
+                    if (item is System.Windows.Forms.TextBox txt) {
                         txt.Text  =  GetValueString(profile, txt.Tag?.ToString());
                         txt.Enter += txt_Enter;
                         txt.Leave += txt_Leave;
@@ -171,14 +178,14 @@ namespace OphiussaServerManager.Tools {
                     else if (item is exTrackBar trackBar) {
                         trackBar.Value = GetValueFloat(profile, trackBar.Tag?.ToString());
                     }
-                    else if (item is CheckBox chk) {
+                    else if (item is System.Windows.Forms.CheckBox chk) {
                         chk.Checked = GetValueBool(profile, chk.Tag?.ToString());
                     }
-                    else if (item is ComboBox cbo) {
+                    else if (item is System.Windows.Forms.ComboBox cbo) {
                         cbo.SelectedValue = GetValueString(profile, cbo.Tag?.ToString());
                     }
-                    else if (item is Label lbl ||
-                             item is Button btn) {
+                    else if (item is System.Windows.Forms.Label lbl ||
+                             item is System.Windows.Forms.Button btn) {
                         //do nothing
                     }
                     else if (item.HasChildren) {
@@ -425,13 +432,13 @@ namespace OphiussaServerManager.Tools {
 
         internal static void LoadFieldsToObject(ref ArkProfile profile, Control.ControlCollection controls) {
             foreach (Control item in controls)
-                if (item is TextBox txt) {
+                if (item is System.Windows.Forms.TextBox txt) {
                     SetValueString(ref profile, txt.Tag?.ToString(), txt.Text);
                 }
                 else if (item is exTrackBar trackBar) {
                     SetValueFloat(ref profile, trackBar.Tag?.ToString(), trackBar.Value);
                 }
-                else if (item is CheckBox chk) {
+                else if (item is System.Windows.Forms.CheckBox chk) {
                     SetValueBool(ref profile, chk.Tag?.ToString(), chk.Checked);
                 }
                 else {
@@ -441,13 +448,13 @@ namespace OphiussaServerManager.Tools {
 
         internal static void LoadFieldsToObject(ref AutoManageSettings profile, Control.ControlCollection controls) {
             foreach (Control item in controls)
-                if (item is TextBox txt) {
+                if (item is System.Windows.Forms.TextBox txt) {
                     SetValueString(ref profile, txt.Tag?.ToString(), txt.Text);
                 }
                 else if (item is exTrackBar trackBar) {
                     SetValueFloat(ref profile, trackBar.Tag?.ToString(), trackBar.Value);
                 }
-                else if (item is CheckBox chk) {
+                else if (item is System.Windows.Forms.CheckBox chk) {
                     SetValueBool(ref profile, chk.Tag?.ToString(), chk.Checked);
                 }
                 else {
@@ -456,19 +463,22 @@ namespace OphiussaServerManager.Tools {
         }
 
         internal static void LoadFieldsToObject(ref Profile profile, Control.ControlCollection controls) {
-            foreach (Control item in controls)
-                if (item is TextBox txt) {
+            foreach (Control item in controls) {
+                if (item is System.Windows.Forms.TextBox txt) {
                     SetValueString(ref profile, txt.Tag?.ToString(), txt.Text);
                 }
                 else if (item is exTrackBar trackBar) {
                     SetValueFloat(ref profile, trackBar.Tag?.ToString(), trackBar.Value);
                 }
-                else if (item is CheckBox chk) {
+                else if (item is System.Windows.Forms.CheckBox chk) {
                     SetValueBool(ref profile, chk.Tag?.ToString(), chk.Checked);
                 }
                 else {
-                    if (item.HasChildren) LoadFieldsToObject(ref profile, item.Controls);
+                    throw new Exception("Not Supported");
                 }
+
+                if (item.HasChildren) LoadFieldsToObject(ref profile, item.Controls);
+            }
         }
     }
 }

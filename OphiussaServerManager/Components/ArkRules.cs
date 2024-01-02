@@ -18,13 +18,13 @@ namespace OphiussaServerManager.Components {
 
             _profile.MaxDinoLevel = OfficialDifficultyValueConverter.Convert(_profile.OverrideOfficialDifficulty);
 
-            UsefullTools.LoadValuesToFields(_profile, Controls);
+            UsefullTools.LoadValuesToFields(_profile, this.Controls);
 
 
         }
 
         public void GetData(ref ArkProfile profile) {
-            UsefullTools.LoadFieldsToObject(ref _profile, Controls);
+            UsefullTools.LoadFieldsToObject(ref _profile, this.Controls);
 
             _profile.OverrideOfficialDifficulty = OfficialDifficultyValueConverter.ConvertBack(_profile.MaxDinoLevel);
 
