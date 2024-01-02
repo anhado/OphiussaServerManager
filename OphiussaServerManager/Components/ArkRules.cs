@@ -15,29 +15,19 @@ namespace OphiussaServerManager.Components {
 
         public void LoadData(ref ArkProfile profile) {
             _profile = profile;
-            var sw = new Stopwatch();
-
-            sw.Start();
 
             _profile.MaxDinoLevel = OfficialDifficultyValueConverter.Convert(_profile.OverrideOfficialDifficulty);
 
             UsefullTools.LoadValuesToFields(_profile, Controls);
 
 
-            Console.WriteLine("ArkRules={0}", sw.Elapsed.TotalSeconds);
         }
 
         public void GetData(ref ArkProfile profile) {
-            var sw = new Stopwatch();
-
-            sw.Start();
             UsefullTools.LoadFieldsToObject(ref _profile, Controls);
 
             _profile.OverrideOfficialDifficulty = OfficialDifficultyValueConverter.ConvertBack(_profile.MaxDinoLevel);
 
-            sw.Stop();
-
-            Console.WriteLine("ArkRules={0}", sw.Elapsed.TotalSeconds);
         }
 
         private void exTrackBar50_Load(object sender, EventArgs e) {

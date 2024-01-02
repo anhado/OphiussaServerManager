@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web.Security;
@@ -15,6 +16,10 @@ using OphiussaServerManager.Common.Models.SupportedServers;
 namespace OphiussaServerManager.Common.Models {
     public class ArkProfile : Configs {
         public ArkProfile() {
+            var sw = new Stopwatch();
+
+            sw.Start();
+
             PlayerBaseStatMultipliers                  = new StatsMultiplierFloatArray(nameof(PlayerBaseStatMultipliers),                  GameData.GetBaseStatMultipliers_Player,                 GameData.GetStatMultiplierInclusions_PlayerBase(),        true);
             PerLevelStatsMultiplier_Player             = new StatsMultiplierFloatArray(nameof(PerLevelStatsMultiplier_Player),             GameData.GetPerLevelStatsMultipliers_Player,            GameData.GetStatMultiplierInclusions_PlayerPerLevel(),    true);
             PerLevelStatsMultiplier_DinoWild           = new StatsMultiplierFloatArray(nameof(PerLevelStatsMultiplier_DinoWild),           GameData.GetPerLevelStatsMultipliers_DinoWild,          GameData.GetStatMultiplierInclusions_DinoWildPerLevel(),  true);
@@ -41,6 +46,10 @@ namespace OphiussaServerManager.Common.Models {
             DinoClassDamageMultipliers          = new AggregateIniValueList<ClassMultiplier>(nameof(DinoClassDamageMultipliers),          GameData.GetDinoMultipliers);
             DinoClassResistanceMultipliers      = new AggregateIniValueList<ClassMultiplier>(nameof(DinoClassResistanceMultipliers),      GameData.GetDinoMultipliers);
             DinoSettings                        = new DinoSettingsList(DinoSpawnWeightMultipliers, PreventDinoTameClassNames, PreventBreedingForClassNames, NPCReplacements, TamedDinoClassDamageMultipliers, TamedDinoClassResistanceMultipliers, DinoClassDamageMultipliers, DinoClassResistanceMultipliers);
+            
+            sw.Stop();
+
+            Console.WriteLine("Init Profile={0}", sw.Elapsed.TotalSeconds);
         }
 
         public ArkProfile LoadGameIni(Profile prf) {

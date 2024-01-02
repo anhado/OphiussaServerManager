@@ -28,6 +28,14 @@ namespace OphiussaServerManager.Tools {
 
         private ServerPipe _serverPipe;
 
+        internal NotificationController(Settings settings, Dictionary<string, Profile> profiles) {
+            _settings = settings;
+
+            foreach (var key in profiles.Keys) {
+                _profiles.Add(profiles[key]);
+            } 
+        }
+        
         internal NotificationController() {
             _settings = JsonConvert.DeserializeObject<Settings>(File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json")));
             string dir = _settings.DataFolder + "Profiles\\";

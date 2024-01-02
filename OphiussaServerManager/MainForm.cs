@@ -32,6 +32,7 @@ namespace OphiussaServerManager {
         private readonly Dictionary<string, Profile>         _profiles         = new Dictionary<string, Profile>();
         private readonly Dictionary<TabPage, Color>          _tabColors        = new Dictionary<TabPage, Color>();
         private          int                                 _hoverIndex       = -1;
+        public static    List<IpList>                        IpLists           = new List<IpList>();
 
         public MainForm() {
             InitializeComponent();
@@ -47,7 +48,13 @@ namespace OphiussaServerManager {
             testsToolStripMenuItem.Visible = false;
 #endif
 
+            var sw = new Stopwatch();
+
+            sw.Start();
             try {
+                FrmProgress prg = new FrmProgress("Starting Application", 0, 9);
+                prg.Show();
+                prg.SetProgress("Loading Settings");
                 if (!File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json"))) {
                     var settings = new FrmSettings();
                     settings.ShowDialog();
@@ -56,19 +63,29 @@ namespace OphiussaServerManager {
                 Settings = JsonConvert.DeserializeObject<Settings>(File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json")));
                 OphiussaLogger.ReconfigureLogging(Settings);
 
+                prg.SetProgress("Initializing Game Data");
                 GameData.Initialize();
-                NotificationController = new NotificationController();
+                prg.SetProgress("Update Steam CMD");
                 if (Settings.UpdateSteamCmdOnStartup) NetworkTools.DownloadSteamCmd();
                 var assembly = Assembly.GetExecutingAssembly();
                 var fvi      = FileVersionInfo.GetVersionInfo(assembly.Location);
                 txtVersion.Text = fvi.FileVersion;
 
+                prg.SetProgress("Checking Network IPs");
+                IpLists               = NetworkTools.GetAllHostIp();
                 UsefullTools.MainForm = this;
-                _tabColors.Add(tabControl1.TabPages[0], SystemColors.Control);
-                LoadProfiles();
 
+                prg.SetProgress("Loading Profiles");
+                _tabColors.Add(tabControl1.TabPages[0], SystemColors.Control);
+                LoadProfiles(prg);
+
+                prg.SetProgress("Initializing Notification Controller");
+                NotificationController = new NotificationController(Settings, _profiles);
+
+                prg.SetProgress("Get local IP");
                 txtLocalIP.Text = await Task.Run(() => NetworkTools.GetHostIp());
 
+                prg.SetProgress("Getting Public IP");
                 try {
                     var discoverer = new NatDiscoverer();
                     var device     = await discoverer.DiscoverDeviceAsync();
@@ -79,17 +96,18 @@ namespace OphiussaServerManager {
                     OphiussaLogger.Logger.Error(ex);
                 }
 
-                try {
+                /*try {
                     if (txtPublicIP.Text == "") txtPublicIP.Text = await Task.Run(() => NetworkTools.GetPublicIp());
                 }
                 catch (Exception ex) {
                     OphiussaLogger.Logger.Error(ex);
-                }
+                }*/
 
                 timerCheckTask.Enabled    =  true;
                 tabControl1.SelectedIndex =  0;
                 tabControl1.HandleCreated += tabControl1_HandleCreated;
 
+                prg.SetProgress("Checking for updates");
                 try {
                     using (var client = new WebClient()) {
                         client.DownloadFile("https://www.ophiussa.eu/OSM/latest.txt", "latest.txt");
@@ -114,18 +132,29 @@ namespace OphiussaServerManager {
                 }
                 catch (Exception) {
                 }
+
+                prg.Close();
             }
             catch (Exception ex) {
                 MessageBox.Show(ex.Message);
             }
+
+            sw.Stop();
+
+            Console.WriteLine("Init Main Form={0}", sw.Elapsed.TotalSeconds);
         }
 
-        private void LoadProfiles() {
+        private void LoadProfiles(FrmProgress prg) {
             try {
+                var sw = new Stopwatch();
+
+                sw.Start();
+
                 string dir = Settings.DataFolder + "Profiles\\";
                 if (!Directory.Exists(dir)) return;
 
                 string[] files = Directory.GetFiles(dir);
+                prg.AddToMaxValue(files.Length);
                 if (Settings.ProfileOrders.Count > 0)
                     foreach (var profileOrder in Settings.ProfileOrders.OrderBy(x => x.Order)) {
                         string file = files.First(f => f.Contains(profileOrder.Key));
@@ -133,6 +162,7 @@ namespace OphiussaServerManager {
                             var serializerSettings = new JsonSerializerSettings { ObjectCreationHandling = ObjectCreationHandling.Replace };
 
                             var p = JsonConvert.DeserializeObject<Profile>(File.ReadAllText(file), serializerSettings);
+                            prg.SetProgress("Loading Profile :" + p.Name);
                             switch (p.Type.ServerType) {
                                 case EnumServerType.ArkSurviveEvolved:
                                 case EnumServerType.ArkSurviveAscended:
@@ -144,12 +174,15 @@ namespace OphiussaServerManager {
                             }
 
                             files = files.Where(x => x != file).ToArray();
+                            Console.WriteLine("Loaded profile {0} in {1}s", p.Name, sw.Elapsed.TotalSeconds);
+                            sw.Restart();
                         }
                     }
 
                 if (files.Length > 0)
                     foreach (string file in files) {
                         var p = JsonConvert.DeserializeObject<Profile>(File.ReadAllText(file));
+                        prg.SetProgress("Loading Profile :" + p.Name);
                         switch (p.Type.ServerType) {
                             case EnumServerType.ArkSurviveEvolved:
                             case EnumServerType.ArkSurviveAscended:
@@ -159,7 +192,11 @@ namespace OphiussaServerManager {
                                 AddNewValheimServer(p.Key, p.Type, "", p);
                                 break;
                         }
+                        Console.WriteLine("Loaded profile {0} in {1}s", p.Name, sw.Elapsed.TotalSeconds);
+                        sw.Restart();
                     }
+
+                sw.Stop();
             }
             catch (Exception e) {
                 OphiussaLogger.Logger.Error(e);

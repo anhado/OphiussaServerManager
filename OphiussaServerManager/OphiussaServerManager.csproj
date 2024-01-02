@@ -299,10 +299,16 @@
 			<DependentUpon>FrmProcessors.cs</DependentUpon>
 		</Compile>
 		<Compile Include="Forms\FrmProgress.cs">
-			<SubType>Form</SubType>
+		  <SubType>Form</SubType>
 		</Compile>
 		<Compile Include="Forms\FrmProgress.Designer.cs">
-			<DependentUpon>FrmProgress.cs</DependentUpon>
+		  <DependentUpon>FrmProgress.cs</DependentUpon>
+		</Compile>
+		<Compile Include="Forms\FrmUpdateProgress.cs">
+			<SubType>Form</SubType>
+		</Compile>
+		<Compile Include="Forms\FrmUpdateProgress.Designer.cs">
+			<DependentUpon>FrmUpdateProgress.cs</DependentUpon>
 		</Compile>
 		<Compile Include="Forms\FrmServerTypeSelection.cs">
 			<SubType>Form</SubType>
@@ -364,19 +370,19 @@
 		<Compile Include="MainForm.Designer.cs">
 			<DependentUpon>MainForm.cs</DependentUpon>
 		</Compile>
-		<Compile Include="Program.cs"/>
-		<Compile Include="Properties\AssemblyInfo.cs"/>
+		<Compile Include="Program.cs" />
+		<Compile Include="Properties\AssemblyInfo.cs" />
 		<Compile Include="Properties\Resources.Designer.cs">
 			<AutoGen>True</AutoGen>
 			<DesignTime>True</DesignTime>
 			<DependentUpon>Resources.resx</DependentUpon>
 		</Compile>
-		<Compile Include="Tools\AutoBackup.cs"/>
-		<Compile Include="Tools\AutoUpdate.cs"/>
-		<Compile Include="Tools\NotificationController.cs"/>
-		<Compile Include="Tools\ServerTools.cs"/>
-		<Compile Include="Tools\ShellLink.cs"/>
-		<Compile Include="Tools\UsefullTools.cs"/>
+		<Compile Include="Tools\AutoBackup.cs" />
+		<Compile Include="Tools\AutoUpdate.cs" />
+		<Compile Include="Tools\NotificationController.cs" />
+		<Compile Include="Tools\ServerTools.cs" />
+		<Compile Include="Tools\ShellLink.cs" />
+		<Compile Include="Tools\UsefullTools.cs" />
 		<EmbeddedResource Include="Components\ArkAdministration.resx">
 			<DependentUpon>ArkAdministration.cs</DependentUpon>
 		</EmbeddedResource>
@@ -429,7 +435,10 @@
 			<DependentUpon>FrmProcessors.cs</DependentUpon>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Forms\FrmProgress.resx">
-			<DependentUpon>FrmProgress.cs</DependentUpon>
+		  <DependentUpon>FrmProgress.cs</DependentUpon>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Forms\FrmUpdateProgress.resx">
+			<DependentUpon>FrmUpdateProgress.cs</DependentUpon>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Forms\FrmServerTypeSelection.resx">
 			<DependentUpon>FrmServerTypeSelection.cs</DependentUpon>

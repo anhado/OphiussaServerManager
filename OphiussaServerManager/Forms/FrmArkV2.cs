@@ -34,7 +34,7 @@ namespace OphiussaServerManager.Forms {
                 ucArkEnvironment1.LoadData(ref prf);
 
                 var auto = _profile.AutoManageSettings;
-                automaticManagement1.LoadData(ref auto);
+                automaticManagement1.LoadData(ref auto); 
             }
             catch (Exception e) {
                 OphiussaLogger.Logger.Error(e);
@@ -134,7 +134,7 @@ namespace OphiussaServerManager.Forms {
         private void profileHeader1_ClickUpgrade(object sender, EventArgs e) {
             SaveProfile();
 
-            var frm = new FrmProgress(MainForm.Settings, _profile);
+            var frm = new FrmUpdateProgress(MainForm.Settings, _profile);
             frm.ShowDialog();
 
             LoadProfile(_profile, _tab);

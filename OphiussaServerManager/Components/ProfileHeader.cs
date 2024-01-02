@@ -39,15 +39,11 @@ namespace OphiussaServerManager.Components {
             _profile = profile;
             _Tab     = tab;
 
-            var sw = new Stopwatch();
-
-            sw.Start();
+           
             UsefullTools.LoadValuesToFields(_profile, Controls);
 
             this.timerGetProcess.Enabled = true;
-            sw.Stop();
-
-            Console.WriteLine("ProfileHeader={0}", sw.Elapsed.TotalSeconds);
+           
 
             txtServerType.Text = profile.Type.ServerTypeDescription;
 
@@ -76,14 +72,9 @@ namespace OphiussaServerManager.Components {
         }
 
         public void GetData(ref Profile profile) {
-            var sw = new Stopwatch();
-
-            sw.Start();
+           
             UsefullTools.LoadFieldsToObject(ref _profile, Controls);
 
-            sw.Stop();
-
-            Console.WriteLine("ProfileHeader={0}", sw.Elapsed.TotalSeconds);
         }
 
         private void IsRunningProcess() {

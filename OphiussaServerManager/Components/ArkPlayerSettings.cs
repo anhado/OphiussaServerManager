@@ -14,9 +14,6 @@ namespace OphiussaServerManager.Components {
 
         public void LoadData(ref ArkProfile profile) {
             _profile = profile;
-            var sw = new Stopwatch();
-            sw.Start();
-
             UsefullTools.LoadValuesToFields(_profile, Controls);
             if (profile.PlayerBaseStatMultipliers.Count != 12) profile.PlayerBaseStatMultipliers.Reset();
             chkBaseStatMultiplier.Checked = profile.PlayerBaseStatMultipliers.IsEnabled;
@@ -47,12 +44,9 @@ namespace OphiussaServerManager.Components {
             txtPLFortitude.Value             = profile.PerLevelStatsMultiplier_Player[10];
             txtPLCrafting.Value              = profile.PerLevelStatsMultiplier_Player[11];
 
-            Console.WriteLine("ArkPlayerSettings={0}", sw.Elapsed.TotalSeconds);
         }
 
         public void GetData(ref ArkProfile profile) {
-            var sw = new Stopwatch();
-            sw.Start();
             UsefullTools.LoadFieldsToObject(ref _profile, Controls);
 
             _profile.PlayerBaseStatMultipliers.IsEnabled = chkBaseStatMultiplier.Checked;
@@ -93,9 +87,6 @@ namespace OphiussaServerManager.Components {
                 _profile.PerLevelStatsMultiplier_Player.Reset();
             }
 
-            sw.Stop();
-
-            Console.WriteLine("ArkPlayerSettings={0}", sw.Elapsed.TotalSeconds);
         }
 
         private void chkBaseStatMultiplier_CheckedChanged(object sender, EventArgs e) {

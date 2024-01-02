@@ -27,9 +27,9 @@ namespace OphiussaServerManager.Forms {
 
         private void LoadDefaultFieldValues() {
             try {
-                var ret = NetworkTools.GetAllHostIp();
+                //var ret = NetworkTools.GetAllHostIp();
 
-                txtLocalIP.DataSource    = ret;
+                txtLocalIP.DataSource    = MainForm.IpLists;
                 txtLocalIP.ValueMember   = "IP";
                 txtLocalIP.DisplayMember = "Description";
 
@@ -485,7 +485,7 @@ namespace OphiussaServerManager.Forms {
         private void btUpdate_Click(object sender, EventArgs e) {
             SaveProfile();
 
-            var frm = new FrmProgress(MainForm.Settings, _profile);
+            var frm = new FrmUpdateProgress(MainForm.Settings, _profile);
             frm.ShowDialog();
 
             LoadSettings(_profile, _tab);

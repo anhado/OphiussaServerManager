@@ -30,9 +30,7 @@ namespace OphiussaServerManager.Common.Ini {
                                 .GetCustomAttributes(typeof(BaseIniFileEntryAttribute), false)
                                 .OfType<BaseIniFileEntryAttribute>()
                                 .Where(a => !exclusions.Contains(a.Category));
-
-                Console.WriteLine(field.Name);
-
+ 
                 foreach (var attr in attributes) {
                     if (exclusions.Contains(attr.Category)) continue;
 
@@ -127,12 +125,7 @@ namespace OphiussaServerManager.Common.Ini {
                                 .Where(a => !exclusions.Contains(a.Category));
 
                 foreach (var attr in attributes)
-                    try {
-                        Console.WriteLine(field.Name);
-                        if (field.Name == "PlayerBaseStatMultipliers" || field.Name == "PerLevelStatsMultiplier_Player") {
-                            float x = 1f;
-                        }
-
+                    try { 
                         if (attr.IsCustom) {
                             // this code is to handle custom sections
                             if (field.GetValue(obj) is IIniSectionCollection collection) {

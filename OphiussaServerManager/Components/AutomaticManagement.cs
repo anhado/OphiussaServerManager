@@ -14,28 +14,21 @@ namespace OphiussaServerManager.Components {
 
         public void LoadData(ref AutoManageSettings profile) {
             _profile = profile;
-            var sw = new Stopwatch();
+           
 
             rbOnBoot.Checked  = profile.AutoStartOn == AutoStart.OnBoot;
             rbOnLogin.Checked = profile.AutoStartOn == AutoStart.OnLogin;
-            sw.Start();
+           
             UsefullTools.LoadValuesToFields(_profile, Controls);
 
-            sw.Stop();
-
-            Console.WriteLine("AutomaticManagement={0}", sw.Elapsed.TotalSeconds);
         }
 
         public void GetData(ref AutoManageSettings _profile) {
-            var sw = new Stopwatch();
-
+           
             _profile.AutoStartOn = rbOnBoot.Checked ? AutoStart.OnBoot : AutoStart.OnLogin;
-            sw.Start();
+           
             UsefullTools.LoadFieldsToObject(ref _profile, Controls);
 
-            sw.Stop();
-
-            Console.WriteLine("AutomaticManagement={0}", sw.Elapsed.TotalSeconds);
         }
 
         private void chkAutoStart_CheckedChanged(object sender, EventArgs e) {

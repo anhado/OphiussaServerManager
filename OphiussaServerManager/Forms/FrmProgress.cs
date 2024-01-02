@@ -1,98 +1,33 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Drawing;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using OphiussaServerManager.Common.Helpers;
-using OphiussaServerManager.Common.Models;
-using OphiussaServerManager.Common.Models.Profiles;
-using OphiussaServerManager.Tools.Update;
+﻿using System.Windows.Forms;
 
 namespace OphiussaServerManager.Forms {
     public partial class FrmProgress : Form {
-        private readonly ConcurrentQueue<ProcessEventArg> _myQueue = new ConcurrentQueue<ProcessEventArg>();
-        private          bool                             _isUpdating;
+        private int _min = 0;
+        private int _max = 100;
 
-        public FrmProgress(Settings settings, Profile profile) {
-            Settings = settings;
-            Profile  = profile;
+        public FrmProgress(string title, int min = 0, int max = 100) {
+            _min      = min;
+            _max      = max;
+            this.Text = title;
             InitializeComponent();
+            progressBar1.Maximum = _max;
+            progressBar1.Minimum = _min;
         }
 
-        private Settings Settings { get; set; }
-        private Profile  Profile  { get; }
-
-        private void OnProgressChanged(object sender, ProcessEventArg e) {
-            _myQueue.Enqueue(e);
-            //WriteText(e, Color.Orange);
-            //richTextBox1.AppendTextWithTimeStamp(e.Message, Color.Orange);
-            //richTextBox1.SelectionStart = richTextBox1.Text.Length;
-            //richTextBox1.ScrollToCaret();
-            //richTextBox1.Refresh();
+        public void SetProgress(string label) {
+            progressBar1.Value++;
+            label1.Text        = label;
+            this.Refresh();
+            label1.Refresh();
+            progressBar1.Refresh();
         }
 
-        private void OnProcessCompleted(object sender, ProcessEventArg e) {
-            _myQueue.Enqueue(e);
-            //richTextBox1.AppendTextWithTimeStamp(e.Message, Color.Green);
-            //richTextBox1.SelectionStart = richTextBox1.Text.Length;
-            //richTextBox1.ScrollToCaret();
-            //richTextBox1.Refresh();
+        public void AddToMaxValue(int value) {
+            progressBar1.Maximum = _max + value;
         }
 
-        private void OnProcessStarted(object sender, ProcessEventArg e) {
-            _myQueue.Enqueue(e);
-            //richTextBox1.AppendTextWithTimeStamp(e.Message, Color.Green);
-            //richTextBox1.SelectionStart = richTextBox1.Text.Length;
-            //richTextBox1.ScrollToCaret();
-            //richTextBox1.Refresh();
-        }
-
-        private void OnProcessError(object sender, ProcessEventArg e) {
-            _myQueue.Enqueue(e);
-            //richTextBox1.AppendTextWithTimeStamp(e.Message, Color.Green);
-            //richTextBox1.SelectionStart = richTextBox1.Text.Length;
-            //richTextBox1.ScrollToCaret();
-            //richTextBox1.Refresh();
-        }
-
-        private void btUpdate_Click(object sender, EventArgs e) {
-            if (_isUpdating) return;
-            _isUpdating = true;
-            var autoUpdate = new AutoUpdate();
-            autoUpdate.ProcessStarted   += OnProcessStarted;
-            autoUpdate.ProcessError     += OnProcessError;
-            autoUpdate.ProgressChanged  += OnProgressChanged;
-            autoUpdate.ProcessCompleted += OnProcessCompleted;
-            Task.Factory.StartNew(_ => {
-                                      autoUpdate.UpdateSingleServerManually(Profile.Key, chkUpdateCache.Checked, chkStartServer.Checked, chkForceUpdateMods.Checked);
-                                      _isUpdating = false;
-                                  }, null);
-        }
-
-        private void btClose_Click(object sender, EventArgs e) {
-            Close();
-        }
-
-        private void timer_updateBox_Tick(object sender, EventArgs e) {
-            try {
-                panel1.Enabled          = !_isUpdating;
-                timer_updateBox.Enabled = false;
-                foreach (var item in _myQueue)
-                    if (_myQueue.TryDequeue(out var item2)) {
-                        richTextBox1.AppendTextWithTimeStamp(item2.Message, !item2.IsError ? item2.Sucessful ? Color.Green : Color.Orange : Color.Red);
-                        richTextBox1.SelectionStart = richTextBox1.Text.Length;
-                        richTextBox1.ScrollToCaret();
-                        richTextBox1.Refresh();
-                    }
-            }
-            catch (Exception) {
-            }
-
-            timer_updateBox.Enabled = true;
-        }
-
-        private void FrmProgress_FormClosing(object sender, FormClosingEventArgs e) {
-            if (_isUpdating) e.Cancel = true;
+        public void CloseProgress() {
+            this.Close();
         }
     }
 }

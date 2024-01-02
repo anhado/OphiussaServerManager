@@ -22,9 +22,9 @@ namespace OphiussaServerManager.Components {
 
         private void LoadDefaultFieldValues() {
             try {
-                var ret = NetworkTools.GetAllHostIp();
+                //var ret = NetworkTools.GetAllHostIp();
 
-                txtLocalIP.DataSource    = ret;
+                txtLocalIP.DataSource    = MainForm.IpLists;
                 txtLocalIP.ValueMember   = "IP";
                 txtLocalIP.DisplayMember = "Description";
 
@@ -61,29 +61,19 @@ namespace OphiussaServerManager.Components {
         public void LoadData(ref ArkProfile profile, ref Profile serverprofile) {
             _profile       = profile;
             _Serverprofile = serverprofile;
-            var sw = new Stopwatch();
-
-            sw.Start();
 
             LoadDefaultFieldValues();
             UsefullTools.LoadValuesToFields(_profile, Controls);
 
             txtCommand.Text =
                 _profile.GetCommandLinesArguments(MainForm.Settings, _Serverprofile, MainForm.LocaIp);
-            sw.Stop();
-
-            Console.WriteLine("ArkAdministration={0}", sw.Elapsed.TotalSeconds);
+           
         }
 
         public void GetData(ref ArkProfile profile) {
-            var sw = new Stopwatch();
-
-            sw.Start();
+          
             UsefullTools.LoadFieldsToObject(ref _profile, Controls);
 
-            sw.Stop();
-
-            Console.WriteLine("ArkAdministration={0}", sw.Elapsed.TotalSeconds);
         }
 
         private void txtServerPWD_DoubleClick(object sender, EventArgs e) {

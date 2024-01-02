@@ -18,13 +18,8 @@ namespace OphiussaServerManager.Components {
 
         public void LoadData(ref ArkProfile profile) {
             _profile = profile;
-            var sw = new Stopwatch();
-
-            sw.Start();
-
-
+           
             UsefullTools.LoadValuesToFields(_profile, Controls);
-
 
             profile.DinoSettings.Reset();
             foreach (var dinoSetting in profile.DinoSettings) {
@@ -147,13 +142,10 @@ namespace OphiussaServerManager.Components {
             UsefullTools.ManageCheckGroupBox(chkMutagenLevelBoostBred,                groupBox5);
 
 
-            Console.WriteLine("ArkDinoSettings={0}", sw.Elapsed.TotalSeconds);
         }
 
         public void GetData(ref ArkProfile profile) {
-            var sw = new Stopwatch();
-
-            sw.Start();
+            
             UsefullTools.LoadFieldsToObject(ref _profile, Controls);
 
             //TODO:FILL DINO COSTUMIZATION
@@ -335,9 +327,6 @@ namespace OphiussaServerManager.Components {
                 _profile.MutagenLevelBoost_Bred.Reset();
             }
 
-            sw.Stop();
-
-            Console.WriteLine("ArkDinoSettings={0}", sw.Elapsed.TotalSeconds);
         }
 
         private void ArkDinoSettings_Load(object sender, EventArgs e) {
