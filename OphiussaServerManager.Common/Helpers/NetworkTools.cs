@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
+using System.Threading.Tasks;
 using FirewallManager;
 using NetFwTypeLib;
 using Newtonsoft.Json;
@@ -58,6 +59,27 @@ namespace OphiussaServerManager.Common {
                 }
 
             return ret;
+        }
+
+        public static async Task<string> DiscoverPublicIPAsync() {
+            using (var webClient = new WebClient()) {
+                try {
+                    var publicIP = await webClient.DownloadStringTaskAsync("https://api.ipify.org");
+                    if (IPAddress.TryParse(publicIP, out IPAddress address1)) {
+                        return publicIP;
+                    }
+
+                    publicIP = await webClient.DownloadStringTaskAsync("http://whatismyip.akamai.com/");
+                    if (IPAddress.TryParse(publicIP, out IPAddress address2)) {
+                        return publicIP;
+                    }
+                }
+                catch (Exception ex) {
+                    OphiussaLogger.Logger.Error($"{nameof(DiscoverPublicIPAsync)} - Exception checking for public ip. {ex.Message}");
+                }
+
+                return String.Empty;
+            }
         }
 
         public static string GetPublicIp() {

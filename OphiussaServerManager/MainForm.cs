@@ -96,12 +96,12 @@ namespace OphiussaServerManager {
                     OphiussaLogger.Logger.Error(ex);
                 }
 
-                /*try {
-                    if (txtPublicIP.Text == "") txtPublicIP.Text = await Task.Run(() => NetworkTools.GetPublicIp());
+                try {
+                    if (txtPublicIP.Text == "") txtPublicIP.Text = await Task.Run(() => NetworkTools.DiscoverPublicIPAsync().Result);
                 }
                 catch (Exception ex) {
                     OphiussaLogger.Logger.Error(ex);
-                }*/
+                }
 
                 timerCheckTask.Enabled    =  true;
                 tabControl1.SelectedIndex =  0;
