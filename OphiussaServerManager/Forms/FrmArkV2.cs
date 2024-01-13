@@ -60,6 +60,9 @@ namespace OphiussaServerManager.Forms {
             arkDinoSettings1.GetData(ref prf);
             ucArkEnvironment1.GetData(ref prf);
 
+            var auto = _profile.AutoManageSettings;
+            automaticManagement1.GetData(ref auto); 
+            
             _profile.SaveProfile(MainForm.Settings);
 
             LoadProfile(_profile, _tab);

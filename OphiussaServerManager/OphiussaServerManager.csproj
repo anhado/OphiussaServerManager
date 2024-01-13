@@ -140,6 +140,9 @@
 		<Reference Include="NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
 			<HintPath>..\packages\NLog.5.2.6\lib\net46\NLog.dll</HintPath>
 		</Reference>
+		<Reference Include="OphiussaServerManager">
+		  <HintPath>bin\x64\Debug\OphiussaServerManager.exe</HintPath>
+		</Reference>
 		<Reference Include="PresentationFramework"/>
 		<Reference Include="System"/>
 		<Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -267,6 +270,12 @@
 		</Compile>
 		<Compile Include="Forms\FrmDeleteProfile.Designer.cs">
 			<DependentUpon>FrmDeleteProfile.cs</DependentUpon>
+		</Compile>
+		<Compile Include="Forms\FrmEnshrouded.cs">
+		  <SubType>Form</SubType>
+		</Compile>
+		<Compile Include="Forms\FrmEnshrouded.Designer.cs">
+		  <DependentUpon>FrmEnshrouded.cs</DependentUpon>
 		</Compile>
 		<Compile Include="Forms\FrmModManager.cs">
 			<SubType>Form</SubType>
@@ -418,6 +427,9 @@
 		</EmbeddedResource>
 		<EmbeddedResource Include="Forms\FrmDeleteProfile.resx">
 			<DependentUpon>FrmDeleteProfile.cs</DependentUpon>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Forms\FrmEnshrouded.resx">
+		  <DependentUpon>FrmEnshrouded.cs</DependentUpon>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Forms\FrmModManager.resx">
 			<DependentUpon>FrmModManager.cs</DependentUpon>

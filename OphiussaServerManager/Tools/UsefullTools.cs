@@ -124,7 +124,7 @@ namespace OphiussaServerManager.Tools {
             //foreach (Control item in controls) {
             for (int i = 0; i < controls.Count; i++) {
                 var item = controls[i];
-                try { 
+                try {
                     if (item is System.Windows.Forms.TextBox txt) {
                         txt.Text  =  GetValueString(profile, txt.Tag?.ToString());
                         txt.Enter += txt_Enter;
@@ -149,7 +149,6 @@ namespace OphiussaServerManager.Tools {
                              item is System.Windows.Forms.Button btn     ||
                              item is System.Windows.Forms.HScrollBar Hsb ||
                              item is System.Windows.Forms.VScrollBar Vsb ||
-                             item is System.Windows.Forms.GroupBox grp   ||
                              item is System.Windows.Forms.TrackBar tb    ||
                              item is System.Windows.Forms.DataGridView grd) {
                         //do nothing 
@@ -473,11 +472,14 @@ namespace OphiussaServerManager.Tools {
                 else if (item is System.Windows.Forms.CheckBox chk) {
                     SetValueBool(ref profile, chk.Tag?.ToString(), chk.Checked);
                 }
+                else if (item is System.Windows.Forms.Label lbl ||
+                         item is System.Windows.Forms.Button btn) {
+                    //do nothing
+                }
+                else if (item.HasChildren) LoadFieldsToObject(ref profile, item.Controls);
                 else {
                     throw new Exception("Not Supported");
                 }
-
-                if (item.HasChildren) LoadFieldsToObject(ref profile, item.Controls);
             }
         }
     }

@@ -4,7 +4,8 @@ namespace OphiussaServerManager.Common.Models.SupportedServers {
     public enum EnumServerType {
         ArkSurviveEvolved  = 0,
         ArkSurviveAscended = 1,
-        Valheim            = 2
+        Valheim            = 2,
+        Enshrouded         = 3
     }
 
     public class SupportedServersType {
@@ -27,7 +28,8 @@ namespace OphiussaServerManager.Common.Models.SupportedServers {
     public enum ModSource {
         SteamWorkshop,
         CurseForge,
-        NexusMods
+        NexusMods,
+        None
     }
 
     public class MapList {
@@ -85,7 +87,23 @@ namespace OphiussaServerManager.Common.Models.SupportedServers {
                                                                             SteamClientId          = 892970,
                                                                             ModsSource             = ModSource.NexusMods,
                                                                             ManifestFileName       = "appmanifest_896660.acf"
-                                                                        }
+                                                                        }/*,
+                                               new SupportedServersType {
+                                                                            KeyName                = "ESD",
+                                                                            ServerTypeDescription  = "Enshrouded",
+                                                                            ServerType             = EnumServerType.Enshrouded,
+                                                                            SteamServerId          = "2278520",
+                                                                            SaveGamesRelativePath  = "",
+                                                                            SavedFilesRelativePath = "",
+                                                                            SavedRelativePath      = "",
+                                                                            ExecutablePath         = "Binaries\\Win64\\EnshroudedServer.exe",
+                                                                            ExecutablePathApi      = "",
+                                                                            ProcessName            = "EnshroudedServer",
+                                                                            ModAppId               = 0,
+                                                                            SteamClientId          = 1203620,
+                                                                            ModsSource             = ModSource.None,
+                                                                            ManifestFileName       = "2278520_896660.acf"
+                                                                        }*/
                                            };
 
         public static List<MapList> GetMapLists(EnumServerType serverType) {

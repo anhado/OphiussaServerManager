@@ -186,7 +186,7 @@ namespace OphiussaServerManager.Common.Models {
         }
     }
 
-    public class Configs : BaseAdministration {
+    public class Configs   {
         /*
 TODO:CHECK THIS OPTIONS
     [DataMember]
@@ -294,7 +294,34 @@ TODO:CHECK THIS OPTIONS
     }
          */
 
-        [DefaultValue(false)] public bool UseServerApi { get; set; } = false;
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_SessionSettings, ServerProfileCategory.Administration, "SessionName")]
+        public string ServerName { get; set; } = "New Server";
+
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Administration, "ServerPassword")]
+        public string ServerPassword { get; set; } = Membership.GeneratePassword(10, 6);
+
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_SessionSettings, ServerProfileCategory.Administration, "MultiHome")]
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_MultiHome,       ServerProfileCategory.Administration, "MultiHome", WriteBoolValueIfNonEmpty = true)]
+        public string LocalIp { get; set; } = NetworkTools.GetHostIp();
+
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_SessionSettings, ServerProfileCategory.Administration, "Port")]
+        public string ServerPort { get; set; } = "7777";
+
+        public string PeerPort { get; set; } = "7778";
+
+        //public List<string> ModIDs { get; set; } = new List<string>();
+
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Administration, "ActiveMods")] //TODO:CHECK THIS BECAUSE IS SUPPOSED TO BE A STRING SPLITTED BY ,
+        public string ActiveMods { get; set; } = "";
+
+
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_GameSession, ServerProfileCategory.Administration, "MaxPlayers")]
+        public int MaxPlayers { get; set; } = 70;
+
+        public                       ProcessPriority         CpuPriority     { get; set; } = ProcessPriority.Normal;
+        public                       string                  CpuAffinity     { get; set; } = "All";
+        public                       List<ProcessorAffinity> CpuAffinityList { get; set; } = new List<ProcessorAffinity>();
+        [DefaultValue(false)] public bool                    UseServerApi    { get; set; } = false;
 
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Administration, "ServerAdminPassword")]
         public string ServerAdminPassword { get; set; } = Membership.GeneratePassword(10, 6);
