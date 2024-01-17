@@ -22,6 +22,8 @@ namespace OphiussaServerManager.Forms {
             try {
                 _profile = profile;
                 _tab     = tab;
+
+                _profile.LoadFromDisk();
                 profileHeader1.LoadData(ref _tab, ref _profile);
 
                 var prf = _profile.ArkConfiguration;

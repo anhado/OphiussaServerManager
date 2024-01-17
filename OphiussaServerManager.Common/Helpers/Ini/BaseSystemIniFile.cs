@@ -34,7 +34,7 @@ namespace OphiussaServerManager.Common.Ini {
                 foreach (var attr in attributes) {
                     if (exclusions.Contains(attr.Category)) continue;
 
-                    try {
+                    try { 
                         if (attr.IsCustom) {
                             // this code is to handle custom sections
                             if (field.GetValue(obj) is IIniSectionCollection collection) {

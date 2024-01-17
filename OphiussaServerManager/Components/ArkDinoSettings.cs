@@ -371,6 +371,15 @@ namespace OphiussaServerManager.Components {
             try {
                 var obj = (DinoSettings)bindingSource2[e.RowIndex];
                 if (obj != null) {
+
+                    ModColors color = MainForm.Settings.ModColors.Find(aa => aa.Mod == obj.Mod);
+                    if (color == null) {
+                        color =  MainForm.Settings.AddNewModColor(obj.Mod);
+                    }
+                    
+                    foreach (DataGridViewCell cell in dataGridView1.Rows[e.RowIndex].Cells)  
+                            cell.Style.BackColor = color.Color; 
+                    
                     if (obj.IsSpawnable == false && e.ColumnIndex == 2) {
                         e.PaintBackground(e.ClipBounds, true);
                         e.Handled = true;

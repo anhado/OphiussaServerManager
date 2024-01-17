@@ -21,6 +21,7 @@ namespace OphiussaServerManager.Common.Models {
             SteamCmdLocation          = drive + $"{pFoldernName}\\steamcmd\\";
             BackupDirectory           = drive + $"{pFoldernName}\\osmBackups\\";
             Guid                      = System.Guid.NewGuid().ToString();
+            ModColors                 = Utils.GetModColors();
         }
 
         [JsonIgnore] public string CryptKey                  { get; set; } = "b14ca5898a4e4133bbce2ea2315a1916";
@@ -63,6 +64,8 @@ namespace OphiussaServerManager.Common.Models {
         public int                MaxLogsDays                            { get; set; } = 30;
         public int                MaxLogFiles                            { get; set; } = 30;
         public List<ProfileOrder> ProfileOrders                          { get; set; } = new List<ProfileOrder>();
+        
+        public List<ModColors>    ModColors                              { get; set; } = new List<ModColors>();
 
         public void SaveSettings() {
             string fileName   = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json");
@@ -74,6 +77,12 @@ namespace OphiussaServerManager.Common.Models {
             var Settings = JsonConvert.DeserializeObject<Settings>(File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json")));
             OphiussaLogger.ReconfigureLogging(Settings);
             return Settings.DataFolder;
+        }
+
+        public ModColors AddNewModColor(string Mod) {
+            ModColors mc = new ModColors() { Mod   = Mod, Color = RandomPastelGenerator.GetNewPastelColor() };
+            this.ModColors.Add(mc);
+            return mc;
         }
     }
 }

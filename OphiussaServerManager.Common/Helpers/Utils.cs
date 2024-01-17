@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -13,18 +14,43 @@ using System.Text;
 using System.Windows.Forms;
 using OphiussaServerManager.Common.Helpers;
 using OphiussaServerManager.Common.Ini;
+using OphiussaServerManager.Common.Models;
 
 namespace OphiussaServerManager.Common {
     public static class Utils {
-        public const string DefaultCultureCode = "en-US";
-
-        private static readonly Guid _localLowId = new Guid("A520A1A4-1780-4FF6-BD18-167343C5AF16");
+        public const            string DefaultCultureCode = "en-US";
+        private static readonly Guid   _localLowId        = new Guid("A520A1A4-1780-4FF6-BD18-167343C5AF16");
 
         [DllImport("user32.dll")]
         public static extern int SetForegroundWindow(IntPtr hWnd);
 
         [DllImport("shell32.dll")]
         private static extern int SHGetKnownFolderPath([MarshalAs(UnmanagedType.LPStruct)] Guid rfid, uint dwFlags, IntPtr hToken, out IntPtr pszPath);
+
+
+        public static Color ConvertHexToColor(string hexValue) {
+            return ColorTranslator.FromHtml(hexValue);
+        }
+
+        public static List<ModColors> GetModColors() {
+            List<ModColors> ModColors = new List<ModColors>();
+            ModColors.Add(new ModColors() { Mod = "TekEngram", Color     = Color.Blue });
+            ModColors.Add(new ModColors() { Mod = "Aberration", Color    = ConvertHexToColor("#EFDAF5") });
+            ModColors.Add(new ModColors() { Mod = "ArkPrime", Color      = Color.Beige });
+            ModColors.Add(new ModColors() { Mod = "Extinction", Color    = ConvertHexToColor("#FF8B8B") });
+            ModColors.Add(new ModColors() { Mod = "Genesis", Color       = ConvertHexToColor("#B3EBFF") });
+            ModColors.Add(new ModColors() { Mod = "Genesis2", Color      = ConvertHexToColor("#B3EBFF") });
+            ModColors.Add(new ModColors() { Mod = "PrimitivePlus", Color = ConvertHexToColor("#E7F4DB") });
+            ModColors.Add(new ModColors() { Mod = "Ragnarok", Color      = ConvertHexToColor("#F4E2DB") });
+            ModColors.Add(new ModColors() { Mod = "ScorchedEarth", Color = ConvertHexToColor("#F4E9DB") });
+            ModColors.Add(new ModColors() { Mod = "TheCenter", Color     = ConvertHexToColor("#FF8B8B") });
+            ModColors.Add(new ModColors() { Mod = "Extinction", Color    = Color.Beige });
+            ModColors.Add(new ModColors() { Mod = "Valguero", Color      = ConvertHexToColor("#FBFBBE") });
+            ModColors.Add(new ModColors() { Mod = "CrystalIsles", Color  = ConvertHexToColor("#FFD6D6") });
+            ModColors.Add(new ModColors() { Mod = "LostIsland", Color    = ConvertHexToColor("#D9F7C4") });
+            ModColors.Add(new ModColors() { Mod = "Fjordur", Color       = ConvertHexToColor("#98BBCC") });
+            return ModColors;
+        }
 
         public static void ExecuteAsAdmin(string exeName, string parameters, bool wait = true, bool noWindow = false, bool dontRunAsAdmin = false) {
             try {
@@ -243,11 +269,16 @@ namespace OphiussaServerManager.Common {
                 property.SetValue(obj, nullableValue.SetValue(true, result));
                 return true;
             }
+/*
+            if (property.GetValue(obj) is EngramEntryList sortableObservableCollection)
+                return true;*/
 
             if (!property.PropertyType.IsSubclassOf(typeof(AggregateIniValue)))
                 return false;
             if (property.GetValue(obj) is AggregateIniValue aggregateIniValue)
                 aggregateIniValue.InitializeFromINIValue(value);
+
+
             return true;
         }
 

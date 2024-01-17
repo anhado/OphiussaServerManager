@@ -192,6 +192,7 @@ namespace OphiussaServerManager {
                                 AddNewValheimServer(p.Key, p.Type, "", p);
                                 break;
                         }
+
                         Console.WriteLine("Loaded profile {0} in {1}s", p.Name, sw.Elapsed.TotalSeconds);
                         sw.Restart();
                     }

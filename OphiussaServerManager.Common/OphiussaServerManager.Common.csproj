@@ -33,6 +33,18 @@
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	</PropertyGroup>
 	<ItemGroup>
+		<Reference Include="Aryth.Coord, Version=0.2.21.0, Culture=neutral, processorArchitecture=MSIL">
+		  <HintPath>..\packages\Aryth.Coord.0.2.21\lib\netstandard2.0\Aryth.Coord.dll</HintPath>
+		</Reference>
+		<Reference Include="Aryth.Flopper, Version=0.2.21.0, Culture=neutral, processorArchitecture=MSIL">
+		  <HintPath>..\packages\Aryth.Flopper.0.2.21\lib\netstandard2.0\Aryth.Flopper.dll</HintPath>
+		</Reference>
+		<Reference Include="Aryth.Math, Version=0.2.21.0, Culture=neutral, processorArchitecture=MSIL">
+		  <HintPath>..\packages\Aryth.Math.0.2.21\lib\netstandard2.0\Aryth.Math.dll</HintPath>
+		</Reference>
+		<Reference Include="Aryth.Polar, Version=0.2.21.0, Culture=neutral, processorArchitecture=MSIL">
+		  <HintPath>..\packages\Aryth.Polar.0.2.21\lib\netstandard2.0\Aryth.Polar.dll</HintPath>
+		</Reference>
 		<Reference Include="CoreRCON, Version=5.2.1.0, Culture=neutral, processorArchitecture=MSIL">
 			<HintPath>..\packages\CoreRCON.5.2.1\lib\netstandard2.0\CoreRCON.dll</HintPath>
 		</Reference>
@@ -77,6 +89,9 @@
 		</Reference>
 		<Reference Include="NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
 			<HintPath>..\packages\NLog.5.2.6\lib\net46\NLog.dll</HintPath>
+		</Reference>
+		<Reference Include="Palett.Types, Version=0.4.8.0, Culture=neutral, processorArchitecture=MSIL">
+		  <HintPath>..\packages\Palett.Types.0.4.8\lib\netstandard2.0\Palett.Types.dll</HintPath>
 		</Reference>
 		<Reference Include="PresentationFramework"/>
 		<Reference Include="System"/>
@@ -124,6 +139,24 @@
 		<Reference Include="TinyCsvParser, Version=2.7.0.0, Culture=neutral, PublicKeyToken=d7df35b038077099, processorArchitecture=MSIL">
 			<HintPath>..\packages\TinyCsvParser.2.7.0\lib\netstandard2.0\TinyCsvParser.dll</HintPath>
 		</Reference>
+		<Reference Include="Typen, Version=0.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+		  <HintPath>..\packages\Typen.0.1.1\lib\netstandard2.0\Typen.dll</HintPath>
+		</Reference>
+		<Reference Include="Typen.Enum, Version=0.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+		  <HintPath>..\packages\Typen.Enum.0.1.1\lib\netstandard2.0\Typen.Enum.dll</HintPath>
+		</Reference>
+		<Reference Include="Typen.Literal, Version=0.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+		  <HintPath>..\packages\Typen.Literal.0.1.1\lib\netstandard2.0\Typen.Literal.dll</HintPath>
+		</Reference>
+		<Reference Include="Typen.Numeral, Version=0.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+		  <HintPath>..\packages\Typen.Numeral.0.1.1\lib\netstandard2.0\Typen.Numeral.dll</HintPath>
+		</Reference>
+		<Reference Include="Veho.Sequence, Version=0.5.10.0, Culture=neutral, processorArchitecture=MSIL">
+		  <HintPath>..\packages\Veho.Sequence.0.5.10\lib\netstandard2.0\Veho.Sequence.dll</HintPath>
+		</Reference>
+		<Reference Include="Veho.Vector, Version=0.5.10.0, Culture=neutral, processorArchitecture=MSIL">
+		  <HintPath>..\packages\Veho.Vector.0.5.10\lib\netstandard2.0\Veho.Vector.dll</HintPath>
+		</Reference>
 		<Reference Include="WindowsBase"/>
 	</ItemGroup>
 	<ItemGroup>
@@ -162,6 +195,7 @@
 		<Compile Include="Helpers\NullableValue.cs"/>
 		<Compile Include="Helpers\ProcessUtils.cs"/>
 		<Compile Include="Helpers\CurseForgeUtils.cs"/>
+		<Compile Include="Helpers\RandomPastelGenerator.cs" />
 		<Compile Include="Helpers\ReadFileInChunksAndCompareVector.cs"/>
 		<Compile Include="Helpers\ReadIntoByteBufferInChunks.cs"/>
 		<Compile Include="Helpers\ReadWholeFileAtOnce.cs"/>
@@ -169,6 +203,8 @@
 		<Compile Include="Helpers\TaskUtils.cs"/>
 		<Compile Include="Helpers\Utils.cs"/>
 		<Compile Include="Models\ArkProfile.cs"/>
+		<Compile Include="Models\ASM\EngramAutoUnlockList.cs" />
+		<Compile Include="Models\ASM\EngramSettingsList.cs" />
 		<Compile Include="Models\AutoManageSettings.cs"/>
 		<Compile Include="Models\BaseAdministration.cs"/>
 		<Compile Include="Models\CacheServerTypes.cs"/>

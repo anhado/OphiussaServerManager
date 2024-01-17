@@ -1,7 +1,13 @@
-﻿using System.Windows.Forms;
+﻿using System.Drawing;
+using System.Windows.Forms;
 using OphiussaServerManager.Common.Models.Profiles;
 
 namespace OphiussaServerManager.Common.Models {
+    public class ModColors {
+        public string Mod   { get; set; }
+        public Color  Color { get; set; }
+    }
+
     public class LinkProfileForm {
         public Profile Profile { get; set; }
         public Form    Form    { get; set; }

@@ -440,5 +440,18 @@ namespace OphiussaServerManager.Common.Models.Profiles {
 
         private void Watcher_Changed(object sender, FileSystemEventArgs e) {
         }
+
+        public void LoadFromDisk() {
+            switch (Type.ServerType) {
+                case EnumServerType.ArkSurviveEvolved:
+                case EnumServerType.ArkSurviveAscended:
+                    ArkConfiguration.LoadFromDisk();
+
+                    break;
+                case EnumServerType.Valheim: 
+                    //do Nothing
+                    break;
+            }
+        }
     }
 }

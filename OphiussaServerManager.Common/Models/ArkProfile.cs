@@ -28,6 +28,18 @@ namespace OphiussaServerManager.Common.Models {
             PerLevelStatsMultiplier_DinoTamed_Affinity = new StatsMultiplierFloatArray(nameof(PerLevelStatsMultiplier_DinoTamed_Affinity), GameData.GetPerLevelStatsMultipliers_DinoTamedAffinity, GameData.GetStatMultiplierInclusions_DinoTamedAffinity(), true);
             MutagenLevelBoost                          = new StatsMultiplierIntegerArray(nameof(MutagenLevelBoost),      GameData.GetPerLevelMutagenLevelBoost_DinoWild,  GameData.GetMutagenLevelBoostInclusions_DinoWild(),  true);
             MutagenLevelBoost_Bred                     = new StatsMultiplierIntegerArray(nameof(MutagenLevelBoost_Bred), GameData.GetPerLevelMutagenLevelBoost_DinoTamed, GameData.GetMutagenLevelBoostInclusions_DinoTamed(), true);
+            DinoSpawnWeightMultipliers                 = new AggregateIniValueList<DinoSpawn>(nameof(DinoSpawnWeightMultipliers), GameData.GetDinoSpawns);
+            PreventDinoTameClassNames                  = new StringIniValueList(nameof(PreventDinoTameClassNames),    () => new string[0]);
+            PreventBreedingForClassNames               = new StringIniValueList(nameof(PreventBreedingForClassNames), () => new string[0]);
+            NPCReplacements                            = new AggregateIniValueList<NPCReplacement>(nameof(NPCReplacements), GameData.GetNPCReplacements);
+            TamedDinoClassDamageMultipliers            = new AggregateIniValueList<ClassMultiplier>(nameof(TamedDinoClassDamageMultipliers),     GameData.GetDinoMultipliers);
+            TamedDinoClassResistanceMultipliers        = new AggregateIniValueList<ClassMultiplier>(nameof(TamedDinoClassResistanceMultipliers), GameData.GetDinoMultipliers);
+            DinoClassDamageMultipliers                 = new AggregateIniValueList<ClassMultiplier>(nameof(DinoClassDamageMultipliers),          GameData.GetDinoMultipliers);
+            DinoClassResistanceMultipliers             = new AggregateIniValueList<ClassMultiplier>(nameof(DinoClassResistanceMultipliers),      GameData.GetDinoMultipliers);
+            DinoSettings                               = new DinoSettingsList(DinoSpawnWeightMultipliers, PreventDinoTameClassNames, PreventBreedingForClassNames, NPCReplacements, TamedDinoClassDamageMultipliers, TamedDinoClassResistanceMultipliers, DinoClassDamageMultipliers, DinoClassResistanceMultipliers);
+            OverrideNamedEngramEntries                 = new EngramEntryList(nameof(OverrideNamedEngramEntries));
+            EngramEntryAutoUnlocks                     = new EngramAutoUnlockList(nameof(EngramEntryAutoUnlocks));
+            EngramSettings                             = new EngramSettingsList(this.OverrideNamedEngramEntries, this.EngramEntryAutoUnlocks);
             PlayerBaseStatMultipliers.Clear();
             PerLevelStatsMultiplier_Player.Clear();
             PerLevelStatsMultiplier_DinoWild.Clear();
@@ -36,16 +48,6 @@ namespace OphiussaServerManager.Common.Models {
             PerLevelStatsMultiplier_DinoTamed_Affinity.Clear();
             MutagenLevelBoost.Clear();
             MutagenLevelBoost_Bred.Clear();
-
-            DinoSpawnWeightMultipliers          = new AggregateIniValueList<DinoSpawn>(nameof(DinoSpawnWeightMultipliers), GameData.GetDinoSpawns);
-            PreventDinoTameClassNames           = new StringIniValueList(nameof(PreventDinoTameClassNames),    () => new string[0]);
-            PreventBreedingForClassNames        = new StringIniValueList(nameof(PreventBreedingForClassNames), () => new string[0]);
-            NPCReplacements                     = new AggregateIniValueList<NPCReplacement>(nameof(NPCReplacements), GameData.GetNPCReplacements);
-            TamedDinoClassDamageMultipliers     = new AggregateIniValueList<ClassMultiplier>(nameof(TamedDinoClassDamageMultipliers),     GameData.GetDinoMultipliers);
-            TamedDinoClassResistanceMultipliers = new AggregateIniValueList<ClassMultiplier>(nameof(TamedDinoClassResistanceMultipliers), GameData.GetDinoMultipliers);
-            DinoClassDamageMultipliers          = new AggregateIniValueList<ClassMultiplier>(nameof(DinoClassDamageMultipliers),          GameData.GetDinoMultipliers);
-            DinoClassResistanceMultipliers      = new AggregateIniValueList<ClassMultiplier>(nameof(DinoClassResistanceMultipliers),      GameData.GetDinoMultipliers);
-            DinoSettings                        = new DinoSettingsList(DinoSpawnWeightMultipliers, PreventDinoTameClassNames, PreventBreedingForClassNames, NPCReplacements, TamedDinoClassDamageMultipliers, TamedDinoClassResistanceMultipliers, DinoClassDamageMultipliers, DinoClassResistanceMultipliers);
 
             sw.Stop();
 
@@ -72,9 +74,9 @@ namespace OphiussaServerManager.Common.Models {
             var hifenArgs         = new List<string>();
             var interrogationArgs = new List<string>();
             interrogationArgs.Add("?listen");
-            //if (this.Administration.AllowFlyerSpeedLeveling) hifenArgs.Add(" -AllowFlyerSpeedLeveling");
+            if (this.AllowFlyerSpeedLeveling) hifenArgs.Add(" -AllowFlyerSpeedLeveling");
             if (AlternateSaveDirectoryName.Trim() != "") interrogationArgs.Add($"?AltSaveDirectoryName=\"{AlternateSaveDirectoryName.Trim()}\"");
-            //if (this.Administration.AutoDestroyStructures) hifenArgs.Add(" -AutoDestroyStructures");
+            if (this.EnableAutoDestroyStructures) hifenArgs.Add(" -AutoDestroyStructures");
             //if (this.Administration.AutoManagedMods) hifenArgs.Add(" -automanagedmods"); //Only ASE
             if (prf.Type.ServerType == EnumServerType.ArkSurviveEvolved)
                 if (EnableCrossPlay)
@@ -91,16 +93,16 @@ namespace OphiussaServerManager.Common.Models {
                     hifenArgs.Add(" -epiconly"); //Only ASE
             //if (this.Administration.EventColorsChanceOverride != "") InterrogationArgs.Add($"?EventColorsChanceOverride=\"{this.Administration.EventColorsChanceOverride.ToString()}\"");
             //if (this.Administration.ExclusiveJoin) hifenArgs.Add(" -exclusivejoin");
-            //if (this.Administration.ForceAllowCaveFlyers) hifenArgs.Add(" -ForceAllowCaveFlyers");
+            if (this.EnableAllowCaveFlyers) hifenArgs.Add(" -ForceAllowCaveFlyers");
             if (EnableAutoForceRespawnDinos) hifenArgs.Add(" -ForceRespawnDinos");
             if (prf.Type.ServerType == EnumServerType.ArkSurviveAscended)
                 if (!string.IsNullOrEmpty(ActiveMods))
                     hifenArgs.Add($" -mods={ActiveMods}");
-            //if (this.Administration.imprintlimit) hifenArgs.Add(" -imprintlimit=101");
+            if (this.Imprintlimit != 1) hifenArgs.Add(" -imprintlimit=101");
             if (DisableVac) hifenArgs.Add(" -insecure");
             //if (this.Administration.MapModID) hifenArgs.Add(" -MapModID=<ModID>");//Dont Use This
             //if (this.Administration.MaxNumOfSaveBackups) hifenArgs.Add($" -MaxNumOfSaveBackups={this.Administration.MaxNumOfSaveBackups}");
-            //if (this.Administration.MapPlayerLocation != "") InterrogationArgs.Add($"?AltSaveDirectoryName=\"{(this.Administration.MapPlayerLocation ? "True" : "False")}\"");
+            interrogationArgs.Add($"?ShowMapPlayerLocation=\"{(this.AllowMapPlayerLocation ? "True" : "False")}\"");
             if (FjordhawkInventoryCooldown != 3600) hifenArgs.Add($" -MinimumTimeBetweenInventoryRetrieval={FjordhawkInventoryCooldown}");
             if (LocalIp.Trim()             != "") interrogationArgs.Add($"?MultiHome={LocalIp.Trim()}");
             if (DisableAntiSpeedHackDetection) hifenArgs.Add(" -noantispeedhack");
@@ -159,8 +161,7 @@ namespace OphiussaServerManager.Common.Models {
             hifenArgs.Add(" -log");
 
             if (AllowCrateSpawnsOnTopOfStructures) interrogationArgs.Add("?AllowCrateSpawnsOnTopOfStructures=True");
-            hifenArgs.Add(" -ForceAllowCaveFlyers"); //Remove later 
-            //-ForceAllowCaveFlyers
+            hifenArgs.Add(" -ForceAllowCaveFlyers"); //Remove later   
             //-exclusivejoin
 
             // Olympus?listen?MultiHome=192.168.1.250?Port=8799?QueryPort=27036?MaxPlayers=50?AllowCrateSpawnsOnTopOfStructures=True 
@@ -183,6 +184,10 @@ namespace OphiussaServerManager.Common.Models {
             catch (Exception) {
                 return false;
             }
+        }
+
+        public void LoadFromDisk() {
+            //TODO:Read Exclusive Join and ETC
         }
     }
 
@@ -1429,7 +1434,7 @@ TODO:CHECK THIS OPTIONS
 
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Environment, WriteIfNotValue = 1f)]
         public float SpecialXPMultiplier { get; set; } = 1f;
-        
+
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "", WriteIfNotValue = 1f)]
         public float StructureResistanceMultiplier { get; set; } = 1f;
 
@@ -1477,8 +1482,8 @@ TODO:CHECK THIS OPTIONS
 
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Structures, "bPassiveDefensesDamageRiderlessDinos")]
         public bool PassiveDefensesDamageRiderlessDinos { get; set; } = false;
-        
-        public bool EnableAutoDestroyStructures { get;         set; } = false;
+
+        public bool EnableAutoDestroyStructures { get; set; } = false;
 
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "")]
         public bool OnlyAutoDestroyCoreStructures { get; set; } = false;
@@ -1532,5 +1537,19 @@ TODO:CHECK THIS OPTIONS
 
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Structures, "bGenesisUseStructuresPreventionVolumes")]
         public bool GenesisUseStructuresPreventionVolumes { get; set; } = false;
+
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Engrams, "bAutoUnlockAllEngrams", ConditionedOn = "AutoUnlockAllEngrams")]
+        public bool AutoUnlockAllEngrams { get; set; } = false;
+
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Engrams, "bOnlyAllowSpecifiedEngrams", ConditionedOn = "OnlyAllowSpecifiedEngrams")]
+        public bool OnlyAllowSpecifiedEngrams { get; set; } = false;
+
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Engrams, "")]
+        public EngramEntryList OverrideNamedEngramEntries { get; set; }
+
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Engrams, "")]
+        public EngramAutoUnlockList EngramEntryAutoUnlocks { get; set; }
+
+        public EngramSettingsList EngramSettings { get; set; }
     }
 }
