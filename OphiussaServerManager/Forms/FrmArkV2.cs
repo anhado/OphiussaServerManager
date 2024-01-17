@@ -35,6 +35,7 @@ namespace OphiussaServerManager.Forms {
                 arkDinoSettings1.LoadData(ref prf);
                 ucArkEnvironment1.LoadData(ref prf);
                 arkStructures1.LoadData(ref prf);
+                arkEngrams1.LoadData(ref prf);
 
                 var auto = _profile.AutoManageSettings;
                 automaticManagement1.LoadData(ref auto); 
@@ -63,6 +64,7 @@ namespace OphiussaServerManager.Forms {
             arkDinoSettings1.GetData(ref prf);
             ucArkEnvironment1.GetData(ref prf);
             arkStructures1.GetData(ref prf);
+            arkEngrams1.GetData(ref prf);
 
             var auto = _profile.AutoManageSettings;
             automaticManagement1.GetData(ref auto); 

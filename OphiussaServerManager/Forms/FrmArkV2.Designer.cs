@@ -24,6 +24,8 @@
         /// </summary>
         private void InitializeComponent() {
             this.panel1                   = new System.Windows.Forms.Panel();
+            this.expandCollapsePanel10    = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
+            this.arkEngrams1              = new OphiussaServerManager.Components.ArkEngrams();
             this.expandCollapsePanel9     = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
             this.arkStructures1           = new OphiussaServerManager.Components.ArkStructures();
             this.expandCollapsePanel8     = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
@@ -44,6 +46,7 @@
             this.arkAdministration1       = new OphiussaServerManager.Components.ArkAdministration();
             this.profileHeader1           = new OphiussaServerManager.Components.ProfileHeader();
             this.panel1.SuspendLayout();
+            this.expandCollapsePanel10.SuspendLayout();
             this.expandCollapsePanel9.SuspendLayout();
             this.expandCollapsePanel8.SuspendLayout();
             this.expandCollapsePanel7.SuspendLayout();
@@ -58,6 +61,7 @@
             // panel1
             // 
             this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add(this.expandCollapsePanel10);
             this.panel1.Controls.Add(this.expandCollapsePanel9);
             this.panel1.Controls.Add(this.expandCollapsePanel8);
             this.panel1.Controls.Add(this.expandCollapsePanel7);
@@ -70,8 +74,31 @@
             this.panel1.Dock     = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 148);
             this.panel1.Name     = "panel1";
-            this.panel1.Size     = new System.Drawing.Size(777, 913);
+            this.panel1.Size     = new System.Drawing.Size(777, 1099);
             this.panel1.TabIndex = 1;
+            // 
+            // expandCollapsePanel10
+            // 
+            this.expandCollapsePanel10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.expandCollapsePanel10.ButtonSize  = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonSize.Small;
+            this.expandCollapsePanel10.ButtonStyle = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonStyle.Classic;
+            this.expandCollapsePanel10.Controls.Add(this.arkEngrams1);
+            this.expandCollapsePanel10.Dock           = System.Windows.Forms.DockStyle.Top;
+            this.expandCollapsePanel10.ExpandedHeight = 575;
+            this.expandCollapsePanel10.IsExpanded     = false;
+            this.expandCollapsePanel10.Location       = new System.Drawing.Point(0, 243);
+            this.expandCollapsePanel10.Name           = "expandCollapsePanel10";
+            this.expandCollapsePanel10.Size           = new System.Drawing.Size(777, 27);
+            this.expandCollapsePanel10.TabIndex       = 12;
+            this.expandCollapsePanel10.Text           = "Engrams";
+            this.expandCollapsePanel10.UseAnimation   = false;
+            // 
+            // arkEngrams1
+            // 
+            this.arkEngrams1.Location = new System.Drawing.Point(5, 28);
+            this.arkEngrams1.Name     = "arkEngrams1";
+            this.arkEngrams1.Size     = new System.Drawing.Size(750, 546);
+            this.arkEngrams1.TabIndex = 1;
             // 
             // expandCollapsePanel9
             // 
@@ -325,12 +352,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode       = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize          = new System.Drawing.Size(777, 1061);
+            this.ClientSize          = new System.Drawing.Size(777, 1247);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.profileHeader1);
             this.Name = "FrmArkV2";
             this.Text = "Ark Configuration";
             this.panel1.ResumeLayout(false);
+            this.expandCollapsePanel10.ResumeLayout(false);
+            this.expandCollapsePanel10.PerformLayout();
             this.expandCollapsePanel9.ResumeLayout(false);
             this.expandCollapsePanel9.PerformLayout();
             this.expandCollapsePanel8.ResumeLayout(false);
@@ -351,6 +380,10 @@
             this.expandCollapsePanel1.PerformLayout();
             this.ResumeLayout(false);
         }
+
+        private OphiussaServerManager.Components.ArkEngrams arkEngrams1;
+
+        private MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel expandCollapsePanel10;
 
         private OphiussaServerManager.Components.ArkStructures arkStructures1;
 

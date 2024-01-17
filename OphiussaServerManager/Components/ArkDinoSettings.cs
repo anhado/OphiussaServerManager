@@ -18,7 +18,7 @@ namespace OphiussaServerManager.Components {
 
         public void LoadData(ref ArkProfile profile) {
             _profile = profile;
-           
+
             UsefullTools.LoadValuesToFields(_profile, Controls);
 
             profile.DinoSettings.Reset();
@@ -140,12 +140,9 @@ namespace OphiussaServerManager.Components {
             UsefullTools.ManageCheckGroupBox(chkPerLevelStatMultiplierTamedAdd,       groupBox2);
             UsefullTools.ManageCheckGroupBox(chkMutagenLevelBoostWild,                groupBox4);
             UsefullTools.ManageCheckGroupBox(chkMutagenLevelBoostBred,                groupBox5);
-
-
         }
 
         public void GetData(ref ArkProfile profile) {
-            
             UsefullTools.LoadFieldsToObject(ref _profile, Controls);
 
             //TODO:FILL DINO COSTUMIZATION
@@ -326,7 +323,6 @@ namespace OphiussaServerManager.Components {
             else {
                 _profile.MutagenLevelBoost_Bred.Reset();
             }
-
         }
 
         private void ArkDinoSettings_Load(object sender, EventArgs e) {
@@ -369,17 +365,17 @@ namespace OphiussaServerManager.Components {
 
         private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e) {
             try {
+                if (e.RowIndex < 0) return;
                 var obj = (DinoSettings)bindingSource2[e.RowIndex];
                 if (obj != null) {
-
                     ModColors color = MainForm.Settings.ModColors.Find(aa => aa.Mod == obj.Mod);
                     if (color == null) {
-                        color =  MainForm.Settings.AddNewModColor(obj.Mod);
+                        color = MainForm.Settings.AddNewModColor(obj.Mod);
                     }
-                    
-                    foreach (DataGridViewCell cell in dataGridView1.Rows[e.RowIndex].Cells)  
-                            cell.Style.BackColor = color.Color; 
-                    
+
+                    foreach (DataGridViewCell cell in dataGridView1.Rows[e.RowIndex].Cells)
+                        cell.Style.BackColor = color.Color;
+
                     if (obj.IsSpawnable == false && e.ColumnIndex == 2) {
                         e.PaintBackground(e.ClipBounds, true);
                         e.Handled = true;

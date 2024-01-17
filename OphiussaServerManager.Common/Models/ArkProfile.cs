@@ -1543,13 +1543,13 @@ TODO:CHECK THIS OPTIONS
 
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Engrams, "bOnlyAllowSpecifiedEngrams", ConditionedOn = "OnlyAllowSpecifiedEngrams", WriteIfNotValue = false)]
         public bool OnlyAllowSpecifiedEngrams { get; set; } = false;
-
+        [JsonIgnore] 
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Engrams, "")]
         public EngramEntryList OverrideNamedEngramEntries { get; set; }
-
+        [JsonIgnore] 
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Engrams, "")]
         public EngramAutoUnlockList EngramEntryAutoUnlocks { get; set; }
-
+        [JsonIgnore] 
         public EngramSettingsList EngramSettings { get; set; }
     }
 }

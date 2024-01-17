@@ -157,11 +157,38 @@ namespace OphiussaServerManager {
                 prg.AddToMaxValue(files.Length);
                 if (Settings.ProfileOrders.Count > 0)
                     foreach (var profileOrder in Settings.ProfileOrders.OrderBy(x => x.Order)) {
-                        string file = files.First(f => f.Contains(profileOrder.Key));
-                        if (!string.IsNullOrEmpty(file)) {
-                            var serializerSettings = new JsonSerializerSettings { ObjectCreationHandling = ObjectCreationHandling.Replace };
+                        try {
+                            string file = files.First(f => f.Contains(profileOrder.Key));
+                            if (!string.IsNullOrEmpty(file)) {
+                                var serializerSettings = new JsonSerializerSettings { ObjectCreationHandling = ObjectCreationHandling.Replace };
 
-                            var p = JsonConvert.DeserializeObject<Profile>(File.ReadAllText(file), serializerSettings);
+                                var p = JsonConvert.DeserializeObject<Profile>(File.ReadAllText(file), serializerSettings);
+                                prg.SetProgress("Loading Profile :" + p.Name);
+                                switch (p.Type.ServerType) {
+                                    case EnumServerType.ArkSurviveEvolved:
+                                    case EnumServerType.ArkSurviveAscended:
+                                        AddNewArkServer(p.Key, p.Type, "", p);
+                                        break;
+                                    case EnumServerType.Valheim:
+                                        AddNewValheimServer(p.Key, p.Type, "", p);
+                                        break;
+                                }
+
+                                files = files.Where(x => x != file).ToArray();
+                                Console.WriteLine("Loaded profile {0} in {1}s", p.Name, sw.Elapsed.TotalSeconds);
+                                sw.Restart();
+                            }
+                        }
+                        catch (Exception e) {
+                            Console.WriteLine(e);
+                            MessageBox.Show($"Error Load Profile {profileOrder.Key}: {e.Message}");
+                        }
+                    }
+
+                if (files.Length > 0)
+                    foreach (string file in files) {
+                        try {
+                            var p = JsonConvert.DeserializeObject<Profile>(File.ReadAllText(file));
                             prg.SetProgress("Loading Profile :" + p.Name);
                             switch (p.Type.ServerType) {
                                 case EnumServerType.ArkSurviveEvolved:
@@ -173,28 +200,13 @@ namespace OphiussaServerManager {
                                     break;
                             }
 
-                            files = files.Where(x => x != file).ToArray();
                             Console.WriteLine("Loaded profile {0} in {1}s", p.Name, sw.Elapsed.TotalSeconds);
                             sw.Restart();
                         }
-                    }
-
-                if (files.Length > 0)
-                    foreach (string file in files) {
-                        var p = JsonConvert.DeserializeObject<Profile>(File.ReadAllText(file));
-                        prg.SetProgress("Loading Profile :" + p.Name);
-                        switch (p.Type.ServerType) {
-                            case EnumServerType.ArkSurviveEvolved:
-                            case EnumServerType.ArkSurviveAscended:
-                                AddNewArkServer(p.Key, p.Type, "", p);
-                                break;
-                            case EnumServerType.Valheim:
-                                AddNewValheimServer(p.Key, p.Type, "", p);
-                                break;
+                        catch (Exception e) {
+                            Console.WriteLine(e);
+                            MessageBox.Show($"Error Load Profile {file}: {e.Message}");
                         }
-
-                        Console.WriteLine("Loaded profile {0} in {1}s", p.Name, sw.Elapsed.TotalSeconds);
-                        sw.Restart();
                     }
 
                 sw.Stop();

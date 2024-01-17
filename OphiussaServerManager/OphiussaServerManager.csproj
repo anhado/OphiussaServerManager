@@ -211,6 +211,12 @@
 		<Compile Include="Components\ArkDinoSettings.Designer.cs">
 			<DependentUpon>ArkDinoSettings.cs</DependentUpon>
 		</Compile>
+		<Compile Include="Components\ArkEngrams.cs">
+		  <SubType>UserControl</SubType>
+		</Compile>
+		<Compile Include="Components\ArkEngrams.Designer.cs">
+		  <DependentUpon>ArkEngrams.cs</DependentUpon>
+		</Compile>
 		<Compile Include="Components\ArkHUDAndVisuals.cs">
 			<SubType>UserControl</SubType>
 		</Compile>
@@ -406,6 +412,9 @@
 		</EmbeddedResource>
 		<EmbeddedResource Include="Components\ArkDinoSettings.resx">
 			<DependentUpon>ArkDinoSettings.cs</DependentUpon>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Components\ArkEngrams.resx">
+		  <DependentUpon>ArkEngrams.cs</DependentUpon>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Components\ArkEnvironment.resx">
 			<DependentUpon>ArkEnvironment.cs</DependentUpon>
