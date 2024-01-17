@@ -46,6 +46,7 @@
             this.chkPerLevelStatsMultiplierTamed                        = new System.Windows.Forms.CheckBox();
             this.chkPerLevelStatsMultiplierWild                         = new System.Windows.Forms.CheckBox();
             this.groupBox35                                             = new System.Windows.Forms.GroupBox();
+            this.label1                                                 = new System.Windows.Forms.Label();
             this.dataGridView1                                          = new System.Windows.Forms.DataGridView();
             this.displayNameDataGridViewTextBoxColumn                   = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.displayModDataGridViewTextBoxColumn                    = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -534,6 +535,7 @@
             // 
             this.groupBox35.Anchor    = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox35.Controls.Add(this.label1);
             this.groupBox35.Controls.Add(this.dataGridView1);
             this.groupBox35.Controls.Add(this.btDCFilter);
             this.groupBox35.Controls.Add(this.txtDCFilter);
@@ -544,6 +546,7 @@
             this.groupBox35.Controls.Add(this.chkTamedResistance);
             this.groupBox35.Controls.Add(this.chkTamedDamage);
             this.groupBox35.Controls.Add(this.chkSpawnMultiplier);
+            this.groupBox35.Enabled   = false;
             this.groupBox35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
             this.groupBox35.Location  = new System.Drawing.Point(3, 844);
             this.groupBox35.Name      = "groupBox35";
@@ -551,6 +554,17 @@
             this.groupBox35.TabIndex  = 155;
             this.groupBox35.TabStop   = false;
             this.groupBox35.Text      = "Dino Costumization";
+            // 
+            // label1
+            // 
+            this.label1.Anchor    = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.Font      = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location  = new System.Drawing.Point(73, 99);
+            this.label1.Name      = "label1";
+            this.label1.Size      = new System.Drawing.Size(666, 335);
+            this.label1.TabIndex  = 26;
+            this.label1.Text      = "Coming Soon";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // dataGridView1
             // 
@@ -2846,6 +2860,8 @@
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.Label label1;
 
         #endregion
 

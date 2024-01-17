@@ -46,7 +46,7 @@ namespace OphiussaServerManager.Common.Models {
             DinoClassDamageMultipliers          = new AggregateIniValueList<ClassMultiplier>(nameof(DinoClassDamageMultipliers),          GameData.GetDinoMultipliers);
             DinoClassResistanceMultipliers      = new AggregateIniValueList<ClassMultiplier>(nameof(DinoClassResistanceMultipliers),      GameData.GetDinoMultipliers);
             DinoSettings                        = new DinoSettingsList(DinoSpawnWeightMultipliers, PreventDinoTameClassNames, PreventBreedingForClassNames, NPCReplacements, TamedDinoClassDamageMultipliers, TamedDinoClassResistanceMultipliers, DinoClassDamageMultipliers, DinoClassResistanceMultipliers);
-            
+
             sw.Stop();
 
             Console.WriteLine("Init Profile={0}", sw.Elapsed.TotalSeconds);
@@ -186,7 +186,7 @@ namespace OphiussaServerManager.Common.Models {
         }
     }
 
-    public class Configs   {
+    public class Configs {
         /*
 TODO:CHECK THIS OPTIONS
     [DataMember]
@@ -1429,5 +1429,108 @@ TODO:CHECK THIS OPTIONS
 
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Environment, WriteIfNotValue = 1f)]
         public float SpecialXPMultiplier { get; set; } = 1f;
+        
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "", WriteIfNotValue = 1f)]
+        public float StructureResistanceMultiplier { get; set; } = 1f;
+
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "", WriteIfNotValue = 1f)]
+        public float StructureDamageMultiplier { get; set; } = 1f;
+
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Structures, "")]
+        public int StructureDamageRepairCooldown { get; set; } = 180;
+
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "")]
+        public bool PvPStructureDecay { get; set; } = false;
+
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Structures, "")]
+        public float PvPZoneStructureDamageMultiplier { get; set; } = 6f;
+
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "TheMaxStructuresInRange")]
+        public int MaxStructuresInRange { get; set; } = 10500;
+
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "", WriteIfNotValue = 1f)]
+        public float PerPlatformMaxStructuresMultiplier { get; set; } = 1f;
+
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "", WriteIfNotValue = 0)]
+        public int MaxPlatformSaddleStructureLimit { get; set; } = 0;
+
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "", ConditionedOn = "OverrideStructurePlatformPrevention")]
+        public bool OverrideStructurePlatformPrevention { get; set; } = false;
+
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Structures, "bFlyerPlatformAllowUnalignedDinoBasing", ConditionedOn = "FlyerPlatformAllowUnalignedDinoBasing")]
+        public bool FlyerPlatformAllowUnalignedDinoBasing { get; set; } = false;
+
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "", ConditionedOn = "PvEAllowStructuresAtSupplyDrops")]
+        public bool PvEAllowStructuresAtSupplyDrops { get; set; } = false;
+
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "DisableStructureDecayPVE", InvertBoolean = true)]
+        public bool EnableStructureDecayPvE { get; set; } = false;
+
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "", ConditionedOn = "EnableStructureDecayPvE")]
+        public float PvEStructureDecayPeriodMultiplier { get; set; } = 1f;
+
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "", WriteIfNotValue = 0.0f)]
+        public float AutoDestroyOldStructuresMultiplier { get; set; } = 0f;
+
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "")]
+        public bool ForceAllStructureLocking { get; set; } = false;
+
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Structures, "bPassiveDefensesDamageRiderlessDinos")]
+        public bool PassiveDefensesDamageRiderlessDinos { get; set; } = false;
+        
+        public bool EnableAutoDestroyStructures { get;         set; } = false;
+
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "")]
+        public bool OnlyAutoDestroyCoreStructures { get; set; } = false;
+
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "")]
+        public bool OnlyDecayUnsnappedCoreStructures { get; set; } = false;
+
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "")]
+        public bool FastDecayUnsnappedCoreStructures { get; set; } = false;
+
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "")]
+        public bool DestroyUnconnectedWaterPipes { get; set; } = false;
+
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Structures, "bDisableStructurePlacementCollision")]
+        public bool DisableStructurePlacementCollision { get; set; } = false;
+
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "IgnoreLimitMaxStructuresInRangeTypeFlag")]
+        public bool RemoveDecorativeStructuresLimit { get; set; } = false;
+
+        public bool EnableFastDecayInterval { get; set; } = false;
+
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Structures, "", ConditionedOn = "EnableFastDecayInterval")]
+        public int FastDecayInterval { get; set; } = 43200;
+
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Structures, "bLimitTurretsInRange")]
+        public bool LimitTurretsInRange { get; set; } = false;
+
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Structures, "", ConditionedOn = "LimitTurretsInRange")]
+        public int LimitTurretsRange { get; set; } = 10000;
+
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Structures, "", ConditionedOn = "LimitTurretsInRange")]
+        public int LimitTurretsNum { get; set; } = 100;
+
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Structures, "bHardLimitTurretsInRange")]
+        public bool HardLimitTurretsInRange { get; set; } = false;
+
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "")]
+        public bool AlwaysAllowStructurePickup { get; set; } = false;
+
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "")]
+        public float StructurePickupTimeAfterPlacement { get; set; } = 30f;
+
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "")]
+        public float StructurePickupHoldDuration { get; set; } = 0.5f;
+
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "")]
+        public bool AllowIntegratedSPlusStructures { get; set; } = true;
+
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Structures, "bIgnoreStructuresPreventionVolumes")]
+        public bool IgnoreStructuresPreventionVolumes { get; set; } = false;
+
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Structures, "bGenesisUseStructuresPreventionVolumes")]
+        public bool GenesisUseStructuresPreventionVolumes { get; set; } = false;
     }
 }

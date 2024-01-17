@@ -229,6 +229,12 @@
 		<Compile Include="Components\ArkRules.Designer.cs">
 			<DependentUpon>ArkRules.cs</DependentUpon>
 		</Compile>
+		<Compile Include="Components\ArkStructures.cs">
+		  <SubType>UserControl</SubType>
+		</Compile>
+		<Compile Include="Components\ArkStructures.Designer.cs">
+		  <DependentUpon>ArkStructures.cs</DependentUpon>
+		</Compile>
 		<Compile Include="Components\AutomaticManagement.cs">
 			<SubType>UserControl</SubType>
 		</Compile>
@@ -412,6 +418,9 @@
 		</EmbeddedResource>
 		<EmbeddedResource Include="Components\ArkRules.resx">
 			<DependentUpon>ArkRules.cs</DependentUpon>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Components\ArkStructures.resx">
+		  <DependentUpon>ArkStructures.cs</DependentUpon>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Components\AutomaticManagement.resx">
 			<DependentUpon>AutomaticManagement.cs</DependentUpon>
