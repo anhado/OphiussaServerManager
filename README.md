@@ -10,11 +10,12 @@ Supported Server Types:
   - VRising - Coming Soon
   - Satisfactory - Coming Soon
   - Rust - Coming Soon
+  - Enshrouded - Coming Soon
 
 Functionalities:
   - Server Installation via SteamCMD - Completed
   - Auto-Restart Servers - Completed
-  - Auto-Backup Servers - Completed
+  - Auto-Backup Servers - Completed (Bugged)
   - Auto-Update Servers - Completed
   - Manage Firewall - Completed (Only tested in a home network)
   - Manage Router Portforwarding - Completed (Only tested in a home network)
