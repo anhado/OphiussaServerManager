@@ -1441,16 +1441,16 @@ TODO:CHECK THIS OPTIONS
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "", WriteIfNotValue = 1f)]
         public float StructureDamageMultiplier { get; set; } = 1f;
 
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Structures, "")]
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Structures, "", WriteIfNotValue = 180)]
         public int StructureDamageRepairCooldown { get; set; } = 180;
 
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "")]
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "", WriteIfNotValue = false)]
         public bool PvPStructureDecay { get; set; } = false;
 
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Structures, "")]
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Structures, "", WriteIfNotValue = 6f)]
         public float PvPZoneStructureDamageMultiplier { get; set; } = 6f;
 
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "TheMaxStructuresInRange")]
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "TheMaxStructuresInRange", WriteIfNotValue = 10500)]
         public int MaxStructuresInRange { get; set; } = 10500;
 
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "", WriteIfNotValue = 1f)]
@@ -1459,16 +1459,16 @@ TODO:CHECK THIS OPTIONS
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "", WriteIfNotValue = 0)]
         public int MaxPlatformSaddleStructureLimit { get; set; } = 0;
 
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "", ConditionedOn = "OverrideStructurePlatformPrevention")]
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "", ConditionedOn = "OverrideStructurePlatformPrevention", WriteIfNotValue = false)]
         public bool OverrideStructurePlatformPrevention { get; set; } = false;
 
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Structures, "bFlyerPlatformAllowUnalignedDinoBasing", ConditionedOn = "FlyerPlatformAllowUnalignedDinoBasing")]
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Structures, "bFlyerPlatformAllowUnalignedDinoBasing", ConditionedOn = "FlyerPlatformAllowUnalignedDinoBasing", WriteIfNotValue = false)]
         public bool FlyerPlatformAllowUnalignedDinoBasing { get; set; } = false;
 
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "", ConditionedOn = "PvEAllowStructuresAtSupplyDrops")]
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "", ConditionedOn = "PvEAllowStructuresAtSupplyDrops", WriteIfNotValue = false)]
         public bool PvEAllowStructuresAtSupplyDrops { get; set; } = false;
 
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "DisableStructureDecayPVE", InvertBoolean = true)]
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "DisableStructureDecayPVE", InvertBoolean = true, WriteIfNotValue = false)]
         public bool EnableStructureDecayPvE { get; set; } = false;
 
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "", ConditionedOn = "EnableStructureDecayPvE")]
@@ -1477,30 +1477,30 @@ TODO:CHECK THIS OPTIONS
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "", WriteIfNotValue = 0.0f)]
         public float AutoDestroyOldStructuresMultiplier { get; set; } = 0f;
 
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "")]
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "", WriteIfNotValue = false)]
         public bool ForceAllStructureLocking { get; set; } = false;
 
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Structures, "bPassiveDefensesDamageRiderlessDinos")]
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Structures, "bPassiveDefensesDamageRiderlessDinos", WriteIfNotValue = false)]
         public bool PassiveDefensesDamageRiderlessDinos { get; set; } = false;
 
         public bool EnableAutoDestroyStructures { get; set; } = false;
 
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "")]
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "", WriteIfNotValue = false)]
         public bool OnlyAutoDestroyCoreStructures { get; set; } = false;
 
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "")]
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "", WriteIfNotValue = false)]
         public bool OnlyDecayUnsnappedCoreStructures { get; set; } = false;
 
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "")]
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "", WriteIfNotValue = false)]
         public bool FastDecayUnsnappedCoreStructures { get; set; } = false;
 
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "")]
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "", WriteIfNotValue = false)]
         public bool DestroyUnconnectedWaterPipes { get; set; } = false;
 
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Structures, "bDisableStructurePlacementCollision")]
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Structures, "bDisableStructurePlacementCollision", WriteIfNotValue = false)]
         public bool DisableStructurePlacementCollision { get; set; } = false;
 
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "IgnoreLimitMaxStructuresInRangeTypeFlag")]
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "IgnoreLimitMaxStructuresInRangeTypeFlag", WriteIfNotValue = false)]
         public bool RemoveDecorativeStructuresLimit { get; set; } = false;
 
         public bool EnableFastDecayInterval { get; set; } = false;
@@ -1508,7 +1508,7 @@ TODO:CHECK THIS OPTIONS
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Structures, "", ConditionedOn = "EnableFastDecayInterval")]
         public int FastDecayInterval { get; set; } = 43200;
 
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Structures, "bLimitTurretsInRange")]
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Structures, "bLimitTurretsInRange", WriteIfNotValue = false)]
         public bool LimitTurretsInRange { get; set; } = false;
 
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Structures, "", ConditionedOn = "LimitTurretsInRange")]
@@ -1517,31 +1517,31 @@ TODO:CHECK THIS OPTIONS
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Structures, "", ConditionedOn = "LimitTurretsInRange")]
         public int LimitTurretsNum { get; set; } = 100;
 
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Structures, "bHardLimitTurretsInRange")]
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Structures, "bHardLimitTurretsInRange", WriteIfNotValue = false)]
         public bool HardLimitTurretsInRange { get; set; } = false;
 
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "")]
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "", WriteIfNotValue = false)]
         public bool AlwaysAllowStructurePickup { get; set; } = false;
 
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "")]
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "", WriteIfNotValue = 30f)]
         public float StructurePickupTimeAfterPlacement { get; set; } = 30f;
 
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "")]
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "", WriteIfNotValue = 0.5f)]
         public float StructurePickupHoldDuration { get; set; } = 0.5f;
 
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "")]
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, "", WriteIfNotValue = true)]
         public bool AllowIntegratedSPlusStructures { get; set; } = true;
 
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Structures, "bIgnoreStructuresPreventionVolumes")]
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Structures, "bIgnoreStructuresPreventionVolumes", WriteIfNotValue = false)]
         public bool IgnoreStructuresPreventionVolumes { get; set; } = false;
 
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Structures, "bGenesisUseStructuresPreventionVolumes")]
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Structures, "bGenesisUseStructuresPreventionVolumes", WriteIfNotValue = false)]
         public bool GenesisUseStructuresPreventionVolumes { get; set; } = false;
 
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Engrams, "bAutoUnlockAllEngrams", ConditionedOn = "AutoUnlockAllEngrams")]
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Engrams, "bAutoUnlockAllEngrams", ConditionedOn = "AutoUnlockAllEngrams", WriteIfNotValue = false)]
         public bool AutoUnlockAllEngrams { get; set; } = false;
 
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Engrams, "bOnlyAllowSpecifiedEngrams", ConditionedOn = "OnlyAllowSpecifiedEngrams")]
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Engrams, "bOnlyAllowSpecifiedEngrams", ConditionedOn = "OnlyAllowSpecifiedEngrams", WriteIfNotValue = false)]
         public bool OnlyAllowSpecifiedEngrams { get; set; } = false;
 
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Engrams, "")]
