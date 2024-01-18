@@ -95,6 +95,7 @@
             // 
             // arkEngrams1
             // 
+            this.arkEngrams1.Anchor    = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.arkEngrams1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.arkEngrams1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))),  ((int)(((byte)(130)))), ((int)(((byte)(180)))));
             this.arkEngrams1.Location  = new System.Drawing.Point(5, 28);

@@ -74,6 +74,7 @@ namespace OphiussaServerManager.Components {
           
             UsefullTools.LoadFieldsToObject(ref _profile, Controls);
 
+            profile.CpuPriority = (ProcessPriority)Enum.Parse(typeof(ProcessPriority), cboPriority.SelectedValue.ToString(), true);
         }
 
         private void txtServerPWD_DoubleClick(object sender, EventArgs e) {

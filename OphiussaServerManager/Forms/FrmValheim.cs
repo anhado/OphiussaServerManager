@@ -38,7 +38,7 @@ namespace OphiussaServerManager.Forms {
                 MainForm.Settings.Branchs.Distinct().ToList().ForEach(branch => { cbBranch.Items.Add(branch); });
 
                 var affinityModel = new List<ProcessorAffinityModel>();
-                
+
                 Enum.GetNames(typeof(ProcessPriority)).ToList().ForEach(e => {
                                                                             affinityModel.Add(new ProcessorAffinityModel {
                                                                                                                              Code = e,
@@ -124,8 +124,8 @@ namespace OphiussaServerManager.Forms {
             tbStaminaRate.Value        = _profile.ValheimConfiguration.Administration.StaminaRate;
             tbStaminaRegenRate.Value   = _profile.ValheimConfiguration.Administration.StaminaRegenRate;
 
-            cboPriority.SelectedValue = profile.ValheimConfiguration.Administration.CpuPriority;
-            txtAffinity.Text         = profile.ValheimConfiguration.Administration.CpuAffinity;
+            cboPriority.SelectedValue = profile.ValheimConfiguration.Administration.CpuPriority.ToString();
+            txtAffinity.Text          = profile.ValheimConfiguration.Administration.CpuAffinity;
 
             rbCombatNone.Checked     = profile.ValheimConfiguration.Administration.Combat == Combat.Default;
             rbCombatVeryEasy.Checked = profile.ValheimConfiguration.Administration.Combat == Combat.VeryEasy;
@@ -463,7 +463,7 @@ namespace OphiussaServerManager.Forms {
             _profile.ValheimConfiguration.Administration.NoPortals             = chkNoPortals.Checked;
             _profile.ValheimConfiguration.Administration.NoWorkbench           = chkNoWorkbench.Checked;
             _profile.ValheimConfiguration.Administration.TeleportAll           = chkTeleportAll.Checked;
-            _profile.ValheimConfiguration.Administration.CpuPriority           = (ProcessPriority)cboPriority.SelectedValue;
+            _profile.ValheimConfiguration.Administration.CpuPriority           = (ProcessPriority)Enum.Parse(typeof(ProcessPriority), cboPriority.SelectedValue.ToString(), true);
             _profile.ValheimConfiguration.Administration.CpuAffinity           = txtAffinity.Text;
 
 
@@ -571,6 +571,7 @@ namespace OphiussaServerManager.Forms {
         private void chkAutoStart_CheckedChanged(object sender, EventArgs e) {
             rbOnBoot.Enabled  = chkAutoStart.Checked;
             rbOnLogin.Enabled = chkAutoStart.Checked;
+            
         }
 
         private void chkShutdown1_CheckedChanged(object sender, EventArgs e) {
