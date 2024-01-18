@@ -195,9 +195,8 @@ namespace OphiussaServerManager.Common.Models.Profiles {
                         pro.Kill();
                     }
                     else {
-                        Utils.SendCloseCommand(Utils.GetProcessRunning(Path.Combine(InstallLocation, Type.ExecutablePath)));
-                    }
-
+                        Utils.SendCloseCommandCtrlC(Utils.GetProcessRunning(Path.Combine(InstallLocation, Type.ExecutablePath)));
+                    }  
                     break;
             }
         }

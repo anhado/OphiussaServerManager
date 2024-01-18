@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
@@ -35,7 +37,18 @@ namespace OphiussaServerManager.Forms {
 
                 MainForm.Settings.Branchs.Distinct().ToList().ForEach(branch => { cbBranch.Items.Add(branch); });
 
-                cboPriority.DataSource = Enum.GetValues(typeof(ProcessPriorityClass));
+                var affinityModel = new List<ProcessorAffinityModel>();
+                
+                Enum.GetNames(typeof(ProcessPriority)).ToList().ForEach(e => {
+                                                                            affinityModel.Add(new ProcessorAffinityModel {
+                                                                                                                             Code = e,
+                                                                                                                             Name = e
+                                                                                                                         });
+                                                                        });
+
+                cboPriority.DataSource    = affinityModel;
+                cboPriority.ValueMember   = "Code";
+                cboPriority.DisplayMember = "Name";
             }
             catch (Exception e) {
                 OphiussaLogger.Logger.Error(e);
@@ -74,12 +87,44 @@ namespace OphiussaServerManager.Forms {
             tbPresetImmersive.Checked = profile.ValheimConfiguration.Administration.Preset == Preset.Immersive;
             tbPresetHammer.Checked    = profile.ValheimConfiguration.Administration.Preset == Preset.Hammer;
 
-            cLBKeys.SetItemChecked(0, profile.ValheimConfiguration.Administration.NoBuildcost);
-            cLBKeys.SetItemChecked(1, profile.ValheimConfiguration.Administration.PlayerEvents);
-            cLBKeys.SetItemChecked(2, profile.ValheimConfiguration.Administration.PassiveMobs);
-            cLBKeys.SetItemChecked(3, profile.ValheimConfiguration.Administration.NoMap);
+            /*          cLBKeys.SetItemChecked(0, profile.ValheimConfiguration.Administration.NoBuildcost);
+                      cLBKeys.SetItemChecked(1, profile.ValheimConfiguration.Administration.PlayerEvents);
+                      cLBKeys.SetItemChecked(2, profile.ValheimConfiguration.Administration.PassiveMobs);
+                      cLBKeys.SetItemChecked(3, profile.ValheimConfiguration.Administration.NoMap);
+          */
 
-            cboPriority.SelectedItem = profile.ValheimConfiguration.Administration.CpuPriority;
+
+            chkNoBuildcost.Checked           = _profile.ValheimConfiguration.Administration.NoBuildcost;
+            chkPlayerEvents.Checked          = _profile.ValheimConfiguration.Administration.PlayerEvents;
+            chkPassiveMobs.Checked           = _profile.ValheimConfiguration.Administration.PassiveMobs;
+            chkAllPiecesUnlocked.Checked     = _profile.ValheimConfiguration.Administration.AllPiecesUnlocked;
+            chkAllRecipesUnlocked.Checked    = _profile.ValheimConfiguration.Administration.AllRecipesUnlocked;
+            chkDeathDeleteItems.Checked      = _profile.ValheimConfiguration.Administration.DeathDeleteItems;
+            chkDeathDeleteUnequipped.Checked = _profile.ValheimConfiguration.Administration.DeathDeleteUnequipped;
+            chkDeathKeepEquip.Checked        = _profile.ValheimConfiguration.Administration.DeathKeepEquip;
+            chkDeathSkillsReset.Checked      = _profile.ValheimConfiguration.Administration.DeathSkillsReset;
+            chkDungeonBuild.Checked          = _profile.ValheimConfiguration.Administration.DungeonBuild;
+            chkNoCraftCost.Checked           = _profile.ValheimConfiguration.Administration.NoCraftCost;
+            chkNoBossPortals.Checked         = _profile.ValheimConfiguration.Administration.NoBossPortals;
+            chkNoMap.Checked                 = _profile.ValheimConfiguration.Administration.NoMap;
+            chkNoPortals.Checked             = _profile.ValheimConfiguration.Administration.NoPortals;
+            chkNoWorkbench.Checked           = _profile.ValheimConfiguration.Administration.NoWorkbench;
+            chkTeleportAll.Checked           = _profile.ValheimConfiguration.Administration.TeleportAll;
+
+            tbDamageTaken.Value        = _profile.ValheimConfiguration.Administration.DamageTaken;
+            tbEnemyDamage.Value        = _profile.ValheimConfiguration.Administration.EnemyDamage;
+            tbEnemyLevelUpRate.Value   = _profile.ValheimConfiguration.Administration.EnemyLevelUpRate;
+            tbEnemySpeedSize.Value     = _profile.ValheimConfiguration.Administration.EnemySpeedSize;
+            tbEventRate.Value          = _profile.ValheimConfiguration.Administration.EventRate;
+            tbMoveStaminaRate.Value    = _profile.ValheimConfiguration.Administration.MoveStaminaRate;
+            tbPlayerDamage.Value       = _profile.ValheimConfiguration.Administration.PlayerDamage;
+            tbResourceRate.Value       = _profile.ValheimConfiguration.Administration.ResourceRate;
+            tbSkillGainRate.Value      = _profile.ValheimConfiguration.Administration.SkillGainRate;
+            tbSkillReductionRate.Value = _profile.ValheimConfiguration.Administration.SkillReductionRate;
+            tbStaminaRate.Value        = _profile.ValheimConfiguration.Administration.StaminaRate;
+            tbStaminaRegenRate.Value   = _profile.ValheimConfiguration.Administration.StaminaRegenRate;
+
+            cboPriority.SelectedValue = profile.ValheimConfiguration.Administration.CpuPriority;
             txtAffinity.Text         = profile.ValheimConfiguration.Administration.CpuAffinity;
 
             rbCombatNone.Checked     = profile.ValheimConfiguration.Administration.Combat == Combat.Default;
@@ -390,16 +435,36 @@ namespace OphiussaServerManager.Forms {
             if (tbPresetImmersive.Checked) _profile.ValheimConfiguration.Administration.Preset = Preset.Immersive;
             if (tbPresetHammer.Checked) _profile.ValheimConfiguration.Administration.Preset    = Preset.Hammer;
 
-
-            _profile.ValheimConfiguration.Administration.NoBuildcost  = cLBKeys.GetItemChecked(0);
-            _profile.ValheimConfiguration.Administration.PlayerEvents = cLBKeys.GetItemChecked(1);
-            _profile.ValheimConfiguration.Administration.PassiveMobs  = cLBKeys.GetItemChecked(2);
-            _profile.ValheimConfiguration.Administration.NoMap        = cLBKeys.GetItemChecked(3);
-
-
-            _profile.ValheimConfiguration.Administration.CpuPriority = (ProcessPriority)cboPriority.SelectedValue;
-
-            _profile.ValheimConfiguration.Administration.CpuAffinity = txtAffinity.Text;
+            _profile.ValheimConfiguration.Administration.DamageTaken           = tbDamageTaken.Value;
+            _profile.ValheimConfiguration.Administration.EnemyDamage           = tbEnemyDamage.Value;
+            _profile.ValheimConfiguration.Administration.EnemyLevelUpRate      = tbEnemyLevelUpRate.Value;
+            _profile.ValheimConfiguration.Administration.EnemySpeedSize        = tbEnemySpeedSize.Value;
+            _profile.ValheimConfiguration.Administration.EventRate             = tbEventRate.Value;
+            _profile.ValheimConfiguration.Administration.MoveStaminaRate       = tbMoveStaminaRate.Value;
+            _profile.ValheimConfiguration.Administration.PlayerDamage          = tbPlayerDamage.Value;
+            _profile.ValheimConfiguration.Administration.ResourceRate          = tbResourceRate.Value;
+            _profile.ValheimConfiguration.Administration.SkillGainRate         = tbSkillGainRate.Value;
+            _profile.ValheimConfiguration.Administration.SkillReductionRate    = tbSkillReductionRate.Value;
+            _profile.ValheimConfiguration.Administration.StaminaRate           = tbStaminaRate.Value;
+            _profile.ValheimConfiguration.Administration.StaminaRegenRate      = tbStaminaRegenRate.Value;
+            _profile.ValheimConfiguration.Administration.NoBuildcost           = chkNoBuildcost.Checked;
+            _profile.ValheimConfiguration.Administration.PlayerEvents          = chkPlayerEvents.Checked;
+            _profile.ValheimConfiguration.Administration.PassiveMobs           = chkPassiveMobs.Checked;
+            _profile.ValheimConfiguration.Administration.AllPiecesUnlocked     = chkAllPiecesUnlocked.Checked;
+            _profile.ValheimConfiguration.Administration.AllRecipesUnlocked    = chkAllRecipesUnlocked.Checked;
+            _profile.ValheimConfiguration.Administration.DeathDeleteItems      = chkDeathDeleteItems.Checked;
+            _profile.ValheimConfiguration.Administration.DeathDeleteUnequipped = chkDeathDeleteUnequipped.Checked;
+            _profile.ValheimConfiguration.Administration.DeathKeepEquip        = chkDeathKeepEquip.Checked;
+            _profile.ValheimConfiguration.Administration.DeathSkillsReset      = chkDeathSkillsReset.Checked;
+            _profile.ValheimConfiguration.Administration.DungeonBuild          = chkDungeonBuild.Checked;
+            _profile.ValheimConfiguration.Administration.NoCraftCost           = chkNoCraftCost.Checked;
+            _profile.ValheimConfiguration.Administration.NoBossPortals         = chkNoBossPortals.Checked;
+            _profile.ValheimConfiguration.Administration.NoMap                 = chkNoMap.Checked;
+            _profile.ValheimConfiguration.Administration.NoPortals             = chkNoPortals.Checked;
+            _profile.ValheimConfiguration.Administration.NoWorkbench           = chkNoWorkbench.Checked;
+            _profile.ValheimConfiguration.Administration.TeleportAll           = chkTeleportAll.Checked;
+            _profile.ValheimConfiguration.Administration.CpuPriority           = (ProcessPriority)cboPriority.SelectedValue;
+            _profile.ValheimConfiguration.Administration.CpuAffinity           = txtAffinity.Text;
 
 
             if (rbCombatNone.Checked) _profile.ValheimConfiguration.Administration.Combat     = Combat.Default;

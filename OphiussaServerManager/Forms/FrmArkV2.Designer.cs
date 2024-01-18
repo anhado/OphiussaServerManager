@@ -85,20 +85,22 @@
             this.expandCollapsePanel10.Controls.Add(this.arkEngrams1);
             this.expandCollapsePanel10.Dock           = System.Windows.Forms.DockStyle.Top;
             this.expandCollapsePanel10.ExpandedHeight = 575;
-            this.expandCollapsePanel10.IsExpanded     = false;
-            this.expandCollapsePanel10.Location       = new System.Drawing.Point(0, 243);
+            this.expandCollapsePanel10.IsExpanded     = true;
+            this.expandCollapsePanel10.Location       = new System.Drawing.Point(0, 12701);
             this.expandCollapsePanel10.Name           = "expandCollapsePanel10";
-            this.expandCollapsePanel10.Size           = new System.Drawing.Size(777, 27);
+            this.expandCollapsePanel10.Size           = new System.Drawing.Size(760, 575);
             this.expandCollapsePanel10.TabIndex       = 12;
             this.expandCollapsePanel10.Text           = "Engrams";
             this.expandCollapsePanel10.UseAnimation   = false;
             // 
             // arkEngrams1
             // 
-            this.arkEngrams1.Location = new System.Drawing.Point(5, 28);
-            this.arkEngrams1.Name     = "arkEngrams1";
-            this.arkEngrams1.Size     = new System.Drawing.Size(750, 546);
-            this.arkEngrams1.TabIndex = 1;
+            this.arkEngrams1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.arkEngrams1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))),  ((int)(((byte)(130)))), ((int)(((byte)(180)))));
+            this.arkEngrams1.Location  = new System.Drawing.Point(5, 28);
+            this.arkEngrams1.Name      = "arkEngrams1";
+            this.arkEngrams1.Size      = new System.Drawing.Size(750, 546);
+            this.arkEngrams1.TabIndex  = 1;
             // 
             // expandCollapsePanel9
             // 
@@ -108,10 +110,10 @@
             this.expandCollapsePanel9.Controls.Add(this.arkStructures1);
             this.expandCollapsePanel9.Dock           = System.Windows.Forms.DockStyle.Top;
             this.expandCollapsePanel9.ExpandedHeight = 1065;
-            this.expandCollapsePanel9.IsExpanded     = false;
-            this.expandCollapsePanel9.Location       = new System.Drawing.Point(0, 216);
+            this.expandCollapsePanel9.IsExpanded     = true;
+            this.expandCollapsePanel9.Location       = new System.Drawing.Point(0, 11636);
             this.expandCollapsePanel9.Name           = "expandCollapsePanel9";
-            this.expandCollapsePanel9.Size           = new System.Drawing.Size(777, 27);
+            this.expandCollapsePanel9.Size           = new System.Drawing.Size(760, 1065);
             this.expandCollapsePanel9.TabIndex       = 11;
             this.expandCollapsePanel9.Text           = "Structures";
             this.expandCollapsePanel9.UseAnimation   = false;
@@ -123,7 +125,7 @@
             this.arkStructures1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))),  ((int)(((byte)(130)))), ((int)(((byte)(180)))));
             this.arkStructures1.Location  = new System.Drawing.Point(11, 36);
             this.arkStructures1.Name      = "arkStructures1";
-            this.arkStructures1.Size      = new System.Drawing.Size(761, 1023);
+            this.arkStructures1.Size      = new System.Drawing.Size(744, 1023);
             this.arkStructures1.TabIndex  = 1;
             this.arkStructures1.Tag       = "OverrideStructurePlatformPrevention";
             // 
@@ -135,10 +137,10 @@
             this.expandCollapsePanel8.Controls.Add(this.ucArkEnvironment1);
             this.expandCollapsePanel8.Dock           = System.Windows.Forms.DockStyle.Top;
             this.expandCollapsePanel8.ExpandedHeight = 1290;
-            this.expandCollapsePanel8.IsExpanded     = false;
-            this.expandCollapsePanel8.Location       = new System.Drawing.Point(0, 189);
+            this.expandCollapsePanel8.IsExpanded     = true;
+            this.expandCollapsePanel8.Location       = new System.Drawing.Point(0, 10346);
             this.expandCollapsePanel8.Name           = "expandCollapsePanel8";
-            this.expandCollapsePanel8.Size           = new System.Drawing.Size(777, 27);
+            this.expandCollapsePanel8.Size           = new System.Drawing.Size(760, 1290);
             this.expandCollapsePanel8.TabIndex       = 10;
             this.expandCollapsePanel8.Text           = "Environment";
             this.expandCollapsePanel8.UseAnimation   = false;
@@ -150,7 +152,7 @@
             this.ucArkEnvironment1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))),  ((int)(((byte)(130)))), ((int)(((byte)(180)))));
             this.ucArkEnvironment1.Location  = new System.Drawing.Point(3, 29);
             this.ucArkEnvironment1.Name      = "ucArkEnvironment1";
-            this.ucArkEnvironment1.Size      = new System.Drawing.Size(769, 1385);
+            this.ucArkEnvironment1.Size      = new System.Drawing.Size(752, 1385);
             this.ucArkEnvironment1.TabIndex  = 1;
             // 
             // expandCollapsePanel7
@@ -161,10 +163,10 @@
             this.expandCollapsePanel7.Controls.Add(this.arkDinoSettings1);
             this.expandCollapsePanel7.Dock           = System.Windows.Forms.DockStyle.Top;
             this.expandCollapsePanel7.ExpandedHeight = 4138;
-            this.expandCollapsePanel7.IsExpanded     = false;
-            this.expandCollapsePanel7.Location       = new System.Drawing.Point(0, 162);
+            this.expandCollapsePanel7.IsExpanded     = true;
+            this.expandCollapsePanel7.Location       = new System.Drawing.Point(0, 6208);
             this.expandCollapsePanel7.Name           = "expandCollapsePanel7";
-            this.expandCollapsePanel7.Size           = new System.Drawing.Size(777, 27);
+            this.expandCollapsePanel7.Size           = new System.Drawing.Size(760, 4138);
             this.expandCollapsePanel7.TabIndex       = 6;
             this.expandCollapsePanel7.Text           = "Dino Settings";
             this.expandCollapsePanel7.UseAnimation   = false;
@@ -176,7 +178,7 @@
             this.arkDinoSettings1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))),  ((int)(((byte)(130)))), ((int)(((byte)(180)))));
             this.arkDinoSettings1.Location  = new System.Drawing.Point(0, 30);
             this.arkDinoSettings1.Name      = "arkDinoSettings1";
-            this.arkDinoSettings1.Size      = new System.Drawing.Size(776, 4099);
+            this.arkDinoSettings1.Size      = new System.Drawing.Size(759, 4099);
             this.arkDinoSettings1.TabIndex  = 1;
             // 
             // expandCollapsePanel6
@@ -187,10 +189,10 @@
             this.expandCollapsePanel6.Controls.Add(this.arkPlayerSettings1);
             this.expandCollapsePanel6.Dock           = System.Windows.Forms.DockStyle.Top;
             this.expandCollapsePanel6.ExpandedHeight = 1212;
-            this.expandCollapsePanel6.IsExpanded     = false;
-            this.expandCollapsePanel6.Location       = new System.Drawing.Point(0, 135);
+            this.expandCollapsePanel6.IsExpanded     = true;
+            this.expandCollapsePanel6.Location       = new System.Drawing.Point(0, 4996);
             this.expandCollapsePanel6.Name           = "expandCollapsePanel6";
-            this.expandCollapsePanel6.Size           = new System.Drawing.Size(777, 27);
+            this.expandCollapsePanel6.Size           = new System.Drawing.Size(760, 1212);
             this.expandCollapsePanel6.TabIndex       = 5;
             this.expandCollapsePanel6.Text           = "Player Settings";
             this.expandCollapsePanel6.UseAnimation   = false;
@@ -202,7 +204,7 @@
             this.arkPlayerSettings1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))),  ((int)(((byte)(130)))), ((int)(((byte)(180)))));
             this.arkPlayerSettings1.Location  = new System.Drawing.Point(1, 34);
             this.arkPlayerSettings1.Name      = "arkPlayerSettings1";
-            this.arkPlayerSettings1.Size      = new System.Drawing.Size(774, 1191);
+            this.arkPlayerSettings1.Size      = new System.Drawing.Size(757, 1191);
             this.arkPlayerSettings1.TabIndex  = 1;
             // 
             // expandCollapsePanel5
@@ -213,13 +215,13 @@
             this.expandCollapsePanel5.Controls.Add(this.arkHUDAndVisuals1);
             this.expandCollapsePanel5.Dock           = System.Windows.Forms.DockStyle.Top;
             this.expandCollapsePanel5.ExpandedHeight = 104;
-            this.expandCollapsePanel5.IsExpanded     = false;
-            this.expandCollapsePanel5.Location       = new System.Drawing.Point(0, 108);
+            this.expandCollapsePanel5.IsExpanded     = true;
+            this.expandCollapsePanel5.Location       = new System.Drawing.Point(0, 4892);
             this.expandCollapsePanel5.Name           = "expandCollapsePanel5";
-            this.expandCollapsePanel5.Size           = new System.Drawing.Size(777, 27);
+            this.expandCollapsePanel5.Size           = new System.Drawing.Size(760, 104);
             this.expandCollapsePanel5.TabIndex       = 4;
             this.expandCollapsePanel5.Text           = "HUD and Visuals";
-            this.expandCollapsePanel5.UseAnimation   = true;
+            this.expandCollapsePanel5.UseAnimation   = false;
             // 
             // arkHUDAndVisuals1
             // 
@@ -238,10 +240,10 @@
             this.expandCollapsePanel4.Controls.Add(this.arkChatAndNotifications1);
             this.expandCollapsePanel4.Dock           = System.Windows.Forms.DockStyle.Top;
             this.expandCollapsePanel4.ExpandedHeight = 85;
-            this.expandCollapsePanel4.IsExpanded     = false;
-            this.expandCollapsePanel4.Location       = new System.Drawing.Point(0, 81);
+            this.expandCollapsePanel4.IsExpanded     = true;
+            this.expandCollapsePanel4.Location       = new System.Drawing.Point(0, 4807);
             this.expandCollapsePanel4.Name           = "expandCollapsePanel4";
-            this.expandCollapsePanel4.Size           = new System.Drawing.Size(777, 27);
+            this.expandCollapsePanel4.Size           = new System.Drawing.Size(760, 85);
             this.expandCollapsePanel4.TabIndex       = 3;
             this.expandCollapsePanel4.Text           = "Chat And Notifications";
             this.expandCollapsePanel4.UseAnimation   = false;
@@ -263,10 +265,10 @@
             this.expandCollapsePanel3.Controls.Add(this.arkRules1);
             this.expandCollapsePanel3.Dock           = System.Windows.Forms.DockStyle.Top;
             this.expandCollapsePanel3.ExpandedHeight = 2900;
-            this.expandCollapsePanel3.IsExpanded     = false;
-            this.expandCollapsePanel3.Location       = new System.Drawing.Point(0, 54);
+            this.expandCollapsePanel3.IsExpanded     = true;
+            this.expandCollapsePanel3.Location       = new System.Drawing.Point(0, 1907);
             this.expandCollapsePanel3.Name           = "expandCollapsePanel3";
-            this.expandCollapsePanel3.Size           = new System.Drawing.Size(777, 27);
+            this.expandCollapsePanel3.Size           = new System.Drawing.Size(760, 2900);
             this.expandCollapsePanel3.TabIndex       = 2;
             this.expandCollapsePanel3.Text           = "Rules";
             this.expandCollapsePanel3.UseAnimation   = false;
@@ -278,7 +280,7 @@
             this.arkRules1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))),  ((int)(((byte)(130)))), ((int)(((byte)(180)))));
             this.arkRules1.Location  = new System.Drawing.Point(3, 30);
             this.arkRules1.Name      = "arkRules1";
-            this.arkRules1.Size      = new System.Drawing.Size(773, 2981);
+            this.arkRules1.Size      = new System.Drawing.Size(756, 2981);
             this.arkRules1.TabIndex  = 1;
             // 
             // expandCollapsePanel2
@@ -289,10 +291,10 @@
             this.expandCollapsePanel2.Controls.Add(this.automaticManagement1);
             this.expandCollapsePanel2.Dock           = System.Windows.Forms.DockStyle.Top;
             this.expandCollapsePanel2.ExpandedHeight = 207;
-            this.expandCollapsePanel2.IsExpanded     = false;
-            this.expandCollapsePanel2.Location       = new System.Drawing.Point(0, 27);
+            this.expandCollapsePanel2.IsExpanded     = true;
+            this.expandCollapsePanel2.Location       = new System.Drawing.Point(0, 1700);
             this.expandCollapsePanel2.Name           = "expandCollapsePanel2";
-            this.expandCollapsePanel2.Size           = new System.Drawing.Size(777, 27);
+            this.expandCollapsePanel2.Size           = new System.Drawing.Size(760, 207);
             this.expandCollapsePanel2.TabIndex       = 1;
             this.expandCollapsePanel2.Text           = "Automatic Management";
             this.expandCollapsePanel2.UseAnimation   = false;
@@ -304,7 +306,7 @@
             this.automaticManagement1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))),  ((int)(((byte)(130)))), ((int)(((byte)(180)))));
             this.automaticManagement1.Location  = new System.Drawing.Point(0, 31);
             this.automaticManagement1.Name      = "automaticManagement1";
-            this.automaticManagement1.Size      = new System.Drawing.Size(775, 177);
+            this.automaticManagement1.Size      = new System.Drawing.Size(758, 177);
             this.automaticManagement1.TabIndex  = 1;
             // 
             // expandCollapsePanel1
@@ -315,10 +317,10 @@
             this.expandCollapsePanel1.Controls.Add(this.arkAdministration1);
             this.expandCollapsePanel1.Dock           = System.Windows.Forms.DockStyle.Top;
             this.expandCollapsePanel1.ExpandedHeight = 1700;
-            this.expandCollapsePanel1.IsExpanded     = false;
+            this.expandCollapsePanel1.IsExpanded     = true;
             this.expandCollapsePanel1.Location       = new System.Drawing.Point(0, 0);
             this.expandCollapsePanel1.Name           = "expandCollapsePanel1";
-            this.expandCollapsePanel1.Size           = new System.Drawing.Size(777, 27);
+            this.expandCollapsePanel1.Size           = new System.Drawing.Size(760, 1700);
             this.expandCollapsePanel1.TabIndex       = 0;
             this.expandCollapsePanel1.Text           = "Administration";
             this.expandCollapsePanel1.UseAnimation   = false;
@@ -330,7 +332,7 @@
             this.arkAdministration1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))),  ((int)(((byte)(130)))), ((int)(((byte)(180)))));
             this.arkAdministration1.Location  = new System.Drawing.Point(5, 28);
             this.arkAdministration1.Name      = "arkAdministration1";
-            this.arkAdministration1.Size      = new System.Drawing.Size(770, 1639);
+            this.arkAdministration1.Size      = new System.Drawing.Size(753, 1639);
             this.arkAdministration1.TabIndex  = 1;
             // 
             // profileHeader1

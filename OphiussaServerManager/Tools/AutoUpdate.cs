@@ -154,7 +154,7 @@ namespace OphiussaServerManager.Tools.Update {
             }
         }
 
-        internal void UpdateSingleServerJob2(string profileKey, bool restartOnlyToUpdate) {
+        internal async void UpdateSingleServerJob2(string profileKey, bool restartOnlyToUpdate) {
             try {
                 OnProcessStarted(new ProcessEventArg { Message = "Process Started for server " + profileKey, Sucessful = true });
                 var    settings = JsonConvert.DeserializeObject<Settings>(File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json")));
@@ -173,9 +173,13 @@ namespace OphiussaServerManager.Tools.Update {
                         Task.WaitAll(tasks.ToArray());
                     }
 
+                    var startDate = DateTime.Now;
+
                     while (p.IsRunning) {
                         OnProgressChanged(new ProcessEventArg { Message = "Server Still running", IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
 
+                        var ts = DateTime.Now - startDate;
+                        if (ts.TotalMinutes > 5) await CloseServer(p, settings, true);
                         Thread.Sleep(5000);
                     }
                 }

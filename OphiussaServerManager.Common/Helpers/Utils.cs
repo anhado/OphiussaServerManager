@@ -394,7 +394,7 @@ namespace OphiussaServerManager.Common {
             }
         }
 
-        public static void SendCloseCommand(Process process) {
+        public static void SendCloseCommandCtrlC(Process process) {
             SetForegroundWindow(process.MainWindowHandle);
             SendKeys.SendWait("^(c)");
         }
