@@ -1,4 +1,6 @@
-﻿namespace OphiussaServerManager.Forms
+﻿using OphiussaServerManager.Components;
+
+namespace OphiussaServerManager.Forms
 {
     partial class FrmRconServer
     {
@@ -75,7 +77,7 @@
             this.timersChat = new System.Windows.Forms.Timer(this.components);
             this.timerConnection = new System.Windows.Forms.Timer(this.components);
             this.timerUpdatePlayersFromDisk = new System.Windows.Forms.Timer(this.components);
-            this.lbPlayers = new OphiussaServerManager.ExListBox();
+            this.lbPlayers = new OphiussaServerManager.Components.ExListBox();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();

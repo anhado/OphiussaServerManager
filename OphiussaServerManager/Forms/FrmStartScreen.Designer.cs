@@ -1,4 +1,6 @@
-﻿namespace OphiussaServerManager.Forms
+﻿using OphiussaServerManager.Components;
+
+namespace OphiussaServerManager.Forms
 {
     partial class FrmStartScreen
     {
@@ -40,7 +42,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.exListBox1 = new OphiussaServerManager.ExListBox();
+            this.exListBox1 = new OphiussaServerManager.Components.ExListBox();
             this.SuspendLayout();
             // 
             // label1

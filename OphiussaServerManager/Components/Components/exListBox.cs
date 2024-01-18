@@ -1,7 +1,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace OphiussaServerManager {
+namespace OphiussaServerManager.Components {
     public class ExListBoxItem {
         public ExListBoxItem(string id, string title, string details, object pObject, Image image = null) {
             Id               = id;

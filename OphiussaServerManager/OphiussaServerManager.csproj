@@ -1,636 +1,642 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-	<Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')"/>
-	<PropertyGroup>
-		<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-		<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-		<ProjectGuid>{69001AEB-9740-4528-9A86-503DAFDCB751}</ProjectGuid>
-		<OutputType>WinExe</OutputType>
-		<RootNamespace>OphiussaServerManager</RootNamespace>
-		<AssemblyName>OphiussaServerManager</AssemblyName>
-		<TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-		<FileAlignment>512</FileAlignment>
-		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-		<Deterministic>true</Deterministic>
-		<GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
-	</PropertyGroup>
-	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-		<PlatformTarget>AnyCPU</PlatformTarget>
-		<DebugSymbols>true</DebugSymbols>
-		<DebugType>full</DebugType>
-		<Optimize>false</Optimize>
-		<OutputPath>bin\Debug\</OutputPath>
-		<DefineConstants>DEBUG;TRACE</DefineConstants>
-		<ErrorReport>prompt</ErrorReport>
-		<WarningLevel>4</WarningLevel>
-		<GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
-	</PropertyGroup>
-	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-		<PlatformTarget>AnyCPU</PlatformTarget>
-		<DebugType>pdbonly</DebugType>
-		<Optimize>true</Optimize>
-		<OutputPath>bin\Release\</OutputPath>
-		<DefineConstants>TRACE</DefineConstants>
-		<ErrorReport>prompt</ErrorReport>
-		<WarningLevel>4</WarningLevel>
-		<GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-		<DebugSymbols>true</DebugSymbols>
-		<OutputPath>bin\x64\Debug\</OutputPath>
-		<DefineConstants>DEBUG;TRACE</DefineConstants>
-		<DebugType>full</DebugType>
-		<PlatformTarget>x64</PlatformTarget>
-		<LangVersion>7.3</LangVersion>
-		<ErrorReport>prompt</ErrorReport>
-		<Prefer32Bit>true</Prefer32Bit>
-		<GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-		<OutputPath>bin\x64\Release\</OutputPath>
-		<DefineConstants>TRACE</DefineConstants>
-		<Optimize>true</Optimize>
-		<DebugType>pdbonly</DebugType>
-		<PlatformTarget>x64</PlatformTarget>
-		<LangVersion>7.3</LangVersion>
-		<ErrorReport>prompt</ErrorReport>
-		<Prefer32Bit>true</Prefer32Bit>
-		<GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
-	</PropertyGroup>
-	<PropertyGroup>
-		<ApplicationManifest>app.manifest</ApplicationManifest>
-	</PropertyGroup>
-	<PropertyGroup>
-		<ApplicationIcon>Elegantthemes-Softies-Tools.256.ico</ApplicationIcon>
-	</PropertyGroup>
-	<ItemGroup>
-		<Reference Include="CoreRCON, Version=5.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-			<HintPath>..\packages\CoreRCON.5.2.1\lib\netstandard2.0\CoreRCON.dll</HintPath>
-		</Reference>
-		<Reference Include="DotNetZip, Version=1.16.0.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
-			<HintPath>..\packages\DotNetZip.1.16.0\lib\net40\DotNetZip.dll</HintPath>
-		</Reference>
-		<Reference Include="FirewallManager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-			<HintPath>..\packages\FirewallManager.1.0.2\lib\FirewallManager.dll</HintPath>
-		</Reference>
-		<Reference Include="Interop.NATUPNPLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-			<HintPath>..\packages\FirewallManager.1.0.2\lib\Interop.NATUPNPLib.dll</HintPath>
-			<EmbedInteropTypes>True</EmbedInteropTypes>
-		</Reference>
-		<Reference Include="Interop.NETCONLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-			<HintPath>..\packages\FirewallManager.1.0.2\lib\Interop.NETCONLib.dll</HintPath>
-			<EmbedInteropTypes>True</EmbedInteropTypes>
-		</Reference>
-		<Reference Include="Interop.NetFwTypeLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-			<HintPath>..\packages\FirewallManager.1.0.2\lib\Interop.NetFwTypeLib.dll</HintPath>
-			<EmbedInteropTypes>True</EmbedInteropTypes>
-		</Reference>
-		<Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-			<HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.8.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
-		</Reference>
-		<Reference Include="Microsoft.Extensions.Configuration, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-			<HintPath>..\packages\Microsoft.Extensions.Configuration.8.0.0\lib\net462\Microsoft.Extensions.Configuration.dll</HintPath>
-		</Reference>
-		<Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-			<HintPath>..\packages\Microsoft.Extensions.Configuration.Abstractions.8.0.0\lib\net462\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
-		</Reference>
-		<Reference Include="Microsoft.Extensions.Configuration.FileExtensions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-			<HintPath>..\packages\Microsoft.Extensions.Configuration.FileExtensions.8.0.0\lib\net462\Microsoft.Extensions.Configuration.FileExtensions.dll</HintPath>
-		</Reference>
-		<Reference Include="Microsoft.Extensions.Configuration.Ini, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-			<HintPath>..\packages\Microsoft.Extensions.Configuration.Ini.8.0.0\lib\net462\Microsoft.Extensions.Configuration.Ini.dll</HintPath>
-		</Reference>
-		<Reference Include="Microsoft.Extensions.DependencyInjection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-			<HintPath>..\packages\Microsoft.Extensions.DependencyInjection.8.0.0\lib\net462\Microsoft.Extensions.DependencyInjection.dll</HintPath>
-		</Reference>
-		<Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-			<HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.8.0.0\lib\net462\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
-		</Reference>
-		<Reference Include="Microsoft.Extensions.FileProviders.Abstractions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-			<HintPath>..\packages\Microsoft.Extensions.FileProviders.Abstractions.8.0.0\lib\net462\Microsoft.Extensions.FileProviders.Abstractions.dll</HintPath>
-		</Reference>
-		<Reference Include="Microsoft.Extensions.FileProviders.Physical, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-			<HintPath>..\packages\Microsoft.Extensions.FileProviders.Physical.8.0.0\lib\net462\Microsoft.Extensions.FileProviders.Physical.dll</HintPath>
-		</Reference>
-		<Reference Include="Microsoft.Extensions.FileSystemGlobbing, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-			<HintPath>..\packages\Microsoft.Extensions.FileSystemGlobbing.8.0.0\lib\net462\Microsoft.Extensions.FileSystemGlobbing.dll</HintPath>
-		</Reference>
-		<Reference Include="Microsoft.Extensions.Logging, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-			<HintPath>..\packages\Microsoft.Extensions.Logging.8.0.0\lib\net462\Microsoft.Extensions.Logging.dll</HintPath>
-		</Reference>
-		<Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-			<HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.8.0.0\lib\net462\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
-		</Reference>
-		<Reference Include="Microsoft.Extensions.Options, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-			<HintPath>..\packages\Microsoft.Extensions.Options.8.0.0\lib\net462\Microsoft.Extensions.Options.dll</HintPath>
-		</Reference>
-		<Reference Include="Microsoft.Extensions.Primitives, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-			<HintPath>..\packages\Microsoft.Extensions.Primitives.8.0.0\lib\net462\Microsoft.Extensions.Primitives.dll</HintPath>
-		</Reference>
-		<Reference Include="Microsoft.VisualBasic"/>
-		<Reference Include="Microsoft.Win32.TaskScheduler, Version=2.10.1.0, Culture=neutral, PublicKeyToken=e25603a88b3aa7da, processorArchitecture=MSIL">
-			<HintPath>..\packages\TaskScheduler.2.10.1\lib\net452\Microsoft.Win32.TaskScheduler.dll</HintPath>
-		</Reference>
-		<Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-			<HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-		</Reference>
-		<Reference Include="NeXt.Vdf">
-			<HintPath>..\lib\NeXt.Vdf.dll</HintPath>
-		</Reference>
-		<Reference Include="NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-			<HintPath>..\packages\NLog.5.2.6\lib\net46\NLog.dll</HintPath>
-		</Reference>
-		<Reference Include="OphiussaServerManager">
-		  <HintPath>bin\x64\Debug\OphiussaServerManager.exe</HintPath>
-		</Reference>
-		<Reference Include="PresentationFramework"/>
-		<Reference Include="System"/>
-		<Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-			<HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
-		</Reference>
-		<Reference Include="System.ComponentModel.DataAnnotations"/>
-		<Reference Include="System.Configuration"/>
-		<Reference Include="System.Core"/>
-		<Reference Include="System.Diagnostics.DiagnosticSource, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-			<HintPath>..\packages\System.Diagnostics.DiagnosticSource.8.0.0\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
-		</Reference>
-		<Reference Include="System.IO.Compression"/>
-		<Reference Include="System.IO.Compression.FileSystem"/>
-		<Reference Include="System.IO.Pipelines, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-			<HintPath>..\packages\System.IO.Pipelines.8.0.0\lib\net462\System.IO.Pipelines.dll</HintPath>
-		</Reference>
-		<Reference Include="System.Management"/>
-		<Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-			<HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
-		</Reference>
-		<Reference Include="System.Numerics"/>
-		<Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-			<HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
-		</Reference>
-		<Reference Include="System.Resources.Extensions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-			<HintPath>..\packages\System.Resources.Extensions.8.0.0\lib\net462\System.Resources.Extensions.dll</HintPath>
-		</Reference>
-		<Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-			<HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-		</Reference>
-		<Reference Include="System.ServiceProcess"/>
-		<Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-			<HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
-		</Reference>
-		<Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-			<HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
-		</Reference>
-		<Reference Include="System.Web"/>
-		<Reference Include="System.Xml.Linq"/>
-		<Reference Include="System.Data.DataSetExtensions"/>
-		<Reference Include="Microsoft.CSharp"/>
-		<Reference Include="System.Data"/>
-		<Reference Include="System.Deployment"/>
-		<Reference Include="System.Drawing"/>
-		<Reference Include="System.Net.Http"/>
-		<Reference Include="System.Windows.Forms"/>
-		<Reference Include="System.Xml"/>
-		<Reference Include="WindowsBase"/>
-	</ItemGroup>
-	<ItemGroup>
-		<Compile Include="Components\Ark\ArkAdministration.cs">
-		  <SubType>UserControl</SubType>
-		</Compile>
-		<Compile Include="Components\Ark\ArkAdministration.Designer.cs">
-		  <DependentUpon>ArkAdministration.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Components\Ark\ArkChatAndNotifications.cs">
-		  <SubType>UserControl</SubType>
-		</Compile>
-		<Compile Include="Components\Ark\ArkChatAndNotifications.Designer.cs">
-		  <DependentUpon>ArkChatAndNotifications.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Components\Ark\ArkDinoSettings.cs">
-		  <SubType>UserControl</SubType>
-		</Compile>
-		<Compile Include="Components\Ark\ArkDinoSettings.Designer.cs">
-		  <DependentUpon>ArkDinoSettings.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Components\Ark\ArkEngrams.cs">
-		  <SubType>UserControl</SubType>
-		</Compile>
-		<Compile Include="Components\Ark\ArkEngrams.Designer.cs">
-		  <DependentUpon>ArkEngrams.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Components\Ark\ArkEnvironment.cs">
-		  <SubType>UserControl</SubType>
-		</Compile>
-		<Compile Include="Components\Ark\ArkEnvironment.Designer.cs">
-		  <DependentUpon>ArkEnvironment.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Components\Ark\ArkHUDAndVisuals.cs">
-		  <SubType>UserControl</SubType>
-		</Compile>
-		<Compile Include="Components\Ark\ArkHUDAndVisuals.Designer.cs">
-		  <DependentUpon>ArkHUDAndVisuals.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Components\Ark\ArkPlayerSettings.cs">
-		  <SubType>UserControl</SubType>
-		</Compile>
-		<Compile Include="Components\Ark\ArkPlayerSettings.Designer.cs">
-		  <DependentUpon>ArkPlayerSettings.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Components\Ark\ArkRules.cs">
-		  <SubType>UserControl</SubType>
-		</Compile>
-		<Compile Include="Components\Ark\ArkRules.Designer.cs">
-		  <DependentUpon>ArkRules.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Components\Ark\ArkStructures.cs">
-		  <SubType>UserControl</SubType>
-		</Compile>
-		<Compile Include="Components\Ark\ArkStructures.Designer.cs">
-		  <DependentUpon>ArkStructures.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Components\Components\exListBox.cs">
-		  <SubType>Component</SubType>
-		</Compile>
-		<Compile Include="Components\Components\exListBox.Designer.cs">
-		  <DependentUpon>exListBox.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Components\Components\exTrackBar.cs">
-		  <SubType>UserControl</SubType>
-		</Compile>
-		<Compile Include="Components\Components\exTrackBar.Designer.cs">
-		  <DependentUpon>exTrackBar.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Components\Generic\AutomaticManagement.cs">
-		  <SubType>UserControl</SubType>
-		</Compile>
-		<Compile Include="Components\Generic\AutomaticManagement.Designer.cs">
-		  <DependentUpon>AutomaticManagement.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Components\Generic\ProfileHeader.cs">
-		  <SubType>UserControl</SubType>
-		</Compile>
-		<Compile Include="Components\Generic\ProfileHeader.Designer.cs">
-		  <DependentUpon>ProfileHeader.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\FrmArkV2.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\FrmArkV2.Designer.cs">
-			<DependentUpon>FrmArkV2.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\FrmDeleteProfile.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\FrmDeleteProfile.Designer.cs">
-			<DependentUpon>FrmDeleteProfile.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\FrmEnshrouded.cs">
-		  <SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\FrmEnshrouded.Designer.cs">
-		  <DependentUpon>FrmEnshrouded.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\FrmModManager.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\FrmModManager.Designer.cs">
-			<DependentUpon>FrmModManager.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\FrmModManagerAdd.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\FrmModManagerAdd.Designer.cs">
-			<DependentUpon>FrmModManagerAdd.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\FrmOrderProfiles.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\FrmOrderProfiles.Designer.cs">
-			<DependentUpon>FrmOrderProfiles.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\FrmPortForward.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\FrmPortForward.Designer.cs">
-			<DependentUpon>FrmPortForward.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\FrmProcessors.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\FrmProcessors.Designer.cs">
-			<DependentUpon>FrmProcessors.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\FrmProgress.cs">
-		  <SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\FrmProgress.Designer.cs">
-		  <DependentUpon>FrmProgress.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\FrmUpdateProgress.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\FrmUpdateProgress.Designer.cs">
-			<DependentUpon>FrmUpdateProgress.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\FrmServerTypeSelection.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\FrmServerTypeSelection.Designer.cs">
-			<DependentUpon>FrmServerTypeSelection.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\FrmRCONServer.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\FrmRCONServer.Designer.cs">
-			<DependentUpon>FrmRCONServer.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\FrmServerMonitor.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\FrmServerMonitor.Designer.cs">
-			<DependentUpon>FrmServerMonitor.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\FrmSettings.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\FrmSettings.Designer.cs">
-			<DependentUpon>FrmSettings.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\FrmStartScreen.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\FrmStartScreen.Designer.cs">
-			<DependentUpon>FrmStartScreen.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\FrmTests.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\FrmTests.Designer.cs">
-			<DependentUpon>FrmTests.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\FrmUsedResources.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\FrmUsedResources.Designer.cs">
-			<DependentUpon>FrmUsedResources.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\FrmUsedResourcesStatusWindow.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\FrmUsedResourcesStatusWindow.Designer.cs">
-			<DependentUpon>FrmUsedResourcesStatusWindow.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\FrmValheim.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\FrmValheim.Designer.cs">
-			<DependentUpon>FrmValheim.cs</DependentUpon>
-		</Compile>
-		<Compile Include="MainForm.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="MainForm.Designer.cs">
-			<DependentUpon>MainForm.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Program.cs" />
-		<Compile Include="Properties\AssemblyInfo.cs" />
-		<Compile Include="Properties\Resources.Designer.cs">
-			<AutoGen>True</AutoGen>
-			<DesignTime>True</DesignTime>
-			<DependentUpon>Resources.resx</DependentUpon>
-		</Compile>
-		<Compile Include="Tools\AutoBackup.cs" />
-		<Compile Include="Tools\AutoUpdate.cs" />
-		<Compile Include="Tools\NotificationController.cs" />
-		<Compile Include="Tools\ServerTools.cs" />
-		<Compile Include="Tools\ShellLink.cs" />
-		<Compile Include="Tools\UsefullTools.cs" />
-		<EmbeddedResource Include="Components\Ark\ArkAdministration.resx">
-		  <DependentUpon>ArkAdministration.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Components\Ark\ArkChatAndNotifications.resx">
-		  <DependentUpon>ArkChatAndNotifications.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Components\Ark\ArkDinoSettings.resx">
-		  <DependentUpon>ArkDinoSettings.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Components\Ark\ArkEngrams.resx">
-		  <DependentUpon>ArkEngrams.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Components\Ark\ArkEnvironment.resx">
-		  <DependentUpon>ArkEnvironment.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Components\Ark\ArkHUDAndVisuals.resx">
-		  <DependentUpon>ArkHUDAndVisuals.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Components\Ark\ArkPlayerSettings.resx">
-		  <DependentUpon>ArkPlayerSettings.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Components\Ark\ArkRules.resx">
-		  <DependentUpon>ArkRules.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Components\Ark\ArkStructures.resx">
-		  <DependentUpon>ArkStructures.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Components\Components\exTrackBar.resx">
-		  <DependentUpon>exTrackBar.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Components\Generic\AutomaticManagement.resx">
-		  <DependentUpon>AutomaticManagement.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Components\Generic\ProfileHeader.resx">
-		  <DependentUpon>ProfileHeader.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\FrmArkV2.resx">
-			<DependentUpon>FrmArkV2.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\FrmDeleteProfile.resx">
-			<DependentUpon>FrmDeleteProfile.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\FrmEnshrouded.resx">
-		  <DependentUpon>FrmEnshrouded.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\FrmModManager.resx">
-			<DependentUpon>FrmModManager.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\FrmModManagerAdd.resx">
-			<DependentUpon>FrmModManagerAdd.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\FrmOrderProfiles.resx">
-			<DependentUpon>FrmOrderProfiles.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\FrmPortForward.resx">
-			<DependentUpon>FrmPortForward.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\FrmProcessors.resx">
-			<DependentUpon>FrmProcessors.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\FrmProgress.resx">
-		  <DependentUpon>FrmProgress.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\FrmUpdateProgress.resx">
-			<DependentUpon>FrmUpdateProgress.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\FrmServerTypeSelection.resx">
-			<DependentUpon>FrmServerTypeSelection.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\FrmRCONServer.resx">
-			<DependentUpon>FrmRCONServer.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\FrmServerMonitor.resx">
-			<DependentUpon>FrmServerMonitor.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\FrmSettings.resx">
-			<DependentUpon>FrmSettings.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\FrmStartScreen.resx">
-			<DependentUpon>FrmStartScreen.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\FrmTests.resx">
-			<DependentUpon>FrmTests.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\FrmUsedResources.resx">
-			<DependentUpon>FrmUsedResources.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\FrmUsedResourcesStatusWindow.resx">
-			<DependentUpon>FrmUsedResourcesStatusWindow.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\FrmValheim.resx">
-			<DependentUpon>FrmValheim.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="MainForm.resx">
-			<DependentUpon>MainForm.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Properties\Resources.resx">
-			<Generator>ResXFileCodeGenerator</Generator>
-			<SubType>Designer</SubType>
-			<LastGenOutput>Resources.Designer.cs</LastGenOutput>
-		</EmbeddedResource>
-		<None Include="app.manifest" />
-		<None Include="NLog.config">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-		<None Include="packages.config" />
-		<None Include="Properties\DataSources\OphiussaServerManager.Common.Models.DinoSettings.datasource" />
-		<None Include="Properties\DataSources\OphiussaServerManager.Common.Models.ModListDetails.datasource" />
-		<None Include="Properties\DataSources\OphiussaServerManager.Common.Models.MonitorGrid.datasource" />
-		<None Include="Properties\DataSources\OphiussaServerManager.Common.Models.PortForwardGrid.datasource" />
-		<None Include="Properties\DataSources\OphiussaServerManager.Common.Models.ProcessorAffinity.datasource" />
-		<None Include="Properties\DataSources\OphiussaServerManager.Common.Models.ProfileOrderGrid.datasource" />
-		<None Include="Properties\Settings.settings">
-			<Generator>SettingsSingleFileGenerator</Generator>
-			<LastGenOutput>Settings.Designer.cs</LastGenOutput>
-		</None>
-		<Compile Include="Properties\Settings.Designer.cs">
-			<AutoGen>True</AutoGen>
-			<DependentUpon>Settings.settings</DependentUpon>
-			<DesignTimeSharedInput>True</DesignTimeSharedInput>
-		</Compile>
-	</ItemGroup>
-	<ItemGroup>
-		<None Include="App.config" />
-	</ItemGroup>
-	<ItemGroup>
-		<ProjectReference Include="..\..\Open.NAT\Open.Nat\Open.Nat.csproj">
-			<Project>{FDEACF87-8877-45D8-AD9F-AEE32A100544}</Project>
-			<Name>Open.Nat</Name>
-		</ProjectReference>
-		<ProjectReference Include="..\ArkData\ArkData.csproj">
-			<Project>{eb2f3774-da67-4772-b317-742247cec657}</Project>
-			<Name>ArkData</Name>
-		</ProjectReference>
-		<ProjectReference Include="..\Clifton.Core.ExtensionMethods\Clifton.Core.ExtensionMethods.csproj">
-			<Project>{41d1de10-1a65-495f-83ae-4b914f8e33f6}</Project>
-			<Name>Clifton.Core.ExtensionMethods</Name>
-		</ProjectReference>
-		<ProjectReference Include="..\Clifton.Core.Pipes\Clifton.Core.Pipes.csproj">
-			<Project>{b826097c-cc24-4cac-8d31-8a65c4b76be9}</Project>
-			<Name>Clifton.Core.Pipes</Name>
-		</ProjectReference>
-		<ProjectReference Include="..\MakarovDev.ExpandCollapsePanel\MakarovDev.ExpandCollapsePanel.csproj">
-			<Project>{be76a6fe-225f-4287-9ca0-231f5af4cdc1}</Project>
-			<Name>MakarovDev.ExpandCollapsePanel</Name>
-		</ProjectReference>
-		<ProjectReference Include="..\OphiussaServerManager.Common\OphiussaServerManager.Common.csproj">
-			<Project>{9cba1cbf-f015-48d2-8754-67e1377ee7a0}</Project>
-			<Name>OphiussaServerManager.Common</Name>
-		</ProjectReference>
-	</ItemGroup>
-	<ItemGroup>
-		<Content Include="Elegantthemes-Softies-Tools.256.ico" />
-		<None Include="GameData\Aberration.gamedata">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-		<None Include="GameData\CrystalIsles.gamedata">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-		<None Include="GameData\Extinction.gamedata">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-		<None Include="GameData\Fjordur.gamedata">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-		<None Include="GameData\Genesis.gamedata">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-		<None Include="GameData\Genesis2.gamedata">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-		<None Include="GameData\LostIsland.gamedata">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-		<None Include="GameData\PGM.gamedata">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-		<None Include="GameData\PrimitivePlus.gamedata">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-		<None Include="GameData\Ragnarok.gamedata">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-		<None Include="GameData\ScorchedEarth.gamedata">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-		<None Include="GameData\SurvivalEvolved.gamedata">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-		<None Include="GameData\TheCenter.gamedata">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-		<None Include="GameData\Valguero.gamedata">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-		<None Include="Resources\checklist icon icon.png" />
-		<None Include="Resources\Copy icon icon.png" />
-		<None Include="Resources\consoleicon.png" />
-		<None Include="Resources\upgrade, misc icon icon.png" />
-		<None Include="Resources\save, floppy, disk icon icon %282%29.png" />
-		<None Include="Resources\speedometericon.png" />
-		<None Include="Resources\tool icon icon.png" />
-		<None Include="Resources\Monitor icon icon.png" />
-		<None Include="Resources\firewall icon icon.png" />
-		<None Include="Resources\ok icon icon.png" />
-		<None Include="Resources\add icon icon %281%29.png" />
-		<None Include="Resources\Filter icon icon.png" />
-		<None Include="Resources\refresh icon icon %285%29.png" />
-		<None Include="Resources\Add icon icon.png" />
-		<None Include="Resources\collapse icon icon.png" />
-		<None Include="Resources\expand icon icon.png" />
-		<None Include="Resources\Close icon icon.png" />
-		<None Include="Resources\refresh icon icon %284%29.png" />
-		<None Include="Resources\Refresh icon icon %282%29.png" />
-		<None Include="Resources\refresh icon icon %281%29.png" />
-		<None Include="Resources\Plus icon icon.png" />
-		<None Include="Resources\remove, cancel, delete icon icon.png" />
-		<None Include="Resources\redo icon icon.png" />
-		<None Include="Resources\tool, tools, settings, options, preferences icon icon.png" />
-		<None Include="Resources\preferencesicon.png" />
-		<None Include="Resources\folder, close icon icon.png" />
-		<None Include="Resources\file, open, folder icon icon.png" />
-		<None Include="Resources\help, about, question icon icon.png" />
-		<None Include="Resources\copy, documents, clone, duplicate icon icon.png" />
-		<None Include="Resources\refresh icon icon.png" />
-		<None Include="Resources\down icon icon.png" />
-		<None Include="Resources\save, floppy, disk icon icon.png" />
-	</ItemGroup>
-	<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{69001AEB-9740-4528-9A86-503DAFDCB751}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>OphiussaServerManager</RootNamespace>
+    <AssemblyName>OphiussaServerManager</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Elegantthemes-Softies-Tools.256.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CoreRCON, Version=5.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CoreRCON.5.2.1\lib\netstandard2.0\CoreRCON.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetZip, Version=1.16.0.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetZip.1.16.0\lib\net40\DotNetZip.dll</HintPath>
+    </Reference>
+    <Reference Include="FirewallManager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FirewallManager.1.0.2\lib\FirewallManager.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.NATUPNPLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FirewallManager.1.0.2\lib\Interop.NATUPNPLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Interop.NETCONLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FirewallManager.1.0.2\lib\Interop.NETCONLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Interop.NetFwTypeLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FirewallManager.1.0.2\lib\Interop.NetFwTypeLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.8.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.8.0.0\lib\net462\Microsoft.Extensions.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Abstractions.8.0.0\lib\net462\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.FileExtensions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.FileExtensions.8.0.0\lib\net462\Microsoft.Extensions.Configuration.FileExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Ini, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Ini.8.0.0\lib\net462\Microsoft.Extensions.Configuration.Ini.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.8.0.0\lib\net462\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.8.0.0\lib\net462\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.FileProviders.Abstractions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.FileProviders.Abstractions.8.0.0\lib\net462\Microsoft.Extensions.FileProviders.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.FileProviders.Physical, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.FileProviders.Physical.8.0.0\lib\net462\Microsoft.Extensions.FileProviders.Physical.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.FileSystemGlobbing, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.FileSystemGlobbing.8.0.0\lib\net462\Microsoft.Extensions.FileSystemGlobbing.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.8.0.0\lib\net462\Microsoft.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.8.0.0\lib\net462\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.8.0.0\lib\net462\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.8.0.0\lib\net462\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.Win32.TaskScheduler, Version=2.10.1.0, Culture=neutral, PublicKeyToken=e25603a88b3aa7da, processorArchitecture=MSIL">
+      <HintPath>..\packages\TaskScheduler.2.10.1\lib\net452\Microsoft.Win32.TaskScheduler.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NeXt.Vdf">
+      <HintPath>..\lib\NeXt.Vdf.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.5.2.6\lib\net46\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.8.0.0\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.IO.Pipelines, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Pipelines.8.0.0\lib\net462\System.IO.Pipelines.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Resources.Extensions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Resources.Extensions.8.0.0\lib\net462\System.Resources.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\Ark\ArkAdministration.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Ark\ArkAdministration.Designer.cs">
+      <DependentUpon>ArkAdministration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Ark\ArkChatAndNotifications.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Ark\ArkChatAndNotifications.Designer.cs">
+      <DependentUpon>ArkChatAndNotifications.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Ark\ArkDinoSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Ark\ArkDinoSettings.Designer.cs">
+      <DependentUpon>ArkDinoSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Ark\ArkEngrams.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Ark\ArkEngrams.Designer.cs">
+      <DependentUpon>ArkEngrams.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Ark\ArkEnvironment.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Ark\ArkEnvironment.Designer.cs">
+      <DependentUpon>ArkEnvironment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Ark\ArkHUDAndVisuals.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Ark\ArkHUDAndVisuals.Designer.cs">
+      <DependentUpon>ArkHUDAndVisuals.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Ark\ArkPlayerSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Ark\ArkPlayerSettings.Designer.cs">
+      <DependentUpon>ArkPlayerSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Ark\ArkRules.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Ark\ArkRules.Designer.cs">
+      <DependentUpon>ArkRules.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Ark\ArkStructures.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Ark\ArkStructures.Designer.cs">
+      <DependentUpon>ArkStructures.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Ark\ArkServerFileDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Ark\ArkServerFileDetails.Designer.cs">
+      <DependentUpon>ArkServerFileDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Components\exListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\Components\exListBox.Designer.cs">
+      <DependentUpon>exListBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Components\exTrackBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Components\exTrackBar.Designer.cs">
+      <DependentUpon>exTrackBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Generic\AutomaticManagement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Generic\AutomaticManagement.Designer.cs">
+      <DependentUpon>AutomaticManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Generic\ProfileHeader.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Generic\ProfileHeader.Designer.cs">
+      <DependentUpon>ProfileHeader.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmArkV2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmArkV2.Designer.cs">
+      <DependentUpon>FrmArkV2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmDeleteProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmDeleteProfile.Designer.cs">
+      <DependentUpon>FrmDeleteProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmEnshrouded.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmEnshrouded.Designer.cs">
+      <DependentUpon>FrmEnshrouded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmModManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmModManager.Designer.cs">
+      <DependentUpon>FrmModManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmModManagerAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmModManagerAdd.Designer.cs">
+      <DependentUpon>FrmModManagerAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmOrderProfiles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmOrderProfiles.Designer.cs">
+      <DependentUpon>FrmOrderProfiles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmPortForward.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmPortForward.Designer.cs">
+      <DependentUpon>FrmPortForward.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmProcessors.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmProcessors.Designer.cs">
+      <DependentUpon>FrmProcessors.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmProgress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmProgress.Designer.cs">
+      <DependentUpon>FrmProgress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmUpdateProgress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmUpdateProgress.Designer.cs">
+      <DependentUpon>FrmUpdateProgress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmServerTypeSelection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmServerTypeSelection.Designer.cs">
+      <DependentUpon>FrmServerTypeSelection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmRCONServer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmRCONServer.Designer.cs">
+      <DependentUpon>FrmRCONServer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmServerMonitor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmServerMonitor.Designer.cs">
+      <DependentUpon>FrmServerMonitor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmSettings.Designer.cs">
+      <DependentUpon>FrmSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmStartScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmStartScreen.Designer.cs">
+      <DependentUpon>FrmStartScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmTests.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmTests.Designer.cs">
+      <DependentUpon>FrmTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmUsedResources.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmUsedResources.Designer.cs">
+      <DependentUpon>FrmUsedResources.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmUsedResourcesStatusWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmUsedResourcesStatusWindow.Designer.cs">
+      <DependentUpon>FrmUsedResourcesStatusWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmValheim.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmValheim.Designer.cs">
+      <DependentUpon>FrmValheim.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\AutoBackup.cs" />
+    <Compile Include="Tools\AutoUpdate.cs" />
+    <Compile Include="Tools\NotificationController.cs" />
+    <Compile Include="Tools\ServerTools.cs" />
+    <Compile Include="Tools\ShellLink.cs" />
+    <Compile Include="Tools\UsefullTools.cs" />
+    <EmbeddedResource Include="Components\Ark\ArkAdministration.resx">
+      <DependentUpon>ArkAdministration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Ark\ArkChatAndNotifications.resx">
+      <DependentUpon>ArkChatAndNotifications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Ark\ArkDinoSettings.resx">
+      <DependentUpon>ArkDinoSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Ark\ArkEngrams.resx">
+      <DependentUpon>ArkEngrams.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Ark\ArkEnvironment.resx">
+      <DependentUpon>ArkEnvironment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Ark\ArkHUDAndVisuals.resx">
+      <DependentUpon>ArkHUDAndVisuals.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Ark\ArkPlayerSettings.resx">
+      <DependentUpon>ArkPlayerSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Ark\ArkRules.resx">
+      <DependentUpon>ArkRules.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Ark\ArkStructures.resx">
+      <DependentUpon>ArkStructures.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Ark\ArkServerFileDetails.resx">
+      <DependentUpon>ArkServerFileDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Components\exTrackBar.resx">
+      <DependentUpon>exTrackBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Generic\AutomaticManagement.resx">
+      <DependentUpon>AutomaticManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Generic\ProfileHeader.resx">
+      <DependentUpon>ProfileHeader.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmArkV2.resx">
+      <DependentUpon>FrmArkV2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmDeleteProfile.resx">
+      <DependentUpon>FrmDeleteProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmEnshrouded.resx">
+      <DependentUpon>FrmEnshrouded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmModManager.resx">
+      <DependentUpon>FrmModManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmModManagerAdd.resx">
+      <DependentUpon>FrmModManagerAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmOrderProfiles.resx">
+      <DependentUpon>FrmOrderProfiles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmPortForward.resx">
+      <DependentUpon>FrmPortForward.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmProcessors.resx">
+      <DependentUpon>FrmProcessors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmProgress.resx">
+      <DependentUpon>FrmProgress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmUpdateProgress.resx">
+      <DependentUpon>FrmUpdateProgress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmServerTypeSelection.resx">
+      <DependentUpon>FrmServerTypeSelection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmRCONServer.resx">
+      <DependentUpon>FrmRCONServer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmServerMonitor.resx">
+      <DependentUpon>FrmServerMonitor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmSettings.resx">
+      <DependentUpon>FrmSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmStartScreen.resx">
+      <DependentUpon>FrmStartScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmTests.resx">
+      <DependentUpon>FrmTests.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmUsedResources.resx">
+      <DependentUpon>FrmUsedResources.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmUsedResourcesStatusWindow.resx">
+      <DependentUpon>FrmUsedResourcesStatusWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmValheim.resx">
+      <DependentUpon>FrmValheim.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.manifest" />
+    <None Include="NLog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\OphiussaServerManager.Common.Models.DinoSettings.datasource" />
+    <None Include="Properties\DataSources\OphiussaServerManager.Common.Models.ModListDetails.datasource" />
+    <None Include="Properties\DataSources\OphiussaServerManager.Common.Models.MonitorGrid.datasource" />
+    <None Include="Properties\DataSources\OphiussaServerManager.Common.Models.PortForwardGrid.datasource" />
+    <None Include="Properties\DataSources\OphiussaServerManager.Common.Models.ProcessorAffinity.datasource" />
+    <None Include="Properties\DataSources\OphiussaServerManager.Common.Models.ProfileOrderGrid.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Open.NAT\Open.Nat\Open.Nat.csproj">
+      <Project>{FDEACF87-8877-45D8-AD9F-AEE32A100544}</Project>
+      <Name>Open.Nat</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ArkData\ArkData.csproj">
+      <Project>{eb2f3774-da67-4772-b317-742247cec657}</Project>
+      <Name>ArkData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Clifton.Core.ExtensionMethods\Clifton.Core.ExtensionMethods.csproj">
+      <Project>{41d1de10-1a65-495f-83ae-4b914f8e33f6}</Project>
+      <Name>Clifton.Core.ExtensionMethods</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Clifton.Core.Pipes\Clifton.Core.Pipes.csproj">
+      <Project>{b826097c-cc24-4cac-8d31-8a65c4b76be9}</Project>
+      <Name>Clifton.Core.Pipes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MakarovDev.ExpandCollapsePanel\MakarovDev.ExpandCollapsePanel.csproj">
+      <Project>{be76a6fe-225f-4287-9ca0-231f5af4cdc1}</Project>
+      <Name>MakarovDev.ExpandCollapsePanel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OphiussaServerManager.Common\OphiussaServerManager.Common.csproj">
+      <Project>{9cba1cbf-f015-48d2-8754-67e1377ee7a0}</Project>
+      <Name>OphiussaServerManager.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Elegantthemes-Softies-Tools.256.ico" />
+    <None Include="GameData\Aberration.gamedata">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="GameData\CrystalIsles.gamedata">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="GameData\Extinction.gamedata">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="GameData\Fjordur.gamedata">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="GameData\Genesis.gamedata">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="GameData\Genesis2.gamedata">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="GameData\LostIsland.gamedata">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="GameData\PGM.gamedata">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="GameData\PrimitivePlus.gamedata">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="GameData\Ragnarok.gamedata">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="GameData\ScorchedEarth.gamedata">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="GameData\SurvivalEvolved.gamedata">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="GameData\TheCenter.gamedata">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="GameData\Valguero.gamedata">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\checklist icon icon.png" />
+    <None Include="Resources\Copy icon icon.png" />
+    <None Include="Resources\consoleicon.png" />
+    <None Include="Resources\upgrade, misc icon icon.png" />
+    <None Include="Resources\save, floppy, disk icon icon %282%29.png" />
+    <None Include="Resources\speedometericon.png" />
+    <None Include="Resources\tool icon icon.png" />
+    <None Include="Resources\Monitor icon icon.png" />
+    <None Include="Resources\firewall icon icon.png" />
+    <None Include="Resources\ok icon icon.png" />
+    <None Include="Resources\add icon icon %281%29.png" />
+    <None Include="Resources\Filter icon icon.png" />
+    <None Include="Resources\refresh icon icon %285%29.png" />
+    <None Include="Resources\Add icon icon.png" />
+    <None Include="Resources\collapse icon icon.png" />
+    <None Include="Resources\expand icon icon.png" />
+    <None Include="Resources\Close icon icon.png" />
+    <None Include="Resources\refresh icon icon %284%29.png" />
+    <None Include="Resources\Refresh icon icon %282%29.png" />
+    <None Include="Resources\refresh icon icon %281%29.png" />
+    <None Include="Resources\Plus icon icon.png" />
+    <None Include="Resources\remove, cancel, delete icon icon.png" />
+    <None Include="Resources\redo icon icon.png" />
+    <None Include="Resources\tool, tools, settings, options, preferences icon icon.png" />
+    <None Include="Resources\preferencesicon.png" />
+    <None Include="Resources\folder, close icon icon.png" />
+    <None Include="Resources\file, open, folder icon icon.png" />
+    <None Include="Resources\help, about, question icon icon.png" />
+    <None Include="Resources\copy, documents, clone, duplicate icon icon.png" />
+    <None Include="Resources\refresh icon icon.png" />
+    <None Include="Resources\down icon icon.png" />
+    <None Include="Resources\save, floppy, disk icon icon.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,5 +1,4 @@
-namespace OphiussaServerManager
-{
+namespace OphiussaServerManager.Components {
     partial class ExListBox
     {
         /// <summary>

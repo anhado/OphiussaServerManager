@@ -1,4 +1,6 @@
-﻿namespace OphiussaServerManager.Forms {
+﻿using OphiussaServerManager.Components;
+
+namespace OphiussaServerManager.Forms {
     partial class FrmTests {
         /// <summary>
         /// Required designer variable.
@@ -44,7 +46,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.exListBox2 = new OphiussaServerManager.ExListBox();
+            this.exListBox2 = new OphiussaServerManager.Components.ExListBox();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
