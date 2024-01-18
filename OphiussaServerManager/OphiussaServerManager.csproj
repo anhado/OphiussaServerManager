@@ -193,83 +193,83 @@
 		<Reference Include="WindowsBase"/>
 	</ItemGroup>
 	<ItemGroup>
-		<Compile Include="Components\ArkAdministration.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
-		<Compile Include="Components\ArkAdministration.Designer.cs">
-			<DependentUpon>ArkAdministration.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Components\ArkChatAndNotifications.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
-		<Compile Include="Components\ArkChatAndNotifications.Designer.cs">
-			<DependentUpon>ArkChatAndNotifications.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Components\ArkDinoSettings.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
-		<Compile Include="Components\ArkDinoSettings.Designer.cs">
-			<DependentUpon>ArkDinoSettings.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Components\ArkEngrams.cs">
+		<Compile Include="Components\Ark\ArkAdministration.cs">
 		  <SubType>UserControl</SubType>
 		</Compile>
-		<Compile Include="Components\ArkEngrams.Designer.cs">
+		<Compile Include="Components\Ark\ArkAdministration.Designer.cs">
+		  <DependentUpon>ArkAdministration.cs</DependentUpon>
+		</Compile>
+		<Compile Include="Components\Ark\ArkChatAndNotifications.cs">
+		  <SubType>UserControl</SubType>
+		</Compile>
+		<Compile Include="Components\Ark\ArkChatAndNotifications.Designer.cs">
+		  <DependentUpon>ArkChatAndNotifications.cs</DependentUpon>
+		</Compile>
+		<Compile Include="Components\Ark\ArkDinoSettings.cs">
+		  <SubType>UserControl</SubType>
+		</Compile>
+		<Compile Include="Components\Ark\ArkDinoSettings.Designer.cs">
+		  <DependentUpon>ArkDinoSettings.cs</DependentUpon>
+		</Compile>
+		<Compile Include="Components\Ark\ArkEngrams.cs">
+		  <SubType>UserControl</SubType>
+		</Compile>
+		<Compile Include="Components\Ark\ArkEngrams.Designer.cs">
 		  <DependentUpon>ArkEngrams.cs</DependentUpon>
 		</Compile>
-		<Compile Include="Components\ArkHUDAndVisuals.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
-		<Compile Include="Components\ArkHUDAndVisuals.Designer.cs">
-			<DependentUpon>ArkHUDAndVisuals.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Components\ArkPlayerSettings.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
-		<Compile Include="Components\ArkPlayerSettings.Designer.cs">
-			<DependentUpon>ArkPlayerSettings.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Components\ArkRules.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
-		<Compile Include="Components\ArkRules.Designer.cs">
-			<DependentUpon>ArkRules.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Components\ArkStructures.cs">
+		<Compile Include="Components\Ark\ArkEnvironment.cs">
 		  <SubType>UserControl</SubType>
 		</Compile>
-		<Compile Include="Components\ArkStructures.Designer.cs">
+		<Compile Include="Components\Ark\ArkEnvironment.Designer.cs">
+		  <DependentUpon>ArkEnvironment.cs</DependentUpon>
+		</Compile>
+		<Compile Include="Components\Ark\ArkHUDAndVisuals.cs">
+		  <SubType>UserControl</SubType>
+		</Compile>
+		<Compile Include="Components\Ark\ArkHUDAndVisuals.Designer.cs">
+		  <DependentUpon>ArkHUDAndVisuals.cs</DependentUpon>
+		</Compile>
+		<Compile Include="Components\Ark\ArkPlayerSettings.cs">
+		  <SubType>UserControl</SubType>
+		</Compile>
+		<Compile Include="Components\Ark\ArkPlayerSettings.Designer.cs">
+		  <DependentUpon>ArkPlayerSettings.cs</DependentUpon>
+		</Compile>
+		<Compile Include="Components\Ark\ArkRules.cs">
+		  <SubType>UserControl</SubType>
+		</Compile>
+		<Compile Include="Components\Ark\ArkRules.Designer.cs">
+		  <DependentUpon>ArkRules.cs</DependentUpon>
+		</Compile>
+		<Compile Include="Components\Ark\ArkStructures.cs">
+		  <SubType>UserControl</SubType>
+		</Compile>
+		<Compile Include="Components\Ark\ArkStructures.Designer.cs">
 		  <DependentUpon>ArkStructures.cs</DependentUpon>
 		</Compile>
-		<Compile Include="Components\AutomaticManagement.cs">
-			<SubType>UserControl</SubType>
+		<Compile Include="Components\Components\exListBox.cs">
+		  <SubType>Component</SubType>
 		</Compile>
-		<Compile Include="Components\AutomaticManagement.Designer.cs">
-			<DependentUpon>AutomaticManagement.cs</DependentUpon>
+		<Compile Include="Components\Components\exListBox.Designer.cs">
+		  <DependentUpon>exListBox.cs</DependentUpon>
 		</Compile>
-		<Compile Include="Components\exListBox.cs">
-			<SubType>Component</SubType>
+		<Compile Include="Components\Components\exTrackBar.cs">
+		  <SubType>UserControl</SubType>
 		</Compile>
-		<Compile Include="Components\exListBox.Designer.cs">
-			<DependentUpon>exListBox.cs</DependentUpon>
+		<Compile Include="Components\Components\exTrackBar.Designer.cs">
+		  <DependentUpon>exTrackBar.cs</DependentUpon>
 		</Compile>
-		<Compile Include="Components\ArkEnvironment.cs">
-			<SubType>UserControl</SubType>
+		<Compile Include="Components\Generic\AutomaticManagement.cs">
+		  <SubType>UserControl</SubType>
 		</Compile>
-		<Compile Include="Components\ArkEnvironment.Designer.cs">
-			<DependentUpon>ArkEnvironment.cs</DependentUpon>
+		<Compile Include="Components\Generic\AutomaticManagement.Designer.cs">
+		  <DependentUpon>AutomaticManagement.cs</DependentUpon>
 		</Compile>
-		<Compile Include="Components\exTrackBar.cs">
-			<SubType>UserControl</SubType>
+		<Compile Include="Components\Generic\ProfileHeader.cs">
+		  <SubType>UserControl</SubType>
 		</Compile>
-		<Compile Include="Components\exTrackBar.Designer.cs">
-			<DependentUpon>exTrackBar.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Components\ProfileHeader.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
-		<Compile Include="Components\ProfileHeader.Designer.cs">
-			<DependentUpon>ProfileHeader.cs</DependentUpon>
+		<Compile Include="Components\Generic\ProfileHeader.Designer.cs">
+		  <DependentUpon>ProfileHeader.cs</DependentUpon>
 		</Compile>
 		<Compile Include="Forms\FrmArkV2.cs">
 			<SubType>Form</SubType>
@@ -404,41 +404,41 @@
 		<Compile Include="Tools\ServerTools.cs" />
 		<Compile Include="Tools\ShellLink.cs" />
 		<Compile Include="Tools\UsefullTools.cs" />
-		<EmbeddedResource Include="Components\ArkAdministration.resx">
-			<DependentUpon>ArkAdministration.cs</DependentUpon>
+		<EmbeddedResource Include="Components\Ark\ArkAdministration.resx">
+		  <DependentUpon>ArkAdministration.cs</DependentUpon>
 		</EmbeddedResource>
-		<EmbeddedResource Include="Components\ArkChatAndNotifications.resx">
-			<DependentUpon>ArkChatAndNotifications.cs</DependentUpon>
+		<EmbeddedResource Include="Components\Ark\ArkChatAndNotifications.resx">
+		  <DependentUpon>ArkChatAndNotifications.cs</DependentUpon>
 		</EmbeddedResource>
-		<EmbeddedResource Include="Components\ArkDinoSettings.resx">
-			<DependentUpon>ArkDinoSettings.cs</DependentUpon>
+		<EmbeddedResource Include="Components\Ark\ArkDinoSettings.resx">
+		  <DependentUpon>ArkDinoSettings.cs</DependentUpon>
 		</EmbeddedResource>
-		<EmbeddedResource Include="Components\ArkEngrams.resx">
+		<EmbeddedResource Include="Components\Ark\ArkEngrams.resx">
 		  <DependentUpon>ArkEngrams.cs</DependentUpon>
 		</EmbeddedResource>
-		<EmbeddedResource Include="Components\ArkEnvironment.resx">
-			<DependentUpon>ArkEnvironment.cs</DependentUpon>
+		<EmbeddedResource Include="Components\Ark\ArkEnvironment.resx">
+		  <DependentUpon>ArkEnvironment.cs</DependentUpon>
 		</EmbeddedResource>
-		<EmbeddedResource Include="Components\ArkHUDAndVisuals.resx">
-			<DependentUpon>ArkHUDAndVisuals.cs</DependentUpon>
+		<EmbeddedResource Include="Components\Ark\ArkHUDAndVisuals.resx">
+		  <DependentUpon>ArkHUDAndVisuals.cs</DependentUpon>
 		</EmbeddedResource>
-		<EmbeddedResource Include="Components\ArkPlayerSettings.resx">
-			<DependentUpon>ArkPlayerSettings.cs</DependentUpon>
+		<EmbeddedResource Include="Components\Ark\ArkPlayerSettings.resx">
+		  <DependentUpon>ArkPlayerSettings.cs</DependentUpon>
 		</EmbeddedResource>
-		<EmbeddedResource Include="Components\ArkRules.resx">
-			<DependentUpon>ArkRules.cs</DependentUpon>
+		<EmbeddedResource Include="Components\Ark\ArkRules.resx">
+		  <DependentUpon>ArkRules.cs</DependentUpon>
 		</EmbeddedResource>
-		<EmbeddedResource Include="Components\ArkStructures.resx">
+		<EmbeddedResource Include="Components\Ark\ArkStructures.resx">
 		  <DependentUpon>ArkStructures.cs</DependentUpon>
 		</EmbeddedResource>
-		<EmbeddedResource Include="Components\AutomaticManagement.resx">
-			<DependentUpon>AutomaticManagement.cs</DependentUpon>
+		<EmbeddedResource Include="Components\Components\exTrackBar.resx">
+		  <DependentUpon>exTrackBar.cs</DependentUpon>
 		</EmbeddedResource>
-		<EmbeddedResource Include="Components\exTrackBar.resx">
-			<DependentUpon>exTrackBar.cs</DependentUpon>
+		<EmbeddedResource Include="Components\Generic\AutomaticManagement.resx">
+		  <DependentUpon>AutomaticManagement.cs</DependentUpon>
 		</EmbeddedResource>
-		<EmbeddedResource Include="Components\ProfileHeader.resx">
-			<DependentUpon>ProfileHeader.cs</DependentUpon>
+		<EmbeddedResource Include="Components\Generic\ProfileHeader.resx">
+		  <DependentUpon>ProfileHeader.cs</DependentUpon>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Forms\FrmArkV2.resx">
 			<DependentUpon>FrmArkV2.cs</DependentUpon>
@@ -505,17 +505,17 @@
 			<SubType>Designer</SubType>
 			<LastGenOutput>Resources.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
-		<None Include="app.manifest"/>
+		<None Include="app.manifest" />
 		<None Include="NLog.config">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
-		<None Include="packages.config"/>
-		<None Include="Properties\DataSources\OphiussaServerManager.Common.Models.DinoSettings.datasource"/>
-		<None Include="Properties\DataSources\OphiussaServerManager.Common.Models.ModListDetails.datasource"/>
-		<None Include="Properties\DataSources\OphiussaServerManager.Common.Models.MonitorGrid.datasource"/>
-		<None Include="Properties\DataSources\OphiussaServerManager.Common.Models.PortForwardGrid.datasource"/>
-		<None Include="Properties\DataSources\OphiussaServerManager.Common.Models.ProcessorAffinity.datasource"/>
-		<None Include="Properties\DataSources\OphiussaServerManager.Common.Models.ProfileOrderGrid.datasource"/>
+		<None Include="packages.config" />
+		<None Include="Properties\DataSources\OphiussaServerManager.Common.Models.DinoSettings.datasource" />
+		<None Include="Properties\DataSources\OphiussaServerManager.Common.Models.ModListDetails.datasource" />
+		<None Include="Properties\DataSources\OphiussaServerManager.Common.Models.MonitorGrid.datasource" />
+		<None Include="Properties\DataSources\OphiussaServerManager.Common.Models.PortForwardGrid.datasource" />
+		<None Include="Properties\DataSources\OphiussaServerManager.Common.Models.ProcessorAffinity.datasource" />
+		<None Include="Properties\DataSources\OphiussaServerManager.Common.Models.ProfileOrderGrid.datasource" />
 		<None Include="Properties\Settings.settings">
 			<Generator>SettingsSingleFileGenerator</Generator>
 			<LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -527,7 +527,7 @@
 		</Compile>
 	</ItemGroup>
 	<ItemGroup>
-		<None Include="App.config"/>
+		<None Include="App.config" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\Open.NAT\Open.Nat\Open.Nat.csproj">
@@ -556,7 +556,7 @@
 		</ProjectReference>
 	</ItemGroup>
 	<ItemGroup>
-		<Content Include="Elegantthemes-Softies-Tools.256.ico"/>
+		<Content Include="Elegantthemes-Softies-Tools.256.ico" />
 		<None Include="GameData\Aberration.gamedata">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
@@ -599,38 +599,38 @@
 		<None Include="GameData\Valguero.gamedata">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
-		<None Include="Resources\checklist icon icon.png"/>
-		<None Include="Resources\Copy icon icon.png"/>
-		<None Include="Resources\consoleicon.png"/>
-		<None Include="Resources\upgrade, misc icon icon.png"/>
-		<None Include="Resources\save, floppy, disk icon icon %282%29.png"/>
-		<None Include="Resources\speedometericon.png"/>
-		<None Include="Resources\tool icon icon.png"/>
-		<None Include="Resources\Monitor icon icon.png"/>
-		<None Include="Resources\firewall icon icon.png"/>
-		<None Include="Resources\ok icon icon.png"/>
-		<None Include="Resources\add icon icon %281%29.png"/>
-		<None Include="Resources\Filter icon icon.png"/>
-		<None Include="Resources\refresh icon icon %285%29.png"/>
-		<None Include="Resources\Add icon icon.png"/>
-		<None Include="Resources\collapse icon icon.png"/>
-		<None Include="Resources\expand icon icon.png"/>
-		<None Include="Resources\Close icon icon.png"/>
-		<None Include="Resources\refresh icon icon %284%29.png"/>
-		<None Include="Resources\Refresh icon icon %282%29.png"/>
-		<None Include="Resources\refresh icon icon %281%29.png"/>
-		<None Include="Resources\Plus icon icon.png"/>
-		<None Include="Resources\remove, cancel, delete icon icon.png"/>
-		<None Include="Resources\redo icon icon.png"/>
-		<None Include="Resources\tool, tools, settings, options, preferences icon icon.png"/>
-		<None Include="Resources\preferencesicon.png"/>
-		<None Include="Resources\folder, close icon icon.png"/>
-		<None Include="Resources\file, open, folder icon icon.png"/>
-		<None Include="Resources\help, about, question icon icon.png"/>
-		<None Include="Resources\copy, documents, clone, duplicate icon icon.png"/>
-		<None Include="Resources\refresh icon icon.png"/>
-		<None Include="Resources\down icon icon.png"/>
-		<None Include="Resources\save, floppy, disk icon icon.png"/>
+		<None Include="Resources\checklist icon icon.png" />
+		<None Include="Resources\Copy icon icon.png" />
+		<None Include="Resources\consoleicon.png" />
+		<None Include="Resources\upgrade, misc icon icon.png" />
+		<None Include="Resources\save, floppy, disk icon icon %282%29.png" />
+		<None Include="Resources\speedometericon.png" />
+		<None Include="Resources\tool icon icon.png" />
+		<None Include="Resources\Monitor icon icon.png" />
+		<None Include="Resources\firewall icon icon.png" />
+		<None Include="Resources\ok icon icon.png" />
+		<None Include="Resources\add icon icon %281%29.png" />
+		<None Include="Resources\Filter icon icon.png" />
+		<None Include="Resources\refresh icon icon %285%29.png" />
+		<None Include="Resources\Add icon icon.png" />
+		<None Include="Resources\collapse icon icon.png" />
+		<None Include="Resources\expand icon icon.png" />
+		<None Include="Resources\Close icon icon.png" />
+		<None Include="Resources\refresh icon icon %284%29.png" />
+		<None Include="Resources\Refresh icon icon %282%29.png" />
+		<None Include="Resources\refresh icon icon %281%29.png" />
+		<None Include="Resources\Plus icon icon.png" />
+		<None Include="Resources\remove, cancel, delete icon icon.png" />
+		<None Include="Resources\redo icon icon.png" />
+		<None Include="Resources\tool, tools, settings, options, preferences icon icon.png" />
+		<None Include="Resources\preferencesicon.png" />
+		<None Include="Resources\folder, close icon icon.png" />
+		<None Include="Resources\file, open, folder icon icon.png" />
+		<None Include="Resources\help, about, question icon icon.png" />
+		<None Include="Resources\copy, documents, clone, duplicate icon icon.png" />
+		<None Include="Resources\refresh icon icon.png" />
+		<None Include="Resources\down icon icon.png" />
+		<None Include="Resources\save, floppy, disk icon icon.png" />
 	</ItemGroup>
 	<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
 </Project>
