@@ -11,6 +11,7 @@ Supported Server Types:
   - Satisfactory - Coming Soon
   - Rust - Coming Soon
   - Enshrouded - Coming Soon
+  - More(Create a issue if you want more supported games) - Coming Soon
 
 Functionalities:
   - Server Installation via SteamCMD - Completed
