@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OphiussaFramework;
+using System;
 using System.Diagnostics;
 using System.Windows.Forms;
 
@@ -13,19 +14,19 @@ namespace OphiussaServerManagerV2 {
         }
 
         private void LoadSettings() {
-            txtGUID.DataBindings.Add("Text", Global.Settings, "GUID");
-            txtDefaultInstallationFolder.DataBindings.Add("Text", Global.Settings, "DefaultInstallFolder");
-            txtBackupFolder.DataBindings.Add("Text", Global.Settings, "BackupFolder");
-            txtDataFolder.DataBindings.Add("Text", Global.Settings, "DataFolder");
-            txtSteamWebApiKey.DataBindings.Add("Text", Global.Settings, "SteamWepApiKey");
-            txtCurseForgeKey.DataBindings.Add("Text", Global.Settings, "CurseForgeApiKey");
-            chkEnableLogs.DataBindings.Add("Checked", Global.Settings, "EnableLogs");
-            txtMaxDays.DataBindings.Add("Text", Global.Settings, "MaxLogsDays");
-            txtMaxFiles.DataBindings.Add("Text", Global.Settings, "MaxLogFiles");
+            txtGUID.DataBindings.Add("Text", ConnectionController.Settings, "GUID");
+            txtDefaultInstallationFolder.DataBindings.Add("Text", ConnectionController.Settings, "DefaultInstallFolder");
+            txtBackupFolder.DataBindings.Add("Text", ConnectionController.Settings, "BackupFolder");
+            txtDataFolder.DataBindings.Add("Text", ConnectionController.Settings, "DataFolder");
+            txtSteamWebApiKey.DataBindings.Add("Text", ConnectionController.Settings, "SteamWepApiKey");
+            txtCurseForgeKey.DataBindings.Add("Text", ConnectionController.Settings, "CurseForgeApiKey");
+            chkEnableLogs.DataBindings.Add("Checked", ConnectionController.Settings, "EnableLogs");
+            txtMaxDays.DataBindings.Add("Text", ConnectionController.Settings, "MaxLogsDays");
+            txtMaxFiles.DataBindings.Add("Text", ConnectionController.Settings, "MaxLogFiles");
         }
 
         private void FrmSettings_FormClosing(object sender, FormClosingEventArgs e) {
-            Global.SqlLite.UpSertSettings(Global.Settings);
+            ConnectionController.SqlLite.UpSertSettings(ConnectionController.Settings);
         }
 
         private void button1_Click(object sender, EventArgs e) {

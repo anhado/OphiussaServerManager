@@ -24,31 +24,31 @@ namespace OphiussaFramework.DataBaseUtils {
             }
 
             using (var cmd = DbConnection().CreateCommand()) {
-                cmd.CommandText = "CREATE TABLE IF NOT EXISTS Profiles(Key Varchar(100) PRIMARY KEY, GameType Varchar(250), InstallationFolder VarChar(250), SteamServerID int, StartOnBoot integer, IncludeAutoBackup integer, IncludeAutoUpdate integer, RestartIfShutdown integer, AdditionalSettings TEXT)";
+                cmd.CommandText = "CREATE TABLE IF NOT EXISTS Profiles(Key Varchar(100) PRIMARY KEY, Name Varchar(250), Type Varchar(250), InstallationFolder VarChar(250), SteamServerId int, SteamApplicationID int, CurseForgeId int, StartOnBoot int, IncludeAutoBackup int, IncludeAutoUpdate int, RestartIfShutdown int, PluginVersion Varchar(250), ServerPort int, PeerPort int, QueryPort int, UseRCON int, RCONPort int, RCONPassword Varchar(250), ServerVersion Varchar(250), ServerBuildVersion Varchar(250), ExecutablePath Varchar(250), AdditionalSettings TEXT)";
                 cmd.ExecuteNonQuery();
             }
 
             using (var cmd = DbConnection().CreateCommand()) {
                 cmd.CommandText =
-                    "CREATE TABLE IF NOT EXISTS AutoManagement(ServerKey Varchar(100), ShutdownServer integer, ShutdownHour nvarchar(4), ShutdownSun integer, ShutdownMon integer, ShutdownTue integer, ShutdownWed integer, ShutdownThu integer, ShutdownFri integer, ShutdownSat integer, ShutdownSunday integer, UpdateServer integer, RestartServer integer)";
+                    "CREATE TABLE IF NOT EXISTS AutoManagement(ServerKey Varchar(100), ShutdownServer int, ShutdownHour nvarchar(4), ShutdownSun int, ShutdownMon int, ShutdownTue int, ShutdownWed int, ShutdownThu int, ShutdownFri int, ShutdownSat int, ShutdownSunday int, UpdateServer int, RestartServer int)";
                 cmd.ExecuteNonQuery();
             }
 
             if (!ColumnExists("Settings", "EnableLogs"))
                 using (var cmd = DbConnection().CreateCommand()) {
-                    cmd.CommandText = "ALTER TABLE Settings ADD EnableLogs integer;";
+                    cmd.CommandText = "ALTER TABLE Settings ADD EnableLogs int;";
                     cmd.ExecuteNonQuery();
                 }
 
             if (!ColumnExists("Settings", "MaxLogFiles"))
                 using (var cmd = DbConnection().CreateCommand()) {
-                    cmd.CommandText = "ALTER TABLE Settings ADD MaxLogFiles integer;";
+                    cmd.CommandText = "ALTER TABLE Settings ADD MaxLogFiles int;";
                     cmd.ExecuteNonQuery();
                 }
 
             if (!ColumnExists("Settings", "MaxLogsDays"))
                 using (var cmd = DbConnection().CreateCommand()) {
-                    cmd.CommandText = "ALTER TABLE Settings ADD MaxLogsDays integer;";
+                    cmd.CommandText = "ALTER TABLE Settings ADD MaxLogsDays int;";
                     cmd.ExecuteNonQuery();
                 }
         }

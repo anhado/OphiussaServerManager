@@ -38,8 +38,15 @@
             this.profileHeader1.Dock = System.Windows.Forms.DockStyle.Top;
             this.profileHeader1.Location = new System.Drawing.Point(0, 0);
             this.profileHeader1.Name = "profileHeader1";
+            this.profileHeader1.RconEnabled = true;
             this.profileHeader1.Size = new System.Drawing.Size(800, 148);
-            this.profileHeader1.TabIndex = 0;
+            this.profileHeader1.TabIndex = 0; 
+            this.profileHeader1.ClickReload += new System.EventHandler(this.profileHeader1_ClickReload);
+            this.profileHeader1.ClickSync += new System.EventHandler(this.profileHeader1_ClickSync);
+            this.profileHeader1.ClickSave += new System.EventHandler(this.profileHeader1_ClickSave);
+            this.profileHeader1.ClickUpgrade += new System.EventHandler(this.profileHeader1_ClickUpgrade);
+            this.profileHeader1.ClickStartStop += new System.EventHandler(this.profileHeader1_ClickStartStop);
+            this.profileHeader1.ClickRCON += new System.EventHandler(this.profileHeader1_ClickRCON);
             // 
             // FrmConfigurationForm
             // 
@@ -50,6 +57,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmConfigurationForm";
             this.Text = "Base Plugin";
+            this.Load += new System.EventHandler(this.FrmConfigurationForm_Load);
             this.ResumeLayout(false);
 
         }

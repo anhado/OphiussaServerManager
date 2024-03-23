@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
+using OphiussaFramework;
 using OphiussaFramework.DataBaseUtils;
 using OphiussaFramework.Models;
 
@@ -11,20 +12,16 @@ namespace OphiussaServerManagerV2 {
     internal static class Global {
         internal static Dictionary<string, PluginController> plugins;
         internal static Dictionary<string, PluginController> serverControllers = new Dictionary<string, PluginController>();
-
-        internal static SqlLite  SqlLite  { get; set; }
-        internal static Settings Settings { get; set; }
-
+         
         internal static void Initialize() {
-            SqlLite  = new SqlLite();
-            Settings = SqlLite.GetSettings();
+            ConnectionController.Initialize(); 
             LoadPlugins();
         }
 
         internal static void LoadPlugins() {
             plugins = new Dictionary<string, PluginController>();
 
-            var l = SqlLite.GetPluginInfoList();
+            var l = ConnectionController.SqlLite.GetPluginInfoList();
 
             if (l == null) return;
             foreach (var info in l)

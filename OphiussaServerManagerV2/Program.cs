@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
+using OphiussaFramework;
 using OphiussaFramework.CommonUtils;
 
 namespace OphiussaServerManagerV2 {
@@ -24,7 +25,7 @@ namespace OphiussaServerManagerV2 {
 
             Global.Initialize();
 
-            if (Global.Settings == null)
+            if (ConnectionController.Settings == null)
                 Application.Run(new FrmDriveSelection());
             else
                 Application.Run(new MainForm());

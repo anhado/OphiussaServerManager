@@ -30,7 +30,7 @@
             this.label16 = new System.Windows.Forms.Label();
             this.txtServerType = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btReload = new System.Windows.Forms.Button();
             this.btRCON = new System.Windows.Forms.Button();
             this.btStart = new System.Windows.Forms.Button();
             this.btUpdate = new System.Windows.Forms.Button();
@@ -44,6 +44,7 @@
             this.txtProfileID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.timerGetProcess = new System.Windows.Forms.Timer(this.components);
+            this.fBD = new System.Windows.Forms.FolderBrowserDialog();
             this.SuspendLayout();
             // 
             // txtBuild
@@ -98,15 +99,16 @@
             this.label4.TabIndex = 13;
             this.label4.Text = "Server Type";
             // 
-            // button5
+            // btReload
             // 
-            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.Location = new System.Drawing.Point(374, 8);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 12;
-            this.button5.Text = "Reload";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btReload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btReload.Location = new System.Drawing.Point(374, 8);
+            this.btReload.Name = "btReload";
+            this.btReload.Size = new System.Drawing.Size(75, 23);
+            this.btReload.TabIndex = 12;
+            this.btReload.Text = "Reload";
+            this.btReload.UseVisualStyleBackColor = true;
+            this.btReload.Click += new System.EventHandler(this.btReload_Click);
             // 
             // btRCON
             // 
@@ -120,6 +122,7 @@
             this.btRCON.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btRCON.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btRCON.UseVisualStyleBackColor = true;
+            this.btRCON.Click += new System.EventHandler(this.btRCON_Click);
             // 
             // btStart
             // 
@@ -130,6 +133,7 @@
             this.btStart.TabIndex = 10;
             this.btStart.Text = "Start";
             this.btStart.UseVisualStyleBackColor = true;
+            this.btStart.Click += new System.EventHandler(this.btStart_Click);
             // 
             // btUpdate
             // 
@@ -143,6 +147,7 @@
             this.btUpdate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btUpdate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btUpdate.UseVisualStyleBackColor = true;
+            this.btUpdate.Click += new System.EventHandler(this.btUpdate_Click);
             // 
             // btChooseFolder
             // 
@@ -153,6 +158,7 @@
             this.btChooseFolder.TabIndex = 8;
             this.btChooseFolder.Text = "...";
             this.btChooseFolder.UseVisualStyleBackColor = true;
+            this.btChooseFolder.Click += new System.EventHandler(this.btChooseFolder_Click);
             // 
             // txtLocation
             // 
@@ -186,6 +192,7 @@
             this.btSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btSave.UseVisualStyleBackColor = true;
+            this.btSave.Click += new System.EventHandler(this.btSave_Click);
             // 
             // btSync
             // 
@@ -199,6 +206,7 @@
             this.btSync.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btSync.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btSync.UseVisualStyleBackColor = true;
+            this.btSync.Click += new System.EventHandler(this.btSync_Click);
             // 
             // txtProfileName
             // 
@@ -209,6 +217,7 @@
             this.txtProfileName.Size = new System.Drawing.Size(333, 20);
             this.txtProfileName.TabIndex = 3;
             this.txtProfileName.Tag = "Name";
+            this.txtProfileName.Validated += new System.EventHandler(this.txtProfileName_Validated);
             // 
             // label2
             // 
@@ -253,7 +262,7 @@
             this.Controls.Add(this.label16);
             this.Controls.Add(this.txtServerType);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.btReload);
             this.Controls.Add(this.btRCON);
             this.Controls.Add(this.btStart);
             this.Controls.Add(this.btUpdate);
@@ -267,7 +276,8 @@
             this.Controls.Add(this.txtProfileID);
             this.Controls.Add(this.label1);
             this.Name = "ProfileHeader";
-            this.Size = new System.Drawing.Size(625, 148);
+            this.Size = new System.Drawing.Size(625, 141);
+            this.Load += new System.EventHandler(this.ProfileHeader_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -281,7 +291,7 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtServerType;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btReload;
         private System.Windows.Forms.Button btRCON;
         private System.Windows.Forms.Button btStart;
         private System.Windows.Forms.Button btUpdate;
@@ -295,5 +305,6 @@
         private System.Windows.Forms.TextBox txtProfileID;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer timerGetProcess;
+        private System.Windows.Forms.FolderBrowserDialog fBD;
     }
 }

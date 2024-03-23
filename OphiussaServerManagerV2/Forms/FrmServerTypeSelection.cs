@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
+using OphiussaFramework;
 using OphiussaFramework.Models;
 
 namespace OphiussaServerManagerV2 {
@@ -8,8 +9,7 @@ namespace OphiussaServerManagerV2 {
         public FrmServerTypeSelection() {
             InitializeComponent();
         }
-
-        public int                                                 TotalPageCount { get; internal set; }
+         
         public Action<(PluginType serversType, string installDir)> AddNewTabPage  { get; set; }
 
         private void FrmServerTypeSelection_Load(object sender, EventArgs e) {
@@ -17,8 +17,11 @@ namespace OphiussaServerManagerV2 {
             cboServerType.DisplayMember = "Name";
             cboServerType.ValueMember   = "GameType";
 
-            txtDir.Text     = Global.Settings.DefaultInstallFolder;
-            txtDirName.Text = $"Server{TotalPageCount}";
+            txtDir.Text     = ConnectionController.Settings.DefaultInstallFolder;
+
+            var folders =  System.IO.Directory.GetDirectories(ConnectionController.Settings.DefaultInstallFolder);
+
+            txtDirName.Text = $"Server{folders.Length + 1}";
         }
 
         private void chkUsedInstall_CheckedChanged(object sender, EventArgs e) {
@@ -39,9 +42,14 @@ namespace OphiussaServerManagerV2 {
                 return;
             }
 
+
+            string dir = "";
+            dir = txtDir.Text;
+            if (!chkUsedInstall.Checked) dir += txtDirName.Text + "\\";
+
             if (chkUsedInstall.Checked) {
                 if (Global.plugins.ContainsKey(cboServerType.SelectedValue.ToString())) {
-                    if (!Global.plugins[cboServerType.SelectedValue.ToString()].IsValidFolder(txtDirName.Text)) MessageBox.Show("Invalid installation folder");
+                    if (!Global.plugins[cboServerType.SelectedValue.ToString()].IsValidFolder(dir)) MessageBox.Show("Invalid installation folder");
                 }
                 else {
                     MessageBox.Show("Invalid server type");
@@ -49,14 +57,13 @@ namespace OphiussaServerManagerV2 {
                 }
             }
             else {
-                if (Directory.Exists(txtDirName.Text)) {
-                    MessageBox.Show($"Selected folder already exists: {txtDirName.Text}");
+                if (Directory.Exists(dir)) {
+                    MessageBox.Show($"Selected folder already exists: {dir}");
                     return;
                 }
             }
 
-
-            AddNewTabPage.Invoke(((PluginType)cboServerType.SelectedItem, txtDirName.Text));
+            AddNewTabPage.Invoke(((PluginType)cboServerType.SelectedItem, dir));
             Close();
         }
     }

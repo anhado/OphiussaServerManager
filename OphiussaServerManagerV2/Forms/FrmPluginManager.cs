@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;
+using OphiussaFramework;
 using OphiussaFramework.CommonUtils;
 using OphiussaFramework.Models;
 
@@ -22,7 +23,7 @@ namespace OphiussaServerManagerV2 {
                     var ctrl = new PluginController(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "plugins\\temp\\") + Path.GetFileName(fDiag.FileName));
 
                     File.Copy(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "plugins\\temp\\") + Path.GetFileName(fDiag.FileName), Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "plugins\\") + Path.GetFileName(fDiag.FileName), true);
-                    Global.SqlLite.UpsertPlugin(ctrl);
+                    ConnectionController.SqlLite.UpsertPlugin(ctrl);
                     LoadPluginsGrid();
                 }
                 catch (Exception exception) {
@@ -36,7 +37,7 @@ namespace OphiussaServerManagerV2 {
         }
 
         private void LoadPluginsGrid() {
-            plugins                  = Global.SqlLite.GetPluginInfoListB();
+            plugins                  = ConnectionController.SqlLite.GetPluginInfoListB();
             dataGridView1.DataSource = plugins;
             foreach (DataGridViewColumn col in dataGridView1.Columns)
                 switch (col.Name) {
@@ -65,7 +66,7 @@ namespace OphiussaServerManagerV2 {
         }
 
         private void btSave_Click(object sender, EventArgs e) {
-            foreach (var plugin in plugins) Global.SqlLite.UpsertPlugin(plugin);
+            foreach (var plugin in plugins) ConnectionController.SqlLite.UpsertPlugin(plugin);
 
             MessageBox.Show("Saved");
         }
@@ -75,7 +76,7 @@ namespace OphiussaServerManagerV2 {
                 foreach (DataGridViewRow selectedRow in dataGridView1.SelectedRows)
                     try {
                         var obj = plugins[selectedRow.Index];
-                        Global.SqlLite.DeletePlugin(obj.PluginName);
+                        ConnectionController.SqlLite.DeletePlugin(obj.PluginName);
                         plugins.RemoveAt(selectedRow.Index);
 
                         MessageBox.Show("PLEASE RESTART THE APPLICATION!!!!!");
@@ -100,7 +101,7 @@ namespace OphiussaServerManagerV2 {
             if (dataGridView1.Columns[e.ColumnIndex].Name == "Loaded" && e.RowIndex >= 0) {
                 int index = e.RowIndex;
                 var obj   = plugins[index];
-                Global.SqlLite.UpsertPlugin(obj);
+                ConnectionController.SqlLite.UpsertPlugin(obj);
             }
         }
 

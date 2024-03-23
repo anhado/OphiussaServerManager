@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
+using OphiussaFramework;
 using OphiussaFramework.Components;
 using OphiussaFramework.Models;
 
@@ -46,7 +47,7 @@ namespace OphiussaServerManagerV2 {
             //var guid = Guid.NewGuid();
             //s.GUID = guid.ToString();
 
-            Global.SqlLite.UpSertSettings(s);
+            ConnectionController.SqlLite.UpSertSettings(s);
 
             MessageBox.Show("After this setup go to Settings to configure Auto-Update and Auto-Backup");
             Close();
