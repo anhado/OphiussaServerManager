@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34302.85
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OphiussaServerManagerV2", "OphiussaServerManagerV2\OphiussaServerManagerV2.csproj", "{A2286EEE-3F47-4E26-8B10-754B6A4F8F9F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OphiussaFramework", "Ophiussa.Framework\OphiussaFramework.csproj", "{79D54C0E-4AF2-4748-9EE1-74192DD9FA67}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "External Libraries", "External Libraries", "{4D8FB1FC-DA69-4B83-AE63-F1881E0C2D16}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MakarovDev.ExpandCollapsePanel", "..\ExpandCollapsePanel\MakarovDev.ExpandCollapsePanel\MakarovDev.ExpandCollapsePanel.csproj", "{BE76A6FE-225F-4287-9CA0-231F5AF4CDC1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasePlugin", "BasePlugin\BasePlugin.csproj", "{FCAC5050-6850-48AB-BDC4-C7D98D27B598}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A2286EEE-3F47-4E26-8B10-754B6A4F8F9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2286EEE-3F47-4E26-8B10-754B6A4F8F9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2286EEE-3F47-4E26-8B10-754B6A4F8F9F}.Debug|x64.ActiveCfg = Debug|x64
+		{A2286EEE-3F47-4E26-8B10-754B6A4F8F9F}.Debug|x64.Build.0 = Debug|x64
+		{A2286EEE-3F47-4E26-8B10-754B6A4F8F9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2286EEE-3F47-4E26-8B10-754B6A4F8F9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2286EEE-3F47-4E26-8B10-754B6A4F8F9F}.Release|x64.ActiveCfg = Release|Any CPU
+		{A2286EEE-3F47-4E26-8B10-754B6A4F8F9F}.Release|x64.Build.0 = Release|Any CPU
+		{79D54C0E-4AF2-4748-9EE1-74192DD9FA67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79D54C0E-4AF2-4748-9EE1-74192DD9FA67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79D54C0E-4AF2-4748-9EE1-74192DD9FA67}.Debug|x64.ActiveCfg = Debug|x64
+		{79D54C0E-4AF2-4748-9EE1-74192DD9FA67}.Debug|x64.Build.0 = Debug|x64
+		{79D54C0E-4AF2-4748-9EE1-74192DD9FA67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79D54C0E-4AF2-4748-9EE1-74192DD9FA67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79D54C0E-4AF2-4748-9EE1-74192DD9FA67}.Release|x64.ActiveCfg = Release|Any CPU
+		{79D54C0E-4AF2-4748-9EE1-74192DD9FA67}.Release|x64.Build.0 = Release|Any CPU
+		{BE76A6FE-225F-4287-9CA0-231F5AF4CDC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE76A6FE-225F-4287-9CA0-231F5AF4CDC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE76A6FE-225F-4287-9CA0-231F5AF4CDC1}.Debug|x64.ActiveCfg = Debug|x64
+		{BE76A6FE-225F-4287-9CA0-231F5AF4CDC1}.Debug|x64.Build.0 = Debug|x64
+		{BE76A6FE-225F-4287-9CA0-231F5AF4CDC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE76A6FE-225F-4287-9CA0-231F5AF4CDC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE76A6FE-225F-4287-9CA0-231F5AF4CDC1}.Release|x64.ActiveCfg = Release|Any CPU
+		{BE76A6FE-225F-4287-9CA0-231F5AF4CDC1}.Release|x64.Build.0 = Release|Any CPU
+		{FCAC5050-6850-48AB-BDC4-C7D98D27B598}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCAC5050-6850-48AB-BDC4-C7D98D27B598}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCAC5050-6850-48AB-BDC4-C7D98D27B598}.Debug|x64.ActiveCfg = Debug|x64
+		{FCAC5050-6850-48AB-BDC4-C7D98D27B598}.Debug|x64.Build.0 = Debug|x64
+		{FCAC5050-6850-48AB-BDC4-C7D98D27B598}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCAC5050-6850-48AB-BDC4-C7D98D27B598}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCAC5050-6850-48AB-BDC4-C7D98D27B598}.Release|x64.ActiveCfg = Release|Any CPU
+		{FCAC5050-6850-48AB-BDC4-C7D98D27B598}.Release|x64.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BE76A6FE-225F-4287-9CA0-231F5AF4CDC1} = {4D8FB1FC-DA69-4B83-AE63-F1881E0C2D16}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B994752A-C76A-45B0-A6D7-A2F09D280C3C}
+	EndGlobalSection
+EndGlobal
