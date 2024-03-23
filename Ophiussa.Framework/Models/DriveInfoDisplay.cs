@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 
-namespace OphiussaFramework.Models
-{
-    public class DriveInfoDisplay
-    {
+namespace OphiussaFramework.Models {
+    public class DriveInfoDisplay {
         private const decimal Divisor = 1024M;
 
         private static readonly string[] Suffixes = new string[6] {
@@ -21,8 +14,7 @@ namespace OphiussaFramework.Models
                                                                   };
         //private readonly GlobalizedApplication _globalizer = GlobalizedApplication.Instance;
 
-        public DriveInfoDisplay(DriveInfo driveInfo)
-        {
+        public DriveInfoDisplay(DriveInfo driveInfo) {
             DriveInfo = driveInfo;
         }
 
@@ -32,12 +24,10 @@ namespace OphiussaFramework.Models
 
         public string Line2 => DriveInfo == null ? string.Empty : string.Format("{0} free of {1}", FormatSize(DriveInfo.TotalFreeSpace), FormatSize(DriveInfo.TotalSize));
 
-        public static string FormatSize(long bytes)
-        {
+        public static string FormatSize(long bytes) {
             int     index = 0;
             decimal num   = bytes;
-            while (num / 1024M >= 1M)
-            {
+            while (num / 1024M >= 1M) {
                 num /= 1024M;
                 ++index;
             }

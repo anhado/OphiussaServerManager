@@ -1,26 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace OphiussaFramework.CommonUtils
-{
-    public static class IOUtils
-    {
+namespace OphiussaFramework.CommonUtils {
+    public static class IOUtils {
         [DllImport("kernel32", CharSet = CharSet.Unicode, SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         private static extern bool DeleteFile(string name);
 
-        public static bool IsUnc(string path)
-        {
+        public static bool IsUnc(string path) {
             return new Uri(path).IsUnc;
         }
 
-        public static string NormalizeFolder(string path)
-        {
+        public static string NormalizeFolder(string path) {
             string str = path.TrimEnd('\\') + "\\";
             if (IsUnc(str))
                 return str.TrimEnd('\\');
@@ -32,13 +24,11 @@ namespace OphiussaFramework.CommonUtils
             return str;
         }
 
-        public static string NormalizePath(string path)
-        {
+        public static string NormalizePath(string path) {
             return Path.GetFullPath(new Uri(path).LocalPath).TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar).ToLowerInvariant();
         }
 
-        public static bool Unblock(string fileName)
-        {
+        public static bool Unblock(string fileName) {
             return DeleteFile(fileName + ":Zone.Identifier");
         }
     }

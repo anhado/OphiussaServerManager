@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="RainerDB37@localhost" uuid="d0951792-0dbd-4032-a141-688b1005d8cb">
+      <driver-ref>sqlserver.ms</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:sqlserver://localhost;database=RainerDB37</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="RainerDB36@localhost" uuid="8febcd99-fe9f-4b53-a2f3-b78fb997dd36">
+      <driver-ref>sqlserver.ms</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:sqlserver://localhost;database=RainerDB36</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="HUT_UAT2@localhost" uuid="7710bb98-6896-4f32-a513-9f7f2273cb82">
+      <driver-ref>sqlserver.ms</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:sqlserver://localhost;database=HUT_UAT2</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="WorkOrderLineNum@localhost" uuid="16c6c032-ce5c-49f0-89d9-5d05e01c98b0">
+      <driver-ref>sqlserver.ms</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:sqlserver://localhost;database=WorkOrderLineNum</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="TESTSG@localhost" uuid="b835f962-d1cf-49a3-ad40-05f22b03a714">
+      <driver-ref>sqlserver.ms</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:sqlserver://localhost;database=TESTSG</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="TESTSGBIA@localhost" uuid="86abdb46-1cf1-4490-a101-3db5c8dd646b">
+      <driver-ref>sqlserver.ms</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:sqlserver://localhost;database=TESTSGBIA</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="JXDB@localhost" uuid="e58accad-a5a4-4362-9b54-49626431becd">
+      <driver-ref>sqlserver.ms</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:sqlserver://localhost;database=JXDB</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="BIA_Mexico_testing@localhost" uuid="4adc458a-9954-4ed6-b477-d7e3a881f7e4">
+      <driver-ref>sqlserver.ms</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:sqlserver://localhost;database=BIA_Mexico_testing</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="HUT_UAT_3@localhost" uuid="09bd89d8-8571-458d-912b-a3a73b921ac0">
+      <driver-ref>sqlserver.ms</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:sqlserver://localhost;database=HUT_UAT_3</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="RainerDB38@localhost" uuid="5fa3e4fd-6a79-44ae-8a6d-99e7bc6af877">
+      <driver-ref>sqlserver.ms</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:sqlserver://localhost;database=RainerDB38</jdbc-url>
+    </data-source>
+  </component>
+</project>

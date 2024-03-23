@@ -1,20 +1,15 @@
-﻿using OphiussaFramework.CommonUtils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System;
+using System.IO;
 using System.Windows.Forms;
+using OphiussaFramework.CommonUtils;
 
-namespace OphiussaServerManagerV2
-{
-    internal static class Program
-    {
+namespace OphiussaServerManagerV2 {
+    internal static class Program {
         /// <summary>
-        /// The main entry point for the application.
+        ///     The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
-        {
+        private static void Main() {
             string[] args = Environment.GetCommandLineArgs();
 
             Application.EnableVisualStyles();
@@ -23,20 +18,16 @@ namespace OphiussaServerManagerV2
 
             OphiussaLogger.ReconfigureLogging();
 
-            OphiussaLogger.Logger.Info($"Application Started. Params -> {string.Join(",", args)}");
-            if (!System.IO.Directory.Exists("plugins")) System.IO.Directory.CreateDirectory("plugins");
-            if (!System.IO.Directory.Exists("plugins\\temp")) System.IO.Directory.CreateDirectory("plugins\\temp");
+          //  OphiussaLogger.Logger.Info($"Application Started. Params -> {string.Join(",", args)}");
+            if (!Directory.Exists("plugins")) Directory.CreateDirectory("plugins");
+            if (!Directory.Exists("plugins\\temp")) Directory.CreateDirectory("plugins\\temp");
 
             Global.Initialize();
 
             if (Global.Settings == null)
-            {
                 Application.Run(new FrmDriveSelection());
-            }
             else
-            {
                 Application.Run(new MainForm());
-            }
         }
     }
 }

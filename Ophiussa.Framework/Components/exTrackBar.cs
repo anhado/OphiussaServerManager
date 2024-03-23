@@ -1,8 +1,7 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Drawing;
-using System.Globalization;
 using System.Windows.Forms;
+
 //using OphiussaServerManager.Common.Helpers;
 
 namespace OphiussaFramework.Components {
@@ -62,8 +61,7 @@ namespace OphiussaFramework.Components {
         //    set => lblDesc.Text = value;
         //}
 
-        private void txtUC_TextChanged(object sender, EventArgs e)
-        {
+        private void txtUC_TextChanged(object sender, EventArgs e) {
             //try
             //{
             //    if (Scale == 1f)
@@ -85,23 +83,19 @@ namespace OphiussaFramework.Components {
             //}
         }
 
-        private void tbUC_Scroll(object sender, EventArgs e)
-        {
+        private void tbUC_Scroll(object sender, EventArgs e) {
             //txtUC.Text = (((TrackBar)sender).Value / Scale).ToString(CultureInfo.InvariantCulture);
         }
 
-        private void UcTrackBar_Resize(object sender, EventArgs e)
-        {
+        private void UcTrackBar_Resize(object sender, EventArgs e) {
             Height = 26;
         }
 
-        private void txtUC_Enter(object sender, EventArgs e)
-        {
+        private void txtUC_Enter(object sender, EventArgs e) {
             txtUC.BackColor = Color.LightSkyBlue;
         }
 
-        private void txtUC_Leave(object sender, EventArgs e)
-        {
+        private void txtUC_Leave(object sender, EventArgs e) {
             txtUC.BackColor = Color.White;
         }
     }

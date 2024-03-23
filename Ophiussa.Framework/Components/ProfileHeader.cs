@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.IO;
-using System.Threading;
-using System.Windows.Forms; 
+using System.Windows.Forms;
 
 namespace OphiussaFramework.Components {
     public partial class ProfileHeader : UserControl {
@@ -12,9 +8,9 @@ namespace OphiussaFramework.Components {
             InitializeComponent();
         }
 
-        private void timerGetProcess_Tick(object sender, EventArgs e) { 
-        } 
-             
+        private void timerGetProcess_Tick(object sender, EventArgs e) {
+        }
+
         #region Events
 
         [EditorBrowsable(EditorBrowsableState.Always)]
@@ -62,7 +58,7 @@ namespace OphiussaFramework.Components {
         #endregion
 
         #region Properties
-         
+
         private TabPage _Tab { get; set; }
         private int     _processId = -1;
         private bool    _isInstalled;

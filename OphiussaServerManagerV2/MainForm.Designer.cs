@@ -49,7 +49,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.BackColor = System.Drawing.Color.SteelBlue;
             this.panel1.Controls.Add(this.txtPublicIP);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.txtLocalIP);

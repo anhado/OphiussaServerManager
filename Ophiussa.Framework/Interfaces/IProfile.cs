@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OphiussaFramework.Interfaces
-{
-    public interface IProfile
-    {
+﻿namespace OphiussaFramework.Interfaces {
+    public interface IProfile {
         string Key                { get; set; }
         string Name               { get; set; }
         string Type               { get; }

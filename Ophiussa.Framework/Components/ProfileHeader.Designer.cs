@@ -106,11 +106,12 @@
             this.button5.Size = new System.Drawing.Size(75, 23);
             this.button5.TabIndex = 12;
             this.button5.Text = "Reload";
-            this.button5.UseVisualStyleBackColor = true; 
+            this.button5.UseVisualStyleBackColor = true;
             // 
             // btRCON
             // 
-            this.btRCON.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right))); 
+            this.btRCON.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btRCON.Image = global::OphiussaFramework.Properties.Resources.consoleicon;
             this.btRCON.Location = new System.Drawing.Point(536, 60);
             this.btRCON.Name = "btRCON";
             this.btRCON.Size = new System.Drawing.Size(75, 23);
@@ -118,7 +119,7 @@
             this.btRCON.Text = "RCON";
             this.btRCON.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btRCON.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btRCON.UseVisualStyleBackColor = true; 
+            this.btRCON.UseVisualStyleBackColor = true;
             // 
             // btStart
             // 
@@ -128,11 +129,12 @@
             this.btStart.Size = new System.Drawing.Size(75, 23);
             this.btStart.TabIndex = 10;
             this.btStart.Text = "Start";
-            this.btStart.UseVisualStyleBackColor = true; 
+            this.btStart.UseVisualStyleBackColor = true;
             // 
             // btUpdate
             // 
-            this.btUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right))); 
+            this.btUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btUpdate.Image = global::OphiussaFramework.Properties.Resources.Refresh_icon;
             this.btUpdate.Location = new System.Drawing.Point(455, 34);
             this.btUpdate.Name = "btUpdate";
             this.btUpdate.Size = new System.Drawing.Size(156, 23);
@@ -140,7 +142,7 @@
             this.btUpdate.Text = "Update/Verify";
             this.btUpdate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btUpdate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btUpdate.UseVisualStyleBackColor = true;  
+            this.btUpdate.UseVisualStyleBackColor = true;
             // 
             // btChooseFolder
             // 
@@ -150,7 +152,7 @@
             this.btChooseFolder.Size = new System.Drawing.Size(30, 23);
             this.btChooseFolder.TabIndex = 8;
             this.btChooseFolder.Text = "...";
-            this.btChooseFolder.UseVisualStyleBackColor = true; 
+            this.btChooseFolder.UseVisualStyleBackColor = true;
             // 
             // txtLocation
             // 
@@ -174,7 +176,8 @@
             // 
             // btSave
             // 
-            this.btSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right))); 
+            this.btSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btSave.Image = global::OphiussaFramework.Properties.Resources.SaveIcon;
             this.btSave.Location = new System.Drawing.Point(536, 8);
             this.btSave.Name = "btSave";
             this.btSave.Size = new System.Drawing.Size(75, 23);
@@ -182,11 +185,12 @@
             this.btSave.Text = "Save";
             this.btSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btSave.UseVisualStyleBackColor = true; 
+            this.btSave.UseVisualStyleBackColor = true;
             // 
             // btSync
             // 
-            this.btSync.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right))); 
+            this.btSync.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btSync.Image = global::OphiussaFramework.Properties.Resources.Copy_icon_icon;
             this.btSync.Location = new System.Drawing.Point(455, 8);
             this.btSync.Name = "btSync";
             this.btSync.Size = new System.Drawing.Size(75, 23);
@@ -194,7 +198,7 @@
             this.btSync.Text = "Sync";
             this.btSync.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btSync.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btSync.UseVisualStyleBackColor = true; 
+            this.btSync.UseVisualStyleBackColor = true;
             // 
             // txtProfileName
             // 
@@ -204,7 +208,7 @@
             this.txtProfileName.Name = "txtProfileName";
             this.txtProfileName.Size = new System.Drawing.Size(333, 20);
             this.txtProfileName.TabIndex = 3;
-            this.txtProfileName.Tag = "Name"; 
+            this.txtProfileName.Tag = "Name";
             // 
             // label2
             // 
@@ -235,7 +239,6 @@
             // 
             // timerGetProcess
             // 
-            this.timerGetProcess.Enabled = false;
             this.timerGetProcess.Interval = 500;
             this.timerGetProcess.Tick += new System.EventHandler(this.timerGetProcess_Tick);
             // 
@@ -264,7 +267,7 @@
             this.Controls.Add(this.txtProfileID);
             this.Controls.Add(this.label1);
             this.Name = "ProfileHeader";
-            this.Size = new System.Drawing.Size(625, 148); 
+            this.Size = new System.Drawing.Size(625, 148);
             this.ResumeLayout(false);
             this.PerformLayout();
 

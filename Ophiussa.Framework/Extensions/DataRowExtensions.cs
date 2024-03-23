@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data;
 
-namespace OphiussaFramework.Extensions
-{
-    public static class DataRowExtensions
-    {
-        public static string GetString(this DataRow dr, string FieldNAme) => dr.Field<string>(FieldNAme);
-        public static int    GetInt(this    DataRow dr, string FieldNAme) => dr.Field<int>(FieldNAme);
+namespace OphiussaFramework.Extensions {
+    public static class DataRowExtensions {
+        public static string GetString(this DataRow dr, string FieldNAme) {
+            return dr.Field<string>(FieldNAme);
+        }
+
+        public static int GetInt(this DataRow dr, string FieldNAme) {
+            return dr.Field<int>(FieldNAme);
+        }
     }
-} 
+}
