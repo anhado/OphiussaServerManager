@@ -33,10 +33,10 @@ namespace OphiussaFramework.ServerUtils {
         }
 
         public static void SaveServerClick(object sender, OphiussaEventArgs e) {
-
-            string   prfJSON = JsonConvert.SerializeObject(e.Profile, Formatting.Indented);
-            IProfile profile = e.Profile;
-            profile.AdditionalSettings = prfJSON;
+             
+            IProfile profile           = e.Profile;
+            profile.AdditionalSettings = JsonConvert.SerializeObject(e.Profile,                Formatting.Indented);
+            profile.AdditionalCommands = JsonConvert.SerializeObject(e.Plugin.DefaultCommands, Formatting.Indented); 
             ConnectionController.SqlLite.Upsert(profile);
         }
 

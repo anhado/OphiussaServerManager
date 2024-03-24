@@ -12,6 +12,7 @@ namespace OphiussaFramework.Models {
         public string Type               { get; set; }
         public string InstallationFolder { get; set; }
         public object AdditionalSettings { get; set; }
+        public string AdditionalCommands { get; set; }
         public int    SteamServerId      { get; set; }
         public int    SteamApplicationID { get; set; }
         public int    CurseForgeId       { get; set; }

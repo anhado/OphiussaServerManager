@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Windows.Forms;
 using OphiussaFramework.Models;
 using Message = OphiussaFramework.Models.Message;
@@ -13,6 +15,8 @@ namespace OphiussaFramework.Interfaces {
         bool                                  IsRunning       { get; }
         bool                                  IsInstalled     { get; }
         TabPage                               TabPage         { get; }
+        List<CommandDefinition>               DefaultCommands { get; set; }
+        List<FileInfo>                        FilesToBackup   { get; }
         PluginType                            GetInfo();
         Form                                  GetConfigurationForm(TabPage tab);
         void                                  BackupServer();

@@ -13,34 +13,35 @@ using Message = OphiussaFramework.Models.Message;
 
 namespace BasePlugin {
     public class BasePlugin : IPlugin {
-        internal static readonly PluginType Info = new PluginType { GameType = "Game1", Name = "Game 1 Name" };
-        public                   string     ExecutablePath { get; set; } = "Dummy123.exe";//THIS WILL OVERWRITE THE PROFILE, I JUST NEED THAT IN PROFILE TO AVOID Deserialize THE ADDITIONAL SETTINGS
-        public                   IProfile   Profile        { get; set; } = new Profile();
-        public                   string     PluginVersion  => FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
-        public                   string     PluginName     => Path.GetFileName(FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileName);
-
         public BasePlugin() {
             OphiussaFramework.ConnectionController.Initialize();
+
+            DefaultCommands = new List<CommandDefinition>() { new CommandDefinition() { Order = 1, Name = "Test", NamePrefix = "?", AddSpaceInPrefix = false } };
         }
+        internal static readonly PluginType              Info = new PluginType { GameType = "Game1", Name = "Game 1 Name" };
+        public                   IProfile                Profile         { get; set; } = new Profile();
+        public                   TabPage                 TabPage         { get; set; }
+        public                   string                  ExecutablePath  { get; set; } = "Dummy123.exe"; //THIS WILL OVERWRITE THE PROFILE, I JUST NEED THAT IN PROFILE TO AVOID Deserialize THE ADDITIONAL SETTINGS
+        public                   string                  PluginVersion   => FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
+        public                   string                  PluginName      => Path.GetFileName(FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileName); 
+        public                   int                     ServerProcessID => Utils.GetProcessRunning(Path.Combine(Profile.InstallationFolder, Profile.ExecutablePath)).Id; 
+        public                   bool                    IsRunning       => Utils.GetProcessRunning(Path.Combine(Profile.InstallationFolder, Profile.ExecutablePath)) != null;
+        public                   Process                 GetExeProcess() => Utils.GetProcessRunning(Path.Combine(Profile.InstallationFolder, Profile.ExecutablePath));
+        public                   bool                    IsInstalled     => IsValidFolder(Profile.InstallationFolder);
+        public                   List<FileInfo>          FilesToBackup   => throw new NotImplementedException();
+        public                   List<CommandDefinition> DefaultCommands { get; set; }
+        public event EventHandler<OphiussaEventArgs>     BackupServerClick;
+        public event EventHandler<OphiussaEventArgs>     StopServerClick;
+        public event EventHandler<OphiussaEventArgs>     StartServerClick;
+        public event EventHandler<OphiussaEventArgs>     InstallServerClick;
+        public event EventHandler<OphiussaEventArgs>     SaveClick;
+        public event EventHandler<OphiussaEventArgs>     ReloadClick;
+        public event EventHandler<OphiussaEventArgs>     SyncClick;
+        public event EventHandler<OphiussaEventArgs>     OpenRCONClick;
+        public event EventHandler<OphiussaEventArgs>     ChooseFolderClick;
+        public event EventHandler<OphiussaEventArgs>     TabHeaderChangeEvent;
 
-        public int     ServerProcessID => Utils.GetProcessRunning(Path.Combine(Profile.InstallationFolder, Profile.ExecutablePath)).Id; 
-        public bool    IsRunning       => Utils.GetProcessRunning(Path.Combine(Profile.InstallationFolder, Profile.ExecutablePath)) != null;
-        public Process GetExeProcess() => Utils.GetProcessRunning(Path.Combine(Profile.InstallationFolder, Profile.ExecutablePath));
-        public bool    IsInstalled     => IsValidFolder(Profile.InstallationFolder);
-        public TabPage TabPage         { get; set; }
-
-        public event EventHandler<OphiussaEventArgs> BackupServerClick;
-        public event EventHandler<OphiussaEventArgs> StopServerClick;
-        public event EventHandler<OphiussaEventArgs> StartServerClick;
-        public event EventHandler<OphiussaEventArgs> InstallServerClick;
-        public event EventHandler<OphiussaEventArgs> SaveClick;
-        public event EventHandler<OphiussaEventArgs> ReloadClick;
-        public event EventHandler<OphiussaEventArgs> SyncClick;
-        public event EventHandler<OphiussaEventArgs> OpenRCONClick;
-        public event EventHandler<OphiussaEventArgs> ChooseFolderClick;
-        public event EventHandler<OphiussaEventArgs> TabHeaderChangeEvent;
-
-        public PluginType GetInfo() {
+        public PluginType GetInfo() { 
             return Info;
         }
 
@@ -50,7 +51,7 @@ namespace BasePlugin {
          
         public Form GetConfigurationForm(TabPage tab) {
             TabPage = tab;
-            return new FrmConfigurationForm(this,tab);
+            return new FrmConfigurationForm(this, tab);
         }
 
         public void TabHeaderChange() {
@@ -99,6 +100,8 @@ namespace BasePlugin {
 
                 var p = JsonConvert.DeserializeObject<Profile>(profile.AdditionalSettings.ToString());
                 Profile = p;
+
+                if (profile.AdditionalCommands != null) DefaultCommands = JsonConvert.DeserializeObject<List<CommandDefinition>>(profile.AdditionalCommands) ?? DefaultCommands;
 
                 return new Message {
                                        MessageText = "Load Successful",

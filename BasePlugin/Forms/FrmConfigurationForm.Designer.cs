@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmConfigurationForm));
             this.profileHeader1 = new OphiussaFramework.Components.ProfileHeader();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // profileHeader1
@@ -40,7 +41,7 @@
             this.profileHeader1.Name = "profileHeader1";
             this.profileHeader1.RconEnabled = true;
             this.profileHeader1.Size = new System.Drawing.Size(800, 148);
-            this.profileHeader1.TabIndex = 0; 
+            this.profileHeader1.TabIndex = 0;
             this.profileHeader1.ClickReload += new System.EventHandler(this.profileHeader1_ClickReload);
             this.profileHeader1.ClickSync += new System.EventHandler(this.profileHeader1_ClickSync);
             this.profileHeader1.ClickSave += new System.EventHandler(this.profileHeader1_ClickSave);
@@ -48,11 +49,22 @@
             this.profileHeader1.ClickStartStop += new System.EventHandler(this.profileHeader1_ClickStartStop);
             this.profileHeader1.ClickRCON += new System.EventHandler(this.profileHeader1_ClickRCON);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(439, 208);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Open Command Builder";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FrmConfigurationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.profileHeader1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmConfigurationForm";
@@ -65,5 +77,6 @@
         #endregion
 
         private OphiussaFramework.Components.ProfileHeader profileHeader1;
+        private System.Windows.Forms.Button button1;
     }
 }

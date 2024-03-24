@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using OphiussaFramework.CommonUtils;
 using OphiussaFramework.Interfaces;
+using OphiussaFramework.Models;
 
 namespace BasePlugin.Forms {
     public partial class FrmConfigurationForm : Form {
@@ -59,6 +61,14 @@ namespace BasePlugin.Forms {
 
         private void profileHeader1_TabHeaderChange(object sender, OphiussaFramework.Models.OphiussaEventArgs e) {
             _plugin.TabHeaderChange();
+        }
+
+        private void button1_Click(object sender, EventArgs e) {
+            CommandBuilder cmdBuilder = new CommandBuilder(_plugin.DefaultCommands);
+            cmdBuilder.OpenCommandEditor(fullCommand => {
+                                             _plugin.DefaultCommands = fullCommand.ComandList;
+                                             MessageBox.Show(fullCommand.GetCommand());
+                                         });
         }
     }
 }

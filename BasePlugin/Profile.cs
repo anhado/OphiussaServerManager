@@ -9,8 +9,10 @@ namespace BasePlugin {
         public string Key                { get; set; } = Guid.NewGuid().ToString();
         public string Name               { get; set; } = "New Server";
         public string Type               => BasePlugin.Info.GameType;
+        public string PluginVersion      => FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
         public string InstallationFolder { get; set; } = "";
         public object AdditionalSettings { get; set; }
+        public string AdditionalCommands { get; set; } = "";
         public int    SteamServerId      { get; set; } = 0;
         public int    SteamApplicationID { get; set; } = 0;
         public int    CurseForgeId       { get; set; } = 0;
@@ -27,12 +29,9 @@ namespace BasePlugin {
         public string RCONPassword       { get; set; } = Membership.GeneratePassword(10, 6);
         public bool   UseRCON            { get; set; } = false;
         public string ExecutablePath     { get; set; } = "Dummy.exe";
-
-        public string PluginVersion => FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
-
-        public string TestProperty1 { get; set; } = "";
-        public bool   TestProperty2 { get; set; } = true;
-        public int    TestProperty3 { get; set; } = 999;
+        public string TestProperty1      { get; set; } = "";
+        public bool   TestProperty2      { get; set; } = true;
+        public int    TestProperty3      { get; set; } = 999;
 
     }
 }

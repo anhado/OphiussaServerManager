@@ -18,7 +18,7 @@ namespace OphiussaFramework.Components {
          
 
         private void timerGetProcess_Tick(object sender, EventArgs e) {
-            try {
+            try { 
                 if (Profile == null) return;
                 timerGetProcess.Enabled = false;
                 btStart.Text            = IsRunning ? "Stop" : "Start";
@@ -27,9 +27,9 @@ namespace OphiussaFramework.Components {
 
                 if (Plugin.IsInstalled != _isInstalled) {
                     CheckInstallStatus();
-                } 
+                    Plugin.TabHeaderChange();
+                }
 
-                Plugin.TabHeaderChange(); 
             }
             catch (Exception ex) {
                 OphiussaLogger.Logger.Error(ex);
@@ -137,9 +137,14 @@ namespace OphiussaFramework.Components {
 
         #endregion
          
-        private void IsRunningProcess() {
+        private void IsRunningProcess() {  
             while (true) {
+
+                if (!Utils.IsFormRunning("MainForm"))
+                    break;
+
                 if (Plugin == null) continue;
+                if (!Plugin.IsInstalled) continue;
                 Process process = null;
 
                 if(Tab.ImageIndex == 0)  continue; 
@@ -163,8 +168,6 @@ namespace OphiussaFramework.Components {
                     IsRunning  = false;
                 }
 
-                if (!Utils.IsFormRunning("MainForm"))
-                    break;
                 Thread.Sleep(timerGetProcess.Interval);
             }
         }
@@ -208,6 +211,7 @@ namespace OphiussaFramework.Components {
 
             txtVersion.Text = Plugin.GetVersion();
             txtBuild.Text   = Plugin.GetBuild();
+            Plugin.TabHeaderChange();
         }
 
         private void btSync_Click(object sender, EventArgs e) {

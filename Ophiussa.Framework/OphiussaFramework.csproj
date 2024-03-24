@@ -124,7 +124,21 @@
     <Compile Include="CommonUtils\OphiussaLogger.cs" />
     <Compile Include="Extensions\PluginExtensions.cs" />
     <Compile Include="CommonUtils\ConnectionController.cs" />
+    <Compile Include="Forms\FrmCommandEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmCommandEditor.Designer.cs">
+      <DependentUpon>FrmCommandEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmCommandPreview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmCommandPreview.Designer.cs">
+      <DependentUpon>FrmCommandPreview.cs</DependentUpon>
+    </Compile>
     <Compile Include="Interfaces\IProfile.cs" />
+    <Compile Include="Models\CommandBuilder.cs" />
+    <Compile Include="Models\CommandDefinition.cs" />
     <Compile Include="Models\DriveInfoDisplay.cs" />
     <Compile Include="Interfaces\IPlugin.cs" />
     <Compile Include="Models\OphiussaEventArgs.cs" />
@@ -144,6 +158,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="OSM.ico" />
+    <None Include="Resources\preview icon icon.png" />
+    <None Include="Resources\Close icon icon.png" />
+    <None Include="Resources\add icon icon %281%29.png" />
     <None Include="Resources\save, floppy, disk icon icon %282%29.png" />
     <None Include="Resources\refresh icon icon %285%29.png" />
     <None Include="Resources\refresh icon icon %284%29.png" />
@@ -157,6 +174,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\ProfileHeader.resx">
       <DependentUpon>ProfileHeader.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmCommandEditor.resx">
+      <DependentUpon>FrmCommandEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmCommandPreview.resx">
+      <DependentUpon>FrmCommandPreview.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

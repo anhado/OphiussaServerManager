@@ -5,6 +5,7 @@
         string Type               { get; }
         string InstallationFolder { get; set; }
         object AdditionalSettings { get; set; }
+        string AdditionalCommands { get; set; }
         int    SteamServerId      { get; set; }
         int    SteamApplicationID { get; set; }
         int    CurseForgeId       { get; set; }

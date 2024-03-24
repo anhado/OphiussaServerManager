@@ -11,7 +11,7 @@ using OphiussaFramework.Interfaces;
 using OphiussaFramework.Models;
 using OphiussaFramework.ServerUtils;
 using OphiussaServerManagerV2.Properties;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement; 
 
 namespace OphiussaServerManagerV2 {
     public partial class MainForm : Form {
@@ -36,7 +36,7 @@ namespace OphiussaServerManagerV2 {
         private async void MainForm_Load(object sender, EventArgs e) {
             try {
                 ConnectionController.SetMainForm(this);
-
+                 
                 txtLocalIP.Text = NetworkTools.GetHostIp();
 
                 try {

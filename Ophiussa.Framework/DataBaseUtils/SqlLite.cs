@@ -52,6 +52,12 @@ namespace OphiussaFramework.DataBaseUtils {
                     cmd.CommandText = "ALTER TABLE Settings ADD MaxLogsDays int;";
                     cmd.ExecuteNonQuery();
                 }
+
+            if (!ColumnExists("Profiles", "AdditionalCommands"))
+                using (var cmd = DbConnection().CreateCommand()) {
+                    cmd.CommandText = "ALTER TABLE Profiles ADD AdditionalCommands TEXT;";
+                    cmd.ExecuteNonQuery();
+                }
         }
 
         public SQLiteConnection sqliteConnection { get; private set; }
@@ -84,8 +90,8 @@ namespace OphiussaFramework.DataBaseUtils {
         public bool Upsert(IProfile profile) {
             try {
                 using (var cmd = DbConnection().CreateCommand()) {
-                    cmd.CommandText = @"INSERT INTO Profiles( Key,  Name,  Type,  InstallationFolder, SteamServerId, SteamApplicationID, CurseForgeId, StartOnBoot,  IncludeAutoBackup, IncludeAutoUpdate, RestartIfShutdown, PluginVersion, ServerPort, PeerPort, QueryPort, UseRCON, RCONPort, RCONPassword, ServerVersion, ServerBuildVersion, ExecutablePath, AdditionalSettings) 
-                                                     values(@Key, @Name, @Type, @InstallationFolder,@SteamServerId,@SteamApplicationID,@CurseForgeId,@StartOnBoot, @IncludeAutoBackup,@IncludeAutoUpdate,@RestartIfShutdown,@PluginVersion,@ServerPort,@PeerPort,@QueryPort,@UseRCON,@RCONPort,@RCONPassword,@ServerVersion,@ServerBuildVersion,@ExecutablePath,@AdditionalSettings)
+                    cmd.CommandText = @"INSERT INTO Profiles( Key,  Name,  Type,  InstallationFolder, SteamServerId, SteamApplicationID, CurseForgeId, StartOnBoot,  IncludeAutoBackup, IncludeAutoUpdate, RestartIfShutdown, PluginVersion, ServerPort, PeerPort, QueryPort, UseRCON, RCONPort, RCONPassword, ServerVersion, ServerBuildVersion, ExecutablePath, AdditionalSettings, AdditionalCommands) 
+                                                      values(@Key, @Name, @Type, @InstallationFolder,@SteamServerId,@SteamApplicationID,@CurseForgeId,@StartOnBoot, @IncludeAutoBackup,@IncludeAutoUpdate,@RestartIfShutdown,@PluginVersion,@ServerPort,@PeerPort,@QueryPort,@UseRCON,@RCONPort,@RCONPassword,@ServerVersion,@ServerBuildVersion,@ExecutablePath,@AdditionalSettings,@AdditionalCommands)
                                                      ON CONFLICT(Key) DO UPDATE SET
                                                             Name=excluded.Name,
                                                             Type=excluded.Type,
@@ -107,7 +113,8 @@ namespace OphiussaFramework.DataBaseUtils {
                                                             ServerVersion=excluded.ServerVersion,
                                                             ServerBuildVersion=excluded.ServerBuildVersion,
                                                             ExecutablePath=excluded.ExecutablePath,
-                                                            AdditionalSettings=excluded.AdditionalSettings;";
+                                                            AdditionalSettings=excluded.AdditionalSettings,
+                                                            AdditionalCommands=excluded.AdditionalCommands;";
                     cmd.Parameters.AddWithValue("@Key",                profile.Key);
                     cmd.Parameters.AddWithValue("@Name",               profile.Name);
                     cmd.Parameters.AddWithValue("@Type",               profile.Type);
@@ -130,6 +137,7 @@ namespace OphiussaFramework.DataBaseUtils {
                     cmd.Parameters.AddWithValue("@ServerBuildVersion", profile.ServerBuildVersion);
                     cmd.Parameters.AddWithValue("@ExecutablePath",     profile.ExecutablePath);
                     cmd.Parameters.AddWithValue("@AdditionalSettings", profile.AdditionalSettings);
+                    cmd.Parameters.AddWithValue("@AdditionalCommands", profile.AdditionalCommands);
                     cmd.ExecuteNonQuery();
                 }
 
@@ -338,6 +346,48 @@ namespace OphiussaFramework.DataBaseUtils {
 
                 if (dt.Rows.Count == 0) throw new Exception("No Record");
                 return dt.ConvertDataTable<RawProfile>();
+            }
+            catch (Exception e) {
+                Console.WriteLine(e);
+                return null;
+            }
+        }
+
+        public List<T> GetList<T>(string condition = "") {
+            try {
+                var               temp = typeof(T);
+                SQLiteDataAdapter da   = null;
+                var               dt   = new DataTable();
+
+                using (var cmd = DbConnection().CreateCommand()) {
+                    cmd.CommandText = $"SELECT * FROM {temp.Name}" + (string.IsNullOrEmpty(condition) ? "" : $"WHERE {condition}");
+                    da              = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
+                    da.Fill(dt);
+                }
+
+                if (dt.Rows.Count == 0) throw new Exception("No Record");
+                return dt.ConvertDataTable<T>();
+            }
+            catch (Exception e) {
+                Console.WriteLine(e);
+                return null;
+            }
+        }
+
+        public BindingList<T> GetListB<T>(string condition = "") {
+            try {
+                var               temp = typeof(T);
+                SQLiteDataAdapter da   = null;
+                var               dt   = new DataTable();
+
+                using (var cmd = DbConnection().CreateCommand()) {
+                    cmd.CommandText = $"SELECT * FROM {temp.Name}" + (string.IsNullOrEmpty(condition) ? "" : $"WHERE {condition}");
+                    da              = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
+                    da.Fill(dt);
+                }
+
+                if (dt.Rows.Count == 0) throw new Exception("No Record");
+                return dt.ConvertDataTableB<T>();
             }
             catch (Exception e) {
                 Console.WriteLine(e);
