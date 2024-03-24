@@ -30,6 +30,9 @@ namespace BasePlugin {
 
         public string PluginVersion => FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
 
+        public string TestProperty1 { get; set; } = "";
+        public bool   TestProperty2 { get; set; } = true;
+        public int    TestProperty3 { get; set; } = 999;
 
     }
 }

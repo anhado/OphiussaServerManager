@@ -23,7 +23,7 @@ namespace OphiussaServerManagerV2 {
                     var ctrl = new PluginController(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "plugins\\temp\\") + Path.GetFileName(fDiag.FileName));
 
                     File.Copy(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "plugins\\temp\\") + Path.GetFileName(fDiag.FileName), Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "plugins\\") + Path.GetFileName(fDiag.FileName), true);
-                    ConnectionController.SqlLite.UpsertPlugin(ctrl);
+                    ConnectionController.SqlLite.Upsert(ctrl);
                     LoadPluginsGrid();
                 }
                 catch (Exception exception) {
@@ -66,7 +66,7 @@ namespace OphiussaServerManagerV2 {
         }
 
         private void btSave_Click(object sender, EventArgs e) {
-            foreach (var plugin in plugins) ConnectionController.SqlLite.UpsertPlugin(plugin);
+            foreach (var plugin in plugins) ConnectionController.SqlLite.Upsert(plugin);
 
             MessageBox.Show("Saved");
         }
@@ -101,7 +101,7 @@ namespace OphiussaServerManagerV2 {
             if (dataGridView1.Columns[e.ColumnIndex].Name == "Loaded" && e.RowIndex >= 0) {
                 int index = e.RowIndex;
                 var obj   = plugins[index];
-                ConnectionController.SqlLite.UpsertPlugin(obj);
+                ConnectionController.SqlLite.Upsert(obj);
             }
         }
 

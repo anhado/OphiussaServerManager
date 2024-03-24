@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using OphiussaFramework;
 using OphiussaFramework.CommonUtils;
 using OphiussaFramework.Extensions;
+using OphiussaFramework.Interfaces;
 using OphiussaFramework.Models;
 using OphiussaFramework.ServerUtils;
 using OphiussaServerManagerV2.Properties;
@@ -44,14 +45,27 @@ namespace OphiussaServerManagerV2 {
                 catch (Exception ex) {
                     //  OphiussaLogger.Logger.Error(ex);
                 }
-                 
+
+                LoadProfiles();
             }
             catch (Exception exception) {
                 OphiussaLogger.Logger.Error(exception);
                 MessageBox.Show(exception.Message);
             }
         }
-         
+
+        private void LoadProfiles() {
+            List<RawProfile> lst = ConnectionController.SqlLite.GetProfiles();
+            lst.ForEach(prf => {
+                            if (!Global.plugins.ContainsKey(prf.Type)) return;
+                            PluginController nCtrl   = new PluginController(Global.plugins[prf.Type].PluginLocation(), null, null, null, null, null, null, null, null, null, TabHeadChangeEvent);
+                            nCtrl.SetProfile(prf);
+                            Global.serverControllers.Add(nCtrl.GetProfile().Key, nCtrl);
+
+                            AddNewFormConfiguration(nCtrl);
+                        });
+        }
+
         private void txtPublicIP_DoubleClick(object sender, EventArgs e) {
             txtPublicIP.PasswordChar = txtPublicIP.PasswordChar == '\0' ? '*' : '\0';
         }
@@ -87,15 +101,15 @@ namespace OphiussaServerManagerV2 {
             var guid = Guid.NewGuid();
             var frm = new FrmServerTypeSelection(); 
             frm.AddNewTabPage += newServer => {
-                var nCtrl = Global.plugins[newServer.serversType.GameType].Clone(ServerUtils.InstallServerClick, 
-                                                                                               ServerUtils.BackupServerClick, 
-                                                                                               ServerUtils.StopServerClick, 
-                                                                                               ServerUtils.StartServerClick, 
-                                                                                               ServerUtils.SaveServerClick, 
-                                                                                               ServerUtils.ReladoServerClick, 
-                                                                                               ServerUtils.SyncServerClick, 
-                                                                                               ServerUtils.OpenRCONClick, 
-                                                                                               ServerUtils.ChooseFolderClick,
+                var nCtrl = Global.plugins[newServer.serversType.GameType].Clone(null /* ServerUtils.InstallServerClick*/,
+                                                                                                null /*ServerUtils.BackupServerClick */,
+                                                                                               null /*ServerUtils.StopServerClick   */, 
+                                                                                               null /*ServerUtils.StartServerClick  */, 
+                                                                                               null /*ServerUtils.SaveServerClick   */, 
+                                                                                               null /*ServerUtils.ReladoServerClick */, 
+                                                                                               null /*ServerUtils.SyncServerClick   */, 
+                                                                                               null /*ServerUtils.OpenRCONClick     */,
+                                                                                               null /*ServerUtils.ChooseFolderClick */,
                                                                                                TabHeadChangeEvent); 
                 
                 nCtrl.SetInstallationPath(newServer.installDir);

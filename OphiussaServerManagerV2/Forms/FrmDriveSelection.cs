@@ -47,7 +47,7 @@ namespace OphiussaServerManagerV2 {
             //var guid = Guid.NewGuid();
             //s.GUID = guid.ToString();
 
-            ConnectionController.SqlLite.UpSertSettings(s);
+            ConnectionController.SqlLite.Upsert(s);
 
             MessageBox.Show("After this setup go to Settings to configure Auto-Update and Auto-Backup");
             Close();

@@ -45,6 +45,9 @@ namespace OphiussaFramework.CommonUtils {
         }
 
         public static bool IsAValidFolder(string initialFolder, List<string> folderList, bool isFiles = false) {
+            
+            if(!Directory.Exists(initialFolder)) return false;
+
             var folders  = Directory.GetDirectories(initialFolder).ToList();
             var onlyLast = new List<string>();
 

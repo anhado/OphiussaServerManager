@@ -14,9 +14,10 @@ using Message = OphiussaFramework.Models.Message;
 namespace BasePlugin {
     public class BasePlugin : IPlugin {
         internal static readonly PluginType Info = new PluginType { GameType = "Game1", Name = "Game 1 Name" };
-        public                   IProfile   Profile       { get; set; } = new Profile();
-        public                   string     PluginVersion => FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
-        public                   string     PluginName    => Path.GetFileName(FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileName);
+        public                   string     ExecutablePath { get; set; } = "Dummy123.exe";//THIS WILL OVERWRITE THE PROFILE, I JUST NEED THAT IN PROFILE TO AVOID Deserialize THE ADDITIONAL SETTINGS
+        public                   IProfile   Profile        { get; set; } = new Profile();
+        public                   string     PluginVersion  => FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
+        public                   string     PluginName     => Path.GetFileName(FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileName);
 
         public BasePlugin() {
             OphiussaFramework.ConnectionController.Initialize();
@@ -57,51 +58,61 @@ namespace BasePlugin {
         }
 
         public void InstallServer() {
-            InstallServerClick?.Invoke(this, new OphiussaEventArgs { Profile = Profile });
+            InstallServerClick?.Invoke(this, new OphiussaEventArgs { Profile = Profile, Plugin = this });
         }
 
         public void StartServer() {
-            StartServerClick?.Invoke(this, new OphiussaEventArgs { Profile = Profile });
+            StartServerClick?.Invoke(this, new OphiussaEventArgs { Profile = Profile, Plugin = this });
         }
 
         public void StopServer() {
-            StopServerClick?.Invoke(this, new OphiussaEventArgs { Profile = Profile });
+            StopServerClick?.Invoke(this, new OphiussaEventArgs { Profile = Profile, Plugin = this });
         }
 
         public void BackupServer() {
-            BackupServerClick?.Invoke(this, new OphiussaEventArgs { Profile = Profile });
+            BackupServerClick?.Invoke(this, new OphiussaEventArgs { Profile = Profile, Plugin = this });
         }
 
         public void Save() {
-            SaveClick?.Invoke(this, new OphiussaEventArgs { Profile = Profile });
+            SaveClick?.Invoke(this, new OphiussaEventArgs { Profile = Profile, Plugin = this });
         }
 
         public void Reload() {
-            ReloadClick?.Invoke(this, new OphiussaEventArgs { Profile = Profile });
+            ReloadClick?.Invoke(this, new OphiussaEventArgs { Profile = Profile, Plugin = this });
         }
 
         public void Sync() {
-            SyncClick?.Invoke(this, new OphiussaEventArgs { Profile = Profile });
+            SyncClick?.Invoke(this, new OphiussaEventArgs { Profile = Profile, Plugin = this });
         }
 
         public void OpenRCON() {
-            OpenRCONClick?.Invoke(this, new OphiussaEventArgs { Profile = Profile });
+            OpenRCONClick?.Invoke(this, new OphiussaEventArgs { Profile = Profile, Plugin = this });
         }
 
         public void ChooseFolder() {
-           ChooseFolderClick.Invoke(this, new OphiussaEventArgs() { Profile = Profile });
-        }
-         
-        public Message SaveSettingsToDisk() {
-            throw new NotImplementedException();
+           ChooseFolderClick.Invoke(this, new OphiussaEventArgs() { Profile = Profile, Plugin = this });
         }
 
-        public string GetVersion() {
-            return "NOT IMPLEMENTED";//  throw new NotImplementedException();
-        }
 
-        public string GetBuild() {
-            return "NOT IMPLEMENTED"; //  throw new NotImplementedException();
+        public Message SetProfile(IProfile profile) {
+            try {
+
+                var p = JsonConvert.DeserializeObject<Profile>(profile.AdditionalSettings.ToString());
+                Profile = p;
+
+                return new Message {
+                                       MessageText = "Load Successful",
+                                       Success     = true
+                                   };
+            }
+            catch (Exception e) {
+                OphiussaLogger.Logger.Error(e);
+                return new Message {
+                                       Exception   = e,
+                                       MessageText = e.Message,
+                                       Success     = false
+                                   };
+            }
         }
 
         public Message SetProfile(string json) {
@@ -112,7 +123,7 @@ namespace BasePlugin {
 
                 return new Message {
                                        MessageText = "Load Successful",
-                                       Success     = false
+                                       Success     = true
                                    };
             }
             catch (Exception e) {
@@ -126,7 +137,7 @@ namespace BasePlugin {
         }
 
         public bool IsValidFolder(string path) {
-            //TODO:Valid folder installation
+            //TODO:(New Games)Valid folder installation 
             return Utils.IsAValidFolder(Profile.InstallationFolder,new List<string>(){"FolderDummy","FolderDummy2"});
         }
 
@@ -141,6 +152,21 @@ namespace BasePlugin {
                 OphiussaLogger.Logger.Error(e);
                 return new Message { Exception = e, MessageText = e.Message, Success = false };
             }
+        }
+
+        public Message SaveSettingsToDisk() {
+            //TODO:(New Games)Save settings to disc
+            return new Message() { Exception = new NotImplementedException(), MessageText = "NOT IMPLEMENTED", Success = false };
+        }
+
+        public string GetVersion() {
+            //TODO:(New Games)Save settings to disc
+            return "NOT IMPLEMENTED"; //  throw new NotImplementedException();
+        }
+
+        public string GetBuild() {
+            //TODO:(New Games)Save settings to disc
+            return "NOT IMPLEMENTED"; //  throw new NotImplementedException();
         }
     }
 }

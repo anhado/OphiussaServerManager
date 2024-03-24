@@ -186,7 +186,7 @@ namespace OphiussaFramework.Components {
             txtBuild.DataBindings.Add("Text", Profile, "ServerBuildVersion");
             txtVersion.DataBindings.Add("Text", Profile, "ServerVersion");
 
-            
+            CheckInstallStatus();
         }
 
         private void CheckInstallStatus() { 

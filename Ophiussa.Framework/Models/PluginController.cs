@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 using OphiussaFramework.Interfaces;
 
 namespace OphiussaFramework.Models {
@@ -12,14 +13,14 @@ namespace OphiussaFramework.Models {
         public PluginController(string                          filePath,
                                 EventHandler<OphiussaEventArgs> installServerClick   = null,
                                 EventHandler<OphiussaEventArgs> backupServerClick    = null,
-                                EventHandler<OphiussaEventArgs> StopServerClick      = null,
+                                EventHandler<OphiussaEventArgs> stopServerClick      = null,
                                 EventHandler<OphiussaEventArgs> startServerClick     = null, 
-                                EventHandler<OphiussaEventArgs> SaveClick            = null,
-                                EventHandler<OphiussaEventArgs> ReloadClick          = null,
-                                EventHandler<OphiussaEventArgs> SyncClick            = null,
-                                EventHandler<OphiussaEventArgs> OpenRCONClick        = null,
-                                EventHandler<OphiussaEventArgs> ChooseFolderClick    = null,
-                                EventHandler<OphiussaEventArgs> TabHeaderChangeEvent = null) {
+                                EventHandler<OphiussaEventArgs> saveClick            = null,
+                                EventHandler<OphiussaEventArgs> reloadClick          = null,
+                                EventHandler<OphiussaEventArgs> syncClick            = null,
+                                EventHandler<OphiussaEventArgs> openRCONClick        = null,
+                                EventHandler<OphiussaEventArgs> chooseFolderClick    = null,
+                                EventHandler<OphiussaEventArgs> tabHeaderChangeEvent = null) {
             _location = filePath;
             var assembly = Assembly.LoadFile(filePath);
 
@@ -28,16 +29,16 @@ namespace OphiussaFramework.Models {
             var pluginInterface = types.First(x => x.GetInterface("IPlugin") != null);
 
             _plugin                      =  (IPlugin)Activator.CreateInstance(pluginInterface, null);
-            _plugin.InstallServerClick   += installServerClick;
-            _plugin.BackupServerClick    += backupServerClick;
-            _plugin.StopServerClick      += StopServerClick;
-            _plugin.StartServerClick     += startServerClick;
-            _plugin.SaveClick            += SaveClick;
-            _plugin.ReloadClick          += ReloadClick;
-            _plugin.SyncClick            += SyncClick;
-            _plugin.OpenRCONClick        += OpenRCONClick;
-            _plugin.ChooseFolderClick    += ChooseFolderClick;
-            _plugin.TabHeaderChangeEvent += TabHeaderChangeEvent;
+            _plugin.InstallServerClick   += installServerClick ?? ServerUtils.ServerUtils.InstallServerClick;
+            _plugin.BackupServerClick    += backupServerClick  ?? ServerUtils.ServerUtils.BackupServerClick;
+            _plugin.StopServerClick      += stopServerClick    ?? ServerUtils.ServerUtils.StopServerClick;
+            _plugin.StartServerClick     += startServerClick   ?? ServerUtils.ServerUtils.StartServerClick;
+            _plugin.SaveClick            += saveClick          ?? ServerUtils.ServerUtils.SaveServerClick;
+            _plugin.ReloadClick          += reloadClick        ?? ServerUtils.ServerUtils.ReloadServerClick;
+            _plugin.SyncClick            += syncClick          ?? ServerUtils.ServerUtils.SyncServerClick;
+            _plugin.OpenRCONClick        += openRCONClick      ?? ServerUtils.ServerUtils.OpenRCONClick;
+            _plugin.ChooseFolderClick    += chooseFolderClick  ?? ServerUtils.ServerUtils.ChooseFolderClick;
+            _plugin.TabHeaderChangeEvent += tabHeaderChangeEvent;
         }
 
         public   string GameType    => _plugin.GetInfo().GameType;
@@ -49,7 +50,31 @@ namespace OphiussaFramework.Models {
         public   bool   IsRunning   => _plugin.IsRunning;
 
         public Form    GetConfigurationForm(TabPage tabPage) => _plugin.GetConfigurationForm(tabPage);
-        public TabPage GeTabPage()                           => _plugin.TabPage; 
+        public TabPage GeTabPage()                           => _plugin.TabPage;
+         
+        public void Save() {
+             _plugin.Save();
+        }
+
+        public void Reload() {
+            _plugin.Reload();
+        }
+
+        public void Sync() {
+            _plugin.Sync();
+        }
+
+        public void OpenRCON() {
+            _plugin.OpenRCON();
+        }
+
+        public void ChooseFolder() {
+            _plugin.ChooseFolder();
+        }
+
+        public void TabHeaderChange() {
+            _plugin.TabHeaderChange();
+        }
 
         public void BackupServer() {
             _plugin.BackupServer();
@@ -60,7 +85,7 @@ namespace OphiussaFramework.Models {
         }
 
         public void StopServer() {
-            _plugin.StopServer();
+            _plugin.StopServer(); 
         }
 
         public void InstallServer() {
@@ -73,6 +98,10 @@ namespace OphiussaFramework.Models {
 
         public Message SetProfile(string json) {
             return _plugin.SetProfile(json);
+        }
+
+        public Message SetProfile(IProfile profile) {
+            return _plugin.SetProfile(profile);
         }
 
         public Message SaveSettingsToDisk() {

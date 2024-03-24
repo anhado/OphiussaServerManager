@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SQLite;
 using System.IO;
 using OphiussaFramework.Extensions;
+using OphiussaFramework.Interfaces;
 using OphiussaFramework.Models;
 using Exception = System.Exception;
 
@@ -79,13 +80,74 @@ namespace OphiussaFramework.DataBaseUtils {
             }
         }
 
+
+        public bool Upsert(IProfile profile) {
+            try {
+                using (var cmd = DbConnection().CreateCommand()) {
+                    cmd.CommandText = @"INSERT INTO Profiles( Key,  Name,  Type,  InstallationFolder, SteamServerId, SteamApplicationID, CurseForgeId, StartOnBoot,  IncludeAutoBackup, IncludeAutoUpdate, RestartIfShutdown, PluginVersion, ServerPort, PeerPort, QueryPort, UseRCON, RCONPort, RCONPassword, ServerVersion, ServerBuildVersion, ExecutablePath, AdditionalSettings) 
+                                                     values(@Key, @Name, @Type, @InstallationFolder,@SteamServerId,@SteamApplicationID,@CurseForgeId,@StartOnBoot, @IncludeAutoBackup,@IncludeAutoUpdate,@RestartIfShutdown,@PluginVersion,@ServerPort,@PeerPort,@QueryPort,@UseRCON,@RCONPort,@RCONPassword,@ServerVersion,@ServerBuildVersion,@ExecutablePath,@AdditionalSettings)
+                                                     ON CONFLICT(Key) DO UPDATE SET
+                                                            Name=excluded.Name,
+                                                            Type=excluded.Type,
+                                                            InstallationFolder=excluded.InstallationFolder,
+                                                            SteamServerId=excluded.SteamServerId,
+                                                            SteamApplicationID=excluded.SteamApplicationID,
+                                                            CurseForgeId=excluded.CurseForgeId,
+                                                            StartOnBoot=excluded.StartOnBoot,
+                                                            IncludeAutoBackup=excluded.IncludeAutoBackup,
+                                                            IncludeAutoUpdate=excluded.IncludeAutoUpdate,
+                                                            RestartIfShutdown=excluded.RestartIfShutdown,
+                                                            PluginVersion=excluded.PluginVersion,
+                                                            ServerPort=excluded.ServerPort,
+                                                            PeerPort=excluded.PeerPort,
+                                                            QueryPort=excluded.QueryPort,
+                                                            UseRCON=excluded.UseRCON,
+                                                            RCONPort=excluded.RCONPort,
+                                                            RCONPassword=excluded.RCONPassword,
+                                                            ServerVersion=excluded.ServerVersion,
+                                                            ServerBuildVersion=excluded.ServerBuildVersion,
+                                                            ExecutablePath=excluded.ExecutablePath,
+                                                            AdditionalSettings=excluded.AdditionalSettings;";
+                    cmd.Parameters.AddWithValue("@Key",                profile.Key);
+                    cmd.Parameters.AddWithValue("@Name",               profile.Name);
+                    cmd.Parameters.AddWithValue("@Type",               profile.Type);
+                    cmd.Parameters.AddWithValue("@InstallationFolder", profile.InstallationFolder);
+                    cmd.Parameters.AddWithValue("@SteamServerId",      profile.SteamServerId);
+                    cmd.Parameters.AddWithValue("@SteamApplicationID", profile.SteamApplicationID);
+                    cmd.Parameters.AddWithValue("@CurseForgeId",       profile.CurseForgeId);
+                    cmd.Parameters.AddWithValue("@StartOnBoot",        profile.StartOnBoot);
+                    cmd.Parameters.AddWithValue("@IncludeAutoBackup",  profile.IncludeAutoBackup);
+                    cmd.Parameters.AddWithValue("@IncludeAutoUpdate",  profile.IncludeAutoUpdate);
+                    cmd.Parameters.AddWithValue("@RestartIfShutdown",  profile.RestartIfShutdown);
+                    cmd.Parameters.AddWithValue("@PluginVersion",      profile.PluginVersion);
+                    cmd.Parameters.AddWithValue("@ServerPort",         profile.ServerPort);
+                    cmd.Parameters.AddWithValue("@PeerPort",           profile.PeerPort);
+                    cmd.Parameters.AddWithValue("@QueryPort",          profile.QueryPort);
+                    cmd.Parameters.AddWithValue("@UseRCON",            profile.UseRCON);
+                    cmd.Parameters.AddWithValue("@RCONPort",           profile.RCONPort);
+                    cmd.Parameters.AddWithValue("@RCONPassword",       profile.RCONPassword);
+                    cmd.Parameters.AddWithValue("@ServerVersion",      profile.ServerVersion);
+                    cmd.Parameters.AddWithValue("@ServerBuildVersion", profile.ServerBuildVersion);
+                    cmd.Parameters.AddWithValue("@ExecutablePath",     profile.ExecutablePath);
+                    cmd.Parameters.AddWithValue("@AdditionalSettings", profile.AdditionalSettings);
+                    cmd.ExecuteNonQuery();
+                }
+
+                return true;
+            }
+            catch (Exception e) {
+                Console.WriteLine(e);
+                return false;
+            }
+        }
+
         private SQLiteConnection DbConnection() {
             sqliteConnection = new SQLiteConnection("Data Source=database.sqlite; Version=3;");
             sqliteConnection.Open();
             return sqliteConnection;
         }
 
-        public bool UpsertPlugin(PluginController ctrl) {
+        public bool Upsert(PluginController ctrl) {
             try {
                 using (var cmd = DbConnection().CreateCommand()) {
                     cmd.CommandText = @"INSERT INTO Plugins( PluginName,  GameType,  GameName,  Version, Loaded) 
@@ -111,7 +173,7 @@ namespace OphiussaFramework.DataBaseUtils {
             }
         }
 
-        public bool UpsertPlugin(PluginInfo info) {
+        public bool Upsert(PluginInfo info) {
             try {
                 using (var cmd = DbConnection().CreateCommand()) {
                     cmd.CommandText = @"INSERT INTO Plugins( PluginName,  GameType,  GameName,  Version, Loaded) 
@@ -195,7 +257,7 @@ namespace OphiussaFramework.DataBaseUtils {
             }
         }
 
-        public bool UpSertSettings(Settings settings) {
+        public bool Upsert(Settings settings) {
             try {
                 if (GetSettings() == null)
                     using (var cmd = DbConnection().CreateCommand()) {
@@ -256,6 +318,26 @@ namespace OphiussaFramework.DataBaseUtils {
 
                 if (dt.Rows.Count == 0) throw new Exception("No Record");
                 return dt.Rows[0].GetItem<Settings>();
+            }
+            catch (Exception e) {
+                Console.WriteLine(e);
+                return null;
+            }
+        }
+
+        public List<RawProfile> GetProfiles() {
+            try {
+                SQLiteDataAdapter da = null;
+                var               dt = new DataTable();
+
+                using (var cmd = DbConnection().CreateCommand()) {
+                    cmd.CommandText = "SELECT * FROM Profiles";
+                    da              = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
+                    da.Fill(dt);
+                }
+
+                if (dt.Rows.Count == 0) throw new Exception("No Record");
+                return dt.ConvertDataTable<RawProfile>();
             }
             catch (Exception e) {
                 Console.WriteLine(e);

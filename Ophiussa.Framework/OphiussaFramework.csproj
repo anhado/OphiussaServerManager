@@ -132,6 +132,7 @@
     <Compile Include="Models\PluginController.cs" />
     <Compile Include="Models\PluginInfo.cs" />
     <Compile Include="Models\PluginType.cs" />
+    <Compile Include="Models\RawProfile.cs" />
     <Compile Include="Models\Settings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

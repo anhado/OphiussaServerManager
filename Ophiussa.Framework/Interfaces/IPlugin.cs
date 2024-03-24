@@ -27,6 +27,7 @@ namespace OphiussaFramework.Interfaces {
         bool                                  IsValidFolder(string path);
         Message                               SaveSettingsToDisk();
         Message                               SetProfile(string       json);
+        Message                               SetProfile(IProfile     profile);
         Message                               SetInstallFolder(string path);
         IProfile                              GetProfile();
         Process                               GetExeProcess();

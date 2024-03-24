@@ -26,7 +26,7 @@ namespace OphiussaServerManagerV2 {
         }
 
         private void FrmSettings_FormClosing(object sender, FormClosingEventArgs e) {
-            ConnectionController.SqlLite.UpSertSettings(ConnectionController.Settings);
+            ConnectionController.SqlLite.Upsert(ConnectionController.Settings);
         }
 
         private void button1_Click(object sender, EventArgs e) {
