@@ -14,16 +14,8 @@ Supported Server Types:
   - More(Create a issue if you want more supported games) - Coming Soon
 
 Functionalities:
-  - Server Installation via SteamCMD - Completed
-  - Auto-Restart Servers - Completed
-  - Auto-Backup Servers - Completed (Bugged)
-  - Auto-Update Servers - Completed
-  - Manage Firewall - Completed (Only tested in a home network)
-  - Manage Router Portforwarding - Completed (Only tested in a home network)
+  - Server Installation via SteamCMD - Coming Soon
+  - Auto-Restart Servers - Coming Soon
+  - Auto-Backup Servers - Coming Soon
+  - Auto-Update Servers - Coming Soon 
   - More...  - Coming soon
-
-
-I used some code from:
-https://github.com/Bletch1971/ServerManagers
-
-Thanks for this project Bletch1971 and some libraries in your project :)
