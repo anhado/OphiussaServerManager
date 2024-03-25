@@ -4,9 +4,9 @@
 Can be bugs or some functionalities not working yet.
 
 Supported Server Types:
-  - Valheim - Completed
-  - ARK Survive Envolved - WIP
-  - ARK Survive Ascended - WIP
+  - Valheim - Coming Soon
+  - ARK Survive Envolved - Coming Soon
+  - ARK Survive Ascended - Coming Soon
   - VRising - Coming Soon
   - Satisfactory - Coming Soon
   - Rust - Coming Soon
