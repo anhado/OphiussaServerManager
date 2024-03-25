@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
+using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.ComTypes;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using OphiussaFramework;
@@ -149,6 +152,48 @@ namespace OphiussaServerManagerV2 {
             else {
                 e.Cancel = true;
             }
+        }
+
+        private void exitToolStripMenuItem1_Click(object sender, EventArgs e) {
+            Application.Exit();
+        }
+
+        private void updateSteamCMDToolStripMenuItem_Click(object sender, EventArgs e) {
+            try {
+                NetworkTools.DownloadSteamCmd();
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void createDesktopIconToolStripMenuItem_Click(object sender, EventArgs e) {
+
+            var link = (IShellLink)new ShellLink();
+
+            // setup shortcut information
+            link.SetDescription("Ophiussa Server Manager");
+            link.SetPath(Assembly.GetEntryAssembly().Location);
+
+            // save it
+            var    file        = (IPersistFile)link;
+            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+            file.Save(Path.Combine(desktopPath, "Ophiussa Server Manager.lnk"), false);
+        }
+
+        private async void refreshPublicIPToolStripMenuItem_Click(object sender, EventArgs e) {
+
+            try {
+                if (txtPublicIP.Text == "") txtPublicIP.Text = await Task.Run(() => NetworkTools.DiscoverPublicIPAsync().Result);
+            }
+            catch (Exception ex) {
+                //  OphiussaLogger.Logger.Error(ex);
+            }
+        }
+
+        private void refreshLocalIPToolStripMenuItem_Click(object sender, EventArgs e) {
+
+            txtLocalIP.Text = NetworkTools.GetHostIp();
         }
     }
 }

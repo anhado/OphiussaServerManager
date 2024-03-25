@@ -85,6 +85,7 @@
     </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Management" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.Windows.Forms" />
@@ -100,6 +101,7 @@
     <Compile Include="CommonUtils\IOUtils.cs" />
     <Compile Include="CommonUtils\NetworkTools.cs" />
     <Compile Include="CommonUtils\ProcessUtils.cs" />
+    <Compile Include="CommonUtils\ShellLink.cs" />
     <Compile Include="CommonUtils\Utils.cs" />
     <Compile Include="Components\exListBox.cs" />
     <Compile Include="Components\exListBox.Designer.cs">

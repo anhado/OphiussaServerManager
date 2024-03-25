@@ -36,11 +36,17 @@
             this.txtLocalIP = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.refreshPublicIPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.refreshLocalIPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.createDesktopIconToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.updateSteamCMDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+            this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pluginsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewServerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControlExtra1 = new TradeWright.UI.Forms.TabControlExtra();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
@@ -103,6 +109,7 @@
             // 
             this.menuStrip1.BackColor = System.Drawing.SystemColors.Control;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolsToolStripMenuItem,
             this.settingsToolStripMenuItem,
             this.addNewServerToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -111,13 +118,70 @@
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // toolsToolStripMenuItem
+            // 
+            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.refreshPublicIPToolStripMenuItem,
+            this.refreshLocalIPToolStripMenuItem,
+            this.createDesktopIconToolStripMenuItem,
+            this.toolStripMenuItem2,
+            this.updateSteamCMDToolStripMenuItem,
+            this.toolStripMenuItem3,
+            this.exitToolStripMenuItem1});
+            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.toolsToolStripMenuItem.Text = "Tools";
+            // 
+            // refreshPublicIPToolStripMenuItem
+            // 
+            this.refreshPublicIPToolStripMenuItem.Name = "refreshPublicIPToolStripMenuItem";
+            this.refreshPublicIPToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.refreshPublicIPToolStripMenuItem.Text = "Refresh Public IP";
+            this.refreshPublicIPToolStripMenuItem.Click += new System.EventHandler(this.refreshPublicIPToolStripMenuItem_Click);
+            // 
+            // refreshLocalIPToolStripMenuItem
+            // 
+            this.refreshLocalIPToolStripMenuItem.Name = "refreshLocalIPToolStripMenuItem";
+            this.refreshLocalIPToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.refreshLocalIPToolStripMenuItem.Text = "Refresh Local IP";
+            this.refreshLocalIPToolStripMenuItem.Click += new System.EventHandler(this.refreshLocalIPToolStripMenuItem_Click);
+            // 
+            // createDesktopIconToolStripMenuItem
+            // 
+            this.createDesktopIconToolStripMenuItem.Name = "createDesktopIconToolStripMenuItem";
+            this.createDesktopIconToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.createDesktopIconToolStripMenuItem.Text = "Create Desktop Icon";
+            this.createDesktopIconToolStripMenuItem.Click += new System.EventHandler(this.createDesktopIconToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
+            // 
+            // updateSteamCMDToolStripMenuItem
+            // 
+            this.updateSteamCMDToolStripMenuItem.Name = "updateSteamCMDToolStripMenuItem";
+            this.updateSteamCMDToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.updateSteamCMDToolStripMenuItem.Text = "Update Steam CMD";
+            this.updateSteamCMDToolStripMenuItem.Click += new System.EventHandler(this.updateSteamCMDToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(177, 6);
+            // 
+            // exitToolStripMenuItem1
+            // 
+            this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
+            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem1.Text = "Exit";
+            this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
+            // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.pluginsToolStripMenuItem,
-            this.settingsToolStripMenuItem1,
-            this.toolStripMenuItem1,
-            this.exitToolStripMenuItem});
+            this.settingsToolStripMenuItem1});
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.settingsToolStripMenuItem.Text = "Settings";
@@ -135,18 +199,6 @@
             this.settingsToolStripMenuItem1.Size = new System.Drawing.Size(116, 22);
             this.settingsToolStripMenuItem1.Text = "Settings";
             this.settingsToolStripMenuItem1.Click += new System.EventHandler(this.settingsToolStripMenuItem1_Click);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(113, 6);
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // addNewServerToolStripMenuItem
             // 
@@ -268,8 +320,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pluginsToolStripMenuItem;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtPublicIP;
@@ -278,6 +328,14 @@
         private TradeWright.UI.Forms.TabControlExtra tabControlExtra1;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.ToolStripMenuItem addNewServerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem refreshPublicIPToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem refreshLocalIPToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem createDesktopIconToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem updateSteamCMDToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem1;
     }
 }
 

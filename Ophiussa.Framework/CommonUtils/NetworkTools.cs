@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.IO.Compression;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Threading.Tasks;
+using OphiussaFramework.Models;
 
 namespace OphiussaFramework.CommonUtils {
     public class NetworkTools {
@@ -54,6 +58,31 @@ namespace OphiussaFramework.CommonUtils {
 
                 return string.Empty;
             }
+        }
+
+        public static void DownloadSteamCmd() {
+            using (var wc = new WebClient()) {
+                wc.DownloadProgressChanged += wc_DownloadProgressChanged;
+                wc.DownloadFileCompleted   += wc_DownloadCompleted;
+                wc.DownloadFileAsync(
+                                     // Param1 = Link of file
+                                     new Uri("https://steamcdn-a.akamaihd.net/client/installer/steamcmd.zip"),
+                                     // Param2 = Path to save
+                                     ConnectionController.Settings.DataFolder + "steamcmd.zip"
+                                    );
+            }
+        }
+
+        public static void wc_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e) {
+            //progressBar.Value = e.ProgressPercentage;
+        }
+
+        public static void wc_DownloadCompleted(object sender, AsyncCompletedEventArgs e) {
+            using (var archive = ZipFile.OpenRead(ConnectionController.Settings.DataFolder + "steamcmd.zip")) {
+                foreach (var entry in archive.Entries) entry.ExtractToFile(Path.Combine(ConnectionController.Settings.SteamCMDFolder, entry.FullName), true);
+            }
+
+            Utils.ExecuteAsAdmin(Path.Combine(ConnectionController.Settings.SteamCMDFolder, "steamcmd.exe"), "+quit");
         }
 
         public class IpList {

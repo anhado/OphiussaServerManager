@@ -57,6 +57,9 @@
             this.txtMaxDays = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.chkEnableLogs = new System.Windows.Forms.CheckBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.txtSteamCmd = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.expandCollapsePanel1.SuspendLayout();
             this.expandCollapsePanel2.SuspendLayout();
             this.expandCollapsePanel5.SuspendLayout();
@@ -66,6 +69,9 @@
             // 
             this.expandCollapsePanel1.ButtonSize = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonSize.Small;
             this.expandCollapsePanel1.ButtonStyle = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonStyle.Classic;
+            this.expandCollapsePanel1.Controls.Add(this.button1);
+            this.expandCollapsePanel1.Controls.Add(this.txtSteamCmd);
+            this.expandCollapsePanel1.Controls.Add(this.label7);
             this.expandCollapsePanel1.Controls.Add(this.btBackupFolder);
             this.expandCollapsePanel1.Controls.Add(this.txtBackupFolder);
             this.expandCollapsePanel1.Controls.Add(this.label4);
@@ -82,7 +88,7 @@
             this.expandCollapsePanel1.IsExpanded = true;
             this.expandCollapsePanel1.Location = new System.Drawing.Point(0, 0);
             this.expandCollapsePanel1.Name = "expandCollapsePanel1";
-            this.expandCollapsePanel1.Size = new System.Drawing.Size(800, 137);
+            this.expandCollapsePanel1.Size = new System.Drawing.Size(800, 164);
             this.expandCollapsePanel1.TabIndex = 0;
             this.expandCollapsePanel1.Text = "Folders Settings";
             this.expandCollapsePanel1.UseAnimation = true;
@@ -95,6 +101,7 @@
             this.btBackupFolder.TabIndex = 11;
             this.btBackupFolder.Text = "...";
             this.btBackupFolder.UseVisualStyleBackColor = true;
+            this.btBackupFolder.Click += new System.EventHandler(this.btBackupFolder_Click);
             // 
             // txtBackupFolder
             // 
@@ -120,6 +127,7 @@
             this.btDefaultInstallFolder.TabIndex = 8;
             this.btDefaultInstallFolder.Text = "...";
             this.btDefaultInstallFolder.UseVisualStyleBackColor = true;
+            this.btDefaultInstallFolder.Click += new System.EventHandler(this.btDefaultInstallFolder_Click);
             // 
             // txtDefaultInstallationFolder
             // 
@@ -193,7 +201,7 @@
             this.expandCollapsePanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.expandCollapsePanel2.ExpandedHeight = 0;
             this.expandCollapsePanel2.IsExpanded = true;
-            this.expandCollapsePanel2.Location = new System.Drawing.Point(0, 137);
+            this.expandCollapsePanel2.Location = new System.Drawing.Point(0, 164);
             this.expandCollapsePanel2.Name = "expandCollapsePanel2";
             this.expandCollapsePanel2.Size = new System.Drawing.Size(800, 88);
             this.expandCollapsePanel2.TabIndex = 1;
@@ -268,7 +276,7 @@
             this.expandCollapsePanel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.expandCollapsePanel5.ExpandedHeight = 0;
             this.expandCollapsePanel5.IsExpanded = true;
-            this.expandCollapsePanel5.Location = new System.Drawing.Point(0, 225);
+            this.expandCollapsePanel5.Location = new System.Drawing.Point(0, 252);
             this.expandCollapsePanel5.Name = "expandCollapsePanel5";
             this.expandCollapsePanel5.Size = new System.Drawing.Size(800, 122);
             this.expandCollapsePanel5.TabIndex = 6;
@@ -340,6 +348,32 @@
             this.chkEnableLogs.Text = "Enable Logs";
             this.chkEnableLogs.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(567, 130);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(28, 23);
+            this.button1.TabIndex = 14;
+            this.button1.Text = "...";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // txtSteamCmd
+            // 
+            this.txtSteamCmd.Location = new System.Drawing.Point(164, 131);
+            this.txtSteamCmd.Name = "txtSteamCmd";
+            this.txtSteamCmd.Size = new System.Drawing.Size(397, 21);
+            this.txtSteamCmd.TabIndex = 13;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(12, 134);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(112, 15);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "Steam CMD Folder";
+            // 
             // FrmSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -394,5 +428,8 @@
         private System.Windows.Forms.TextBox txtMaxDays;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.CheckBox chkEnableLogs;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtSteamCmd;
+        private System.Windows.Forms.Label label7;
     }
 }

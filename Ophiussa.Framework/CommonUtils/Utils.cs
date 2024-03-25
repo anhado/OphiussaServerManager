@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -59,6 +60,31 @@ namespace OphiussaFramework.CommonUtils {
 
             if (notExists.Count == 0) return true;
             return false;
+        }
+         
+        public static void ExecuteAsAdmin(string exeName, string parameters, bool wait = true, bool noWindow = false, bool dontRunAsAdmin = false) {
+            try {
+                var startInfo = new ProcessStartInfo();
+                startInfo.UseShellExecute = true;
+                startInfo.FileName        = exeName;
+                if (!dontRunAsAdmin) startInfo.Verb = "runas";
+
+                //MLHIDE
+                startInfo.Arguments = parameters;
+                if (noWindow) {
+                    startInfo.UseShellExecute = false;
+                    startInfo.CreateNoWindow  = noWindow;
+                }
+
+                startInfo.ErrorDialog = true;
+
+                var process = Process.Start(startInfo);
+                process.PriorityClass = ProcessPriorityClass.Normal;
+                if (wait) process.WaitForExit();
+            }
+            catch (Win32Exception ex) {
+                throw new Exception("ExecuteAsAdmin:" + ex.Message);
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using OphiussaFramework;
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Windows.Forms;
 using OphiussaFramework.Models;
 
@@ -19,16 +20,24 @@ namespace OphiussaServerManagerV2 {
             txtDefaultInstallationFolder.DataBindings.Add("Text", ConnectionController.Settings, "DefaultInstallFolder");
             txtBackupFolder.DataBindings.Add("Text", ConnectionController.Settings, "BackupFolder");
             txtDataFolder.DataBindings.Add("Text", ConnectionController.Settings, "DataFolder");
+            txtSteamCmd.DataBindings.Add("Text", ConnectionController.Settings, "SteamCMDFolder");
             txtSteamWebApiKey.DataBindings.Add("Text", ConnectionController.Settings, "SteamWepApiKey");
             txtCurseForgeKey.DataBindings.Add("Text", ConnectionController.Settings, "CurseForgeApiKey");
             chkEnableLogs.DataBindings.Add("Checked", ConnectionController.Settings, "EnableLogs");
             txtMaxDays.DataBindings.Add("Text", ConnectionController.Settings, "MaxLogsDays");
             txtMaxFiles.DataBindings.Add("Text", ConnectionController.Settings, "MaxLogFiles");
+
+            
         }
 
         private void FrmSettings_FormClosing(object sender, FormClosingEventArgs e) {
             ConnectionController.SqlLite.Upsert<Settings>(ConnectionController.Settings);
-            //ConnectionController.SqlLite.Upsert(ConnectionController.Settings);
+
+            if (!Directory.Exists(txtDataFolder.Text)) Directory.CreateDirectory(txtDataFolder.Text);
+            if (!Directory.Exists(Path.Combine(txtDataFolder.Text, "cache"))) Directory.CreateDirectory(Path.Combine(txtDataFolder.Text, "cache"));
+            if (!Directory.Exists(Path.Combine(txtDataFolder.Text, "StartServer"))) Directory.CreateDirectory(Path.Combine(txtDataFolder.Text, "StartServer"));
+            if (!Directory.Exists(txtDefaultInstallationFolder.Text)) Directory.CreateDirectory(txtDefaultInstallationFolder.Text);
+            if (!Directory.Exists(txtSteamCmd.Text)) Directory.CreateDirectory(txtSteamCmd.Text);
         }
 
         private void button1_Click(object sender, EventArgs e) {
@@ -46,6 +55,27 @@ namespace OphiussaServerManagerV2 {
         }
 
         private void expandCollapsePanel5_Paint(object sender, PaintEventArgs e) {
+        }
+
+        private void button1_Click_1(object sender, EventArgs e) {
+
+            fd.SelectedPath = txtSteamCmd.Text;
+            fd.ShowDialog();
+            txtSteamCmd.Text = fd.SelectedPath;
+        }
+
+        private void btDefaultInstallFolder_Click(object sender, EventArgs e) {
+
+            fd.SelectedPath = txtDefaultInstallationFolder.Text;
+            fd.ShowDialog();
+            txtDefaultInstallationFolder.Text = fd.SelectedPath;
+        }
+
+        private void btBackupFolder_Click(object sender, EventArgs e) {
+
+            fd.SelectedPath = txtBackupFolder.Text;
+            fd.ShowDialog();
+            txtBackupFolder.Text = fd.SelectedPath;
         }
     }
 }
