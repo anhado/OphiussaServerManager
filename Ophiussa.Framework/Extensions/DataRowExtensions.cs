@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 
 namespace OphiussaFramework.Extensions {
     public static class DataRowExtensions {
@@ -8,6 +9,10 @@ namespace OphiussaFramework.Extensions {
 
         public static int GetInt(this DataRow dr, string FieldNAme) {
             return dr.Field<int>(FieldNAme);
+        }
+
+        public static long GetLong(this DataRow dr, string FieldNAme) {
+            return dr.Field<long>(FieldNAme);
         }
     }
 }

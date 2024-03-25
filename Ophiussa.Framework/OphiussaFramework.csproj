@@ -117,7 +117,11 @@
     <Compile Include="Components\ProfileHeader.Designer.cs">
       <DependentUpon>ProfileHeader.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\LinkProfileForm.cs" />
+    <Compile Include="Models\TableAttributes.cs" />
+    <Compile Include="Models\FieldAttributes.cs" />
     <Compile Include="DataBaseUtils\SqlLite.cs" />
+    <Compile Include="Enums\ModProvider.cs" />
     <Compile Include="Enums\VersionsEnum.cs" />
     <Compile Include="Extensions\DataRowExtensions.cs" />
     <Compile Include="Extensions\DataTableExtensions.cs" />
@@ -146,6 +150,7 @@
     <Compile Include="Models\PluginController.cs" />
     <Compile Include="Models\PluginInfo.cs" />
     <Compile Include="Models\PluginType.cs" />
+    <Compile Include="Models\RawPlugin.cs" />
     <Compile Include="Models\RawProfile.cs" />
     <Compile Include="Models\Settings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using BasePlugin.Forms;
 using Newtonsoft.Json;
 using OphiussaFramework.CommonUtils;
+using OphiussaFramework.Enums;
 using OphiussaFramework.Interfaces;
 using OphiussaFramework.Models;
 using Message = OphiussaFramework.Models.Message;
@@ -14,23 +15,28 @@ using Message = OphiussaFramework.Models.Message;
 namespace BasePlugin {
     public class BasePlugin : IPlugin {
         public BasePlugin() {
-            OphiussaFramework.ConnectionController.Initialize();
-
-            DefaultCommands = new List<CommandDefinition>() { new CommandDefinition() { Order = 1, Name = "Test", NamePrefix = "?", AddSpaceInPrefix = false } };
+            DefaultCommands = new List<CommandDefinition>() { new CommandDefinition() { Order = 1, Name = "Test", NamePrefix = "?", AddSpaceInPrefix = false } }; 
         }
-        internal static readonly PluginType              Info = new PluginType { GameType = "Game1", Name = "Game 1 Name" };
-        public                   IProfile                Profile         { get; set; } = new Profile();
-        public                   TabPage                 TabPage         { get; set; }
-        public                   string                  ExecutablePath  { get; set; } = "Dummy123.exe"; //THIS WILL OVERWRITE THE PROFILE, I JUST NEED THAT IN PROFILE TO AVOID Deserialize THE ADDITIONAL SETTINGS
-        public                   string                  PluginVersion   => FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
-        public                   string                  PluginName      => Path.GetFileName(FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileName); 
-        public                   int                     ServerProcessID => Utils.GetProcessRunning(Path.Combine(Profile.InstallationFolder, Profile.ExecutablePath)).Id; 
-        public                   bool                    IsRunning       => Utils.GetProcessRunning(Path.Combine(Profile.InstallationFolder, Profile.ExecutablePath)) != null;
-        public                   Process                 GetExeProcess() => Utils.GetProcessRunning(Path.Combine(Profile.InstallationFolder, Profile.ExecutablePath));
-        public                   bool                    IsInstalled     => IsValidFolder(Profile.InstallationFolder);
-        public                   List<FileInfo>          FilesToBackup   => throw new NotImplementedException();
-        public                   List<CommandDefinition> DefaultCommands { get; set; }
-        public event EventHandler<OphiussaEventArgs>     BackupServerClick;
+       // internal static readonly PluginType              Info = new PluginType { GameType = "Game1", Name = "Game 1 Name" };
+        public IProfile                Profile         { get; set; } = new Profile();
+        public string                  GameType        { get; set; } = "Game1";
+        public string                  GameName        { get; set; } = "Game 1 Name";
+        public TabPage                 TabPage         { get; set; }
+        public string                  ExecutablePath  { get; set; } = "Dummy123.exe"; //THIS WILL OVERWRITE THE PROFILE, I JUST NEED THAT IN PROFILE TO AVOID Deserialize THE ADDITIONAL SETTINGS
+        public string                  PluginVersion   { get; set; } = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
+        public string                  PluginName      { get; set; } = Path.GetFileName(FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileName); 
+        public int                     ServerProcessID =>  Utils.GetProcessRunning(Path.Combine(Profile.InstallationFolder, Profile.ExecutablePath)).Id; 
+        public bool                    IsRunning       =>  Utils.GetProcessRunning(Path.Combine(Profile.InstallationFolder, Profile.ExecutablePath)) != null;
+        public Process                 GetExeProcess() => Utils.GetProcessRunning(Path.Combine(Profile.InstallationFolder, Profile.ExecutablePath));
+        public bool                    IsInstalled     => IsValidFolder(Profile.InstallationFolder);
+        public List<FileInfo>          FilesToBackup   => throw new NotImplementedException();
+        public List<CommandDefinition> DefaultCommands { get; set; }
+        public ModProvider             ModProvider     { get; set; } = ModProvider.None;
+
+
+        public bool Loaded { get; set; } = true;
+
+    public event EventHandler<OphiussaEventArgs>     BackupServerClick;
         public event EventHandler<OphiussaEventArgs>     StopServerClick;
         public event EventHandler<OphiussaEventArgs>     StartServerClick;
         public event EventHandler<OphiussaEventArgs>     InstallServerClick;
@@ -41,8 +47,8 @@ namespace BasePlugin {
         public event EventHandler<OphiussaEventArgs>     ChooseFolderClick;
         public event EventHandler<OphiussaEventArgs>     TabHeaderChangeEvent;
 
-        public PluginType GetInfo() { 
-            return Info;
+        public PluginType GetInfo() {
+            return new PluginType() { GameType = GameType, Name = GameName };
         }
 
         public IProfile GetProfile() {

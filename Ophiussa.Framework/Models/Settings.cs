@@ -20,16 +20,16 @@ namespace OphiussaFramework.Models {
             GUID                 = Guid.NewGuid().ToString();
         }
 
-        public              string GUID                 { get; set; }
-        public              string DataFolder           { get; set; }
-        public              string DefaultInstallFolder { get; set; }
-        public              string SteamCMDFolder       { get; set; }
-        public              string SteamWepApiKey       { get; set; }
-        public              string CurseForgeApiKey     { get; set; }
-        public              string BackupFolder         { get; set; }
-        public              bool   EnableLogs           { get; set; }
-        public              int    MaxLogFiles          { get; set; }
-        public              int    MaxLogsDays          { get; set; }
-        [JsonIgnore] public string CryptKey             { get; set; } = "b14ca5898a4e4133bbce2ea2315a1916";
+        public                                  string GUID                 { get; set; }
+        public                                  string DataFolder           { get; set; }
+        public                                  string DefaultInstallFolder { get; set; }
+        public                                  string SteamCMDFolder       { get; set; }
+        public                                  string SteamWepApiKey       { get; set; }
+        public                                  string CurseForgeApiKey     { get; set; }
+        public                                  string BackupFolder         { get; set; }
+        public                                  bool   EnableLogs           { get; set; }
+        public                                  int    MaxLogFiles          { get; set; }
+        public                                  int    MaxLogsDays          { get; set; }
+        [FieldAttributes(Ignore = true)] public string CryptKey             { get; set; } = "b14ca5898a4e4133bbce2ea2315a1916";
     }
 }

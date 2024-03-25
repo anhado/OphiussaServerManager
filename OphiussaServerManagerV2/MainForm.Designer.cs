@@ -228,6 +228,8 @@
             this.tabControlExtra1.SelectedIndex = 0;
             this.tabControlExtra1.Size = new System.Drawing.Size(1016, 581);
             this.tabControlExtra1.TabIndex = 9;
+            this.tabControlExtra1.TabImageClick += new System.EventHandler<System.Windows.Forms.TabControlEventArgs>(this.tabControlExtra1_TabImageClick);
+            this.tabControlExtra1.TabClosing += new System.EventHandler<System.Windows.Forms.TabControlCancelEventArgs>(this.tabControlExtra1_TabClosing);
             // 
             // imageList1
             // 

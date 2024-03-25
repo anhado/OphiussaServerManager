@@ -2,6 +2,7 @@
 using System;
 using System.Diagnostics;
 using System.Windows.Forms;
+using OphiussaFramework.Models;
 
 namespace OphiussaServerManagerV2 {
     public partial class FrmSettings : Form {
@@ -26,7 +27,8 @@ namespace OphiussaServerManagerV2 {
         }
 
         private void FrmSettings_FormClosing(object sender, FormClosingEventArgs e) {
-            ConnectionController.SqlLite.Upsert(ConnectionController.Settings);
+            ConnectionController.SqlLite.Upsert<Settings>(ConnectionController.Settings);
+            //ConnectionController.SqlLite.Upsert(ConnectionController.Settings);
         }
 
         private void button1_Click(object sender, EventArgs e) {

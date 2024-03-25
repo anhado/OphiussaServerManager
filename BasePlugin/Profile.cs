@@ -8,10 +8,10 @@ namespace BasePlugin {
     public class Profile : IProfile {
         public string Key                { get; set; } = Guid.NewGuid().ToString();
         public string Name               { get; set; } = "New Server";
-        public string Type               => BasePlugin.Info.GameType;
-        public string PluginVersion      => FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
+        public string Type               { get; set; }
+        public string PluginVersion      { get; set; } =  FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
         public string InstallationFolder { get; set; } = "";
-        public object AdditionalSettings { get; set; }
+        public string AdditionalSettings { get; set; } = "";
         public string AdditionalCommands { get; set; } = "";
         public int    SteamServerId      { get; set; } = 0;
         public int    SteamApplicationID { get; set; } = 0;

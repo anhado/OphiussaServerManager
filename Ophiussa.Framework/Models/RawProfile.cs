@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 using OphiussaFramework.Interfaces;
 
 namespace OphiussaFramework.Models {
-    public class RawProfile : IProfile {
+    internal class RawProfile : IProfile {
         public string Key                { get; set; }
         public string Name               { get; set; } 
         public string Type               { get; set; }
         public string InstallationFolder { get; set; }
-        public object AdditionalSettings { get; set; }
+        public string AdditionalSettings { get; set; }
         public string AdditionalCommands { get; set; }
         public int    SteamServerId      { get; set; }
         public int    SteamApplicationID { get; set; }

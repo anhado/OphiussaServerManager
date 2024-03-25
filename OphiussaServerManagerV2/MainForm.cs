@@ -15,7 +15,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace OphiussaServerManagerV2 {
     public partial class MainForm : Form {
-        private const int TcmSetmintabwidth = 0x1300 + 49; 
+        private readonly Dictionary<string, LinkProfileForm> _linkProfileForms = new Dictionary<string, LinkProfileForm>();
 
         public MainForm() {
             InitializeComponent();
@@ -55,12 +55,14 @@ namespace OphiussaServerManagerV2 {
         }
 
         private void LoadProfiles() {
-            List<RawProfile> lst = ConnectionController.SqlLite.GetProfiles();
+            List<IProfile> lst = ConnectionController.SqlLite.GetRecords<IProfile>();
+
+            if(lst == null) return;
             lst.ForEach(prf => {
-                            if (!Global.plugins.ContainsKey(prf.Type)) return;
-                            PluginController nCtrl   = new PluginController(Global.plugins[prf.Type].PluginLocation(), null, null, null, null, null, null, null, null, null, TabHeadChangeEvent);
+                            if (!ConnectionController.Plugins.ContainsKey(prf.Type)) return;
+                            PluginController nCtrl = new PluginController(ConnectionController.Plugins[prf.Type].PluginLocation(), null, null, null, null, null, null, null, null, null, TabHeadChangeEvent);
                             nCtrl.SetProfile(prf);
-                            Global.serverControllers.Add(nCtrl.GetProfile().Key, nCtrl);
+                            ConnectionController.ServerControllers.Add(nCtrl.GetProfile().Key, nCtrl);
 
                             AddNewFormConfiguration(nCtrl);
                         });
@@ -73,10 +75,13 @@ namespace OphiussaServerManagerV2 {
         private void AddNewFormConfiguration(PluginController controller) {
             tabControlExtra1.TabPages.Insert(tabControlExtra1.TabPages.Count, controller.GetProfile().Key, controller.GetProfile().Name);
             int index = tabControlExtra1.TabPages.IndexOfKey(controller.GetProfile().Key);
-            var tab = tabControlExtra1.TabPages[index]; 
+            var tab = tabControlExtra1.TabPages[index];
 
-            Addform(tab, controller.GetConfigurationForm(tab));
+            var form = controller.GetConfigurationForm(tab);
+             
+            Addform(tab, form);
 
+            _linkProfileForms.Add(controller.GetProfile().Key, new LinkProfileForm { Form = form, Profile = controller.GetProfile(), Tab = tab });
             tabControlExtra1.SelectedTab = tab;
         }
 
@@ -101,8 +106,8 @@ namespace OphiussaServerManagerV2 {
             var guid = Guid.NewGuid();
             var frm = new FrmServerTypeSelection(); 
             frm.AddNewTabPage += newServer => {
-                var nCtrl = Global.plugins[newServer.serversType.GameType].Clone(null /* ServerUtils.InstallServerClick*/,
-                                                                                                null /*ServerUtils.BackupServerClick */,
+                var nCtrl = ConnectionController.Plugins[newServer.serversType.GameType].Clone(null /* ServerUtils.InstallServerClick*/,
+                                                                                               null /*ServerUtils.BackupServerClick */,
                                                                                                null /*ServerUtils.StopServerClick   */, 
                                                                                                null /*ServerUtils.StartServerClick  */, 
                                                                                                null /*ServerUtils.SaveServerClick   */, 
@@ -114,7 +119,7 @@ namespace OphiussaServerManagerV2 {
                 
                 nCtrl.SetInstallationPath(newServer.installDir);
 
-                Global.serverControllers.Add(nCtrl.GetProfile().Key, nCtrl);
+                ConnectionController.ServerControllers.Add(nCtrl.GetProfile().Key, nCtrl);
                  
                 AddNewFormConfiguration(nCtrl);
             };
@@ -125,6 +130,25 @@ namespace OphiussaServerManagerV2 {
              
             e.Plugin.TabPage.ImageIndex = !e.Plugin.IsInstalled ? 0 : e.Plugin.IsRunning ? 2 : 1;
              
+        }
+
+        private void tabControlExtra1_TabImageClick(object sender, TabControlEventArgs e) {
+             
+        }
+
+        private void tabControlExtra1_TabClosing(object sender, TabControlCancelEventArgs e) {
+
+            
+            if (MessageBox.Show("Do you want to delete this profile?", "DELETE PROFILE", MessageBoxButtons.OKCancel) == DialogResult.OK) {
+
+                foreach (string key in _linkProfileForms.Keys)
+                    if (_linkProfileForms[key].Tab == e.TabPage) { 
+                        ConnectionController.SqlLite.Delete<IProfile>(_linkProfileForms[key].Profile.Key);
+                    }
+            }
+            else {
+                e.Cancel = true;
+            }
         }
     }
 }

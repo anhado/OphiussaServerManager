@@ -61,7 +61,7 @@ namespace OphiussaFramework.CommonUtils {
 
         public static void ReconfigureLogging() {
             try {
-                var setting = new SqlLite().GetSettings();
+                var setting = new SqlLite().GetRecord<Settings>();
 
                 ReconfigureLogging(setting);
             }

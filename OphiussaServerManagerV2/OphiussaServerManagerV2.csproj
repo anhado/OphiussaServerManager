@@ -124,7 +124,6 @@
     <Compile Include="Forms\FrmServerTypeSelection.Designer.cs">
       <DependentUpon>FrmServerTypeSelection.cs</DependentUpon>
     </Compile>
-    <Compile Include="Global.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -36,8 +36,9 @@ namespace OphiussaFramework.ServerUtils {
              
             IProfile profile           = e.Profile;
             profile.AdditionalSettings = JsonConvert.SerializeObject(e.Profile,                Formatting.Indented);
-            profile.AdditionalCommands = JsonConvert.SerializeObject(e.Plugin.DefaultCommands, Formatting.Indented); 
-            ConnectionController.SqlLite.Upsert(profile);
+            profile.AdditionalCommands = JsonConvert.SerializeObject(e.Plugin.DefaultCommands, Formatting.Indented);
+            profile.Type               = e.Plugin.GameType;
+            ConnectionController.SqlLite.Upsert<IProfile>(profile);
         }
 
         public static void OpenRCONClick(object sender, OphiussaEventArgs e) {

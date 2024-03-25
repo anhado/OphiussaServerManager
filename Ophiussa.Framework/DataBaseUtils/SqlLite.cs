@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SQLite;
+using System.Globalization;
 using System.IO;
+using System.Linq;
+using System.Reflection;
+using OphiussaFramework.CommonUtils;
 using OphiussaFramework.Extensions;
 using OphiussaFramework.Interfaces;
 using OphiussaFramework.Models;
@@ -14,62 +18,96 @@ namespace OphiussaFramework.DataBaseUtils {
         public SqlLite() {
             if (!File.Exists("database.sqlite")) SQLiteConnection.CreateFile(@"database.sqlite");
 
-            using (var cmd = DbConnection().CreateCommand()) {
-                cmd.CommandText = "CREATE TABLE IF NOT EXISTS Settings(GUID Varchar(100) PRIMARY KEY, DataFolder Varchar(250), DefaultInstallFolder VarChar(250), SteamCMDFolder VarChar(250), SteamWepApiKey VarChar(250), CurseForgeApiKey VarChar(250), BackupFolder VarChar(250))";
-                cmd.ExecuteNonQuery();
-            }
+            CreateTable<Settings>();
+            CreateTable<IPlugin>();
+            CreateTable<IProfile>();
+             
+            //using (var cmd = DbConnection().CreateCommand()) {
+            //    cmd.CommandText = "CREATE TABLE IF NOT EXISTS Settings(GUID Varchar(100) PRIMARY KEY, DataFolder Varchar(250), DefaultInstallFolder VarChar(250), SteamCMDFolder VarChar(250), SteamWepApiKey VarChar(250), CurseForgeApiKey VarChar(250), BackupFolder VarChar(250))";
+            //    cmd.ExecuteNonQuery();
+            //}
 
-            using (var cmd = DbConnection().CreateCommand()) {
-                cmd.CommandText = "CREATE TABLE IF NOT EXISTS Plugins(PluginName Varchar(100) PRIMARY KEY, GameType Varchar(250), GameName VarChar(250), Version VarChar(250), Loaded int)";
-                cmd.ExecuteNonQuery();
-            }
+            //using (var cmd = DbConnection().CreateCommand()) {
+            //    cmd.CommandText = "CREATE TABLE IF NOT EXISTS Plugins(PluginName Varchar(100) PRIMARY KEY, GameType Varchar(250), GameName VarChar(250), Version VarChar(250), Loaded int)";
+            //    cmd.ExecuteNonQuery();
+            //}
 
-            using (var cmd = DbConnection().CreateCommand()) {
-                cmd.CommandText = "CREATE TABLE IF NOT EXISTS Profiles(Key Varchar(100) PRIMARY KEY, Name Varchar(250), Type Varchar(250), InstallationFolder VarChar(250), SteamServerId int, SteamApplicationID int, CurseForgeId int, StartOnBoot int, IncludeAutoBackup int, IncludeAutoUpdate int, RestartIfShutdown int, PluginVersion Varchar(250), ServerPort int, PeerPort int, QueryPort int, UseRCON int, RCONPort int, RCONPassword Varchar(250), ServerVersion Varchar(250), ServerBuildVersion Varchar(250), ExecutablePath Varchar(250), AdditionalSettings TEXT)";
-                cmd.ExecuteNonQuery();
-            }
+            //using (var cmd = DbConnection().CreateCommand()) {
+            //    cmd.CommandText = "CREATE TABLE IF NOT EXISTS Profiles(Key Varchar(100) PRIMARY KEY, Name Varchar(250), Type Varchar(250), InstallationFolder VarChar(250), SteamServerId int, SteamApplicationID int, CurseForgeId int, StartOnBoot int, IncludeAutoBackup int, IncludeAutoUpdate int, RestartIfShutdown int, PluginVersion Varchar(250), ServerPort int, PeerPort int, QueryPort int, UseRCON int, RCONPort int, RCONPassword Varchar(250), ServerVersion Varchar(250), ServerBuildVersion Varchar(250), ExecutablePath Varchar(250), AdditionalSettings TEXT)";
+            //    cmd.ExecuteNonQuery();
+            //}
 
-            using (var cmd = DbConnection().CreateCommand()) {
-                cmd.CommandText =
-                    "CREATE TABLE IF NOT EXISTS AutoManagement(ServerKey Varchar(100), ShutdownServer int, ShutdownHour nvarchar(4), ShutdownSun int, ShutdownMon int, ShutdownTue int, ShutdownWed int, ShutdownThu int, ShutdownFri int, ShutdownSat int, ShutdownSunday int, UpdateServer int, RestartServer int)";
-                cmd.ExecuteNonQuery();
-            }
+            //using (var cmd = DbConnection().CreateCommand()) {
+            //    cmd.CommandText =
+            //        "CREATE TABLE IF NOT EXISTS AutoManagement(ServerKey Varchar(100), ShutdownServer int, ShutdownHour nvarchar(4), ShutdownSun int, ShutdownMon int, ShutdownTue int, ShutdownWed int, ShutdownThu int, ShutdownFri int, ShutdownSat int, ShutdownSunday int, UpdateServer int, RestartServer int)";
+            //    cmd.ExecuteNonQuery();
+            //}
 
-            if (!ColumnExists("Settings", "EnableLogs"))
-                using (var cmd = DbConnection().CreateCommand()) {
-                    cmd.CommandText = "ALTER TABLE Settings ADD EnableLogs int;";
-                    cmd.ExecuteNonQuery();
-                }
+            //if (!ColumnExists("Settings", "EnableLogs"))
+            //    using (var cmd = DbConnection().CreateCommand()) {
+            //        cmd.CommandText = "ALTER TABLE Settings ADD EnableLogs int;";
+            //        cmd.ExecuteNonQuery();
+            //    }
 
-            if (!ColumnExists("Settings", "MaxLogFiles"))
-                using (var cmd = DbConnection().CreateCommand()) {
-                    cmd.CommandText = "ALTER TABLE Settings ADD MaxLogFiles int;";
-                    cmd.ExecuteNonQuery();
-                }
+            //if (!ColumnExists("Settings", "MaxLogFiles"))
+            //    using (var cmd = DbConnection().CreateCommand()) {
+            //        cmd.CommandText = "ALTER TABLE Settings ADD MaxLogFiles int;";
+            //        cmd.ExecuteNonQuery();
+            //    }
 
-            if (!ColumnExists("Settings", "MaxLogsDays"))
-                using (var cmd = DbConnection().CreateCommand()) {
-                    cmd.CommandText = "ALTER TABLE Settings ADD MaxLogsDays int;";
-                    cmd.ExecuteNonQuery();
-                }
+            //if (!ColumnExists("Settings", "MaxLogsDays"))
+            //    using (var cmd = DbConnection().CreateCommand()) {
+            //        cmd.CommandText = "ALTER TABLE Settings ADD MaxLogsDays int;";
+            //        cmd.ExecuteNonQuery();
+            //    }
 
-            if (!ColumnExists("Profiles", "AdditionalCommands"))
-                using (var cmd = DbConnection().CreateCommand()) {
-                    cmd.CommandText = "ALTER TABLE Profiles ADD AdditionalCommands TEXT;";
-                    cmd.ExecuteNonQuery();
-                }
+            //if (!ColumnExists("Profiles", "AdditionalCommands"))
+            //    using (var cmd = DbConnection().CreateCommand()) {
+            //        cmd.CommandText = "ALTER TABLE Profiles ADD AdditionalCommands TEXT;";
+            //        cmd.ExecuteNonQuery();
+            //    }
+
+
+            //if (!ColumnExists("Plugins", "ModProvider"))
+            //    using (var cmd = DbConnection().CreateCommand()) {
+            //        cmd.CommandText = "ALTER TABLE Plugins ADD ModProvider int;";
+            //        cmd.ExecuteNonQuery();
+            //    }
+
         }
 
-        public SQLiteConnection sqliteConnection { get; private set; }
+        public SQLiteConnection SqliteConnection { get; private set; }
 
-        private bool ColumnExists(string tableName, string columnName) {
+        public bool TableExists(string tableName) {
             try {
                 SQLiteDataAdapter da = null;
-                var               dt = new DataTable();
+                var dt = new DataTable();
+
+
+                using (var cmd = DbConnection().CreateCommand()) {
+                    cmd.CommandText = $"SELECT name FROM sqlite_master WHERE type='table' AND name='{tableName}';";
+                    da = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
+                    da.Fill(dt);
+                }
+
+                if (dt.Rows.Count == 0) return false;
+                return true;
+            }
+            catch (Exception e) {
+                OphiussaLogger.Logger.Error(e);
+                return false;
+            }
+        }
+
+        public bool ColumnExists(string tableName, string columnName) {
+            try {
+                SQLiteDataAdapter da = null;
+                var dt = new DataTable();
+
 
                 using (var cmd = DbConnection().CreateCommand()) {
                     cmd.CommandText = $"pragma table_info({tableName})";
-                    da              = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
+                    da = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
                     da.Fill(dt);
                 }
 
@@ -82,286 +120,65 @@ namespace OphiussaFramework.DataBaseUtils {
                 return false;
             }
             catch (Exception e) {
+                OphiussaLogger.Logger.Error(e);
                 return false;
             }
         }
 
-
-        public bool Upsert(IProfile profile) {
+        public string GetPrimaryKey(string tableName) {
             try {
+                SQLiteDataAdapter da = null;
+                var dt = new DataTable();
+
+
                 using (var cmd = DbConnection().CreateCommand()) {
-                    cmd.CommandText = @"INSERT INTO Profiles( Key,  Name,  Type,  InstallationFolder, SteamServerId, SteamApplicationID, CurseForgeId, StartOnBoot,  IncludeAutoBackup, IncludeAutoUpdate, RestartIfShutdown, PluginVersion, ServerPort, PeerPort, QueryPort, UseRCON, RCONPort, RCONPassword, ServerVersion, ServerBuildVersion, ExecutablePath, AdditionalSettings, AdditionalCommands) 
-                                                      values(@Key, @Name, @Type, @InstallationFolder,@SteamServerId,@SteamApplicationID,@CurseForgeId,@StartOnBoot, @IncludeAutoBackup,@IncludeAutoUpdate,@RestartIfShutdown,@PluginVersion,@ServerPort,@PeerPort,@QueryPort,@UseRCON,@RCONPort,@RCONPassword,@ServerVersion,@ServerBuildVersion,@ExecutablePath,@AdditionalSettings,@AdditionalCommands)
-                                                     ON CONFLICT(Key) DO UPDATE SET
-                                                            Name=excluded.Name,
-                                                            Type=excluded.Type,
-                                                            InstallationFolder=excluded.InstallationFolder,
-                                                            SteamServerId=excluded.SteamServerId,
-                                                            SteamApplicationID=excluded.SteamApplicationID,
-                                                            CurseForgeId=excluded.CurseForgeId,
-                                                            StartOnBoot=excluded.StartOnBoot,
-                                                            IncludeAutoBackup=excluded.IncludeAutoBackup,
-                                                            IncludeAutoUpdate=excluded.IncludeAutoUpdate,
-                                                            RestartIfShutdown=excluded.RestartIfShutdown,
-                                                            PluginVersion=excluded.PluginVersion,
-                                                            ServerPort=excluded.ServerPort,
-                                                            PeerPort=excluded.PeerPort,
-                                                            QueryPort=excluded.QueryPort,
-                                                            UseRCON=excluded.UseRCON,
-                                                            RCONPort=excluded.RCONPort,
-                                                            RCONPassword=excluded.RCONPassword,
-                                                            ServerVersion=excluded.ServerVersion,
-                                                            ServerBuildVersion=excluded.ServerBuildVersion,
-                                                            ExecutablePath=excluded.ExecutablePath,
-                                                            AdditionalSettings=excluded.AdditionalSettings,
-                                                            AdditionalCommands=excluded.AdditionalCommands;";
-                    cmd.Parameters.AddWithValue("@Key",                profile.Key);
-                    cmd.Parameters.AddWithValue("@Name",               profile.Name);
-                    cmd.Parameters.AddWithValue("@Type",               profile.Type);
-                    cmd.Parameters.AddWithValue("@InstallationFolder", profile.InstallationFolder);
-                    cmd.Parameters.AddWithValue("@SteamServerId",      profile.SteamServerId);
-                    cmd.Parameters.AddWithValue("@SteamApplicationID", profile.SteamApplicationID);
-                    cmd.Parameters.AddWithValue("@CurseForgeId",       profile.CurseForgeId);
-                    cmd.Parameters.AddWithValue("@StartOnBoot",        profile.StartOnBoot);
-                    cmd.Parameters.AddWithValue("@IncludeAutoBackup",  profile.IncludeAutoBackup);
-                    cmd.Parameters.AddWithValue("@IncludeAutoUpdate",  profile.IncludeAutoUpdate);
-                    cmd.Parameters.AddWithValue("@RestartIfShutdown",  profile.RestartIfShutdown);
-                    cmd.Parameters.AddWithValue("@PluginVersion",      profile.PluginVersion);
-                    cmd.Parameters.AddWithValue("@ServerPort",         profile.ServerPort);
-                    cmd.Parameters.AddWithValue("@PeerPort",           profile.PeerPort);
-                    cmd.Parameters.AddWithValue("@QueryPort",          profile.QueryPort);
-                    cmd.Parameters.AddWithValue("@UseRCON",            profile.UseRCON);
-                    cmd.Parameters.AddWithValue("@RCONPort",           profile.RCONPort);
-                    cmd.Parameters.AddWithValue("@RCONPassword",       profile.RCONPassword);
-                    cmd.Parameters.AddWithValue("@ServerVersion",      profile.ServerVersion);
-                    cmd.Parameters.AddWithValue("@ServerBuildVersion", profile.ServerBuildVersion);
-                    cmd.Parameters.AddWithValue("@ExecutablePath",     profile.ExecutablePath);
-                    cmd.Parameters.AddWithValue("@AdditionalSettings", profile.AdditionalSettings);
-                    cmd.Parameters.AddWithValue("@AdditionalCommands", profile.AdditionalCommands);
-                    cmd.ExecuteNonQuery();
+                    cmd.CommandText = $"pragma table_info({tableName})";
+                    da = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
+                    da.Fill(dt);
                 }
 
-                return true;
+                if (dt.Rows.Count == 0) return "";
+
+                foreach (DataRow dr in dt.Rows)
+                    if (dr.GetLong("pk") == 1)
+                        return dr.GetString("name");
+
+                return "";
             }
             catch (Exception e) {
-                Console.WriteLine(e);
-                return false;
+                OphiussaLogger.Logger.Error(e);
+                return "";
             }
-        }
+        } 
 
         private SQLiteConnection DbConnection() {
-            sqliteConnection = new SQLiteConnection("Data Source=database.sqlite; Version=3;");
-            sqliteConnection.Open();
-            return sqliteConnection;
+            SqliteConnection = new SQLiteConnection("Data Source=database.sqlite; Version=3;");
+            SqliteConnection.Open();
+            return SqliteConnection;
         }
 
-        public bool Upsert(PluginController ctrl) {
+        public List<T> GetRecords<T>(string condition = "") {
             try {
-                using (var cmd = DbConnection().CreateCommand()) {
-                    cmd.CommandText = @"INSERT INTO Plugins( PluginName,  GameType,  GameName,  Version, Loaded) 
-                                                     values(@PluginName, @GameType, @GameName, @Version,@Loaded)
-                                                     ON CONFLICT(PluginName) DO UPDATE SET
-                                                            GameType=excluded.GameType,
-                                                            GameName=excluded.GameName,
-                                                            Version=excluded.Version,
-                                                            Loaded=excluded.Loaded;";
-                    cmd.Parameters.AddWithValue("@PluginName", ctrl.PluginName);
-                    cmd.Parameters.AddWithValue("@GameType",   ctrl.GameType);
-                    cmd.Parameters.AddWithValue("@GameName",   ctrl.GameName);
-                    cmd.Parameters.AddWithValue("@Version",    ctrl.Version);
-                    cmd.Parameters.AddWithValue("@Loaded",     ctrl.Loaded);
-                    cmd.ExecuteNonQuery();
-                }
-
-                return true;
-            }
-            catch (Exception e) {
-                Console.WriteLine(e);
-                return false;
-            }
-        }
-
-        public bool Upsert(PluginInfo info) {
-            try {
-                using (var cmd = DbConnection().CreateCommand()) {
-                    cmd.CommandText = @"INSERT INTO Plugins( PluginName,  GameType,  GameName,  Version, Loaded) 
-                                                     values(@PluginName, @GameType, @GameName, @Version,@Loaded)
-                                                     ON CONFLICT(PluginName) DO UPDATE SET
-                                                            GameType=excluded.GameType,
-                                                            GameName=excluded.GameName,
-                                                            Version=excluded.Version,
-                                                            Loaded=excluded.Loaded;";
-                    cmd.Parameters.AddWithValue("@PluginName", info.PluginName);
-                    cmd.Parameters.AddWithValue("@GameType",   info.GameType);
-                    cmd.Parameters.AddWithValue("@GameName",   info.GameName);
-                    cmd.Parameters.AddWithValue("@Version",    info.Version);
-                    cmd.Parameters.AddWithValue("@Loaded",     info.Loaded);
-                    cmd.ExecuteNonQuery();
-                }
-
-                return true;
-            }
-            catch (Exception e) {
-                Console.WriteLine(e);
-                return false;
-            }
-        }
-
-        public bool DeletePlugin(string pluginName) {
-            try {
-                using (var cmd = DbConnection().CreateCommand()) {
-                    cmd.CommandText = @"DELETE FROM Plugins WHERE PluginName = @PluginName;";
-                    cmd.Parameters.AddWithValue("@PluginName", pluginName);
-                    cmd.ExecuteNonQuery();
-                }
-
-                return true;
-            }
-            catch (Exception e) {
-                Console.WriteLine(e);
-                return false;
-            }
-        }
-
-
-        public List<PluginInfo> GetPluginInfoList() {
-            try {
+                var temp = typeof(T);
                 SQLiteDataAdapter da = null;
-                var               dt = new DataTable();
+                var dt = new DataTable();
+                string tableName = temp.Name;
 
-                using (var cmd = DbConnection().CreateCommand()) {
-                    cmd.CommandText = "SELECT * FROM Plugins";
-                    da              = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
-                    da.Fill(dt);
+                List<object> classAttr = temp.GetCustomAttributes(true).ToList();
+                if (classAttr.Count > 0) {
+                    bool foundAttribute = false;
+                    classAttr.ForEach(attr => {
+                        if (attr is TableAttributes atr) {
+                            tableName = atr.TableName;
+                            foundAttribute = true;
+                        }
+                    });
+                    if (!foundAttribute) tableName = temp.Name;
                 }
 
-                if (dt.Rows.Count == 0) throw new Exception("No Record");
-                return dt.ConvertDataTable<PluginInfo>();
-            }
-            catch (Exception e) {
-                Console.WriteLine(e);
-                return null;
-            }
-        }
-
-
-        public BindingList<PluginInfo> GetPluginInfoListB() {
-            try {
-                SQLiteDataAdapter da = null;
-                var               dt = new DataTable();
-
                 using (var cmd = DbConnection().CreateCommand()) {
-                    cmd.CommandText = "SELECT * FROM Plugins";
-                    da              = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
-                    da.Fill(dt);
-                }
-
-                if (dt.Rows.Count == 0) throw new Exception("No Record");
-                return dt.ConvertDataTableB<PluginInfo>();
-            }
-            catch (Exception e) {
-                Console.WriteLine(e);
-                return null;
-            }
-        }
-
-        public bool Upsert(Settings settings) {
-            try {
-                if (GetSettings() == null)
-                    using (var cmd = DbConnection().CreateCommand()) {
-                        cmd.CommandText = @"INSERT INTO Settings(GUID,  DataFolder,   DefaultInstallFolder,  SteamCMDFolder, SteamWepApiKey, CurseForgeApiKey, BackupFolder, EnableLogs,MaxLogFiles,MaxLogsDays ) 
-                                                         values (@GUID, @DataFolder, @DefaultInstallFolder, @SteamCMDFolder,@SteamWepApiKey,@CurseForgeApiKey,@BackupFolder, @EnableLogs,@MaxLogFiles,@MaxLogsDays)";
-                        cmd.Parameters.AddWithValue("@GUID",                 settings.GUID);
-                        cmd.Parameters.AddWithValue("@DataFolder",           settings.DataFolder);
-                        cmd.Parameters.AddWithValue("@DefaultInstallFolder", settings.DefaultInstallFolder);
-                        cmd.Parameters.AddWithValue("@SteamCMDFolder",       settings.SteamCMDFolder);
-                        cmd.Parameters.AddWithValue("@SteamWepApiKey",       settings.SteamWepApiKey);
-                        cmd.Parameters.AddWithValue("@CurseForgeApiKey",     settings.CurseForgeApiKey);
-                        cmd.Parameters.AddWithValue("@EnableLogs",           settings.EnableLogs);
-                        cmd.Parameters.AddWithValue("@MaxLogFiles",          settings.MaxLogFiles);
-                        cmd.Parameters.AddWithValue("@MaxLogsDays",          settings.MaxLogsDays);
-                        cmd.ExecuteNonQuery();
-                    }
-                else
-                    using (var cmd = DbConnection().CreateCommand()) {
-                        cmd.CommandText = @"update Settings SET DataFolder=@DataFolder,
-                                                                DefaultInstallFolder=@DefaultInstallFolder,
-                                                                SteamCMDFolder=@SteamCMDFolder,
-                                                                SteamWepApiKey=@SteamWepApiKey,
-                                                                CurseForgeApiKey=@CurseForgeApiKey,
-                                                                EnableLogs=@EnableLogs,
-                                                                MaxLogFiles=@MaxLogFiles,
-                                                                MaxLogsDays=@MaxLogsDays,
-                                                                BackupFolder=@BackupFolder;";
-                        cmd.Parameters.AddWithValue("@DataFolder",           settings.DataFolder);
-                        cmd.Parameters.AddWithValue("@DefaultInstallFolder", settings.DefaultInstallFolder);
-                        cmd.Parameters.AddWithValue("@SteamCMDFolder",       settings.SteamCMDFolder);
-                        cmd.Parameters.AddWithValue("@SteamWepApiKey",       settings.SteamWepApiKey);
-                        cmd.Parameters.AddWithValue("@CurseForgeApiKey",     settings.CurseForgeApiKey);
-                        cmd.Parameters.AddWithValue("@BackupFolder",         settings.BackupFolder);
-                        cmd.Parameters.AddWithValue("@EnableLogs",           settings.EnableLogs);
-                        cmd.Parameters.AddWithValue("@MaxLogFiles",          settings.MaxLogFiles);
-                        cmd.Parameters.AddWithValue("@MaxLogsDays",          settings.MaxLogsDays);
-                        cmd.ExecuteNonQuery();
-                    }
-
-                return true;
-            }
-            catch (Exception e) {
-                Console.WriteLine(e);
-                return false;
-            }
-        }
-
-        public Settings GetSettings() {
-            try {
-                SQLiteDataAdapter da = null;
-                var               dt = new DataTable();
-
-                using (var cmd = DbConnection().CreateCommand()) {
-                    cmd.CommandText = "SELECT * FROM Settings";
-                    da              = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
-                    da.Fill(dt);
-                }
-
-                if (dt.Rows.Count == 0) throw new Exception("No Record");
-                return dt.Rows[0].GetItem<Settings>();
-            }
-            catch (Exception e) {
-                Console.WriteLine(e);
-                return null;
-            }
-        }
-
-        public List<RawProfile> GetProfiles() {
-            try {
-                SQLiteDataAdapter da = null;
-                var               dt = new DataTable();
-
-                using (var cmd = DbConnection().CreateCommand()) {
-                    cmd.CommandText = "SELECT * FROM Profiles";
-                    da              = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
-                    da.Fill(dt);
-                }
-
-                if (dt.Rows.Count == 0) throw new Exception("No Record");
-                return dt.ConvertDataTable<RawProfile>();
-            }
-            catch (Exception e) {
-                Console.WriteLine(e);
-                return null;
-            }
-        }
-
-        public List<T> GetList<T>(string condition = "") {
-            try {
-                var               temp = typeof(T);
-                SQLiteDataAdapter da   = null;
-                var               dt   = new DataTable();
-
-                using (var cmd = DbConnection().CreateCommand()) {
-                    cmd.CommandText = $"SELECT * FROM {temp.Name}" + (string.IsNullOrEmpty(condition) ? "" : $"WHERE {condition}");
-                    da              = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
+                    cmd.CommandText = $"SELECT * FROM {tableName}" + (string.IsNullOrEmpty(condition) ? "" : $"WHERE {condition}");
+                    da = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
                     da.Fill(dt);
                 }
 
@@ -369,20 +186,33 @@ namespace OphiussaFramework.DataBaseUtils {
                 return dt.ConvertDataTable<T>();
             }
             catch (Exception e) {
-                Console.WriteLine(e);
+                OphiussaLogger.Logger.Error(e);
                 return null;
             }
         }
 
-        public BindingList<T> GetListB<T>(string condition = "") {
+        public BindingList<T> GetRecordsB<T>(string condition = "") {
             try {
-                var               temp = typeof(T);
-                SQLiteDataAdapter da   = null;
-                var               dt   = new DataTable();
+                var temp = typeof(T);
+                SQLiteDataAdapter da = null;
+                var dt = new DataTable();
+                string tableName = temp.Name;
+
+                List<object> classAttr = temp.GetCustomAttributes(true).ToList();
+                if (classAttr.Count > 0) {
+                    bool foundAttribute = false;
+                    classAttr.ForEach(attr => {
+                        if (attr is TableAttributes atr) {
+                            tableName = atr.TableName;
+                            foundAttribute = true;
+                        }
+                    });
+                    if (!foundAttribute) tableName = temp.Name;
+                }
 
                 using (var cmd = DbConnection().CreateCommand()) {
-                    cmd.CommandText = $"SELECT * FROM {temp.Name}" + (string.IsNullOrEmpty(condition) ? "" : $"WHERE {condition}");
-                    da              = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
+                    cmd.CommandText = $"SELECT * FROM {tableName}" + (string.IsNullOrEmpty(condition) ? "" : $"WHERE {condition}");
+                    da = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
                     da.Fill(dt);
                 }
 
@@ -390,8 +220,245 @@ namespace OphiussaFramework.DataBaseUtils {
                 return dt.ConvertDataTableB<T>();
             }
             catch (Exception e) {
-                Console.WriteLine(e);
+                OphiussaLogger.Logger.Error(e);
                 return null;
+            }
+        }
+
+        public T GetRecord<T>(string condition = "") {
+            try {
+                var temp = typeof(T);
+                SQLiteDataAdapter da = null;
+                var dt = new DataTable();
+                string tableName = temp.Name;
+
+                List<object> classAttr = temp.GetCustomAttributes(true).ToList();
+                if (classAttr.Count > 0) {
+                    bool foundAttribute = false;
+                    classAttr.ForEach(attr => {
+                        if (attr is TableAttributes atr) {
+                            tableName = atr.TableName;
+                            foundAttribute = true;
+                        }
+                    });
+                    if (!foundAttribute) tableName = temp.Name;
+                }
+
+                using (var cmd = DbConnection().CreateCommand()) {
+                    cmd.CommandText = $"SELECT * FROM {tableName}" + (string.IsNullOrEmpty(condition) ? "" : $"WHERE {condition}");
+                    da = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
+                    da.Fill(dt);
+                }
+
+                if (dt.Rows.Count == 0) throw new Exception("No Record");
+                return dt.Rows[0].GetItem<T>();
+            }
+            catch (Exception e) {
+                OphiussaLogger.Logger.Error(e);
+                return default;
+            }
+        }
+
+        public bool CreateTable<T>() {
+            try {
+                var temp = typeof(T);
+
+                string tableName = temp.Name;
+                bool tableExists = false;
+                List<object> classAttr = temp.GetCustomAttributes(true).ToList();
+
+                if (classAttr.Count > 0) {
+                    bool foundAttribute = false;
+                    classAttr.ForEach(attr => {
+                        if (attr is TableAttributes atr) {
+                            tableName = atr.TableName;
+                            foundAttribute = true;
+                        }
+                    });
+                    if (!foundAttribute) tableName = temp.Name;
+                }
+
+                tableExists = TableExists(tableName);
+
+                List<string> fieldList = new List<string>();
+
+                foreach (var pro in temp.GetProperties()) {
+                    bool foundAttribute = false;
+                    List<object> propAttr = pro.GetCustomAttributes(true).ToList();
+                    propAttr.ForEach(attr => {
+                        if (attr is FieldAttributes atr) {
+                            if ((!ColumnExists(tableName, pro.Name) && tableExists) || !tableExists) {
+                                if (!atr.Ignore) fieldList.Add($"{pro.Name} {GetDataType(pro, atr.DataType)}");
+                                foundAttribute = true;
+                            }
+                        }
+                    });
+                    if (!foundAttribute && ((!ColumnExists(tableName, pro.Name) && tableExists) || !tableExists)) {
+                        fieldList.Add($"{pro.Name} {GetDataType(pro)}");
+                    }
+                }
+
+                if (fieldList.Count == 0) return true;
+
+                if (tableExists) {
+                    using (var cmd = DbConnection().CreateCommand()) {
+                        cmd.CommandText = $"ALTER TABLE {tableName} ADD {string.Join(",", fieldList.ToArray())};";
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                else {
+                    using (var cmd = DbConnection().CreateCommand()) {
+                        cmd.CommandText = $"CREATE TABLE IF NOT EXISTS {tableName}({string.Join(",", fieldList.ToArray())})";
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+                return true;
+            }
+            catch (Exception e) {
+                OphiussaLogger.Logger.Error(e);
+                return false;
+            }
+        }
+
+        private string GetDataType(PropertyInfo pro, string userConfig = "") {
+            if (!string.IsNullOrEmpty(userConfig)) return userConfig;
+            if (pro.PropertyType == typeof(double)) {
+                return "FLOAT";
+            }
+            else if (pro.PropertyType == typeof(bool) ||
+                     pro.PropertyType == typeof(Enum) ||
+                     pro.PropertyType == typeof(int) ||
+                     pro.PropertyType == typeof(Int32) ||
+                     pro.PropertyType == typeof(Int64)) {
+                return "int";
+            }
+            else {
+                return "VarChar(250)";
+            }
+
+        }
+        private object GetValue(PropertyInfo pro, object obj) {
+
+            var fields = obj.GetType().GetProperties();
+
+            var pInfo = fields.FirstOrDefault(f => f.Name == pro.Name);
+            if (pInfo == null) return null;
+
+            if (pro.PropertyType == typeof(double)) {
+
+                string v = pInfo.GetValue(obj).ToString();
+
+                if (float.TryParse(v, NumberStyles.Any, CultureInfo.InvariantCulture, out float res)) return res;
+                return 0;
+            }
+            else if (pro.PropertyType == typeof(Enum) ||
+                     pro.PropertyType == typeof(int) ||
+                     pro.PropertyType == typeof(Int32) ||
+                     pro.PropertyType == typeof(Int64)) {
+
+                string v = pInfo.GetValue(obj).ToString();
+
+                if (int.TryParse(v, NumberStyles.Any, CultureInfo.InvariantCulture, out int res)) return res;
+                return 0;
+            } else if (pro.PropertyType == typeof(bool)) {
+                string v                                = pInfo.GetValue(obj).ToString();
+                if (bool.TryParse(v, out bool res)) return res ? 1:0;
+                return 0;
+            }
+            else {
+                return pInfo.GetValue(obj).ToString();
+            }
+
+        }
+
+        public bool Upsert<T>(object obj) {
+            try {
+                var temp = typeof(T); 
+
+                string tableName = temp.Name;
+                List<object> classAttr = temp.GetCustomAttributes(true).ToList();
+
+                if (classAttr.Count > 0) {
+                    bool foundAttribute = false;
+                    classAttr.ForEach(attr => {
+                        if (attr is TableAttributes atr) {
+                            tableName = atr.TableName;
+                            foundAttribute = true;
+                        }
+                    });
+                    if (!foundAttribute) tableName = temp.Name;
+                }
+
+                List<string> columnList = new List<string>();
+                List<string> valueColumnList = new List<string>();
+                List<string> updateColumnList = new List<string>();
+
+                string primaryKey = GetPrimaryKey(tableName);
+                if (string.IsNullOrEmpty(primaryKey)) throw new Exception("No PrimaryKey");
+
+                using (var cmd = DbConnection().CreateCommand()) {
+                    foreach (var pro in temp.GetProperties()) {
+
+                        bool ignore = false;
+                        List<object> propAttr = pro.GetCustomAttributes(true).ToList();
+                        propAttr.ForEach(attr => {
+                            if (attr is FieldAttributes atr) ignore = atr.Ignore;
+                        });
+                        if (ignore) continue;
+                        columnList.Add(pro.Name);
+                        valueColumnList.Add("@" + pro.Name);
+                        if (pro.Name != primaryKey) updateColumnList.Add($"{pro.Name}=excluded.{pro.Name}");
+                        cmd.Parameters.AddWithValue("@" + pro.Name, GetValue(pro, obj));
+                    }
+
+                    cmd.CommandText = $@"INSERT INTO {tableName}({string.Join(",", columnList.ToArray())}) 
+                                                     values({string.Join(",", valueColumnList.ToArray())})
+                                                     ON CONFLICT({primaryKey}) DO UPDATE SET
+                                                            {string.Join(",\n", updateColumnList.ToArray())};";
+                    cmd.ExecuteNonQuery();
+                }
+
+                return true;
+            }
+            catch (Exception e) {
+                OphiussaLogger.Logger.Error(e);
+                return false;
+            }
+        }
+
+        public bool Delete<T>(string keyValue) {
+            try {
+
+                var temp   = typeof(T); 
+
+                string       tableName = temp.Name;
+                List<object> classAttr = temp.GetCustomAttributes(true).ToList();
+
+                if (classAttr.Count > 0) {
+                    bool foundAttribute = false;
+                    classAttr.ForEach(attr => {
+                                          if (attr is TableAttributes atr) {
+                                              tableName      = atr.TableName;
+                                              foundAttribute = true;
+                                          }
+                                      });
+                    if (!foundAttribute) tableName = temp.Name;
+                }
+
+                string primaryKey = GetPrimaryKey(tableName);
+
+                using (var cmd = DbConnection().CreateCommand()) {
+                    cmd.CommandText = $@"DELETE FROM {tableName} WHERE {primaryKey} = @{primaryKey};";
+                    cmd.Parameters.AddWithValue($"@{primaryKey}", keyValue);
+                    cmd.ExecuteNonQuery();
+                }
+
+                return true;
+            }
+            catch (Exception e) {
+                OphiussaLogger.Logger.Error(e);
+                return false;
             }
         }
     }

@@ -119,5 +119,10 @@ namespace OphiussaFramework.Models {
         public void  SetInstallationPath(string path) {
              _plugin.Profile.InstallationFolder = path;
         }
+
+        public bool SavePluginInfo() {
+            return ConnectionController.SqlLite.Upsert<IPlugin>(_plugin);
+        }
+
     }
 }

@@ -13,7 +13,7 @@ namespace OphiussaServerManagerV2 {
         public Action<(PluginType serversType, string installDir)> AddNewTabPage  { get; set; }
 
         private void FrmServerTypeSelection_Load(object sender, EventArgs e) {
-            cboServerType.DataSource    = Global.GetServerTypes();
+            cboServerType.DataSource    = ConnectionController.GetServerTypes();
             cboServerType.DisplayMember = "Name";
             cboServerType.ValueMember   = "GameType";
 
@@ -48,8 +48,8 @@ namespace OphiussaServerManagerV2 {
             if (!chkUsedInstall.Checked) dir += txtDirName.Text + "\\";
 
             if (chkUsedInstall.Checked) {
-                if (Global.plugins.ContainsKey(cboServerType.SelectedValue.ToString())) {
-                    if (!Global.plugins[cboServerType.SelectedValue.ToString()].IsValidFolder(dir)) MessageBox.Show("Invalid installation folder");
+                if (ConnectionController.Plugins.ContainsKey(cboServerType.SelectedValue.ToString())) {
+                    if (!ConnectionController.Plugins[cboServerType.SelectedValue.ToString()].IsValidFolder(dir)) MessageBox.Show("Invalid installation folder");
                 }
                 else {
                     MessageBox.Show("Invalid server type");

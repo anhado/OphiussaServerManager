@@ -3,6 +3,8 @@ using System.IO;
 using System.Windows.Forms;
 using OphiussaFramework;
 using OphiussaFramework.CommonUtils;
+using OphiussaFramework.Interfaces;
+using OphiussaFramework.Models;
 
 namespace OphiussaServerManagerV2 {
     internal static class Program {
@@ -15,16 +17,15 @@ namespace OphiussaServerManagerV2 {
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
-
+             
             OphiussaLogger.ReconfigureLogging();
 
           //  OphiussaLogger.Logger.Info($"Application Started. Params -> {string.Join(",", args)}");
             if (!Directory.Exists("plugins")) Directory.CreateDirectory("plugins");
             if (!Directory.Exists("plugins\\temp")) Directory.CreateDirectory("plugins\\temp");
 
-            Global.Initialize();
-
+            ConnectionController.Initialize();
+              
             if (ConnectionController.Settings == null)
                 Application.Run(new FrmDriveSelection());
             else
