@@ -117,6 +117,7 @@
     <Compile Include="Components\ProfileHeader.Designer.cs">
       <DependentUpon>ProfileHeader.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\AutoManagement.cs" />
     <Compile Include="Models\LinkProfileForm.cs" />
     <Compile Include="Models\TableAttributes.cs" />
     <Compile Include="Models\FieldAttributes.cs" />

@@ -10,6 +10,6 @@ namespace OphiussaFramework {
     public class FieldAttributes : System.Attribute {
         public bool   PrimaryKey { get; set; } = false;
         public bool   Ignore     { get; set; } = false;
-        public string DataType   { get; set; } = "VarChar(250)";
+        public string DataType   { get; set; }
     }
 }

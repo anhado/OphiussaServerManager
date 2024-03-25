@@ -35,9 +35,9 @@ namespace OphiussaFramework.ServerUtils {
         public static void SaveServerClick(object sender, OphiussaEventArgs e) {
              
             IProfile profile           = e.Profile;
+            profile.Type               = e.Plugin.GameType;
             profile.AdditionalSettings = JsonConvert.SerializeObject(e.Profile,                Formatting.Indented);
             profile.AdditionalCommands = JsonConvert.SerializeObject(e.Plugin.DefaultCommands, Formatting.Indented);
-            profile.Type               = e.Plugin.GameType;
             ConnectionController.SqlLite.Upsert<IProfile>(profile);
         }
 

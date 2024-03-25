@@ -21,58 +21,13 @@ namespace OphiussaFramework.DataBaseUtils {
             CreateTable<Settings>();
             CreateTable<IPlugin>();
             CreateTable<IProfile>();
-             
-            //using (var cmd = DbConnection().CreateCommand()) {
-            //    cmd.CommandText = "CREATE TABLE IF NOT EXISTS Settings(GUID Varchar(100) PRIMARY KEY, DataFolder Varchar(250), DefaultInstallFolder VarChar(250), SteamCMDFolder VarChar(250), SteamWepApiKey VarChar(250), CurseForgeApiKey VarChar(250), BackupFolder VarChar(250))";
-            //    cmd.ExecuteNonQuery();
-            //}
-
-            //using (var cmd = DbConnection().CreateCommand()) {
-            //    cmd.CommandText = "CREATE TABLE IF NOT EXISTS Plugins(PluginName Varchar(100) PRIMARY KEY, GameType Varchar(250), GameName VarChar(250), Version VarChar(250), Loaded int)";
-            //    cmd.ExecuteNonQuery();
-            //}
-
-            //using (var cmd = DbConnection().CreateCommand()) {
-            //    cmd.CommandText = "CREATE TABLE IF NOT EXISTS Profiles(Key Varchar(100) PRIMARY KEY, Name Varchar(250), Type Varchar(250), InstallationFolder VarChar(250), SteamServerId int, SteamApplicationID int, CurseForgeId int, StartOnBoot int, IncludeAutoBackup int, IncludeAutoUpdate int, RestartIfShutdown int, PluginVersion Varchar(250), ServerPort int, PeerPort int, QueryPort int, UseRCON int, RCONPort int, RCONPassword Varchar(250), ServerVersion Varchar(250), ServerBuildVersion Varchar(250), ExecutablePath Varchar(250), AdditionalSettings TEXT)";
-            //    cmd.ExecuteNonQuery();
-            //}
+            CreateTable<AutoManagement>();
 
             //using (var cmd = DbConnection().CreateCommand()) {
             //    cmd.CommandText =
             //        "CREATE TABLE IF NOT EXISTS AutoManagement(ServerKey Varchar(100), ShutdownServer int, ShutdownHour nvarchar(4), ShutdownSun int, ShutdownMon int, ShutdownTue int, ShutdownWed int, ShutdownThu int, ShutdownFri int, ShutdownSat int, ShutdownSunday int, UpdateServer int, RestartServer int)";
             //    cmd.ExecuteNonQuery();
             //}
-
-            //if (!ColumnExists("Settings", "EnableLogs"))
-            //    using (var cmd = DbConnection().CreateCommand()) {
-            //        cmd.CommandText = "ALTER TABLE Settings ADD EnableLogs int;";
-            //        cmd.ExecuteNonQuery();
-            //    }
-
-            //if (!ColumnExists("Settings", "MaxLogFiles"))
-            //    using (var cmd = DbConnection().CreateCommand()) {
-            //        cmd.CommandText = "ALTER TABLE Settings ADD MaxLogFiles int;";
-            //        cmd.ExecuteNonQuery();
-            //    }
-
-            //if (!ColumnExists("Settings", "MaxLogsDays"))
-            //    using (var cmd = DbConnection().CreateCommand()) {
-            //        cmd.CommandText = "ALTER TABLE Settings ADD MaxLogsDays int;";
-            //        cmd.ExecuteNonQuery();
-            //    }
-
-            //if (!ColumnExists("Profiles", "AdditionalCommands"))
-            //    using (var cmd = DbConnection().CreateCommand()) {
-            //        cmd.CommandText = "ALTER TABLE Profiles ADD AdditionalCommands TEXT;";
-            //        cmd.ExecuteNonQuery();
-            //    }
-
-
-            //if (!ColumnExists("Plugins", "ModProvider"))
-            //    using (var cmd = DbConnection().CreateCommand()) {
-            //        cmd.CommandText = "ALTER TABLE Plugins ADD ModProvider int;";
-            //        cmd.ExecuteNonQuery();
-            //    }
 
         }
 
@@ -288,7 +243,7 @@ namespace OphiussaFramework.DataBaseUtils {
                     propAttr.ForEach(attr => {
                         if (attr is FieldAttributes atr) {
                             if ((!ColumnExists(tableName, pro.Name) && tableExists) || !tableExists) {
-                                if (!atr.Ignore) fieldList.Add($"{pro.Name} {GetDataType(pro, atr.DataType)}");
+                                if (!atr.Ignore) fieldList.Add($"{pro.Name} {GetDataType(pro, atr.DataType)} {(atr.PrimaryKey  ? "PRIMARY KEY" : "")}");
                                 foundAttribute = true;
                             }
                         }
