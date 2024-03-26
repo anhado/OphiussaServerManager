@@ -61,6 +61,7 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -98,10 +99,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommonUtils\EncryptionUtils.cs" />
+    <Compile Include="CommonUtils\FTP.cs" />
     <Compile Include="CommonUtils\IOUtils.cs" />
     <Compile Include="CommonUtils\NetworkTools.cs" />
     <Compile Include="CommonUtils\ProcessUtils.cs" />
     <Compile Include="CommonUtils\ShellLink.cs" />
+    <Compile Include="CommonUtils\StringCipher.cs" />
     <Compile Include="CommonUtils\Utils.cs" />
     <Compile Include="Components\exListBox.cs" />
     <Compile Include="Components\exListBox.Designer.cs">
@@ -120,6 +123,7 @@
       <DependentUpon>ProfileHeader.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\AutoManagement.cs" />
+    <Compile Include="Models\Branches.cs" />
     <Compile Include="Models\LinkProfileForm.cs" />
     <Compile Include="Models\TableAttributes.cs" />
     <Compile Include="Models\FieldAttributes.cs" />
@@ -163,6 +167,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="ServerUtils\ServerUtils.cs" />
+    <Compile Include="Themes\Theme.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="OSM.ico" />

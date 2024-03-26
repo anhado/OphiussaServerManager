@@ -182,12 +182,18 @@ namespace OphiussaFramework.Components {
 
             if (Profile == null) return;
 
-            txtProfileID.DataBindings.Add("Text", Profile, "Key");
-            txtLocation.DataBindings.Add("Text", Profile, "InstallationFolder");
-            txtProfileName.DataBindings.Add("Text", Profile, "Name");
-            txtServerType.DataBindings.Add("Text", Profile, "Type");
-            txtBuild.DataBindings.Add("Text", Profile, "ServerBuildVersion");
-            txtVersion.DataBindings.Add("Text", Profile, "ServerVersion");
+            cboBranch.DataSource    = ConnectionController.SqlLite.GetRecords<Branches>();
+            cboBranch.ValueMember   = "Code";
+            cboBranch.DisplayMember = "Name";
+
+            txtProfileID.DataBindings.Add("Value", Profile, "Key");
+            txtLocation.DataBindings.Add("Value", Profile, "InstallationFolder");
+            txtProfileName.DataBindings.Add("Value", Profile, "Name");
+            txtServerType.DataBindings.Add("Value", Profile, "Type");
+            txtBuild.DataBindings.Add("Value", Profile, "ServerBuildVersion");
+            txtVersion.DataBindings.Add("Value", Profile, "ServerVersion");
+            cboBranch.DataBindings.Add("SelectedValue", Profile, "Branch");
+
 
             CheckInstallStatus();
         }
@@ -219,6 +225,8 @@ namespace OphiussaFramework.Components {
         }
 
         private void btSave_Click(object sender, EventArgs e) {
+            txtDummy.Focus();
+            Profile.Branch = cboBranch.SelectedValue?.ToString();
             ClickSave?.Invoke(this, e);
         }
 
@@ -238,7 +246,7 @@ namespace OphiussaFramework.Components {
         }
 
         private void txtProfileName_Validated(object sender, EventArgs e) {
-            Tab.Text = txtProfileName.Text;
+            Tab.Text = txtProfileName.Value;
         }
 
         private void btChooseFolder_Click(object sender, EventArgs e) {
@@ -251,6 +259,10 @@ namespace OphiussaFramework.Components {
                     MessageBox.Show("Invalid Folder!!");
                 }
             }
+        }
+
+        private void osmLabel4_Click(object sender, EventArgs e) {
+
         }
     }
 }

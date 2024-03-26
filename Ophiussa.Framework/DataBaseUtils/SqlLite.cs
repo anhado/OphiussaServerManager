@@ -22,13 +22,7 @@ namespace OphiussaFramework.DataBaseUtils {
             CreateTable<IPlugin>();
             CreateTable<IProfile>();
             CreateTable<AutoManagement>();
-
-            //using (var cmd = DbConnection().CreateCommand()) {
-            //    cmd.CommandText =
-            //        "CREATE TABLE IF NOT EXISTS AutoManagement(ServerKey Varchar(100), ShutdownServer int, ShutdownHour nvarchar(4), ShutdownSun int, ShutdownMon int, ShutdownTue int, ShutdownWed int, ShutdownThu int, ShutdownFri int, ShutdownSat int, ShutdownSunday int, UpdateServer int, RestartServer int)";
-            //    cmd.ExecuteNonQuery();
-            //}
-
+            CreateTable<Branches>(); 
         }
 
         public SQLiteConnection SqliteConnection { get; private set; }
@@ -95,7 +89,7 @@ namespace OphiussaFramework.DataBaseUtils {
                 if (dt.Rows.Count == 0) return "";
 
                 foreach (DataRow dr in dt.Rows)
-                    if (dr.GetLong("pk") == 1)
+                    if (dr.GetInt64("pk") == 1)
                         return dr.GetString("name");
 
                 return "";
@@ -243,7 +237,7 @@ namespace OphiussaFramework.DataBaseUtils {
                     propAttr.ForEach(attr => {
                         if (attr is FieldAttributes atr) {
                             if ((!ColumnExists(tableName, pro.Name) && tableExists) || !tableExists) {
-                                if (!atr.Ignore) fieldList.Add($"{pro.Name} {GetDataType(pro, atr.DataType)} {(atr.PrimaryKey  ? "PRIMARY KEY" : "")}");
+                                if (!atr.Ignore) fieldList.Add($"{pro.Name} {GetDataType(pro, atr.DataType)} {(atr.PrimaryKey  ? "PRIMARY KEY" : "")} {(atr.AutoIncrement ? "AUTOINCREMENT" : "")}");
                                 foundAttribute = true;
                             }
                         }
@@ -286,7 +280,7 @@ namespace OphiussaFramework.DataBaseUtils {
                      pro.PropertyType == typeof(int) ||
                      pro.PropertyType == typeof(Int32) ||
                      pro.PropertyType == typeof(Int64)) {
-                return "int";
+                return "integer";
             }
             else {
                 return "VarChar(250)";
@@ -322,7 +316,7 @@ namespace OphiussaFramework.DataBaseUtils {
                 return 0;
             }
             else {
-                return pInfo.GetValue(obj).ToString();
+                return pInfo.GetValue(obj)?.ToString();
             }
 
         }

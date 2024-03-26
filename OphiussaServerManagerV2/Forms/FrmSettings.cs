@@ -24,8 +24,8 @@ namespace OphiussaServerManagerV2 {
             txtSteamWebApiKey.DataBindings.Add("Text", ConnectionController.Settings, "SteamWepApiKey");
             txtCurseForgeKey.DataBindings.Add("Text", ConnectionController.Settings, "CurseForgeApiKey");
             chkEnableLogs.DataBindings.Add("Checked", ConnectionController.Settings, "EnableLogs");
-            txtMaxDays.DataBindings.Add("Text", ConnectionController.Settings, "MaxLogsDays");
-            txtMaxFiles.DataBindings.Add("Text", ConnectionController.Settings, "MaxLogFiles");
+            txtMaxDays.DataBindings.Add("Value", ConnectionController.Settings, "MaxLogsDays");
+            txtMaxFiles.DataBindings.Add("Value", ConnectionController.Settings, "MaxLogFiles");
 
             
         }

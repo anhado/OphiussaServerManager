@@ -29,9 +29,7 @@ namespace BasePlugin {
         public string RCONPassword       { get; set; } = Membership.GeneratePassword(10, 6);
         public bool   UseRCON            { get; set; } = false;
         public string ExecutablePath     { get; set; } = "Dummy.exe";
-        public string TestProperty1      { get; set; } = "";
-        public bool   TestProperty2      { get; set; } = true;
-        public int    TestProperty3      { get; set; } = 999;
+        public string Branch             { get; set; } 
 
     }
 }

@@ -35,12 +35,13 @@
             // 
             // profileHeader1
             // 
+            this.profileHeader1.BackColor = System.Drawing.Color.White;
             this.profileHeader1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.profileHeader1.Dock = System.Windows.Forms.DockStyle.Top;
             this.profileHeader1.Location = new System.Drawing.Point(0, 0);
             this.profileHeader1.Name = "profileHeader1";
             this.profileHeader1.RconEnabled = true;
-            this.profileHeader1.Size = new System.Drawing.Size(1279, 148);
+            this.profileHeader1.Size = new System.Drawing.Size(1279, 208);
             this.profileHeader1.TabIndex = 0;
             this.profileHeader1.ClickReload += new System.EventHandler(this.profileHeader1_ClickReload);
             this.profileHeader1.ClickSync += new System.EventHandler(this.profileHeader1_ClickSync);
@@ -51,7 +52,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(713, 114);
+            this.button1.Location = new System.Drawing.Point(1150, 111);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;

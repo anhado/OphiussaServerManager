@@ -32,6 +32,6 @@ namespace BasePlugin {
         public string TestProperty1      { get; set; } = "";
         public bool   TestProperty2      { get; set; } = true;
         public int    TestProperty3      { get; set; } = 999;
-
+        public string Branch             { get; set; }
     }
 }

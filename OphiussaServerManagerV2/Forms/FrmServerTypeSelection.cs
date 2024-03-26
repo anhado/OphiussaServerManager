@@ -23,14 +23,7 @@ namespace OphiussaServerManagerV2 {
 
             txtDirName.Text = $"Server{folders.Length + 1}";
         }
-
-        private void chkUsedInstall_CheckedChanged(object sender, EventArgs e) {
-            if (chkUsedInstall.Checked)
-                txtDirName.Enabled = false;
-            else
-                txtDirName.Enabled = true;
-        }
-
+         
         private void button1_Click(object sender, EventArgs e) {
             fdDiag.ShowDialog();
             txtDir.Text = fdDiag.SelectedPath;
@@ -65,6 +58,17 @@ namespace OphiussaServerManagerV2 {
 
             AddNewTabPage.Invoke(((PluginType)cboServerType.SelectedItem, dir));
             Close();
+        }
+
+        private void chkUsedInstall_CheckedChanged(object sender) { 
+            if (chkUsedInstall.Checked)
+                txtDirName.Enabled = false;
+            else
+                txtDirName.Enabled = true;
+        }
+
+        private void osmButton_11_Click(object sender, EventArgs e) {
+            this.Close();
         }
     }
 }

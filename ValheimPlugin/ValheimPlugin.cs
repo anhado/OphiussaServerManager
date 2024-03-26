@@ -15,14 +15,14 @@ using Message = OphiussaFramework.Models.Message;
 namespace BasePlugin {
     public class ValheimPlugin : IPlugin {
         public ValheimPlugin() {
-            DefaultCommands = new List<CommandDefinition>() { new CommandDefinition() { Order = 1, Name = "Test", NamePrefix = "?", AddSpaceInPrefix = false } }; 
+            DefaultCommands = new List<CommandDefinition>(); 
         }
        // internal static readonly PluginType              Info = new PluginType { GameType = "Game1", Name = "Game 1 Name" };
         public IProfile                Profile         { get; set; } = new Profile();
-        public string                  GameType        { get; set; } = "Game1";
-        public string                  GameName        { get; set; } = "Game 1 Name";
+        public string                  GameType        { get; set; } = "Valheim";
+        public string                  GameName        { get; set; } = "Valheim";
         public TabPage                 TabPage         { get; set; }
-        public string                  ExecutablePath  { get; set; } = "Dummy123.exe"; //THIS WILL OVERWRITE THE PROFILE, I JUST NEED THAT IN PROFILE TO AVOID Deserialize THE ADDITIONAL SETTINGS
+        public string                  ExecutablePath  { get; set; } = "valheim_server.exe"; //THIS WILL OVERWRITE THE PROFILE, I JUST NEED THAT IN PROFILE TO AVOID Deserialize THE ADDITIONAL SETTINGS
         public string                  PluginVersion   { get; set; } = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
         public string                  PluginName      { get; set; } = Path.GetFileName(FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileName); 
         public int                     ServerProcessID =>  Utils.GetProcessRunning(Path.Combine(Profile.InstallationFolder, Profile.ExecutablePath)).Id; 
@@ -31,7 +31,7 @@ namespace BasePlugin {
         public bool                    IsInstalled     => IsValidFolder(Profile.InstallationFolder);
         public List<FileInfo>          FilesToBackup   => throw new NotImplementedException();
         public List<CommandDefinition> DefaultCommands { get; set; }
-        public ModProvider             ModProvider     { get; set; } = ModProvider.None;
+        public ModProvider             ModProvider     { get; set; } = ModProvider.NexusMods;
 
 
         public bool Loaded { get; set; } = true;

@@ -22,6 +22,7 @@ namespace OphiussaServerManagerV2 {
 
         public MainForm() {
             InitializeComponent();
+            //this.ControlBox = false;
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e) {
