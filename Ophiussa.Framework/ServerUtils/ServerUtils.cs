@@ -36,8 +36,10 @@ namespace OphiussaFramework.ServerUtils {
              
             IProfile profile           = e.Profile;
             profile.Type               = e.Plugin.GameType;
+            profile.AdditionalSettings = null;
+            profile.AdditionalCommands = null;
             profile.AdditionalSettings = JsonConvert.SerializeObject(e.Profile,                Formatting.Indented);
-            profile.AdditionalCommands = JsonConvert.SerializeObject(e.Plugin.DefaultCommands, Formatting.Indented);
+            profile.AdditionalCommands = JsonConvert.SerializeObject(e.Plugin.DefaultCommands, Formatting.Indented); 
             ConnectionController.SqlLite.Upsert<IProfile>(profile);
         }
 

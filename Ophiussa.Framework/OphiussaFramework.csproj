@@ -125,6 +125,8 @@
     <Compile Include="Models\AutoManagement.cs" />
     <Compile Include="Models\Branches.cs" />
     <Compile Include="Models\LinkProfileForm.cs" />
+    <Compile Include="Models\ProcessorAffinity.cs" />
+    <Compile Include="Models\ProcessorAffinityModel.cs" />
     <Compile Include="Models\TableAttributes.cs" />
     <Compile Include="Models\FieldAttributes.cs" />
     <Compile Include="DataBaseUtils\SqlLite.cs" />

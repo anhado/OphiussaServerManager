@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using OphiussaFramework.CommonUtils;
 using OphiussaFramework.DataBaseUtils;
 using OphiussaFramework.Interfaces;
 using OphiussaFramework.Models;
@@ -15,13 +16,38 @@ namespace OphiussaFramework {
         public static SqlLite                              SqlLite  { get; set; }
         public static Settings                             Settings { get; set; }
         public static Form                                 MainForm { get; internal set; }
+        public static List<NetworkTools.IpList>            IpLists       = new List<NetworkTools.IpList>();
+        public static List<ProcessorAffinityModel>         AffinityModel = new List<ProcessorAffinityModel>();
+        public static List<ProcessorAffinity>              ProcessorList = new List<ProcessorAffinity>();
         public static Dictionary<string, PluginController> Plugins;
         public static Dictionary<string, PluginController> ServerControllers = new Dictionary<string, PluginController>();
 
 
         public static void Initialize() {
             SqlLite  = new SqlLite();
-            Settings = SqlLite.GetRecord<Settings>(); 
+            Settings = SqlLite.GetRecord<Settings>();
+            IpLists  = NetworkTools.GetAllHostIp();
+
+
+            //get CPU Affinities
+            AffinityModel.Clear();
+            Enum.GetNames(typeof(ProcessPriority)).ToList().ForEach(e => {
+                                                                        AffinityModel.Add(new ProcessorAffinityModel {
+                                                                                                                         Code = e,
+                                                                                                                         Name = e
+                                                                                                                     });
+                                                                    });
+
+            //get CPU List
+            ProcessorList.Clear();
+            for (int i = 0; i < Utils.GetProcessorCount(); i++)
+                ProcessorList.Add(
+                                  new ProcessorAffinity {
+                                                            ProcessorNumber = i,
+                                                            Selected        = true
+                                                        }
+                                 );
+
             LoadPlugins();
         }
 

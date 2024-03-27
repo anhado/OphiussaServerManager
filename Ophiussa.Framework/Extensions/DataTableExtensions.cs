@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using Newtonsoft.Json;
 using OphiussaFramework.Interfaces;
 using OphiussaFramework.Models;
 
@@ -22,7 +23,21 @@ namespace OphiussaFramework.Extensions {
                     else
                         continue;
                 }
-                else if (pro.PropertyType == typeof(int)) {
+                else if (pro.PropertyType.IsEnum) {
+                    if (pro.Name == column.ColumnName && dr[column.ColumnName] != DBNull.Value)
+                        pro.SetValue(obj, int.Parse(dr[column.ColumnName].ToString()), null);
+                    else
+                        continue;
+                }
+                else if (pro.PropertyType.IsClass && pro.PropertyType != typeof(string)) {
+                    if (pro.Name == column.ColumnName && dr[column.ColumnName] != DBNull.Value)
+
+                             
+
+                        pro.SetValue(obj, JsonConvert.DeserializeObject<ProcessorAffinityModel>(dr[column.ColumnName].ToString()), null);
+                    else
+                        continue;
+                }else if (pro.PropertyType == typeof(int)) {
                     if (pro.Name == column.ColumnName && dr[column.ColumnName] != DBNull.Value)
                         pro.SetValue(obj, int.Parse(dr[column.ColumnName].ToString()), null);
                     else

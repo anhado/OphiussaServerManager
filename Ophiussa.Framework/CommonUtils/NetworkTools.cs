@@ -58,7 +58,7 @@ namespace OphiussaFramework.CommonUtils {
 
                 return string.Empty;
             }
-        }
+        } 
 
         public static void DownloadSteamCmd() {
             using (var wc = new WebClient()) {

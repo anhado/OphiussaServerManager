@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using Newtonsoft.Json;
 using OphiussaFramework.CommonUtils;
 using OphiussaFramework.Extensions;
 using OphiussaFramework.Interfaces;
@@ -240,13 +242,13 @@ namespace OphiussaFramework.DataBaseUtils {
                     bool foundAttribute = false;
                     List<object> propAttr = pro.GetCustomAttributes(true).ToList();
                     propAttr.ForEach(attr => {
-                        if (attr is FieldAttributes atr) {
-                            if ((!ColumnExists(tableName, pro.Name) && tableExists) || !tableExists) {
-                                if (!atr.Ignore) fieldList.Add($"{pro.Name} {GetDataType(pro, atr.DataType)} {(atr.PrimaryKey ? "PRIMARY KEY" : "")} {(atr.AutoIncrement ? "AUTOINCREMENT" : "")}");
-                                foundAttribute = true;
-                            }
-                        }
-                    });
+                                            if (attr is FieldAttributes atr) {
+                                                if ((!ColumnExists(tableName, pro.Name) && tableExists) || !tableExists) {
+                                                    if (!atr.Ignore) fieldList.Add($"{pro.Name} {GetDataType(pro, atr.DataType)} {(atr.PrimaryKey ? "PRIMARY KEY" : "")} {(atr.AutoIncrement ? "AUTOINCREMENT" : "")}");
+                                                    foundAttribute = true;
+                                                }
+                                            }
+                                     });
                     if (!foundAttribute && ((!ColumnExists(tableName, pro.Name) && tableExists) || !tableExists)) {
                         fieldList.Add($"{pro.Name} {GetDataType(pro)}");
                     }
@@ -255,9 +257,12 @@ namespace OphiussaFramework.DataBaseUtils {
                 if (fieldList.Count == 0) return true;
 
                 if (tableExists) {
-                    using (var cmd = DbConnection().CreateCommand()) {
-                        cmd.CommandText = $"ALTER TABLE {tableName} ADD {string.Join(",", fieldList.ToArray())};";
-                        cmd.ExecuteNonQuery();
+
+                    foreach (var fld in fieldList) {
+                        using (var cmd = DbConnection().CreateCommand()) {
+                            cmd.CommandText = $"ALTER TABLE {tableName} ADD {fld};";
+                            cmd.ExecuteNonQuery();
+                        } 
                     }
                 }
                 else {
@@ -270,18 +275,20 @@ namespace OphiussaFramework.DataBaseUtils {
                 return true;
             }
             catch (Exception e) {
-                OphiussaLogger.Logger.Error(e);
+                OphiussaLogger.Logger?.Error(e);
                 return false;
             }
         }
 
         private string GetDataType(PropertyInfo pro, string userConfig = "") {
             if (!string.IsNullOrEmpty(userConfig)) return userConfig;
-            if (pro.PropertyType == typeof(double)) {
+            if (pro.PropertyType.IsEnum) {
+                return "integer";
+            }
+            else if (pro.PropertyType == typeof(double)) {
                 return "FLOAT";
             }
-            else if (pro.PropertyType == typeof(bool) ||
-                     pro.PropertyType == typeof(Enum) ||
+            else if (pro.PropertyType == typeof(bool) || 
                      pro.PropertyType == typeof(int) ||
                      pro.PropertyType == typeof(Int32) ||
                      pro.PropertyType == typeof(Int64)) {
@@ -299,15 +306,25 @@ namespace OphiussaFramework.DataBaseUtils {
             var pInfo = fields.FirstOrDefault(f => f.Name == pro.Name);
             if (pInfo == null) return null;
 
-            if (pro.PropertyType == typeof(double)) {
+            if (pro.PropertyType.IsEnum) {
+
+                    var v = (int)pInfo.GetValue(obj); 
+                return v;
+            }
+            else if(pro.PropertyType.IsClass && pro.PropertyType != typeof(string)) {
+                 
+                string v = JsonConvert.SerializeObject(pInfo.GetValue(obj), Formatting.Indented);   
+                 
+                return v;
+            }
+            else if (pro.PropertyType == typeof(double)) {
 
                 string v = pInfo.GetValue(obj).ToString();
 
                 if (float.TryParse(v, NumberStyles.Any, CultureInfo.InvariantCulture, out float res)) return res;
                 return 0;
             }
-            else if (pro.PropertyType == typeof(Enum) ||
-                     pro.PropertyType == typeof(int) ||
+            else if (pro.PropertyType == typeof(int) ||
                      pro.PropertyType == typeof(Int32) ||
                      pro.PropertyType == typeof(Int64)) {
 

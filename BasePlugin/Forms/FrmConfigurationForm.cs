@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using OphiussaFramework;
 using OphiussaFramework.CommonUtils;
 using OphiussaFramework.Interfaces;
 using OphiussaFramework.Models;
@@ -17,6 +18,8 @@ namespace BasePlugin.Forms {
             profileHeader1.Plugin  = _plugin;
             profileHeader1.Tab     = tab;
             _tabPage               = tab;
+
+            if (_plugin.Profile.CpuAffinityList.Count == 0) _plugin.Profile.CpuAffinityList = ConnectionController.ProcessorList;
         }
 
         private void profileHeader1_ClickSave(object sender, EventArgs e) {

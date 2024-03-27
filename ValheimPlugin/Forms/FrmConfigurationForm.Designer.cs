@@ -919,6 +919,8 @@
             // 
             // groupBox14
             // 
+            this.groupBox14.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.groupBox14.Controls.Add(this.tbStaminaRegenRate);
             this.groupBox14.Controls.Add(this.tbStaminaRate);
@@ -942,6 +944,8 @@
             // 
             // tbStaminaRegenRate
             // 
+            this.tbStaminaRegenRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbStaminaRegenRate.DisableTextBox = false;
             this.tbStaminaRegenRate.DisableTrackBar = false;
             this.tbStaminaRegenRate.Location = new System.Drawing.Point(6, 372);
@@ -958,6 +962,8 @@
             // 
             // tbStaminaRate
             // 
+            this.tbStaminaRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbStaminaRate.DisableTextBox = false;
             this.tbStaminaRate.DisableTrackBar = false;
             this.tbStaminaRate.Location = new System.Drawing.Point(6, 340);
@@ -974,6 +980,8 @@
             // 
             // tbSkillReductionRate
             // 
+            this.tbSkillReductionRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbSkillReductionRate.DisableTextBox = false;
             this.tbSkillReductionRate.DisableTrackBar = false;
             this.tbSkillReductionRate.Location = new System.Drawing.Point(6, 308);
@@ -990,6 +998,8 @@
             // 
             // tbSkillGainRate
             // 
+            this.tbSkillGainRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbSkillGainRate.DisableTextBox = false;
             this.tbSkillGainRate.DisableTrackBar = false;
             this.tbSkillGainRate.Location = new System.Drawing.Point(6, 276);
@@ -1006,6 +1016,8 @@
             // 
             // tbResourceRate
             // 
+            this.tbResourceRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbResourceRate.DisableTextBox = false;
             this.tbResourceRate.DisableTrackBar = false;
             this.tbResourceRate.Location = new System.Drawing.Point(6, 244);
@@ -1022,6 +1034,8 @@
             // 
             // tbPlayerDamage
             // 
+            this.tbPlayerDamage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbPlayerDamage.DisableTextBox = false;
             this.tbPlayerDamage.DisableTrackBar = false;
             this.tbPlayerDamage.Location = new System.Drawing.Point(6, 212);
@@ -1038,6 +1052,8 @@
             // 
             // tbMoveStaminaRate
             // 
+            this.tbMoveStaminaRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbMoveStaminaRate.DisableTextBox = false;
             this.tbMoveStaminaRate.DisableTrackBar = false;
             this.tbMoveStaminaRate.Location = new System.Drawing.Point(6, 180);
@@ -1054,6 +1070,8 @@
             // 
             // tbEventRate
             // 
+            this.tbEventRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbEventRate.DisableTextBox = false;
             this.tbEventRate.DisableTrackBar = false;
             this.tbEventRate.Location = new System.Drawing.Point(6, 148);
@@ -1070,6 +1088,8 @@
             // 
             // tbEnemySpeedSize
             // 
+            this.tbEnemySpeedSize.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbEnemySpeedSize.DisableTextBox = false;
             this.tbEnemySpeedSize.DisableTrackBar = false;
             this.tbEnemySpeedSize.Location = new System.Drawing.Point(6, 116);
@@ -1086,6 +1106,8 @@
             // 
             // tbEnemyLevelUpRate
             // 
+            this.tbEnemyLevelUpRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbEnemyLevelUpRate.DisableTextBox = false;
             this.tbEnemyLevelUpRate.DisableTrackBar = false;
             this.tbEnemyLevelUpRate.Location = new System.Drawing.Point(6, 84);
@@ -1102,6 +1124,8 @@
             // 
             // tbEnemyDamage
             // 
+            this.tbEnemyDamage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbEnemyDamage.DisableTextBox = false;
             this.tbEnemyDamage.DisableTrackBar = false;
             this.tbEnemyDamage.Location = new System.Drawing.Point(6, 52);
@@ -1118,6 +1142,8 @@
             // 
             // tbDamageTaken
             // 
+            this.tbDamageTaken.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbDamageTaken.DisableTextBox = false;
             this.tbDamageTaken.DisableTrackBar = false;
             this.tbDamageTaken.Location = new System.Drawing.Point(6, 20);

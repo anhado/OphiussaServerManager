@@ -16,6 +16,10 @@ namespace OphiussaFramework.CommonUtils {
             return Versions.Equal;
         }
 
+        public static int GetProcessorCount() {
+            return Environment.ProcessorCount;
+        }
+
         public static Process GetProcessRunning(string executablePath) {
             string processeName = Path.GetFileNameWithoutExtension(executablePath);
             string clientFile   = executablePath;
