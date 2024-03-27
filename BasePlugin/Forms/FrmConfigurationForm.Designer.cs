@@ -40,7 +40,7 @@
             this.profileHeader1.Location = new System.Drawing.Point(0, 0);
             this.profileHeader1.Name = "profileHeader1";
             this.profileHeader1.RconEnabled = true;
-            this.profileHeader1.Size = new System.Drawing.Size(800, 148);
+            this.profileHeader1.Size = new System.Drawing.Size(800, 168);
             this.profileHeader1.TabIndex = 0;
             this.profileHeader1.ClickReload += new System.EventHandler(this.profileHeader1_ClickReload);
             this.profileHeader1.ClickSync += new System.EventHandler(this.profileHeader1_ClickSync);

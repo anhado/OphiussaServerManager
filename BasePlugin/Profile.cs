@@ -13,6 +13,7 @@ namespace BasePlugin {
         public string InstallationFolder { get; set; } = "";
         public string AdditionalSettings { get; set; } = "";
         public string AdditionalCommands { get; set; } = "";
+        public string Branch             { get; set; }
         public int    SteamServerId      { get; set; } = 0;
         public int    SteamApplicationID { get; set; } = 0;
         public int    CurseForgeId       { get; set; } = 0;
@@ -32,6 +33,6 @@ namespace BasePlugin {
         public string TestProperty1      { get; set; } = "";
         public bool   TestProperty2      { get; set; } = true;
         public int    TestProperty3      { get; set; } = 999;
-
+        public string ServerPassword     { get; set; }
     }
 }
