@@ -98,10 +98,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommonUtils\EncryptionUtils.cs" />
+    <Compile Include="CommonUtils\FTP.cs" />
     <Compile Include="CommonUtils\IOUtils.cs" />
     <Compile Include="CommonUtils\NetworkTools.cs" />
     <Compile Include="CommonUtils\ProcessUtils.cs" />
     <Compile Include="CommonUtils\ShellLink.cs" />
+    <Compile Include="CommonUtils\StringCipher.cs" />
     <Compile Include="CommonUtils\Utils.cs" />
     <Compile Include="Components\exListBox.cs" />
     <Compile Include="Components\exListBox.Designer.cs">
@@ -119,7 +121,9 @@
     <Compile Include="Components\ProfileHeader.Designer.cs">
       <DependentUpon>ProfileHeader.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\CommonExtensions.cs" />
     <Compile Include="Models\AutoManagement.cs" />
+    <Compile Include="Models\Branches.cs" />
     <Compile Include="Models\LinkProfileForm.cs" />
     <Compile Include="Models\TableAttributes.cs" />
     <Compile Include="Models\FieldAttributes.cs" />

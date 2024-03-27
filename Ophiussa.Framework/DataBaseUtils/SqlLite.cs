@@ -23,12 +23,7 @@ namespace OphiussaFramework.DataBaseUtils {
             CreateTable<IProfile>();
             CreateTable<AutoManagement>();
 
-            //using (var cmd = DbConnection().CreateCommand()) {
-            //    cmd.CommandText =
-            //        "CREATE TABLE IF NOT EXISTS AutoManagement(ServerKey Varchar(100), ShutdownServer int, ShutdownHour nvarchar(4), ShutdownSun int, ShutdownMon int, ShutdownTue int, ShutdownWed int, ShutdownThu int, ShutdownFri int, ShutdownSat int, ShutdownSunday int, UpdateServer int, RestartServer int)";
-            //    cmd.ExecuteNonQuery();
-            //}
-
+            CreateTable<Branches>();
         }
 
         public SQLiteConnection SqliteConnection { get; private set; }
@@ -95,16 +90,17 @@ namespace OphiussaFramework.DataBaseUtils {
                 if (dt.Rows.Count == 0) return "";
 
                 foreach (DataRow dr in dt.Rows)
-                    if (dr.GetLong("pk") == 1)
+                    if (dr.GetInt64("pk") == 1)
                         return dr.GetString("name");
 
                 return "";
             }
             catch (Exception e) {
-                OphiussaLogger.Logger.Error(e);
+                OphiussaLogger.Logger?.Error(e);
+                Console.WriteLine(e.Message);
                 return "";
             }
-        } 
+        }
 
         private SQLiteConnection DbConnection() {
             SqliteConnection = new SQLiteConnection("Data Source=database.sqlite; Version=3;");
@@ -141,7 +137,8 @@ namespace OphiussaFramework.DataBaseUtils {
                 return dt.ConvertDataTable<T>();
             }
             catch (Exception e) {
-                OphiussaLogger.Logger.Error(e);
+                OphiussaLogger.Logger?.Error(e);
+                Console.WriteLine(e.Message);
                 return null;
             }
         }
@@ -175,7 +172,8 @@ namespace OphiussaFramework.DataBaseUtils {
                 return dt.ConvertDataTableB<T>();
             }
             catch (Exception e) {
-                OphiussaLogger.Logger.Error(e);
+                OphiussaLogger.Logger?.Error(e);
+                Console.WriteLine(e.Message);
                 return null;
             }
         }
@@ -209,7 +207,8 @@ namespace OphiussaFramework.DataBaseUtils {
                 return dt.Rows[0].GetItem<T>();
             }
             catch (Exception e) {
-                OphiussaLogger.Logger.Error(e);
+                OphiussaLogger.Logger?.Error(e);
+                Console.WriteLine(e.Message);
                 return default;
             }
         }
@@ -243,7 +242,7 @@ namespace OphiussaFramework.DataBaseUtils {
                     propAttr.ForEach(attr => {
                         if (attr is FieldAttributes atr) {
                             if ((!ColumnExists(tableName, pro.Name) && tableExists) || !tableExists) {
-                                if (!atr.Ignore) fieldList.Add($"{pro.Name} {GetDataType(pro, atr.DataType)} {(atr.PrimaryKey  ? "PRIMARY KEY" : "")}");
+                                if (!atr.Ignore) fieldList.Add($"{pro.Name} {GetDataType(pro, atr.DataType)} {(atr.PrimaryKey ? "PRIMARY KEY" : "")} {(atr.AutoIncrement ? "AUTOINCREMENT" : "")}");
                                 foundAttribute = true;
                             }
                         }
@@ -286,7 +285,7 @@ namespace OphiussaFramework.DataBaseUtils {
                      pro.PropertyType == typeof(int) ||
                      pro.PropertyType == typeof(Int32) ||
                      pro.PropertyType == typeof(Int64)) {
-                return "int";
+                return "integer";
             }
             else {
                 return "VarChar(250)";
@@ -316,20 +315,21 @@ namespace OphiussaFramework.DataBaseUtils {
 
                 if (int.TryParse(v, NumberStyles.Any, CultureInfo.InvariantCulture, out int res)) return res;
                 return 0;
-            } else if (pro.PropertyType == typeof(bool)) {
-                string v                                = pInfo.GetValue(obj).ToString();
-                if (bool.TryParse(v, out bool res)) return res ? 1:0;
+            }
+            else if (pro.PropertyType == typeof(bool)) {
+                string v = pInfo.GetValue(obj).ToString();
+                if (bool.TryParse(v, out bool res)) return res ? 1 : 0;
                 return 0;
             }
             else {
-                return pInfo.GetValue(obj).ToString();
+                return pInfo.GetValue(obj)?.ToString();
             }
 
         }
 
         public bool Upsert<T>(object obj) {
             try {
-                var temp = typeof(T); 
+                var temp = typeof(T);
 
                 string tableName = temp.Name;
                 List<object> classAttr = temp.GetCustomAttributes(true).ToList();
@@ -385,19 +385,19 @@ namespace OphiussaFramework.DataBaseUtils {
         public bool Delete<T>(string keyValue) {
             try {
 
-                var temp   = typeof(T); 
+                var temp = typeof(T);
 
-                string       tableName = temp.Name;
+                string tableName = temp.Name;
                 List<object> classAttr = temp.GetCustomAttributes(true).ToList();
 
                 if (classAttr.Count > 0) {
                     bool foundAttribute = false;
                     classAttr.ForEach(attr => {
-                                          if (attr is TableAttributes atr) {
-                                              tableName      = atr.TableName;
-                                              foundAttribute = true;
-                                          }
-                                      });
+                        if (attr is TableAttributes atr) {
+                            tableName = atr.TableName;
+                            foundAttribute = true;
+                        }
+                    });
                     if (!foundAttribute) tableName = temp.Name;
                 }
 

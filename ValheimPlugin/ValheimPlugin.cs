@@ -19,10 +19,10 @@ namespace BasePlugin {
         }
        // internal static readonly PluginType              Info = new PluginType { GameType = "Game1", Name = "Game 1 Name" };
         public IProfile                Profile         { get; set; } = new Profile();
-        public string                  GameType        { get; set; } = "Game1";
-        public string                  GameName        { get; set; } = "Game 1 Name";
+        public string                  GameType        { get; set; } = "Valheim";
+        public string                  GameName        { get; set; } = "Valheim";
         public TabPage                 TabPage         { get; set; }
-        public string                  ExecutablePath  { get; set; } = "Dummy123.exe"; //THIS WILL OVERWRITE THE PROFILE, I JUST NEED THAT IN PROFILE TO AVOID Deserialize THE ADDITIONAL SETTINGS
+        public string                  ExecutablePath  { get; set; } = "valheim_server.exe"; //THIS WILL OVERWRITE THE PROFILE, I JUST NEED THAT IN PROFILE TO AVOID Deserialize THE ADDITIONAL SETTINGS
         public string                  PluginVersion   { get; set; } = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
         public string                  PluginName      { get; set; } = Path.GetFileName(FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileName); 
         public int                     ServerProcessID =>  Utils.GetProcessRunning(Path.Combine(Profile.InstallationFolder, Profile.ExecutablePath)).Id; 
@@ -164,8 +164,8 @@ namespace BasePlugin {
         }
 
         public Message SaveSettingsToDisk() {
-            //TODO:(New Games)Save settings to disc
-            return new Message() { Exception = new NotImplementedException(), MessageText = "NOT IMPLEMENTED", Success = false };
+            //NOT USED
+            return new Message() { MessageText = "NOT USED", Success = true};
         }
 
         public string GetVersion() {
@@ -176,6 +176,76 @@ namespace BasePlugin {
         public string GetBuild() {
             //TODO:(New Games)Save settings to disc
             return "NOT IMPLEMENTED"; //  throw new NotImplementedException();
+        }
+
+
+        public string GetCommandLinesArguments(Settings settings, Profile profile, string locaIp) {
+            string cmd = string.Empty;
+
+            var hifenArgs = new List<string>();
+
+            hifenArgs.Add(" -nographics");
+            hifenArgs.Add(" -batchmode");
+            hifenArgs.Add($" -name \"{profile.Name}\"");
+            hifenArgs.Add($" -port {profile.ServerPort}");
+            hifenArgs.Add($" -world \"{profile.WordName}\"");
+            hifenArgs.Add($" -password \"{profile.ServerPassword}\"");
+
+            if (!string.IsNullOrEmpty(profile.SaveLocation)) hifenArgs.Add($" -savedir \"{profile.SaveLocation}\"");
+
+            hifenArgs.Add($" -public {(profile.Public ? 1 : 0)}");
+
+            if (!string.IsNullOrEmpty(profile.LogFileLocation)) hifenArgs.Add($" -logFile \"{profile.LogFileLocation}\\VAL_{profile.Key}.log\"");
+
+            hifenArgs.Add($" -saveinterval {profile.AutoSavePeriod * 60}");
+            hifenArgs.Add($" -backups {profile.TotalBackups}");
+            hifenArgs.Add($" -backupshort {profile.BackupShort * 60}");
+            hifenArgs.Add($" -backuplong {profile.BackupLong * 60}");
+
+            if (profile.Crossplay) hifenArgs.Add(" -crossplay");
+            if (!string.IsNullOrEmpty(profile.InstanceId)) hifenArgs.Add($" -instanceid \"{profile.InstanceId}\"");
+
+            hifenArgs.Add($" -preset {profile.Preset.ToString().ToLower()}");
+
+            if (profile.Combat != Combat.Default) hifenArgs.Add($" -modifier combat {profile.Combat.ToString().ToLower()}");
+            if (profile.DeathPenalty != DeathPenalty.Default) hifenArgs.Add($" -modifier deathpenalty {profile.DeathPenalty.ToString().ToLower()}");
+            if (profile.Resources != Resources.Default) hifenArgs.Add($" -modifier resources {profile.Resources.ToString().ToLower()}");
+            if (profile.Raids != Raids.Default) hifenArgs.Add($" -modifier raids {profile.Raids.ToString().ToLower()}");
+            if (profile.Portals != Portals.Default) hifenArgs.Add($" -modifier portals {profile.Portals.ToString().ToLower()}");
+
+            if (profile.NoBuildcost) hifenArgs.Add(" -setkey nobuildcost");
+            if (profile.PlayerEvents) hifenArgs.Add(" -setkey playerevents");
+            if (profile.PassiveMobs) hifenArgs.Add(" -setkey passivemobs");
+            if (profile.NoMap) hifenArgs.Add(" -setkey nomap");
+            if (profile.AllPiecesUnlocked) hifenArgs.Add(" -setkey AllPiecesUnlocked");
+            if (profile.AllRecipesUnlocked) hifenArgs.Add(" -setkey AllRecipesUnlocked");
+            if (profile.DeathDeleteItems) hifenArgs.Add(" -setkey DeathDeleteItems");
+            if (profile.DeathDeleteUnequipped) hifenArgs.Add(" -setkey DeathDeleteUnequipped");
+            if (profile.DeathKeepEquip) hifenArgs.Add(" -setkey DeathKeepEquip");
+            if (profile.DeathSkillsReset) hifenArgs.Add(" -setkey DeathSkillsReset");
+            if (profile.DungeonBuild) hifenArgs.Add(" -setkey DungeonBuild");
+            if (profile.NoCraftCost) hifenArgs.Add(" -setkey NoCraftCost");
+            if (profile.NoBossPortals) hifenArgs.Add(" -setkey NoBossPortals");
+            if (profile.NoPortals) hifenArgs.Add(" -setkey NoPortals");
+            if (profile.NoWorkbench) hifenArgs.Add(" -setkey NoWorkbench");
+            if (profile.TeleportAll) hifenArgs.Add(" -setkey TeleportAll");
+
+            if (profile.DamageTaken != 100f) hifenArgs.Add($" -setkey DamageTaken {profile.DamageTaken}");
+            if (profile.EnemyDamage != 100f) hifenArgs.Add($" -setkey EnemyDamage {profile.EnemyDamage}");
+            if (profile.EnemyLevelUpRate != 100f) hifenArgs.Add($" -setkey EnemyLevelUpRate {profile.EnemyLevelUpRate}");
+            if (profile.EnemySpeedSize != 100f) hifenArgs.Add($" -setkey EnemySpeedSize {profile.EnemySpeedSize}");
+            if (profile.EventRate != 100f) hifenArgs.Add($" -setkey EventRate {profile.EventRate}");
+            if (profile.MoveStaminaRate != 100f) hifenArgs.Add($" -setkey MoveStaminaRate {profile.MoveStaminaRate}");
+            if (profile.PlayerDamage != 100f) hifenArgs.Add($" -setkey PlayerDamage {profile.PlayerDamage}");
+            if (profile.ResourceRate != 100f) hifenArgs.Add($" -setkey ResourceRate {profile.ResourceRate}");
+            if (profile.SkillGainRate != 100f) hifenArgs.Add($" -setkey SkillGainRate {profile.SkillGainRate}");
+            if (profile.SkillReductionRate != 100f) hifenArgs.Add($" -setkey SkillReductionRate {profile.SkillReductionRate}");
+            if (profile.StaminaRate != 100f) hifenArgs.Add($" -setkey StaminaRate  {profile.StaminaRate}");
+            if (profile.StaminaRegenRate != 100f) hifenArgs.Add($" -setkey StaminaRegenRate {profile.StaminaRegenRate}");
+
+            cmd += string.Join("", hifenArgs.ToArray());
+
+            return cmd;
         }
     }
 }

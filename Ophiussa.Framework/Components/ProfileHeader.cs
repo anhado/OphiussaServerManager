@@ -182,12 +182,17 @@ namespace OphiussaFramework.Components {
 
             if (Profile == null) return;
 
+            cboBranch.DataSource = ConnectionController.SqlLite.GetRecords<Branches>();
+            cboBranch.ValueMember = "Code";
+            cboBranch.DisplayMember = "Name";
+
             txtProfileID.DataBindings.Add("Text", Profile, "Key");
             txtLocation.DataBindings.Add("Text", Profile, "InstallationFolder");
             txtProfileName.DataBindings.Add("Text", Profile, "Name");
             txtServerType.DataBindings.Add("Text", Profile, "Type");
             txtBuild.DataBindings.Add("Text", Profile, "ServerBuildVersion");
             txtVersion.DataBindings.Add("Text", Profile, "ServerVersion");
+            cboBranch.DataBindings.Add("SelectedValue", Profile, "Branch");
 
             CheckInstallStatus();
         }

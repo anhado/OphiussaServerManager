@@ -1,5 +1,8 @@
-﻿using System;
+﻿using OphiussaFramework.Extensions;
+using System;
+using System.ComponentModel;
 using System.Drawing;
+using System.Globalization;
 using System.Windows.Forms;
 
 //using OphiussaServerManager.Common.Helpers;
@@ -10,56 +13,56 @@ namespace OphiussaFramework.Components {
             InitializeComponent();
         }
 
-        //public float Scale { get; set; } = 1f;
+        public float Scale { get; set; } = 1f;
 
-        //public string Units {
-        //    get => lblUnits.Text;
-        //    set => lblUnits.Text = value;
-        //}
+        public string Units {
+            get => lblUnits.Text;
+            set => lblUnits.Text = value;
+        }
 
-        //public int Minimum {
-        //    get => tbUC.Minimum;
-        //    set => tbUC.Minimum = value;
-        //}
+        public int Minimum {
+            get => tbUC.Minimum;
+            set => tbUC.Minimum = value;
+        }
 
-        //public int Maximum {
-        //    get => tbUC.Maximum;
-        //    set => tbUC.Maximum = value;
-        //}
+        public int Maximum {
+            get => tbUC.Maximum;
+            set => tbUC.Maximum = value;
+        }
 
-        //public float Value {
-        //    get => txtUC.Text.ToFloat();
-        //    set {
-        //        if (Scale == 1f)
-        //            txtUC.Text = value.ToString(CultureInfo.InvariantCulture).ToInt().ToString(CultureInfo.InvariantCulture);
-        //        else
-        //            txtUC.Text = value.ToString(CultureInfo.InvariantCulture);
-        //    }
-        //}
+        public float Value {
+            get => txtUC.Text.ToFloat();
+            set {
+                if (Scale == 1f)
+                    txtUC.Text = value.ToString(CultureInfo.InvariantCulture).ToInt().ToString(CultureInfo.InvariantCulture);
+                else
+                    txtUC.Text = value.ToString(CultureInfo.InvariantCulture);
+            }
+        }
 
-        //public int TickFrequency {
-        //    get => tbUC.TickFrequency;
-        //    set => tbUC.TickFrequency = value;
-        //}
+        public int TickFrequency {
+            get => tbUC.TickFrequency;
+            set => tbUC.TickFrequency = value;
+        }
 
-        //public bool DisableTextBox {
-        //    get => !txtUC.Enabled;
-        //    set => txtUC.Enabled = !value;
-        //}
+        public bool DisableTextBox {
+            get => !txtUC.Enabled;
+            set => txtUC.Enabled = !value;
+        }
 
-        //public bool DisableTrackBar {
-        //    get => !tbUC.Enabled;
-        //    set => tbUC.Enabled = !value;
-        //}
+        public bool DisableTrackBar {
+            get => !tbUC.Enabled;
+            set => tbUC.Enabled = !value;
+        }
 
-        //[EditorBrowsable(EditorBrowsableState.Always)]
-        //[Browsable(true)]
-        //[DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
-        //[Bindable(true)]
-        //public override string Text {
-        //    get => lblDesc.Text;
-        //    set => lblDesc.Text = value;
-        //}
+        [EditorBrowsable(EditorBrowsableState.Always)]
+        [Browsable(true)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        [Bindable(true)]
+        public override string Text {
+            get => lblDesc.Text;
+            set => lblDesc.Text = value;
+        }
 
         private void txtUC_TextChanged(object sender, EventArgs e) {
             //try

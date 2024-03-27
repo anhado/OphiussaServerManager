@@ -45,11 +45,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.timerGetProcess = new System.Windows.Forms.Timer(this.components);
             this.fBD = new System.Windows.Forms.FolderBrowserDialog();
+            this.cboBranch = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtBuild
             // 
-            this.txtBuild.Location = new System.Drawing.Point(303, 112);
+            this.txtBuild.Location = new System.Drawing.Point(303, 139);
             this.txtBuild.Name = "txtBuild";
             this.txtBuild.ReadOnly = true;
             this.txtBuild.Size = new System.Drawing.Size(80, 20);
@@ -58,7 +60,7 @@
             // label35
             // 
             this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(214, 115);
+            this.label35.Location = new System.Drawing.Point(214, 142);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(68, 13);
             this.label35.TabIndex = 17;
@@ -66,7 +68,7 @@
             // 
             // txtVersion
             // 
-            this.txtVersion.Location = new System.Drawing.Point(108, 112);
+            this.txtVersion.Location = new System.Drawing.Point(108, 139);
             this.txtVersion.Name = "txtVersion";
             this.txtVersion.ReadOnly = true;
             this.txtVersion.Size = new System.Drawing.Size(80, 20);
@@ -76,7 +78,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(13, 115);
+            this.label16.Location = new System.Drawing.Point(13, 142);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(84, 13);
             this.label16.TabIndex = 15;
@@ -251,11 +253,33 @@
             this.timerGetProcess.Interval = 500;
             this.timerGetProcess.Tick += new System.EventHandler(this.timerGetProcess_Tick);
             // 
+            // cboBranch
+            // 
+            this.cboBranch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboBranch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboBranch.FormattingEnabled = true;
+            this.cboBranch.Location = new System.Drawing.Point(108, 112);
+            this.cboBranch.Name = "cboBranch";
+            this.cboBranch.Size = new System.Drawing.Size(303, 21);
+            this.cboBranch.TabIndex = 19;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(13, 120);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(65, 13);
+            this.label5.TabIndex = 20;
+            this.label5.Text = "Server Type";
+            // 
             // ProfileHeader
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.cboBranch);
             this.Controls.Add(this.txtBuild);
             this.Controls.Add(this.label35);
             this.Controls.Add(this.txtVersion);
@@ -276,7 +300,7 @@
             this.Controls.Add(this.txtProfileID);
             this.Controls.Add(this.label1);
             this.Name = "ProfileHeader";
-            this.Size = new System.Drawing.Size(625, 141);
+            this.Size = new System.Drawing.Size(625, 168);
             this.Load += new System.EventHandler(this.ProfileHeader_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -306,5 +330,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer timerGetProcess;
         private System.Windows.Forms.FolderBrowserDialog fBD;
+        private System.Windows.Forms.ComboBox cboBranch;
+        private System.Windows.Forms.Label label5;
     }
 }

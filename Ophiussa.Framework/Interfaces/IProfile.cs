@@ -7,6 +7,8 @@ namespace OphiussaFramework.Interfaces {
         string                                      Name               { get; set; }
         string                                      Type               { get; set; }
         string                                      InstallationFolder { get; set; }
+        string                                      Branch             { get; set; }
+        string                                      ServerPassword     { get; set; }
         [FieldAttributes(DataType = "TEXT")] string AdditionalSettings { get; set; }
         [FieldAttributes(DataType = "TEXT")] string AdditionalCommands { get; set; }
         int                                         SteamServerId      { get; set; }

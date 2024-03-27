@@ -74,7 +74,7 @@ namespace OphiussaFramework.CommonUtils {
 
         public static void ReconfigureLogging(Settings settings) {
             try {
-                if (string.IsNullOrWhiteSpace(settings.DataFolder))
+                if (string.IsNullOrWhiteSpace(settings?.DataFolder))
                     return;
                 UpdateLoggingStatus(settings);
                 string str = Path.Combine(settings.DataFolder, "Logs");

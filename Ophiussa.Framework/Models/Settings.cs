@@ -20,7 +20,8 @@ namespace OphiussaFramework.Models {
             GUID                 = Guid.NewGuid().ToString();
         }
 
-        public                                  string GUID                 { get; set; }
+
+        [FieldAttributes(PrimaryKey = true, DataType = "Varchar(100)")] public string GUID                 { get; set; }
         public                                  string DataFolder           { get; set; }
         public                                  string DefaultInstallFolder { get; set; }
         public                                  string SteamCMDFolder       { get; set; }

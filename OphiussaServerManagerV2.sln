@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TabControlExtra", "..\tabco
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValheimPlugin", "ValheimPlugin\ValheimPlugin.csproj", "{B862FBF9-FFCC-4469-9EF1-D29E0D506FE8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{2BA141D6-A744-4C36-9DFA-59AFD1AAC29D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -105,7 +107,9 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{BE76A6FE-225F-4287-9CA0-231F5AF4CDC1} = {4D8FB1FC-DA69-4B83-AE63-F1881E0C2D16}
+		{FCAC5050-6850-48AB-BDC4-C7D98D27B598} = {2BA141D6-A744-4C36-9DFA-59AFD1AAC29D}
 		{4DBFE2CF-45E4-4594-8E6A-5EBC2EEF85AE} = {4D8FB1FC-DA69-4B83-AE63-F1881E0C2D16}
+		{B862FBF9-FFCC-4469-9EF1-D29E0D506FE8} = {2BA141D6-A744-4C36-9DFA-59AFD1AAC29D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B994752A-C76A-45B0-A6D7-A2F09D280C3C}

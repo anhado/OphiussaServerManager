@@ -30,5 +30,7 @@ namespace OphiussaFramework.Models {
         public string ServerVersion      { get; set; }
         public string ServerBuildVersion { get; set; }
         public string ExecutablePath     { get; set; }
+        public string Branch             { get; set; }
+        public string ServerPassword     { get; set; }
     }
 }
