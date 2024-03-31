@@ -105,6 +105,12 @@
     <Compile Include="CommonUtils\ShellLink.cs" />
     <Compile Include="CommonUtils\StringCipher.cs" />
     <Compile Include="CommonUtils\Utils.cs" />
+    <Compile Include="Components\AutomaticManagement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\AutomaticManagement.Designer.cs">
+      <DependentUpon>AutomaticManagement.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\exListBox.cs" />
     <Compile Include="Components\exListBox.Designer.cs">
       <DependentUpon>exListBox.cs</DependentUpon>
@@ -122,6 +128,12 @@
       <DependentUpon>ProfileHeader.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\CommonExtensions.cs" />
+    <Compile Include="Forms\FrmProcessors.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmProcessors.Designer.cs">
+      <DependentUpon>FrmProcessors.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\AutoManagement.cs" />
     <Compile Include="Models\Branches.cs" />
     <Compile Include="Models\LinkProfileForm.cs" />
@@ -183,6 +195,9 @@
     <None Include="Resources\consoleicon.png" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Components\AutomaticManagement.resx">
+      <DependentUpon>AutomaticManagement.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Components\exTrackBar.resx">
       <DependentUpon>exTrackBar.cs</DependentUpon>
     </EmbeddedResource>
@@ -194,6 +209,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmCommandPreview.resx">
       <DependentUpon>FrmCommandPreview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmProcessors.resx">
+      <DependentUpon>FrmProcessors.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

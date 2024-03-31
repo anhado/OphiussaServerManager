@@ -23,11 +23,7 @@ namespace OphiussaServerManagerV2 {
         public MainForm() {
             InitializeComponent();
         }
-
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e) {
-            Application.Exit();
-        }
-
+          
         private void settingsToolStripMenuItem1_Click(object sender, EventArgs e) {
             new FrmSettings().ShowDialog();
         }
@@ -41,6 +37,7 @@ namespace OphiussaServerManagerV2 {
                 ConnectionController.SetMainForm(this);
                  
                 txtLocalIP.Text = NetworkTools.GetHostIp();
+                if (ConnectionController.Settings.UpdateSteamCMDStart) NetworkTools.DownloadSteamCmd();
 
                 try {
                     if (txtPublicIP.Text == "") txtPublicIP.Text = await Task.Run(() => NetworkTools.DiscoverPublicIPAsync().Result);

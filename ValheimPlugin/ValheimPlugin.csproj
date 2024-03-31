@@ -75,11 +75,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ValheimPlugin.cs" />
-    <Compile Include="Forms\FrmConfigurationForm.cs">
+    <Compile Include="Forms\FrmValheim.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmConfigurationForm.Designer.cs">
-      <DependentUpon>FrmConfigurationForm.cs</DependentUpon>
+    <Compile Include="Forms\FrmValheim.Designer.cs">
+      <DependentUpon>FrmValheim.cs</DependentUpon>
     </Compile>
     <Compile Include="Profile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -91,8 +91,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Forms\FrmConfigurationForm.resx">
-      <DependentUpon>FrmConfigurationForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FrmValheim.resx">
+      <DependentUpon>FrmValheim.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -269,9 +269,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(13, 120);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(65, 13);
+            this.label5.Size = new System.Drawing.Size(41, 13);
             this.label5.TabIndex = 20;
-            this.label5.Text = "Server Type";
+            this.label5.Text = "Branch";
             // 
             // ProfileHeader
             // 

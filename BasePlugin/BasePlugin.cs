@@ -31,6 +31,7 @@ namespace BasePlugin {
         public bool                    IsInstalled     => IsValidFolder(Profile.InstallationFolder);
         public List<FileInfo>          FilesToBackup   => throw new NotImplementedException();
         public List<CommandDefinition> DefaultCommands { get; set; }
+        public List<CommandDefinition> CostumCommands  { get; set; }
         public ModProvider             ModProvider     { get; set; } = ModProvider.None;
 
 
@@ -176,6 +177,10 @@ namespace BasePlugin {
         public string GetBuild() {
             //TODO:(New Games)Save settings to disc
             return "NOT IMPLEMENTED"; //  throw new NotImplementedException();
+        }
+
+        public string GetCommandLinesArguments() {
+            throw new NotImplementedException();
         }
     }
 }

@@ -165,12 +165,12 @@ namespace OphiussaFramework.DataBaseUtils {
                 }
 
                 using (var cmd = DbConnection().CreateCommand()) {
-                    cmd.CommandText = $"SELECT * FROM {tableName}" + (string.IsNullOrEmpty(condition) ? "" : $"WHERE {condition}");
+                    cmd.CommandText = $"SELECT * FROM {tableName}" + (string.IsNullOrEmpty(condition) ? "" : $" WHERE {condition}");
                     da = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
                     da.Fill(dt);
                 }
 
-                if (dt.Rows.Count == 0) throw new Exception("No Record");
+            //    if (dt.Rows.Count == 0) throw new Exception("No Record");
                 return dt.ConvertDataTableB<T>();
             }
             catch (Exception e) {
@@ -372,16 +372,23 @@ namespace OphiussaFramework.DataBaseUtils {
                 using (var cmd = DbConnection().CreateCommand()) {
                     foreach (var pro in temp.GetProperties()) {
 
-                        bool ignore = false;
+                        bool         ignore   = false;
+                        bool         autoIncrment   = false;
                         List<object> propAttr = pro.GetCustomAttributes(true).ToList();
                         propAttr.ForEach(attr => {
-                            if (attr is FieldAttributes atr) ignore = atr.Ignore;
-                        });
+                                             if (!(attr is FieldAttributes atr)) return;
+                                             ignore       = atr.Ignore;
+                                             autoIncrment = atr.AutoIncrement;
+                                         });
                         if (ignore) continue;
                         columnList.Add(pro.Name);
                         valueColumnList.Add("@" + pro.Name);
                         if (pro.Name != primaryKey) updateColumnList.Add($"{pro.Name}=excluded.{pro.Name}");
-                        cmd.Parameters.AddWithValue("@" + pro.Name, GetValue(pro, obj));
+
+                        var value = GetValue(pro, obj);
+
+                        if (autoIncrment && value.ToString() == "0") cmd.Parameters.AddWithValue("@" + pro.Name, null);
+                        else cmd.Parameters.AddWithValue("@" + pro.Name, value);
                     }
 
                     cmd.CommandText = $@"INSERT INTO {tableName}({string.Join(",", columnList.ToArray())}) 

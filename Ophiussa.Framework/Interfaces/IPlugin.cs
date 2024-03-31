@@ -19,6 +19,7 @@ namespace OphiussaFramework.Interfaces {
         bool                                                                 Loaded          { get; set; }
         [FieldAttributes(Ignore = true)] int                                 ServerProcessID { get; }
         [FieldAttributes(Ignore = true)] List<CommandDefinition>             DefaultCommands { get; set; }
+        [FieldAttributes(Ignore = true)] List<CommandDefinition>             CostumCommands  { get; set; }
         [FieldAttributes(Ignore = true)] List<FileInfo>                      FilesToBackup   { get; }
         [FieldAttributes(Ignore = true)] IProfile                            Profile         { get; }
         [FieldAttributes(Ignore = true)] bool                                IsRunning       { get; }
@@ -45,6 +46,7 @@ namespace OphiussaFramework.Interfaces {
         void                                                                 TabHeaderChange();
         string                                                               GetVersion();
         string                                                               GetBuild();
+        string                                                               GetCommandLinesArguments(); 
         event EventHandler<OphiussaEventArgs>                                SaveClick;
         event EventHandler<OphiussaEventArgs>                                ReloadClick;
         event EventHandler<OphiussaEventArgs>                                SyncClick;

@@ -21,7 +21,19 @@ namespace OphiussaFramework.Models {
             _commands = JsonConvert.DeserializeObject<List<CommandDefinition>>(JsonConvert.SerializeObject(_tmpCommands, Formatting.Indented));
         }
 
-        public string GetCommand() {
+        public void AddCommand(int order, bool addSpaceInPrefix, string namePrefix, string name, string valuePrefix, string value, bool enabled) {
+            ComandList.Add(new CommandDefinition() {
+                                                    Order=order,
+                                                    AddSpaceInPrefix=addSpaceInPrefix,
+                                                    NamePrefix=namePrefix,
+                                                    Name=name,
+                                                    Value=value,
+                                                    Enabled=enabled,
+                                                    ValuePrefix = valuePrefix
+                                                   });
+        }
+
+        public override string  ToString() {
             var cmd = _commands.OrderBy(cm => cm.Order).ToList();
 
             StringBuilder cmdFinal = new StringBuilder();

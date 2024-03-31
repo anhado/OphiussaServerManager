@@ -14,17 +14,21 @@ namespace BasePlugin.Forms {
         public FrmConfigurationForm(IPlugin plugin, TabPage tab) {
             _plugin = plugin;
             InitializeComponent();
-            profileHeader1.Profile = _plugin.Profile;
-            profileHeader1.Plugin  = _plugin;
-            profileHeader1.Tab     = tab;
-            _tabPage               = tab;
+            profileHeader1.Profile       = _plugin.Profile;
+            profileHeader1.Plugin        = _plugin;
+            automaticManagement1.Profile = _plugin.Profile;
+            automaticManagement1.Plugin  = _plugin;
+            profileHeader1.Tab           = tab; 
+            _tabPage                     = tab;
 
             if (_plugin.Profile.CpuAffinityList.Count == 0) _plugin.Profile.CpuAffinityList = ConnectionController.ProcessorList;
         }
 
         private void profileHeader1_ClickSave(object sender, EventArgs e) {
             try { 
+                _plugin.Profile.AutoManagement = automaticManagement1.GetRestartSettings();
                 _plugin.Save();
+                automaticManagement1.LoadGrid();
                 OphiussaFramework.Models.Message msg =  _plugin.SaveSettingsToDisk();
                 if (msg.Success) MessageBox.Show(msg.MessageText);
                 else throw msg.Exception;
@@ -70,7 +74,7 @@ namespace BasePlugin.Forms {
             CommandBuilder cmdBuilder = new CommandBuilder(_plugin.DefaultCommands);
             cmdBuilder.OpenCommandEditor(fullCommand => {
                                              _plugin.DefaultCommands = fullCommand.ComandList;
-                                             MessageBox.Show(fullCommand.GetCommand());
+                                             MessageBox.Show(fullCommand.ToString());
                                          });
         }
     }

@@ -36,5 +36,6 @@ namespace OphiussaFramework.Models {
         public string                  CpuAffinity        { get; set; } = "All";
         public List<ProcessorAffinity> CpuAffinityList    { get; set; } = new List<ProcessorAffinity>();
         public List<AutoManagement>    AutoManagement     { get; set; } = new List<AutoManagement>();
+        public bool                    AutoStartServer    { get; set; }
     }
 }

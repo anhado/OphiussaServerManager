@@ -21,13 +21,15 @@ namespace OphiussaServerManagerV2 {
             txtBackupFolder.DataBindings.Add("Text", ConnectionController.Settings, "BackupFolder");
             txtDataFolder.DataBindings.Add("Text", ConnectionController.Settings, "DataFolder");
             txtSteamCmd.DataBindings.Add("Text", ConnectionController.Settings, "SteamCMDFolder");
-            txtSteamWebApiKey.DataBindings.Add("Text", ConnectionController.Settings, "SteamWepApiKey");
+            txtSteamKey.DataBindings.Add("Text", ConnectionController.Settings, "SteamWepApiKey");
             txtCurseForgeKey.DataBindings.Add("Text", ConnectionController.Settings, "CurseForgeApiKey");
             chkEnableLogs.DataBindings.Add("Checked", ConnectionController.Settings, "EnableLogs");
             txtMaxDays.DataBindings.Add("Text", ConnectionController.Settings, "MaxLogsDays");
             txtMaxFiles.DataBindings.Add("Text", ConnectionController.Settings, "MaxLogFiles");
-
-            
+            txtUserName.DataBindings.Add("Text", ConnectionController.Settings, "SteamUser");
+            txtPassword.DataBindings.Add("Text", ConnectionController.Settings, "SteamPwd");
+            chkAnonymous.DataBindings.Add("Checked", ConnectionController.Settings, "UseAnonymous");
+            chkUpdateOnStart.DataBindings.Add("Checked", ConnectionController.Settings, "UpdateSteamCMDStart"); 
         }
 
         private void FrmSettings_FormClosing(object sender, FormClosingEventArgs e) {
@@ -76,6 +78,6 @@ namespace OphiussaServerManagerV2 {
             fd.SelectedPath = txtBackupFolder.Text;
             fd.ShowDialog();
             txtBackupFolder.Text = fd.SelectedPath;
-        }
+        } 
     }
 }

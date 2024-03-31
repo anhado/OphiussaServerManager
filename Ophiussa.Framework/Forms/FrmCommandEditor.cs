@@ -91,7 +91,7 @@ namespace OphiussaFramework.Forms {
 
         private void btPreview_Click(object sender, EventArgs e) {
             CommandBuilder cmdBuilder = new CommandBuilder(_commands);
-            FrmCommandPreview Frm =  new FrmCommandPreview(cmdBuilder.GetCommand());
+            FrmCommandPreview Frm =  new FrmCommandPreview(cmdBuilder.ToString());
             Frm.ShowDialog();
         }
     }

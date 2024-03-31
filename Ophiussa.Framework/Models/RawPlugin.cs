@@ -10,7 +10,7 @@ using OphiussaFramework.Enums;
 using OphiussaFramework.Interfaces;
 
 namespace OphiussaFramework.Models {
-    internal class RawPlugin:IPlugin {
+    internal class RawPlugin : IPlugin {
         public string                  PluginName      { get; set; }
         public string                  PluginVersion   { get; set; }
         public string                  GameType        { get; set; }
@@ -24,6 +24,8 @@ namespace OphiussaFramework.Models {
         public bool                    IsRunning       { get; set; }
         public bool                    IsInstalled     { get; set; }
         public TabPage                 TabPage         { get; set; }
+        public List<CommandDefinition> CostumCommands  { get; set; }
+
         public PluginType GetInfo() {
             throw new NotImplementedException();
         }
@@ -105,6 +107,10 @@ namespace OphiussaFramework.Models {
         }
 
         public string GetBuild() {
+            throw new NotImplementedException();
+        }
+
+        public string GetCommandLinesArguments() {
             throw new NotImplementedException();
         }
 

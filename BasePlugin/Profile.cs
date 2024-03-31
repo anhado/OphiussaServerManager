@@ -25,6 +25,7 @@ namespace BasePlugin {
         public int                     RCONPort           { get; set; } = 0;
         public string                  ServerVersion      { get; set; } = "";
         public string                  ServerBuildVersion { get; set; } = "";
+        public bool                    AutoStartServer    { get; set; } = false;
         public bool                    StartOnBoot        { get; set; } = false;
         public bool                    IncludeAutoBackup  { get; set; } = false;
         public bool                    IncludeAutoUpdate  { get; set; } = false;

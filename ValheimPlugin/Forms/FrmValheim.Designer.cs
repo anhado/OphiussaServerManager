@@ -1,6 +1,6 @@
-﻿namespace BasePlugin.Forms
+﻿namespace ValheimPlugin.Forms
 {
-    partial class FrmConfigurationForm
+    partial class FrmValheim
     {
         /// <summary>
         /// Required designer variable.
@@ -28,76 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmConfigurationForm));
-            this.button1 = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmValheim));
             this.pContainer = new System.Windows.Forms.Panel();
             this.expandCollapsePanel4 = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
-            this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.chkRestart2 = new System.Windows.Forms.CheckBox();
-            this.chkRestart1 = new System.Windows.Forms.CheckBox();
-            this.chkUpdate1 = new System.Windows.Forms.CheckBox();
-            this.chkUpdate2 = new System.Windows.Forms.CheckBox();
-            this.chkSat1 = new System.Windows.Forms.CheckBox();
-            this.chkFri1 = new System.Windows.Forms.CheckBox();
-            this.chkSat2 = new System.Windows.Forms.CheckBox();
-            this.chkThu1 = new System.Windows.Forms.CheckBox();
-            this.txtShutdow2 = new System.Windows.Forms.MaskedTextBox();
-            this.chkWed1 = new System.Windows.Forms.CheckBox();
-            this.chkFri2 = new System.Windows.Forms.CheckBox();
-            this.chkTue1 = new System.Windows.Forms.CheckBox();
-            this.chkShutdown2 = new System.Windows.Forms.CheckBox();
-            this.chkMon1 = new System.Windows.Forms.CheckBox();
-            this.chkThu2 = new System.Windows.Forms.CheckBox();
-            this.chkSun1 = new System.Windows.Forms.CheckBox();
-            this.chkSun2 = new System.Windows.Forms.CheckBox();
-            this.txtShutdow1 = new System.Windows.Forms.MaskedTextBox();
-            this.chkWed2 = new System.Windows.Forms.CheckBox();
-            this.chkRestartIfShutdown = new System.Windows.Forms.CheckBox();
-            this.chkMon2 = new System.Windows.Forms.CheckBox();
-            this.chkAutoUpdate = new System.Windows.Forms.CheckBox();
-            this.chkTue2 = new System.Windows.Forms.CheckBox();
-            this.chkIncludeAutoBackup = new System.Windows.Forms.CheckBox();
-            this.chkShutdown1 = new System.Windows.Forms.CheckBox();
-            this.rbOnLogin = new System.Windows.Forms.RadioButton();
-            this.rbOnBoot = new System.Windows.Forms.RadioButton();
-            this.chkAutoStart = new System.Windows.Forms.CheckBox();
             this.expandCollapsePanel2 = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.label15 = new System.Windows.Forms.Label();
-            this.txtSubBackups = new System.Windows.Forms.TextBox();
-            this.tbSubBackups = new System.Windows.Forms.TrackBar();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtFirstBackup = new System.Windows.Forms.TextBox();
-            this.tbFirstBackup = new System.Windows.Forms.TrackBar();
-            this.label14 = new System.Windows.Forms.Label();
             this.txtBackupToKeep = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtLogLocation = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtAutoSavePeriod = new System.Windows.Forms.TextBox();
-            this.tbAutoSavePeriod = new System.Windows.Forms.TrackBar();
             this.txtSaveLocation = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
             this.expandCollapsePanel3 = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
             this.chkDeathDeleteUnequipped = new System.Windows.Forms.CheckBox();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
-            this.tbStaminaRegenRate = new OphiussaFramework.Components.exTrackBar();
-            this.tbStaminaRate = new OphiussaFramework.Components.exTrackBar();
-            this.tbSkillReductionRate = new OphiussaFramework.Components.exTrackBar();
-            this.tbSkillGainRate = new OphiussaFramework.Components.exTrackBar();
-            this.tbResourceRate = new OphiussaFramework.Components.exTrackBar();
-            this.tbPlayerDamage = new OphiussaFramework.Components.exTrackBar();
-            this.tbMoveStaminaRate = new OphiussaFramework.Components.exTrackBar();
-            this.tbEventRate = new OphiussaFramework.Components.exTrackBar();
-            this.tbEnemySpeedSize = new OphiussaFramework.Components.exTrackBar();
-            this.tbEnemyLevelUpRate = new OphiussaFramework.Components.exTrackBar();
-            this.tbEnemyDamage = new OphiussaFramework.Components.exTrackBar();
-            this.tbDamageTaken = new OphiussaFramework.Components.exTrackBar();
             this.chkTeleportAll = new System.Windows.Forms.CheckBox();
             this.chkPlayerEvents = new System.Windows.Forms.CheckBox();
             this.chkPassiveMobs = new System.Windows.Forms.CheckBox();
@@ -181,15 +126,27 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtServerName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.fdDiag = new System.Windows.Forms.FolderBrowserDialog();
+            this.automaticManagement1 = new OphiussaServerManager.Components.AutomaticManagement();
+            this.tbSubBackups = new OphiussaFramework.Components.exTrackBar();
+            this.tbFirstBackup = new OphiussaFramework.Components.exTrackBar();
+            this.tbAutoSavePeriod = new OphiussaFramework.Components.exTrackBar();
+            this.tbStaminaRegenRate = new OphiussaFramework.Components.exTrackBar();
+            this.tbStaminaRate = new OphiussaFramework.Components.exTrackBar();
+            this.tbSkillReductionRate = new OphiussaFramework.Components.exTrackBar();
+            this.tbSkillGainRate = new OphiussaFramework.Components.exTrackBar();
+            this.tbResourceRate = new OphiussaFramework.Components.exTrackBar();
+            this.tbPlayerDamage = new OphiussaFramework.Components.exTrackBar();
+            this.tbMoveStaminaRate = new OphiussaFramework.Components.exTrackBar();
+            this.tbEventRate = new OphiussaFramework.Components.exTrackBar();
+            this.tbEnemySpeedSize = new OphiussaFramework.Components.exTrackBar();
+            this.tbEnemyLevelUpRate = new OphiussaFramework.Components.exTrackBar();
+            this.tbEnemyDamage = new OphiussaFramework.Components.exTrackBar();
+            this.tbDamageTaken = new OphiussaFramework.Components.exTrackBar();
             this.profileHeader1 = new OphiussaFramework.Components.ProfileHeader();
             this.pContainer.SuspendLayout();
             this.expandCollapsePanel4.SuspendLayout();
-            this.groupBox11.SuspendLayout();
             this.expandCollapsePanel2.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbSubBackups)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbFirstBackup)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbAutoSavePeriod)).BeginInit();
             this.expandCollapsePanel3.SuspendLayout();
             this.groupBox14.SuspendLayout();
             this.groupBox13.SuspendLayout();
@@ -205,16 +162,6 @@
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(1187, 119);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Open Command Builder";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // pContainer
             // 
             this.pContainer.AutoScroll = true;
@@ -225,7 +172,7 @@
             this.pContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pContainer.Location = new System.Drawing.Point(0, 170);
             this.pContainer.Name = "pContainer";
-            this.pContainer.Size = new System.Drawing.Size(1279, 823);
+            this.pContainer.Size = new System.Drawing.Size(1279, 976);
             this.pContainer.TabIndex = 24;
             // 
             // expandCollapsePanel4
@@ -233,558 +180,78 @@
             this.expandCollapsePanel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.expandCollapsePanel4.ButtonSize = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonSize.Small;
             this.expandCollapsePanel4.ButtonStyle = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonStyle.Classic;
-            this.expandCollapsePanel4.Controls.Add(this.groupBox11);
+            this.expandCollapsePanel4.Controls.Add(this.automaticManagement1);
             this.expandCollapsePanel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.expandCollapsePanel4.ExpandedHeight = 226;
+            this.expandCollapsePanel4.ExpandedHeight = 350;
             this.expandCollapsePanel4.IsExpanded = true;
-            this.expandCollapsePanel4.Location = new System.Drawing.Point(0, 1777);
+            this.expandCollapsePanel4.Location = new System.Drawing.Point(0, 1693);
             this.expandCollapsePanel4.Name = "expandCollapsePanel4";
-            this.expandCollapsePanel4.Size = new System.Drawing.Size(1262, 226);
+            this.expandCollapsePanel4.Size = new System.Drawing.Size(1262, 383);
             this.expandCollapsePanel4.TabIndex = 22;
             this.expandCollapsePanel4.Text = "Automatic Management";
             this.expandCollapsePanel4.UseAnimation = false;
-            // 
-            // groupBox11
-            // 
-            this.groupBox11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox11.Controls.Add(this.chkRestart2);
-            this.groupBox11.Controls.Add(this.chkRestart1);
-            this.groupBox11.Controls.Add(this.chkUpdate1);
-            this.groupBox11.Controls.Add(this.chkUpdate2);
-            this.groupBox11.Controls.Add(this.chkSat1);
-            this.groupBox11.Controls.Add(this.chkFri1);
-            this.groupBox11.Controls.Add(this.chkSat2);
-            this.groupBox11.Controls.Add(this.chkThu1);
-            this.groupBox11.Controls.Add(this.txtShutdow2);
-            this.groupBox11.Controls.Add(this.chkWed1);
-            this.groupBox11.Controls.Add(this.chkFri2);
-            this.groupBox11.Controls.Add(this.chkTue1);
-            this.groupBox11.Controls.Add(this.chkShutdown2);
-            this.groupBox11.Controls.Add(this.chkMon1);
-            this.groupBox11.Controls.Add(this.chkThu2);
-            this.groupBox11.Controls.Add(this.chkSun1);
-            this.groupBox11.Controls.Add(this.chkSun2);
-            this.groupBox11.Controls.Add(this.txtShutdow1);
-            this.groupBox11.Controls.Add(this.chkWed2);
-            this.groupBox11.Controls.Add(this.chkRestartIfShutdown);
-            this.groupBox11.Controls.Add(this.chkMon2);
-            this.groupBox11.Controls.Add(this.chkAutoUpdate);
-            this.groupBox11.Controls.Add(this.chkTue2);
-            this.groupBox11.Controls.Add(this.chkIncludeAutoBackup);
-            this.groupBox11.Controls.Add(this.chkShutdown1);
-            this.groupBox11.Controls.Add(this.rbOnLogin);
-            this.groupBox11.Controls.Add(this.rbOnBoot);
-            this.groupBox11.Controls.Add(this.chkAutoStart);
-            this.groupBox11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
-            this.groupBox11.Location = new System.Drawing.Point(11, 34);
-            this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(1238, 181);
-            this.groupBox11.TabIndex = 1;
-            this.groupBox11.TabStop = false;
-            this.groupBox11.Text = "Server Manager Settings";
-            // 
-            // chkRestart2
-            // 
-            this.chkRestart2.AutoSize = true;
-            this.chkRestart2.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkRestart2.Enabled = false;
-            this.chkRestart2.Location = new System.Drawing.Point(578, 91);
-            this.chkRestart2.Name = "chkRestart2";
-            this.chkRestart2.Size = new System.Drawing.Size(80, 19);
-            this.chkRestart2.TabIndex = 29;
-            this.chkRestart2.Text = "the restart";
-            this.chkRestart2.UseVisualStyleBackColor = true;
-            // 
-            // chkRestart1
-            // 
-            this.chkRestart1.AutoSize = true;
-            this.chkRestart1.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkRestart1.Enabled = false;
-            this.chkRestart1.Location = new System.Drawing.Point(578, 52);
-            this.chkRestart1.Name = "chkRestart1";
-            this.chkRestart1.Size = new System.Drawing.Size(80, 19);
-            this.chkRestart1.TabIndex = 18;
-            this.chkRestart1.Text = "the restart";
-            this.chkRestart1.UseVisualStyleBackColor = true;
-            // 
-            // chkUpdate1
-            // 
-            this.chkUpdate1.AutoSize = true;
-            this.chkUpdate1.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkUpdate1.Enabled = false;
-            this.chkUpdate1.Location = new System.Drawing.Point(461, 52);
-            this.chkUpdate1.Name = "chkUpdate1";
-            this.chkUpdate1.Size = new System.Drawing.Size(111, 19);
-            this.chkUpdate1.TabIndex = 17;
-            this.chkUpdate1.Text = "Perform update";
-            this.chkUpdate1.UseVisualStyleBackColor = true;
-            // 
-            // chkUpdate2
-            // 
-            this.chkUpdate2.AutoSize = true;
-            this.chkUpdate2.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkUpdate2.Enabled = false;
-            this.chkUpdate2.Location = new System.Drawing.Point(461, 91);
-            this.chkUpdate2.Name = "chkUpdate2";
-            this.chkUpdate2.Size = new System.Drawing.Size(111, 19);
-            this.chkUpdate2.TabIndex = 28;
-            this.chkUpdate2.Text = "Perform update";
-            this.chkUpdate2.UseVisualStyleBackColor = true;
-            // 
-            // chkSat1
-            // 
-            this.chkSat1.AutoSize = true;
-            this.chkSat1.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkSat1.Enabled = false;
-            this.chkSat1.Location = new System.Drawing.Point(426, 38);
-            this.chkSat1.Name = "chkSat1";
-            this.chkSat1.Size = new System.Drawing.Size(29, 33);
-            this.chkSat1.TabIndex = 16;
-            this.chkSat1.Text = "Sat";
-            this.chkSat1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.chkSat1.UseVisualStyleBackColor = true;
-            // 
-            // chkFri1
-            // 
-            this.chkFri1.AutoSize = true;
-            this.chkFri1.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkFri1.Enabled = false;
-            this.chkFri1.Location = new System.Drawing.Point(395, 38);
-            this.chkFri1.Name = "chkFri1";
-            this.chkFri1.Size = new System.Drawing.Size(25, 33);
-            this.chkFri1.TabIndex = 15;
-            this.chkFri1.Text = "Fri";
-            this.chkFri1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.chkFri1.UseVisualStyleBackColor = true;
-            // 
-            // chkSat2
-            // 
-            this.chkSat2.AutoSize = true;
-            this.chkSat2.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkSat2.Enabled = false;
-            this.chkSat2.Location = new System.Drawing.Point(426, 77);
-            this.chkSat2.Name = "chkSat2";
-            this.chkSat2.Size = new System.Drawing.Size(29, 33);
-            this.chkSat2.TabIndex = 27;
-            this.chkSat2.Text = "Sat";
-            this.chkSat2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.chkSat2.UseVisualStyleBackColor = true;
-            // 
-            // chkThu1
-            // 
-            this.chkThu1.AutoSize = true;
-            this.chkThu1.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkThu1.Enabled = false;
-            this.chkThu1.Location = new System.Drawing.Point(357, 38);
-            this.chkThu1.Name = "chkThu1";
-            this.chkThu1.Size = new System.Drawing.Size(32, 33);
-            this.chkThu1.TabIndex = 14;
-            this.chkThu1.Text = "Thu";
-            this.chkThu1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.chkThu1.UseVisualStyleBackColor = true;
-            // 
-            // txtShutdow2
-            // 
-            this.txtShutdow2.Enabled = false;
-            this.txtShutdow2.Location = new System.Drawing.Point(142, 89);
-            this.txtShutdow2.Mask = "00:00";
-            this.txtShutdow2.Name = "txtShutdow2";
-            this.txtShutdow2.Size = new System.Drawing.Size(59, 21);
-            this.txtShutdow2.TabIndex = 20;
-            this.txtShutdow2.Text = "0100";
-            this.txtShutdow2.ValidatingType = typeof(System.DateTime);
-            // 
-            // chkWed1
-            // 
-            this.chkWed1.AutoSize = true;
-            this.chkWed1.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkWed1.Enabled = false;
-            this.chkWed1.Location = new System.Drawing.Point(315, 38);
-            this.chkWed1.Name = "chkWed1";
-            this.chkWed1.Size = new System.Drawing.Size(36, 33);
-            this.chkWed1.TabIndex = 13;
-            this.chkWed1.Text = "Wed";
-            this.chkWed1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.chkWed1.UseVisualStyleBackColor = true;
-            // 
-            // chkFri2
-            // 
-            this.chkFri2.AutoSize = true;
-            this.chkFri2.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkFri2.Enabled = false;
-            this.chkFri2.Location = new System.Drawing.Point(395, 77);
-            this.chkFri2.Name = "chkFri2";
-            this.chkFri2.Size = new System.Drawing.Size(25, 33);
-            this.chkFri2.TabIndex = 26;
-            this.chkFri2.Text = "Fri";
-            this.chkFri2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.chkFri2.UseVisualStyleBackColor = true;
-            // 
-            // chkTue1
-            // 
-            this.chkTue1.AutoSize = true;
-            this.chkTue1.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkTue1.Enabled = false;
-            this.chkTue1.Location = new System.Drawing.Point(277, 38);
-            this.chkTue1.Name = "chkTue1";
-            this.chkTue1.Size = new System.Drawing.Size(32, 33);
-            this.chkTue1.TabIndex = 12;
-            this.chkTue1.Text = "Tue";
-            this.chkTue1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.chkTue1.UseVisualStyleBackColor = true;
-            // 
-            // chkShutdown2
-            // 
-            this.chkShutdown2.AutoSize = true;
-            this.chkShutdown2.Location = new System.Drawing.Point(6, 91);
-            this.chkShutdown2.Name = "chkShutdown2";
-            this.chkShutdown2.Size = new System.Drawing.Size(123, 19);
-            this.chkShutdown2.TabIndex = 19;
-            this.chkShutdown2.Text = "Shutdow server at";
-            this.chkShutdown2.UseVisualStyleBackColor = true;
-            // 
-            // chkMon1
-            // 
-            this.chkMon1.AutoSize = true;
-            this.chkMon1.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkMon1.Enabled = false;
-            this.chkMon1.Location = new System.Drawing.Point(235, 38);
-            this.chkMon1.Name = "chkMon1";
-            this.chkMon1.Size = new System.Drawing.Size(36, 33);
-            this.chkMon1.TabIndex = 11;
-            this.chkMon1.Text = "Mon";
-            this.chkMon1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.chkMon1.UseVisualStyleBackColor = true;
-            // 
-            // chkThu2
-            // 
-            this.chkThu2.AutoSize = true;
-            this.chkThu2.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkThu2.Enabled = false;
-            this.chkThu2.Location = new System.Drawing.Point(357, 77);
-            this.chkThu2.Name = "chkThu2";
-            this.chkThu2.Size = new System.Drawing.Size(32, 33);
-            this.chkThu2.TabIndex = 25;
-            this.chkThu2.Text = "Thu";
-            this.chkThu2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.chkThu2.UseVisualStyleBackColor = true;
-            // 
-            // chkSun1
-            // 
-            this.chkSun1.AutoSize = true;
-            this.chkSun1.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkSun1.Enabled = false;
-            this.chkSun1.Location = new System.Drawing.Point(207, 38);
-            this.chkSun1.Name = "chkSun1";
-            this.chkSun1.Size = new System.Drawing.Size(33, 33);
-            this.chkSun1.TabIndex = 10;
-            this.chkSun1.Text = "Sun";
-            this.chkSun1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.chkSun1.UseVisualStyleBackColor = true;
-            // 
-            // chkSun2
-            // 
-            this.chkSun2.AutoSize = true;
-            this.chkSun2.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkSun2.Enabled = false;
-            this.chkSun2.Location = new System.Drawing.Point(207, 77);
-            this.chkSun2.Name = "chkSun2";
-            this.chkSun2.Size = new System.Drawing.Size(33, 33);
-            this.chkSun2.TabIndex = 21;
-            this.chkSun2.Text = "Sun";
-            this.chkSun2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.chkSun2.UseVisualStyleBackColor = true;
-            // 
-            // txtShutdow1
-            // 
-            this.txtShutdow1.Enabled = false;
-            this.txtShutdow1.Location = new System.Drawing.Point(142, 50);
-            this.txtShutdow1.Mask = "00:00";
-            this.txtShutdow1.Name = "txtShutdow1";
-            this.txtShutdow1.Size = new System.Drawing.Size(59, 21);
-            this.txtShutdow1.TabIndex = 9;
-            this.txtShutdow1.Text = "0100";
-            this.txtShutdow1.ValidatingType = typeof(System.DateTime);
-            // 
-            // chkWed2
-            // 
-            this.chkWed2.AutoSize = true;
-            this.chkWed2.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkWed2.Enabled = false;
-            this.chkWed2.Location = new System.Drawing.Point(315, 77);
-            this.chkWed2.Name = "chkWed2";
-            this.chkWed2.Size = new System.Drawing.Size(36, 33);
-            this.chkWed2.TabIndex = 24;
-            this.chkWed2.Text = "Wed";
-            this.chkWed2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.chkWed2.UseVisualStyleBackColor = true;
-            // 
-            // chkRestartIfShutdown
-            // 
-            this.chkRestartIfShutdown.AutoSize = true;
-            this.chkRestartIfShutdown.Location = new System.Drawing.Point(248, 142);
-            this.chkRestartIfShutdown.Name = "chkRestartIfShutdown";
-            this.chkRestartIfShutdown.Size = new System.Drawing.Size(166, 19);
-            this.chkRestartIfShutdown.TabIndex = 7;
-            this.chkRestartIfShutdown.Text = "Restart server if shutdown";
-            this.chkRestartIfShutdown.UseVisualStyleBackColor = true;
-            // 
-            // chkMon2
-            // 
-            this.chkMon2.AutoSize = true;
-            this.chkMon2.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkMon2.Enabled = false;
-            this.chkMon2.Location = new System.Drawing.Point(235, 77);
-            this.chkMon2.Name = "chkMon2";
-            this.chkMon2.Size = new System.Drawing.Size(36, 33);
-            this.chkMon2.TabIndex = 22;
-            this.chkMon2.Text = "Mon";
-            this.chkMon2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.chkMon2.UseVisualStyleBackColor = true;
-            // 
-            // chkAutoUpdate
-            // 
-            this.chkAutoUpdate.AutoSize = true;
-            this.chkAutoUpdate.Location = new System.Drawing.Point(6, 143);
-            this.chkAutoUpdate.Name = "chkAutoUpdate";
-            this.chkAutoUpdate.Size = new System.Drawing.Size(236, 19);
-            this.chkAutoUpdate.TabIndex = 6;
-            this.chkAutoUpdate.Text = "Include server in the Auto-Update cycle";
-            this.chkAutoUpdate.UseVisualStyleBackColor = true;
-            // 
-            // chkTue2
-            // 
-            this.chkTue2.AutoSize = true;
-            this.chkTue2.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkTue2.Enabled = false;
-            this.chkTue2.Location = new System.Drawing.Point(277, 77);
-            this.chkTue2.Name = "chkTue2";
-            this.chkTue2.Size = new System.Drawing.Size(32, 33);
-            this.chkTue2.TabIndex = 23;
-            this.chkTue2.Text = "Tue";
-            this.chkTue2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.chkTue2.UseVisualStyleBackColor = true;
-            // 
-            // chkIncludeAutoBackup
-            // 
-            this.chkIncludeAutoBackup.AutoSize = true;
-            this.chkIncludeAutoBackup.Location = new System.Drawing.Point(6, 118);
-            this.chkIncludeAutoBackup.Name = "chkIncludeAutoBackup";
-            this.chkIncludeAutoBackup.Size = new System.Drawing.Size(237, 19);
-            this.chkIncludeAutoBackup.TabIndex = 5;
-            this.chkIncludeAutoBackup.Text = "Include server in the Auto-Backup cycle";
-            this.chkIncludeAutoBackup.UseVisualStyleBackColor = true;
-            // 
-            // chkShutdown1
-            // 
-            this.chkShutdown1.AutoSize = true;
-            this.chkShutdown1.Location = new System.Drawing.Point(6, 52);
-            this.chkShutdown1.Name = "chkShutdown1";
-            this.chkShutdown1.Size = new System.Drawing.Size(123, 19);
-            this.chkShutdown1.TabIndex = 3;
-            this.chkShutdown1.Text = "Shutdow server at";
-            this.chkShutdown1.UseVisualStyleBackColor = true;
-            // 
-            // rbOnLogin
-            // 
-            this.rbOnLogin.AutoSize = true;
-            this.rbOnLogin.Enabled = false;
-            this.rbOnLogin.Location = new System.Drawing.Point(220, 20);
-            this.rbOnLogin.Name = "rbOnLogin";
-            this.rbOnLogin.Size = new System.Drawing.Size(73, 19);
-            this.rbOnLogin.TabIndex = 2;
-            this.rbOnLogin.Text = "on Login";
-            this.rbOnLogin.UseVisualStyleBackColor = true;
-            // 
-            // rbOnBoot
-            // 
-            this.rbOnBoot.AutoSize = true;
-            this.rbOnBoot.Checked = true;
-            this.rbOnBoot.Enabled = false;
-            this.rbOnBoot.Location = new System.Drawing.Point(143, 20);
-            this.rbOnBoot.Name = "rbOnBoot";
-            this.rbOnBoot.Size = new System.Drawing.Size(67, 19);
-            this.rbOnBoot.TabIndex = 1;
-            this.rbOnBoot.TabStop = true;
-            this.rbOnBoot.Text = "on Boot";
-            this.rbOnBoot.UseVisualStyleBackColor = true;
-            // 
-            // chkAutoStart
-            // 
-            this.chkAutoStart.AutoSize = true;
-            this.chkAutoStart.Location = new System.Drawing.Point(7, 20);
-            this.chkAutoStart.Name = "chkAutoStart";
-            this.chkAutoStart.Size = new System.Drawing.Size(115, 19);
-            this.chkAutoStart.TabIndex = 0;
-            this.chkAutoStart.Text = "Auto-Start server";
-            this.chkAutoStart.UseVisualStyleBackColor = true;
             // 
             // expandCollapsePanel2
             // 
             this.expandCollapsePanel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.expandCollapsePanel2.ButtonSize = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonSize.Small;
             this.expandCollapsePanel2.ButtonStyle = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonStyle.Classic;
-            this.expandCollapsePanel2.Controls.Add(this.groupBox5);
+            this.expandCollapsePanel2.Controls.Add(this.tbSubBackups);
+            this.expandCollapsePanel2.Controls.Add(this.tbFirstBackup);
+            this.expandCollapsePanel2.Controls.Add(this.button3);
+            this.expandCollapsePanel2.Controls.Add(this.tbAutoSavePeriod);
+            this.expandCollapsePanel2.Controls.Add(this.button2);
+            this.expandCollapsePanel2.Controls.Add(this.label9);
+            this.expandCollapsePanel2.Controls.Add(this.txtSaveLocation);
+            this.expandCollapsePanel2.Controls.Add(this.label7);
+            this.expandCollapsePanel2.Controls.Add(this.txtBackupToKeep);
+            this.expandCollapsePanel2.Controls.Add(this.label8);
+            this.expandCollapsePanel2.Controls.Add(this.txtLogLocation);
             this.expandCollapsePanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.expandCollapsePanel2.ExpandedHeight = 296;
             this.expandCollapsePanel2.IsExpanded = true;
             this.expandCollapsePanel2.Location = new System.Drawing.Point(0, 1481);
             this.expandCollapsePanel2.Name = "expandCollapsePanel2";
-            this.expandCollapsePanel2.Size = new System.Drawing.Size(1262, 296);
+            this.expandCollapsePanel2.Size = new System.Drawing.Size(1262, 212);
             this.expandCollapsePanel2.TabIndex = 20;
             this.expandCollapsePanel2.Text = "Saves && Backups";
             this.expandCollapsePanel2.UseAnimation = false;
             // 
-            // groupBox5
-            // 
-            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox5.Controls.Add(this.button3);
-            this.groupBox5.Controls.Add(this.button2);
-            this.groupBox5.Controls.Add(this.label15);
-            this.groupBox5.Controls.Add(this.txtSubBackups);
-            this.groupBox5.Controls.Add(this.tbSubBackups);
-            this.groupBox5.Controls.Add(this.label17);
-            this.groupBox5.Controls.Add(this.label13);
-            this.groupBox5.Controls.Add(this.txtFirstBackup);
-            this.groupBox5.Controls.Add(this.tbFirstBackup);
-            this.groupBox5.Controls.Add(this.label14);
-            this.groupBox5.Controls.Add(this.txtBackupToKeep);
-            this.groupBox5.Controls.Add(this.label8);
-            this.groupBox5.Controls.Add(this.txtLogLocation);
-            this.groupBox5.Controls.Add(this.label20);
-            this.groupBox5.Controls.Add(this.label7);
-            this.groupBox5.Controls.Add(this.txtAutoSavePeriod);
-            this.groupBox5.Controls.Add(this.tbAutoSavePeriod);
-            this.groupBox5.Controls.Add(this.txtSaveLocation);
-            this.groupBox5.Controls.Add(this.label9);
-            this.groupBox5.Controls.Add(this.label19);
-            this.groupBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
-            this.groupBox5.Location = new System.Drawing.Point(4, 44);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(1253, 249);
-            this.groupBox5.TabIndex = 19;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Saves && Backups";
-            // 
             // button3
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(1177, 89);
+            this.button3.Location = new System.Drawing.Point(1150, 90);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(30, 23);
             this.button3.TabIndex = 31;
             this.button3.Text = "...";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(1177, 63);
+            this.button2.Location = new System.Drawing.Point(1150, 64);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(30, 23);
             this.button2.TabIndex = 30;
             this.button2.Text = "...";
             this.button2.UseVisualStyleBackColor = true;
-            // 
-            // label15
-            // 
-            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(1174, 219);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(51, 15);
-            this.label15.TabIndex = 29;
-            this.label15.Text = "Minutes";
-            // 
-            // txtSubBackups
-            // 
-            this.txtSubBackups.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSubBackups.Enabled = false;
-            this.txtSubBackups.Location = new System.Drawing.Point(1176, 195);
-            this.txtSubBackups.Name = "txtSubBackups";
-            this.txtSubBackups.Size = new System.Drawing.Size(49, 21);
-            this.txtSubBackups.TabIndex = 28;
-            // 
-            // tbSubBackups
-            // 
-            this.tbSubBackups.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbSubBackups.Location = new System.Drawing.Point(115, 191);
-            this.tbSubBackups.Maximum = 1440;
-            this.tbSubBackups.Minimum = 1;
-            this.tbSubBackups.Name = "tbSubBackups";
-            this.tbSubBackups.Size = new System.Drawing.Size(1040, 45);
-            this.tbSubBackups.TabIndex = 27;
-            this.tbSubBackups.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.tbSubBackups.Value = 1;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(9, 201);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(123, 15);
-            this.label17.TabIndex = 26;
-            this.label17.Text = "Subsequent Backups";
-            // 
-            // label13
-            // 
-            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(1175, 168);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(51, 15);
-            this.label13.TabIndex = 25;
-            this.label13.Text = "Minutes";
-            // 
-            // txtFirstBackup
-            // 
-            this.txtFirstBackup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtFirstBackup.Enabled = false;
-            this.txtFirstBackup.Location = new System.Drawing.Point(1177, 144);
-            this.txtFirstBackup.Name = "txtFirstBackup";
-            this.txtFirstBackup.Size = new System.Drawing.Size(49, 21);
-            this.txtFirstBackup.TabIndex = 24;
-            // 
-            // tbFirstBackup
-            // 
-            this.tbFirstBackup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbFirstBackup.Location = new System.Drawing.Point(116, 140);
-            this.tbFirstBackup.Maximum = 720;
-            this.tbFirstBackup.Minimum = 1;
-            this.tbFirstBackup.Name = "tbFirstBackup";
-            this.tbFirstBackup.Size = new System.Drawing.Size(1040, 45);
-            this.tbFirstBackup.TabIndex = 23;
-            this.tbFirstBackup.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.tbFirstBackup.Value = 1;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(10, 150);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(87, 15);
-            this.label14.TabIndex = 22;
-            this.label14.Text = "First automatic";
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // txtBackupToKeep
             // 
             this.txtBackupToKeep.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBackupToKeep.Location = new System.Drawing.Point(115, 116);
+            this.txtBackupToKeep.Location = new System.Drawing.Point(192, 120);
             this.txtBackupToKeep.Name = "txtBackupToKeep";
-            this.txtBackupToKeep.Size = new System.Drawing.Size(505, 21);
+            this.txtBackupToKeep.Size = new System.Drawing.Size(386, 21);
             this.txtBackupToKeep.TabIndex = 21;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(10, 119);
+            this.label8.Location = new System.Drawing.Point(9, 120);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(97, 15);
             this.label8.TabIndex = 20;
@@ -794,80 +261,39 @@
             // 
             this.txtLogLocation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtLogLocation.Location = new System.Drawing.Point(116, 90);
+            this.txtLogLocation.Location = new System.Drawing.Point(192, 93);
             this.txtLogLocation.Name = "txtLogLocation";
             this.txtLogLocation.ReadOnly = true;
-            this.txtLogLocation.Size = new System.Drawing.Size(1054, 21);
+            this.txtLogLocation.Size = new System.Drawing.Size(952, 21);
             this.txtLogLocation.TabIndex = 9;
-            // 
-            // label20
-            // 
-            this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(1175, 41);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(51, 15);
-            this.label20.TabIndex = 19;
-            this.label20.Text = "Minutes";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(11, 93);
+            this.label7.Location = new System.Drawing.Point(9, 93);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(101, 15);
             this.label7.TabIndex = 8;
             this.label7.Text = "Log File Location";
             // 
-            // txtAutoSavePeriod
-            // 
-            this.txtAutoSavePeriod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAutoSavePeriod.Enabled = false;
-            this.txtAutoSavePeriod.Location = new System.Drawing.Point(1177, 17);
-            this.txtAutoSavePeriod.Name = "txtAutoSavePeriod";
-            this.txtAutoSavePeriod.Size = new System.Drawing.Size(49, 21);
-            this.txtAutoSavePeriod.TabIndex = 18;
-            // 
-            // tbAutoSavePeriod
-            // 
-            this.tbAutoSavePeriod.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbAutoSavePeriod.Location = new System.Drawing.Point(116, 13);
-            this.tbAutoSavePeriod.Maximum = 120;
-            this.tbAutoSavePeriod.Minimum = 1;
-            this.tbAutoSavePeriod.Name = "tbAutoSavePeriod";
-            this.tbAutoSavePeriod.Size = new System.Drawing.Size(1040, 45);
-            this.tbAutoSavePeriod.TabIndex = 5;
-            this.tbAutoSavePeriod.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.tbAutoSavePeriod.Value = 1;
-            // 
             // txtSaveLocation
             // 
             this.txtSaveLocation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSaveLocation.Location = new System.Drawing.Point(116, 64);
+            this.txtSaveLocation.Location = new System.Drawing.Point(192, 64);
             this.txtSaveLocation.Name = "txtSaveLocation";
             this.txtSaveLocation.ReadOnly = true;
-            this.txtSaveLocation.Size = new System.Drawing.Size(1054, 21);
+            this.txtSaveLocation.Size = new System.Drawing.Size(952, 21);
             this.txtSaveLocation.TabIndex = 6;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(11, 67);
+            this.label9.Location = new System.Drawing.Point(9, 67);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(84, 15);
             this.label9.TabIndex = 4;
             this.label9.Text = "Save Location";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(10, 23);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(100, 15);
-            this.label19.TabIndex = 4;
-            this.label19.Text = "Auto Save Period";
             // 
             // expandCollapsePanel3
             // 
@@ -941,222 +367,6 @@
             this.groupBox14.TabIndex = 36;
             this.groupBox14.TabStop = false;
             this.groupBox14.Text = "Multipliers";
-            // 
-            // tbStaminaRegenRate
-            // 
-            this.tbStaminaRegenRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbStaminaRegenRate.DisableTextBox = false;
-            this.tbStaminaRegenRate.DisableTrackBar = false;
-            this.tbStaminaRegenRate.Location = new System.Drawing.Point(6, 372);
-            this.tbStaminaRegenRate.Maximum = 1000;
-            this.tbStaminaRegenRate.Minimum = 0;
-            this.tbStaminaRegenRate.Name = "tbStaminaRegenRate";
-            this.tbStaminaRegenRate.Scale = 1F;
-            this.tbStaminaRegenRate.Size = new System.Drawing.Size(1241, 26);
-            this.tbStaminaRegenRate.TabIndex = 11;
-            this.tbStaminaRegenRate.Text = "Stamina Regen Rate";
-            this.tbStaminaRegenRate.TickFrequency = 1;
-            this.tbStaminaRegenRate.Units = "x";
-            this.tbStaminaRegenRate.Value = 100F;
-            // 
-            // tbStaminaRate
-            // 
-            this.tbStaminaRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbStaminaRate.DisableTextBox = false;
-            this.tbStaminaRate.DisableTrackBar = false;
-            this.tbStaminaRate.Location = new System.Drawing.Point(6, 340);
-            this.tbStaminaRate.Maximum = 1000;
-            this.tbStaminaRate.Minimum = 0;
-            this.tbStaminaRate.Name = "tbStaminaRate";
-            this.tbStaminaRate.Scale = 1F;
-            this.tbStaminaRate.Size = new System.Drawing.Size(1241, 26);
-            this.tbStaminaRate.TabIndex = 10;
-            this.tbStaminaRate.Text = "Stamina Rate";
-            this.tbStaminaRate.TickFrequency = 1;
-            this.tbStaminaRate.Units = "x";
-            this.tbStaminaRate.Value = 100F;
-            // 
-            // tbSkillReductionRate
-            // 
-            this.tbSkillReductionRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbSkillReductionRate.DisableTextBox = false;
-            this.tbSkillReductionRate.DisableTrackBar = false;
-            this.tbSkillReductionRate.Location = new System.Drawing.Point(6, 308);
-            this.tbSkillReductionRate.Maximum = 1000;
-            this.tbSkillReductionRate.Minimum = 0;
-            this.tbSkillReductionRate.Name = "tbSkillReductionRate";
-            this.tbSkillReductionRate.Scale = 1F;
-            this.tbSkillReductionRate.Size = new System.Drawing.Size(1241, 26);
-            this.tbSkillReductionRate.TabIndex = 9;
-            this.tbSkillReductionRate.Text = "Skill Reduction Rate";
-            this.tbSkillReductionRate.TickFrequency = 1;
-            this.tbSkillReductionRate.Units = "x";
-            this.tbSkillReductionRate.Value = 100F;
-            // 
-            // tbSkillGainRate
-            // 
-            this.tbSkillGainRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbSkillGainRate.DisableTextBox = false;
-            this.tbSkillGainRate.DisableTrackBar = false;
-            this.tbSkillGainRate.Location = new System.Drawing.Point(6, 276);
-            this.tbSkillGainRate.Maximum = 1000;
-            this.tbSkillGainRate.Minimum = 0;
-            this.tbSkillGainRate.Name = "tbSkillGainRate";
-            this.tbSkillGainRate.Scale = 1F;
-            this.tbSkillGainRate.Size = new System.Drawing.Size(1241, 26);
-            this.tbSkillGainRate.TabIndex = 8;
-            this.tbSkillGainRate.Text = "Skill Gain Rate";
-            this.tbSkillGainRate.TickFrequency = 1;
-            this.tbSkillGainRate.Units = "x";
-            this.tbSkillGainRate.Value = 100F;
-            // 
-            // tbResourceRate
-            // 
-            this.tbResourceRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbResourceRate.DisableTextBox = false;
-            this.tbResourceRate.DisableTrackBar = false;
-            this.tbResourceRate.Location = new System.Drawing.Point(6, 244);
-            this.tbResourceRate.Maximum = 1000;
-            this.tbResourceRate.Minimum = 0;
-            this.tbResourceRate.Name = "tbResourceRate";
-            this.tbResourceRate.Scale = 1F;
-            this.tbResourceRate.Size = new System.Drawing.Size(1241, 26);
-            this.tbResourceRate.TabIndex = 7;
-            this.tbResourceRate.Text = "Resource Rate";
-            this.tbResourceRate.TickFrequency = 1;
-            this.tbResourceRate.Units = "x";
-            this.tbResourceRate.Value = 100F;
-            // 
-            // tbPlayerDamage
-            // 
-            this.tbPlayerDamage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbPlayerDamage.DisableTextBox = false;
-            this.tbPlayerDamage.DisableTrackBar = false;
-            this.tbPlayerDamage.Location = new System.Drawing.Point(6, 212);
-            this.tbPlayerDamage.Maximum = 1000;
-            this.tbPlayerDamage.Minimum = 0;
-            this.tbPlayerDamage.Name = "tbPlayerDamage";
-            this.tbPlayerDamage.Scale = 1F;
-            this.tbPlayerDamage.Size = new System.Drawing.Size(1241, 26);
-            this.tbPlayerDamage.TabIndex = 6;
-            this.tbPlayerDamage.Text = "Player Damage";
-            this.tbPlayerDamage.TickFrequency = 1;
-            this.tbPlayerDamage.Units = "x";
-            this.tbPlayerDamage.Value = 100F;
-            // 
-            // tbMoveStaminaRate
-            // 
-            this.tbMoveStaminaRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbMoveStaminaRate.DisableTextBox = false;
-            this.tbMoveStaminaRate.DisableTrackBar = false;
-            this.tbMoveStaminaRate.Location = new System.Drawing.Point(6, 180);
-            this.tbMoveStaminaRate.Maximum = 1000;
-            this.tbMoveStaminaRate.Minimum = 0;
-            this.tbMoveStaminaRate.Name = "tbMoveStaminaRate";
-            this.tbMoveStaminaRate.Scale = 1F;
-            this.tbMoveStaminaRate.Size = new System.Drawing.Size(1241, 26);
-            this.tbMoveStaminaRate.TabIndex = 5;
-            this.tbMoveStaminaRate.Text = "Move Stamina Rate";
-            this.tbMoveStaminaRate.TickFrequency = 1;
-            this.tbMoveStaminaRate.Units = "x";
-            this.tbMoveStaminaRate.Value = 100F;
-            // 
-            // tbEventRate
-            // 
-            this.tbEventRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbEventRate.DisableTextBox = false;
-            this.tbEventRate.DisableTrackBar = false;
-            this.tbEventRate.Location = new System.Drawing.Point(6, 148);
-            this.tbEventRate.Maximum = 1000;
-            this.tbEventRate.Minimum = 0;
-            this.tbEventRate.Name = "tbEventRate";
-            this.tbEventRate.Scale = 1F;
-            this.tbEventRate.Size = new System.Drawing.Size(1241, 26);
-            this.tbEventRate.TabIndex = 4;
-            this.tbEventRate.Text = "Event Rate";
-            this.tbEventRate.TickFrequency = 1;
-            this.tbEventRate.Units = "x";
-            this.tbEventRate.Value = 100F;
-            // 
-            // tbEnemySpeedSize
-            // 
-            this.tbEnemySpeedSize.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbEnemySpeedSize.DisableTextBox = false;
-            this.tbEnemySpeedSize.DisableTrackBar = false;
-            this.tbEnemySpeedSize.Location = new System.Drawing.Point(6, 116);
-            this.tbEnemySpeedSize.Maximum = 1000;
-            this.tbEnemySpeedSize.Minimum = 0;
-            this.tbEnemySpeedSize.Name = "tbEnemySpeedSize";
-            this.tbEnemySpeedSize.Scale = 1F;
-            this.tbEnemySpeedSize.Size = new System.Drawing.Size(1241, 26);
-            this.tbEnemySpeedSize.TabIndex = 3;
-            this.tbEnemySpeedSize.Text = "Enemy Speed Size";
-            this.tbEnemySpeedSize.TickFrequency = 1;
-            this.tbEnemySpeedSize.Units = "x";
-            this.tbEnemySpeedSize.Value = 100F;
-            // 
-            // tbEnemyLevelUpRate
-            // 
-            this.tbEnemyLevelUpRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbEnemyLevelUpRate.DisableTextBox = false;
-            this.tbEnemyLevelUpRate.DisableTrackBar = false;
-            this.tbEnemyLevelUpRate.Location = new System.Drawing.Point(6, 84);
-            this.tbEnemyLevelUpRate.Maximum = 1000;
-            this.tbEnemyLevelUpRate.Minimum = 0;
-            this.tbEnemyLevelUpRate.Name = "tbEnemyLevelUpRate";
-            this.tbEnemyLevelUpRate.Scale = 1F;
-            this.tbEnemyLevelUpRate.Size = new System.Drawing.Size(1241, 26);
-            this.tbEnemyLevelUpRate.TabIndex = 2;
-            this.tbEnemyLevelUpRate.Text = "Enemy Level Up Rate";
-            this.tbEnemyLevelUpRate.TickFrequency = 1;
-            this.tbEnemyLevelUpRate.Units = "x";
-            this.tbEnemyLevelUpRate.Value = 100F;
-            // 
-            // tbEnemyDamage
-            // 
-            this.tbEnemyDamage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbEnemyDamage.DisableTextBox = false;
-            this.tbEnemyDamage.DisableTrackBar = false;
-            this.tbEnemyDamage.Location = new System.Drawing.Point(6, 52);
-            this.tbEnemyDamage.Maximum = 1000;
-            this.tbEnemyDamage.Minimum = 0;
-            this.tbEnemyDamage.Name = "tbEnemyDamage";
-            this.tbEnemyDamage.Scale = 1F;
-            this.tbEnemyDamage.Size = new System.Drawing.Size(1241, 26);
-            this.tbEnemyDamage.TabIndex = 1;
-            this.tbEnemyDamage.Text = "Enemy Damage";
-            this.tbEnemyDamage.TickFrequency = 1;
-            this.tbEnemyDamage.Units = "x";
-            this.tbEnemyDamage.Value = 100F;
-            // 
-            // tbDamageTaken
-            // 
-            this.tbDamageTaken.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbDamageTaken.DisableTextBox = false;
-            this.tbDamageTaken.DisableTrackBar = false;
-            this.tbDamageTaken.Location = new System.Drawing.Point(6, 20);
-            this.tbDamageTaken.Maximum = 1000;
-            this.tbDamageTaken.Minimum = 0;
-            this.tbDamageTaken.Name = "tbDamageTaken";
-            this.tbDamageTaken.Scale = 1F;
-            this.tbDamageTaken.Size = new System.Drawing.Size(1241, 26);
-            this.tbDamageTaken.TabIndex = 0;
-            this.tbDamageTaken.Text = "Damage Taken";
-            this.tbDamageTaken.TickFrequency = 1;
-            this.tbDamageTaken.Units = "x";
-            this.tbDamageTaken.Value = 100F;
             // 
             // chkTeleportAll
             // 
@@ -1712,7 +922,7 @@
             this.expandCollapsePanel1.Controls.Add(this.groupBox2);
             this.expandCollapsePanel1.Controls.Add(this.groupBox1);
             this.expandCollapsePanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.expandCollapsePanel1.ExpandedHeight = 590;
+            this.expandCollapsePanel1.ExpandedHeight = 511;
             this.expandCollapsePanel1.IsExpanded = true;
             this.expandCollapsePanel1.Location = new System.Drawing.Point(0, 0);
             this.expandCollapsePanel1.Name = "expandCollapsePanel1";
@@ -1750,6 +960,7 @@
             this.button4.TabIndex = 72;
             this.button4.Text = "Refresh";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // txtCommand
             // 
@@ -1770,6 +981,7 @@
             this.btProcessorAffinity.TabIndex = 70;
             this.btProcessorAffinity.Text = "...";
             this.btProcessorAffinity.UseVisualStyleBackColor = true;
+            this.btProcessorAffinity.Click += new System.EventHandler(this.btProcessorAffinity_Click);
             // 
             // txtAffinity
             // 
@@ -2094,6 +1306,286 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "Server Name";
             // 
+            // automaticManagement1
+            // 
+            this.automaticManagement1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.automaticManagement1.ForeColor = System.Drawing.Color.SteelBlue;
+            this.automaticManagement1.Location = new System.Drawing.Point(9, 32);
+            this.automaticManagement1.Name = "automaticManagement1";
+            this.automaticManagement1.Size = new System.Drawing.Size(1248, 347);
+            this.automaticManagement1.TabIndex = 1;
+            // 
+            // tbSubBackups
+            // 
+            this.tbSubBackups.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbSubBackups.DisableTextBox = false;
+            this.tbSubBackups.DisableTrackBar = false;
+            this.tbSubBackups.Location = new System.Drawing.Point(10, 176);
+            this.tbSubBackups.Maximum = 1440;
+            this.tbSubBackups.Minimum = 0;
+            this.tbSubBackups.Name = "tbSubBackups";
+            this.tbSubBackups.Scale = 1F;
+            this.tbSubBackups.Size = new System.Drawing.Size(1241, 26);
+            this.tbSubBackups.TabIndex = 33;
+            this.tbSubBackups.Text = "Subsequent Backups";
+            this.tbSubBackups.TickFrequency = 1;
+            this.tbSubBackups.Units = "Minutes";
+            this.tbSubBackups.Value = 720F;
+            // 
+            // tbFirstBackup
+            // 
+            this.tbFirstBackup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbFirstBackup.DisableTextBox = false;
+            this.tbFirstBackup.DisableTrackBar = false;
+            this.tbFirstBackup.Location = new System.Drawing.Point(10, 144);
+            this.tbFirstBackup.Maximum = 1440;
+            this.tbFirstBackup.Minimum = 0;
+            this.tbFirstBackup.Name = "tbFirstBackup";
+            this.tbFirstBackup.Scale = 1F;
+            this.tbFirstBackup.Size = new System.Drawing.Size(1241, 26);
+            this.tbFirstBackup.TabIndex = 32;
+            this.tbFirstBackup.Text = "First automatic";
+            this.tbFirstBackup.TickFrequency = 1;
+            this.tbFirstBackup.Units = "Minutes";
+            this.tbFirstBackup.Value = 120F;
+            // 
+            // tbAutoSavePeriod
+            // 
+            this.tbAutoSavePeriod.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbAutoSavePeriod.DisableTextBox = false;
+            this.tbAutoSavePeriod.DisableTrackBar = false;
+            this.tbAutoSavePeriod.Location = new System.Drawing.Point(10, 38);
+            this.tbAutoSavePeriod.Maximum = 120;
+            this.tbAutoSavePeriod.Minimum = 1;
+            this.tbAutoSavePeriod.Name = "tbAutoSavePeriod";
+            this.tbAutoSavePeriod.Scale = 1F;
+            this.tbAutoSavePeriod.Size = new System.Drawing.Size(1241, 26);
+            this.tbAutoSavePeriod.TabIndex = 20;
+            this.tbAutoSavePeriod.Text = "Auto Save Period";
+            this.tbAutoSavePeriod.TickFrequency = 1;
+            this.tbAutoSavePeriod.Units = "Minutes";
+            this.tbAutoSavePeriod.Value = 30F;
+            // 
+            // tbStaminaRegenRate
+            // 
+            this.tbStaminaRegenRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbStaminaRegenRate.DisableTextBox = false;
+            this.tbStaminaRegenRate.DisableTrackBar = false;
+            this.tbStaminaRegenRate.Location = new System.Drawing.Point(6, 372);
+            this.tbStaminaRegenRate.Maximum = 1000;
+            this.tbStaminaRegenRate.Minimum = 0;
+            this.tbStaminaRegenRate.Name = "tbStaminaRegenRate";
+            this.tbStaminaRegenRate.Scale = 1F;
+            this.tbStaminaRegenRate.Size = new System.Drawing.Size(1241, 26);
+            this.tbStaminaRegenRate.TabIndex = 11;
+            this.tbStaminaRegenRate.Text = "Stamina Regen Rate";
+            this.tbStaminaRegenRate.TickFrequency = 1;
+            this.tbStaminaRegenRate.Units = "x";
+            this.tbStaminaRegenRate.Value = 100F;
+            // 
+            // tbStaminaRate
+            // 
+            this.tbStaminaRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbStaminaRate.DisableTextBox = false;
+            this.tbStaminaRate.DisableTrackBar = false;
+            this.tbStaminaRate.Location = new System.Drawing.Point(6, 340);
+            this.tbStaminaRate.Maximum = 1000;
+            this.tbStaminaRate.Minimum = 0;
+            this.tbStaminaRate.Name = "tbStaminaRate";
+            this.tbStaminaRate.Scale = 1F;
+            this.tbStaminaRate.Size = new System.Drawing.Size(1241, 26);
+            this.tbStaminaRate.TabIndex = 10;
+            this.tbStaminaRate.Text = "Stamina Rate";
+            this.tbStaminaRate.TickFrequency = 1;
+            this.tbStaminaRate.Units = "x";
+            this.tbStaminaRate.Value = 100F;
+            // 
+            // tbSkillReductionRate
+            // 
+            this.tbSkillReductionRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbSkillReductionRate.DisableTextBox = false;
+            this.tbSkillReductionRate.DisableTrackBar = false;
+            this.tbSkillReductionRate.Location = new System.Drawing.Point(6, 308);
+            this.tbSkillReductionRate.Maximum = 1000;
+            this.tbSkillReductionRate.Minimum = 0;
+            this.tbSkillReductionRate.Name = "tbSkillReductionRate";
+            this.tbSkillReductionRate.Scale = 1F;
+            this.tbSkillReductionRate.Size = new System.Drawing.Size(1241, 26);
+            this.tbSkillReductionRate.TabIndex = 9;
+            this.tbSkillReductionRate.Text = "Skill Reduction Rate";
+            this.tbSkillReductionRate.TickFrequency = 1;
+            this.tbSkillReductionRate.Units = "x";
+            this.tbSkillReductionRate.Value = 100F;
+            // 
+            // tbSkillGainRate
+            // 
+            this.tbSkillGainRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbSkillGainRate.DisableTextBox = false;
+            this.tbSkillGainRate.DisableTrackBar = false;
+            this.tbSkillGainRate.Location = new System.Drawing.Point(6, 276);
+            this.tbSkillGainRate.Maximum = 1000;
+            this.tbSkillGainRate.Minimum = 0;
+            this.tbSkillGainRate.Name = "tbSkillGainRate";
+            this.tbSkillGainRate.Scale = 1F;
+            this.tbSkillGainRate.Size = new System.Drawing.Size(1241, 26);
+            this.tbSkillGainRate.TabIndex = 8;
+            this.tbSkillGainRate.Text = "Skill Gain Rate";
+            this.tbSkillGainRate.TickFrequency = 1;
+            this.tbSkillGainRate.Units = "x";
+            this.tbSkillGainRate.Value = 100F;
+            // 
+            // tbResourceRate
+            // 
+            this.tbResourceRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbResourceRate.DisableTextBox = false;
+            this.tbResourceRate.DisableTrackBar = false;
+            this.tbResourceRate.Location = new System.Drawing.Point(6, 244);
+            this.tbResourceRate.Maximum = 1000;
+            this.tbResourceRate.Minimum = 0;
+            this.tbResourceRate.Name = "tbResourceRate";
+            this.tbResourceRate.Scale = 1F;
+            this.tbResourceRate.Size = new System.Drawing.Size(1241, 26);
+            this.tbResourceRate.TabIndex = 7;
+            this.tbResourceRate.Text = "Resource Rate";
+            this.tbResourceRate.TickFrequency = 1;
+            this.tbResourceRate.Units = "x";
+            this.tbResourceRate.Value = 100F;
+            // 
+            // tbPlayerDamage
+            // 
+            this.tbPlayerDamage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbPlayerDamage.DisableTextBox = false;
+            this.tbPlayerDamage.DisableTrackBar = false;
+            this.tbPlayerDamage.Location = new System.Drawing.Point(6, 212);
+            this.tbPlayerDamage.Maximum = 1000;
+            this.tbPlayerDamage.Minimum = 0;
+            this.tbPlayerDamage.Name = "tbPlayerDamage";
+            this.tbPlayerDamage.Scale = 1F;
+            this.tbPlayerDamage.Size = new System.Drawing.Size(1241, 26);
+            this.tbPlayerDamage.TabIndex = 6;
+            this.tbPlayerDamage.Text = "Player Damage";
+            this.tbPlayerDamage.TickFrequency = 1;
+            this.tbPlayerDamage.Units = "x";
+            this.tbPlayerDamage.Value = 100F;
+            // 
+            // tbMoveStaminaRate
+            // 
+            this.tbMoveStaminaRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbMoveStaminaRate.DisableTextBox = false;
+            this.tbMoveStaminaRate.DisableTrackBar = false;
+            this.tbMoveStaminaRate.Location = new System.Drawing.Point(6, 180);
+            this.tbMoveStaminaRate.Maximum = 1000;
+            this.tbMoveStaminaRate.Minimum = 0;
+            this.tbMoveStaminaRate.Name = "tbMoveStaminaRate";
+            this.tbMoveStaminaRate.Scale = 1F;
+            this.tbMoveStaminaRate.Size = new System.Drawing.Size(1241, 26);
+            this.tbMoveStaminaRate.TabIndex = 5;
+            this.tbMoveStaminaRate.Text = "Move Stamina Rate";
+            this.tbMoveStaminaRate.TickFrequency = 1;
+            this.tbMoveStaminaRate.Units = "x";
+            this.tbMoveStaminaRate.Value = 100F;
+            // 
+            // tbEventRate
+            // 
+            this.tbEventRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbEventRate.DisableTextBox = false;
+            this.tbEventRate.DisableTrackBar = false;
+            this.tbEventRate.Location = new System.Drawing.Point(6, 148);
+            this.tbEventRate.Maximum = 1000;
+            this.tbEventRate.Minimum = 0;
+            this.tbEventRate.Name = "tbEventRate";
+            this.tbEventRate.Scale = 1F;
+            this.tbEventRate.Size = new System.Drawing.Size(1241, 26);
+            this.tbEventRate.TabIndex = 4;
+            this.tbEventRate.Text = "Event Rate";
+            this.tbEventRate.TickFrequency = 1;
+            this.tbEventRate.Units = "x";
+            this.tbEventRate.Value = 100F;
+            // 
+            // tbEnemySpeedSize
+            // 
+            this.tbEnemySpeedSize.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbEnemySpeedSize.DisableTextBox = false;
+            this.tbEnemySpeedSize.DisableTrackBar = false;
+            this.tbEnemySpeedSize.Location = new System.Drawing.Point(6, 116);
+            this.tbEnemySpeedSize.Maximum = 1000;
+            this.tbEnemySpeedSize.Minimum = 0;
+            this.tbEnemySpeedSize.Name = "tbEnemySpeedSize";
+            this.tbEnemySpeedSize.Scale = 1F;
+            this.tbEnemySpeedSize.Size = new System.Drawing.Size(1241, 26);
+            this.tbEnemySpeedSize.TabIndex = 3;
+            this.tbEnemySpeedSize.Text = "Enemy Speed Size";
+            this.tbEnemySpeedSize.TickFrequency = 1;
+            this.tbEnemySpeedSize.Units = "x";
+            this.tbEnemySpeedSize.Value = 100F;
+            // 
+            // tbEnemyLevelUpRate
+            // 
+            this.tbEnemyLevelUpRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbEnemyLevelUpRate.DisableTextBox = false;
+            this.tbEnemyLevelUpRate.DisableTrackBar = false;
+            this.tbEnemyLevelUpRate.Location = new System.Drawing.Point(6, 84);
+            this.tbEnemyLevelUpRate.Maximum = 1000;
+            this.tbEnemyLevelUpRate.Minimum = 0;
+            this.tbEnemyLevelUpRate.Name = "tbEnemyLevelUpRate";
+            this.tbEnemyLevelUpRate.Scale = 1F;
+            this.tbEnemyLevelUpRate.Size = new System.Drawing.Size(1241, 26);
+            this.tbEnemyLevelUpRate.TabIndex = 2;
+            this.tbEnemyLevelUpRate.Text = "Enemy Level Up Rate";
+            this.tbEnemyLevelUpRate.TickFrequency = 1;
+            this.tbEnemyLevelUpRate.Units = "x";
+            this.tbEnemyLevelUpRate.Value = 100F;
+            // 
+            // tbEnemyDamage
+            // 
+            this.tbEnemyDamage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbEnemyDamage.DisableTextBox = false;
+            this.tbEnemyDamage.DisableTrackBar = false;
+            this.tbEnemyDamage.Location = new System.Drawing.Point(6, 52);
+            this.tbEnemyDamage.Maximum = 1000;
+            this.tbEnemyDamage.Minimum = 0;
+            this.tbEnemyDamage.Name = "tbEnemyDamage";
+            this.tbEnemyDamage.Scale = 1F;
+            this.tbEnemyDamage.Size = new System.Drawing.Size(1241, 26);
+            this.tbEnemyDamage.TabIndex = 1;
+            this.tbEnemyDamage.Text = "Enemy Damage";
+            this.tbEnemyDamage.TickFrequency = 1;
+            this.tbEnemyDamage.Units = "x";
+            this.tbEnemyDamage.Value = 100F;
+            // 
+            // tbDamageTaken
+            // 
+            this.tbDamageTaken.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbDamageTaken.DisableTextBox = false;
+            this.tbDamageTaken.DisableTrackBar = false;
+            this.tbDamageTaken.Location = new System.Drawing.Point(6, 20);
+            this.tbDamageTaken.Maximum = 1000;
+            this.tbDamageTaken.Minimum = 0;
+            this.tbDamageTaken.Name = "tbDamageTaken";
+            this.tbDamageTaken.Scale = 1F;
+            this.tbDamageTaken.Size = new System.Drawing.Size(1241, 26);
+            this.tbDamageTaken.TabIndex = 0;
+            this.tbDamageTaken.Text = "Damage Taken";
+            this.tbDamageTaken.TickFrequency = 1;
+            this.tbDamageTaken.Units = "x";
+            this.tbDamageTaken.Value = 100F;
+            // 
             // profileHeader1
             // 
             this.profileHeader1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -2110,31 +1602,23 @@
             this.profileHeader1.ClickStartStop += new System.EventHandler(this.profileHeader1_ClickStartStop);
             this.profileHeader1.ClickRCON += new System.EventHandler(this.profileHeader1_ClickRCON);
             // 
-            // FrmConfigurationForm
+            // FrmValheim
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1279, 993);
+            this.ClientSize = new System.Drawing.Size(1279, 1146);
             this.Controls.Add(this.pContainer);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.profileHeader1);
             this.ForeColor = System.Drawing.Color.SteelBlue;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FrmConfigurationForm";
+            this.Name = "FrmValheim";
             this.Text = "Valheim Plugin";
             this.Load += new System.EventHandler(this.FrmConfigurationForm_Load);
             this.pContainer.ResumeLayout(false);
             this.expandCollapsePanel4.ResumeLayout(false);
             this.expandCollapsePanel4.PerformLayout();
-            this.groupBox11.ResumeLayout(false);
-            this.groupBox11.PerformLayout();
             this.expandCollapsePanel2.ResumeLayout(false);
             this.expandCollapsePanel2.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbSubBackups)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbFirstBackup)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbAutoSavePeriod)).EndInit();
             this.expandCollapsePanel3.ResumeLayout(false);
             this.expandCollapsePanel3.PerformLayout();
             this.groupBox14.ResumeLayout(false);
@@ -2167,60 +1651,17 @@
         #endregion
 
         private OphiussaFramework.Components.ProfileHeader profileHeader1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel pContainer;
         private MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel expandCollapsePanel4;
-        private System.Windows.Forms.GroupBox groupBox11;
-        private System.Windows.Forms.CheckBox chkRestart2;
-        private System.Windows.Forms.CheckBox chkRestart1;
-        private System.Windows.Forms.CheckBox chkUpdate1;
-        private System.Windows.Forms.CheckBox chkUpdate2;
-        private System.Windows.Forms.CheckBox chkSat1;
-        private System.Windows.Forms.CheckBox chkFri1;
-        private System.Windows.Forms.CheckBox chkSat2;
-        private System.Windows.Forms.CheckBox chkThu1;
-        private System.Windows.Forms.MaskedTextBox txtShutdow2;
-        private System.Windows.Forms.CheckBox chkWed1;
-        private System.Windows.Forms.CheckBox chkFri2;
-        private System.Windows.Forms.CheckBox chkTue1;
-        private System.Windows.Forms.CheckBox chkShutdown2;
-        private System.Windows.Forms.CheckBox chkMon1;
-        private System.Windows.Forms.CheckBox chkThu2;
-        private System.Windows.Forms.CheckBox chkSun1;
-        private System.Windows.Forms.CheckBox chkSun2;
-        private System.Windows.Forms.MaskedTextBox txtShutdow1;
-        private System.Windows.Forms.CheckBox chkWed2;
-        private System.Windows.Forms.CheckBox chkRestartIfShutdown;
-        private System.Windows.Forms.CheckBox chkMon2;
-        private System.Windows.Forms.CheckBox chkAutoUpdate;
-        private System.Windows.Forms.CheckBox chkTue2;
-        private System.Windows.Forms.CheckBox chkIncludeAutoBackup;
-        private System.Windows.Forms.CheckBox chkShutdown1;
-        private System.Windows.Forms.RadioButton rbOnLogin;
-        private System.Windows.Forms.RadioButton rbOnBoot;
-        private System.Windows.Forms.CheckBox chkAutoStart;
         private MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel expandCollapsePanel2;
-        private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox txtSubBackups;
-        private System.Windows.Forms.TrackBar tbSubBackups;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox txtFirstBackup;
-        private System.Windows.Forms.TrackBar tbFirstBackup;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtBackupToKeep;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtLogLocation;
-        private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtAutoSavePeriod;
-        private System.Windows.Forms.TrackBar tbAutoSavePeriod;
         private System.Windows.Forms.TextBox txtSaveLocation;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label19;
         private MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel expandCollapsePanel3;
         private System.Windows.Forms.CheckBox chkDeathDeleteUnequipped;
         private System.Windows.Forms.GroupBox groupBox14;
@@ -2319,5 +1760,10 @@
         private OphiussaFramework.Components.exTrackBar tbEnemyLevelUpRate;
         private OphiussaFramework.Components.exTrackBar tbStaminaRegenRate;
         private OphiussaFramework.Components.exTrackBar tbDamageTaken;
+        private OphiussaServerManager.Components.AutomaticManagement automaticManagement1;
+        private OphiussaFramework.Components.exTrackBar tbAutoSavePeriod;
+        private OphiussaFramework.Components.exTrackBar tbSubBackups;
+        private OphiussaFramework.Components.exTrackBar tbFirstBackup;
+        private System.Windows.Forms.FolderBrowserDialog fdDiag;
     }
 }

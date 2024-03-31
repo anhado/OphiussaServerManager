@@ -41,6 +41,10 @@ namespace OphiussaFramework.ServerUtils {
             profile.AdditionalSettings = JsonConvert.SerializeObject(e.Profile,                Formatting.Indented);
             profile.AdditionalCommands = JsonConvert.SerializeObject(e.Plugin.DefaultCommands, Formatting.Indented); 
             ConnectionController.SqlLite.Upsert<IProfile>(profile);
+            foreach (AutoManagement opt in profile.AutoManagement) {
+                opt.ServerKey = profile.Key;
+                ConnectionController.SqlLite.Upsert<AutoManagement>(opt);
+            }
         }
 
         public static void OpenRCONClick(object sender, OphiussaEventArgs e) {

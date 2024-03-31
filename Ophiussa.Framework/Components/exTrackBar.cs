@@ -65,29 +65,25 @@ namespace OphiussaFramework.Components {
         }
 
         private void txtUC_TextChanged(object sender, EventArgs e) {
-            //try
-            //{
-            //    if (Scale == 1f)
-            //    {
-            //        int iValue = ((TextBox)sender).Text.ToInt();
-            //        tbUC.SetValueEx(iValue);
-            //    }
-            //    else
-            //    {
-            //        float fValue = ((TextBox)sender).Text.ToFloat() * Scale;
-            //        string value = Math.Round(fValue, 0).ToString(CultureInfo.InvariantCulture);
-            //        tbUC.SetValueEx(value.ToInt());
-            //    }
-            //}
-            //catch (Exception exception)
-            //{
-            //    Console.WriteLine(exception);
-            //    MessageBox.Show(exception.Message);
-            //}
+            try {
+                if (Scale == 1f) {
+                    int iValue = ((TextBox)sender).Text.ToInt();
+                    tbUC.SetValueEx(iValue);
+                }
+                else {
+                    float fValue = ((TextBox)sender).Text.ToFloat() * Scale;
+                    string value = Math.Round(fValue, 0).ToString(CultureInfo.InvariantCulture);
+                    tbUC.SetValueEx(value.ToInt());
+                }
+            }
+            catch (Exception exception) {
+                Console.WriteLine(exception);
+                MessageBox.Show(exception.Message);
+            }
         }
 
         private void tbUC_Scroll(object sender, EventArgs e) {
-            //txtUC.Text = (((TrackBar)sender).Value / Scale).ToString(CultureInfo.InvariantCulture);
+            txtUC.Text = (((TrackBar)sender).Value / Scale).ToString(CultureInfo.InvariantCulture);
         }
 
         private void UcTrackBar_Resize(object sender, EventArgs e) {
