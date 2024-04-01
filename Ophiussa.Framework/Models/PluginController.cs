@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using OphiussaFramework.Interfaces;
@@ -85,8 +86,8 @@ namespace OphiussaFramework.Models {
             _plugin.StartServer();
         }
 
-        public void StopServer() {
-            _plugin.StopServer(); 
+        public async Task StopServer(bool force = false) {
+            await _plugin.StopServer(force); 
         }
 
         public void InstallServer() {

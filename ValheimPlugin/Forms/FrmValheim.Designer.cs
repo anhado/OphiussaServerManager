@@ -31,18 +31,34 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmValheim));
             this.pContainer = new System.Windows.Forms.Panel();
             this.expandCollapsePanel4 = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
+            this.automaticManagement1 = new OphiussaServerManager.Components.AutomaticManagement();
             this.expandCollapsePanel2 = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
+            this.tbSubBackups = new OphiussaFramework.Components.exTrackBar();
+            this.tbFirstBackup = new OphiussaFramework.Components.exTrackBar();
             this.button3 = new System.Windows.Forms.Button();
+            this.tbAutoSavePeriod = new OphiussaFramework.Components.exTrackBar();
             this.button2 = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtSaveLocation = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.txtBackupToKeep = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtLogLocation = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtSaveLocation = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.expandCollapsePanel3 = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
             this.chkDeathDeleteUnequipped = new System.Windows.Forms.CheckBox();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.tbStaminaRegenRate = new OphiussaFramework.Components.exTrackBar();
+            this.tbStaminaRate = new OphiussaFramework.Components.exTrackBar();
+            this.tbSkillReductionRate = new OphiussaFramework.Components.exTrackBar();
+            this.tbSkillGainRate = new OphiussaFramework.Components.exTrackBar();
+            this.tbResourceRate = new OphiussaFramework.Components.exTrackBar();
+            this.tbPlayerDamage = new OphiussaFramework.Components.exTrackBar();
+            this.tbMoveStaminaRate = new OphiussaFramework.Components.exTrackBar();
+            this.tbEventRate = new OphiussaFramework.Components.exTrackBar();
+            this.tbEnemySpeedSize = new OphiussaFramework.Components.exTrackBar();
+            this.tbEnemyLevelUpRate = new OphiussaFramework.Components.exTrackBar();
+            this.tbEnemyDamage = new OphiussaFramework.Components.exTrackBar();
+            this.tbDamageTaken = new OphiussaFramework.Components.exTrackBar();
             this.chkTeleportAll = new System.Windows.Forms.CheckBox();
             this.chkPlayerEvents = new System.Windows.Forms.CheckBox();
             this.chkPassiveMobs = new System.Windows.Forms.CheckBox();
@@ -127,22 +143,6 @@
             this.txtServerName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.fdDiag = new System.Windows.Forms.FolderBrowserDialog();
-            this.automaticManagement1 = new OphiussaServerManager.Components.AutomaticManagement();
-            this.tbSubBackups = new OphiussaFramework.Components.exTrackBar();
-            this.tbFirstBackup = new OphiussaFramework.Components.exTrackBar();
-            this.tbAutoSavePeriod = new OphiussaFramework.Components.exTrackBar();
-            this.tbStaminaRegenRate = new OphiussaFramework.Components.exTrackBar();
-            this.tbStaminaRate = new OphiussaFramework.Components.exTrackBar();
-            this.tbSkillReductionRate = new OphiussaFramework.Components.exTrackBar();
-            this.tbSkillGainRate = new OphiussaFramework.Components.exTrackBar();
-            this.tbResourceRate = new OphiussaFramework.Components.exTrackBar();
-            this.tbPlayerDamage = new OphiussaFramework.Components.exTrackBar();
-            this.tbMoveStaminaRate = new OphiussaFramework.Components.exTrackBar();
-            this.tbEventRate = new OphiussaFramework.Components.exTrackBar();
-            this.tbEnemySpeedSize = new OphiussaFramework.Components.exTrackBar();
-            this.tbEnemyLevelUpRate = new OphiussaFramework.Components.exTrackBar();
-            this.tbEnemyDamage = new OphiussaFramework.Components.exTrackBar();
-            this.tbDamageTaken = new OphiussaFramework.Components.exTrackBar();
             this.profileHeader1 = new OphiussaFramework.Components.ProfileHeader();
             this.pContainer.SuspendLayout();
             this.expandCollapsePanel4.SuspendLayout();
@@ -191,6 +191,16 @@
             this.expandCollapsePanel4.Text = "Automatic Management";
             this.expandCollapsePanel4.UseAnimation = false;
             // 
+            // automaticManagement1
+            // 
+            this.automaticManagement1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.automaticManagement1.ForeColor = System.Drawing.Color.SteelBlue;
+            this.automaticManagement1.Location = new System.Drawing.Point(9, 32);
+            this.automaticManagement1.Name = "automaticManagement1";
+            this.automaticManagement1.Size = new System.Drawing.Size(1248, 347);
+            this.automaticManagement1.TabIndex = 1;
+            // 
             // expandCollapsePanel2
             // 
             this.expandCollapsePanel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -217,6 +227,42 @@
             this.expandCollapsePanel2.Text = "Saves && Backups";
             this.expandCollapsePanel2.UseAnimation = false;
             // 
+            // tbSubBackups
+            // 
+            this.tbSubBackups.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbSubBackups.DisableTextBox = false;
+            this.tbSubBackups.DisableTrackBar = false;
+            this.tbSubBackups.Location = new System.Drawing.Point(10, 176);
+            this.tbSubBackups.Maximum = 1440;
+            this.tbSubBackups.Minimum = 0;
+            this.tbSubBackups.Name = "tbSubBackups";
+            this.tbSubBackups.Scale = 1F;
+            this.tbSubBackups.Size = new System.Drawing.Size(1241, 26);
+            this.tbSubBackups.TabIndex = 33;
+            this.tbSubBackups.Text = "Subsequent Backups";
+            this.tbSubBackups.TickFrequency = 1;
+            this.tbSubBackups.Units = "Minutes";
+            this.tbSubBackups.Value = 720F;
+            // 
+            // tbFirstBackup
+            // 
+            this.tbFirstBackup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbFirstBackup.DisableTextBox = false;
+            this.tbFirstBackup.DisableTrackBar = false;
+            this.tbFirstBackup.Location = new System.Drawing.Point(10, 144);
+            this.tbFirstBackup.Maximum = 1440;
+            this.tbFirstBackup.Minimum = 0;
+            this.tbFirstBackup.Name = "tbFirstBackup";
+            this.tbFirstBackup.Scale = 1F;
+            this.tbFirstBackup.Size = new System.Drawing.Size(1241, 26);
+            this.tbFirstBackup.TabIndex = 32;
+            this.tbFirstBackup.Text = "First automatic";
+            this.tbFirstBackup.TickFrequency = 1;
+            this.tbFirstBackup.Units = "Minutes";
+            this.tbFirstBackup.Value = 120F;
+            // 
             // button3
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -228,6 +274,24 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // tbAutoSavePeriod
+            // 
+            this.tbAutoSavePeriod.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbAutoSavePeriod.DisableTextBox = false;
+            this.tbAutoSavePeriod.DisableTrackBar = false;
+            this.tbAutoSavePeriod.Location = new System.Drawing.Point(10, 38);
+            this.tbAutoSavePeriod.Maximum = 120;
+            this.tbAutoSavePeriod.Minimum = 1;
+            this.tbAutoSavePeriod.Name = "tbAutoSavePeriod";
+            this.tbAutoSavePeriod.Scale = 1F;
+            this.tbAutoSavePeriod.Size = new System.Drawing.Size(1241, 26);
+            this.tbAutoSavePeriod.TabIndex = 20;
+            this.tbAutoSavePeriod.Text = "Auto Save Period";
+            this.tbAutoSavePeriod.TickFrequency = 1;
+            this.tbAutoSavePeriod.Units = "Minutes";
+            this.tbAutoSavePeriod.Value = 30F;
+            // 
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -238,6 +302,34 @@
             this.button2.Text = "...";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(9, 67);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(84, 15);
+            this.label9.TabIndex = 4;
+            this.label9.Text = "Save Location";
+            // 
+            // txtSaveLocation
+            // 
+            this.txtSaveLocation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSaveLocation.Location = new System.Drawing.Point(192, 64);
+            this.txtSaveLocation.Name = "txtSaveLocation";
+            this.txtSaveLocation.ReadOnly = true;
+            this.txtSaveLocation.Size = new System.Drawing.Size(952, 21);
+            this.txtSaveLocation.TabIndex = 6;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(9, 93);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(101, 15);
+            this.label7.TabIndex = 8;
+            this.label7.Text = "Log File Location";
             // 
             // txtBackupToKeep
             // 
@@ -266,34 +358,6 @@
             this.txtLogLocation.ReadOnly = true;
             this.txtLogLocation.Size = new System.Drawing.Size(952, 21);
             this.txtLogLocation.TabIndex = 9;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(9, 93);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(101, 15);
-            this.label7.TabIndex = 8;
-            this.label7.Text = "Log File Location";
-            // 
-            // txtSaveLocation
-            // 
-            this.txtSaveLocation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSaveLocation.Location = new System.Drawing.Point(192, 64);
-            this.txtSaveLocation.Name = "txtSaveLocation";
-            this.txtSaveLocation.ReadOnly = true;
-            this.txtSaveLocation.Size = new System.Drawing.Size(952, 21);
-            this.txtSaveLocation.TabIndex = 6;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(9, 67);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(84, 15);
-            this.label9.TabIndex = 4;
-            this.label9.Text = "Save Location";
             // 
             // expandCollapsePanel3
             // 
@@ -367,6 +431,222 @@
             this.groupBox14.TabIndex = 36;
             this.groupBox14.TabStop = false;
             this.groupBox14.Text = "Multipliers";
+            // 
+            // tbStaminaRegenRate
+            // 
+            this.tbStaminaRegenRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbStaminaRegenRate.DisableTextBox = false;
+            this.tbStaminaRegenRate.DisableTrackBar = false;
+            this.tbStaminaRegenRate.Location = new System.Drawing.Point(6, 372);
+            this.tbStaminaRegenRate.Maximum = 1000;
+            this.tbStaminaRegenRate.Minimum = 0;
+            this.tbStaminaRegenRate.Name = "tbStaminaRegenRate";
+            this.tbStaminaRegenRate.Scale = 1F;
+            this.tbStaminaRegenRate.Size = new System.Drawing.Size(1241, 26);
+            this.tbStaminaRegenRate.TabIndex = 11;
+            this.tbStaminaRegenRate.Text = "Stamina Regen Rate";
+            this.tbStaminaRegenRate.TickFrequency = 1;
+            this.tbStaminaRegenRate.Units = "x";
+            this.tbStaminaRegenRate.Value = 100F;
+            // 
+            // tbStaminaRate
+            // 
+            this.tbStaminaRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbStaminaRate.DisableTextBox = false;
+            this.tbStaminaRate.DisableTrackBar = false;
+            this.tbStaminaRate.Location = new System.Drawing.Point(6, 340);
+            this.tbStaminaRate.Maximum = 1000;
+            this.tbStaminaRate.Minimum = 0;
+            this.tbStaminaRate.Name = "tbStaminaRate";
+            this.tbStaminaRate.Scale = 1F;
+            this.tbStaminaRate.Size = new System.Drawing.Size(1241, 26);
+            this.tbStaminaRate.TabIndex = 10;
+            this.tbStaminaRate.Text = "Stamina Rate";
+            this.tbStaminaRate.TickFrequency = 1;
+            this.tbStaminaRate.Units = "x";
+            this.tbStaminaRate.Value = 100F;
+            // 
+            // tbSkillReductionRate
+            // 
+            this.tbSkillReductionRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbSkillReductionRate.DisableTextBox = false;
+            this.tbSkillReductionRate.DisableTrackBar = false;
+            this.tbSkillReductionRate.Location = new System.Drawing.Point(6, 308);
+            this.tbSkillReductionRate.Maximum = 1000;
+            this.tbSkillReductionRate.Minimum = 0;
+            this.tbSkillReductionRate.Name = "tbSkillReductionRate";
+            this.tbSkillReductionRate.Scale = 1F;
+            this.tbSkillReductionRate.Size = new System.Drawing.Size(1241, 26);
+            this.tbSkillReductionRate.TabIndex = 9;
+            this.tbSkillReductionRate.Text = "Skill Reduction Rate";
+            this.tbSkillReductionRate.TickFrequency = 1;
+            this.tbSkillReductionRate.Units = "x";
+            this.tbSkillReductionRate.Value = 100F;
+            // 
+            // tbSkillGainRate
+            // 
+            this.tbSkillGainRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbSkillGainRate.DisableTextBox = false;
+            this.tbSkillGainRate.DisableTrackBar = false;
+            this.tbSkillGainRate.Location = new System.Drawing.Point(6, 276);
+            this.tbSkillGainRate.Maximum = 1000;
+            this.tbSkillGainRate.Minimum = 0;
+            this.tbSkillGainRate.Name = "tbSkillGainRate";
+            this.tbSkillGainRate.Scale = 1F;
+            this.tbSkillGainRate.Size = new System.Drawing.Size(1241, 26);
+            this.tbSkillGainRate.TabIndex = 8;
+            this.tbSkillGainRate.Text = "Skill Gain Rate";
+            this.tbSkillGainRate.TickFrequency = 1;
+            this.tbSkillGainRate.Units = "x";
+            this.tbSkillGainRate.Value = 100F;
+            // 
+            // tbResourceRate
+            // 
+            this.tbResourceRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbResourceRate.DisableTextBox = false;
+            this.tbResourceRate.DisableTrackBar = false;
+            this.tbResourceRate.Location = new System.Drawing.Point(6, 244);
+            this.tbResourceRate.Maximum = 1000;
+            this.tbResourceRate.Minimum = 0;
+            this.tbResourceRate.Name = "tbResourceRate";
+            this.tbResourceRate.Scale = 1F;
+            this.tbResourceRate.Size = new System.Drawing.Size(1241, 26);
+            this.tbResourceRate.TabIndex = 7;
+            this.tbResourceRate.Text = "Resource Rate";
+            this.tbResourceRate.TickFrequency = 1;
+            this.tbResourceRate.Units = "x";
+            this.tbResourceRate.Value = 100F;
+            // 
+            // tbPlayerDamage
+            // 
+            this.tbPlayerDamage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbPlayerDamage.DisableTextBox = false;
+            this.tbPlayerDamage.DisableTrackBar = false;
+            this.tbPlayerDamage.Location = new System.Drawing.Point(6, 212);
+            this.tbPlayerDamage.Maximum = 1000;
+            this.tbPlayerDamage.Minimum = 0;
+            this.tbPlayerDamage.Name = "tbPlayerDamage";
+            this.tbPlayerDamage.Scale = 1F;
+            this.tbPlayerDamage.Size = new System.Drawing.Size(1241, 26);
+            this.tbPlayerDamage.TabIndex = 6;
+            this.tbPlayerDamage.Text = "Player Damage";
+            this.tbPlayerDamage.TickFrequency = 1;
+            this.tbPlayerDamage.Units = "x";
+            this.tbPlayerDamage.Value = 100F;
+            // 
+            // tbMoveStaminaRate
+            // 
+            this.tbMoveStaminaRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbMoveStaminaRate.DisableTextBox = false;
+            this.tbMoveStaminaRate.DisableTrackBar = false;
+            this.tbMoveStaminaRate.Location = new System.Drawing.Point(6, 180);
+            this.tbMoveStaminaRate.Maximum = 1000;
+            this.tbMoveStaminaRate.Minimum = 0;
+            this.tbMoveStaminaRate.Name = "tbMoveStaminaRate";
+            this.tbMoveStaminaRate.Scale = 1F;
+            this.tbMoveStaminaRate.Size = new System.Drawing.Size(1241, 26);
+            this.tbMoveStaminaRate.TabIndex = 5;
+            this.tbMoveStaminaRate.Text = "Move Stamina Rate";
+            this.tbMoveStaminaRate.TickFrequency = 1;
+            this.tbMoveStaminaRate.Units = "x";
+            this.tbMoveStaminaRate.Value = 100F;
+            // 
+            // tbEventRate
+            // 
+            this.tbEventRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbEventRate.DisableTextBox = false;
+            this.tbEventRate.DisableTrackBar = false;
+            this.tbEventRate.Location = new System.Drawing.Point(6, 148);
+            this.tbEventRate.Maximum = 1000;
+            this.tbEventRate.Minimum = 0;
+            this.tbEventRate.Name = "tbEventRate";
+            this.tbEventRate.Scale = 1F;
+            this.tbEventRate.Size = new System.Drawing.Size(1241, 26);
+            this.tbEventRate.TabIndex = 4;
+            this.tbEventRate.Text = "Event Rate";
+            this.tbEventRate.TickFrequency = 1;
+            this.tbEventRate.Units = "x";
+            this.tbEventRate.Value = 100F;
+            // 
+            // tbEnemySpeedSize
+            // 
+            this.tbEnemySpeedSize.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbEnemySpeedSize.DisableTextBox = false;
+            this.tbEnemySpeedSize.DisableTrackBar = false;
+            this.tbEnemySpeedSize.Location = new System.Drawing.Point(6, 116);
+            this.tbEnemySpeedSize.Maximum = 1000;
+            this.tbEnemySpeedSize.Minimum = 0;
+            this.tbEnemySpeedSize.Name = "tbEnemySpeedSize";
+            this.tbEnemySpeedSize.Scale = 1F;
+            this.tbEnemySpeedSize.Size = new System.Drawing.Size(1241, 26);
+            this.tbEnemySpeedSize.TabIndex = 3;
+            this.tbEnemySpeedSize.Text = "Enemy Speed Size";
+            this.tbEnemySpeedSize.TickFrequency = 1;
+            this.tbEnemySpeedSize.Units = "x";
+            this.tbEnemySpeedSize.Value = 100F;
+            // 
+            // tbEnemyLevelUpRate
+            // 
+            this.tbEnemyLevelUpRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbEnemyLevelUpRate.DisableTextBox = false;
+            this.tbEnemyLevelUpRate.DisableTrackBar = false;
+            this.tbEnemyLevelUpRate.Location = new System.Drawing.Point(6, 84);
+            this.tbEnemyLevelUpRate.Maximum = 1000;
+            this.tbEnemyLevelUpRate.Minimum = 0;
+            this.tbEnemyLevelUpRate.Name = "tbEnemyLevelUpRate";
+            this.tbEnemyLevelUpRate.Scale = 1F;
+            this.tbEnemyLevelUpRate.Size = new System.Drawing.Size(1241, 26);
+            this.tbEnemyLevelUpRate.TabIndex = 2;
+            this.tbEnemyLevelUpRate.Text = "Enemy Level Up Rate";
+            this.tbEnemyLevelUpRate.TickFrequency = 1;
+            this.tbEnemyLevelUpRate.Units = "x";
+            this.tbEnemyLevelUpRate.Value = 100F;
+            // 
+            // tbEnemyDamage
+            // 
+            this.tbEnemyDamage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbEnemyDamage.DisableTextBox = false;
+            this.tbEnemyDamage.DisableTrackBar = false;
+            this.tbEnemyDamage.Location = new System.Drawing.Point(6, 52);
+            this.tbEnemyDamage.Maximum = 1000;
+            this.tbEnemyDamage.Minimum = 0;
+            this.tbEnemyDamage.Name = "tbEnemyDamage";
+            this.tbEnemyDamage.Scale = 1F;
+            this.tbEnemyDamage.Size = new System.Drawing.Size(1241, 26);
+            this.tbEnemyDamage.TabIndex = 1;
+            this.tbEnemyDamage.Text = "Enemy Damage";
+            this.tbEnemyDamage.TickFrequency = 1;
+            this.tbEnemyDamage.Units = "x";
+            this.tbEnemyDamage.Value = 100F;
+            // 
+            // tbDamageTaken
+            // 
+            this.tbDamageTaken.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbDamageTaken.DisableTextBox = false;
+            this.tbDamageTaken.DisableTrackBar = false;
+            this.tbDamageTaken.Location = new System.Drawing.Point(6, 20);
+            this.tbDamageTaken.Maximum = 1000;
+            this.tbDamageTaken.Minimum = 0;
+            this.tbDamageTaken.Name = "tbDamageTaken";
+            this.tbDamageTaken.Scale = 1F;
+            this.tbDamageTaken.Size = new System.Drawing.Size(1241, 26);
+            this.tbDamageTaken.TabIndex = 0;
+            this.tbDamageTaken.Text = "Damage Taken";
+            this.tbDamageTaken.TickFrequency = 1;
+            this.tbDamageTaken.Units = "x";
+            this.tbDamageTaken.Value = 100F;
             // 
             // chkTeleportAll
             // 
@@ -1235,6 +1515,7 @@
             this.txtServerPort.Name = "txtServerPort";
             this.txtServerPort.Size = new System.Drawing.Size(95, 21);
             this.txtServerPort.TabIndex = 7;
+            this.txtServerPort.TextChanged += new System.EventHandler(this.txtServerPort_TextChanged);
             // 
             // label11
             // 
@@ -1278,6 +1559,7 @@
             this.txtServerPWD.PasswordChar = '*';
             this.txtServerPWD.Size = new System.Drawing.Size(95, 21);
             this.txtServerPWD.TabIndex = 7;
+            this.txtServerPWD.DoubleClick += new System.EventHandler(this.txtServerPWD_DoubleClick);
             // 
             // label6
             // 
@@ -1305,286 +1587,6 @@
             this.label5.Size = new System.Drawing.Size(79, 15);
             this.label5.TabIndex = 4;
             this.label5.Text = "Server Name";
-            // 
-            // automaticManagement1
-            // 
-            this.automaticManagement1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.automaticManagement1.ForeColor = System.Drawing.Color.SteelBlue;
-            this.automaticManagement1.Location = new System.Drawing.Point(9, 32);
-            this.automaticManagement1.Name = "automaticManagement1";
-            this.automaticManagement1.Size = new System.Drawing.Size(1248, 347);
-            this.automaticManagement1.TabIndex = 1;
-            // 
-            // tbSubBackups
-            // 
-            this.tbSubBackups.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbSubBackups.DisableTextBox = false;
-            this.tbSubBackups.DisableTrackBar = false;
-            this.tbSubBackups.Location = new System.Drawing.Point(10, 176);
-            this.tbSubBackups.Maximum = 1440;
-            this.tbSubBackups.Minimum = 0;
-            this.tbSubBackups.Name = "tbSubBackups";
-            this.tbSubBackups.Scale = 1F;
-            this.tbSubBackups.Size = new System.Drawing.Size(1241, 26);
-            this.tbSubBackups.TabIndex = 33;
-            this.tbSubBackups.Text = "Subsequent Backups";
-            this.tbSubBackups.TickFrequency = 1;
-            this.tbSubBackups.Units = "Minutes";
-            this.tbSubBackups.Value = 720F;
-            // 
-            // tbFirstBackup
-            // 
-            this.tbFirstBackup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbFirstBackup.DisableTextBox = false;
-            this.tbFirstBackup.DisableTrackBar = false;
-            this.tbFirstBackup.Location = new System.Drawing.Point(10, 144);
-            this.tbFirstBackup.Maximum = 1440;
-            this.tbFirstBackup.Minimum = 0;
-            this.tbFirstBackup.Name = "tbFirstBackup";
-            this.tbFirstBackup.Scale = 1F;
-            this.tbFirstBackup.Size = new System.Drawing.Size(1241, 26);
-            this.tbFirstBackup.TabIndex = 32;
-            this.tbFirstBackup.Text = "First automatic";
-            this.tbFirstBackup.TickFrequency = 1;
-            this.tbFirstBackup.Units = "Minutes";
-            this.tbFirstBackup.Value = 120F;
-            // 
-            // tbAutoSavePeriod
-            // 
-            this.tbAutoSavePeriod.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbAutoSavePeriod.DisableTextBox = false;
-            this.tbAutoSavePeriod.DisableTrackBar = false;
-            this.tbAutoSavePeriod.Location = new System.Drawing.Point(10, 38);
-            this.tbAutoSavePeriod.Maximum = 120;
-            this.tbAutoSavePeriod.Minimum = 1;
-            this.tbAutoSavePeriod.Name = "tbAutoSavePeriod";
-            this.tbAutoSavePeriod.Scale = 1F;
-            this.tbAutoSavePeriod.Size = new System.Drawing.Size(1241, 26);
-            this.tbAutoSavePeriod.TabIndex = 20;
-            this.tbAutoSavePeriod.Text = "Auto Save Period";
-            this.tbAutoSavePeriod.TickFrequency = 1;
-            this.tbAutoSavePeriod.Units = "Minutes";
-            this.tbAutoSavePeriod.Value = 30F;
-            // 
-            // tbStaminaRegenRate
-            // 
-            this.tbStaminaRegenRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbStaminaRegenRate.DisableTextBox = false;
-            this.tbStaminaRegenRate.DisableTrackBar = false;
-            this.tbStaminaRegenRate.Location = new System.Drawing.Point(6, 372);
-            this.tbStaminaRegenRate.Maximum = 1000;
-            this.tbStaminaRegenRate.Minimum = 0;
-            this.tbStaminaRegenRate.Name = "tbStaminaRegenRate";
-            this.tbStaminaRegenRate.Scale = 1F;
-            this.tbStaminaRegenRate.Size = new System.Drawing.Size(1241, 26);
-            this.tbStaminaRegenRate.TabIndex = 11;
-            this.tbStaminaRegenRate.Text = "Stamina Regen Rate";
-            this.tbStaminaRegenRate.TickFrequency = 1;
-            this.tbStaminaRegenRate.Units = "x";
-            this.tbStaminaRegenRate.Value = 100F;
-            // 
-            // tbStaminaRate
-            // 
-            this.tbStaminaRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbStaminaRate.DisableTextBox = false;
-            this.tbStaminaRate.DisableTrackBar = false;
-            this.tbStaminaRate.Location = new System.Drawing.Point(6, 340);
-            this.tbStaminaRate.Maximum = 1000;
-            this.tbStaminaRate.Minimum = 0;
-            this.tbStaminaRate.Name = "tbStaminaRate";
-            this.tbStaminaRate.Scale = 1F;
-            this.tbStaminaRate.Size = new System.Drawing.Size(1241, 26);
-            this.tbStaminaRate.TabIndex = 10;
-            this.tbStaminaRate.Text = "Stamina Rate";
-            this.tbStaminaRate.TickFrequency = 1;
-            this.tbStaminaRate.Units = "x";
-            this.tbStaminaRate.Value = 100F;
-            // 
-            // tbSkillReductionRate
-            // 
-            this.tbSkillReductionRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbSkillReductionRate.DisableTextBox = false;
-            this.tbSkillReductionRate.DisableTrackBar = false;
-            this.tbSkillReductionRate.Location = new System.Drawing.Point(6, 308);
-            this.tbSkillReductionRate.Maximum = 1000;
-            this.tbSkillReductionRate.Minimum = 0;
-            this.tbSkillReductionRate.Name = "tbSkillReductionRate";
-            this.tbSkillReductionRate.Scale = 1F;
-            this.tbSkillReductionRate.Size = new System.Drawing.Size(1241, 26);
-            this.tbSkillReductionRate.TabIndex = 9;
-            this.tbSkillReductionRate.Text = "Skill Reduction Rate";
-            this.tbSkillReductionRate.TickFrequency = 1;
-            this.tbSkillReductionRate.Units = "x";
-            this.tbSkillReductionRate.Value = 100F;
-            // 
-            // tbSkillGainRate
-            // 
-            this.tbSkillGainRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbSkillGainRate.DisableTextBox = false;
-            this.tbSkillGainRate.DisableTrackBar = false;
-            this.tbSkillGainRate.Location = new System.Drawing.Point(6, 276);
-            this.tbSkillGainRate.Maximum = 1000;
-            this.tbSkillGainRate.Minimum = 0;
-            this.tbSkillGainRate.Name = "tbSkillGainRate";
-            this.tbSkillGainRate.Scale = 1F;
-            this.tbSkillGainRate.Size = new System.Drawing.Size(1241, 26);
-            this.tbSkillGainRate.TabIndex = 8;
-            this.tbSkillGainRate.Text = "Skill Gain Rate";
-            this.tbSkillGainRate.TickFrequency = 1;
-            this.tbSkillGainRate.Units = "x";
-            this.tbSkillGainRate.Value = 100F;
-            // 
-            // tbResourceRate
-            // 
-            this.tbResourceRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbResourceRate.DisableTextBox = false;
-            this.tbResourceRate.DisableTrackBar = false;
-            this.tbResourceRate.Location = new System.Drawing.Point(6, 244);
-            this.tbResourceRate.Maximum = 1000;
-            this.tbResourceRate.Minimum = 0;
-            this.tbResourceRate.Name = "tbResourceRate";
-            this.tbResourceRate.Scale = 1F;
-            this.tbResourceRate.Size = new System.Drawing.Size(1241, 26);
-            this.tbResourceRate.TabIndex = 7;
-            this.tbResourceRate.Text = "Resource Rate";
-            this.tbResourceRate.TickFrequency = 1;
-            this.tbResourceRate.Units = "x";
-            this.tbResourceRate.Value = 100F;
-            // 
-            // tbPlayerDamage
-            // 
-            this.tbPlayerDamage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbPlayerDamage.DisableTextBox = false;
-            this.tbPlayerDamage.DisableTrackBar = false;
-            this.tbPlayerDamage.Location = new System.Drawing.Point(6, 212);
-            this.tbPlayerDamage.Maximum = 1000;
-            this.tbPlayerDamage.Minimum = 0;
-            this.tbPlayerDamage.Name = "tbPlayerDamage";
-            this.tbPlayerDamage.Scale = 1F;
-            this.tbPlayerDamage.Size = new System.Drawing.Size(1241, 26);
-            this.tbPlayerDamage.TabIndex = 6;
-            this.tbPlayerDamage.Text = "Player Damage";
-            this.tbPlayerDamage.TickFrequency = 1;
-            this.tbPlayerDamage.Units = "x";
-            this.tbPlayerDamage.Value = 100F;
-            // 
-            // tbMoveStaminaRate
-            // 
-            this.tbMoveStaminaRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbMoveStaminaRate.DisableTextBox = false;
-            this.tbMoveStaminaRate.DisableTrackBar = false;
-            this.tbMoveStaminaRate.Location = new System.Drawing.Point(6, 180);
-            this.tbMoveStaminaRate.Maximum = 1000;
-            this.tbMoveStaminaRate.Minimum = 0;
-            this.tbMoveStaminaRate.Name = "tbMoveStaminaRate";
-            this.tbMoveStaminaRate.Scale = 1F;
-            this.tbMoveStaminaRate.Size = new System.Drawing.Size(1241, 26);
-            this.tbMoveStaminaRate.TabIndex = 5;
-            this.tbMoveStaminaRate.Text = "Move Stamina Rate";
-            this.tbMoveStaminaRate.TickFrequency = 1;
-            this.tbMoveStaminaRate.Units = "x";
-            this.tbMoveStaminaRate.Value = 100F;
-            // 
-            // tbEventRate
-            // 
-            this.tbEventRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbEventRate.DisableTextBox = false;
-            this.tbEventRate.DisableTrackBar = false;
-            this.tbEventRate.Location = new System.Drawing.Point(6, 148);
-            this.tbEventRate.Maximum = 1000;
-            this.tbEventRate.Minimum = 0;
-            this.tbEventRate.Name = "tbEventRate";
-            this.tbEventRate.Scale = 1F;
-            this.tbEventRate.Size = new System.Drawing.Size(1241, 26);
-            this.tbEventRate.TabIndex = 4;
-            this.tbEventRate.Text = "Event Rate";
-            this.tbEventRate.TickFrequency = 1;
-            this.tbEventRate.Units = "x";
-            this.tbEventRate.Value = 100F;
-            // 
-            // tbEnemySpeedSize
-            // 
-            this.tbEnemySpeedSize.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbEnemySpeedSize.DisableTextBox = false;
-            this.tbEnemySpeedSize.DisableTrackBar = false;
-            this.tbEnemySpeedSize.Location = new System.Drawing.Point(6, 116);
-            this.tbEnemySpeedSize.Maximum = 1000;
-            this.tbEnemySpeedSize.Minimum = 0;
-            this.tbEnemySpeedSize.Name = "tbEnemySpeedSize";
-            this.tbEnemySpeedSize.Scale = 1F;
-            this.tbEnemySpeedSize.Size = new System.Drawing.Size(1241, 26);
-            this.tbEnemySpeedSize.TabIndex = 3;
-            this.tbEnemySpeedSize.Text = "Enemy Speed Size";
-            this.tbEnemySpeedSize.TickFrequency = 1;
-            this.tbEnemySpeedSize.Units = "x";
-            this.tbEnemySpeedSize.Value = 100F;
-            // 
-            // tbEnemyLevelUpRate
-            // 
-            this.tbEnemyLevelUpRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbEnemyLevelUpRate.DisableTextBox = false;
-            this.tbEnemyLevelUpRate.DisableTrackBar = false;
-            this.tbEnemyLevelUpRate.Location = new System.Drawing.Point(6, 84);
-            this.tbEnemyLevelUpRate.Maximum = 1000;
-            this.tbEnemyLevelUpRate.Minimum = 0;
-            this.tbEnemyLevelUpRate.Name = "tbEnemyLevelUpRate";
-            this.tbEnemyLevelUpRate.Scale = 1F;
-            this.tbEnemyLevelUpRate.Size = new System.Drawing.Size(1241, 26);
-            this.tbEnemyLevelUpRate.TabIndex = 2;
-            this.tbEnemyLevelUpRate.Text = "Enemy Level Up Rate";
-            this.tbEnemyLevelUpRate.TickFrequency = 1;
-            this.tbEnemyLevelUpRate.Units = "x";
-            this.tbEnemyLevelUpRate.Value = 100F;
-            // 
-            // tbEnemyDamage
-            // 
-            this.tbEnemyDamage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbEnemyDamage.DisableTextBox = false;
-            this.tbEnemyDamage.DisableTrackBar = false;
-            this.tbEnemyDamage.Location = new System.Drawing.Point(6, 52);
-            this.tbEnemyDamage.Maximum = 1000;
-            this.tbEnemyDamage.Minimum = 0;
-            this.tbEnemyDamage.Name = "tbEnemyDamage";
-            this.tbEnemyDamage.Scale = 1F;
-            this.tbEnemyDamage.Size = new System.Drawing.Size(1241, 26);
-            this.tbEnemyDamage.TabIndex = 1;
-            this.tbEnemyDamage.Text = "Enemy Damage";
-            this.tbEnemyDamage.TickFrequency = 1;
-            this.tbEnemyDamage.Units = "x";
-            this.tbEnemyDamage.Value = 100F;
-            // 
-            // tbDamageTaken
-            // 
-            this.tbDamageTaken.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbDamageTaken.DisableTextBox = false;
-            this.tbDamageTaken.DisableTrackBar = false;
-            this.tbDamageTaken.Location = new System.Drawing.Point(6, 20);
-            this.tbDamageTaken.Maximum = 1000;
-            this.tbDamageTaken.Minimum = 0;
-            this.tbDamageTaken.Name = "tbDamageTaken";
-            this.tbDamageTaken.Scale = 1F;
-            this.tbDamageTaken.Size = new System.Drawing.Size(1241, 26);
-            this.tbDamageTaken.TabIndex = 0;
-            this.tbDamageTaken.Text = "Damage Taken";
-            this.tbDamageTaken.TickFrequency = 1;
-            this.tbDamageTaken.Units = "x";
-            this.tbDamageTaken.Value = 100F;
             // 
             // profileHeader1
             // 

@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Threading.Tasks;
+using OphiussaFramework.Interfaces;
 using OphiussaFramework.Models;
 
 namespace OphiussaFramework.CommonUtils {
@@ -83,6 +84,21 @@ namespace OphiussaFramework.CommonUtils {
             }
 
             Utils.ExecuteAsAdmin(Path.Combine(ConnectionController.Settings.SteamCMDFolder, "steamcmd.exe"), "+quit");
+        }
+
+        internal static void UpdateCacheFolder(ServerCache cache) {
+            string cacheFolder                                     = Path.Combine(ConnectionController.Settings.DataFolder, "\\cache", $"\\{cache.Branch}", $"\\{cache.Type}");
+            if (!Directory.Exists(cacheFolder)) Directory.CreateDirectory(cacheFolder);
+            string login                                           = "+login anonymous";
+            if (!ConnectionController.Settings.UseAnonymous) login = $"+login {ConnectionController.Settings.SteamUser} {ConnectionController.Settings.SteamPwd}";
+            Utils.ExecuteAsAdmin(Path.Combine(ConnectionController.Settings.SteamCMDFolder, "steamcmd.exe"), $" +force_install_dir {cacheFolder} {login} +app_update {cache.SteamServerId} validate +quit", true, true);
+        }
+
+        public static void UpdateGameFolder(IProfile profile) {
+            if (!Directory.Exists(profile.InstallationFolder)) Directory.CreateDirectory(profile.InstallationFolder);
+            string login                                           = "+login anonymous";
+            if (!ConnectionController.Settings.UseAnonymous) login = $"+login {ConnectionController.Settings.SteamUser} {ConnectionController.Settings.SteamPwd}";
+            Utils.ExecuteAsAdmin(Path.Combine(ConnectionController.Settings.SteamCMDFolder, "steamcmd.exe"), $" +force_install_dir {profile.InstallationFolder} {login} +app_update {profile.SteamServerId} validate +quit", true, true);
         }
 
         public class IpList {

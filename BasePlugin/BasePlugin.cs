@@ -3,9 +3,14 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
+using System.Web.Profile;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using BasePlugin.Forms;
 using Newtonsoft.Json;
+using OphiussaFramework;
 using OphiussaFramework.CommonUtils;
 using OphiussaFramework.Enums;
 using OphiussaFramework.Interfaces;
@@ -65,19 +70,19 @@ namespace BasePlugin {
             TabHeaderChangeEvent?.Invoke(this, new OphiussaEventArgs { Profile = Profile,Plugin = this});
         }
 
-        public void InstallServer() {
+        public async Task InstallServer() {
             InstallServerClick?.Invoke(this, new OphiussaEventArgs { Profile = Profile, Plugin = this });
         }
 
-        public void StartServer() {
+        public async Task StartServer() {
             StartServerClick?.Invoke(this, new OphiussaEventArgs { Profile = Profile, Plugin = this });
         }
 
-        public void StopServer() {
+        public async Task StopServer(bool force = false) {
             StopServerClick?.Invoke(this, new OphiussaEventArgs { Profile = Profile, Plugin = this });
         }
-
-        public void BackupServer() {
+            
+        public async Task BackupServer() {
             BackupServerClick?.Invoke(this, new OphiussaEventArgs { Profile = Profile, Plugin = this });
         }
 

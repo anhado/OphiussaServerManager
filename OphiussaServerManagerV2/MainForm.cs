@@ -7,6 +7,7 @@ using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.ComTypes;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Win32.TaskScheduler;
 using OphiussaFramework;
 using OphiussaFramework.CommonUtils;
 using OphiussaFramework.Extensions;
@@ -40,7 +41,7 @@ namespace OphiussaServerManagerV2 {
                 if (ConnectionController.Settings.UpdateSteamCMDStart) NetworkTools.DownloadSteamCmd();
 
                 try {
-                    if (txtPublicIP.Text == "") txtPublicIP.Text = await Task.Run(() => NetworkTools.DiscoverPublicIPAsync().Result);
+                    if (txtPublicIP.Text == "") txtPublicIP.Text = await System.Threading.Tasks.Task.Run(() => NetworkTools.DiscoverPublicIPAsync().Result);
                 }
                 catch (Exception ex) {
                     //  OphiussaLogger.Logger.Error(ex);
@@ -144,6 +145,13 @@ namespace OphiussaServerManagerV2 {
                 foreach (string key in _linkProfileForms.Keys)
                     if (_linkProfileForms[key].Tab == e.TabPage) { 
                         ConnectionController.SqlLite.Delete<IProfile>(_linkProfileForms[key].Profile.Key);
+                        foreach (AutoManagement am in _linkProfileForms[key].Profile.AutoManagement) { 
+                            ConnectionController.SqlLite.Delete<AutoManagement>(am.Id.ToString());
+
+                            string taskName = $"OphiussaServerManager\\AutoShutDown_{am.Id:000}_" + _linkProfileForms[key].Profile.Key;
+                            var    task     = TaskService.Instance.GetTask(taskName);
+                            if (task != null) TaskService.Instance.RootFolder.DeleteTask(taskName);
+                        } 
                     }
             }
             else {
@@ -181,7 +189,7 @@ namespace OphiussaServerManagerV2 {
         private async void refreshPublicIPToolStripMenuItem_Click(object sender, EventArgs e) {
 
             try {
-                if (txtPublicIP.Text == "") txtPublicIP.Text = await Task.Run(() => NetworkTools.DiscoverPublicIPAsync().Result);
+                if (txtPublicIP.Text == "") txtPublicIP.Text = await System.Threading.Tasks.Task.Run(() => NetworkTools.DiscoverPublicIPAsync().Result);
             }
             catch (Exception ex) {
                 //  OphiussaLogger.Logger.Error(ex);

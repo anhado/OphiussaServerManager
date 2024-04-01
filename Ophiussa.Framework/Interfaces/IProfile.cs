@@ -16,6 +16,7 @@ namespace OphiussaFramework.Interfaces {
         int                                                      SteamServerId      { get; set; }
         int                                                      SteamApplicationID { get; set; }
         int                                                      CurseForgeId       { get; set; }
+        bool                                                     AutoStartServer    { get; set; }
         bool                                                     StartOnBoot        { get; set; }
         bool                                                     IncludeAutoBackup  { get; set; }
         bool                                                     IncludeAutoUpdate  { get; set; }

@@ -11,6 +11,9 @@ using OphiussaFramework.Enums;
 using OphiussaFramework.Interfaces;
 using OphiussaFramework.Models;
 using Message = OphiussaFramework.Models.Message;
+using OphiussaFramework;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace ValheimPlugin {
     public class ValheimPlugin : IPlugin {
@@ -65,24 +68,40 @@ namespace ValheimPlugin {
             TabHeaderChangeEvent?.Invoke(this, new OphiussaEventArgs { Profile = Profile,Plugin = this});
         }
 
-        public void InstallServer() {
+        public async Task InstallServer() {
             InstallServerClick?.Invoke(this, new OphiussaEventArgs { Profile = Profile, Plugin = this });
         }
 
-        public void StartServer() {
+        public async Task StartServer() {
             StartServerClick?.Invoke(this, new OphiussaEventArgs { Profile = Profile, Plugin = this });
         }
 
-        public void StopServer() {
-            StopServerClick?.Invoke(this, new OphiussaEventArgs { Profile = Profile, Plugin = this });
+        public async Task StopServer(bool force = false) {
+            StopServerClick?.Invoke(this, new OphiussaEventArgs { Profile = Profile, Plugin = this,ForceStopServer = force});
         }
 
-        public void BackupServer() {
+        public async Task BackupServer() {
             BackupServerClick?.Invoke(this, new OphiussaEventArgs { Profile = Profile, Plugin = this });
         }
 
         public void Save() {
             SaveClick?.Invoke(this, new OphiussaEventArgs { Profile = Profile, Plugin = this });
+
+            string priorityV = Profile.CpuPriority.ToString().ToLower();
+            string affinityV = Utils.GetCpuAffinity(Profile.CpuAffinity, Profile.CpuAffinityList);
+
+            if (!string.IsNullOrEmpty(affinityV)) affinityV = $"/affinity {affinityV}";
+
+
+            var stringBuilder = new StringBuilder();
+            stringBuilder.AppendLine("@echo off");
+            stringBuilder.AppendLine("set SteamAppId=892970");
+            stringBuilder.AppendLine("");
+            stringBuilder.AppendLine("echo \"Starting server PRESS CTRL-C to exit\"");
+            stringBuilder.AppendLine("");
+            stringBuilder.AppendLine($"start \"{Profile.Name}\" /{priorityV} {affinityV} \"{Path.Combine(Profile.InstallationFolder, Profile.ExecutablePath)}\" {GetCommandLinesArguments()}");
+
+            File.WriteAllText(ConnectionController.Settings.DataFolder + $"StartServer\\Run_{Profile.Key.Replace("-", "")}.bat", stringBuilder.ToString());
         }
 
         public void Reload() {
@@ -146,9 +165,8 @@ namespace ValheimPlugin {
             }
         }
 
-        public bool IsValidFolder(string path) {
-            //TODO:(New Games)Valid folder installation 
-            return Utils.IsAValidFolder(Profile.InstallationFolder,new List<string>(){"FolderDummy","FolderDummy2"});
+        public bool IsValidFolder(string path) { 
+            return Utils.IsAValidFolder(Profile.InstallationFolder,new List<string>(){ "valheim_server_Data", "MonoBleedingEdge" });
         }
 
         public Message SetInstallFolder(string path) {

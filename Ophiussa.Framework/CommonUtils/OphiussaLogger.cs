@@ -60,15 +60,16 @@ namespace OphiussaFramework.CommonUtils {
         }
 
         public static void ReconfigureLogging() {
-            try {
+            try { 
                 var setting = new SqlLite().GetRecord<Settings>();
+                if (setting == null) throw new Exception("Could Not Load Settings");  
 
-                ReconfigureLogging(setting);
+                ReconfigureLogging(setting); 
             }
             catch (Exception ex) {
                 string tmpFile = Path.GetTempFileName();
                 if (!File.Exists(tmpFile)) File.Create(tmpFile);
-                File.AppendAllText(tmpFile, "error:" + ex.Message);
+                File.AppendAllText(tmpFile, "\nerror:" + ex.Message);
             }
         }
 

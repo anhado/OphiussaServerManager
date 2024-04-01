@@ -34,19 +34,19 @@ namespace OphiussaFramework.Models {
             throw new NotImplementedException();
         }
 
-        public void BackupServer() {
+        public Task BackupServer() {
             throw new NotImplementedException();
         }
 
-        public void StopServer() {
+        public Task StopServer(bool force = false) {
             throw new NotImplementedException();
         }
 
-        public void StartServer() {
+        public Task StartServer() {
             throw new NotImplementedException();
         }
 
-        public void InstallServer() {
+        public Task InstallServer() {
             throw new NotImplementedException();
         }
 

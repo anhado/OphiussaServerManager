@@ -200,9 +200,8 @@ namespace ValheimPlugin.Forms {
                 _plugin.Profile.AutoManagement = automaticManagement1.GetRestartSettings();
                 _plugin.Save();
                 automaticManagement1.LoadGrid();
-                OphiussaFramework.Models.Message msg =  _plugin.SaveSettingsToDisk();
-                if (msg.Success) MessageBox.Show(msg.MessageText);
-                else throw msg.Exception;
+
+                MessageBox.Show("Profile Saved");
             }
             catch (Exception exception) {
                 MessageBox.Show(exception.Message);
@@ -227,7 +226,7 @@ namespace ValheimPlugin.Forms {
         }
 
         private void profileHeader1_ClickStartStop(object sender, EventArgs e) {
-            if (profileHeader1.IsRunning)  
+            if (!profileHeader1.IsRunning)  
                 _plugin.StartServer();
             else 
                 _plugin.StopServer();
@@ -278,6 +277,15 @@ namespace ValheimPlugin.Forms {
                                         txtAffinity.Text        = Profile.CpuAffinity;
                                     };
             frm.ShowDialog();
+        }
+
+        private void txtServerPWD_DoubleClick(object sender, EventArgs e) { 
+            txtServerPWD.PasswordChar = txtServerPWD.PasswordChar == '\0' ? '*' : '\0';
+        }
+
+        private void txtServerPort_TextChanged(object sender, EventArgs e) {
+            int port;
+            if (int.TryParse(txtServerPort.Text, out port)) txtPeerPort.Text = (port + 1).ToString(); 
         }
     }
 }

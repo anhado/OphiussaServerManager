@@ -105,7 +105,8 @@ namespace OphiussaFramework.DataBaseUtils {
         }
 
         private SQLiteConnection DbConnection() {
-            SqliteConnection = new SQLiteConnection("Data Source=database.sqlite; Version=3;");
+            string fullPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+            SqliteConnection = new SQLiteConnection($"Data Source={fullPath}\\database.sqlite; Version=3;");
             SqliteConnection.Open();
             return SqliteConnection;
         }
@@ -181,6 +182,8 @@ namespace OphiussaFramework.DataBaseUtils {
         }
 
         public T GetRecord<T>(string condition = "") {
+            string tmpFile = Path.GetTempFileName();
+            if (!File.Exists(tmpFile)) File.Create(tmpFile);
             try {
                 var temp = typeof(T);
                 SQLiteDataAdapter da = null;
@@ -200,7 +203,8 @@ namespace OphiussaFramework.DataBaseUtils {
                 }
 
                 using (var cmd = DbConnection().CreateCommand()) {
-                    cmd.CommandText = $"SELECT * FROM {tableName}" + (string.IsNullOrEmpty(condition) ? "" : $"WHERE {condition}");
+                    cmd.CommandText = $"SELECT * FROM {tableName}" + (string.IsNullOrEmpty(condition) ? "" : $" WHERE {condition}");
+                    File.AppendAllText(tmpFile, "\nQuery:" + cmd.CommandText);
                     da = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
                     da.Fill(dt);
                 }
@@ -209,6 +213,7 @@ namespace OphiussaFramework.DataBaseUtils {
                 return dt.Rows[0].GetItem<T>();
             }
             catch (Exception e) {
+                File.AppendAllText(tmpFile, "\nerror:" + e.Message);
                 OphiussaLogger.Logger?.Error(e);
                 Console.WriteLine(e.Message);
                 return default;

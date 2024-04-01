@@ -5,6 +5,7 @@ using OphiussaFramework;
 using OphiussaFramework.CommonUtils;
 using OphiussaFramework.Interfaces;
 using OphiussaFramework.Models;
+using OphiussaFramework.ServerUtils;
 
 namespace OphiussaServerManagerV2 {
     internal static class Program {
@@ -13,23 +14,43 @@ namespace OphiussaServerManagerV2 {
         /// </summary>
         [STAThread]
         private static void Main() {
-            string[] args = Environment.GetCommandLineArgs();
 
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-             
-            OphiussaLogger.ReconfigureLogging();
+            try {
 
-          //  OphiussaLogger.Logger.Info($"Application Started. Params -> {string.Join(",", args)}");
-            if (!Directory.Exists("plugins")) Directory.CreateDirectory("plugins");
-            if (!Directory.Exists("plugins\\temp")) Directory.CreateDirectory("plugins\\temp");
+                string[] args = Environment.GetCommandLineArgs();
 
-            ConnectionController.Initialize();
-              
-            if (ConnectionController.Settings == null)
-                Application.Run(new FrmDriveSelection());
-            else
-                Application.Run(new MainForm());
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+
+                if (!Directory.Exists("plugins")) Directory.CreateDirectory("plugins");
+                if (!Directory.Exists("plugins\\temp")) Directory.CreateDirectory("plugins\\temp"); 
+
+                ConnectionController.Initialize(); 
+                OphiussaLogger.ReconfigureLogging(); 
+
+                OphiussaLogger.Logger.Info("\nApplication Started");
+
+                foreach (string arg in args) {
+                    if (arg.StartsWith("-as")) {
+                        //OphiussaLogger.ReconfigureLogging();
+                        ServerUtils.RestartServerSingleServer(arg);
+                        return;
+                    }
+                } 
+
+
+                if (ConnectionController.Settings == null)
+                    Application.Run(new FrmDriveSelection());
+                else
+                    Application.Run(new MainForm());
+            }
+            catch (Exception ex) {
+                string tmpFile = Path.GetTempFileName();
+                if (!File.Exists(tmpFile)) File.Create(tmpFile);
+
+                File.AppendAllText(tmpFile, "\nerror:" + ex.Message);
+                File.AppendAllText(tmpFile, "\nStackTrace:" + ex.StackTrace);
+            }
         }
     }
 }

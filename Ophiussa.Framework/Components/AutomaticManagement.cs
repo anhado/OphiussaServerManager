@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows.Forms;
+using Microsoft.Win32.TaskScheduler;
 using OphiussaFramework;
 using OphiussaFramework.Models;
 using OphiussaFramework.CommonUtils;
@@ -135,8 +136,12 @@ namespace OphiussaServerManager.Components {
                 foreach (DataGridViewRow selectedRow in dataGridView1.SelectedRows)
                     try {
                         var obj = restartOptions[selectedRow.Index];
-                        ConnectionController.SqlLite.Delete<AutoManagement>(obj.Id.ToString());
-                        restartOptions.RemoveAt(selectedRow.Index); 
+                        ConnectionController.SqlLite.Delete<AutoManagement>(obj.Id.ToString()); 
+                        restartOptions.RemoveAt(selectedRow.Index);
+
+                        string taskName = $"OphiussaServerManager\\AutoShutDown_{obj.Id:000}_" + Plugin.Profile.Key;
+                        var task = TaskService.Instance.GetTask(taskName);
+                        if (task != null) TaskService.Instance.RootFolder.DeleteTask(taskName);
                     }
                     catch (Exception exception) {
                         Console.WriteLine(exception);

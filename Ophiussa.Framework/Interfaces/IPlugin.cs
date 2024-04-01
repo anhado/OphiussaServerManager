@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using OphiussaFramework.DataBaseUtils;
 using OphiussaFramework.Enums;
@@ -27,10 +28,10 @@ namespace OphiussaFramework.Interfaces {
         [FieldAttributes(Ignore = true)] TabPage                             TabPage         { get; }
         PluginType                                                           GetInfo();
         Form                                                                 GetConfigurationForm(TabPage tab);
-        void                                                                 BackupServer();
-        void                                                                 StopServer();
-        void                                                                 StartServer();
-        void                                                                 InstallServer();
+        Task                                                                 BackupServer();
+        Task                                                                 StopServer(bool force = false);
+        Task                                                                 StartServer();
+        Task                                                                 InstallServer();
         void                                                                 Save();
         void                                                                 Reload();
         void                                                                 Sync();
