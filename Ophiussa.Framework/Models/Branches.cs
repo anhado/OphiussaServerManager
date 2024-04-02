@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OphiussaFramework.Models {
+﻿namespace OphiussaFramework.Models {
     [TableAttributes(TableName = "Branches")]
     internal class Branches {
         [FieldAttributes(PrimaryKey = true, AutoIncrement = true)]

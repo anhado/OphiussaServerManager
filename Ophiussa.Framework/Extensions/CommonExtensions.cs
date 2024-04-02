@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Globalization;
 using System.Windows.Forms;
 
 namespace OphiussaFramework.Extensions {
     public static class CommonExtensions {
-
         public static float ToFloat(this string prop) {
             if (float.TryParse(prop, NumberStyles.Any, CultureInfo.InvariantCulture, out float val)) return val;
             return 0;

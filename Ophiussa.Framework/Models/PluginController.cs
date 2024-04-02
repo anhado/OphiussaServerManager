@@ -3,19 +3,19 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Newtonsoft.Json;
 using OphiussaFramework.Interfaces;
 
 namespace OphiussaFramework.Models {
     public class PluginController {
         private readonly string   _location;
         private readonly IPlugin  _plugin;
-        private          Assembly _assembly; 
+        private          Assembly _assembly;
+
         public PluginController(string                          filePath,
                                 EventHandler<OphiussaEventArgs> installServerClick   = null,
                                 EventHandler<OphiussaEventArgs> backupServerClick    = null,
                                 EventHandler<OphiussaEventArgs> stopServerClick      = null,
-                                EventHandler<OphiussaEventArgs> startServerClick     = null, 
+                                EventHandler<OphiussaEventArgs> startServerClick     = null,
                                 EventHandler<OphiussaEventArgs> saveClick            = null,
                                 EventHandler<OphiussaEventArgs> reloadClick          = null,
                                 EventHandler<OphiussaEventArgs> syncClick            = null,
@@ -44,18 +44,23 @@ namespace OphiussaFramework.Models {
         }
 
         public   string GameType    => _plugin.GetInfo().GameType;
-        public   string GameName    => _plugin.GetInfo().Name; 
+        public   string GameName    => _plugin.GetInfo().Name;
         internal object Version     => _plugin.PluginVersion;
         internal object PluginName  => _plugin.PluginName;
         internal object Loaded      { get; set; } = true;
         public   bool   IsInstalled => _plugin.IsInstalled;
         public   bool   IsRunning   => _plugin.IsRunning;
 
-        public Form    GetConfigurationForm(TabPage tabPage) => _plugin.GetConfigurationForm(tabPage);
-        public TabPage GeTabPage()                           => _plugin.TabPage;
-         
+        public Form GetConfigurationForm(TabPage tabPage) {
+            return _plugin.GetConfigurationForm(tabPage);
+        }
+
+        public TabPage GeTabPage() {
+            return _plugin.TabPage;
+        }
+
         public void Save() {
-             _plugin.Save();
+            _plugin.Save();
         }
 
         public void Reload() {
@@ -87,7 +92,7 @@ namespace OphiussaFramework.Models {
         }
 
         public async Task StopServer(bool force = false) {
-            await _plugin.StopServer(force); 
+            await _plugin.StopServer(force);
         }
 
         public void InstallServer() {
@@ -118,13 +123,12 @@ namespace OphiussaFramework.Models {
             return _plugin.IsValidFolder(path);
         }
 
-        public void  SetInstallationPath(string path) {
-             _plugin.Profile.InstallationFolder = path;
+        public void SetInstallationPath(string path) {
+            _plugin.Profile.InstallationFolder = path;
         }
 
         public bool SavePluginInfo() {
             return ConnectionController.SqlLite.Upsert<IPlugin>(_plugin);
         }
-
     }
 }

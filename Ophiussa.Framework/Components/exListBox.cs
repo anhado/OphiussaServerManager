@@ -27,7 +27,6 @@ namespace OphiussaFramework.Components {
                              Font              detailsFont,
                              StringFormat      aligment,
                              Size?             imageSize = null) {
-
             // if selected, mark the background differently
             if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
                 e.Graphics.FillRectangle(Brushes.CornflowerBlue, e.Bounds);

@@ -8,10 +8,13 @@ using OphiussaFramework.Models;
 
 namespace BasePlugin {
     public class Profile : IProfile {
+        public string                  TestProperty1      { get; set; } = "";
+        public bool                    TestProperty2      { get; set; } = true;
+        public int                     TestProperty3      { get; set; } = 999;
         public string                  Key                { get; set; } = Guid.NewGuid().ToString();
         public string                  Name               { get; set; } = "New Server";
         public string                  Type               { get; set; }
-        public string                  PluginVersion      { get; set; } =  FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
+        public string                  PluginVersion      { get; set; } = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
         public string                  InstallationFolder { get; set; } = "";
         public string                  AdditionalSettings { get; set; } = "";
         public string                  AdditionalCommands { get; set; } = "";
@@ -38,8 +41,5 @@ namespace BasePlugin {
         public string                  CpuAffinity        { get; set; } = "All";
         public List<ProcessorAffinity> CpuAffinityList    { get; set; } = new List<ProcessorAffinity>();
         public List<AutoManagement>    AutoManagement     { get; set; } = new List<AutoManagement>();
-        public string                  TestProperty1      { get; set; } = "";
-        public bool                    TestProperty2      { get; set; } = true;
-        public int                     TestProperty3      { get; set; } = 999;
     }
 }

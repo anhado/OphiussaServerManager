@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using Newtonsoft.Json;
-using OphiussaFramework.Interfaces;
 using OphiussaFramework.Models;
 
 namespace OphiussaFramework.Extensions {
     public static class DataTableExtensions {
-
         public static object GetItem(this DataRow dr, Type type) {
-            object obj = new RawProfile();                     ;
-         //   if (type.Name == "IProfile") obj = new RawPlugin();
+            object obj = new RawProfile();
+            ;
+            //   if (type.Name == "IProfile") obj = new RawPlugin();
             if (type.Name == "IPlugin") obj = new RawPlugin();
             var temp                        = type;
 
@@ -32,12 +31,12 @@ namespace OphiussaFramework.Extensions {
                 else if (pro.PropertyType.IsClass && pro.PropertyType != typeof(string)) {
                     if (pro.Name == column.ColumnName && dr[column.ColumnName] != DBNull.Value)
 
-                             
 
                         pro.SetValue(obj, JsonConvert.DeserializeObject<ProcessorAffinityModel>(dr[column.ColumnName].ToString()), null);
                     else
                         continue;
-                }else if (pro.PropertyType == typeof(int)) {
+                }
+                else if (pro.PropertyType == typeof(int)) {
                     if (pro.Name == column.ColumnName && dr[column.ColumnName] != DBNull.Value)
                         pro.SetValue(obj, int.Parse(dr[column.ColumnName].ToString()), null);
                     else
@@ -80,8 +79,7 @@ namespace OphiussaFramework.Extensions {
 
             var obj = Activator.CreateInstance<T>();
 
-             
-            
+
             foreach (DataColumn column in dr.Table.Columns)
             foreach (var pro in temp.GetProperties())
                 if (pro.PropertyType == typeof(bool)) {

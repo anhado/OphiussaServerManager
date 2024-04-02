@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using OphiussaFramework.DataBaseUtils;
 using OphiussaFramework.Models;
 
 namespace OphiussaFramework.Interfaces {
@@ -20,7 +19,7 @@ namespace OphiussaFramework.Interfaces {
         bool                                                     StartOnBoot        { get; set; }
         bool                                                     IncludeAutoBackup  { get; set; }
         bool                                                     IncludeAutoUpdate  { get; set; }
-        bool                                                     RestartIfShutdown  { get; set; } 
+        bool                                                     RestartIfShutdown  { get; set; }
         string                                                   PluginVersion      { get; set; }
         int                                                      ServerPort         { get; set; }
         int                                                      PeerPort           { get; set; }

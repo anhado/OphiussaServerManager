@@ -13,7 +13,6 @@ using OphiussaFramework.Models;
 
 namespace OphiussaFramework.CommonUtils {
     public class Utils {
-
         private static readonly Guid _localLowId = new Guid("A520A1A4-1780-4FF6-BD18-167343C5AF16");
 
         [DllImport("user32.dll")]
@@ -36,12 +35,12 @@ namespace OphiussaFramework.CommonUtils {
 
         public static Process GetProcessRunning(string executablePath) {
             string processeName = Path.GetFileNameWithoutExtension(executablePath);
-            string clientFile = executablePath;
+            string clientFile   = executablePath;
             if (string.IsNullOrWhiteSpace(clientFile) || !File.Exists(clientFile))
                 return null;
-            string a = IOUtils.NormalizePath(clientFile);
-            var processesByName = Process.GetProcessesByName(processeName);
-            Process processInfo = null;
+            string  a               = IOUtils.NormalizePath(clientFile);
+            var     processesByName = Process.GetProcessesByName(processeName);
+            Process processInfo     = null;
             foreach (var process in processesByName) {
                 string mainModuleFilepath = ProcessUtils.GetMainModuleFilepath(process.Id);
                 if (string.Equals(a, mainModuleFilepath, StringComparison.OrdinalIgnoreCase)) {
@@ -64,10 +63,9 @@ namespace OphiussaFramework.CommonUtils {
         }
 
         public static bool IsAValidFolder(string initialFolder, List<string> folderList, bool isFiles = false) {
-
             if (!Directory.Exists(initialFolder)) return false;
 
-            var folders = Directory.GetDirectories(initialFolder).ToList();
+            var folders  = Directory.GetDirectories(initialFolder).ToList();
             var onlyLast = new List<string>();
 
             folders.ForEach(folder => { onlyLast.Add(new DirectoryInfo(folder).Name); });
@@ -79,23 +77,23 @@ namespace OphiussaFramework.CommonUtils {
             if (notExists.Count == 0) return true;
             return false;
         }
-         
+
         public static void ExecuteAsAdmin(string exeName, string parameters, bool wait = true, bool noWindow = false, bool dontRunAsAdmin = false) {
             try {
                 Thread standardOutputThread = null;
-                Thread standardErrorThread = null;
+                Thread standardErrorThread  = null;
 
                 var startInfo = new ProcessStartInfo();
-                 
+
                 startInfo.UseShellExecute = true;
-                startInfo.FileName = exeName;
+                startInfo.FileName        = exeName;
                 if (!dontRunAsAdmin) startInfo.Verb = "runas";
 
                 //MLHIDE
                 startInfo.Arguments = parameters;
                 if (noWindow) {
                     startInfo.UseShellExecute = false;
-                    startInfo.CreateNoWindow = noWindow;
+                    startInfo.CreateNoWindow  = noWindow;
                 }
 
                 startInfo.ErrorDialog = true;
@@ -103,7 +101,6 @@ namespace OphiussaFramework.CommonUtils {
                 var process = Process.Start(startInfo);
                 process.PriorityClass = ProcessPriorityClass.Normal;
                 if (wait) process.WaitForExit();
-
             }
             catch (Win32Exception ex) {
                 throw new Exception("ExecuteAsAdmin:" + ex.Message);
@@ -158,10 +155,11 @@ namespace OphiussaFramework.CommonUtils {
                     Marshal.FreeCoTaskMem(pszPath);
             }
         }
+
         public static string GetCpuAffinity(string cpuAffinity, List<ProcessorAffinity> cpuAffinityList) {
             var lst = new List<ProcessorAffinity>();
 
-            for (int i = Utils.GetProcessorCount() - 1; i >= 0; i--)
+            for (int i = GetProcessorCount() - 1; i >= 0; i--)
                 lst.Add(
                         new ProcessorAffinity {
                                                   ProcessorNumber = i,
@@ -170,7 +168,7 @@ namespace OphiussaFramework.CommonUtils {
                        );
 
             string bin = string.Join("", lst.Select(x => x.Selected ? "1" : "0"));
-            string hex = !bin.Contains("0") ? "" : "0" + Utils.BinaryStringToHexString(bin);
+            string hex = !bin.Contains("0") ? "" : "0" + BinaryStringToHexString(bin);
             return hex;
         }
     }

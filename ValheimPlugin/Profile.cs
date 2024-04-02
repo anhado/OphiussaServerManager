@@ -58,37 +58,8 @@ namespace ValheimPlugin {
         More,
         MuchMore
     }
+
     public class Profile : IProfile {
-        public string                  Key                   { get; set; } = Guid.NewGuid().ToString();
-        public string                  Name                  { get; set; } = "New Server";
-        public string                  Type                  { get; set; } 
-        public string                  PluginVersion         { get; set; } =  FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
-        public string                  InstallationFolder    { get; set; } = "";
-        public string                  AdditionalSettings    { get; set; } = "";
-        public string                  AdditionalCommands    { get; set; } = "";
-        public string                  Branch                { get; set; }
-        public ProcessPriority         CpuPriority           { get; set; } = ProcessPriority.Normal;
-        public string                  CpuAffinity           { get; set; } = "All";
-        public List<ProcessorAffinity> CpuAffinityList       { get; set; } = new List<ProcessorAffinity>();
-        public List<AutoManagement>    AutoManagement        { get; set; } = new List<AutoManagement>();
-        public int                     SteamServerId         { get; set; } = 896660;
-        public int                     SteamApplicationID    { get; set; } = 0;
-        public int                     CurseForgeId          { get; set; } = 0;
-        public int                     ServerPort            { get; set; } = 2456;
-        public int                     PeerPort              { get; set; } = 2457;
-        public int                     QueryPort             { get; set; } = 0;
-        public int                     RCONPort              { get; set; } = 0;
-        public string                  ServerVersion         { get; set; } = "";
-        public string                  ServerPassword        { get; set; } = Membership.GeneratePassword(10, 6);
-        public string                  ServerBuildVersion    { get; set; } = "";
-        public bool                    AutoStartServer       { get; set; } = false;
-        public bool                    StartOnBoot           { get; set; } = false;
-        public bool                    IncludeAutoBackup     { get; set; } = false;
-        public bool                    IncludeAutoUpdate     { get; set; } = false;
-        public bool                    RestartIfShutdown     { get; set; } = false;
-        public string                  RCONPassword          { get; set; } = Membership.GeneratePassword(10, 6);
-        public bool                    UseRCON               { get; set; } = false;
-        public string                  ExecutablePath        { get; set; } = "valheim_server.exe";
         public bool                    Crossplay             { get; set; } = false;
         public bool                    Public                { get; set; } = false;
         public string                  MultiHome             { get; set; } = "";
@@ -134,6 +105,35 @@ namespace ValheimPlugin {
         public float                   SkillReductionRate    { get; set; } = 100f;
         public float                   StaminaRate           { get; set; } = 100f;
         public float                   StaminaRegenRate      { get; set; } = 100f;
-
+        public string                  Key                   { get; set; } = Guid.NewGuid().ToString();
+        public string                  Name                  { get; set; } = "New Server";
+        public string                  Type                  { get; set; }
+        public string                  PluginVersion         { get; set; } = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
+        public string                  InstallationFolder    { get; set; } = "";
+        public string                  AdditionalSettings    { get; set; } = "";
+        public string                  AdditionalCommands    { get; set; } = "";
+        public string                  Branch                { get; set; }
+        public ProcessPriority         CpuPriority           { get; set; } = ProcessPriority.Normal;
+        public string                  CpuAffinity           { get; set; } = "All";
+        public List<ProcessorAffinity> CpuAffinityList       { get; set; } = new List<ProcessorAffinity>();
+        public List<AutoManagement>    AutoManagement        { get; set; } = new List<AutoManagement>();
+        public int                     SteamServerId         { get; set; } = 896660;
+        public int                     SteamApplicationID    { get; set; } = 0;
+        public int                     CurseForgeId          { get; set; } = 0;
+        public int                     ServerPort            { get; set; } = 2456;
+        public int                     PeerPort              { get; set; } = 2457;
+        public int                     QueryPort             { get; set; } = 0;
+        public int                     RCONPort              { get; set; } = 0;
+        public string                  ServerVersion         { get; set; } = "";
+        public string                  ServerPassword        { get; set; } = Membership.GeneratePassword(10, 6);
+        public string                  ServerBuildVersion    { get; set; } = "";
+        public bool                    AutoStartServer       { get; set; } = false;
+        public bool                    StartOnBoot           { get; set; } = false;
+        public bool                    IncludeAutoBackup     { get; set; } = false;
+        public bool                    IncludeAutoUpdate     { get; set; } = false;
+        public bool                    RestartIfShutdown     { get; set; } = false;
+        public string                  RCONPassword          { get; set; } = Membership.GeneratePassword(10, 6);
+        public bool                    UseRCON               { get; set; } = false;
+        public string                  ExecutablePath        { get; set; } = "valheim_server.exe";
     }
 }

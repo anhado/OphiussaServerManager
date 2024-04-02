@@ -9,17 +9,17 @@ namespace OphiussaServerManagerV2 {
         public FrmServerTypeSelection() {
             InitializeComponent();
         }
-         
-        public Action<(PluginType serversType, string installDir)> AddNewTabPage  { get; set; }
+
+        public Action<(PluginType serversType, string installDir)> AddNewTabPage { get; set; }
 
         private void FrmServerTypeSelection_Load(object sender, EventArgs e) {
             cboServerType.DataSource    = ConnectionController.GetServerTypes();
             cboServerType.DisplayMember = "Name";
             cboServerType.ValueMember   = "GameType";
 
-            txtDir.Text     = ConnectionController.Settings.DefaultInstallFolder;
+            txtDir.Text = ConnectionController.Settings.DefaultInstallFolder;
 
-            var folders =  System.IO.Directory.GetDirectories(ConnectionController.Settings.DefaultInstallFolder);
+            string[] folders = Directory.GetDirectories(ConnectionController.Settings.DefaultInstallFolder);
 
             txtDirName.Text = $"Server{folders.Length + 1}";
         }

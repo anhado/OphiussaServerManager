@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OphiussaFramework.Models {
+﻿namespace OphiussaFramework.Models {
     public class CommandDefinition {
         public int    Order            { get; set; }
         public bool   AddSpaceInPrefix { get; set; } = false;

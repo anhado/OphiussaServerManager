@@ -108,7 +108,7 @@ namespace OphiussaServerManagerV2 {
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e) {
             if (dataGridView1.Columns[e.ColumnIndex].Name == "Loaded" && e.RowIndex >= 0) {
                 int index = e.RowIndex;
-                var obj   = plugins[index]; 
+                var obj   = plugins[index];
                 ConnectionController.SqlLite.Upsert<IPlugin>(obj);
             }
         }

@@ -1,5 +1,4 @@
 ﻿using OphiussaFramework.Interfaces;
-using System;
 
 namespace OphiussaFramework.Models {
     public class OphiussaEventArgs {

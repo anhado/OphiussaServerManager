@@ -13,7 +13,7 @@ namespace OphiussaFramework.Extensions {
                                              EventHandler<OphiussaEventArgs> syncClick          = null,
                                              EventHandler<OphiussaEventArgs> openRCONClick      = null,
                                              EventHandler<OphiussaEventArgs> chooseFolderClick  = null,
-                                             EventHandler<OphiussaEventArgs> TabHeadChangeEvent = null) { 
+                                             EventHandler<OphiussaEventArgs> TabHeadChangeEvent = null) {
             return new PluginController(ctrl.PluginLocation(), installServerClick, backupServerClick, StopServerClick, startServerClick, saveClick, reloadClick, syncClick, openRCONClick, chooseFolderClick, TabHeadChangeEvent);
         }
     }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -33,12 +32,12 @@ namespace OphiussaFramework.DataBaseUtils {
         public bool TableExists(string tableName) {
             try {
                 SQLiteDataAdapter da = null;
-                var dt = new DataTable();
+                var               dt = new DataTable();
 
 
                 using (var cmd = DbConnection().CreateCommand()) {
                     cmd.CommandText = $"SELECT name FROM sqlite_master WHERE type='table' AND name='{tableName}';";
-                    da = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
+                    da              = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
                     da.Fill(dt);
                 }
 
@@ -54,12 +53,12 @@ namespace OphiussaFramework.DataBaseUtils {
         public bool ColumnExists(string tableName, string columnName) {
             try {
                 SQLiteDataAdapter da = null;
-                var dt = new DataTable();
+                var               dt = new DataTable();
 
 
                 using (var cmd = DbConnection().CreateCommand()) {
                     cmd.CommandText = $"pragma table_info({tableName})";
-                    da = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
+                    da              = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
                     da.Fill(dt);
                 }
 
@@ -80,12 +79,12 @@ namespace OphiussaFramework.DataBaseUtils {
         public string GetPrimaryKey(string tableName) {
             try {
                 SQLiteDataAdapter da = null;
-                var dt = new DataTable();
+                var               dt = new DataTable();
 
 
                 using (var cmd = DbConnection().CreateCommand()) {
                     cmd.CommandText = $"pragma table_info({tableName})";
-                    da = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
+                    da              = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
                     da.Fill(dt);
                 }
 
@@ -113,26 +112,26 @@ namespace OphiussaFramework.DataBaseUtils {
 
         public List<T> GetRecords<T>(string condition = "") {
             try {
-                var temp = typeof(T);
-                SQLiteDataAdapter da = null;
-                var dt = new DataTable();
-                string tableName = temp.Name;
+                var               temp      = typeof(T);
+                SQLiteDataAdapter da        = null;
+                var               dt        = new DataTable();
+                string            tableName = temp.Name;
 
-                List<object> classAttr = temp.GetCustomAttributes(true).ToList();
+                var classAttr = temp.GetCustomAttributes(true).ToList();
                 if (classAttr.Count > 0) {
                     bool foundAttribute = false;
                     classAttr.ForEach(attr => {
-                        if (attr is TableAttributes atr) {
-                            tableName = atr.TableName;
-                            foundAttribute = true;
-                        }
-                    });
+                                          if (attr is TableAttributes atr) {
+                                              tableName      = atr.TableName;
+                                              foundAttribute = true;
+                                          }
+                                      });
                     if (!foundAttribute) tableName = temp.Name;
                 }
 
                 using (var cmd = DbConnection().CreateCommand()) {
                     cmd.CommandText = $"SELECT * FROM {tableName}" + (string.IsNullOrEmpty(condition) ? "" : $"WHERE {condition}");
-                    da = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
+                    da              = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
                     da.Fill(dt);
                 }
 
@@ -148,30 +147,30 @@ namespace OphiussaFramework.DataBaseUtils {
 
         public BindingList<T> GetRecordsB<T>(string condition = "") {
             try {
-                var temp = typeof(T);
-                SQLiteDataAdapter da = null;
-                var dt = new DataTable();
-                string tableName = temp.Name;
+                var               temp      = typeof(T);
+                SQLiteDataAdapter da        = null;
+                var               dt        = new DataTable();
+                string            tableName = temp.Name;
 
-                List<object> classAttr = temp.GetCustomAttributes(true).ToList();
+                var classAttr = temp.GetCustomAttributes(true).ToList();
                 if (classAttr.Count > 0) {
                     bool foundAttribute = false;
                     classAttr.ForEach(attr => {
-                        if (attr is TableAttributes atr) {
-                            tableName = atr.TableName;
-                            foundAttribute = true;
-                        }
-                    });
+                                          if (attr is TableAttributes atr) {
+                                              tableName      = atr.TableName;
+                                              foundAttribute = true;
+                                          }
+                                      });
                     if (!foundAttribute) tableName = temp.Name;
                 }
 
                 using (var cmd = DbConnection().CreateCommand()) {
                     cmd.CommandText = $"SELECT * FROM {tableName}" + (string.IsNullOrEmpty(condition) ? "" : $" WHERE {condition}");
-                    da = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
+                    da              = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
                     da.Fill(dt);
                 }
 
-            //    if (dt.Rows.Count == 0) throw new Exception("No Record");
+                //    if (dt.Rows.Count == 0) throw new Exception("No Record");
                 return dt.ConvertDataTableB<T>();
             }
             catch (Exception e) {
@@ -185,20 +184,20 @@ namespace OphiussaFramework.DataBaseUtils {
             string tmpFile = Path.GetTempFileName();
             if (!File.Exists(tmpFile)) File.Create(tmpFile);
             try {
-                var temp = typeof(T);
-                SQLiteDataAdapter da = null;
-                var dt = new DataTable();
-                string tableName = temp.Name;
+                var               temp      = typeof(T);
+                SQLiteDataAdapter da        = null;
+                var               dt        = new DataTable();
+                string            tableName = temp.Name;
 
-                List<object> classAttr = temp.GetCustomAttributes(true).ToList();
+                var classAttr = temp.GetCustomAttributes(true).ToList();
                 if (classAttr.Count > 0) {
                     bool foundAttribute = false;
                     classAttr.ForEach(attr => {
-                        if (attr is TableAttributes atr) {
-                            tableName = atr.TableName;
-                            foundAttribute = true;
-                        }
-                    });
+                                          if (attr is TableAttributes atr) {
+                                              tableName      = atr.TableName;
+                                              foundAttribute = true;
+                                          }
+                                      });
                     if (!foundAttribute) tableName = temp.Name;
                 }
 
@@ -224,58 +223,51 @@ namespace OphiussaFramework.DataBaseUtils {
             try {
                 var temp = typeof(T);
 
-                string tableName = temp.Name;
-                bool tableExists = false;
-                List<object> classAttr = temp.GetCustomAttributes(true).ToList();
+                string tableName   = temp.Name;
+                bool   tableExists = false;
+                var    classAttr   = temp.GetCustomAttributes(true).ToList();
 
                 if (classAttr.Count > 0) {
                     bool foundAttribute = false;
                     classAttr.ForEach(attr => {
-                        if (attr is TableAttributes atr) {
-                            tableName = atr.TableName;
-                            foundAttribute = true;
-                        }
-                    });
+                                          if (attr is TableAttributes atr) {
+                                              tableName      = atr.TableName;
+                                              foundAttribute = true;
+                                          }
+                                      });
                     if (!foundAttribute) tableName = temp.Name;
                 }
 
                 tableExists = TableExists(tableName);
 
-                List<string> fieldList = new List<string>();
+                var fieldList = new List<string>();
 
                 foreach (var pro in temp.GetProperties()) {
                     bool foundAttribute = false;
-                    List<object> propAttr = pro.GetCustomAttributes(true).ToList();
+                    var  propAttr       = pro.GetCustomAttributes(true).ToList();
                     propAttr.ForEach(attr => {
-                                            if (attr is FieldAttributes atr) {
-                                                if ((!ColumnExists(tableName, pro.Name) && tableExists) || !tableExists) {
-                                                    if (!atr.Ignore) fieldList.Add($"{pro.Name} {GetDataType(pro, atr.DataType)} {(atr.PrimaryKey ? "PRIMARY KEY" : "")} {(atr.AutoIncrement ? "AUTOINCREMENT" : "")}");
-                                                    foundAttribute = true;
-                                                }
-                                            }
+                                         if (attr is FieldAttributes atr)
+                                             if ((!ColumnExists(tableName, pro.Name) && tableExists) || !tableExists) {
+                                                 if (!atr.Ignore) fieldList.Add($"{pro.Name} {GetDataType(pro, atr.DataType)} {(atr.PrimaryKey ? "PRIMARY KEY" : "")} {(atr.AutoIncrement ? "AUTOINCREMENT" : "")}");
+                                                 foundAttribute = true;
+                                             }
                                      });
-                    if (!foundAttribute && ((!ColumnExists(tableName, pro.Name) && tableExists) || !tableExists)) {
-                        fieldList.Add($"{pro.Name} {GetDataType(pro)}");
-                    }
+                    if (!foundAttribute && ((!ColumnExists(tableName, pro.Name) && tableExists) || !tableExists)) fieldList.Add($"{pro.Name} {GetDataType(pro)}");
                 }
 
                 if (fieldList.Count == 0) return true;
 
-                if (tableExists) {
-
-                    foreach (var fld in fieldList) {
+                if (tableExists)
+                    foreach (string fld in fieldList)
                         using (var cmd = DbConnection().CreateCommand()) {
                             cmd.CommandText = $"ALTER TABLE {tableName} ADD {fld};";
                             cmd.ExecuteNonQuery();
-                        } 
-                    }
-                }
-                else {
+                        }
+                else
                     using (var cmd = DbConnection().CreateCommand()) {
                         cmd.CommandText = $"CREATE TABLE IF NOT EXISTS {tableName}({string.Join(",", fieldList.ToArray())})";
                         cmd.ExecuteNonQuery();
                     }
-                }
 
                 return true;
             }
@@ -287,66 +279,58 @@ namespace OphiussaFramework.DataBaseUtils {
 
         private string GetDataType(PropertyInfo pro, string userConfig = "") {
             if (!string.IsNullOrEmpty(userConfig)) return userConfig;
-            if (pro.PropertyType.IsEnum) {
+            if (pro.PropertyType.IsEnum)
                 return "integer";
-            }
-            else if (pro.PropertyType == typeof(double)) {
+            if (pro.PropertyType == typeof(double))
                 return "FLOAT";
-            }
-            else if (pro.PropertyType == typeof(bool) || 
-                     pro.PropertyType == typeof(int) ||
-                     pro.PropertyType == typeof(Int32) ||
-                     pro.PropertyType == typeof(Int64)) {
+            if (pro.PropertyType == typeof(bool) ||
+                pro.PropertyType == typeof(int)  ||
+                pro.PropertyType == typeof(int)  ||
+                pro.PropertyType == typeof(long))
                 return "integer";
-            }
-            else {
-                return "VarChar(250)";
-            }
-
+            return "VarChar(250)";
         }
-        private object GetValue(PropertyInfo pro, object obj) {
 
+        private object GetValue(PropertyInfo pro, object obj) {
             var fields = obj.GetType().GetProperties();
 
             var pInfo = fields.FirstOrDefault(f => f.Name == pro.Name);
             if (pInfo == null) return null;
 
             if (pro.PropertyType.IsEnum) {
-
-                    var v = (int)pInfo.GetValue(obj); 
+                int v = (int)pInfo.GetValue(obj);
                 return v;
             }
-            else if(pro.PropertyType.IsClass && pro.PropertyType != typeof(string)) {
-                 
-                string v = JsonConvert.SerializeObject(pInfo.GetValue(obj), Formatting.Indented);   
-                 
+
+            if (pro.PropertyType.IsClass && pro.PropertyType != typeof(string)) {
+                string v = JsonConvert.SerializeObject(pInfo.GetValue(obj), Formatting.Indented);
+
                 return v;
             }
-            else if (pro.PropertyType == typeof(double)) {
 
+            if (pro.PropertyType == typeof(double)) {
                 string v = pInfo.GetValue(obj).ToString();
 
                 if (float.TryParse(v, NumberStyles.Any, CultureInfo.InvariantCulture, out float res)) return res;
                 return 0;
             }
-            else if (pro.PropertyType == typeof(int) ||
-                     pro.PropertyType == typeof(Int32) ||
-                     pro.PropertyType == typeof(Int64)) {
 
+            if (pro.PropertyType == typeof(int) ||
+                pro.PropertyType == typeof(int) ||
+                pro.PropertyType == typeof(long)) {
                 string v = pInfo.GetValue(obj).ToString();
 
                 if (int.TryParse(v, NumberStyles.Any, CultureInfo.InvariantCulture, out int res)) return res;
                 return 0;
             }
-            else if (pro.PropertyType == typeof(bool)) {
+
+            if (pro.PropertyType == typeof(bool)) {
                 string v = pInfo.GetValue(obj).ToString();
                 if (bool.TryParse(v, out bool res)) return res ? 1 : 0;
                 return 0;
             }
-            else {
-                return pInfo.GetValue(obj)?.ToString();
-            }
 
+            return pInfo.GetValue(obj)?.ToString();
         }
 
         public bool Upsert<T>(object obj) {
@@ -354,32 +338,31 @@ namespace OphiussaFramework.DataBaseUtils {
                 var temp = typeof(T);
 
                 string tableName = temp.Name;
-                List<object> classAttr = temp.GetCustomAttributes(true).ToList();
+                var    classAttr = temp.GetCustomAttributes(true).ToList();
 
                 if (classAttr.Count > 0) {
                     bool foundAttribute = false;
                     classAttr.ForEach(attr => {
-                        if (attr is TableAttributes atr) {
-                            tableName = atr.TableName;
-                            foundAttribute = true;
-                        }
-                    });
+                                          if (attr is TableAttributes atr) {
+                                              tableName      = atr.TableName;
+                                              foundAttribute = true;
+                                          }
+                                      });
                     if (!foundAttribute) tableName = temp.Name;
                 }
 
-                List<string> columnList = new List<string>();
-                List<string> valueColumnList = new List<string>();
-                List<string> updateColumnList = new List<string>();
+                var columnList       = new List<string>();
+                var valueColumnList  = new List<string>();
+                var updateColumnList = new List<string>();
 
                 string primaryKey = GetPrimaryKey(tableName);
                 if (string.IsNullOrEmpty(primaryKey)) throw new Exception("No PrimaryKey");
 
                 using (var cmd = DbConnection().CreateCommand()) {
                     foreach (var pro in temp.GetProperties()) {
-
-                        bool         ignore   = false;
-                        bool         autoIncrment   = false;
-                        List<object> propAttr = pro.GetCustomAttributes(true).ToList();
+                        bool ignore       = false;
+                        bool autoIncrment = false;
+                        var  propAttr     = pro.GetCustomAttributes(true).ToList();
                         propAttr.ForEach(attr => {
                                              if (!(attr is FieldAttributes atr)) return;
                                              ignore       = atr.Ignore;
@@ -390,10 +373,10 @@ namespace OphiussaFramework.DataBaseUtils {
                         valueColumnList.Add("@" + pro.Name);
                         if (pro.Name != primaryKey) updateColumnList.Add($"{pro.Name}=excluded.{pro.Name}");
 
-                        var value = GetValue(pro, obj);
+                        object value = GetValue(pro, obj);
 
                         if (autoIncrment && value.ToString() == "0") cmd.Parameters.AddWithValue("@" + pro.Name, null);
-                        else cmd.Parameters.AddWithValue("@" + pro.Name, value);
+                        else cmd.Parameters.AddWithValue("@"                                         + pro.Name, value);
                     }
 
                     cmd.CommandText = $@"INSERT INTO {tableName}({string.Join(",", columnList.ToArray())}) 
@@ -413,20 +396,19 @@ namespace OphiussaFramework.DataBaseUtils {
 
         public bool Delete<T>(string keyValue) {
             try {
-
                 var temp = typeof(T);
 
                 string tableName = temp.Name;
-                List<object> classAttr = temp.GetCustomAttributes(true).ToList();
+                var    classAttr = temp.GetCustomAttributes(true).ToList();
 
                 if (classAttr.Count > 0) {
                     bool foundAttribute = false;
                     classAttr.ForEach(attr => {
-                        if (attr is TableAttributes atr) {
-                            tableName = atr.TableName;
-                            foundAttribute = true;
-                        }
-                    });
+                                          if (attr is TableAttributes atr) {
+                                              tableName      = atr.TableName;
+                                              foundAttribute = true;
+                                          }
+                                      });
                     if (!foundAttribute) tableName = temp.Name;
                 }
 

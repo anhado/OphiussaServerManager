@@ -2,44 +2,39 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Input;
 using Newtonsoft.Json;
 using OphiussaFramework.Forms;
 
 namespace OphiussaFramework.Models {
     public class CommandBuilder {
-        private List<CommandDefinition> _commands;
-
-        public List<CommandDefinition> ComandList {get { return _commands; } }
-
-        public CommandBuilder(List<CommandDefinition> commands = null) { 
-
+        public CommandBuilder(List<CommandDefinition> commands = null) {
             var _tmpCommands = commands ?? new List<CommandDefinition>();
 
-            _commands = JsonConvert.DeserializeObject<List<CommandDefinition>>(JsonConvert.SerializeObject(_tmpCommands, Formatting.Indented));
+            ComandList = JsonConvert.DeserializeObject<List<CommandDefinition>>(JsonConvert.SerializeObject(_tmpCommands, Formatting.Indented));
         }
+
+        public List<CommandDefinition> ComandList { get; private set; }
 
         public void AddCommand(int order, bool addSpaceInPrefix, string namePrefix, string name, string valuePrefix, string value, bool enabled) {
-            ComandList.Add(new CommandDefinition() {
-                                                    Order=order,
-                                                    AddSpaceInPrefix=addSpaceInPrefix,
-                                                    NamePrefix=namePrefix,
-                                                    Name=name,
-                                                    Value=value,
-                                                    Enabled=enabled,
-                                                    ValuePrefix = valuePrefix
-                                                   });
+            ComandList.Add(new CommandDefinition {
+                                                     Order            = order,
+                                                     AddSpaceInPrefix = addSpaceInPrefix,
+                                                     NamePrefix       = namePrefix,
+                                                     Name             = name,
+                                                     Value            = value,
+                                                     Enabled          = enabled,
+                                                     ValuePrefix      = valuePrefix
+                                                 });
         }
 
-        public override string  ToString() {
-            var cmd = _commands.OrderBy(cm => cm.Order).ToList();
+        public override string ToString() {
+            var cmd = ComandList.OrderBy(cm => cm.Order).ToList();
 
-            StringBuilder cmdFinal = new StringBuilder();
+            var cmdFinal = new StringBuilder();
 
             cmd.ForEach(c => {
-                            if(!c.Enabled) return;
+                            if (!c.Enabled) return;
                             if (c.AddSpaceInPrefix) cmdFinal.Append(" ");
                             cmdFinal.Append(c.NamePrefix);
                             cmdFinal.Append(c.Name);
@@ -52,14 +47,9 @@ namespace OphiussaFramework.Models {
         }
 
         public void OpenCommandEditor(Action<CommandBuilder> buildCommand) {
-            
-            FrmCommandEditor commandEditor = new FrmCommandEditor(_commands);
-            commandEditor.BuildCommand = lst => {
-                                             _commands = lst;
-                                         };
-            if (commandEditor.ShowDialog() == DialogResult.OK) {
-                buildCommand.Invoke(this);
-            } 
+            var commandEditor = new FrmCommandEditor(ComandList);
+            commandEditor.BuildCommand = lst => { ComandList = lst; };
+            if (commandEditor.ShowDialog() == DialogResult.OK) buildCommand.Invoke(this);
         }
     }
 }

@@ -1,9 +1,9 @@
-﻿using OphiussaFramework.Extensions;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
+using OphiussaFramework.Extensions;
 
 //using OphiussaServerManager.Common.Helpers;
 
@@ -71,8 +71,8 @@ namespace OphiussaFramework.Components {
                     tbUC.SetValueEx(iValue);
                 }
                 else {
-                    float fValue = ((TextBox)sender).Text.ToFloat() * Scale;
-                    string value = Math.Round(fValue, 0).ToString(CultureInfo.InvariantCulture);
+                    float  fValue = ((TextBox)sender).Text.ToFloat() * Scale;
+                    string value  = Math.Round(fValue, 0).ToString(CultureInfo.InvariantCulture);
                     tbUC.SetValueEx(value.ToInt());
                 }
             }

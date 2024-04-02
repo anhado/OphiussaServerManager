@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using OphiussaFramework;
@@ -10,9 +9,10 @@ using OphiussaFramework.Models;
 
 namespace ValheimPlugin.Forms {
     public partial class FrmValheim : Form {
-        private IPlugin _plugin;
-        private TabPage _tabPage;
-        private Profile Profile;
+        private readonly IPlugin _plugin;
+        private          TabPage _tabPage;
+        private readonly Profile Profile;
+
         public FrmValheim(IPlugin plugin, TabPage tab) {
             _plugin = plugin;
             InitializeComponent();
@@ -37,7 +37,6 @@ namespace ValheimPlugin.Forms {
         }
 
         private void AddDataBindings() {
-
             cboPriority.SelectedValue = Profile.CpuPriority.ToString();
 
             tbPresetNormal.Checked    = Profile.Preset == Preset.Normal;
@@ -48,38 +47,38 @@ namespace ValheimPlugin.Forms {
             tbPresetImmersive.Checked = Profile.Preset == Preset.Immersive;
             tbPresetHammer.Checked    = Profile.Preset == Preset.Hammer;
 
-            rbCombatNone.Checked = Profile.Combat == Combat.Default;
+            rbCombatNone.Checked     = Profile.Combat == Combat.Default;
             rbCombatVeryEasy.Checked = Profile.Combat == Combat.VeryEasy;
-            rbCombatEasy.Checked = Profile.Combat == Combat.Easy;
-            rbCombatHard.Checked = Profile.Combat == Combat.Hard;
+            rbCombatEasy.Checked     = Profile.Combat == Combat.Easy;
+            rbCombatHard.Checked     = Profile.Combat == Combat.Hard;
             rbCombatVeryHard.Checked = Profile.Combat == Combat.VeryHard;
 
-            rbDeathPenaltyNone.Checked = Profile.DeathPenalty == DeathPenalty.Default;
-            rbDeathPenaltyCasual.Checked = Profile.DeathPenalty == DeathPenalty.Casual;
+            rbDeathPenaltyNone.Checked     = Profile.DeathPenalty == DeathPenalty.Default;
+            rbDeathPenaltyCasual.Checked   = Profile.DeathPenalty == DeathPenalty.Casual;
             rbDeathPenaltyVeryEasy.Checked = Profile.DeathPenalty == DeathPenalty.VeryEasy;
-            rbDeathPenaltyEasy.Checked = Profile.DeathPenalty == DeathPenalty.Easy;
-            rbDeathPenaltyHard.Checked = Profile.DeathPenalty == DeathPenalty.Hard;
+            rbDeathPenaltyEasy.Checked     = Profile.DeathPenalty == DeathPenalty.Easy;
+            rbDeathPenaltyHard.Checked     = Profile.DeathPenalty == DeathPenalty.Hard;
             rbDeathPenaltyHardCore.Checked = Profile.DeathPenalty == DeathPenalty.HardCore;
 
-            rbResourcesNone.Checked = Profile.Resources == Resources.Default;
+            rbResourcesNone.Checked     = Profile.Resources == Resources.Default;
             rbResourcesMuchLess.Checked = Profile.Resources == Resources.MuchLess;
-            rbResourcesLess.Checked = Profile.Resources == Resources.Less;
-            rbResourcesMore.Checked = Profile.Resources == Resources.More;
+            rbResourcesLess.Checked     = Profile.Resources == Resources.Less;
+            rbResourcesMore.Checked     = Profile.Resources == Resources.More;
             rbResourcesMuchMore.Checked = Profile.Resources == Resources.MuchMore;
-            rbResourcesMost.Checked = Profile.Resources == Resources.Most;
+            rbResourcesMost.Checked     = Profile.Resources == Resources.Most;
 
-            rbRaidsDefault.Checked = Profile.Raids == Raids.Default;
-            rbRaidsNone.Checked = Profile.Raids == Raids.None;
+            rbRaidsDefault.Checked  = Profile.Raids == Raids.Default;
+            rbRaidsNone.Checked     = Profile.Raids == Raids.None;
             rbRaidsMuchLess.Checked = Profile.Raids == Raids.MuchLess;
-            rbRaidsLess.Checked = Profile.Raids == Raids.Less;
-            rbRaidsMore.Checked = Profile.Raids == Raids.More;
+            rbRaidsLess.Checked     = Profile.Raids == Raids.Less;
+            rbRaidsMore.Checked     = Profile.Raids == Raids.More;
             rbRaidsMuchMore.Checked = Profile.Raids == Raids.MuchMore;
 
-            rbPortalsNone.Checked = Profile.Portals == Portals.Default;
-            rbPortalsCasual.Checked = Profile.Portals == Portals.Casual;
-            rbPortalsHard.Checked = Profile.Portals == Portals.Hard;
+            rbPortalsNone.Checked     = Profile.Portals == Portals.Default;
+            rbPortalsCasual.Checked   = Profile.Portals == Portals.Casual;
+            rbPortalsHard.Checked     = Profile.Portals == Portals.Hard;
             rbPortalsVeryHard.Checked = Profile.Portals == Portals.VeryHard;
-             
+
 
             txtServerName.DataBindings.Add("Text", _plugin.Profile, "Name");
             txtServerPWD.DataBindings.Add("Text", _plugin.Profile, "ServerPassword");
@@ -108,7 +107,7 @@ namespace ValheimPlugin.Forms {
             chkPlayerEvents.DataBindings.Add("Checked", _plugin.Profile, "PlayerEvents");
             chkTeleportAll.DataBindings.Add("Checked", _plugin.Profile, "TeleportAll");
             chkDeathDeleteUnequipped.DataBindings.Add("Checked", _plugin.Profile, "DeathDeleteUnequipped");
-             
+
             tbDamageTaken.DataBindings.Add("Value", _plugin.Profile, "DamageTaken");
             tbEnemyDamage.DataBindings.Add("Value", _plugin.Profile, "EnemyDamage");
             tbEnemyLevelUpRate.DataBindings.Add("Value", _plugin.Profile, "EnemyLevelUpRate");
@@ -226,35 +225,34 @@ namespace ValheimPlugin.Forms {
         }
 
         private void profileHeader1_ClickStartStop(object sender, EventArgs e) {
-            if (!profileHeader1.IsRunning)  
+            if (!profileHeader1.IsRunning)
                 _plugin.StartServer();
-            else 
+            else
                 _plugin.StopServer();
         }
 
         private void FrmConfigurationForm_Load(object sender, EventArgs e) {
-
         }
 
-        private void profileHeader1_TabHeaderChange(object sender, OphiussaFramework.Models.OphiussaEventArgs e) {
+        private void profileHeader1_TabHeaderChange(object sender, OphiussaEventArgs e) {
             _plugin.TabHeaderChange();
         }
 
         private void button1_Click(object sender, EventArgs e) {
-            CommandBuilder cmdBuilder = new CommandBuilder(_plugin.DefaultCommands);
+            var cmdBuilder = new CommandBuilder(_plugin.DefaultCommands);
             cmdBuilder.OpenCommandEditor(fullCommand => {
                                              _plugin.DefaultCommands = fullCommand.ComandList;
                                              MessageBox.Show(fullCommand.ToString());
                                          });
         }
 
-        private void button2_Click(object sender, EventArgs e) { 
+        private void button2_Click(object sender, EventArgs e) {
             fdDiag.SelectedPath = txtSaveLocation.Text;
             fdDiag.ShowDialog();
             txtSaveLocation.Text = fdDiag.SelectedPath;
         }
 
-        private void button3_Click(object sender, EventArgs e) { 
+        private void button3_Click(object sender, EventArgs e) {
             fdDiag.SelectedPath = txtLogLocation.Text;
             fdDiag.ShowDialog();
             txtLogLocation.Text = fdDiag.SelectedPath;
@@ -266,7 +264,6 @@ namespace ValheimPlugin.Forms {
         }
 
         private void btProcessorAffinity_Click(object sender, EventArgs e) {
-
             var frm = new FrmProcessors(Profile.CpuAffinity == "All",
                                         Profile.CpuAffinityList);
             frm.UpdateCpuAffinity = (all, lst) => {
@@ -279,13 +276,13 @@ namespace ValheimPlugin.Forms {
             frm.ShowDialog();
         }
 
-        private void txtServerPWD_DoubleClick(object sender, EventArgs e) { 
+        private void txtServerPWD_DoubleClick(object sender, EventArgs e) {
             txtServerPWD.PasswordChar = txtServerPWD.PasswordChar == '\0' ? '*' : '\0';
         }
 
         private void txtServerPort_TextChanged(object sender, EventArgs e) {
             int port;
-            if (int.TryParse(txtServerPort.Text, out port)) txtPeerPort.Text = (port + 1).ToString(); 
+            if (int.TryParse(txtServerPort.Text, out port)) txtPeerPort.Text = (port + 1).ToString();
         }
     }
 }

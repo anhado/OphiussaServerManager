@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 using OphiussaFramework;
 using OphiussaFramework.CommonUtils;
@@ -8,8 +7,8 @@ using OphiussaFramework.Models;
 
 namespace BasePlugin.Forms {
     public partial class FrmConfigurationForm : Form {
-        private IPlugin _plugin;
-        private TabPage _tabPage;
+        private readonly IPlugin _plugin;
+        private          TabPage _tabPage;
 
         public FrmConfigurationForm(IPlugin plugin, TabPage tab) {
             _plugin = plugin;
@@ -18,18 +17,18 @@ namespace BasePlugin.Forms {
             profileHeader1.Plugin        = _plugin;
             automaticManagement1.Profile = _plugin.Profile;
             automaticManagement1.Plugin  = _plugin;
-            profileHeader1.Tab           = tab; 
+            profileHeader1.Tab           = tab;
             _tabPage                     = tab;
 
             if (_plugin.Profile.CpuAffinityList.Count == 0) _plugin.Profile.CpuAffinityList = ConnectionController.ProcessorList;
         }
 
         private void profileHeader1_ClickSave(object sender, EventArgs e) {
-            try { 
+            try {
                 _plugin.Profile.AutoManagement = automaticManagement1.GetRestartSettings();
                 _plugin.Save();
                 automaticManagement1.LoadGrid();
-                OphiussaFramework.Models.Message msg =  _plugin.SaveSettingsToDisk();
+                var msg = _plugin.SaveSettingsToDisk();
                 if (msg.Success) MessageBox.Show(msg.MessageText);
                 else throw msg.Exception;
             }
@@ -56,22 +55,21 @@ namespace BasePlugin.Forms {
         }
 
         private void profileHeader1_ClickStartStop(object sender, EventArgs e) {
-            if (profileHeader1.IsRunning)  
+            if (profileHeader1.IsRunning)
                 _plugin.StartServer();
-            else 
+            else
                 _plugin.StopServer();
         }
 
         private void FrmConfigurationForm_Load(object sender, EventArgs e) {
-
         }
 
-        private void profileHeader1_TabHeaderChange(object sender, OphiussaFramework.Models.OphiussaEventArgs e) {
+        private void profileHeader1_TabHeaderChange(object sender, OphiussaEventArgs e) {
             _plugin.TabHeaderChange();
         }
 
         private void button1_Click(object sender, EventArgs e) {
-            CommandBuilder cmdBuilder = new CommandBuilder(_plugin.DefaultCommands);
+            var cmdBuilder = new CommandBuilder(_plugin.DefaultCommands);
             cmdBuilder.OpenCommandEditor(fullCommand => {
                                              _plugin.DefaultCommands = fullCommand.ComandList;
                                              MessageBox.Show(fullCommand.ToString());

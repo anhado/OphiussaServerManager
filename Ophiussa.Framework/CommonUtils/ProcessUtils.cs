@@ -1,5 +1,4 @@
-﻿using NLog;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -9,18 +8,18 @@ using System.Numerics;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Security;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using NLog;
 
 namespace OphiussaFramework.CommonUtils {
     public static class ProcessUtils {
-        private const int SwRestore = 9;
-        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
-        public static string FieldCommandline = "CommandLine";
-        public static string FieldExecutablepath = "ExecutablePath";
-        public static string FieldProcessid = "ProcessId";
-        private static Mutex _mutex;
+        private const           int    SwRestore           = 9;
+        private static readonly Logger Logger              = LogManager.GetCurrentClassLogger();
+        public static           string FieldCommandline    = "CommandLine";
+        public static           string FieldExecutablepath = "ExecutablePath";
+        public static           string FieldProcessid      = "ProcessId";
+        private static          Mutex  _mutex;
 
         public static int ProcessorCount => Environment.ProcessorCount;
 
@@ -34,12 +33,12 @@ namespace OphiussaFramework.CommonUtils {
         [return: MarshalAs(UnmanagedType.Bool)]
         private static extern bool GenerateConsoleCtrlEvent(
             CtrlTypes dwCtrlEvent,
-            uint dwProcessGroupId);
+            uint      dwProcessGroupId);
 
         [DllImport("kernel32.dll")]
         private static extern bool SetConsoleCtrlHandler(
             ConsoleCtrlDelegate handlerRoutine,
-            bool add);
+            bool                add);
 
         [DllImport("user32.dll")]
         private static extern int ShowWindow(IntPtr hWnd, int nCmdShow);
@@ -77,7 +76,7 @@ namespace OphiussaFramework.CommonUtils {
         public static async Task SendStopAsync(Process process) {
             if (process == null)
                 return;
-            var ts = new TaskCompletionSource<bool>();
+            var          ts           = new TaskCompletionSource<bool>();
             EventHandler eventHandler = (s, e) => ts.TrySetResult(true);
             try {
                 process.Exited += eventHandler;
@@ -118,30 +117,30 @@ namespace OphiussaFramework.CommonUtils {
         }
 
         public static Task<bool> RunProcessAsync(
-            string file,
-            string arguments,
-            string verb,
-            string workingDirectory,
-            string username,
-            SecureString password,
-            List<int> steamCmdIgnoreExitStatusCodes,
+            string                   file,
+            string                   arguments,
+            string                   verb,
+            string                   workingDirectory,
+            string                   username,
+            SecureString             password,
+            List<int>                steamCmdIgnoreExitStatusCodes,
             DataReceivedEventHandler outputHandler,
-            CancellationToken cancellationToken,
-            ProcessWindowStyle windowStyle = ProcessWindowStyle.Normal) {
+            CancellationToken        cancellationToken,
+            ProcessWindowStyle       windowStyle = ProcessWindowStyle.Normal) {
             try {
                 string fileName = !string.IsNullOrWhiteSpace(file) && File.Exists(file) ? Path.GetFileName(file) : throw new FileNotFoundException("The specified file does not exist or could not be found.", file);
                 var startInfo = new ProcessStartInfo {
-                    FileName = file,
-                    Arguments = arguments,
-                    Verb = verb,
-                    UseShellExecute = outputHandler == null && windowStyle == ProcessWindowStyle.Minimized && string.IsNullOrWhiteSpace(username),
-                    RedirectStandardOutput = outputHandler != null,
-                    CreateNoWindow = outputHandler != null || windowStyle == ProcessWindowStyle.Hidden,
-                    WindowStyle = windowStyle,
-                    UserName = string.IsNullOrWhiteSpace(username) ? null : username,
-                    Password = string.IsNullOrWhiteSpace(username) ? null : password,
-                    WorkingDirectory = string.IsNullOrWhiteSpace(workingDirectory) || !Directory.Exists(workingDirectory) ? Path.GetDirectoryName(file) : workingDirectory
-                };
+                                                         FileName               = file,
+                                                         Arguments              = arguments,
+                                                         Verb                   = verb,
+                                                         UseShellExecute        = outputHandler == null && windowStyle == ProcessWindowStyle.Minimized && string.IsNullOrWhiteSpace(username),
+                                                         RedirectStandardOutput = outputHandler != null,
+                                                         CreateNoWindow         = outputHandler != null || windowStyle == ProcessWindowStyle.Hidden,
+                                                         WindowStyle            = windowStyle,
+                                                         UserName               = string.IsNullOrWhiteSpace(username) ? null : username,
+                                                         Password               = string.IsNullOrWhiteSpace(username) ? null : password,
+                                                         WorkingDirectory       = string.IsNullOrWhiteSpace(workingDirectory) || !Directory.Exists(workingDirectory) ? Path.GetDirectoryName(file) : workingDirectory
+                                                     };
                 var process = Process.Start(startInfo);
                 process.EnableRaisingEvents = true;
                 if (startInfo.RedirectStandardOutput && outputHandler != null) {
@@ -151,25 +150,25 @@ namespace OphiussaFramework.CommonUtils {
 
                 var tcs = new TaskCompletionSource<bool>();
                 using (cancellationToken.Register(() => {
-                    try {
-                        process.Kill();
-                    }
-                    finally {
-                        tcs.TrySetCanceled();
-                    }
-                })) {
+                                                      try {
+                                                          process.Kill();
+                                                      }
+                                                      finally {
+                                                          tcs.TrySetCanceled();
+                                                      }
+                                                  })) {
                     process.Exited += (s, e) => {
-                        int num = process.ExitCode;
-                        Logger.Debug(string.Format("{0}: filename {1}; exitcode = {2}", nameof(RunProcessAsync), fileName, num));
-                        if (num != 0) {
-                            Logger.Error(string.Format("{0}: filename {1}; exitcode = {2}", nameof(RunProcessAsync), fileName, num));
-                            if (steamCmdIgnoreExitStatusCodes.Contains(num))
-                                num = 0;
-                        }
+                                          int num = process.ExitCode;
+                                          Logger.Debug(string.Format("{0}: filename {1}; exitcode = {2}", nameof(RunProcessAsync), fileName, num));
+                                          if (num != 0) {
+                                              Logger.Error(string.Format("{0}: filename {1}; exitcode = {2}", nameof(RunProcessAsync), fileName, num));
+                                              if (steamCmdIgnoreExitStatusCodes.Contains(num))
+                                                  num = 0;
+                                          }
 
-                        tcs.TrySetResult(num == 0);
-                        process.Close();
-                    };
+                                          tcs.TrySetResult(num == 0);
+                                          process.Close();
+                                      };
                     return tcs.Task;
                 }
             }
@@ -181,7 +180,7 @@ namespace OphiussaFramework.CommonUtils {
 
         private static IntPtr GetCurrentInstanceWindowHandle() {
             var instanceWindowHandle = IntPtr.Zero;
-            var currentProcess = Process.GetCurrentProcess();
+            var currentProcess       = Process.GetCurrentProcess();
             foreach (var process in Process.GetProcessesByName(currentProcess.ProcessName))
                 if (process.Id != currentProcess.Id && process.MainModule.FileName == currentProcess.MainModule.FileName && process.MainWindowHandle != IntPtr.Zero) {
                     instanceWindowHandle = process.MainWindowHandle;
@@ -210,7 +209,7 @@ namespace OphiussaFramework.CommonUtils {
         }
 
         public static IEnumerable<BigInteger> GetProcessorAffinityList() {
-            int processorCount = ProcessorCount;
+            int processorCount        = ProcessorCount;
             var processorAffinityList = new List<BigInteger>(processorCount + 1);
             processorAffinityList.Add(BigInteger.Zero);
             for (int y = 0; y < processorCount; ++y)
@@ -242,12 +241,11 @@ namespace OphiussaFramework.CommonUtils {
         private delegate bool ConsoleCtrlDelegate(CtrlTypes ctrlType);
 
         private enum CtrlTypes : uint {
-            CtrlCEvent = 0,
-            CtrlBreakEvent = 1,
-            CtrlCloseEvent = 2,
-            CtrlLogoffEvent = 5,
+            CtrlCEvent        = 0,
+            CtrlBreakEvent    = 1,
+            CtrlCloseEvent    = 2,
+            CtrlLogoffEvent   = 5,
             CtrlShutdownEvent = 6
         }
-
     }
 }

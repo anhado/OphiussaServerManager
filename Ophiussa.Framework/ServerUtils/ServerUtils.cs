@@ -1,23 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Reflection;
-using System.Windows.Forms;
+using System.Threading;
 using Microsoft.Win32.TaskScheduler;
 using Newtonsoft.Json;
 using OphiussaFramework.CommonUtils;
-using OphiussaFramework.DataBaseUtils;
 using OphiussaFramework.Interfaces;
 using OphiussaFramework.Models;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Runtime.InteropServices.ComTypes;
-using System.Runtime;
-using System.IO;
+using Task = System.Threading.Tasks.Task;
 
 namespace OphiussaFramework.ServerUtils {
     public static class ServerUtils {
-
         public static void InstallServerClick(object sender, OphiussaEventArgs e) {
             NetworkTools.UpdateGameFolder(e.Profile);
         }
@@ -31,13 +26,14 @@ namespace OphiussaFramework.ServerUtils {
             Utils.ExecuteAsAdmin(file, "", false, false, true);
         }
 
-        public static void StopServerClick(object sender, OphiussaEventArgs e) { 
+        public static void StopServerClick(object sender, OphiussaEventArgs e) {
             if (e.ForceStopServer) {
                 var pro = Utils.GetProcessRunning(Path.Combine(e.Profile.InstallationFolder, e.Profile.ExecutablePath));
                 pro.Kill();
             }
-            else
+            else {
                 Utils.SendCloseCommandCtrlC(Utils.GetProcessRunning(Path.Combine(e.Profile.InstallationFolder, e.Profile.ExecutablePath)));
+            }
         }
 
         public static void ReloadServerClick(object sender, OphiussaEventArgs e) {
@@ -49,15 +45,14 @@ namespace OphiussaFramework.ServerUtils {
         }
 
         public static void SaveServerClick(object sender, OphiussaEventArgs e) {
-
-            IProfile profile = e.Profile;
-            profile.Type = e.Plugin.GameType;
+            var profile = e.Profile;
+            profile.Type               = e.Plugin.GameType;
             profile.AdditionalSettings = null;
             profile.AdditionalCommands = null;
-            profile.AdditionalSettings = JsonConvert.SerializeObject(e.Profile, Formatting.Indented);
+            profile.AdditionalSettings = JsonConvert.SerializeObject(e.Profile,                Formatting.Indented);
             profile.AdditionalCommands = JsonConvert.SerializeObject(e.Plugin.DefaultCommands, Formatting.Indented);
             ConnectionController.SqlLite.Upsert<IProfile>(profile);
-            foreach (AutoManagement opt in profile.AutoManagement) {
+            foreach (var opt in profile.AutoManagement) {
                 opt.ServerKey = profile.Key;
                 ConnectionController.SqlLite.Upsert<AutoManagement>(opt);
             }
@@ -66,13 +61,12 @@ namespace OphiussaFramework.ServerUtils {
         }
 
         private static void CreateWindowsTasks(IPlugin plugin) {
-
             #region AutoStartServer
 
             if (plugin.Profile.AutoStartServer) {
                 string fileName = ConnectionController.Settings.DataFolder + $"StartServer\\Run_{plugin.Profile.Key.Replace("-", "")}.bat";
-                string taskName = "OphiussaServerManager\\AutoStart_" + plugin.Profile.Key;
-                var task = TaskService.Instance.GetTask(taskName);
+                string taskName = "OphiussaServerManager\\AutoStart_"      + plugin.Profile.Key;
+                var    task     = TaskService.Instance.GetTask(taskName);
                 if (task != null) {
                     task.Definition.Triggers.Clear();
                     if (plugin.Profile.StartOnBoot) {
@@ -85,13 +79,13 @@ namespace OphiussaFramework.ServerUtils {
                     }
 
                     task.Definition.Principal.RunLevel = TaskRunLevel.Highest;
-                    task.Definition.Settings.Priority = ProcessPriorityClass.Normal;
+                    task.Definition.Settings.Priority  = ProcessPriorityClass.Normal;
                     task.RegisterChanges();
                 }
                 else {
                     var td = TaskService.Instance.NewTask();
                     td.RegistrationInfo.Description = "Server Auto-Start - " + plugin.Profile.Name;
-                    td.Principal.LogonType = TaskLogonType.InteractiveToken;
+                    td.Principal.LogonType          = TaskLogonType.InteractiveToken;
                     if (plugin.Profile.StartOnBoot) {
                         var bt1 = new BootTrigger { Delay = TimeSpan.FromMinutes(1) };
                         td.Triggers.Add(bt1);
@@ -103,13 +97,13 @@ namespace OphiussaFramework.ServerUtils {
 
                     td.Actions.Add(fileName);
                     td.Principal.RunLevel = TaskRunLevel.Highest;
-                    td.Settings.Priority = ProcessPriorityClass.Normal;
+                    td.Settings.Priority  = ProcessPriorityClass.Normal;
                     TaskService.Instance.RootFolder.RegisterTaskDefinition(taskName, td);
                 }
             }
             else {
                 string taskName = "OphiussaServerManager\\AutoStart_" + plugin.Profile.Key;
-                var task = TaskService.Instance.GetTask(taskName);
+                var    task     = TaskService.Instance.GetTask(taskName);
                 if (task != null) TaskService.Instance.RootFolder.DeleteTask(taskName);
             }
 
@@ -117,11 +111,10 @@ namespace OphiussaFramework.ServerUtils {
 
             #region Shutdown
 
-            foreach (AutoManagement am in plugin.Profile.AutoManagement) {
-
+            foreach (var am in plugin.Profile.AutoManagement) {
                 string fileName = Assembly.GetEntryAssembly().Location;
                 string taskName = $"OphiussaServerManager\\AutoShutDown_{am.Id:000}_" + plugin.Profile.Key;
-                var task = TaskService.Instance.GetTask(taskName);
+                var    task     = TaskService.Instance.GetTask(taskName);
 
                 if (task != null) {
                     task.Definition.Triggers.Clear();
@@ -135,21 +128,21 @@ namespace OphiussaFramework.ServerUtils {
                     if (am.ShutdownFri) daysofweek += 32;
                     if (am.ShutdownSat) daysofweek += 64;
                     if (am.ShutdownSun) daysofweek += 1;
-                    var tt = new WeeklyTrigger();
+                    var tt                         = new WeeklyTrigger();
 
-                    int hour = short.Parse(am.ShutdownHour.Split(':')[0]);
+                    int hour   = short.Parse(am.ShutdownHour.Split(':')[0]);
                     int minute = short.Parse(am.ShutdownHour.Split(':')[1]);
                     tt.StartBoundary = DateTime.Today + TimeSpan.FromHours(hour) + TimeSpan.FromMinutes(minute);
-                    tt.DaysOfWeek = daysofweek;
+                    tt.DaysOfWeek    = daysofweek;
                     task.Definition.Triggers.Add(tt);
                     task.Definition.Principal.RunLevel = TaskRunLevel.Highest;
-                    task.Definition.Settings.Priority = ProcessPriorityClass.Normal;
+                    task.Definition.Settings.Priority  = ProcessPriorityClass.Normal;
                     task.RegisterChanges();
                 }
                 else {
                     var td = TaskService.Instance.NewTask();
                     td.RegistrationInfo.Description = $"Server Auto-ShutDown {am.Id:000} - " + plugin.Profile.Name;
-                    td.Principal.LogonType = TaskLogonType.InteractiveToken;
+                    td.Principal.LogonType          = TaskLogonType.InteractiveToken;
                     DaysOfTheWeek daysofweek = 0;
 
                     if (am.ShutdownMon) daysofweek += 2;
@@ -159,16 +152,16 @@ namespace OphiussaFramework.ServerUtils {
                     if (am.ShutdownFri) daysofweek += 32;
                     if (am.ShutdownSat) daysofweek += 64;
                     if (am.ShutdownSun) daysofweek += 1;
-                    var tt = new WeeklyTrigger();
+                    var tt                         = new WeeklyTrigger();
 
-                    int hour = short.Parse(am.ShutdownHour.Split(':')[0]);
+                    int hour   = short.Parse(am.ShutdownHour.Split(':')[0]);
                     int minute = short.Parse(am.ShutdownHour.Split(':')[1]);
                     tt.StartBoundary = DateTime.Today + TimeSpan.FromHours(hour) + TimeSpan.FromMinutes(minute);
-                    tt.DaysOfWeek = daysofweek;
+                    tt.DaysOfWeek    = daysofweek;
                     td.Triggers.Add(tt);
                     td.Actions.Add(fileName, $" -as_{am.Id:000}_" + plugin.Profile.Key);
                     td.Principal.RunLevel = TaskRunLevel.Highest;
-                    td.Settings.Priority = ProcessPriorityClass.Normal;
+                    td.Settings.Priority  = ProcessPriorityClass.Normal;
 
                     TaskService.Instance.RootFolder.RegisterTaskDefinition(taskName, td);
                 }
@@ -179,6 +172,7 @@ namespace OphiussaFramework.ServerUtils {
                 //    if (task != null) TaskService.Instance.RootFolder.DeleteTask(taskName);
                 //}
             }
+
             #endregion
         }
 
@@ -191,25 +185,24 @@ namespace OphiussaFramework.ServerUtils {
         }
 
         public static async void RestartServerSingleServer(string serverKey) {
-
             try {
-
                 string[] args = serverKey.Split('_');
                 OphiussaLogger.Logger.Info($"Restarting server : {args[2]}");
-                AutoManagement am = ConnectionController.SqlLite.GetRecord<AutoManagement>($"Id={args[1]}");
-                IProfile profile = ConnectionController.SqlLite.GetRecord<IProfile>($"Key='{args[2]}'");
+                var am      = ConnectionController.SqlLite.GetRecord<AutoManagement>($"Id={args[1]}");
+                var profile = ConnectionController.SqlLite.GetRecord<IProfile>($"Key='{args[2]}'");
                 if (profile != null && am != null) {
                     if (!ConnectionController.Plugins.ContainsKey(profile.Type)) return;
-                    PluginController nCtrl = new PluginController(ConnectionController.Plugins[profile.Type].PluginLocation(), null, null, null, null, null, null, null, null, null, null);
+                    var nCtrl = new PluginController(ConnectionController.Plugins[profile.Type].PluginLocation());
                     nCtrl.SetProfile(profile);
                     bool isRunning = nCtrl.IsRunning;
-                     
-                    var tasks = new List<System.Threading.Tasks.Task>();
+
+                    var tasks = new List<Task>();
                     if (isRunning) {
-                        var t = System.Threading.Tasks.Task.Run(async () => { await nCtrl.StopServer(); });
-                        tasks.Add(t); 
+                        var t = Task.Run(async () => { await nCtrl.StopServer(); });
+                        tasks.Add(t);
                     }
-                    System.Threading.Tasks.Task.WaitAll(tasks.ToArray());
+
+                    Task.WaitAll(tasks.ToArray());
                     OphiussaLogger.Logger.Info($"Stopped server : {args[2]}");
 
                     var startDate = DateTime.Now;
@@ -220,7 +213,7 @@ namespace OphiussaFramework.ServerUtils {
                     }
 
                     if (am.UpdateServer) {
-                        nCtrl.InstallServer();//TODO: change this line to use the cache copy after auto-update 
+                        nCtrl.InstallServer(); //TODO: change this line to use the cache copy after auto-update 
                         OphiussaLogger.Logger.Info($"Updated server : {args[2]}");
                     }
 
@@ -232,8 +225,9 @@ namespace OphiussaFramework.ServerUtils {
 
                     OphiussaLogger.Logger.Info($"Auto Restarted server : {args[2]}");
                 }
-                else OphiussaLogger.Logger.Error($"Invalid Server {serverKey}");
-
+                else {
+                    OphiussaLogger.Logger.Error($"Invalid Server {serverKey}");
+                }
             }
             catch (Exception e) {
                 OphiussaLogger.Logger.Error(e);

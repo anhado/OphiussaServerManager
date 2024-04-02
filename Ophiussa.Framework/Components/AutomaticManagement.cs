@@ -1,13 +1,12 @@
-﻿using OphiussaFramework.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Windows.Forms;
 using Microsoft.Win32.TaskScheduler;
 using OphiussaFramework;
-using OphiussaFramework.Models;
 using OphiussaFramework.CommonUtils;
+using OphiussaFramework.Interfaces;
+using OphiussaFramework.Models;
 
 namespace OphiussaServerManager.Components {
     public partial class AutomaticManagement : UserControl {
@@ -16,7 +15,7 @@ namespace OphiussaServerManager.Components {
         public AutomaticManagement() {
             InitializeComponent();
         }
-          
+
         [EditorBrowsable(EditorBrowsableState.Never)]
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -35,7 +34,6 @@ namespace OphiussaServerManager.Components {
         }
 
         private void AutomaticManagement_Load(object sender, EventArgs e) {
-
             if (Profile == null) return;
 
             rbOnBoot.Checked  = Profile.StartOnBoot;
@@ -48,11 +46,11 @@ namespace OphiussaServerManager.Components {
 
             LoadGrid();
         }
-        
-        public void LoadGrid() {
-            restartOptions           = ConnectionController.SqlLite.GetRecordsB<AutoManagement>($"ServerKey ='{Profile.Key}'");
 
-            foreach (AutoManagement autoManagement in restartOptions) {
+        public void LoadGrid() {
+            restartOptions = ConnectionController.SqlLite.GetRecordsB<AutoManagement>($"ServerKey ='{Profile.Key}'");
+
+            foreach (var autoManagement in restartOptions)
                 try {
                     int hour   = short.Parse(autoManagement.ShutdownHour.Split(':')[0]);
                     int minute = short.Parse(autoManagement.ShutdownHour.Split(':')[1]);
@@ -62,7 +60,6 @@ namespace OphiussaServerManager.Components {
                     Console.WriteLine(e);
                     autoManagement.ShutdownHourDt = new DateTime(2000, 1, 1, 0, 0, 0);
                 }
-            }
 
             dataGridView1.DataSource = restartOptions;
             foreach (DataGridViewColumn col in dataGridView1.Columns)
@@ -130,17 +127,16 @@ namespace OphiussaServerManager.Components {
         }
 
         private void btDelete_Click(object sender, EventArgs e) {
-
             try {
-                if(MessageBox.Show("Want to delete this record?","RECORD DELETE",MessageBoxButtons.OKCancel)==DialogResult.Cancel) return;
+                if (MessageBox.Show("Want to delete this record?", "RECORD DELETE", MessageBoxButtons.OKCancel) == DialogResult.Cancel) return;
                 foreach (DataGridViewRow selectedRow in dataGridView1.SelectedRows)
                     try {
                         var obj = restartOptions[selectedRow.Index];
-                        ConnectionController.SqlLite.Delete<AutoManagement>(obj.Id.ToString()); 
+                        ConnectionController.SqlLite.Delete<AutoManagement>(obj.Id.ToString());
                         restartOptions.RemoveAt(selectedRow.Index);
 
                         string taskName = $"OphiussaServerManager\\AutoShutDown_{obj.Id:000}_" + Plugin.Profile.Key;
-                        var task = TaskService.Instance.GetTask(taskName);
+                        var    task     = TaskService.Instance.GetTask(taskName);
                         if (task != null) TaskService.Instance.RootFolder.DeleteTask(taskName);
                     }
                     catch (Exception exception) {
@@ -156,11 +152,9 @@ namespace OphiussaServerManager.Components {
             }
         }
 
-        public List<AutoManagement> GetRestartSettings() { 
-            List<AutoManagement> ret = new List<AutoManagement>(); 
-            foreach (var autoManagement in restartOptions) {
-                ret.Add(autoManagement);
-            } 
+        public List<AutoManagement> GetRestartSettings() {
+            var ret = new List<AutoManagement>();
+            foreach (var autoManagement in restartOptions) ret.Add(autoManagement);
             return ret;
         }
 
@@ -169,9 +163,7 @@ namespace OphiussaServerManager.Components {
         }
 
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e) {
-            if (e.RowIndex>=0) {
-                restartOptions[e.RowIndex].ShutdownHour = restartOptions[e.RowIndex].ShutdownHourDt.ToString("HH:mm");
-            }
+            if (e.RowIndex >= 0) restartOptions[e.RowIndex].ShutdownHour = restartOptions[e.RowIndex].ShutdownHourDt.ToString("HH:mm");
         }
     }
 }

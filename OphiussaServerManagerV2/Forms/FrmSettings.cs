@@ -1,8 +1,8 @@
-﻿using OphiussaFramework;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
+using OphiussaFramework;
 using OphiussaFramework.Models;
 
 namespace OphiussaServerManagerV2 {
@@ -29,14 +29,14 @@ namespace OphiussaServerManagerV2 {
             txtUserName.DataBindings.Add("Text", ConnectionController.Settings, "SteamUser");
             txtPassword.DataBindings.Add("Text", ConnectionController.Settings, "SteamPwd");
             chkAnonymous.DataBindings.Add("Checked", ConnectionController.Settings, "UseAnonymous");
-            chkUpdateOnStart.DataBindings.Add("Checked", ConnectionController.Settings, "UpdateSteamCMDStart"); 
+            chkUpdateOnStart.DataBindings.Add("Checked", ConnectionController.Settings, "UpdateSteamCMDStart");
         }
 
         private void FrmSettings_FormClosing(object sender, FormClosingEventArgs e) {
             ConnectionController.SqlLite.Upsert<Settings>(ConnectionController.Settings);
 
             if (!Directory.Exists(txtDataFolder.Text)) Directory.CreateDirectory(txtDataFolder.Text);
-            if (!Directory.Exists(Path.Combine(txtDataFolder.Text, "cache"))) Directory.CreateDirectory(Path.Combine(txtDataFolder.Text, "cache"));
+            if (!Directory.Exists(Path.Combine(txtDataFolder.Text, "cache"))) Directory.CreateDirectory(Path.Combine(txtDataFolder.Text,       "cache"));
             if (!Directory.Exists(Path.Combine(txtDataFolder.Text, "StartServer"))) Directory.CreateDirectory(Path.Combine(txtDataFolder.Text, "StartServer"));
             if (!Directory.Exists(txtDefaultInstallationFolder.Text)) Directory.CreateDirectory(txtDefaultInstallationFolder.Text);
             if (!Directory.Exists(txtSteamCmd.Text)) Directory.CreateDirectory(txtSteamCmd.Text);
@@ -60,24 +60,21 @@ namespace OphiussaServerManagerV2 {
         }
 
         private void button1_Click_1(object sender, EventArgs e) {
-
             fd.SelectedPath = txtSteamCmd.Text;
             fd.ShowDialog();
             txtSteamCmd.Text = fd.SelectedPath;
         }
 
         private void btDefaultInstallFolder_Click(object sender, EventArgs e) {
-
             fd.SelectedPath = txtDefaultInstallationFolder.Text;
             fd.ShowDialog();
             txtDefaultInstallationFolder.Text = fd.SelectedPath;
         }
 
         private void btBackupFolder_Click(object sender, EventArgs e) {
-
             fd.SelectedPath = txtBackupFolder.Text;
             fd.ShowDialog();
             txtBackupFolder.Text = fd.SelectedPath;
-        } 
+        }
     }
 }

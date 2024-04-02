@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using OphiussaFramework.CommonUtils;
-using OphiussaFramework.Models; 
+using OphiussaFramework.Models;
 
 namespace OphiussaFramework.Forms {
     public partial class FrmProcessors : Form {

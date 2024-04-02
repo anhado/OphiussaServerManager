@@ -1,18 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Globalization;
 
 namespace OphiussaFramework.Extensions {
-
     /// <summary>
-    /// TODO: Update summary.
+    ///     TODO: Update summary.
     /// </summary>
     public static class DataRowExtensions {
         #region "By column Name"
 
         /// <summary>
-        /// Gets the string.
+        ///     Gets the string.
         /// </summary>
         /// <param name="dr">The dr.</param>
         /// <param name="column">The column.</param>
@@ -22,7 +19,7 @@ namespace OphiussaFramework.Extensions {
         }
 
         /// <summary>
-        /// Gets the date time.
+        ///     Gets the date time.
         /// </summary>
         /// <param name="dr">The dr.</param>
         /// <param name="column">The column.</param>
@@ -34,7 +31,7 @@ namespace OphiussaFramework.Extensions {
         }
 
         /// <summary>
-        /// Gets the decimal.
+        ///     Gets the decimal.
         /// </summary>
         /// <param name="dr">The dr.</param>
         /// <param name="column">The column.</param>
@@ -46,7 +43,7 @@ namespace OphiussaFramework.Extensions {
         }
 
         /// <summary>
-        /// Gets the boolean.
+        ///     Gets the boolean.
         /// </summary>
         /// <param name="dr">The dr.</param>
         /// <param name="column">The column.</param>
@@ -58,7 +55,7 @@ namespace OphiussaFramework.Extensions {
         }
 
         /// <summary>
-        /// Gets the byte.
+        ///     Gets the byte.
         /// </summary>
         /// <param name="dr">The dr.</param>
         /// <param name="column">The column.</param>
@@ -70,7 +67,7 @@ namespace OphiussaFramework.Extensions {
         }
 
         /// <summary>
-        /// Gets the char.
+        ///     Gets the char.
         /// </summary>
         /// <param name="dr">The dr.</param>
         /// <param name="column">The column.</param>
@@ -82,7 +79,7 @@ namespace OphiussaFramework.Extensions {
         }
 
         /// <summary>
-        /// Gets the double.
+        ///     Gets the double.
         /// </summary>
         /// <param name="dr">The dr.</param>
         /// <param name="column">The column.</param>
@@ -94,7 +91,7 @@ namespace OphiussaFramework.Extensions {
         }
 
         /// <summary>
-        /// Gets the float.
+        ///     Gets the float.
         /// </summary>
         /// <param name="dr">The dr.</param>
         /// <param name="column">The column.</param>
@@ -106,7 +103,7 @@ namespace OphiussaFramework.Extensions {
         }
 
         /// <summary>
-        /// Gets the int16.
+        ///     Gets the int16.
         /// </summary>
         /// <param name="dr">The dr.</param>
         /// <param name="column">The column.</param>
@@ -118,7 +115,7 @@ namespace OphiussaFramework.Extensions {
         }
 
         /// <summary>
-        /// Gets the int32.
+        ///     Gets the int32.
         /// </summary>
         /// <param name="dr">The dr.</param>
         /// <param name="column">The column.</param>
@@ -130,7 +127,7 @@ namespace OphiussaFramework.Extensions {
         }
 
         /// <summary>
-        /// Gets the int64.
+        ///     Gets the int64.
         /// </summary>
         /// <param name="dr">The dr.</param>
         /// <param name="column">The column.</param>
@@ -142,7 +139,7 @@ namespace OphiussaFramework.Extensions {
         }
 
         /// <summary>
-        /// Gets the S byte.
+        ///     Gets the S byte.
         /// </summary>
         /// <param name="dr">The dr.</param>
         /// <param name="column">The column.</param>
@@ -154,7 +151,7 @@ namespace OphiussaFramework.Extensions {
         }
 
         /// <summary>
-        /// Gets the single.
+        ///     Gets the single.
         /// </summary>
         /// <param name="dr">The dr.</param>
         /// <param name="column">The column.</param>
@@ -164,7 +161,7 @@ namespace OphiussaFramework.Extensions {
         }
 
         /// <summary>
-        /// Gets the U int16.
+        ///     Gets the U int16.
         /// </summary>
         /// <param name="dr">The dr.</param>
         /// <param name="column">The column.</param>
@@ -176,7 +173,7 @@ namespace OphiussaFramework.Extensions {
         }
 
         /// <summary>
-        /// Gets the U int32.
+        ///     Gets the U int32.
         /// </summary>
         /// <param name="dr">The dr.</param>
         /// <param name="column">The column.</param>
@@ -188,7 +185,7 @@ namespace OphiussaFramework.Extensions {
         }
 
         /// <summary>
-        /// Gets the U int64.
+        ///     Gets the U int64.
         /// </summary>
         /// <param name="dr">The dr.</param>
         /// <param name="column">The column.</param>
@@ -200,12 +197,12 @@ namespace OphiussaFramework.Extensions {
         }
 
         /// <summary>
-        /// Determines whether [is DB null] [the specified dr].
+        ///     Determines whether [is DB null] [the specified dr].
         /// </summary>
         /// <param name="dr">The dr.</param>
         /// <param name="column">The column.</param>
         /// <returns>
-        ///   <c>true</c> if [is DB null] [the specified dr]; otherwise, <c>false</c>.
+        ///     <c>true</c> if [is DB null] [the specified dr]; otherwise, <c>false</c>.
         /// </returns>
         public static bool IsDBNull(this DataRow dr, string column) {
             return Convert.IsDBNull(dr[column]);
@@ -216,7 +213,7 @@ namespace OphiussaFramework.Extensions {
         #region "By index"
 
         /// <summary>
-        /// Gets the string.
+        ///     Gets the string.
         /// </summary>
         /// <param name="dr">The dr.</param>
         /// <param name="columnIndex">Index of the column.</param>
@@ -226,7 +223,7 @@ namespace OphiussaFramework.Extensions {
         }
 
         /// <summary>
-        /// Gets the date time.
+        ///     Gets the date time.
         /// </summary>
         /// <param name="dr">The dr.</param>
         /// <param name="columnIndex">Index of the column.</param>
@@ -238,7 +235,7 @@ namespace OphiussaFramework.Extensions {
         }
 
         /// <summary>
-        /// Gets the decimal.
+        ///     Gets the decimal.
         /// </summary>
         /// <param name="dr">The dr.</param>
         /// <param name="columnIndex">Index of the column.</param>
@@ -250,7 +247,7 @@ namespace OphiussaFramework.Extensions {
         }
 
         /// <summary>
-        /// Gets the boolean.
+        ///     Gets the boolean.
         /// </summary>
         /// <param name="dr">The dr.</param>
         /// <param name="columnIndex">Index of the column.</param>
@@ -262,7 +259,7 @@ namespace OphiussaFramework.Extensions {
         }
 
         /// <summary>
-        /// Gets the byte.
+        ///     Gets the byte.
         /// </summary>
         /// <param name="dr">The dr.</param>
         /// <param name="columnIndex">Index of the column.</param>
@@ -274,7 +271,7 @@ namespace OphiussaFramework.Extensions {
         }
 
         /// <summary>
-        /// Gets the char.
+        ///     Gets the char.
         /// </summary>
         /// <param name="dr">The dr.</param>
         /// <param name="columnIndex">Index of the column.</param>
@@ -286,7 +283,7 @@ namespace OphiussaFramework.Extensions {
         }
 
         /// <summary>
-        /// Gets the double.
+        ///     Gets the double.
         /// </summary>
         /// <param name="dr">The dr.</param>
         /// <param name="columnIndex">Index of the column.</param>
@@ -298,7 +295,7 @@ namespace OphiussaFramework.Extensions {
         }
 
         /// <summary>
-        /// Gets the int16.
+        ///     Gets the int16.
         /// </summary>
         /// <param name="dr">The dr.</param>
         /// <param name="columnIndex">Index of the column.</param>
@@ -310,7 +307,7 @@ namespace OphiussaFramework.Extensions {
         }
 
         /// <summary>
-        /// Gets the int32.
+        ///     Gets the int32.
         /// </summary>
         /// <param name="dr">The dr.</param>
         /// <param name="columnIndex">Index of the column.</param>
@@ -322,7 +319,7 @@ namespace OphiussaFramework.Extensions {
         }
 
         /// <summary>
-        /// Gets the int64.
+        ///     Gets the int64.
         /// </summary>
         /// <param name="dr">The dr.</param>
         /// <param name="columnIndex">Index of the column.</param>
@@ -334,7 +331,7 @@ namespace OphiussaFramework.Extensions {
         }
 
         /// <summary>
-        /// Gets the S byte.
+        ///     Gets the S byte.
         /// </summary>
         /// <param name="dr">The dr.</param>
         /// <param name="columnIndex">Index of the column.</param>
@@ -346,7 +343,7 @@ namespace OphiussaFramework.Extensions {
         }
 
         /// <summary>
-        /// Gets the single.
+        ///     Gets the single.
         /// </summary>
         /// <param name="dr">The dr.</param>
         /// <param name="columnIndex">Index of the column.</param>
@@ -358,7 +355,7 @@ namespace OphiussaFramework.Extensions {
         }
 
         /// <summary>
-        /// Gets the U int16.
+        ///     Gets the U int16.
         /// </summary>
         /// <param name="dr">The dr.</param>
         /// <param name="columnIndex">Index of the column.</param>
@@ -370,7 +367,7 @@ namespace OphiussaFramework.Extensions {
         }
 
         /// <summary>
-        /// Gets the U int32.
+        ///     Gets the U int32.
         /// </summary>
         /// <param name="dr">The dr.</param>
         /// <param name="columnIndex">Index of the column.</param>
@@ -382,7 +379,7 @@ namespace OphiussaFramework.Extensions {
         }
 
         /// <summary>
-        /// Gets the U int64.
+        ///     Gets the U int64.
         /// </summary>
         /// <param name="dr">The dr.</param>
         /// <param name="columnIndex">Index of the column.</param>
@@ -394,18 +391,17 @@ namespace OphiussaFramework.Extensions {
         }
 
         /// <summary>
-        /// Determines whether [is DB null] [the specified dr].
+        ///     Determines whether [is DB null] [the specified dr].
         /// </summary>
         /// <param name="dr">The dr.</param>
         /// <param name="columnIndex">Index of the column.</param>
         /// <returns>
-        ///   <c>true</c> if [is DB null] [the specified dr]; otherwise, <c>false</c>.
+        ///     <c>true</c> if [is DB null] [the specified dr]; otherwise, <c>false</c>.
         /// </returns>
         public static bool IsDBNull(this DataRow dr, int columnIndex) {
             return Convert.IsDBNull(dr[columnIndex]);
         }
 
         #endregion "By index"
-
     }
 }

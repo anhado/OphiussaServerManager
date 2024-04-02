@@ -1,22 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace OphiussaFramework.Forms {
     public partial class FrmCommandPreview : Form {
         public FrmCommandPreview(string commmand) {
             InitializeComponent();
-            textBox1.Text= commmand;
+            textBox1.Text = commmand;
         }
 
         private void FrmCommandPreview_Load(object sender, EventArgs e) {
-
         }
     }
 }

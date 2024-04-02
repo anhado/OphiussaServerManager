@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using OphiussaFramework.CommonUtils;
 using OphiussaFramework.DataBaseUtils;
@@ -13,14 +11,14 @@ using OphiussaFramework.Models;
 
 namespace OphiussaFramework {
     public static class ConnectionController {
-        public static SqlLite                              SqlLite  { get; set; }
-        public static Settings                             Settings { get; set; }
-        public static Form                                 MainForm { get; internal set; }
         public static List<NetworkTools.IpList>            IpLists       = new List<NetworkTools.IpList>();
         public static List<ProcessorAffinityModel>         AffinityModel = new List<ProcessorAffinityModel>();
         public static List<ProcessorAffinity>              ProcessorList = new List<ProcessorAffinity>();
         public static Dictionary<string, PluginController> Plugins;
         public static Dictionary<string, PluginController> ServerControllers = new Dictionary<string, PluginController>();
+        public static SqlLite                              SqlLite  { get; set; }
+        public static Settings                             Settings { get; set; }
+        public static Form                                 MainForm { get; internal set; }
 
 
         public static void Initialize() {
@@ -59,7 +57,7 @@ namespace OphiussaFramework {
         public static void LoadPlugins() {
             Plugins = new Dictionary<string, PluginController>();
 
-            var l = ConnectionController.SqlLite.GetRecords<IPlugin>();
+            var l = SqlLite.GetRecords<IPlugin>();
 
             if (l == null) return;
             foreach (var info in l)

@@ -1,29 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using OphiussaFramework.CommonUtils;
-using OphiussaFramework.Interfaces;
 using OphiussaFramework.Models;
 
 namespace OphiussaFramework.Forms {
     internal partial class FrmCommandEditor : Form {
-        List<CommandDefinition> _commands = new List<CommandDefinition>();
-        internal Action<List<CommandDefinition>> BuildCommand { get; set; }
+        private readonly List<CommandDefinition> _commands = new List<CommandDefinition>();
 
         internal FrmCommandEditor(List<CommandDefinition> commands) {
-            InitializeComponent(); 
-            _commands                = commands;
+            InitializeComponent();
+            _commands = commands;
             LoadCommands();
         }
 
-        private void LoadCommands() {
+        internal Action<List<CommandDefinition>> BuildCommand { get; set; }
 
+        private void LoadCommands() {
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = _commands;
             foreach (DataGridViewColumn col in dataGridView1.Columns)
@@ -54,27 +47,25 @@ namespace OphiussaFramework.Forms {
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
-        private void btSave_Click(object sender, EventArgs e) { 
+        private void btSave_Click(object sender, EventArgs e) {
             BuildCommand.Invoke(_commands);
-            this.Close();
+            Close();
         }
 
         private void btAdd_Click(object sender, EventArgs e) {
-            _commands.Add(new CommandDefinition() {
-                                                      Order = _commands.Count+1,
-                                                      Name="New",
-                                                      Enabled=false
-                                                  });
+            _commands.Add(new CommandDefinition {
+                                                    Order   = _commands.Count + 1,
+                                                    Name    = "New",
+                                                    Enabled = false
+                                                });
             LoadCommands();
         }
 
         private void btDelete_Click(object sender, EventArgs e) {
-
             try {
                 foreach (DataGridViewRow selectedRow in dataGridView1.SelectedRows)
-                    try { 
+                    try {
                         _commands.RemoveAt(selectedRow.Index);
-                         
                     }
                     catch (Exception exception) {
                         Console.WriteLine(exception);
@@ -90,8 +81,8 @@ namespace OphiussaFramework.Forms {
         }
 
         private void btPreview_Click(object sender, EventArgs e) {
-            CommandBuilder cmdBuilder = new CommandBuilder(_commands);
-            FrmCommandPreview Frm =  new FrmCommandPreview(cmdBuilder.ToString());
+            var cmdBuilder = new CommandBuilder(_commands);
+            var Frm        = new FrmCommandPreview(cmdBuilder.ToString());
             Frm.ShowDialog();
         }
     }
