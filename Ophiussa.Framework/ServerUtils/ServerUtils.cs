@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Threading;
 using Microsoft.Win32.TaskScheduler;
@@ -112,7 +113,7 @@ namespace OphiussaFramework.ServerUtils {
             #region Shutdown
 
             foreach (var am in plugin.Profile.AutoManagement) {
-                string fileName = Assembly.GetEntryAssembly().Location;
+                string fileName = Assembly.GetEntryAssembly()?.Location;
                 string taskName = $"OphiussaServerManager\\AutoShutDown_{am.Id:000}_" + plugin.Profile.Key;
                 var    task     = TaskService.Instance.GetTask(taskName);
 
@@ -184,7 +185,7 @@ namespace OphiussaFramework.ServerUtils {
             throw new NotImplementedException();
         }
 
-        public static async void RestartServerSingleServer(string serverKey) {
+        public static async void RestartServerSingleServer(string serverKey, bool IsTheAutoUpdateTask = false) {
             try {
                 string[] args = serverKey.Split('_');
                 OphiussaLogger.Logger.Info($"Restarting server : {args[2]}");
@@ -212,12 +213,12 @@ namespace OphiussaFramework.ServerUtils {
                         Thread.Sleep(5000);
                     }
 
-                    if (am.UpdateServer) {
-                        nCtrl.InstallServer(); //TODO: change this line to use the cache copy after auto-update 
-                        OphiussaLogger.Logger.Info($"Updated server : {args[2]}");
+                    if (am.UpdateServer || IsTheAutoUpdateTask) { 
+                       UpdateServerFromCache(nCtrl);
+                       OphiussaLogger.Logger.Info($"Updated server : {args[2]}");
                     }
 
-                    if (isRunning || am.RestartServer) {
+                    if (isRunning && (am.RestartServer || profile.RestartIfShutdown)) {
                         nCtrl.StartServer();
 
                         OphiussaLogger.Logger.Info($"Started server : {args[2]}");
@@ -233,5 +234,109 @@ namespace OphiussaFramework.ServerUtils {
                 OphiussaLogger.Logger.Error(e);
             }
         }
+
+        public static void UpdateServerFromCache(PluginController controller) {
+            IProfile profile            = controller.GetProfile();
+            string   cacheFolder        = Path.Combine(ConnectionController.Settings.DataFolder, $"cache\\{profile.Branch}\\{profile.Type}");
+            string   currentServerBuild = Utils.GetBuild(profile);
+            string   currentCacheBuild  = Utils.GetCacheBuild(profile);
+            bool     needToUpdate       = false;
+            var      changedFiles       = new List<FileInfo>();
+
+            if (currentServerBuild != currentCacheBuild) {
+                if (ConnectionController.Settings.UseSmartCopy) {
+                    var ignoredFolders = new List<string>();
+
+                    changedFiles = Utils.CompareFolderContent(profile.InstallationFolder, cacheFolder, controller.IgnoredFoldersInComparision);
+                    if (currentServerBuild == currentCacheBuild && changedFiles.Count == 1) changedFiles = new List<FileInfo>();
+                }
+                else {
+                    if (currentServerBuild == currentCacheBuild) {
+                        changedFiles = new List<FileInfo>();
+                    }
+                    else {
+                        var dir1 = new DirectoryInfo(cacheFolder);
+                        // Take a snapshot of the file system.  
+                        changedFiles = dir1.GetFiles("*.*", SearchOption.AllDirectories).ToList();
+                    }
+                }
+            }
+            else {
+                changedFiles = new List<FileInfo>();
+            }
+
+            if (changedFiles.Count > 0) needToUpdate = true;
+
+            //TODO:Check Mod Updates here
+
+            int i = 1;
+            foreach (var file in changedFiles) {
+                string targetpath = file.FullName.Replace(cacheFolder, profile.InstallationFolder);
+
+                var file1 = new FileInfo(targetpath);
+
+                if (!Directory.Exists(file1.DirectoryName)) Directory.CreateDirectory(file1.DirectoryName);
+                bool notCopied = true;
+                int  attempt   = 1;
+                while (notCopied) {
+                    try {
+                        File.Copy(file.FullName, file.FullName.Replace(cacheFolder, profile.InstallationFolder), true);
+                        notCopied = false;
+                    }
+                    catch (Exception ex) {
+                    }
+
+                    if (attempt >= 5) notCopied = false;
+
+                    attempt++;
+                }
+
+                i++;
+            }
+        }
+         
+        public static void UpdateAllServers() {
+            var                                  servers     = new List<ServerCache>();
+            Dictionary<string, PluginController> controllers = new Dictionary<string, PluginController>();
+
+            var profiles = ConnectionController.SqlLite.GetRecords<IProfile>();
+            profiles.ForEach(prf => {
+                                 if (!prf.IncludeAutoUpdate) return;
+                                 if (servers.Find(x => x.SteamServerId == prf.SteamServerId) != null) return;
+                                 servers.Add(new ServerCache {
+                                                                 Branch        = prf.Branch,
+                                                                 SteamServerId = prf.SteamServerId,
+                                                                 Type          = prf.Type
+                                                             });
+                                 controllers.Add(prf.Key, new PluginController(ConnectionController.Plugins[prf.Type].PluginLocation()));
+                                 controllers[prf.Key].SetProfile(prf);
+                             });
+
+
+            var tasks = new List<Task>();
+            foreach (var server in servers) {
+                var t = Task.Run(() => { NetworkTools.UpdateCacheFolder(server); });
+
+                tasks.Add(t);
+            }
+
+            Task.WaitAll(tasks.ToArray());
+
+            if (ConnectionController.Settings.UpdateSequencial)
+                foreach (var key in controllers.Keys) {
+                    RestartServerSingleServer(key,true);
+                }
+            else {
+                tasks = new List<Task>();
+
+                foreach (var key in controllers.Keys) {
+                    var t = Task.Run(() => { RestartServerSingleServer(key,true); });
+
+                    tasks.Add(t);
+                } 
+                Task.WaitAll(tasks.ToArray());
+
+            }
+        } 
     }
 }

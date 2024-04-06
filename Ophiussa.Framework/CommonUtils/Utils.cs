@@ -4,11 +4,13 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using OphiussaFramework.Enums;
+using OphiussaFramework.Interfaces;
 using OphiussaFramework.Models;
 
 namespace OphiussaFramework.CommonUtils {
@@ -170,6 +172,93 @@ namespace OphiussaFramework.CommonUtils {
             string bin = string.Join("", lst.Select(x => x.Selected ? "1" : "0"));
             string hex = !bin.Contains("0") ? "" : "0" + BinaryStringToHexString(bin);
             return hex;
+        }
+
+        public static string GetBuild(IProfile profile) {
+            string fileName = $"appmanifest_{profile.SteamServerId}.acf";
+            if (!File.Exists(Path.Combine(profile.InstallationFolder, "steamapps", fileName))) return "";
+
+            string[] content = File.ReadAllText(Path.Combine(profile.InstallationFolder, "steamapps", fileName)).Split('\n');
+
+            foreach (string item in content) {
+                string[] t = item.Split('\t');
+
+                if (item.Contains("buildid")) return t[3].Replace("\"", "");
+            }
+
+            return File.ReadAllText(Path.Combine(profile.InstallationFolder, "steamapps", fileName));
+        }
+
+        public static string GetVersion(IProfile profile) {
+            if (!File.Exists(Path.Combine(profile.InstallationFolder, "version.txt"))) return "";
+
+            return File.ReadAllText(Path.Combine(profile.InstallationFolder, "version.txt"));
+        }
+
+        public static string GetCacheBuild(IProfile profile) {
+            string fileName    = $"appmanifest_{profile.SteamServerId}.acf";
+            string cacheFolder = Path.Combine(ConnectionController.Settings.DataFolder, "\\cache", $"\\{profile.Branch}", $"\\{profile.Type}");
+            if (!File.Exists(Path.Combine(cacheFolder, "steamapps", fileName))) return "";
+
+            string[] content = File.ReadAllText(Path.Combine(cacheFolder, "steamapps", fileName)).Split('\n');
+
+            foreach (string item in content) {
+                string[] t = item.Split('\t');
+
+                if (item.Contains("buildid")) return t[3].Replace("\"", "");
+            }
+
+            return File.ReadAllText(Path.Combine(cacheFolder, "steamapps", fileName));
+        }
+
+        public static List<FileInfo> CompareFolderContent(string pathA, string pathB, List<string> ignorePaths) {
+            // Create two identical or different temporary folders
+            // on a local drive and change these file paths.  
+            var sw = new Stopwatch();
+
+            sw.Start();
+            var dir1 = new DirectoryInfo(pathA);
+            var dir2 = new DirectoryInfo(pathB);
+
+            // Take a snapshot of the file system.  
+            IEnumerable<FileInfo> list1 = dir1.GetFiles("*.*", SearchOption.AllDirectories);
+            IEnumerable<FileInfo> list2 = dir2.GetFiles("*.*", SearchOption.AllDirectories);
+
+            var cacheFilesList   = list2.ToList();
+            var installFilesList = list1.ToList();
+
+            Console.WriteLine("Elapsed={0}", sw.Elapsed);
+            sw.Restart();
+
+            Console.WriteLine("Elapsed={0}", sw.Elapsed);
+            sw.Restart();
+
+            var changedFiles = cacheFilesList.FindAll(f => CompareFiles(f, installFilesList.Find(f2 => f2.Name == f.Name)) != null);
+
+            Console.WriteLine("Elapsed={0}", sw.Elapsed);
+            sw.Restart();
+
+            FileInfo CompareFiles(FileInfo f1, FileInfo f2) {
+                if (f2 == null) return f1;
+                if (ignorePaths.Count > 0) {
+                    string pathName = Path.GetDirectoryName(f1.FullName);
+                    foreach (string item in ignorePaths)
+                        if (pathName.Contains(item))
+                            return null;
+                }
+
+                //if (f1.LastWriteTime >= f2.LastWriteTime) return f1;
+                //else return null;
+
+
+                var x = new ReadFileInChunksAndCompareVector(f1.FullName, f2.FullName, Vector<byte>.Count);
+                if (!x.Compare()) return f1;
+                return null;
+            }
+
+            sw.Stop();
+            Console.WriteLine("Elapsed={0}", sw.Elapsed);
+            return changedFiles;
         }
     }
 }

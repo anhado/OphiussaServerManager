@@ -33,7 +33,7 @@ namespace BasePlugin {
         public bool                    IncludeAutoBackup  { get; set; } = false;
         public bool                    IncludeAutoUpdate  { get; set; } = false;
         public bool                    RestartIfShutdown  { get; set; } = false;
-        public string                  RCONPassword       { get; set; } = Membership.GeneratePassword(10, 6);
+        public string                  RCONPassword       { get; set; } = Membership.GeneratePassword(10, 2);
         public bool                    UseRCON            { get; set; } = false;
         public string                  ExecutablePath     { get; set; } = "Dummy.exe";
         public string                  ServerPassword     { get; set; }

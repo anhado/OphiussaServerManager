@@ -22,14 +22,15 @@ namespace BasePlugin {
         public string ExecutablePath { get; set; } = "Dummy123.exe"; //THIS WILL OVERWRITE THE PROFILE, I JUST NEED THAT IN PROFILE TO AVOID Deserialize THE ADDITIONAL SETTINGS
 
         // internal static readonly PluginType              Info = new PluginType { GameType = "Game1", Name = "Game 1 Name" };
-        public IProfile Profile         { get; set; } = new Profile();
-        public string   GameType        { get; set; } = "Game1";
-        public string   GameName        { get; set; } = "Game 1 Name";
-        public TabPage  TabPage         { get; set; }
-        public string   PluginVersion   { get; set; } = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
-        public string   PluginName      { get; set; } = Path.GetFileName(FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileName);
-        public int      ServerProcessID => Utils.GetProcessRunning(Path.Combine(Profile.InstallationFolder, Profile.ExecutablePath)).Id;
-        public bool     IsRunning       => Utils.GetProcessRunning(Path.Combine(Profile.InstallationFolder, Profile.ExecutablePath)) != null;
+        public IProfile     Profile                     { get; set; } = new Profile();
+        public string       GameType                    { get; set; } = "Game1";
+        public string       GameName                    { get; set; } = "Game 1 Name";
+        public TabPage      TabPage                     { get; set; }
+        public string       PluginVersion               { get; set; } = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
+        public string       PluginName                  { get; set; } = Path.GetFileName(FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileName);
+        public int          ServerProcessID             => Utils.GetProcessRunning(Path.Combine(Profile.InstallationFolder, Profile.ExecutablePath)).Id;
+        public bool         IsRunning                   => Utils.GetProcessRunning(Path.Combine(Profile.InstallationFolder, Profile.ExecutablePath)) != null;
+        public List<string> IgnoredFoldersInComparision { get; set; }
 
         public Process GetExeProcess() {
             return Utils.GetProcessRunning(Path.Combine(Profile.InstallationFolder, Profile.ExecutablePath));

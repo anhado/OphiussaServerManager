@@ -32,6 +32,13 @@ namespace OphiussaServerManagerV2 {
                         ServerUtils.RestartServerSingleServer(arg);
                         return;
                     }
+                    else if (arg.StartsWith("-au")) {
+                        ServerUtils.UpdateAllServers();
+                        return;
+                    }
+                    else if (arg.StartsWith("-ab")) {
+                        return;
+                    }
 
 
                 if (ConnectionController.Settings == null)

@@ -10,8 +10,8 @@ using OphiussaFramework.Models;
 namespace ValheimPlugin.Forms {
     public partial class FrmValheim : Form {
         private readonly IPlugin _plugin;
-        private          TabPage _tabPage;
         private readonly Profile Profile;
+        private          TabPage _tabPage;
 
         public FrmValheim(IPlugin plugin, TabPage tab) {
             _plugin = plugin;

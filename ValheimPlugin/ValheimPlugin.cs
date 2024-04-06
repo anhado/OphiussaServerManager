@@ -24,28 +24,21 @@ namespace ValheimPlugin {
         public string ExecutablePath { get; set; } = "valheim_server.exe"; //THIS WILL OVERWRITE THE PROFILE, I JUST NEED THAT IN PROFILE TO AVOID Deserialize THE ADDITIONAL SETTINGS
 
         // internal static readonly PluginType              Info = new PluginType { GameType = "Game1", Name = "Game 1 Name" };
-        public IProfile Profile         { get; set; } = new Profile();
-        public string   GameType        { get; set; } = "Valheim";
-        public string   GameName        { get; set; } = "Valheim";
-        public TabPage  TabPage         { get; set; }
-        public string   PluginVersion   { get; set; } = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
-        public string   PluginName      { get; set; } = Path.GetFileName(FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileName);
-        public int      ServerProcessID => Utils.GetProcessRunning(Path.Combine(Profile.InstallationFolder, Profile.ExecutablePath)).Id;
-        public bool     IsRunning       => Utils.GetProcessRunning(Path.Combine(Profile.InstallationFolder, Profile.ExecutablePath)) != null;
-
-        public Process GetExeProcess() {
-            return Utils.GetProcessRunning(Path.Combine(Profile.InstallationFolder, Profile.ExecutablePath));
-        }
-
-        public bool                    IsInstalled     => IsValidFolder(Profile.InstallationFolder);
-        public List<FileInfo>          FilesToBackup   => throw new NotImplementedException();
-        public List<CommandDefinition> DefaultCommands { get; set; }
-        public List<CommandDefinition> CostumCommands  { get; set; }
-        public ModProvider             ModProvider     { get; set; } = ModProvider.None;
-
-
-        public bool Loaded { get; set; } = true;
-
+        public IProfile                              Profile                     { get; set; } = new Profile();
+        public string                                GameType                    { get; set; } = "Valheim";
+        public string                                GameName                    { get; set; } = "Valheim";
+        public TabPage                               TabPage                     { get; set; }
+        public string                                PluginVersion               { get; set; } = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
+        public string                                PluginName                  { get; set; } = Path.GetFileName(FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileName);
+        public int                                   ServerProcessID             => Utils.GetProcessRunning(Path.Combine(Profile.InstallationFolder, Profile.ExecutablePath)).Id;
+        public bool                                  IsRunning                   => Utils.GetProcessRunning(Path.Combine(Profile.InstallationFolder, Profile.ExecutablePath)) != null;
+        public List<string>                          IgnoredFoldersInComparision { get; set; } = new List<string>();
+        public bool                                  IsInstalled                 => IsValidFolder(Profile.InstallationFolder);
+        public List<FileInfo>                        FilesToBackup               => throw new NotImplementedException();
+        public List<CommandDefinition>               DefaultCommands             { get; set; }
+        public List<CommandDefinition>               CostumCommands              { get; set; }
+        public ModProvider                           ModProvider                 { get; set; } = ModProvider.None;
+        public bool                                  Loaded                      { get; set; } = true;
         public event EventHandler<OphiussaEventArgs> BackupServerClick;
         public event EventHandler<OphiussaEventArgs> StopServerClick;
         public event EventHandler<OphiussaEventArgs> StartServerClick;
@@ -56,6 +49,10 @@ namespace ValheimPlugin {
         public event EventHandler<OphiussaEventArgs> OpenRCONClick;
         public event EventHandler<OphiussaEventArgs> ChooseFolderClick;
         public event EventHandler<OphiussaEventArgs> TabHeaderChangeEvent;
+
+        public Process GetExeProcess() {
+            return Utils.GetProcessRunning(Path.Combine(Profile.InstallationFolder, Profile.ExecutablePath));
+        }
 
         public PluginType GetInfo() {
             return new PluginType { GameType = GameType, Name = GameName };
@@ -130,7 +127,8 @@ namespace ValheimPlugin {
         public Message SetProfile(IProfile profile) {
             try {
                 var p = JsonConvert.DeserializeObject<Profile>(profile.AdditionalSettings);
-                Profile = p;
+                p.ServerBuildVersion = Utils.GetBuild(p);
+                Profile              = p;
 
                 if (profile.AdditionalCommands != null) DefaultCommands = JsonConvert.DeserializeObject<List<CommandDefinition>>(profile.AdditionalCommands) ?? DefaultCommands;
 
@@ -152,8 +150,8 @@ namespace ValheimPlugin {
         public Message SetProfile(string json) {
             try {
                 var p = JsonConvert.DeserializeObject<Profile>(json);
-
-                Profile = p;
+                p.ServerBuildVersion = Utils.GetBuild(p);
+                Profile              = p;
 
                 return new Message {
                                        MessageText = "Load Successful",
@@ -193,13 +191,11 @@ namespace ValheimPlugin {
         }
 
         public string GetVersion() {
-            //TODO:(New Games)Save settings to disc
-            return "NOT IMPLEMENTED"; //  throw new NotImplementedException();
+            return "";
         }
 
         public string GetBuild() {
-            //TODO:(New Games)Save settings to disc
-            return "NOT IMPLEMENTED"; //  throw new NotImplementedException();
+            return Utils.GetBuild(Profile);
         }
 
         public string GetCommandLinesArguments() {

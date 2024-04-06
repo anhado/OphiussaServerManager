@@ -9,20 +9,21 @@ using OphiussaFramework.Interfaces;
 
 namespace OphiussaFramework.Models {
     internal class RawPlugin : IPlugin {
-        public string                  PluginName      { get; set; }
-        public string                  PluginVersion   { get; set; }
-        public string                  GameType        { get; set; }
-        public string                  GameName        { get; set; }
-        public bool                    Loaded          { get; set; }
-        public ModProvider             ModProvider     { get; set; }
-        public int                     ServerProcessID { get; set; }
-        public List<CommandDefinition> DefaultCommands { get; set; }
-        public List<FileInfo>          FilesToBackup   { get; set; }
-        public IProfile                Profile         { get; set; }
-        public bool                    IsRunning       { get; set; }
-        public bool                    IsInstalled     { get; set; }
-        public TabPage                 TabPage         { get; set; }
-        public List<CommandDefinition> CostumCommands  { get; set; }
+        public string                  PluginName                  { get; set; }
+        public string                  PluginVersion               { get; set; }
+        public string                  GameType                    { get; set; }
+        public string                  GameName                    { get; set; }
+        public bool                    Loaded                      { get; set; }
+        public ModProvider             ModProvider                 { get; set; }
+        public int                     ServerProcessID             { get; set; }
+        public List<CommandDefinition> DefaultCommands             { get; set; }
+        public List<FileInfo>          FilesToBackup               { get; set; }
+        public IProfile                Profile                     { get; set; }
+        public bool                    IsRunning                   { get; set; }
+        public bool                    IsInstalled                 { get; set; }
+        public TabPage                 TabPage                     { get; set; }
+        public List<CommandDefinition> CostumCommands              { get; set; }
+        public List<string>            IgnoredFoldersInComparision { get; set; }
 
         public PluginType GetInfo() {
             throw new NotImplementedException();

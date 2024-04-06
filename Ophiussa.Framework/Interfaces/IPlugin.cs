@@ -14,19 +14,20 @@ namespace OphiussaFramework.Interfaces {
         [FieldAttributes(PrimaryKey = true, DataType = "Varchar(100)")]
         string PluginName { get; set; }
 
-        string                                                   PluginVersion   { get; set; }
-        string                                                   GameType        { get; set; }
-        string                                                   GameName        { get; set; }
-        ModProvider                                              ModProvider     { get; set; }
-        bool                                                     Loaded          { get; set; }
-        [FieldAttributes(Ignore = true)] int                     ServerProcessID { get; }
-        [FieldAttributes(Ignore = true)] List<CommandDefinition> DefaultCommands { get; set; }
-        [FieldAttributes(Ignore = true)] List<CommandDefinition> CostumCommands  { get; set; }
-        [FieldAttributes(Ignore = true)] List<FileInfo>          FilesToBackup   { get; }
-        [FieldAttributes(Ignore = true)] IProfile                Profile         { get; }
-        [FieldAttributes(Ignore = true)] bool                    IsRunning       { get; }
-        [FieldAttributes(Ignore = true)] bool                    IsInstalled     { get; }
-        [FieldAttributes(Ignore = true)] TabPage                 TabPage         { get; }
+        string                                                   PluginVersion               { get; set; }
+        string                                                   GameType                    { get; set; }
+        string                                                   GameName                    { get; set; }
+        ModProvider                                              ModProvider                 { get; set; }
+        bool                                                     Loaded                      { get; set; }
+        [FieldAttributes(Ignore = true)] int                     ServerProcessID             { get; }
+        [FieldAttributes(Ignore = true)] List<CommandDefinition> DefaultCommands             { get; set; }
+        [FieldAttributes(Ignore = true)] List<CommandDefinition> CostumCommands              { get; set; }
+        [FieldAttributes(Ignore = true)] List<FileInfo>          FilesToBackup               { get; }
+        [FieldAttributes(Ignore = true)] IProfile                Profile                     { get; }
+        [FieldAttributes(Ignore = true)] bool                    IsRunning                   { get; }
+        [FieldAttributes(Ignore = true)] bool                    IsInstalled                 { get; }
+        [FieldAttributes(Ignore = true)] TabPage                 TabPage                     { get; }
+        [FieldAttributes(Ignore = true)] List<string>            IgnoredFoldersInComparision { get; }
         PluginType                                               GetInfo();
         Form                                                     GetConfigurationForm(TabPage tab);
         Task                                                     BackupServer();

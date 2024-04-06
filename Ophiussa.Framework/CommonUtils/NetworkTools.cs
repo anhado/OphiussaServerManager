@@ -87,7 +87,7 @@ namespace OphiussaFramework.CommonUtils {
         }
 
         internal static void UpdateCacheFolder(ServerCache cache) {
-            string cacheFolder = Path.Combine(ConnectionController.Settings.DataFolder, "\\cache", $"\\{cache.Branch}", $"\\{cache.Type}");
+            string cacheFolder = Path.Combine(ConnectionController.Settings.DataFolder, $"cache\\{cache.Branch}\\{cache.Type}");
             if (!Directory.Exists(cacheFolder)) Directory.CreateDirectory(cacheFolder);
             string login                                           = "+login anonymous";
             if (!ConnectionController.Settings.UseAnonymous) login = $"+login {ConnectionController.Settings.SteamUser} {ConnectionController.Settings.SteamPwd}";

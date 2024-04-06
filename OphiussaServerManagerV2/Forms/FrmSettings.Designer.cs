@@ -67,9 +67,23 @@
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.chkAnonymous = new System.Windows.Forms.CheckBox();
+            this.expandCollapsePanel3 = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
+            this.chkEnableAutoUpdate = new System.Windows.Forms.CheckBox();
+            this.chkEnableAutoBackup = new System.Windows.Forms.CheckBox();
+            this.chkUseSmartCopy = new System.Windows.Forms.CheckBox();
+            this.txtBackupInterval = new System.Windows.Forms.MaskedTextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtUpdateInterval = new System.Windows.Forms.MaskedTextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtBackupDays = new System.Windows.Forms.TextBox();
+            this.tbDeleteDays = new System.Windows.Forms.TrackBar();
+            this.chkDeleteOld = new System.Windows.Forms.CheckBox();
+            this.chkUpdateSequencial = new System.Windows.Forms.CheckBox();
             this.expandCollapsePanel1.SuspendLayout();
             this.expandCollapsePanel5.SuspendLayout();
             this.expandCollapsePanel2.SuspendLayout();
+            this.expandCollapsePanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbDeleteDays)).BeginInit();
             this.SuspendLayout();
             // 
             // expandCollapsePanel1
@@ -95,13 +109,14 @@
             this.expandCollapsePanel1.IsExpanded = true;
             this.expandCollapsePanel1.Location = new System.Drawing.Point(0, 0);
             this.expandCollapsePanel1.Name = "expandCollapsePanel1";
-            this.expandCollapsePanel1.Size = new System.Drawing.Size(800, 164);
+            this.expandCollapsePanel1.Size = new System.Drawing.Size(908, 164);
             this.expandCollapsePanel1.TabIndex = 0;
             this.expandCollapsePanel1.Text = "Folders Settings";
             this.expandCollapsePanel1.UseAnimation = true;
             // 
             // button1
             // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.Location = new System.Drawing.Point(567, 130);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(28, 23);
@@ -112,6 +127,8 @@
             // 
             // txtSteamCmd
             // 
+            this.txtSteamCmd.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSteamCmd.Location = new System.Drawing.Point(164, 131);
             this.txtSteamCmd.Name = "txtSteamCmd";
             this.txtSteamCmd.Size = new System.Drawing.Size(397, 21);
@@ -128,6 +145,7 @@
             // 
             // btBackupFolder
             // 
+            this.btBackupFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btBackupFolder.Location = new System.Drawing.Point(567, 103);
             this.btBackupFolder.Name = "btBackupFolder";
             this.btBackupFolder.Size = new System.Drawing.Size(28, 23);
@@ -138,6 +156,8 @@
             // 
             // txtBackupFolder
             // 
+            this.txtBackupFolder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBackupFolder.Location = new System.Drawing.Point(164, 104);
             this.txtBackupFolder.Name = "txtBackupFolder";
             this.txtBackupFolder.Size = new System.Drawing.Size(397, 21);
@@ -154,6 +174,7 @@
             // 
             // btDefaultInstallFolder
             // 
+            this.btDefaultInstallFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btDefaultInstallFolder.Location = new System.Drawing.Point(567, 77);
             this.btDefaultInstallFolder.Name = "btDefaultInstallFolder";
             this.btDefaultInstallFolder.Size = new System.Drawing.Size(28, 23);
@@ -164,6 +185,8 @@
             // 
             // txtDefaultInstallationFolder
             // 
+            this.txtDefaultInstallationFolder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDefaultInstallationFolder.Location = new System.Drawing.Point(164, 78);
             this.txtDefaultInstallationFolder.Name = "txtDefaultInstallationFolder";
             this.txtDefaultInstallationFolder.Size = new System.Drawing.Size(397, 21);
@@ -180,6 +203,7 @@
             // 
             // btDataFolder
             // 
+            this.btDataFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btDataFolder.Location = new System.Drawing.Point(567, 51);
             this.btDataFolder.Name = "btDataFolder";
             this.btDataFolder.Size = new System.Drawing.Size(28, 23);
@@ -190,6 +214,8 @@
             // 
             // txtDataFolder
             // 
+            this.txtDataFolder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDataFolder.Location = new System.Drawing.Point(164, 52);
             this.txtDataFolder.Name = "txtDataFolder";
             this.txtDataFolder.Size = new System.Drawing.Size(397, 21);
@@ -206,6 +232,8 @@
             // 
             // txtGUID
             // 
+            this.txtGUID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtGUID.Enabled = false;
             this.txtGUID.Location = new System.Drawing.Point(164, 26);
             this.txtGUID.Name = "txtGUID";
@@ -237,7 +265,7 @@
             this.expandCollapsePanel5.IsExpanded = true;
             this.expandCollapsePanel5.Location = new System.Drawing.Point(0, 164);
             this.expandCollapsePanel5.Name = "expandCollapsePanel5";
-            this.expandCollapsePanel5.Size = new System.Drawing.Size(800, 122);
+            this.expandCollapsePanel5.Size = new System.Drawing.Size(908, 122);
             this.expandCollapsePanel5.TabIndex = 6;
             this.expandCollapsePanel5.Text = "Logging";
             this.expandCollapsePanel5.UseAnimation = true;
@@ -330,7 +358,7 @@
             this.expandCollapsePanel2.IsExpanded = true;
             this.expandCollapsePanel2.Location = new System.Drawing.Point(0, 286);
             this.expandCollapsePanel2.Name = "expandCollapsePanel2";
-            this.expandCollapsePanel2.Size = new System.Drawing.Size(800, 172);
+            this.expandCollapsePanel2.Size = new System.Drawing.Size(908, 172);
             this.expandCollapsePanel2.TabIndex = 7;
             this.expandCollapsePanel2.Text = "Steam && Curseforge Settings";
             this.expandCollapsePanel2.UseAnimation = false;
@@ -454,15 +482,160 @@
             this.chkAnonymous.Text = "Use Anonymous connection";
             this.chkAnonymous.UseVisualStyleBackColor = true;
             // 
+            // expandCollapsePanel3
+            // 
+            this.expandCollapsePanel3.ButtonSize = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonSize.Normal;
+            this.expandCollapsePanel3.ButtonStyle = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonStyle.Circle;
+            this.expandCollapsePanel3.Controls.Add(this.chkUpdateSequencial);
+            this.expandCollapsePanel3.Controls.Add(this.chkUseSmartCopy);
+            this.expandCollapsePanel3.Controls.Add(this.txtBackupInterval);
+            this.expandCollapsePanel3.Controls.Add(this.label13);
+            this.expandCollapsePanel3.Controls.Add(this.txtUpdateInterval);
+            this.expandCollapsePanel3.Controls.Add(this.label8);
+            this.expandCollapsePanel3.Controls.Add(this.txtBackupDays);
+            this.expandCollapsePanel3.Controls.Add(this.tbDeleteDays);
+            this.expandCollapsePanel3.Controls.Add(this.chkDeleteOld);
+            this.expandCollapsePanel3.Controls.Add(this.chkEnableAutoBackup);
+            this.expandCollapsePanel3.Controls.Add(this.chkEnableAutoUpdate);
+            this.expandCollapsePanel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.expandCollapsePanel3.ExpandedHeight = 0;
+            this.expandCollapsePanel3.IsExpanded = true;
+            this.expandCollapsePanel3.Location = new System.Drawing.Point(0, 458);
+            this.expandCollapsePanel3.Name = "expandCollapsePanel3";
+            this.expandCollapsePanel3.Size = new System.Drawing.Size(908, 179);
+            this.expandCollapsePanel3.TabIndex = 8;
+            this.expandCollapsePanel3.Text = "Auto Update && Backup Settings";
+            this.expandCollapsePanel3.UseAnimation = true;
+            // 
+            // chkEnableAutoUpdate
+            // 
+            this.chkEnableAutoUpdate.AutoSize = true;
+            this.chkEnableAutoUpdate.Checked = true;
+            this.chkEnableAutoUpdate.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkEnableAutoUpdate.Location = new System.Drawing.Point(12, 118);
+            this.chkEnableAutoUpdate.Name = "chkEnableAutoUpdate";
+            this.chkEnableAutoUpdate.Size = new System.Drawing.Size(135, 19);
+            this.chkEnableAutoUpdate.TabIndex = 3;
+            this.chkEnableAutoUpdate.Text = "Enable Auto Update";
+            this.chkEnableAutoUpdate.UseVisualStyleBackColor = true;
+            // 
+            // chkEnableAutoBackup
+            // 
+            this.chkEnableAutoBackup.AutoSize = true;
+            this.chkEnableAutoBackup.Checked = true;
+            this.chkEnableAutoBackup.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkEnableAutoBackup.Location = new System.Drawing.Point(12, 41);
+            this.chkEnableAutoBackup.Name = "chkEnableAutoBackup";
+            this.chkEnableAutoBackup.Size = new System.Drawing.Size(136, 19);
+            this.chkEnableAutoBackup.TabIndex = 4;
+            this.chkEnableAutoBackup.Text = "Enable Auto Backup";
+            this.chkEnableAutoBackup.UseVisualStyleBackColor = true;
+            // 
+            // chkUseSmartCopy
+            // 
+            this.chkUseSmartCopy.AutoSize = true;
+            this.chkUseSmartCopy.Checked = true;
+            this.chkUseSmartCopy.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkUseSmartCopy.Location = new System.Drawing.Point(169, 118);
+            this.chkUseSmartCopy.Name = "chkUseSmartCopy";
+            this.chkUseSmartCopy.Size = new System.Drawing.Size(148, 19);
+            this.chkUseSmartCopy.TabIndex = 20;
+            this.chkUseSmartCopy.Text = "Use Smart cache copy";
+            this.chkUseSmartCopy.UseVisualStyleBackColor = true;
+            // 
+            // txtBackupInterval
+            // 
+            this.txtBackupInterval.Location = new System.Drawing.Point(109, 66);
+            this.txtBackupInterval.Mask = "00:00";
+            this.txtBackupInterval.Name = "txtBackupInterval";
+            this.txtBackupInterval.Size = new System.Drawing.Size(100, 20);
+            this.txtBackupInterval.TabIndex = 18;
+            this.txtBackupInterval.Text = "0100";
+            this.txtBackupInterval.ValidatingType = typeof(System.DateTime);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(13, 69);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(90, 15);
+            this.label13.TabIndex = 19;
+            this.label13.Text = "Backup Interval";
+            // 
+            // txtUpdateInterval
+            // 
+            this.txtUpdateInterval.Location = new System.Drawing.Point(109, 143);
+            this.txtUpdateInterval.Mask = "00:00";
+            this.txtUpdateInterval.Name = "txtUpdateInterval";
+            this.txtUpdateInterval.Size = new System.Drawing.Size(100, 20);
+            this.txtUpdateInterval.TabIndex = 13;
+            this.txtUpdateInterval.Text = "0100";
+            this.txtUpdateInterval.ValidatingType = typeof(System.DateTime);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(9, 146);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(89, 15);
+            this.label8.TabIndex = 17;
+            this.label8.Text = "Update Interval";
+            // 
+            // txtBackupDays
+            // 
+            this.txtBackupDays.Location = new System.Drawing.Point(478, 90);
+            this.txtBackupDays.Name = "txtBackupDays";
+            this.txtBackupDays.ReadOnly = true;
+            this.txtBackupDays.Size = new System.Drawing.Size(35, 20);
+            this.txtBackupDays.TabIndex = 16;
+            // 
+            // tbDeleteDays
+            // 
+            this.tbDeleteDays.Location = new System.Drawing.Point(169, 92);
+            this.tbDeleteDays.Maximum = 90;
+            this.tbDeleteDays.Name = "tbDeleteDays";
+            this.tbDeleteDays.Size = new System.Drawing.Size(303, 45);
+            this.tbDeleteDays.TabIndex = 14;
+            this.tbDeleteDays.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbDeleteDays.Value = 15;
+            this.tbDeleteDays.Scroll += new System.EventHandler(this.tbDeleteDays_Scroll);
+            // 
+            // chkDeleteOld
+            // 
+            this.chkDeleteOld.AutoSize = true;
+            this.chkDeleteOld.Checked = true;
+            this.chkDeleteOld.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkDeleteOld.Location = new System.Drawing.Point(12, 92);
+            this.chkDeleteOld.Name = "chkDeleteOld";
+            this.chkDeleteOld.Size = new System.Drawing.Size(151, 19);
+            this.chkDeleteOld.TabIndex = 15;
+            this.chkDeleteOld.Text = "Delete old Backup files";
+            this.chkDeleteOld.UseVisualStyleBackColor = true;
+            // 
+            // chkUpdateSequencial
+            // 
+            this.chkUpdateSequencial.AutoSize = true;
+            this.chkUpdateSequencial.Checked = true;
+            this.chkUpdateSequencial.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkUpdateSequencial.Location = new System.Drawing.Point(337, 118);
+            this.chkUpdateSequencial.Name = "chkUpdateSequencial";
+            this.chkUpdateSequencial.Size = new System.Drawing.Size(175, 19);
+            this.chkUpdateSequencial.TabIndex = 21;
+            this.chkUpdateSequencial.Text = "Update Servers Sequencial";
+            this.chkUpdateSequencial.UseVisualStyleBackColor = true;
+            // 
             // FrmSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 469);
+            this.ClientSize = new System.Drawing.Size(908, 636);
+            this.Controls.Add(this.expandCollapsePanel3);
             this.Controls.Add(this.expandCollapsePanel2);
             this.Controls.Add(this.expandCollapsePanel5);
             this.Controls.Add(this.expandCollapsePanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(924, 675);
+            this.MinimumSize = new System.Drawing.Size(924, 675);
             this.Name = "FrmSettings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Settings";
@@ -474,6 +647,9 @@
             this.expandCollapsePanel5.PerformLayout();
             this.expandCollapsePanel2.ResumeLayout(false);
             this.expandCollapsePanel2.PerformLayout();
+            this.expandCollapsePanel3.ResumeLayout(false);
+            this.expandCollapsePanel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbDeleteDays)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -518,5 +694,17 @@
         private System.Windows.Forms.TextBox txtUserName;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.CheckBox chkAnonymous;
+        private MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel expandCollapsePanel3;
+        private System.Windows.Forms.CheckBox chkEnableAutoBackup;
+        private System.Windows.Forms.CheckBox chkEnableAutoUpdate;
+        private System.Windows.Forms.CheckBox chkUseSmartCopy;
+        private System.Windows.Forms.MaskedTextBox txtBackupInterval;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.MaskedTextBox txtUpdateInterval;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtBackupDays;
+        private System.Windows.Forms.TrackBar tbDeleteDays;
+        private System.Windows.Forms.CheckBox chkDeleteOld;
+        private System.Windows.Forms.CheckBox chkUpdateSequencial;
     }
 }

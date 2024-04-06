@@ -16,15 +16,15 @@ namespace OphiussaFramework.CommonUtils {
     }
 
     public class FtpClient {
-        private readonly int            bufferSize = 2048;
+        private readonly int bufferSize = 2048;
+
+
+        private readonly string         host;
+        private readonly string         pass;
+        private readonly string         user;
         private          FtpWebRequest  ftpRequest;
         private          FtpWebResponse ftpResponse;
         private          Stream         ftpStream;
-
-
-        private readonly string host;
-        private readonly string pass;
-        private readonly string user;
 
         /* Construct Object */
         public FtpClient(string hostIP, string userName, string password) {

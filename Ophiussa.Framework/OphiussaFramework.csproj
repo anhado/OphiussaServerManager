@@ -91,6 +91,9 @@
 		<Reference Include="System.IO.Compression.FileSystem"/>
 		<Reference Include="System.Management"/>
 		<Reference Include="System.Numerics"/>
+		<Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+			<HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+		</Reference>
 		<Reference Include="System.Windows.Forms"/>
 		<Reference Include="System.Xml.Linq"/>
 		<Reference Include="System.Data.DataSetExtensions"/>
@@ -101,10 +104,13 @@
 	</ItemGroup>
 	<ItemGroup>
 		<Compile Include="CommonUtils\EncryptionUtils.cs"/>
+		<Compile Include="CommonUtils\FolderComparision\FileComparer.cs"/>
+		<Compile Include="CommonUtils\FolderComparision\ReadIntoByteBufferInChunks.cs"/>
 		<Compile Include="CommonUtils\FTP.cs"/>
 		<Compile Include="CommonUtils\IOUtils.cs"/>
 		<Compile Include="CommonUtils\NetworkTools.cs"/>
 		<Compile Include="CommonUtils\ProcessUtils.cs"/>
+		<Compile Include="CommonUtils\FolderComparision\ReadFileInChunksAndCompareVector.cs"/>
 		<Compile Include="CommonUtils\ShellLink.cs"/>
 		<Compile Include="CommonUtils\StringCipher.cs"/>
 		<Compile Include="CommonUtils\Utils.cs"/>

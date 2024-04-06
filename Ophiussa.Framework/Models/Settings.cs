@@ -37,5 +37,13 @@ namespace OphiussaFramework.Models {
         public                                  bool   UpdateSteamCMDStart  { get; set; }
         public                                  string SteamUser            { get; set; }
         public                                  string SteamPwd             { get; set; }
+        public                                  bool   EnableAutoUpdate     { get; set; } = true;
+        public                                  string UpdateInterval       { get; set; } = "01:00";
+        public                                  bool   EnableAutoBackup     { get; set; } = true;
+        public                                  string BackupInterval       { get; set; } = "01:00";
+        public                                  bool   DeleteOldBackups     { get; set; } = true;
+        public                                  int    BackupsToKeep        { get; set; } = 30;
+        public                                  bool   UseSmartCopy         { get; set; } = true;
+        public                                  bool   UpdateSequencial     { get; set; } = true;
     }
 }

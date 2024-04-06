@@ -125,14 +125,14 @@ namespace ValheimPlugin {
         public int                     QueryPort             { get; set; } = 0;
         public int                     RCONPort              { get; set; } = 0;
         public string                  ServerVersion         { get; set; } = "";
-        public string                  ServerPassword        { get; set; } = Membership.GeneratePassword(10, 6);
+        public string                  ServerPassword        { get; set; } = Membership.GeneratePassword(10, 2);
         public string                  ServerBuildVersion    { get; set; } = "";
         public bool                    AutoStartServer       { get; set; } = false;
         public bool                    StartOnBoot           { get; set; } = false;
         public bool                    IncludeAutoBackup     { get; set; } = false;
         public bool                    IncludeAutoUpdate     { get; set; } = false;
         public bool                    RestartIfShutdown     { get; set; } = false;
-        public string                  RCONPassword          { get; set; } = Membership.GeneratePassword(10, 6);
+        public string                  RCONPassword          { get; set; } = Membership.GeneratePassword(10, 2);
         public bool                    UseRCON               { get; set; } = false;
         public string                  ExecutablePath        { get; set; } = "valheim_server.exe";
     }

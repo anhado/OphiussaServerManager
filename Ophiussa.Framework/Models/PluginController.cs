@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -115,9 +116,7 @@ namespace OphiussaFramework.Models {
             return _plugin.SaveSettingsToDisk();
         }
 
-        public string PluginLocation() {
-            return _location;
-        }
+        public string PluginLocation() => _location; 
 
         public bool IsValidFolder(string path) {
             return _plugin.IsValidFolder(path);
@@ -130,5 +129,7 @@ namespace OphiussaFramework.Models {
         public bool SavePluginInfo() {
             return ConnectionController.SqlLite.Upsert<IPlugin>(_plugin);
         }
+
+        public List<string> IgnoredFoldersInComparision => _plugin.IgnoredFoldersInComparision;
     }
 }
