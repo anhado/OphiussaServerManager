@@ -37,6 +37,7 @@ namespace OphiussaServerManagerV2 {
                         return;
                     }
                     else if (arg.StartsWith("-ab")) {
+                        ServerUtils.BackupAllServers();
                         return;
                     }
 

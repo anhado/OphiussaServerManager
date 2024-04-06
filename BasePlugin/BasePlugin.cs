@@ -4,9 +4,11 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
+using System.Web.Caching;
 using System.Windows.Forms;
 using BasePlugin.Forms;
 using Newtonsoft.Json;
+using OphiussaFramework;
 using OphiussaFramework.CommonUtils;
 using OphiussaFramework.Enums;
 using OphiussaFramework.Interfaces;
@@ -22,29 +24,22 @@ namespace BasePlugin {
         public string ExecutablePath { get; set; } = "Dummy123.exe"; //THIS WILL OVERWRITE THE PROFILE, I JUST NEED THAT IN PROFILE TO AVOID Deserialize THE ADDITIONAL SETTINGS
 
         // internal static readonly PluginType              Info = new PluginType { GameType = "Game1", Name = "Game 1 Name" };
-        public IProfile     Profile                     { get; set; } = new Profile();
-        public string       GameType                    { get; set; } = "Game1";
-        public string       GameName                    { get; set; } = "Game 1 Name";
-        public TabPage      TabPage                     { get; set; }
-        public string       PluginVersion               { get; set; } = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
-        public string       PluginName                  { get; set; } = Path.GetFileName(FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileName);
-        public int          ServerProcessID             => Utils.GetProcessRunning(Path.Combine(Profile.InstallationFolder, Profile.ExecutablePath)).Id;
-        public bool         IsRunning                   => Utils.GetProcessRunning(Path.Combine(Profile.InstallationFolder, Profile.ExecutablePath)) != null;
-        public List<string> IgnoredFoldersInComparision { get; set; }
-
-        public Process GetExeProcess() {
-            return Utils.GetProcessRunning(Path.Combine(Profile.InstallationFolder, Profile.ExecutablePath));
-        }
-
-        public bool                    IsInstalled     => IsValidFolder(Profile.InstallationFolder);
-        public List<FileInfo>          FilesToBackup   => throw new NotImplementedException();
-        public List<CommandDefinition> DefaultCommands { get; set; }
-        public List<CommandDefinition> CostumCommands  { get; set; }
-        public ModProvider             ModProvider     { get; set; } = ModProvider.None;
-
-
-        public bool Loaded { get; set; } = true;
-
+        public IProfile                              Profile                     { get; set; } = new Profile();
+        public string                                GameType                    { get; set; } = "Game1";
+        public string                                GameName                    { get; set; } = "Game 1 Name";
+        public TabPage                               TabPage                     { get; set; }
+        public string                                PluginVersion               { get; set; } = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
+        public string                                PluginName                  { get; set; } = Path.GetFileName(FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileName);
+        public int                                   ServerProcessID             => Utils.GetProcessRunning(Path.Combine(Profile.InstallationFolder, Profile.ExecutablePath)).Id;
+        public bool                                  IsRunning                   => Utils.GetProcessRunning(Path.Combine(Profile.InstallationFolder, Profile.ExecutablePath)) != null;
+        public List<string>                          IgnoredFoldersInComparision { get; set; }
+        public string                                CacheFolder                 { get; set; }
+        public bool                                  IsInstalled                 => IsValidFolder(Profile.InstallationFolder);
+        public List<FileInfo>                        FilesToBackup               => throw new NotImplementedException();
+        public List<CommandDefinition>               DefaultCommands             { get; set; }
+        public List<CommandDefinition>               CustomCommands              { get; set; }
+        public ModProvider                           ModProvider                 { get; set; } = ModProvider.None; 
+        public bool                                  Loaded                      { get; set; } = true; 
         public event EventHandler<OphiussaEventArgs> BackupServerClick;
         public event EventHandler<OphiussaEventArgs> StopServerClick;
         public event EventHandler<OphiussaEventArgs> StartServerClick;
@@ -55,6 +50,11 @@ namespace BasePlugin {
         public event EventHandler<OphiussaEventArgs> OpenRCONClick;
         public event EventHandler<OphiussaEventArgs> ChooseFolderClick;
         public event EventHandler<OphiussaEventArgs> TabHeaderChangeEvent;
+
+
+        public Process GetExeProcess() {
+            return Utils.GetProcessRunning(Path.Combine(Profile.InstallationFolder, Profile.ExecutablePath));
+        }
 
         public PluginType GetInfo() {
             return new PluginType { GameType = GameType, Name = GameName };
@@ -73,7 +73,7 @@ namespace BasePlugin {
             TabHeaderChangeEvent?.Invoke(this, new OphiussaEventArgs { Profile = Profile, Plugin = this });
         }
 
-        public async Task InstallServer() {
+        public async Task InstallServer(bool fromCache) {
             InstallServerClick?.Invoke(this, new OphiussaEventArgs { Profile = Profile, Plugin = this });
         }
 
@@ -116,7 +116,7 @@ namespace BasePlugin {
                 Profile = p;
 
                 if (profile.AdditionalCommands != null) DefaultCommands = JsonConvert.DeserializeObject<List<CommandDefinition>>(profile.AdditionalCommands) ?? DefaultCommands;
-
+                CacheFolder = Path.Combine(ConnectionController.Settings.DataFolder, $"cache\\{Profile.Branch}\\{Profile.Type}");
                 return new Message {
                                        MessageText = "Load Successful",
                                        Success     = true
@@ -137,6 +137,8 @@ namespace BasePlugin {
                 var p = JsonConvert.DeserializeObject<Profile>(json);
 
                 Profile = p;
+                if (Profile.AdditionalCommands != null) DefaultCommands = JsonConvert.DeserializeObject<List<CommandDefinition>>(Profile.AdditionalCommands) ?? DefaultCommands;
+                CacheFolder = Path.Combine(ConnectionController.Settings.DataFolder, $"cache\\{Profile.Branch}\\{Profile.Type}");
 
                 return new Message {
                                        MessageText = "Load Successful",

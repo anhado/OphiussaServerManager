@@ -14,8 +14,55 @@ using Task = System.Threading.Tasks.Task;
 
 namespace OphiussaFramework.ServerUtils {
     public static class ServerUtils {
+
+        public static event EventHandler<ProcessEventArg> ProgressChanged;
+        public static event EventHandler<ProcessEventArg> ProcessStarted;
+        public static event EventHandler<ProcessEventArg> ProcessCompleted;
+        public static event EventHandler<ProcessEventArg> ProcessError;
+
+        private static bool OnProgressChanged(ProcessEventArg e) {
+            OphiussaLogger.Logger.Info(e.Message);
+            ProgressChanged?.Invoke(null, e);
+            return true;
+        }
+
+        private static void OnProcessCompleted(ProcessEventArg e) {
+            OphiussaLogger.Logger.Info(e.Message);
+            ProcessCompleted?.Invoke(null, e);
+        }
+
+        private static void OnProcessStarted(ProcessEventArg e) {
+            OphiussaLogger.Logger.Info(e.Message);
+            ProcessStarted?.Invoke(null, e);
+        }
+
+        private static void OnProcessError(ProcessEventArg e) {
+            OphiussaLogger.Logger.Info(e.Message);
+            OphiussaLogger.Logger.Error(e.Message);
+            ProcessError?.Invoke(null, e);
+        }
+         
         public static void InstallServerClick(object sender, OphiussaEventArgs e) {
-            NetworkTools.UpdateGameFolder(e.Profile);
+            try {
+                OnProcessStarted(new ProcessEventArg { Message = "Process Started for server " + e.Profile.Key, Sucessful = true });
+                if (!ConnectionController.Plugins.ContainsKey(e.Profile.Type)) return;
+                var nCtrl = new PluginController(ConnectionController.Plugins[e.Profile.Type].PluginLocation());
+                e.Profile.AdditionalSettings = JsonConvert.SerializeObject(e.Profile, Formatting.Indented);
+                nCtrl.SetProfile(e.Profile);
+
+                OnProgressChanged(new ProcessEventArg { Message = "New Plugin Controller Initialized" });
+
+                OnProgressChanged(new ProcessEventArg { Message = "Updating Cache" });
+                NetworkTools.UpdateCacheFolder(nCtrl);
+
+                OnProgressChanged(new ProcessEventArg { Message = "Cache Updated" });
+                UpdateServerFromCache(nCtrl);
+
+            }
+            catch (Exception ex) {
+                OphiussaLogger.Logger.Error(ex);
+                OnProcessError(new ProcessEventArg { Message = ex.Message, Sucessful = false, IsError = true });
+            }
         }
 
         public static void BackupServerClick(object sender, OphiussaEventArgs e) {
@@ -237,14 +284,18 @@ namespace OphiussaFramework.ServerUtils {
 
         public static void UpdateServerFromCache(PluginController controller) {
             IProfile profile            = controller.GetProfile();
-            string   cacheFolder        = Path.Combine(ConnectionController.Settings.DataFolder, $"cache\\{profile.Branch}\\{profile.Type}");
+            string   cacheFolder        = controller.CacheFolder;
             string   currentServerBuild = Utils.GetBuild(profile);
-            string   currentCacheBuild  = Utils.GetCacheBuild(profile);
+            string   currentCacheBuild  = Utils.GetCacheBuild(profile, cacheFolder);
             bool     needToUpdate       = false;
             var      changedFiles       = new List<FileInfo>();
 
+            OnProgressChanged(new ProcessEventArg { Message = "Cache Build : "  + currentCacheBuild, IsStarting  = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
+            OnProgressChanged(new ProcessEventArg { Message = "Server Build : " + currentServerBuild, IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
+
             if (currentServerBuild != currentCacheBuild) {
                 if (ConnectionController.Settings.UseSmartCopy) {
+                    OnProgressChanged(new ProcessEventArg { Message = "Comparing cache with production files", IsStarting = false, ProcessedFileCount = 0, Sucessful = false, TotalFiles = 0 });
                     var ignoredFolders = new List<string>();
 
                     changedFiles = Utils.CompareFolderContent(profile.InstallationFolder, cacheFolder, controller.IgnoredFoldersInComparision);
@@ -265,6 +316,9 @@ namespace OphiussaFramework.ServerUtils {
                 changedFiles = new List<FileInfo>();
             }
 
+            if (changedFiles.Count == 0) OnProgressChanged(new ProcessEventArg { Message = "No changed detected", IsStarting                                                 = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles  = 0 });
+            else OnProgressChanged(new ProcessEventArg { Message                         = $"Detected changes in {changedFiles.Count} files for server {profile.Name}", IsStarting = true, ProcessedFileCount  = 0, Sucessful = false, TotalFiles = changedFiles.Count, SendToDiscord = true });
+
             if (changedFiles.Count > 0) needToUpdate = true;
 
             //TODO:Check Mod Updates here
@@ -280,10 +334,12 @@ namespace OphiussaFramework.ServerUtils {
                 int  attempt   = 1;
                 while (notCopied) {
                     try {
+                        OnProgressChanged(new ProcessEventArg { Message = $"Copying files {i}/{changedFiles.Count} => {file.FullName}", IsStarting = false, ProcessedFileCount = i, Sucessful = false, TotalFiles = changedFiles.Count });
                         File.Copy(file.FullName, file.FullName.Replace(cacheFolder, profile.InstallationFolder), true);
                         notCopied = false;
                     }
                     catch (Exception ex) {
+                        OnProcessError(new ProcessEventArg { Message = $"Error copying file {file.FullName} attempt {attempt}/5 => {ex.Message}", IsStarting = false, ProcessedFileCount = i, Sucessful = false, TotalFiles = changedFiles.Count });
                     }
 
                     if (attempt >= 5) notCopied = false;
@@ -293,8 +349,10 @@ namespace OphiussaFramework.ServerUtils {
 
                 i++;
             }
+            OnProgressChanged(new ProcessEventArg { Message = $"Server {profile.Name} updated", IsStarting = false, ProcessedFileCount = changedFiles.Count, Sucessful = true, TotalFiles = changedFiles.Count, SendToDiscord = true });
+
         }
-         
+
         public static void UpdateAllServers() {
             var                                  servers     = new List<ServerCache>();
             Dictionary<string, PluginController> controllers = new Dictionary<string, PluginController>();
@@ -303,13 +361,14 @@ namespace OphiussaFramework.ServerUtils {
             profiles.ForEach(prf => {
                                  if (!prf.IncludeAutoUpdate) return;
                                  if (servers.Find(x => x.SteamServerId == prf.SteamServerId) != null) return;
+                                 controllers.Add(prf.Key, new PluginController(ConnectionController.Plugins[prf.Type].PluginLocation()));
+                                 controllers[prf.Key].SetProfile(prf);
                                  servers.Add(new ServerCache {
                                                                  Branch        = prf.Branch,
                                                                  SteamServerId = prf.SteamServerId,
-                                                                 Type          = prf.Type
-                                                             });
-                                 controllers.Add(prf.Key, new PluginController(ConnectionController.Plugins[prf.Type].PluginLocation()));
-                                 controllers[prf.Key].SetProfile(prf);
+                                                                 Type          = prf.Type,
+                                                                 CacheFolder   = controllers[prf.Key].CacheFolder
+                                });
                              });
 
 
@@ -337,6 +396,10 @@ namespace OphiussaFramework.ServerUtils {
                 Task.WaitAll(tasks.ToArray());
 
             }
-        } 
+        }
+
+        public static void BackupAllServers() {
+            throw new NotImplementedException();
+        }
     }
 }

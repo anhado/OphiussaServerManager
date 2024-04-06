@@ -1,5 +1,8 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Drawing;
+using System.Globalization;
 using System.Windows.Forms;
+using OphiussaFramework.CommonUtils;
 
 namespace OphiussaFramework.Extensions {
     public static class CommonExtensions {
@@ -24,6 +27,30 @@ namespace OphiussaFramework.Extensions {
             else if (value < tb.Minimum)
                 tb.Value                          = tb.Minimum;
             else if (value > tb.Maximum) tb.Value = tb.Maximum;
+        }
+        public static void AppendTextWithTimeStamp(this RichTextBox box, string text, Color color) {
+            try {
+                text                = "[" + DateTime.Now.ToString("u") + "] " + text + "\n";
+                box.SelectionStart  = box.TextLength;
+                box.SelectionLength = 0;
+
+                box.SelectionColor = color;
+                box.AppendText(text);
+                box.SelectionColor = box.ForeColor;
+            }
+            catch (Exception ex) {
+                OphiussaLogger.Logger.Error(ex);
+            }
+        }
+
+        public static void AppendText(this RichTextBox box, string text, Color color) {
+            text                = text + "\n";
+            box.SelectionStart  = box.TextLength;
+            box.SelectionLength = 0;
+
+            box.SelectionColor = color;
+            box.AppendText(text);
+            box.SelectionColor = box.ForeColor;
         }
     }
 }

@@ -22,8 +22,9 @@ namespace OphiussaFramework.Models {
         public bool                    IsRunning                   { get; set; }
         public bool                    IsInstalled                 { get; set; }
         public TabPage                 TabPage                     { get; set; }
-        public List<CommandDefinition> CostumCommands              { get; set; }
+        public List<CommandDefinition> CustomCommands              { get; set; }
         public List<string>            IgnoredFoldersInComparision { get; set; }
+        public string                  CacheFolder                 { get; set; }
 
         public PluginType GetInfo() {
             throw new NotImplementedException();
@@ -45,7 +46,7 @@ namespace OphiussaFramework.Models {
             throw new NotImplementedException();
         }
 
-        public Task InstallServer() {
+        public Task InstallServer(bool fromCache) {
             throw new NotImplementedException();
         }
 
@@ -112,6 +113,7 @@ namespace OphiussaFramework.Models {
         public string GetCommandLinesArguments() {
             throw new NotImplementedException();
         }
+
 
         public event EventHandler<OphiussaEventArgs> SaveClick;
         public event EventHandler<OphiussaEventArgs> ReloadClick;

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using OphiussaFramework.Forms;
 using OphiussaFramework.Interfaces;
 
 namespace OphiussaFramework.Models {
@@ -51,6 +52,11 @@ namespace OphiussaFramework.Models {
         internal object Loaded      { get; set; } = true;
         public   bool   IsInstalled => _plugin.IsInstalled;
         public   bool   IsRunning   => _plugin.IsRunning;
+        public   string CacheFolder => _plugin.CacheFolder;
+
+        public void ShowServerInstallationOptions() {
+            (new FrmProgress(this)).Show();
+        }
 
         public Form GetConfigurationForm(TabPage tabPage) {
             return _plugin.GetConfigurationForm(tabPage);
@@ -96,8 +102,8 @@ namespace OphiussaFramework.Models {
             await _plugin.StopServer(force);
         }
 
-        public void InstallServer() {
-            _plugin.InstallServer();
+        public async Task InstallServer(bool fromCache = false) {
+            await _plugin.InstallServer(fromCache);
         }
 
         public IProfile GetProfile() {

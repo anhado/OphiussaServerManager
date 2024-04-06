@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,9 +37,10 @@ namespace ValheimPlugin {
         public bool                                  IsInstalled                 => IsValidFolder(Profile.InstallationFolder);
         public List<FileInfo>                        FilesToBackup               => throw new NotImplementedException();
         public List<CommandDefinition>               DefaultCommands             { get; set; }
-        public List<CommandDefinition>               CostumCommands              { get; set; }
+        public List<CommandDefinition>               CustomCommands              { get; set; }
         public ModProvider                           ModProvider                 { get; set; } = ModProvider.None;
         public bool                                  Loaded                      { get; set; } = true;
+        public string                                CacheFolder                 { get; set; }
         public event EventHandler<OphiussaEventArgs> BackupServerClick;
         public event EventHandler<OphiussaEventArgs> StopServerClick;
         public event EventHandler<OphiussaEventArgs> StartServerClick;
@@ -71,7 +73,11 @@ namespace ValheimPlugin {
             TabHeaderChangeEvent?.Invoke(this, new OphiussaEventArgs { Profile = Profile, Plugin = this });
         }
 
-        public async Task InstallServer() {
+        public async Task InstallServer(bool fromCache) { 
+            if(Directory.GetDirectories(Profile.InstallationFolder).Any())
+                if (!IsValidFolder(Profile.InstallationFolder))
+                    throw new Exception("Invalid installation folder");
+
             InstallServerClick?.Invoke(this, new OphiussaEventArgs { Profile = Profile, Plugin = this });
         }
 
@@ -131,6 +137,7 @@ namespace ValheimPlugin {
                 Profile              = p;
 
                 if (profile.AdditionalCommands != null) DefaultCommands = JsonConvert.DeserializeObject<List<CommandDefinition>>(profile.AdditionalCommands) ?? DefaultCommands;
+                CacheFolder = Path.Combine(ConnectionController.Settings.DataFolder, $"cache\\{Profile.Branch}\\{Profile.Type}");
 
                 return new Message {
                                        MessageText = "Load Successful",
@@ -152,6 +159,8 @@ namespace ValheimPlugin {
                 var p = JsonConvert.DeserializeObject<Profile>(json);
                 p.ServerBuildVersion = Utils.GetBuild(p);
                 Profile              = p;
+                if (Profile.AdditionalCommands != null) DefaultCommands = JsonConvert.DeserializeObject<List<CommandDefinition>>(Profile.AdditionalCommands) ?? DefaultCommands;
+                CacheFolder = Path.Combine(ConnectionController.Settings.DataFolder, $"cache\\{Profile.Branch}\\{Profile.Type}");
 
                 return new Message {
                                        MessageText = "Load Successful",

@@ -21,19 +21,20 @@ namespace OphiussaFramework.Interfaces {
         bool                                                     Loaded                      { get; set; }
         [FieldAttributes(Ignore = true)] int                     ServerProcessID             { get; }
         [FieldAttributes(Ignore = true)] List<CommandDefinition> DefaultCommands             { get; set; }
-        [FieldAttributes(Ignore = true)] List<CommandDefinition> CostumCommands              { get; set; }
+        [FieldAttributes(Ignore = true)] List<CommandDefinition> CustomCommands              { get; set; }
         [FieldAttributes(Ignore = true)] List<FileInfo>          FilesToBackup               { get; }
         [FieldAttributes(Ignore = true)] IProfile                Profile                     { get; }
         [FieldAttributes(Ignore = true)] bool                    IsRunning                   { get; }
         [FieldAttributes(Ignore = true)] bool                    IsInstalled                 { get; }
         [FieldAttributes(Ignore = true)] TabPage                 TabPage                     { get; }
         [FieldAttributes(Ignore = true)] List<string>            IgnoredFoldersInComparision { get; }
+        [FieldAttributes(Ignore = true)] string                  CacheFolder                 { get; set; }
         PluginType                                               GetInfo();
         Form                                                     GetConfigurationForm(TabPage tab);
         Task                                                     BackupServer();
         Task                                                     StopServer(bool force = false);
         Task                                                     StartServer();
-        Task                                                     InstallServer();
+        Task                                                     InstallServer(bool fromCache = false);
         void                                                     Save();
         void                                                     Reload();
         void                                                     Sync();
@@ -49,7 +50,7 @@ namespace OphiussaFramework.Interfaces {
         void                                                     TabHeaderChange();
         string                                                   GetVersion();
         string                                                   GetBuild();
-        string                                                   GetCommandLinesArguments();
+        string                                                   GetCommandLinesArguments(); 
         event EventHandler<OphiussaEventArgs>                    SaveClick;
         event EventHandler<OphiussaEventArgs>                    ReloadClick;
         event EventHandler<OphiussaEventArgs>                    SyncClick;

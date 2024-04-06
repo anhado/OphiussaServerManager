@@ -124,7 +124,12 @@ namespace OphiussaFramework.Components {
         }
 
         private void btUpdate_Click(object sender, EventArgs e) {
-            ClickUpgrade?.Invoke(this, e);
+            try { 
+                ClickUpgrade?.Invoke(this, e);
+            }
+            catch (Exception exception) {
+                MessageBox.Show(exception.Message);
+            }
         }
 
         private void btStart_Click(object sender, EventArgs e) {

@@ -86,12 +86,18 @@ namespace OphiussaFramework.CommonUtils {
             Utils.ExecuteAsAdmin(Path.Combine(ConnectionController.Settings.SteamCMDFolder, "steamcmd.exe"), "+quit");
         }
 
-        internal static void UpdateCacheFolder(ServerCache cache) {
-            string cacheFolder = Path.Combine(ConnectionController.Settings.DataFolder, $"cache\\{cache.Branch}\\{cache.Type}");
-            if (!Directory.Exists(cacheFolder)) Directory.CreateDirectory(cacheFolder);
+        internal static void UpdateCacheFolder(ServerCache cache) { 
+            if (!Directory.Exists(cache.CacheFolder)) Directory.CreateDirectory(cache.CacheFolder);
             string login                                           = "+login anonymous";
             if (!ConnectionController.Settings.UseAnonymous) login = $"+login {ConnectionController.Settings.SteamUser} {ConnectionController.Settings.SteamPwd}";
-            Utils.ExecuteAsAdmin(Path.Combine(ConnectionController.Settings.SteamCMDFolder, "steamcmd.exe"), $" +force_install_dir {cacheFolder} {login} +app_update {cache.SteamServerId} validate +quit", true, true);
+            Utils.ExecuteAsAdmin(Path.Combine(ConnectionController.Settings.SteamCMDFolder, "steamcmd.exe"), $" +force_install_dir {cache.CacheFolder} {login} +app_update {cache.SteamServerId} validate +quit", true, true);
+        }
+
+        internal static void UpdateCacheFolder(PluginController controller) { 
+            if (!Directory.Exists(controller.CacheFolder)) Directory.CreateDirectory(controller.CacheFolder);
+            string login                                           = "+login anonymous";
+            if (!ConnectionController.Settings.UseAnonymous) login = $"+login {ConnectionController.Settings.SteamUser} {ConnectionController.Settings.SteamPwd}";
+            Utils.ExecuteAsAdmin(Path.Combine(ConnectionController.Settings.SteamCMDFolder, "steamcmd.exe"), $" +force_install_dir {controller.CacheFolder} {login} +app_update {controller.GetProfile().SteamServerId} validate +quit", true, true);
         }
 
         public static void UpdateGameFolder(IProfile profile) {

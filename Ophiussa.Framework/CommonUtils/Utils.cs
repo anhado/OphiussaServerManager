@@ -65,6 +65,7 @@ namespace OphiussaFramework.CommonUtils {
         }
 
         public static bool IsAValidFolder(string initialFolder, List<string> folderList, bool isFiles = false) {
+            //TODO: validate if is files instead of folders
             if (!Directory.Exists(initialFolder)) return false;
 
             var folders  = Directory.GetDirectories(initialFolder).ToList();
@@ -195,9 +196,8 @@ namespace OphiussaFramework.CommonUtils {
             return File.ReadAllText(Path.Combine(profile.InstallationFolder, "version.txt"));
         }
 
-        public static string GetCacheBuild(IProfile profile) {
-            string fileName    = $"appmanifest_{profile.SteamServerId}.acf";
-            string cacheFolder = Path.Combine(ConnectionController.Settings.DataFolder, "\\cache", $"\\{profile.Branch}", $"\\{profile.Type}");
+        public static string GetCacheBuild(IProfile profile, string cacheFolder) {
+            string fileName    = $"appmanifest_{profile.SteamServerId}.acf"; 
             if (!File.Exists(Path.Combine(cacheFolder, "steamapps", fileName))) return "";
 
             string[] content = File.ReadAllText(Path.Combine(cacheFolder, "steamapps", fileName)).Split('\n');

@@ -220,8 +220,15 @@ namespace ValheimPlugin.Forms {
             _plugin.Sync();
         }
 
-        private void profileHeader1_ClickUpgrade(object sender, EventArgs e) {
-            _plugin.InstallServer();
+        private async void profileHeader1_ClickUpgrade(object sender, EventArgs e) {
+            try {
+
+                ConnectionController.ServerControllers[Profile.Key].ShowServerInstallationOptions();
+                //await _plugin.InstallServer(); 
+            }
+            catch (Exception exception) {
+                MessageBox.Show(exception.Message);
+            }
         }
 
         private void profileHeader1_ClickStartStop(object sender, EventArgs e) {

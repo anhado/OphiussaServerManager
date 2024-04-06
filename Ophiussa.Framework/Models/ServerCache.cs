@@ -3,5 +3,6 @@
         internal string Type          { get; set; }
         internal string Branch        { get; set; }
         internal int    SteamServerId { get; set; }
+        internal string    CacheFolder   { get; set; }
     }
 }
