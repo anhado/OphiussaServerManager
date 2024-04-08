@@ -265,7 +265,7 @@ namespace OphiussaFramework.ServerUtils {
                        OphiussaLogger.Logger.Info($"Updated server : {args[2]}");
                     }
 
-                    if (isRunning && (am.RestartServer || profile.RestartIfShutdown)) {
+                    if ((isRunning && am.RestartServer) || (profile.RestartIfShutdown && IsTheAutoUpdateTask)) {
                         nCtrl.StartServer();
 
                         OphiussaLogger.Logger.Info($"Started server : {args[2]}");
