@@ -130,7 +130,7 @@ namespace OphiussaFramework.DataBaseUtils {
                 }
 
                 using (var cmd = DbConnection().CreateCommand()) {
-                    cmd.CommandText = $"SELECT * FROM {tableName}" + (string.IsNullOrEmpty(condition) ? "" : $"WHERE {condition}");
+                    cmd.CommandText = $"SELECT * FROM {tableName} " + (string.IsNullOrEmpty(condition) ? "" : $" WHERE {condition}");
                     da              = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
                     da.Fill(dt);
                 }
@@ -165,7 +165,7 @@ namespace OphiussaFramework.DataBaseUtils {
                 }
 
                 using (var cmd = DbConnection().CreateCommand()) {
-                    cmd.CommandText = $"SELECT * FROM {tableName}" + (string.IsNullOrEmpty(condition) ? "" : $" WHERE {condition}");
+                    cmd.CommandText = $"SELECT * FROM {tableName} " + (string.IsNullOrEmpty(condition) ? "" : $" WHERE {condition}");
                     da              = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
                     da.Fill(dt);
                 }

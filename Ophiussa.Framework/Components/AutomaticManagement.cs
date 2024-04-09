@@ -39,10 +39,10 @@ namespace OphiussaServerManager.Components {
             rbOnBoot.Checked  = Profile.StartOnBoot;
             rbOnLogin.Checked = !Profile.StartOnBoot;
 
-            chkAutoStart.DataBindings.Add("Checked", Profile, "AutoStartServer");
-            chkIncludeAutoBackup.DataBindings.Add("Checked", Profile, "IncludeAutoBackup");
-            chkAutoUpdate.DataBindings.Add("Checked", Profile, "IncludeAutoUpdate");
-            chkRestartIfShutdown.DataBindings.Add("Checked", Profile, "RestartIfShutdown");
+            chkAutoStart.DataBindings.Add("Checked", Profile, "AutoStartServer", true, DataSourceUpdateMode.OnPropertyChanged);
+            chkIncludeAutoBackup.DataBindings.Add("Checked", Profile, "IncludeAutoBackup", true, DataSourceUpdateMode.OnPropertyChanged);
+            chkAutoUpdate.DataBindings.Add("Checked", Profile, "IncludeAutoUpdate", true, DataSourceUpdateMode.OnPropertyChanged);
+            chkRestartIfShutdown.DataBindings.Add("Checked", Profile, "RestartIfShutdown", true, DataSourceUpdateMode.OnPropertyChanged);
 
             LoadGrid();
         }

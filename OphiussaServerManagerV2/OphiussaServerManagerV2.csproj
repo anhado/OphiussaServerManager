@@ -127,6 +127,12 @@
     <Compile Include="Forms\FrmServerTypeSelection.Designer.cs">
       <DependentUpon>FrmServerTypeSelection.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmServerMonitor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmServerMonitor.Designer.cs">
+      <DependentUpon>FrmServerMonitor.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,6 +152,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmServerTypeSelection.resx">
       <DependentUpon>FrmServerTypeSelection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmServerMonitor.resx">
+      <DependentUpon>FrmServerMonitor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

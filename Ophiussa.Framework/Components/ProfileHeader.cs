@@ -81,13 +81,13 @@ namespace OphiussaFramework.Components {
             cboBranch.ValueMember   = "Code";
             cboBranch.DisplayMember = "Name";
 
-            txtProfileID.DataBindings.Add("Text", Profile, "Key");
-            txtLocation.DataBindings.Add("Text", Profile, "InstallationFolder");
-            txtProfileName.DataBindings.Add("Text", Profile, "Name");
-            txtServerType.DataBindings.Add("Text", Profile, "Type");
-            txtBuild.DataBindings.Add("Text", Profile, "ServerBuildVersion");
-            txtVersion.DataBindings.Add("Text", Profile, "ServerVersion");
-            cboBranch.DataBindings.Add("SelectedValue", Profile, "Branch");
+            txtProfileID.DataBindings.Add("Text", Profile, "Key", true, DataSourceUpdateMode.OnPropertyChanged);
+            txtLocation.DataBindings.Add("Text", Profile, "InstallationFolder", true, DataSourceUpdateMode.OnPropertyChanged);
+            txtProfileName.DataBindings.Add("Text", Profile, "Name", true, DataSourceUpdateMode.OnPropertyChanged);
+            txtServerType.DataBindings.Add("Text", Profile, "Type", true, DataSourceUpdateMode.OnPropertyChanged);
+            txtBuild.DataBindings.Add("Text", Profile, "ServerBuildVersion", true, DataSourceUpdateMode.OnPropertyChanged);
+            txtVersion.DataBindings.Add("Text", Profile, "ServerVersion", true, DataSourceUpdateMode.OnPropertyChanged);
+            cboBranch.DataBindings.Add("SelectedValue", Profile, "Branch", true, DataSourceUpdateMode.OnPropertyChanged);
 
             CheckInstallStatus();
         }

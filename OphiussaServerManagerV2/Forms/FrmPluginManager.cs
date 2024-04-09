@@ -18,15 +18,20 @@ namespace OphiussaServerManagerV2 {
         private void btAdd_Click(object sender, EventArgs e) {
             var res = fDiag.ShowDialog();
             if (res == DialogResult.OK)
-                try {
-                    //TODO: validar se já existe o plugin ou algum plugin com o mesmo server type;
+                try { 
                     File.Copy(fDiag.FileName, Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "plugins\\temp\\") + Path.GetFileName(fDiag.FileName), true);
                     var ctrl = new PluginController(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "plugins\\temp\\") + Path.GetFileName(fDiag.FileName));
 
+
+                    if (ConnectionController.Plugins.ContainsKey(ctrl.GameType)) throw new Exception($"Already exists a plugin for this game type :{ctrl.GameType}!");
+
                     File.Copy(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "plugins\\temp\\") + Path.GetFileName(fDiag.FileName), Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "plugins\\") + Path.GetFileName(fDiag.FileName), true);
-                    ctrl.SavePluginInfo();
-                    //ConnectionController.SqlLite.Upsert(ctrl);
+                    ctrl.SavePluginInfo(); 
                     LoadPluginsGrid();
+                }
+                catch (TypeLoadException exception) {
+                    OphiussaLogger.Logger.Error(exception);
+                    MessageBox.Show(exception.Message);
                 }
                 catch (Exception exception) {
                     OphiussaLogger.Logger.Error(exception);

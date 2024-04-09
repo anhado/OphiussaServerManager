@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using Microsoft.Win32.TaskScheduler;
 using OphiussaFramework;
 using OphiussaFramework.CommonUtils;
+using OphiussaFramework.Extensions;
 using OphiussaFramework.Models;
 
 namespace OphiussaServerManagerV2 {
@@ -19,33 +20,36 @@ namespace OphiussaServerManagerV2 {
         }
 
         private void LoadSettings() {
-            txtGUID.DataBindings.Add("Text", ConnectionController.Settings, "GUID");
-            txtDefaultInstallationFolder.DataBindings.Add("Text", ConnectionController.Settings, "DefaultInstallFolder");
-            txtBackupFolder.DataBindings.Add("Text", ConnectionController.Settings, "BackupFolder");
-            txtDataFolder.DataBindings.Add("Text", ConnectionController.Settings, "DataFolder");
-            txtSteamCmd.DataBindings.Add("Text", ConnectionController.Settings, "SteamCMDFolder");
-            txtSteamKey.DataBindings.Add("Text", ConnectionController.Settings, "SteamWepApiKey");
-            txtCurseForgeKey.DataBindings.Add("Text", ConnectionController.Settings, "CurseForgeApiKey");
-            chkEnableLogs.DataBindings.Add("Checked", ConnectionController.Settings, "EnableLogs");
-            txtMaxDays.DataBindings.Add("Text", ConnectionController.Settings, "MaxLogsDays");
-            txtMaxFiles.DataBindings.Add("Text", ConnectionController.Settings, "MaxLogFiles");
-            txtUserName.DataBindings.Add("Text", ConnectionController.Settings, "SteamUser");
-            txtPassword.DataBindings.Add("Text", ConnectionController.Settings, "SteamPwd");
-            chkAnonymous.DataBindings.Add("Checked", ConnectionController.Settings, "UseAnonymous");
-            chkUpdateOnStart.DataBindings.Add("Checked", ConnectionController.Settings, "UpdateSteamCMDStart");
-            chkEnableAutoUpdate.DataBindings.Add("Checked", ConnectionController.Settings, "EnableAutoUpdate");
-            chkEnableAutoBackup.DataBindings.Add("Checked", ConnectionController.Settings, "EnableAutoBackup");
-            txtUpdateInterval.DataBindings.Add("Text", ConnectionController.Settings, "UpdateInterval");
-            txtBackupInterval.DataBindings.Add("Text", ConnectionController.Settings, "BackupInterval");
-            chkDeleteOld.DataBindings.Add("Checked", ConnectionController.Settings, "DeleteOldBackups");
-            chkUseSmartCopy.DataBindings.Add("Checked", ConnectionController.Settings, "UseSmartCopy");
-            tbDeleteDays.DataBindings.Add("Value", ConnectionController.Settings, "DaysToKeep");
-            chkUpdateSequencial.DataBindings.Add("Checked", ConnectionController.Settings, "UpdateSequencial");
+            txtGUID.DataBindings.Add("Text", ConnectionController.Settings, "GUID",true,DataSourceUpdateMode.OnPropertyChanged);
+            txtDefaultInstallationFolder.DataBindings.Add("Text", ConnectionController.Settings, "DefaultInstallFolder", true, DataSourceUpdateMode.OnPropertyChanged);
+            txtBackupFolder.DataBindings.Add("Text", ConnectionController.Settings, "BackupFolder", true, DataSourceUpdateMode.OnPropertyChanged);
+            txtDataFolder.DataBindings.Add("Text", ConnectionController.Settings, "DataFolder", true, DataSourceUpdateMode.OnPropertyChanged);
+            txtSteamCmd.DataBindings.Add("Text", ConnectionController.Settings, "SteamCMDFolder", true, DataSourceUpdateMode.OnPropertyChanged);
+            txtSteamKey.DataBindings.Add("Text", ConnectionController.Settings, "SteamWepApiKey", true, DataSourceUpdateMode.OnPropertyChanged);
+            txtCurseForgeKey.DataBindings.Add("Text", ConnectionController.Settings, "CurseForgeApiKey", true, DataSourceUpdateMode.OnPropertyChanged);
+            chkEnableLogs.DataBindings.Add("Checked", ConnectionController.Settings, "EnableLogs", true, DataSourceUpdateMode.OnPropertyChanged);
+            txtMaxDays.DataBindings.Add("Text", ConnectionController.Settings, "MaxLogsDays", true, DataSourceUpdateMode.OnPropertyChanged);
+            txtMaxFiles.DataBindings.Add("Text", ConnectionController.Settings, "MaxLogFiles", true, DataSourceUpdateMode.OnPropertyChanged);
+            txtUserName.DataBindings.Add("Text", ConnectionController.Settings, "SteamUser", true, DataSourceUpdateMode.OnPropertyChanged);
+            txtPassword.DataBindings.Add("Text", ConnectionController.Settings, "SteamPwd", true, DataSourceUpdateMode.OnPropertyChanged);
+            chkAnonymous.DataBindings.Add("Checked", ConnectionController.Settings, "UseAnonymous", true, DataSourceUpdateMode.OnPropertyChanged);
+            chkUpdateOnStart.DataBindings.Add("Checked", ConnectionController.Settings, "UpdateSteamCMDStart", true, DataSourceUpdateMode.OnPropertyChanged);
+            chkEnableAutoUpdate.DataBindings.Add("Checked", ConnectionController.Settings, "EnableAutoUpdate", true, DataSourceUpdateMode.OnPropertyChanged);
+            chkEnableAutoBackup.DataBindings.Add("Checked", ConnectionController.Settings, "EnableAutoBackup", true, DataSourceUpdateMode.OnPropertyChanged);
+            txtUpdateInterval.DataBindings.Add("Text", ConnectionController.Settings, "UpdateInterval", true, DataSourceUpdateMode.OnPropertyChanged);
+            txtBackupInterval.DataBindings.Add("Text", ConnectionController.Settings, "BackupInterval", true, DataSourceUpdateMode.OnPropertyChanged);
+            chkDeleteOld.DataBindings.Add("Checked", ConnectionController.Settings, "DeleteOldBackups", true, DataSourceUpdateMode.OnPropertyChanged);
+            chkUseSmartCopy.DataBindings.Add("Checked", ConnectionController.Settings, "UseSmartCopy", true, DataSourceUpdateMode.OnPropertyChanged);
+            tbDeleteDays.DataBindings.Add("Value", ConnectionController.Settings, "DaysToKeep", true, DataSourceUpdateMode.OnPropertyChanged);
+            chkUpdateSequencial.DataBindings.Add("Checked", ConnectionController.Settings, "UpdateSequencial", true, DataSourceUpdateMode.OnPropertyChanged);
             txtBackupDays.Text = ConnectionController.Settings.DaysToKeep.ToString();
+              
         }
 
         private void FrmSettings_FormClosing(object sender, FormClosingEventArgs e) {
             if (MessageBox.Show("Do you want to save the changes?", "Save Settings", MessageBoxButtons.OKCancel) == DialogResult.Cancel) return;
+
+            txtUpdateInterval.DataBindings["Text"]?.WriteValue();
 
             ConnectionController.SqlLite.Upsert<Settings>(ConnectionController.Settings);
 

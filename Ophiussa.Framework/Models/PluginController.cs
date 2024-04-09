@@ -32,6 +32,7 @@ namespace OphiussaFramework.Models {
             var pluginInterface = types.First(x => x.GetInterface("IPlugin") != null);
 
             _plugin                      =  (IPlugin)Activator.CreateInstance(pluginInterface, null);
+             
             _plugin.Profile.Type         =  _plugin.GameType;
             _plugin.InstallServerClick   += installServerClick ?? ServerUtils.ServerUtils.InstallServerClick;
             _plugin.BackupServerClick    += backupServerClick  ?? ServerUtils.ServerUtils.BackupServerClick;

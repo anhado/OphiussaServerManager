@@ -57,7 +57,7 @@ namespace OphiussaFramework {
         public static void LoadPlugins() {
             Plugins = new Dictionary<string, PluginController>();
 
-            var l = SqlLite.GetRecords<IPlugin>();
+            var l = SqlLite.GetRecords<IPlugin>("Loaded = 1");
 
             if (l == null) return;
             foreach (var info in l)

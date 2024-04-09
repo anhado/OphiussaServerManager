@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Data;
 
-namespace OphiussaFramework.Extensions {
-    /// <summary>
-    ///     TODO: Update summary.
-    /// </summary>
+namespace OphiussaFramework.Extensions { 
     public static class DataRowExtensions {
         #region "By column Name"
 
