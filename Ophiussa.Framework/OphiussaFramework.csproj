@@ -55,6 +55,9 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DotNetZip, Version=1.16.0.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetZip.1.16.0\lib\net40\DotNetZip.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -151,6 +154,7 @@
     </Compile>
     <Compile Include="Models\AutoManagement.cs" />
     <Compile Include="Models\Branches.cs" />
+    <Compile Include="Models\FilesToBackup.cs" />
     <Compile Include="Models\LinkProfileForm.cs" />
     <Compile Include="Models\ProcessEventArg.cs" />
     <Compile Include="Models\ProcessorAffinity.cs" />

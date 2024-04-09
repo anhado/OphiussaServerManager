@@ -35,7 +35,25 @@ namespace ValheimPlugin {
         public bool                                  IsRunning                   => Utils.GetProcessRunning(Path.Combine(Profile.InstallationFolder, Profile.ExecutablePath)) != null;
         public List<string>                          IgnoredFoldersInComparision { get; set; } = new List<string>();
         public bool                                  IsInstalled                 => IsValidFolder(Profile.InstallationFolder);
-        public List<FileInfo>                        FilesToBackup               => throw new NotImplementedException();
+
+        public List<FilesToBackup> FilesToBackup {
+            get {
+                List<FilesToBackup> ret          =  new List<FilesToBackup>();
+                string              saveFilePath = "";
+
+                Profile prf = (Profile)Profile;
+
+                saveFilePath = Path.Combine(Utils.GetLocalLowFolderPath(), "IronGate\\Valheim\\worlds_local\\");
+
+                if (!string.IsNullOrEmpty(prf.SaveLocation))
+                    saveFilePath = Path.Combine(prf.SaveLocation, "worlds_local\\");
+
+                ret.Add(new FilesToBackup() { File = new FileInfo($"{saveFilePath}{prf.WordName}.db"), EntryName = $"worlds_local\\{prf.WordName}.db" });
+                ret.Add(new FilesToBackup() { File = new FileInfo($"{saveFilePath}{prf.WordName}.fwl"), EntryName = $"worlds_local\\{prf.WordName}.fwl" }); 
+
+                return ret;
+            }
+        } 
         public List<CommandDefinition>               DefaultCommands             { get; set; }
         public List<CommandDefinition>               CustomCommands              { get; set; }
         public ModProvider                           ModProvider                 { get; set; } = ModProvider.None;
@@ -132,7 +150,7 @@ namespace ValheimPlugin {
 
         public Message SetProfile(IProfile profile) {
             try {
-                var p = JsonConvert.DeserializeObject<Profile>(profile.AdditionalSettings);
+                var p =  JsonConvert.DeserializeObject<Profile>(profile.AdditionalSettings)==null ? profile: JsonConvert.DeserializeObject<Profile>(profile.AdditionalSettings);
                 p.ServerBuildVersion = Utils.GetBuild(p);
                 Profile              = p;
 

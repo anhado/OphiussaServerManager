@@ -39,9 +39,9 @@ namespace OphiussaServerManagerV2 {
             txtBackupInterval.DataBindings.Add("Text", ConnectionController.Settings, "BackupInterval");
             chkDeleteOld.DataBindings.Add("Checked", ConnectionController.Settings, "DeleteOldBackups");
             chkUseSmartCopy.DataBindings.Add("Checked", ConnectionController.Settings, "UseSmartCopy");
-            tbDeleteDays.DataBindings.Add("Value", ConnectionController.Settings, "BackupsToKeep");
+            tbDeleteDays.DataBindings.Add("Value", ConnectionController.Settings, "DaysToKeep");
             chkUpdateSequencial.DataBindings.Add("Checked", ConnectionController.Settings, "UpdateSequencial");
-            txtBackupDays.Text = ConnectionController.Settings.BackupsToKeep.ToString();
+            txtBackupDays.Text = ConnectionController.Settings.DaysToKeep.ToString();
         }
 
         private void FrmSettings_FormClosing(object sender, FormClosingEventArgs e) {

@@ -17,7 +17,7 @@ namespace OphiussaFramework.Models {
         public ModProvider             ModProvider                 { get; set; }
         public int                     ServerProcessID             { get; set; }
         public List<CommandDefinition> DefaultCommands             { get; set; }
-        public List<FileInfo>          FilesToBackup               { get; set; }
+        public List<FilesToBackup>     FilesToBackup               { get; set; }
         public IProfile                Profile                     { get; set; }
         public bool                    IsRunning                   { get; set; }
         public bool                    IsInstalled                 { get; set; }

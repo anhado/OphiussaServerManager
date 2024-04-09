@@ -45,14 +45,15 @@ namespace OphiussaFramework.Models {
             _plugin.TabHeaderChangeEvent += tabHeaderChangeEvent;
         }
 
-        public   string GameType    => _plugin.GetInfo().GameType;
-        public   string GameName    => _plugin.GetInfo().Name;
-        internal object Version     => _plugin.PluginVersion;
-        internal object PluginName  => _plugin.PluginName;
-        internal object Loaded      { get; set; } = true;
-        public   bool   IsInstalled => _plugin.IsInstalled;
-        public   bool   IsRunning   => _plugin.IsRunning;
-        public   string CacheFolder => _plugin.CacheFolder;
+        public   string              GameType      => _plugin.GetInfo().GameType;
+        public   string              GameName      => _plugin.GetInfo().Name;
+        internal object              Version       => _plugin.PluginVersion;
+        internal object              PluginName    => _plugin.PluginName;
+        internal object              Loaded        { get; set; } = true;
+        public   bool                IsInstalled   => _plugin.IsInstalled;
+        public   bool                IsRunning     => _plugin.IsRunning;
+        public   string              CacheFolder   => _plugin.CacheFolder;
+        public   List<FilesToBackup> FilesToBackup => _plugin.FilesToBackup;
 
         public void ShowServerInstallationOptions() {
             (new FrmProgress(this)).Show();

@@ -35,7 +35,7 @@ namespace BasePlugin {
         public List<string>                          IgnoredFoldersInComparision { get; set; }
         public string                                CacheFolder                 { get; set; }
         public bool                                  IsInstalled                 => IsValidFolder(Profile.InstallationFolder);
-        public List<FileInfo>                        FilesToBackup               => throw new NotImplementedException();
+        public List<FilesToBackup>                   FilesToBackup               => throw new NotImplementedException();
         public List<CommandDefinition>               DefaultCommands             { get; set; }
         public List<CommandDefinition>               CustomCommands              { get; set; }
         public ModProvider                           ModProvider                 { get; set; } = ModProvider.None; 

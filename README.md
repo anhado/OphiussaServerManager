@@ -4,7 +4,7 @@
 Can be bugs or some functionalities not working yet.
 
 Supported Server Types:
-  - Valheim - Coming Soon
+  - Valheim - Done
   - ARK Survive Envolved - Coming Soon
   - ARK Survive Ascended - Coming Soon
   - VRising - Coming Soon
@@ -14,8 +14,8 @@ Supported Server Types:
   - More(Create a issue if you want more supported games) - Coming Soon
 
 Functionalities:
-  - Server Installation via SteamCMD - Coming Soon
-  - Auto-Restart Servers - Coming Soon
-  - Auto-Backup Servers - Coming Soon
-  - Auto-Update Servers - Coming Soon 
+  - Server Installation via SteamCMD - Done
+  - Auto-Restart Servers - Done
+  - Auto-Backup Servers - Done
+  - Auto-Update Servers - Done
   - More...  - Coming soon

@@ -1,12 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Reflection;
+using System.Runtime;
 using System.Threading;
 using Microsoft.Win32.TaskScheduler;
 using Newtonsoft.Json;
+using NLog.LayoutRenderers;
 using OphiussaFramework.CommonUtils;
 using OphiussaFramework.Interfaces;
 using OphiussaFramework.Models;
@@ -57,16 +62,66 @@ namespace OphiussaFramework.ServerUtils {
 
                 OnProgressChanged(new ProcessEventArg { Message = "Cache Updated" });
                 UpdateServerFromCache(nCtrl);
+                OnProcessCompleted(new ProcessEventArg { Message = "Installed server " + e.Profile.Key, Sucessful = true });
 
             }
-            catch (Exception ex) {
-                OphiussaLogger.Logger.Error(ex);
+            catch (Exception ex) { 
                 OnProcessError(new ProcessEventArg { Message = ex.Message, Sucessful = false, IsError = true });
             }
         }
 
         public static void BackupServerClick(object sender, OphiussaEventArgs e) {
-            throw new NotImplementedException();
+
+            try {
+
+                PluginController nCtrl       = new PluginController(ConnectionController.Plugins[e.Profile.Type].PluginLocation());
+                nCtrl.SetProfile(e.Profile);
+
+
+                if (!Directory.Exists(ConnectionController.Settings.BackupFolder)) Directory.CreateDirectory(ConnectionController.Settings.BackupFolder);
+                if (!Directory.Exists(Path.Combine(ConnectionController.Settings.BackupFolder, "servers", e.Profile.Key))) Directory.CreateDirectory(Path.Combine(ConnectionController.Settings.BackupFolder, "servers", e.Profile.Key));
+                if (!Directory.Exists(Path.Combine(ConnectionController.Settings.BackupFolder, "servers", e.Profile.Key, "temp"))) Directory.CreateDirectory(Path.Combine(ConnectionController.Settings.BackupFolder, "servers", e.Profile.Key, "temp"));
+
+                string zipFileName = Path.Combine(ConnectionController.Settings.BackupFolder,  "servers", e.Profile.Key) + $"\\{e.Profile.Type}_{e.Profile.Key}_{DateTime.Now.ToString("yyyyMMddHHmmssfff", CultureInfo.InvariantCulture)}.zip";
+                string tempFolder  = Path.Combine(ConnectionController.Settings.BackupFolder, "servers", e.Profile.Key, "temp");
+
+                using (var zip = ZipFile.Open(zipFileName, ZipArchiveMode.Create)) {
+                    foreach (var file in nCtrl.FilesToBackup) {
+                        string fileName     = file.File.FullName;
+                        string tempFileName = Path.Combine(tempFolder , System.IO.Path.GetFileName(file.File.FullName));
+                        bool   copied       = false;
+                        int    ntry         = 0;
+                        do {
+                            try {
+                                File.Copy(fileName,tempFileName,true);
+                                copied = true;
+                                ntry   = 99;
+                            }
+                            catch (Exception exception) {
+                                OphiussaLogger.Logger.Error(exception);
+                            }
+                            ntry++;
+                        } while (!copied || ntry<5);
+
+                        zip.CreateEntryFromFile(tempFileName, file.EntryName);
+                        System.IO.File.Delete(tempFileName);
+                    }
+                }
+                
+                //Delete Old Backups
+                DirectoryInfo info  = new DirectoryInfo(tempFolder);
+                List<FileInfo>    files = info.GetFiles().OrderBy(p => p.CreationTime).ToList();
+                foreach (FileInfo file in files) {
+                    var threshold = DateTime.Now.AddDays(-ConnectionController.Settings.DaysToKeep);
+                    if (file.CreationTime <= threshold) {
+                        System.IO.File.Delete(file.FullName);
+                    }
+                }
+            }
+            catch (Exception exception) {
+                OphiussaLogger.Logger.Error(exception);
+            }
+
         }
 
         public static void StartServerClick(object sender, OphiussaEventArgs e) {
@@ -234,8 +289,8 @@ namespace OphiussaFramework.ServerUtils {
 
         public static async void RestartServerSingleServer(string serverKey, bool IsTheAutoUpdateTask = false) {
             try {
-                string[] args = serverKey.Split('_');
-                OphiussaLogger.Logger.Info($"Restarting server : {args[2]}");
+                string[] args = serverKey.Split('_'); 
+                OnProcessStarted(new ProcessEventArg { Message  = $"Restarting server : { args[2]}", Sucessful      = true });
                 var am      = ConnectionController.SqlLite.GetRecord<AutoManagement>($"Id={args[1]}");
                 var profile = ConnectionController.SqlLite.GetRecord<IProfile>($"Key='{args[2]}'");
                 if (profile != null && am != null) {
@@ -250,8 +305,8 @@ namespace OphiussaFramework.ServerUtils {
                         tasks.Add(t);
                     }
 
-                    Task.WaitAll(tasks.ToArray());
-                    OphiussaLogger.Logger.Info($"Stopped server : {args[2]}");
+                    Task.WaitAll(tasks.ToArray()); 
+                    OnProgressChanged( new ProcessEventArg { Message = $"Stopped server : {args[2]}", Sucessful = true });
 
                     var startDate = DateTime.Now;
                     while (nCtrl.IsRunning) {
@@ -261,24 +316,24 @@ namespace OphiussaFramework.ServerUtils {
                     }
 
                     if (am.UpdateServer || IsTheAutoUpdateTask) { 
-                       UpdateServerFromCache(nCtrl);
-                       OphiussaLogger.Logger.Info($"Updated server : {args[2]}");
+                       UpdateServerFromCache(nCtrl); 
+                       OnProgressChanged(new ProcessEventArg { Message = $"Updated server : {args[2]}", Sucessful = true });
                     }
 
                     if ((isRunning && am.RestartServer) || (profile.RestartIfShutdown && IsTheAutoUpdateTask)) {
                         nCtrl.StartServer();
-
-                        OphiussaLogger.Logger.Info($"Started server : {args[2]}");
+                         
+                        OnProgressChanged(new ProcessEventArg { Message = $"Started server : {args[2]}", Sucessful = true });
                     }
-
-                    OphiussaLogger.Logger.Info($"Auto Restarted server : {args[2]}");
+                     
+                    OnProcessCompleted(new ProcessEventArg { Message = $"Auto Restarted server : {args[2]}", Sucessful = true });
                 }
-                else {
-                    OphiussaLogger.Logger.Error($"Invalid Server {serverKey}");
+                else { 
+                    OnProcessError( new ProcessEventArg { Message = $"Invalid Server : {serverKey}", Sucessful = false, IsError = true });
                 }
             }
             catch (Exception e) {
-                OphiussaLogger.Logger.Error(e);
+                OnProcessError(new ProcessEventArg { Message = e.Message, Sucessful = false, IsError = true });
             }
         }
 
@@ -398,8 +453,21 @@ namespace OphiussaFramework.ServerUtils {
             }
         }
 
-        public static void BackupAllServers() {
-            throw new NotImplementedException();
+        public static void BackupAllServers() { 
+
+            var profiles = ConnectionController.SqlLite.GetRecords<IProfile>();
+             
+            profiles.ForEach(prf => {
+                                 try {
+                                     if (!prf.IncludeAutoBackup) return;
+                                     var ctrl = new PluginController(ConnectionController.Plugins[prf.Type].PluginLocation());
+                                     ctrl.SetProfile(prf);
+                                     ctrl.BackupServer(); 
+                                 }
+                                 catch (Exception e) {
+                                     OphiussaLogger.Logger.Error(e);
+                                 }
+                             });
         }
     }
 }

@@ -22,7 +22,7 @@ namespace OphiussaFramework.Interfaces {
         [FieldAttributes(Ignore = true)] int                     ServerProcessID             { get; }
         [FieldAttributes(Ignore = true)] List<CommandDefinition> DefaultCommands             { get; set; }
         [FieldAttributes(Ignore = true)] List<CommandDefinition> CustomCommands              { get; set; }
-        [FieldAttributes(Ignore = true)] List<FileInfo>          FilesToBackup               { get; }
+        [FieldAttributes(Ignore = true)] List<FilesToBackup>     FilesToBackup               { get; }
         [FieldAttributes(Ignore = true)] IProfile                Profile                     { get; }
         [FieldAttributes(Ignore = true)] bool                    IsRunning                   { get; }
         [FieldAttributes(Ignore = true)] bool                    IsInstalled                 { get; }
