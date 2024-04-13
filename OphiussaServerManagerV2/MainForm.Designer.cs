@@ -31,6 +31,14 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btDisable2 = new System.Windows.Forms.Button();
+            this.btRun2 = new System.Windows.Forms.Button();
+            this.lblAutoUpdate = new System.Windows.Forms.Label();
+            this.btDisable1 = new System.Windows.Forms.Button();
+            this.btRun1 = new System.Windows.Forms.Button();
+            this.lblAutoBackup = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.txtPublicIP = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtLocalIP = new System.Windows.Forms.TextBox();
@@ -47,10 +55,12 @@
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pluginsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.branchesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewServerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControlExtra1 = new TradeWright.UI.Forms.TabControlExtra();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.branchesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.timerCheckStatus = new System.Windows.Forms.Timer(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -58,6 +68,14 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel1.Controls.Add(this.btDisable2);
+            this.panel1.Controls.Add(this.btRun2);
+            this.panel1.Controls.Add(this.lblAutoUpdate);
+            this.panel1.Controls.Add(this.btDisable1);
+            this.panel1.Controls.Add(this.btRun1);
+            this.panel1.Controls.Add(this.lblAutoBackup);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.txtPublicIP);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.txtLocalIP);
@@ -67,6 +85,110 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1016, 68);
             this.panel1.TabIndex = 0;
+            // 
+            // btDisable2
+            // 
+            this.btDisable2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btDisable2.BackColor = System.Drawing.Color.Goldenrod;
+            this.btDisable2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btDisable2.ForeColor = System.Drawing.Color.White;
+            this.btDisable2.Location = new System.Drawing.Point(948, 34);
+            this.btDisable2.Name = "btDisable2";
+            this.btDisable2.Size = new System.Drawing.Size(56, 21);
+            this.btDisable2.TabIndex = 27;
+            this.btDisable2.Text = "Disable";
+            this.btDisable2.UseVisualStyleBackColor = false;
+            this.btDisable2.Click += new System.EventHandler(this.btDisable2_Click);
+            // 
+            // btRun2
+            // 
+            this.btRun2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btRun2.BackColor = System.Drawing.Color.DarkGreen;
+            this.btRun2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btRun2.ForeColor = System.Drawing.Color.White;
+            this.btRun2.Location = new System.Drawing.Point(893, 34);
+            this.btRun2.Name = "btRun2";
+            this.btRun2.Size = new System.Drawing.Size(49, 21);
+            this.btRun2.TabIndex = 26;
+            this.btRun2.Text = "Run";
+            this.btRun2.UseVisualStyleBackColor = false;
+            this.btRun2.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // lblAutoUpdate
+            // 
+            this.lblAutoUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblAutoUpdate.AutoSize = true;
+            this.lblAutoUpdate.BackColor = System.Drawing.Color.SteelBlue;
+            this.lblAutoUpdate.ForeColor = System.Drawing.Color.Transparent;
+            this.lblAutoUpdate.Location = new System.Drawing.Point(849, 38);
+            this.lblAutoUpdate.Name = "lblAutoUpdate";
+            this.lblAutoUpdate.Size = new System.Drawing.Size(38, 13);
+            this.lblAutoUpdate.TabIndex = 25;
+            this.lblAutoUpdate.Text = "Ready";
+            // 
+            // btDisable1
+            // 
+            this.btDisable1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btDisable1.BackColor = System.Drawing.Color.Goldenrod;
+            this.btDisable1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btDisable1.ForeColor = System.Drawing.Color.White;
+            this.btDisable1.Location = new System.Drawing.Point(948, 7);
+            this.btDisable1.Name = "btDisable1";
+            this.btDisable1.Size = new System.Drawing.Size(56, 21);
+            this.btDisable1.TabIndex = 24;
+            this.btDisable1.Text = "Disable";
+            this.btDisable1.UseVisualStyleBackColor = false;
+            this.btDisable1.Click += new System.EventHandler(this.btDisable1_Click);
+            // 
+            // btRun1
+            // 
+            this.btRun1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btRun1.BackColor = System.Drawing.Color.DarkGreen;
+            this.btRun1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btRun1.ForeColor = System.Drawing.Color.White;
+            this.btRun1.Location = new System.Drawing.Point(893, 7);
+            this.btRun1.Name = "btRun1";
+            this.btRun1.Size = new System.Drawing.Size(49, 21);
+            this.btRun1.TabIndex = 23;
+            this.btRun1.Text = "Run";
+            this.btRun1.UseVisualStyleBackColor = false;
+            this.btRun1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // lblAutoBackup
+            // 
+            this.lblAutoBackup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblAutoBackup.AutoSize = true;
+            this.lblAutoBackup.BackColor = System.Drawing.Color.SteelBlue;
+            this.lblAutoBackup.ForeColor = System.Drawing.Color.Transparent;
+            this.lblAutoBackup.Location = new System.Drawing.Point(849, 11);
+            this.lblAutoBackup.Name = "lblAutoBackup";
+            this.lblAutoBackup.Size = new System.Drawing.Size(38, 13);
+            this.lblAutoBackup.TabIndex = 22;
+            this.lblAutoBackup.Text = "Ready";
+            // 
+            // label6
+            // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.SteelBlue;
+            this.label6.ForeColor = System.Drawing.Color.Transparent;
+            this.label6.Location = new System.Drawing.Point(776, 38);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(67, 13);
+            this.label6.TabIndex = 21;
+            this.label6.Text = "Auto-Update";
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.SteelBlue;
+            this.label5.ForeColor = System.Drawing.Color.Transparent;
+            this.label5.Location = new System.Drawing.Point(776, 11);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(69, 13);
+            this.label5.TabIndex = 20;
+            this.label5.Text = "Auto-Backup";
             // 
             // txtPublicIP
             // 
@@ -191,16 +313,23 @@
             // pluginsToolStripMenuItem
             // 
             this.pluginsToolStripMenuItem.Name = "pluginsToolStripMenuItem";
-            this.pluginsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pluginsToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.pluginsToolStripMenuItem.Text = "Plugins";
             this.pluginsToolStripMenuItem.Click += new System.EventHandler(this.pluginsToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem1
             // 
             this.settingsToolStripMenuItem1.Name = "settingsToolStripMenuItem1";
-            this.settingsToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.settingsToolStripMenuItem1.Size = new System.Drawing.Size(122, 22);
             this.settingsToolStripMenuItem1.Text = "Settings";
             this.settingsToolStripMenuItem1.Click += new System.EventHandler(this.settingsToolStripMenuItem1_Click);
+            // 
+            // branchesToolStripMenuItem
+            // 
+            this.branchesToolStripMenuItem.Name = "branchesToolStripMenuItem";
+            this.branchesToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.branchesToolStripMenuItem.Text = "Branches";
+            this.branchesToolStripMenuItem.Click += new System.EventHandler(this.branchesToolStripMenuItem_Click);
             // 
             // addNewServerToolStripMenuItem
             // 
@@ -293,12 +422,11 @@
             this.imageList1.Images.SetKeyName(1, "Red");
             this.imageList1.Images.SetKeyName(2, "Green");
             // 
-            // branchesToolStripMenuItem
+            // timerCheckStatus
             // 
-            this.branchesToolStripMenuItem.Name = "branchesToolStripMenuItem";
-            this.branchesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.branchesToolStripMenuItem.Text = "Branches";
-            this.branchesToolStripMenuItem.Click += new System.EventHandler(this.branchesToolStripMenuItem_Click);
+            this.timerCheckStatus.Enabled = true;
+            this.timerCheckStatus.Interval = 500;
+            this.timerCheckStatus.Tick += new System.EventHandler(this.timerCheckStatus_Tick);
             // 
             // MainForm
             // 
@@ -346,6 +474,16 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem branchesToolStripMenuItem;
+        private System.Windows.Forms.Button btDisable2;
+        private System.Windows.Forms.Button btRun2;
+        private System.Windows.Forms.Label lblAutoUpdate;
+        private System.Windows.Forms.Button btDisable1;
+        private System.Windows.Forms.Button btRun1;
+        private System.Windows.Forms.Label lblAutoBackup;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Timer timerCheckStatus;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

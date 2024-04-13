@@ -16,17 +16,21 @@ using OphiussaFramework.Models;
 
 namespace OphiussaFramework {
     public static class ConnectionController {
-        public static List<NetworkTools.IpList>            IpLists       = new List<NetworkTools.IpList>();
-        public static List<ProcessorAffinityModel>         AffinityModel = new List<ProcessorAffinityModel>();
-        public static List<ProcessorAffinity>              ProcessorList = new List<ProcessorAffinity>();
-        public static Dictionary<string, PluginController> Plugins;
-        public static Dictionary<string, PluginController> ServerControllers = new Dictionary<string, PluginController>();
-        public static SqlLite                              SqlLite  { get; set; }
-        public static Settings                             Settings { get; set; }
-        public static Form                                 MainForm { get; internal set; }
-        public static List<Branches>                       Branches { get; internal set; } = new List<Branches>();
+        public static  List<NetworkTools.IpList>            IpLists       = new List<NetworkTools.IpList>();
+        public static  List<ProcessorAffinityModel>         AffinityModel = new List<ProcessorAffinityModel>();
+        public static  List<ProcessorAffinity>              ProcessorList = new List<ProcessorAffinity>();
+        public static  Dictionary<string, PluginController> Plugins;
+        public static  Dictionary<string, PluginController> ServerControllers = new Dictionary<string, PluginController>();
+        public static  SqlLite                              SqlLite  { get; set; }
+        public static  Settings                             Settings { get; set; }
+        public static  Form                                 MainForm { get; internal set; }
+        public static  List<Branches>                       Branches { get; internal set; } = new List<Branches>();
+        private static Thread                               ThreadServerMonitor;
+        private static Thread                               ThreadTaskMonitor;
+        public static  TaskStatus                           BackupTaskStatus     { get; internal set; } = TaskStatus.NotRunning;
+        public static  TaskStatus                           AutoUpdateTaskStatus { get; internal set; } = TaskStatus.NotRunning;
 
-        private static Thread                               Thread;
+
 
         public static void Initialize() {
             SqlLite  = new SqlLite();
@@ -60,10 +64,15 @@ namespace OphiussaFramework {
 
 
         public static void StartServerMonitor() { 
-            Thread = new Thread(ServerMonitorTask);
-            Thread.Start();
+            ThreadServerMonitor = new Thread(ServerMonitorTask);
+            ThreadServerMonitor.Start();
         }
 
+        public static void StartTaskMonitor() {
+            ThreadTaskMonitor = new Thread(TaskMonitor);
+            ThreadTaskMonitor.Start(); 
+        }
+         
         public static void SetMainForm(Form frm) {
             MainForm = frm;
         }
@@ -127,6 +136,52 @@ namespace OphiussaFramework {
                     else
                         ServerControllers[k].SetServerStatus(ServerStatus.NotInstalled, -1);
 
+                }
+
+                Thread.Sleep(1000);
+            }
+        }
+
+        private static void TaskMonitor() {
+            while (true) {
+                if (!Utils.IsFormRunning("MainForm"))
+                    break;
+
+                var lTasks = TaskService.Instance.GetRunningTasks().ToList();
+
+                string taskName = "OphiussaServerManager\\AutoBackup_" + ConnectionController.Settings.GUID;
+                var    task     = TaskService.Instance.GetTask(taskName);
+                if (task != null) {
+                    task.Definition.Principal.RunLevel = TaskRunLevel.Highest;
+                    task.Definition.Settings.Priority  = ProcessPriorityClass.Normal;
+                    var x = lTasks.Find(xc => xc?.Name == "AutoBackup_" + ConnectionController.Settings.GUID);
+
+                    if (x != null) {
+                        BackupTaskStatus = TaskStatus.Running;
+                    }
+                    else {
+                        BackupTaskStatus = TaskStatus.Ready;
+                    }
+                }
+                else {
+                    BackupTaskStatus = TaskStatus.NotRunning;
+                }
+
+                string taskName2 = "OphiussaServerManager\\AutoUpdate_" + ConnectionController.Settings.GUID;
+
+                var task2 = TaskService.Instance.GetTask(taskName2);
+                if (task2 != null) {
+                    var x = lTasks.Find(xc => xc?.Name == "AutoUpdate_" + ConnectionController.Settings.GUID);
+
+                    if (x != null) {
+                        AutoUpdateTaskStatus = TaskStatus.Running;
+                    }
+                    else {
+                        AutoUpdateTaskStatus = TaskStatus.Ready;
+                    }
+                }
+                else {
+                    AutoUpdateTaskStatus = TaskStatus.NotRunning;
                 }
 
                 Thread.Sleep(1000);

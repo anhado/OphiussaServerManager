@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices.ComTypes;
 using System.Windows.Forms;
 using Microsoft.Win32.TaskScheduler;
 using OphiussaFramework;
 using OphiussaFramework.CommonUtils;
+using OphiussaFramework.Enums;
 using OphiussaFramework.Extensions;
 using OphiussaFramework.Interfaces;
 using OphiussaFramework.Models;
@@ -45,6 +49,7 @@ namespace OphiussaServerManagerV2 {
                 LoadProfiles();
 
                 ConnectionController.StartServerMonitor();
+                ConnectionController.StartTaskMonitor();
             }
             catch (Exception exception) {
                 OphiussaLogger.Logger.Error(exception);
@@ -191,6 +196,114 @@ namespace OphiussaServerManagerV2 {
 
         private void branchesToolStripMenuItem_Click(object sender, EventArgs e) {
             (new FrmBranches()).ShowDialog();
+        }
+
+        private void timerCheckStatus_Tick(object sender, EventArgs e) {
+
+            try {
+                //TODO:Place the validation if the task is running in another thread and here only read the values
+
+                timerCheckStatus.Enabled = false;
+
+                switch (ConnectionController.BackupTaskStatus) {
+                    case TaskStatus.NotRunning:
+                        lblAutoBackup.Text      = "Not Running";
+                        lblAutoBackup.ForeColor = Color.White;
+                        btRun1.Visible          = false;
+                        btDisable1.Visible      = false;
+                        break;
+                    case TaskStatus.Running:
+                        lblAutoBackup.Text      = "Is Running";
+                        lblAutoBackup.ForeColor = Color.GreenYellow;
+                        btRun1.Visible          = false;
+                        btDisable1.Visible      = false;
+                        break;
+                    case TaskStatus.Ready:
+                        lblAutoBackup.Text      = "Ready";
+                        lblAutoBackup.ForeColor = Color.White;
+                        btRun1.Visible          = true;
+                        btDisable1.Visible      = true;
+                        break;
+                }
+
+                switch (ConnectionController.AutoUpdateTaskStatus) {
+                    case TaskStatus.NotRunning:
+                        lblAutoUpdate.Text      = "Not Running";
+                        lblAutoUpdate.ForeColor = Color.White;
+                        btRun2.Visible          = false;
+                        btDisable2.Visible      = false;
+                        break;
+                    case TaskStatus.Running:
+                        lblAutoUpdate.Text      = "Is Running";
+                        lblAutoUpdate.ForeColor = Color.GreenYellow;
+                        btRun2.Visible          = false;
+                        btDisable2.Visible      = false;
+                        break;
+                    case TaskStatus.Ready:
+                        lblAutoUpdate.Text      = "Ready";
+                        lblAutoUpdate.ForeColor = Color.White;
+                        btRun2.Visible          = true;
+                        btDisable2.Visible      = true;
+                        break;
+                } 
+            }
+            catch (Exception ex) {
+                OphiussaLogger.Logger.Error(ex); 
+            }
+            finally {
+                timerCheckStatus.Enabled = true;
+            }
+        }
+         
+
+        private void button1_Click_1(object sender, EventArgs e) {
+            string taskName2 = "OphiussaServerManager\\AutoBackup_" + ConnectionController.Settings.GUID;
+
+            var task2 = TaskService.Instance.GetTask(taskName2);
+            if (task2 != null) {
+                task2.Run();
+                btRun1.Visible     = false;
+                btDisable1.Visible = false;
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e) {
+            string taskName = "OphiussaServerManager\\AutoUpdate_" + ConnectionController.Settings.GUID;
+
+            var task = TaskService.Instance.GetTask(taskName);
+            if (task != null) {
+                btRun2.Visible     = false;
+                btDisable2.Visible = false;
+                task.Run();
+            }
+        }
+
+        private void btDisable1_Click(object sender, EventArgs e) {
+
+            //todo:fix this, is not working
+            string taskName = "OphiussaServerManager\\AutoBackup_" + ConnectionController.Settings.GUID;
+
+            var task = TaskService.Instance.GetTask(taskName);
+            if (task != null) {
+                task.Enabled = false;
+                task.RegisterChanges();
+                btRun1.Visible     = false;
+                btDisable1.Visible = false; 
+            }
+        }
+
+        private void btDisable2_Click(object sender, EventArgs e) {
+
+            //todo:fix this, is not working
+            string taskName = "OphiussaServerManager\\AutoUpdate_" + ConnectionController.Settings.GUID;
+
+            var task = TaskService.Instance.GetTask(taskName);
+            if (task != null) {
+                task.Enabled = false;
+                task.RegisterChanges();
+                btRun1.Visible     = false;
+                btDisable1.Visible = false;
+            }
         }
     }
 }
