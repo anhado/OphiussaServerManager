@@ -29,6 +29,8 @@ namespace OphiussaFramework.Interfaces {
         [FieldAttributes(Ignore = true)] TabPage                 TabPage                     { get; }
         [FieldAttributes(Ignore = true)] List<string>            IgnoredFoldersInComparision { get; }
         [FieldAttributes(Ignore = true)] string                  CacheFolder                 { get; set; }
+        [FieldAttributes(Ignore = true)] ServerStatus            ServerStatus                { get;}
+        void                                                     SetServerStatus(ServerStatus status, int serverProcessId);
         PluginType                                               GetInfo();
         Form                                                     GetConfigurationForm(TabPage tab);
         Task                                                     BackupServer();
@@ -61,5 +63,6 @@ namespace OphiussaFramework.Interfaces {
         event EventHandler<OphiussaEventArgs>                    InstallServerClick;
         event EventHandler<OphiussaEventArgs>                    ChooseFolderClick;
         event EventHandler<OphiussaEventArgs>                    TabHeaderChangeEvent;
+        event EventHandler<OphiussaEventArgs>                    ServerStatusChangedEvent;
     }
 }

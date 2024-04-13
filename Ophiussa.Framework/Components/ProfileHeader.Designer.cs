@@ -265,6 +265,7 @@
             this.cboBranch.Name = "cboBranch";
             this.cboBranch.Size = new System.Drawing.Size(303, 21);
             this.cboBranch.TabIndex = 19;
+            this.cboBranch.Click += new System.EventHandler(this.cboBranch_Click);
             // 
             // label5
             // 

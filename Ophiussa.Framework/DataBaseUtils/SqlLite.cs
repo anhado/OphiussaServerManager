@@ -427,5 +427,55 @@ namespace OphiussaFramework.DataBaseUtils {
                 return false;
             }
         }
+
+        public bool CanDelete<T>(object obj) {
+            try {
+                var temp = typeof(T); 
+                foreach (var pro in temp.GetProperties()) {
+                    string value      = null;
+                    string columnName = null;
+                    var    propAttr   = pro.GetCustomAttributes(true).ToList();
+                    foreach (var attr in propAttr) {
+                        if ((attr is FieldAttributes atr2)) {
+                            value = GetValue(pro, obj)?.ToString();
+                        } 
+                        if (!(attr is FieldDependesOn atr)) continue;
+
+                        columnName = atr.ColumnName;
+                        string tableName = atr.Type.Name;
+                        var    classAttr = atr.Type.GetCustomAttributes(true).ToList();
+
+                        if (classAttr.Count > 0) {
+                            bool foundAttribute = false;
+                            classAttr.ForEach(attr2 => {
+                                                  if (attr2 is TableAttributes atr3) {
+                                                      tableName      = atr3.TableName;
+                                                      foundAttribute = true;
+                                                  }
+                                              });
+                            if (!foundAttribute) tableName = temp.Name;
+                        }
+
+                        //validate if in use 
+                        SQLiteDataAdapter da;
+                        DataTable         dt = new DataTable();
+                        using (var cmd = DbConnection().CreateCommand()) {
+                            cmd.CommandText = $@"SELECT *  FROM {tableName} WHERE {columnName} = '{value}';"; 
+
+                            da = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
+                            da.Fill(dt);
+                        }
+
+                        if (dt.Rows.Count > 0) return false;
+                    }
+                }
+
+                return true;
+            }
+            catch (Exception e) {
+                OphiussaLogger.Logger.Error(e);
+                return false;
+            }
+        }
     }
 }

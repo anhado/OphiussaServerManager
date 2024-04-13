@@ -43,6 +43,8 @@ namespace OphiussaServerManagerV2 {
                 }
 
                 LoadProfiles();
+
+                ConnectionController.StartServerMonitor();
             }
             catch (Exception exception) {
                 OphiussaLogger.Logger.Error(exception);
@@ -185,6 +187,10 @@ namespace OphiussaServerManagerV2 {
 
         private void refreshLocalIPToolStripMenuItem_Click(object sender, EventArgs e) {
             txtLocalIP.Text = NetworkTools.GetHostIp();
+        }
+
+        private void branchesToolStripMenuItem_Click(object sender, EventArgs e) {
+            (new FrmBranches()).ShowDialog();
         }
     }
 }

@@ -133,6 +133,12 @@
     <Compile Include="Forms\FrmServerMonitor.Designer.cs">
       <DependentUpon>FrmServerMonitor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmBranches.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmBranches.Designer.cs">
+      <DependentUpon>FrmBranches.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmServerMonitor.resx">
       <DependentUpon>FrmServerMonitor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmBranches.resx">
+      <DependentUpon>FrmBranches.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

@@ -139,6 +139,7 @@
     <Compile Include="Components\ProfileHeader.Designer.cs">
       <DependentUpon>ProfileHeader.cs</DependentUpon>
     </Compile>
+    <Compile Include="Enums\ServerStatus.cs" />
     <Compile Include="Extensions\CommonExtensions.cs" />
     <Compile Include="Forms\FrmProcessors.cs">
       <SubType>Form</SubType>

@@ -25,17 +25,16 @@ namespace ValheimPlugin {
         public string ExecutablePath { get; set; } = "valheim_server.exe"; //THIS WILL OVERWRITE THE PROFILE, I JUST NEED THAT IN PROFILE TO AVOID Deserialize THE ADDITIONAL SETTINGS
 
         // internal static readonly PluginType              Info = new PluginType { GameType = "Game1", Name = "Game 1 Name" };
-        public IProfile                              Profile                     { get; set; } = new Profile();
-        public string                                GameType                    { get; set; } = "Valheim";
-        public string                                GameName                    { get; set; } = "Valheim";
-        public TabPage                               TabPage                     { get; set; }
-        public string                                PluginVersion               { get; set; } = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
-        public string                                PluginName                  { get; set; } = Path.GetFileName(FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileName);
-        public int                                   ServerProcessID             => Utils.GetProcessRunning(Path.Combine(Profile.InstallationFolder, Profile.ExecutablePath)).Id;
-        public bool                                  IsRunning                   => Utils.GetProcessRunning(Path.Combine(Profile.InstallationFolder, Profile.ExecutablePath)) != null;
-        public List<string>                          IgnoredFoldersInComparision { get; set; } = new List<string>();
-        public bool                                  IsInstalled                 => IsValidFolder(Profile.InstallationFolder);
-
+        public IProfile     Profile                     { get; set; } = new Profile();
+        public string       GameType                    { get; set; } = "Valheim";
+        public string       GameName                    { get; set; } = "Valheim";
+        public TabPage      TabPage                     { get; set; }
+        public string       PluginVersion               { get; set; } = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
+        public string       PluginName                  { get; set; } = Path.GetFileName(FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileName);
+        public List<string> IgnoredFoldersInComparision { get; set; } = new List<string>();
+        public int          ServerProcessID             { get; set; } // => Utils.GetProcessRunning(Path.Combine(Profile.InstallationFolder, Profile.ExecutablePath)).Id;
+        public bool         IsRunning                   { get; set; } //=> Utils.GetProcessRunning(Path.Combine(Profile.InstallationFolder, Profile.ExecutablePath)) != null;
+        public bool         IsInstalled                 { get; set; } //=> IsValidFolder(Profile.InstallationFolder);
         public List<FilesToBackup> FilesToBackup {
             get {
                 List<FilesToBackup> ret          =  new List<FilesToBackup>();
@@ -54,11 +53,12 @@ namespace ValheimPlugin {
                 return ret;
             }
         } 
-        public List<CommandDefinition>               DefaultCommands             { get; set; }
-        public List<CommandDefinition>               CustomCommands              { get; set; }
-        public ModProvider                           ModProvider                 { get; set; } = ModProvider.None;
-        public bool                                  Loaded                      { get; set; } = true;
-        public string                                CacheFolder                 { get; set; }
+        public List<CommandDefinition>               DefaultCommands { get; set; }
+        public List<CommandDefinition>               CustomCommands  { get; set; }
+        public ModProvider                           ModProvider     { get; set; } = ModProvider.None;
+        public bool                                  Loaded          { get; set; } = true;
+        public string                                CacheFolder     { get; set; }
+        public ServerStatus                          ServerStatus    { get; internal set; }
         public event EventHandler<OphiussaEventArgs> BackupServerClick;
         public event EventHandler<OphiussaEventArgs> StopServerClick;
         public event EventHandler<OphiussaEventArgs> StartServerClick;
@@ -69,6 +69,41 @@ namespace ValheimPlugin {
         public event EventHandler<OphiussaEventArgs> OpenRCONClick;
         public event EventHandler<OphiussaEventArgs> ChooseFolderClick;
         public event EventHandler<OphiussaEventArgs> TabHeaderChangeEvent;
+        public event EventHandler<OphiussaEventArgs> ServerStatusChangedEvent;
+
+        //TODO:think in a way to do this in controller
+        public void SetServerStatus(ServerStatus status, int serverProcessId) {
+            switch (status) {
+                case ServerStatus.NotInstalled:
+                    IsInstalled     = false;
+                    IsRunning       = false;
+                    ServerProcessID = -1;
+                    break;
+                case ServerStatus.Running:
+                    IsInstalled     = true;
+                    IsRunning       = true;
+                    ServerProcessID = serverProcessId;
+                    break;
+                case ServerStatus.Starting:
+                    IsInstalled     = true;
+                    IsRunning       = true;
+                    ServerProcessID = serverProcessId;
+                    break;
+                case ServerStatus.Stopped:
+                    IsInstalled     = true;
+                    IsRunning       = false;
+                    ServerProcessID = -1;
+                    break;
+                case ServerStatus.Stopping:
+                    IsInstalled     = true;
+                    IsRunning       = true;
+                    ServerProcessID = serverProcessId;
+                    break;
+            }
+
+            //TabHeaderChangeEvent?.Invoke(this, new OphiussaEventArgs() { Plugin = this, Profile = Profile });
+            ServerStatus =status;
+        }
 
         public Process GetExeProcess() {
             return Utils.GetProcessRunning(Path.Combine(Profile.InstallationFolder, Profile.ExecutablePath));

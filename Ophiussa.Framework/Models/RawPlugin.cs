@@ -24,7 +24,12 @@ namespace OphiussaFramework.Models {
         public TabPage                 TabPage                     { get; set; }
         public List<CommandDefinition> CustomCommands              { get; set; }
         public List<string>            IgnoredFoldersInComparision { get; set; }
-        public string                  CacheFolder                 { get; set; }
+        public string                  CacheFolder                 { get; set; } 
+        public ServerStatus            ServerStatus                { get;}
+
+        public void SetServerStatus(ServerStatus status, int serverProcessId) {
+            throw new NotImplementedException();
+        }
 
         public PluginType GetInfo() {
             throw new NotImplementedException();
@@ -114,7 +119,6 @@ namespace OphiussaFramework.Models {
             throw new NotImplementedException();
         }
 
-
         public event EventHandler<OphiussaEventArgs> SaveClick;
         public event EventHandler<OphiussaEventArgs> ReloadClick;
         public event EventHandler<OphiussaEventArgs> SyncClick;
@@ -125,5 +129,6 @@ namespace OphiussaFramework.Models {
         public event EventHandler<OphiussaEventArgs> InstallServerClick;
         public event EventHandler<OphiussaEventArgs> ChooseFolderClick;
         public event EventHandler<OphiussaEventArgs> TabHeaderChangeEvent;
+        public event EventHandler<OphiussaEventArgs> ServerStatusChangedEvent;
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using OphiussaFramework.Enums;
 using OphiussaFramework.Forms;
 using OphiussaFramework.Interfaces;
 
@@ -139,5 +140,7 @@ namespace OphiussaFramework.Models {
         }
 
         public List<string> IgnoredFoldersInComparision => _plugin.IgnoredFoldersInComparision;
+
+        public void SetServerStatus(ServerStatus status, int ServerProcessID) => _plugin.SetServerStatus(status, ServerProcessID);
     }
 }

@@ -89,6 +89,9 @@ namespace OphiussaServerManagerV2 {
                 foreach (DataGridViewRow selectedRow in dataGridView1.SelectedRows)
                     try {
                         var obj = plugins[selectedRow.Index];
+
+                        if (!ConnectionController.UnloadPlugins(obj)) throw new Exception("Plugin in Use");
+
                         ConnectionController.SqlLite.Delete<IPlugin>(obj.PluginName);
                         plugins.RemoveAt(selectedRow.Index);
 

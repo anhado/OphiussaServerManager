@@ -56,7 +56,7 @@ namespace OphiussaFramework.CommonUtils {
 
         internal static bool IsFormRunning(string formName) {
             var fc = Application.OpenForms;
-
+            if(fc.Count==0) return false;
             foreach (Form frm in fc)
                 //iterate through
                 if (frm.Name == formName)

@@ -18,11 +18,11 @@ namespace OphiussaFramework.Components {
             try {
                 if (Profile == null) return;
                 timerGetProcess.Enabled = false;
-                btStart.Text            = IsRunning ? "Stop" : "Start";
-                btUpdate.Enabled        = !IsRunning;
-                btRCON.Enabled          = IsRunning && RconEnabled;
+                btStart.Text            = Plugin.IsRunning ? "Stop" : "Start";
+                btUpdate.Enabled        = !Plugin.IsRunning;
+                btRCON.Enabled          = Plugin.IsRunning && RconEnabled;
 
-                if (Plugin.IsInstalled != _isInstalled) {
+                if (Plugin.IsInstalled != _isInstalled || Plugin.IsRunning != _isRunning) {
                     CheckInstallStatus();
                     Plugin.TabHeaderChange();
                 }
@@ -34,50 +34,15 @@ namespace OphiussaFramework.Components {
                 timerGetProcess.Enabled = true;
             }
         }
+         
 
-        private void IsRunningProcess() {
-            while (true) {
-                if (!Utils.IsFormRunning("MainForm"))
-                    break;
-
-                if (Plugin == null) continue;
-                if (!Plugin.IsInstalled) continue;
-                Process process = null;
-
-                if (Tab.ImageIndex == 0) continue;
-
-                if (_processId == -1)
-                    process = Plugin.GetExeProcess();
-                else
-                    try {
-                        process = Process.GetProcessById(_processId);
-                    }
-                    catch (Exception) {
-                        // ignored
-                    }
-
-                if (process != null) {
-                    _processId = process.Id;
-                    IsRunning  = true;
-                }
-                else {
-                    _processId = -1;
-                    IsRunning  = false;
-                }
-
-                Thread.Sleep(timerGetProcess.Interval);
-            }
-        }
-
-        private void ProfileHeader_Load(object sender, EventArgs e) {
-            var thread = new Thread(IsRunningProcess);
-            thread.Start();
+        private void ProfileHeader_Load(object sender, EventArgs e) { 
 
             timerGetProcess.Enabled = true;
 
             if (Profile == null) return;
 
-            cboBranch.DataSource    = ConnectionController.SqlLite.GetRecords<Branches>();
+            cboBranch.DataSource    = ConnectionController.Branches;
             cboBranch.ValueMember   = "Code";
             cboBranch.DisplayMember = "Name";
 
@@ -93,23 +58,12 @@ namespace OphiussaFramework.Components {
         }
 
         private void CheckInstallStatus() {
-            if (!Plugin.IsInstalled) {
-                btUpdate.Text = "Install";
-                _isInstalled  = false;
-            }
-            else {
-                if (Plugin.IsValidFolder(txtLocation.Text)) {
-                    btUpdate.Text = "Update/Verify";
-                    _isInstalled  = true;
-                }
-                else {
-                    btUpdate.Text = "Install";
-                    _isInstalled  = false;
-                }
-            }
+            if (!Plugin.IsInstalled) btUpdate.Text = "Install";
+            else btUpdate.Text                     = "Update/Verify";
 
-            btStart.Enabled = _isInstalled;
-
+            btStart.Enabled = Plugin.IsInstalled;
+            _isInstalled    = Plugin.IsInstalled;
+            _isRunning    = Plugin.IsRunning;
             txtVersion.Text = Plugin.GetVersion();
             txtBuild.Text   = Plugin.GetBuild();
             Plugin.TabHeaderChange();
@@ -218,6 +172,7 @@ namespace OphiussaFramework.Components {
         private int  _processId   = -1;
         private bool _RconEnabled = true;
         private bool _isInstalled;
+        private bool _isRunning;
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         [Browsable(false)]
@@ -257,5 +212,12 @@ namespace OphiussaFramework.Components {
         }
 
         #endregion
+
+        private void cboBranch_Click(object sender, EventArgs e) {
+
+            cboBranch.DataSource    = ConnectionController.Branches;
+            cboBranch.ValueMember   = "Code";
+            cboBranch.DisplayMember = "Name";
+        }
     }
 }

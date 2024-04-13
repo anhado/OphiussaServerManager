@@ -39,7 +39,8 @@ namespace BasePlugin {
         public List<CommandDefinition>               DefaultCommands             { get; set; }
         public List<CommandDefinition>               CustomCommands              { get; set; }
         public ModProvider                           ModProvider                 { get; set; } = ModProvider.None; 
-        public bool                                  Loaded                      { get; set; } = true; 
+        public bool                                  Loaded                      { get; set; } = true;
+        public ServerStatus                          ServerStatus                { get; }
         public event EventHandler<OphiussaEventArgs> BackupServerClick;
         public event EventHandler<OphiussaEventArgs> StopServerClick;
         public event EventHandler<OphiussaEventArgs> StartServerClick;
@@ -50,7 +51,12 @@ namespace BasePlugin {
         public event EventHandler<OphiussaEventArgs> OpenRCONClick;
         public event EventHandler<OphiussaEventArgs> ChooseFolderClick;
         public event EventHandler<OphiussaEventArgs> TabHeaderChangeEvent;
+        public event EventHandler<OphiussaEventArgs> ServerStatusChangedEvent;
 
+
+        public void SetServerStatus(ServerStatus status, int serverProcessId) {
+            throw new NotImplementedException();
+        }
 
         public Process GetExeProcess() {
             return Utils.GetProcessRunning(Path.Combine(Profile.InstallationFolder, Profile.ExecutablePath));

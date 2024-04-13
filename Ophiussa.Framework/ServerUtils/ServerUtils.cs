@@ -99,6 +99,7 @@ namespace OphiussaFramework.ServerUtils {
                             }
                             catch (Exception exception) {
                                 OphiussaLogger.Logger.Error(exception);
+                                Thread.Sleep(1000);
                             }
                             ntry++;
                         } while (!copied || ntry<5);

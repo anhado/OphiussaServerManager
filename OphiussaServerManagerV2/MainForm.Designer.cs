@@ -50,6 +50,7 @@
             this.addNewServerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControlExtra1 = new TradeWright.UI.Forms.TabControlExtra();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.branchesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -181,7 +182,8 @@
             // 
             this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.pluginsToolStripMenuItem,
-            this.settingsToolStripMenuItem1});
+            this.settingsToolStripMenuItem1,
+            this.branchesToolStripMenuItem});
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.settingsToolStripMenuItem.Text = "Settings";
@@ -189,14 +191,14 @@
             // pluginsToolStripMenuItem
             // 
             this.pluginsToolStripMenuItem.Name = "pluginsToolStripMenuItem";
-            this.pluginsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.pluginsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.pluginsToolStripMenuItem.Text = "Plugins";
             this.pluginsToolStripMenuItem.Click += new System.EventHandler(this.pluginsToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem1
             // 
             this.settingsToolStripMenuItem1.Name = "settingsToolStripMenuItem1";
-            this.settingsToolStripMenuItem1.Size = new System.Drawing.Size(116, 22);
+            this.settingsToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.settingsToolStripMenuItem1.Text = "Settings";
             this.settingsToolStripMenuItem1.Click += new System.EventHandler(this.settingsToolStripMenuItem1_Click);
             // 
@@ -291,6 +293,13 @@
             this.imageList1.Images.SetKeyName(1, "Red");
             this.imageList1.Images.SetKeyName(2, "Green");
             // 
+            // branchesToolStripMenuItem
+            // 
+            this.branchesToolStripMenuItem.Name = "branchesToolStripMenuItem";
+            this.branchesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.branchesToolStripMenuItem.Text = "Branches";
+            this.branchesToolStripMenuItem.Click += new System.EventHandler(this.branchesToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -336,6 +345,7 @@
         private System.Windows.Forms.ToolStripMenuItem updateSteamCMDToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem branchesToolStripMenuItem;
     }
 }
 

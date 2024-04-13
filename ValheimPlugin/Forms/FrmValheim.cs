@@ -222,8 +222,7 @@ namespace ValheimPlugin.Forms {
         private async void profileHeader1_ClickUpgrade(object sender, EventArgs e) {
             try {
 
-                ConnectionController.ServerControllers[Profile.Key].ShowServerInstallationOptions();
-                //await _plugin.InstallServer(); 
+                ConnectionController.ServerControllers[Profile.Key].ShowServerInstallationOptions(); 
             }
             catch (Exception exception) {
                 MessageBox.Show(exception.Message);
@@ -231,7 +230,7 @@ namespace ValheimPlugin.Forms {
         }
 
         private void profileHeader1_ClickStartStop(object sender, EventArgs e) {
-            if (!profileHeader1.IsRunning)
+            if (!_plugin.IsRunning)
                 _plugin.StartServer();
             else
                 _plugin.StopServer();
@@ -239,18 +238,7 @@ namespace ValheimPlugin.Forms {
 
         private void FrmConfigurationForm_Load(object sender, EventArgs e) {
         }
-
-        private void profileHeader1_TabHeaderChange(object sender, OphiussaEventArgs e) {
-            _plugin.TabHeaderChange();
-        }
-
-        private void button1_Click(object sender, EventArgs e) {
-            var cmdBuilder = new CommandBuilder(_plugin.DefaultCommands);
-            cmdBuilder.OpenCommandEditor(fullCommand => {
-                                             _plugin.DefaultCommands = fullCommand.ComandList;
-                                             MessageBox.Show(fullCommand.ToString());
-                                         });
-        }
+           
 
         private void button2_Click(object sender, EventArgs e) {
             fdDiag.SelectedPath = txtSaveLocation.Text;
