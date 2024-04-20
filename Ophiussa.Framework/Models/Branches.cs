@@ -10,7 +10,7 @@ namespace OphiussaFramework.Models {
         public int Id { get; set; }
 
         [FieldAttributes(DataType = "Varchar(100)")]
-        [FieldDependesOn(typeof(IProfile), "Branch")]
+        [FieldDependesOn(typeof(IProfile), "Branch")] 
         public string Code { get; set; }
 
         [FieldAttributes(DataType = "Varchar(250)")]

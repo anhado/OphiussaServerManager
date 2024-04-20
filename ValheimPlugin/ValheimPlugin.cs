@@ -100,8 +100,7 @@ namespace ValheimPlugin {
                     ServerProcessID = serverProcessId;
                     break;
             }
-
-            //TabHeaderChangeEvent?.Invoke(this, new OphiussaEventArgs() { Plugin = this, Profile = Profile });
+             
             ServerStatus =status;
         }
 
@@ -126,12 +125,14 @@ namespace ValheimPlugin {
             TabHeaderChangeEvent?.Invoke(this, new OphiussaEventArgs { Profile = Profile, Plugin = this });
         }
 
-        public async Task InstallServer(bool fromCache) { 
+        public async Task InstallServer(bool fromCache, bool showSteamCMD, bool startServerAtEnd) {
+            if (!Directory.Exists(Profile.InstallationFolder)) Directory.CreateDirectory(Profile.InstallationFolder);
+
             if(Directory.GetDirectories(Profile.InstallationFolder).Any())
                 if (!IsValidFolder(Profile.InstallationFolder))
                     throw new Exception("Invalid installation folder");
 
-            InstallServerClick?.Invoke(this, new OphiussaEventArgs { Profile = Profile, Plugin = this });
+            InstallServerClick?.Invoke(this, new OphiussaEventArgs { Profile = Profile, Plugin = this, InstallFromCache = fromCache, ShowSteamCMD = showSteamCMD, StartServerAtEnd=startServerAtEnd });
         }
 
         public async Task StartServer() {
@@ -327,5 +328,7 @@ namespace ValheimPlugin {
 
             return builder.ToString();
         }
+
+        public string GetServerName() => ((Profile)Profile).ServerName;
     }
 }

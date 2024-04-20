@@ -80,7 +80,7 @@ namespace ValheimPlugin.Forms {
             rbPortalsVeryHard.Checked = Profile.Portals == Portals.VeryHard;
 
 
-            txtServerName.DataBindings.Add("Text", _plugin.Profile, "Name", true, DataSourceUpdateMode.OnPropertyChanged);
+            txtServerName.DataBindings.Add("Text", _plugin.Profile, "ServerName", true, DataSourceUpdateMode.OnPropertyChanged);
             txtServerPWD.DataBindings.Add("Text", _plugin.Profile, "ServerPassword", true, DataSourceUpdateMode.OnPropertyChanged);
             txtLocalIP.DataBindings.Add("Text", _plugin.Profile, "MultiHome", true, DataSourceUpdateMode.OnPropertyChanged);
             txtServerPort.DataBindings.Add("Text", _plugin.Profile, "ServerPort", true, DataSourceUpdateMode.OnPropertyChanged);

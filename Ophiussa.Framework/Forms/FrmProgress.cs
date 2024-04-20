@@ -33,16 +33,16 @@ namespace OphiussaFramework.Forms {
             _isUpdating = true;
 
             Task.Factory.StartNew(async _ => {
-                                      await Controller.InstallServer();
+                                      await Controller.InstallServer(chkUpdateCache.Checked, chkShowSteam.Checked, chkStartServer.Checked);
                                       _isUpdating = false;
-                                  }, null);
+            }, null);
         } 
         private void OnProgressChanged(object sender, ProcessEventArg e) {
             _myQueue.Enqueue(e); 
         }
 
         private void OnProcessCompleted(object sender, ProcessEventArg e) {
-            _myQueue.Enqueue(e); 
+            _myQueue.Enqueue(e);
         }
 
         private void OnProcessStarted(object sender, ProcessEventArg e) {
@@ -73,7 +73,6 @@ namespace OphiussaFramework.Forms {
         private void timer_updateBox_Tick(object sender, EventArgs e) {
 
             try {
-                panel1.Enabled          = !_isUpdating;
                 timer_updateBox.Enabled = false;
                 foreach (var item in _myQueue)
                     if (_myQueue.TryDequeue(out var item2)) {
@@ -82,6 +81,10 @@ namespace OphiussaFramework.Forms {
                         richTextBox1.ScrollToCaret();
                         richTextBox1.Refresh();
                     }
+
+                if (_myQueue.Count==0) {
+                    panel1.Enabled = !_isUpdating;
+                }
             }
             catch (Exception) {
             }

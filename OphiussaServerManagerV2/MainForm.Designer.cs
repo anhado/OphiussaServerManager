@@ -61,6 +61,8 @@
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.timerCheckStatus = new System.Windows.Forms.Timer(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.serverMonitorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -244,6 +246,8 @@
             // toolsToolStripMenuItem
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.serverMonitorToolStripMenuItem,
+            this.toolStripMenuItem1,
             this.refreshPublicIPToolStripMenuItem,
             this.refreshLocalIPToolStripMenuItem,
             this.createDesktopIconToolStripMenuItem,
@@ -428,6 +432,18 @@
             this.timerCheckStatus.Interval = 500;
             this.timerCheckStatus.Tick += new System.EventHandler(this.timerCheckStatus_Tick);
             // 
+            // serverMonitorToolStripMenuItem
+            // 
+            this.serverMonitorToolStripMenuItem.Name = "serverMonitorToolStripMenuItem";
+            this.serverMonitorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.serverMonitorToolStripMenuItem.Text = "Server Monitor";
+            this.serverMonitorToolStripMenuItem.Click += new System.EventHandler(this.serverMonitorToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -484,6 +500,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Timer timerCheckStatus;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ToolStripMenuItem serverMonitorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
     }
 }
 

@@ -305,5 +305,9 @@ namespace OphiussaServerManagerV2 {
                 btDisable1.Visible = false;
             }
         }
+
+        private void serverMonitorToolStripMenuItem_Click(object sender, EventArgs e) {
+            (new FrmServerMonitor()).Show();
+        }
     }
 }

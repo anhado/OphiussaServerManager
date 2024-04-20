@@ -158,10 +158,12 @@
     <Compile Include="Models\Branches.cs" />
     <Compile Include="Models\FilesToBackup.cs" />
     <Compile Include="Models\LinkProfileForm.cs" />
+    <Compile Include="Models\ServerEventArgs.cs" />
     <Compile Include="Models\ProcessEventArg.cs" />
     <Compile Include="Models\ProcessorAffinity.cs" />
     <Compile Include="Models\ProcessorAffinityModel.cs" />
     <Compile Include="Models\ServerCache.cs" />
+    <Compile Include="Models\ServerMonitor.cs" />
     <Compile Include="Models\TableAttributes.cs" />
     <Compile Include="Models\FieldAttributes.cs" />
     <Compile Include="DataBaseUtils\SqlLite.cs" />

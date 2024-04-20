@@ -36,7 +36,7 @@ namespace OphiussaFramework.Interfaces {
         Task                                                     BackupServer();
         Task                                                     StopServer(bool force = false);
         Task                                                     StartServer();
-        Task                                                     InstallServer(bool fromCache = false);
+        Task                                                     InstallServer(bool fromCache = false, bool showSteamCMD = false, bool startServerAtEnd = false);
         void                                                     Save();
         void                                                     Reload();
         void                                                     Sync();
@@ -52,7 +52,8 @@ namespace OphiussaFramework.Interfaces {
         void                                                     TabHeaderChange();
         string                                                   GetVersion();
         string                                                   GetBuild();
-        string                                                   GetCommandLinesArguments(); 
+        string                                                   GetCommandLinesArguments();
+        string                                                   GetServerName();
         event EventHandler<OphiussaEventArgs>                    SaveClick;
         event EventHandler<OphiussaEventArgs>                    ReloadClick;
         event EventHandler<OphiussaEventArgs>                    SyncClick;

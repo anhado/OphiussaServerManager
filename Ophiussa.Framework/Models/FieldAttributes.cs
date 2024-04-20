@@ -10,7 +10,7 @@ namespace OphiussaFramework {
         public string     DataType      { get; set; } 
     }
 
-    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Struct)]
+    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Struct, AllowMultiple = true)]
     public class FieldDependesOn :Attribute {
         public FieldDependesOn(Type type, string columnName) {
             Type       = type;

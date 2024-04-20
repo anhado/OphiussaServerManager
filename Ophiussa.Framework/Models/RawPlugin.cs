@@ -51,7 +51,7 @@ namespace OphiussaFramework.Models {
             throw new NotImplementedException();
         }
 
-        public Task InstallServer(bool fromCache) {
+        public Task InstallServer(bool fromCache, bool showSteamCMD, bool startServerAtEnd) {
             throw new NotImplementedException();
         }
 
@@ -118,6 +118,8 @@ namespace OphiussaFramework.Models {
         public string GetCommandLinesArguments() {
             throw new NotImplementedException();
         }
+
+        public string GetServerName() => Profile.Name;
 
         public event EventHandler<OphiussaEventArgs> SaveClick;
         public event EventHandler<OphiussaEventArgs> ReloadClick;

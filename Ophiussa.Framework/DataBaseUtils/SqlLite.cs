@@ -37,7 +37,7 @@ namespace OphiussaFramework.DataBaseUtils {
 
                 using (var cmd = DbConnection().CreateCommand()) {
                     cmd.CommandText = $"SELECT name FROM sqlite_master WHERE type='table' AND name='{tableName}';";
-                    da              = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
+                    da              = new SQLiteDataAdapter(cmd);
                     da.Fill(dt);
                 }
 
@@ -58,7 +58,7 @@ namespace OphiussaFramework.DataBaseUtils {
 
                 using (var cmd = DbConnection().CreateCommand()) {
                     cmd.CommandText = $"pragma table_info({tableName})";
-                    da              = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
+                    da              = new SQLiteDataAdapter(cmd);
                     da.Fill(dt);
                 }
 
@@ -84,7 +84,7 @@ namespace OphiussaFramework.DataBaseUtils {
 
                 using (var cmd = DbConnection().CreateCommand()) {
                     cmd.CommandText = $"pragma table_info({tableName})";
-                    da              = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
+                    da              = new SQLiteDataAdapter(cmd);
                     da.Fill(dt);
                 }
 
@@ -131,7 +131,7 @@ namespace OphiussaFramework.DataBaseUtils {
 
                 using (var cmd = DbConnection().CreateCommand()) {
                     cmd.CommandText = $"SELECT * FROM {tableName} " + (string.IsNullOrEmpty(condition) ? "" : $" WHERE {condition}");
-                    da              = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
+                    da              = new SQLiteDataAdapter(cmd);
                     da.Fill(dt);
                 }
 
@@ -166,7 +166,7 @@ namespace OphiussaFramework.DataBaseUtils {
 
                 using (var cmd = DbConnection().CreateCommand()) {
                     cmd.CommandText = $"SELECT * FROM {tableName} " + (string.IsNullOrEmpty(condition) ? "" : $" WHERE {condition}");
-                    da              = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
+                    da              = new SQLiteDataAdapter(cmd);
                     da.Fill(dt);
                 }
 
@@ -204,7 +204,7 @@ namespace OphiussaFramework.DataBaseUtils {
                 using (var cmd = DbConnection().CreateCommand()) {
                     cmd.CommandText = $"SELECT * FROM {tableName}" + (string.IsNullOrEmpty(condition) ? "" : $" WHERE {condition}");
                     File.AppendAllText(tmpFile, "\nQuery:" + cmd.CommandText);
-                    da = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
+                    da = new SQLiteDataAdapter(cmd);
                     da.Fill(dt);
                 }
 
@@ -435,12 +435,10 @@ namespace OphiussaFramework.DataBaseUtils {
                     string value      = null;
                     string columnName = null;
                     var    propAttr   = pro.GetCustomAttributes(true).ToList();
-                    foreach (var attr in propAttr) {
-                        if ((attr is FieldAttributes atr2)) {
-                            value = GetValue(pro, obj)?.ToString();
-                        } 
+                    foreach (var attr in propAttr) { 
                         if (!(attr is FieldDependesOn atr)) continue;
 
+                        value      = GetValue(pro, obj)?.ToString();
                         columnName = atr.ColumnName;
                         string tableName = atr.Type.Name;
                         var    classAttr = atr.Type.GetCustomAttributes(true).ToList();
@@ -460,9 +458,10 @@ namespace OphiussaFramework.DataBaseUtils {
                         SQLiteDataAdapter da;
                         DataTable         dt = new DataTable();
                         using (var cmd = DbConnection().CreateCommand()) {
-                            cmd.CommandText = $@"SELECT *  FROM {tableName} WHERE {columnName} = '{value}';"; 
+                            cmd.CommandText = $@"SELECT *  FROM {tableName} WHERE {columnName} = @{columnName}";
+                            cmd.Parameters.AddWithValue("@" + columnName, value);
 
-                            da = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
+                            da = new SQLiteDataAdapter(cmd);
                             da.Fill(dt);
                         }
 

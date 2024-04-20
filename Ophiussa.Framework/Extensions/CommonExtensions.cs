@@ -19,8 +19,11 @@ namespace OphiussaFramework.Extensions {
         }
 
         public static int ToInt(this string prop) {
-            if (int.TryParse(prop, NumberStyles.Any, CultureInfo.InvariantCulture, out int val)) return val;
-            return 0;
+            return int.TryParse(prop, NumberStyles.Any, CultureInfo.InvariantCulture, out int val) ? val : 0;
+        }
+
+        public static int ToInt(this float prop) {
+            return int.TryParse(prop.ToString(CultureInfo.InvariantCulture), NumberStyles.Any, CultureInfo.InvariantCulture, out int val) ? val : 0;
         }
 
         public static ushort ToUShort(this string prop) {

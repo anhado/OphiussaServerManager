@@ -79,8 +79,8 @@ namespace BasePlugin {
             TabHeaderChangeEvent?.Invoke(this, new OphiussaEventArgs { Profile = Profile, Plugin = this });
         }
 
-        public async Task InstallServer(bool fromCache) {
-            InstallServerClick?.Invoke(this, new OphiussaEventArgs { Profile = Profile, Plugin = this });
+        public async Task InstallServer(bool fromCache, bool showSteamCMD, bool startServerAtEnd) {
+            InstallServerClick?.Invoke(this, new OphiussaEventArgs { Profile = Profile, Plugin = this, InstallFromCache = fromCache, ShowSteamCMD = showSteamCMD, StartServerAtEnd = startServerAtEnd });
         }
 
         public async Task StartServer() {
@@ -197,5 +197,7 @@ namespace BasePlugin {
         public string GetCommandLinesArguments() {
             throw new NotImplementedException();
         }
+
+        public string GetServerName() => Profile.Name;
     }
 }

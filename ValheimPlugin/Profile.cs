@@ -107,6 +107,7 @@ namespace ValheimPlugin {
         public float                   StaminaRegenRate      { get; set; } = 100f;
         public string                  Key                   { get; set; } = Guid.NewGuid().ToString();
         public string                  Name                  { get; set; } = "New Server";
+        public string                  ServerName            { get; set; } = "New Server";
         public string                  Type                  { get; set; }
         public string                  PluginVersion         { get; set; } = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
         public string                  InstallationFolder    { get; set; } = "";

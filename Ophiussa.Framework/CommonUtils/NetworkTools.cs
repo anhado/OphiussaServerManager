@@ -86,18 +86,18 @@ namespace OphiussaFramework.CommonUtils {
             Utils.ExecuteAsAdmin(Path.Combine(ConnectionController.Settings.SteamCMDFolder, "steamcmd.exe"), "+quit");
         }
 
-        internal static void UpdateCacheFolder(ServerCache cache) { 
+        internal static void UpdateCacheFolder(ServerCache cache, bool showSteamCMD) { 
             if (!Directory.Exists(cache.CacheFolder)) Directory.CreateDirectory(cache.CacheFolder);
             string login                                           = "+login anonymous";
             if (!ConnectionController.Settings.UseAnonymous) login = $"+login {ConnectionController.Settings.SteamUser} {ConnectionController.Settings.SteamPwd}";
-            Utils.ExecuteAsAdmin(Path.Combine(ConnectionController.Settings.SteamCMDFolder, "steamcmd.exe"), $" +force_install_dir {cache.CacheFolder} {login} +app_update {cache.SteamServerId} validate +quit", true, true);
+            Utils.ExecuteAsAdmin(Path.Combine(ConnectionController.Settings.SteamCMDFolder, "steamcmd.exe"), $" +force_install_dir {cache.CacheFolder} {login} +app_update {cache.SteamServerId} validate +quit", true, !showSteamCMD);
         }
 
-        internal static void UpdateCacheFolder(PluginController controller) { 
+        internal static void UpdateCacheFolder(PluginController controller, bool showSteamCMD) { 
             if (!Directory.Exists(controller.CacheFolder)) Directory.CreateDirectory(controller.CacheFolder);
             string login                                           = "+login anonymous";
             if (!ConnectionController.Settings.UseAnonymous) login = $"+login {ConnectionController.Settings.SteamUser} {ConnectionController.Settings.SteamPwd}";
-            Utils.ExecuteAsAdmin(Path.Combine(ConnectionController.Settings.SteamCMDFolder, "steamcmd.exe"), $" +force_install_dir {controller.CacheFolder} {login} +app_update {controller.GetProfile().SteamServerId} validate +quit", true, true);
+            Utils.ExecuteAsAdmin(Path.Combine(ConnectionController.Settings.SteamCMDFolder, "steamcmd.exe"), $" +force_install_dir {controller.CacheFolder} {login} +app_update {controller.GetProfile().SteamServerId} validate +quit", true, !showSteamCMD);
         }
 
         public static void UpdateGameFolder(IProfile profile) {

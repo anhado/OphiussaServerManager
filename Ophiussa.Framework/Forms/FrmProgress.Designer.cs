@@ -32,6 +32,7 @@
             this.chkStartServer = new System.Windows.Forms.CheckBox();
             this.chkUpdateCache = new System.Windows.Forms.CheckBox();
             this.timer_updateBox = new System.Windows.Forms.Timer(this.components);
+            this.chkShowSteam = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,6 +48,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.chkShowSteam);
             this.panel1.Controls.Add(this.chkForceUpdateMods);
             this.panel1.Controls.Add(this.btClose);
             this.panel1.Controls.Add(this.btUpdate);
@@ -118,6 +120,18 @@
             this.timer_updateBox.Enabled = true;
             this.timer_updateBox.Tick += new System.EventHandler(this.timer_updateBox_Tick);
             // 
+            // chkShowSteam
+            // 
+            this.chkShowSteam.AutoSize = true;
+            this.chkShowSteam.Checked = true;
+            this.chkShowSteam.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkShowSteam.Location = new System.Drawing.Point(143, 35);
+            this.chkShowSteam.Name = "chkShowSteam";
+            this.chkShowSteam.Size = new System.Drawing.Size(113, 17);
+            this.chkShowSteam.TabIndex = 5;
+            this.chkShowSteam.Text = "Show Steam CMD";
+            this.chkShowSteam.UseVisualStyleBackColor = true;
+            // 
             // FrmProgress
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -146,5 +160,6 @@
         private System.Windows.Forms.CheckBox chkStartServer;
         private System.Windows.Forms.CheckBox chkUpdateCache;
         private System.Windows.Forms.Timer timer_updateBox;
+        private System.Windows.Forms.CheckBox chkShowSteam;
     }
 }

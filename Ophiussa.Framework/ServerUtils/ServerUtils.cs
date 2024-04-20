@@ -58,12 +58,14 @@ namespace OphiussaFramework.ServerUtils {
                 OnProgressChanged(new ProcessEventArg { Message = "New Plugin Controller Initialized" });
 
                 OnProgressChanged(new ProcessEventArg { Message = "Updating Cache" });
-                NetworkTools.UpdateCacheFolder(nCtrl);
+                if (e.InstallFromCache) NetworkTools.UpdateCacheFolder(nCtrl, e.ShowSteamCMD);
+                else NetworkTools.UpdateGameFolder(e.Profile);
 
                 OnProgressChanged(new ProcessEventArg { Message = "Cache Updated" });
-                UpdateServerFromCache(nCtrl);
+                if (e.InstallFromCache) UpdateServerFromCache(nCtrl);
                 OnProcessCompleted(new ProcessEventArg { Message = "Installed server " + e.Profile.Key, Sucessful = true });
 
+                if(e.StartServerAtEnd) nCtrl.StartServer();
             }
             catch (Exception ex) { 
                 OnProcessError(new ProcessEventArg { Message = ex.Message, Sucessful = false, IsError = true });
@@ -390,7 +392,7 @@ namespace OphiussaFramework.ServerUtils {
                 int  attempt   = 1;
                 while (notCopied) {
                     try {
-                        OnProgressChanged(new ProcessEventArg { Message = $"Copying files {i}/{changedFiles.Count} => {file.FullName}", IsStarting = false, ProcessedFileCount = i, Sucessful = false, TotalFiles = changedFiles.Count });
+                     //   OnProgressChanged(new ProcessEventArg { Message = $"Copying files {i}/{changedFiles.Count} => {file.FullName}", IsStarting = false, ProcessedFileCount = i, Sucessful = false, TotalFiles = changedFiles.Count });
                         File.Copy(file.FullName, file.FullName.Replace(cacheFolder, profile.InstallationFolder), true);
                         notCopied = false;
                     }
@@ -430,7 +432,7 @@ namespace OphiussaFramework.ServerUtils {
 
             var tasks = new List<Task>();
             foreach (var server in servers) {
-                var t = Task.Run(() => { NetworkTools.UpdateCacheFolder(server); });
+                var t = Task.Run(() => { NetworkTools.UpdateCacheFolder(server,false); });
 
                 tasks.Add(t);
             }
