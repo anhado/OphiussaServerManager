@@ -80,7 +80,7 @@
             this.ForeColor = System.Drawing.Color.SteelBlue;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmConfigurationForm";
-            this.Text = "Base Plugin";
+            this.Text = "VRising";
             this.Load += new System.EventHandler(this.FrmConfigurationForm_Load);
             this.ResumeLayout(false);
 

@@ -32,10 +32,10 @@ namespace ValheimPlugin {
         public string       PluginVersion               { get; set; } = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
         public string       PluginName                  { get; set; } = Path.GetFileName(FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileName);
         public List<string> IgnoredFoldersInComparision { get; set; } = new List<string>();
-        public int          ServerProcessID             { get; set; } // => Utils.GetProcessRunning(Path.Combine(Profile.InstallationFolder, Profile.ExecutablePath)).Id;
-        public bool         IsRunning                   { get; set; } //=> Utils.GetProcessRunning(Path.Combine(Profile.InstallationFolder, Profile.ExecutablePath)) != null;
-        public bool         IsInstalled                 { get; set; } //=> IsValidFolder(Profile.InstallationFolder);
-        public List<FilesToBackup> FilesToBackup {
+        public int          ServerProcessID             { get; set; }
+        public bool         IsRunning                   { get; set; }
+        public bool         IsInstalled                 { get; set; }
+        public List<FilesToBackup> FilesToBackup {                   
             get {
                 List<FilesToBackup> ret          =  new List<FilesToBackup>();
                 string              saveFilePath = "";

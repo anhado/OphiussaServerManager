@@ -6,7 +6,7 @@ using System.Web.Security;
 using OphiussaFramework.Interfaces;
 using OphiussaFramework.Models;
 
-namespace BasePlugin {
+namespace VRisingPlugin {
     public class Profile : IProfile {
         public string                  TestProperty1      { get; set; } = "";
         public bool                    TestProperty2      { get; set; } = true;
