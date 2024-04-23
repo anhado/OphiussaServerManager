@@ -9,6 +9,8 @@ namespace OphiussaFramework.Interfaces {
         string                                                   Type               { get; set; }
         string                                                   InstallationFolder { get; set; }
         string                                                   Branch             { get; set; }
+        string                                                   BetaName           { get; set; }
+        string                                                   BetaPassword       { get; set; }
         string                                                   ServerPassword     { get; set; }
         [FieldAttributes(DataType = "TEXT")] string              AdditionalSettings { get; set; }
         [FieldAttributes(DataType = "TEXT")] string              AdditionalCommands { get; set; }

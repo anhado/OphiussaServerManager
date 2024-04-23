@@ -97,14 +97,14 @@ namespace OphiussaFramework.CommonUtils {
             if (!Directory.Exists(controller.CacheFolder)) Directory.CreateDirectory(controller.CacheFolder);
             string login                                           = "+login anonymous";
             if (!ConnectionController.Settings.UseAnonymous) login = $"+login {ConnectionController.Settings.SteamUser} {ConnectionController.Settings.SteamPwd}";
-            Utils.ExecuteAsAdmin(Path.Combine(ConnectionController.Settings.SteamCMDFolder, "steamcmd.exe"), $" +force_install_dir {controller.CacheFolder} {login} +app_update {controller.GetProfile().SteamServerId} validate +quit", true, !showSteamCMD);
+            Utils.ExecuteAsAdmin(Path.Combine(ConnectionController.Settings.SteamCMDFolder, "steamcmd.exe"), $" +force_install_dir {controller.CacheFolder} {login} +app_update {controller.GetProfile().SteamServerId} {(string.IsNullOrEmpty(controller.GetProfile().BetaName) ? "" : $"-beta {controller.GetProfile().BetaName} -betapassword {controller.GetProfile().BetaPassword}")} validate +quit", true, !showSteamCMD);
         }
 
         public static void UpdateGameFolder(IProfile profile) {
             if (!Directory.Exists(profile.InstallationFolder)) Directory.CreateDirectory(profile.InstallationFolder);
             string login                                           = "+login anonymous";
             if (!ConnectionController.Settings.UseAnonymous) login = $"+login {ConnectionController.Settings.SteamUser} {ConnectionController.Settings.SteamPwd}";
-            Utils.ExecuteAsAdmin(Path.Combine(ConnectionController.Settings.SteamCMDFolder, "steamcmd.exe"), $" +force_install_dir {profile.InstallationFolder} {login} +app_update {profile.SteamServerId} validate +quit", true, true);
+            Utils.ExecuteAsAdmin(Path.Combine(ConnectionController.Settings.SteamCMDFolder, "steamcmd.exe"), $" +force_install_dir {profile.InstallationFolder} {login} +app_update {profile.SteamServerId} {(string.IsNullOrEmpty(profile.BetaName) ? "" : $"-beta {profile.BetaName} -betapassword {profile.BetaPassword}")} validate +quit", true, true);
         }
 
         public class IpList {

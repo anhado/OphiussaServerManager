@@ -47,42 +47,46 @@
             this.fBD = new System.Windows.Forms.FolderBrowserDialog();
             this.cboBranch = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.txtBeta = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtBetaPassword = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtBuild
             // 
-            this.txtBuild.Location = new System.Drawing.Point(303, 139);
+            this.txtBuild.Location = new System.Drawing.Point(527, 86);
             this.txtBuild.Name = "txtBuild";
             this.txtBuild.ReadOnly = true;
-            this.txtBuild.Size = new System.Drawing.Size(80, 20);
+            this.txtBuild.Size = new System.Drawing.Size(84, 20);
             this.txtBuild.TabIndex = 18;
             // 
             // label35
             // 
             this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(214, 142);
+            this.label35.Location = new System.Drawing.Point(453, 92);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(68, 13);
+            this.label35.Size = new System.Drawing.Size(30, 13);
             this.label35.TabIndex = 17;
-            this.label35.Text = "Build Version";
+            this.label35.Text = "Build";
             // 
             // txtVersion
             // 
-            this.txtVersion.Location = new System.Drawing.Point(108, 139);
+            this.txtVersion.Location = new System.Drawing.Point(527, 112);
             this.txtVersion.Name = "txtVersion";
             this.txtVersion.ReadOnly = true;
-            this.txtVersion.Size = new System.Drawing.Size(80, 20);
+            this.txtVersion.Size = new System.Drawing.Size(84, 20);
             this.txtVersion.TabIndex = 16;
             this.txtVersion.Tag = "Version";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(13, 142);
+            this.label16.Location = new System.Drawing.Point(453, 115);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(84, 13);
+            this.label16.Size = new System.Drawing.Size(42, 13);
             this.label16.TabIndex = 15;
-            this.label16.Text = "Installed Version";
+            this.label16.Text = "Version";
             // 
             // txtServerType
             // 
@@ -276,11 +280,53 @@
             this.label5.TabIndex = 20;
             this.label5.Text = "Branch";
             // 
+            // txtBeta
+            // 
+            this.txtBeta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBeta.Location = new System.Drawing.Point(108, 139);
+            this.txtBeta.Name = "txtBeta";
+            this.txtBeta.Size = new System.Drawing.Size(92, 20);
+            this.txtBeta.TabIndex = 22;
+            this.txtBeta.Tag = "Name";
+            // 
+            // label6
+            // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(13, 142);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(74, 13);
+            this.label6.TabIndex = 21;
+            this.label6.Text = "Steam Branch";
+            // 
+            // txtBetaPassword
+            // 
+            this.txtBetaPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBetaPassword.Location = new System.Drawing.Point(271, 139);
+            this.txtBetaPassword.Name = "txtBetaPassword";
+            this.txtBetaPassword.Size = new System.Drawing.Size(140, 20);
+            this.txtBetaPassword.TabIndex = 24;
+            this.txtBetaPassword.Tag = "Name";
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(212, 142);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(53, 13);
+            this.label7.TabIndex = 23;
+            this.label7.Text = "Password";
+            // 
             // ProfileHeader
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.txtBetaPassword);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.txtBeta);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.cboBranch);
             this.Controls.Add(this.txtBuild);
@@ -303,7 +349,7 @@
             this.Controls.Add(this.txtProfileID);
             this.Controls.Add(this.label1);
             this.Name = "ProfileHeader";
-            this.Size = new System.Drawing.Size(625, 168);
+            this.Size = new System.Drawing.Size(625, 166);
             this.Load += new System.EventHandler(this.ProfileHeader_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -335,5 +381,9 @@
         private System.Windows.Forms.FolderBrowserDialog fBD;
         private System.Windows.Forms.ComboBox cboBranch;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtBeta;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtBetaPassword;
+        private System.Windows.Forms.Label label7;
     }
 }

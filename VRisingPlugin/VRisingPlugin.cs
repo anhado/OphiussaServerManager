@@ -101,7 +101,7 @@ namespace VRisingPlugin {
 
         public Form GetConfigurationForm(TabPage tab) {
             TabPage = tab;
-            return new FrmConfigurationForm(this, tab);
+            return new FrmVRising(this, tab);
         }
 
         public void TabHeaderChange() {

@@ -19,6 +19,8 @@ namespace VRisingPlugin {
         public string                  AdditionalSettings { get; set; } = "";
         public string                  AdditionalCommands { get; set; } = "";
         public string                  Branch             { get; set; }
+        public string                  BetaName           { get; set; }
+        public string                  BetaPassword       { get; set; }
         public int                     SteamServerId      { get; set; } = 0;
         public int                     SteamApplicationID { get; set; } = 0;
         public int                     CurseForgeId       { get; set; } = 0;

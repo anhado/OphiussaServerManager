@@ -58,7 +58,7 @@ namespace ValheimPlugin {
         public ModProvider                           ModProvider     { get; set; } = ModProvider.None;
         public bool                                  Loaded          { get; set; } = true;
         public string                                CacheFolder     { get; set; }
-        public ServerStatus                          ServerStatus    { get; internal set; }
+        public ServerStatus                          ServerStatus    { get; internal set; } 
         public event EventHandler<OphiussaEventArgs> BackupServerClick;
         public event EventHandler<OphiussaEventArgs> StopServerClick;
         public event EventHandler<OphiussaEventArgs> StartServerClick;

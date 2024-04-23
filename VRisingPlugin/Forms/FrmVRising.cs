@@ -6,11 +6,11 @@ using OphiussaFramework.Interfaces;
 using OphiussaFramework.Models;
 
 namespace VRisingPlugin.Forms {
-    public partial class FrmConfigurationForm : Form {
+    public partial class FrmVRising : Form {
         private readonly IPlugin _plugin;
         private          TabPage _tabPage;
 
-        public FrmConfigurationForm(IPlugin plugin, TabPage tab) {
+        public FrmVRising(IPlugin plugin, TabPage tab) {
             _plugin = plugin;
             InitializeComponent();
             profileHeader1.Profile       = _plugin.Profile;

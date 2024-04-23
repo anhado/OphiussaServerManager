@@ -6,6 +6,8 @@ namespace OphiussaFramework.Models {
         public string                  Key                { get; set; }
         public string                  Name               { get; set; }
         public string                  Type               { get; set; }
+        public string                  BetaName           { get; set; }
+        public string                  BetaPassword       { get; set; }
         public string                  InstallationFolder { get; set; }
         public string                  AdditionalSettings { get; set; }
         public string                  AdditionalCommands { get; set; }

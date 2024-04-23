@@ -49,6 +49,9 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MakarovDev.ExpandCollapsePanel">
+      <HintPath>..\..\ExpandCollapsePanel\MakarovDev.ExpandCollapsePanel\obj\x64\Debug\MakarovDev.ExpandCollapsePanel.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -58,6 +61,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.Web" />
@@ -72,11 +76,11 @@
   <ItemGroup>
     <Compile Include="Enums.cs" />
     <Compile Include="VRisingPlugin.cs" />
-    <Compile Include="Forms\FrmConfigurationForm.cs">
+    <Compile Include="Forms\FrmVRising.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmConfigurationForm.Designer.cs">
-      <DependentUpon>FrmConfigurationForm.cs</DependentUpon>
+    <Compile Include="Forms\FrmVRising.Designer.cs">
+      <DependentUpon>FrmVRising.cs</DependentUpon>
     </Compile>
     <Compile Include="Profile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -88,8 +92,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Forms\FrmConfigurationForm.resx">
-      <DependentUpon>FrmConfigurationForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FrmVRising.resx">
+      <DependentUpon>FrmVRising.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

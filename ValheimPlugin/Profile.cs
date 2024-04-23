@@ -114,6 +114,8 @@ namespace ValheimPlugin {
         public string                  AdditionalSettings    { get; set; } = "";
         public string                  AdditionalCommands    { get; set; } = "";
         public string                  Branch                { get; set; }
+        public string                  BetaName              { get; set; }
+        public string                  BetaPassword          { get; set; }
         public ProcessPriority         CpuPriority           { get; set; } = ProcessPriority.Normal;
         public string                  CpuAffinity           { get; set; } = "All";
         public List<ProcessorAffinity> CpuAffinityList       { get; set; } = new List<ProcessorAffinity>();

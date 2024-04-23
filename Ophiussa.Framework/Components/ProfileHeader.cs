@@ -53,6 +53,8 @@ namespace OphiussaFramework.Components {
             txtBuild.DataBindings.Add("Text", Profile, "ServerBuildVersion", true, DataSourceUpdateMode.OnPropertyChanged);
             txtVersion.DataBindings.Add("Text", Profile, "ServerVersion", true, DataSourceUpdateMode.OnPropertyChanged);
             cboBranch.DataBindings.Add("SelectedValue", Profile, "Branch", true, DataSourceUpdateMode.OnPropertyChanged);
+            txtBeta.DataBindings.Add("Text", Profile, "BetaName", true, DataSourceUpdateMode.OnPropertyChanged);
+            txtBetaPassword.DataBindings.Add("Text", Profile, "BetaPassword", true, DataSourceUpdateMode.OnPropertyChanged);
 
             CheckInstallStatus();
         }
