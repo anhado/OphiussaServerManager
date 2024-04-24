@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using OphiussaFramework.CommonUtils;
 using OphiussaFramework.Enums;
 using OphiussaFramework.Forms;
 using OphiussaFramework.Interfaces;
@@ -153,6 +156,15 @@ namespace OphiussaFramework.Models {
         }
 
         public List<string> IgnoredFoldersInComparision => _plugin.IgnoredFoldersInComparision;
+
+        public bool InternalIsServerRunning {
+            get {
+
+                Process proc = Utils.GetProcessRunning(Path.Combine(_plugin.GetProfile().InstallationFolder, _plugin.GetProfile().ExecutablePath));
+
+                return proc != null;
+            }
+        }
 
         public void SetServerStatus(ServerStatus status, int serverProcessID) {
             _plugin.SetServerStatus(status, serverProcessID);

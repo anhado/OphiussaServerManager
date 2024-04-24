@@ -13,6 +13,7 @@ using Microsoft.Win32.TaskScheduler;
 using Newtonsoft.Json;
 using NLog.LayoutRenderers;
 using OphiussaFramework.CommonUtils;
+using OphiussaFramework.Enums;
 using OphiussaFramework.Interfaces;
 using OphiussaFramework.Models;
 using Task = System.Threading.Tasks.Task;
@@ -293,14 +294,19 @@ namespace OphiussaFramework.ServerUtils {
         public static async void RestartServerSingleServer(string serverKey, bool IsTheAutoUpdateTask = false) {
             try {
                 string[] args = serverKey.Split('_'); 
-                OnProcessStarted(new ProcessEventArg { Message  = $"Restarting server : { args[2]}", Sucessful      = true });
-                var am      = ConnectionController.SqlLite.GetRecord<AutoManagement>($"Id={args[1]}");
-                var profile = ConnectionController.SqlLite.GetRecord<IProfile>($"Key='{args[2]}'");
-                if (profile != null && am != null) {
+                OnProcessStarted(new ProcessEventArg { Message = $"Restarting server : {serverKey}", Sucessful      = true });
+                var am      =!IsTheAutoUpdateTask ? ConnectionController.SqlLite.GetRecord<AutoManagement>($"Id={args[1]}") : null;
+                var profile = ConnectionController.SqlLite.GetRecord<IProfile>($"Key='{serverKey}'");
+                if (profile != null && (am != null || IsTheAutoUpdateTask)) {
                     if (!ConnectionController.Plugins.ContainsKey(profile.Type)) return;
                     var nCtrl = new PluginController(ConnectionController.Plugins[profile.Type].PluginLocation());
                     nCtrl.SetProfile(profile);
-                    bool isRunning = nCtrl.IsRunning;
+                    if (IsTheAutoUpdateTask) { 
+                        string currentServerBuild = Utils.GetBuild(profile);
+                        string currentCacheBuild  = Utils.GetCacheBuild(profile, nCtrl.CacheFolder);
+                        if (currentServerBuild == currentCacheBuild) return;
+                    }
+                    bool isRunning = nCtrl.InternalIsServerRunning;
 
                     var tasks = new List<Task>();
                     if (isRunning) {
@@ -309,27 +315,27 @@ namespace OphiussaFramework.ServerUtils {
                     }
 
                     Task.WaitAll(tasks.ToArray()); 
-                    OnProgressChanged( new ProcessEventArg { Message = $"Stopped server : {args[2]}", Sucessful = true });
+                    OnProgressChanged( new ProcessEventArg { Message = $"Stopped server : {serverKey}", Sucessful = true });
 
                     var startDate = DateTime.Now;
-                    while (nCtrl.IsRunning) {
+                    while (nCtrl.InternalIsServerRunning) {
                         var ts = DateTime.Now - startDate;
                         if (ts.TotalMinutes > 5) await nCtrl.StopServer(true);
                         Thread.Sleep(5000);
                     }
 
-                    if (am.UpdateServer || IsTheAutoUpdateTask) { 
+                    if ((am!= null && am.UpdateServer) || IsTheAutoUpdateTask) { 
                        UpdateServerFromCache(nCtrl); 
-                       OnProgressChanged(new ProcessEventArg { Message = $"Updated server : {args[2]}", Sucessful = true });
+                       OnProgressChanged(new ProcessEventArg { Message = $"Updated server : {serverKey}", Sucessful = true });
                     }
 
-                    if ((isRunning && am.RestartServer) || (profile.RestartIfShutdown && IsTheAutoUpdateTask)) {
+                    if ((isRunning && (am != null &&  am.RestartServer)) || (profile.RestartIfShutdown && IsTheAutoUpdateTask)) {
                         nCtrl.StartServer();
                          
-                        OnProgressChanged(new ProcessEventArg { Message = $"Started server : {args[2]}", Sucessful = true });
+                        OnProgressChanged(new ProcessEventArg { Message = $"Started server : {serverKey}", Sucessful = true });
                     }
                      
-                    OnProcessCompleted(new ProcessEventArg { Message = $"Auto Restarted server : {args[2]}", Sucessful = true });
+                    OnProcessCompleted(new ProcessEventArg { Message = $"Auto Restarted server : {serverKey}", Sucessful = true });
                 }
                 else { 
                     OnProcessError( new ProcessEventArg { Message = $"Invalid Server : {serverKey}", Sucessful = false, IsError = true });
