@@ -274,7 +274,7 @@ namespace ValheimPlugin {
 
             builder.AddCommand(1, true, "-", "nographics", "",  "",                              true);
             builder.AddCommand(2, true, "-", "batchmode",  "",  "",                              true);
-            builder.AddCommand(3, true, "-", "name",       " ", $"\"{profile.Name}\"",           true);
+            builder.AddCommand(3, true, "-", "name",       " ", $"\"{profile.ServerName}\"",           true);
             builder.AddCommand(4, true, "-", "port",       " ", $"\"{profile.ServerPort}\"",     true);
             builder.AddCommand(5, true, "-", "world",      " ", $"\"{profile.WordName}\"",       true);
             builder.AddCommand(6, true, "-", "password",   " ", $"\"{profile.ServerPassword}\"", true);
