@@ -9,7 +9,8 @@ using OphiussaFramework.Models;
 
 namespace OphiussaFramework.CommonUtils {
     public static class OphiussaLogger {
-        public static Logger Logger;
+        //public static           Logger       Logger;
+        public static readonly log4net.ILog Logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public static void UpdateLoggingStatus(Settings settings) {
             if (settings.EnableLogs)
@@ -64,7 +65,7 @@ namespace OphiussaFramework.CommonUtils {
                 var setting = new SqlLite().GetRecord<Settings>();
                 if (setting == null) throw new Exception("Could Not Load Settings");
 
-                ReconfigureLogging(setting);
+                //ReconfigureLogging(setting);
             }
             catch (Exception ex) {
                 string tmpFile = Path.GetTempFileName();
@@ -92,7 +93,7 @@ namespace OphiussaFramework.CommonUtils {
                 }
 
                 LogManager.ReconfigExistingLoggers();
-                Logger = LogManager.GetCurrentClassLogger();
+                //Logger = LogManager.GetCurrentClassLogger();
             }
             catch (Exception ex) {
                 string tmpFile = Path.GetTempFileName();

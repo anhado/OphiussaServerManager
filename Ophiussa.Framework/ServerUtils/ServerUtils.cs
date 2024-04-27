@@ -49,6 +49,7 @@ namespace OphiussaFramework.ServerUtils {
         }
          
         public static void InstallServerClick(object sender, OphiussaEventArgs e) {
+            OphiussaLogger.Logger.Debug("InstallServerClick");
             try {
                 OnProcessStarted(new ProcessEventArg { Message = "Process Started for server " + e.Profile.Key, Sucessful = true });
                 if (!ConnectionController.Plugins.ContainsKey(e.Profile.Type)) return;
@@ -74,6 +75,7 @@ namespace OphiussaFramework.ServerUtils {
         }
 
         public static void BackupServerClick(object sender, OphiussaEventArgs e) {
+            OphiussaLogger.Logger.Debug("BackupServerClick");
 
             try {
 
@@ -129,6 +131,7 @@ namespace OphiussaFramework.ServerUtils {
         }
 
         public static void StartServerClick(object sender, OphiussaEventArgs e) {
+            OphiussaLogger.Logger.Debug("StartServerClick");
             string file = ConnectionController.Settings.DataFolder + $"StartServer\\Run_{e.Plugin.Profile.Key.Replace("-", "")}.bat";
             Utils.ExecuteAsAdmin(file, "", false, false, true);
         }
@@ -144,14 +147,17 @@ namespace OphiussaFramework.ServerUtils {
         }
 
         public static void ReloadServerClick(object sender, OphiussaEventArgs e) {
+            OphiussaLogger.Logger.Debug("ReloadServerClick");
             throw new NotImplementedException();
         }
 
         public static void SyncServerClick(object sender, OphiussaEventArgs e) {
+            OphiussaLogger.Logger.Debug("SyncServerClick");
             throw new NotImplementedException();
         }
 
         public static void SaveServerClick(object sender, OphiussaEventArgs e) {
+            OphiussaLogger.Logger.Debug("SaveServerClick");
             var profile = e.Profile;
             profile.Type               = e.Plugin.GameType;
             profile.AdditionalSettings = null;
@@ -284,15 +290,18 @@ namespace OphiussaFramework.ServerUtils {
         }
 
         public static void OpenRCONClick(object sender, OphiussaEventArgs e) {
+            OphiussaLogger.Logger.Debug("OpenRCONClick");
             throw new NotImplementedException();
         }
 
         public static void ChooseFolderClick(object sender, OphiussaEventArgs e) {
+            OphiussaLogger.Logger.Debug("ChooseFolderClick");
             throw new NotImplementedException();
         }
 
         public static async void RestartServerSingleServer(string serverKey, bool IsTheAutoUpdateTask = false) {
             try {
+                OphiussaLogger.Logger.Debug("RestartServerSingleServer");
                 string[] args = serverKey.Split('_'); 
                 OnProcessStarted(new ProcessEventArg { Message = $"Restarting server : {serverKey}", Sucessful      = true });
                 var am      =!IsTheAutoUpdateTask ? ConnectionController.SqlLite.GetRecord<AutoManagement>($"Id={args[1]}") : null;
@@ -347,6 +356,7 @@ namespace OphiussaFramework.ServerUtils {
         }
 
         public static void UpdateServerFromCache(PluginController controller) {
+            OphiussaLogger.Logger.Debug("UpdateServerFromCache");
             IProfile profile            = controller.GetProfile();
             string   cacheFolder        = controller.CacheFolder;
             string   currentServerBuild = Utils.GetBuild(profile);
@@ -418,6 +428,7 @@ namespace OphiussaFramework.ServerUtils {
         }
 
         public static void UpdateAllServers() {
+            OphiussaLogger.Logger.Debug("UpdateAllServers");
             var                                  servers     = new List<ServerCache>();
             Dictionary<string, PluginController> controllers = new Dictionary<string, PluginController>();
 
@@ -462,8 +473,9 @@ namespace OphiussaFramework.ServerUtils {
             }
         }
 
-        public static void BackupAllServers() { 
+        public static void BackupAllServers() {
 
+            OphiussaLogger.Logger.Debug("BackupAllServers");
             var profiles = ConnectionController.SqlLite.GetRecords<IProfile>();
              
             profiles.ForEach(prf => {
