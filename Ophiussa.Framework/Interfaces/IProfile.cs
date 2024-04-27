@@ -4,6 +4,7 @@ using OphiussaFramework.Models;
 namespace OphiussaFramework.Interfaces {
     [TableAttributes(TableName = "Profiles")]
     public interface IProfile {
+        [FieldAttributes(PrimaryKey = true)]
         string                                                   Key                { get; set; }
         string                                                   Name               { get; set; }
         string                                                   Type               { get; set; }

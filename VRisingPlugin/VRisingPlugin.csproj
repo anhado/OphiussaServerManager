@@ -49,9 +49,6 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MakarovDev.ExpandCollapsePanel">
-      <HintPath>..\..\ExpandCollapsePanel\MakarovDev.ExpandCollapsePanel\obj\x64\Debug\MakarovDev.ExpandCollapsePanel.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -92,6 +89,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\ExpandCollapsePanel\MakarovDev.ExpandCollapsePanel\MakarovDev.ExpandCollapsePanel.csproj">
+      <Project>{be76a6fe-225f-4287-9ca0-231f5af4cdc1}</Project>
+      <Name>MakarovDev.ExpandCollapsePanel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ophiussa.Framework\OphiussaFramework.csproj">
       <Project>{79d54c0e-4af2-4748-9ee1-74192dd9fa67}</Project>
       <Name>OphiussaFramework</Name>

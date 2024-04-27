@@ -28,8 +28,7 @@ namespace OphiussaServerManagerV2 {
                 var itm = new ExListBoxItem(driveInfoDisplay.DriveInfo.Name, driveInfoDisplay.Line1, driveInfoDisplay.Line2, driveInfoDisplay);
                 exListBox1.Items.Add(itm);
                 if (driveInfoDisplay.DriveInfo.RootDirectory.FullName.Equals(pathRoot)) {
-                    exListBox1.SelectedItem = itm;
-                    break;
+                    exListBox1.SelectedItem = itm;  
                 }
             }
         }

@@ -55,6 +55,7 @@
             // 
             // txtBuild
             // 
+            this.txtBuild.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBuild.Location = new System.Drawing.Point(527, 86);
             this.txtBuild.Name = "txtBuild";
             this.txtBuild.ReadOnly = true;
@@ -63,6 +64,7 @@
             // 
             // label35
             // 
+            this.label35.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label35.AutoSize = true;
             this.label35.Location = new System.Drawing.Point(453, 92);
             this.label35.Name = "label35";
@@ -72,6 +74,7 @@
             // 
             // txtVersion
             // 
+            this.txtVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtVersion.Location = new System.Drawing.Point(527, 112);
             this.txtVersion.Name = "txtVersion";
             this.txtVersion.ReadOnly = true;
@@ -81,6 +84,7 @@
             // 
             // label16
             // 
+            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(453, 115);
             this.label16.Name = "label16";
@@ -282,7 +286,6 @@
             // 
             // txtBeta
             // 
-            this.txtBeta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBeta.Location = new System.Drawing.Point(108, 139);
             this.txtBeta.Name = "txtBeta";
             this.txtBeta.Size = new System.Drawing.Size(92, 20);
@@ -291,7 +294,6 @@
             // 
             // label6
             // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(13, 142);
             this.label6.Name = "label6";
@@ -301,7 +303,6 @@
             // 
             // txtBetaPassword
             // 
-            this.txtBetaPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBetaPassword.Location = new System.Drawing.Point(271, 139);
             this.txtBetaPassword.Name = "txtBetaPassword";
             this.txtBetaPassword.Size = new System.Drawing.Size(140, 20);
@@ -310,7 +311,6 @@
             // 
             // label7
             // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(212, 142);
             this.label7.Name = "label7";

@@ -232,7 +232,7 @@ namespace ValheimPlugin {
         }
 
         public bool IsValidFolder(string path) {
-            return Utils.IsAValidFolder(Profile.InstallationFolder, new List<string> { "valheim_server_Data", "MonoBleedingEdge" });
+            return Utils.IsAValidFolder(path, new List<string> { "valheim_server_Data", "MonoBleedingEdge" });
         }
 
         public Message SetInstallFolder(string path) {
