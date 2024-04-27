@@ -62,13 +62,26 @@ namespace OphiussaServerManagerV2 {
 
             if (lst == null) return;
             lst.ForEach(prf => {
-                            if (!ConnectionController.Plugins.ContainsKey(prf.Type)) return;
-                            var nCtrl = new PluginController(ConnectionController.Plugins[prf.Type].PluginLocation(), null, null, null, null, null, null, null, null, null, TabHeadChangeEvent);
-                            nCtrl.SetProfile(prf);
-                            ConnectionController.ServerControllers.Add(nCtrl.GetProfile().Key, nCtrl);
+                try {
+                    if (!ConnectionController.Plugins.ContainsKey(prf.Type)) return;
+                    var nCtrl = new PluginController(ConnectionController.Plugins[prf.Type].PluginLocation(), null, null, null, null, null, null, null, null, null, TabHeadChangeEvent);
 
-                            AddNewFormConfiguration(nCtrl);
-                        });
+
+                    OphiussaFramework.Models.Message m = nCtrl.SetProfile(prf);
+                    if (!m.Success) {
+                        throw m.Exception;
+                    }
+                    else {
+                        ConnectionController.ServerControllers.Add(nCtrl.GetProfile().Key, nCtrl);
+
+                        AddNewFormConfiguration(nCtrl);
+                    }
+
+                }
+                catch (Exception e) {
+                    OphiussaLogger.Logger.Error(e);
+                }
+            });
         }
 
         private void txtPublicIP_DoubleClick(object sender, EventArgs e) {

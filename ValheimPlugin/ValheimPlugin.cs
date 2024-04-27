@@ -186,7 +186,7 @@ namespace ValheimPlugin {
 
         public Message SetProfile(IProfile profile) {
             try {
-                var p =  JsonConvert.DeserializeObject<Profile>(profile.AdditionalSettings)==null ? profile: JsonConvert.DeserializeObject<Profile>(profile.AdditionalSettings);
+                var p = profile.AdditionalSettings == null ? profile : JsonConvert.DeserializeObject<Profile>(profile.AdditionalSettings)==null ? profile: JsonConvert.DeserializeObject<Profile>(profile.AdditionalSettings);
                 p.ServerBuildVersion = Utils.GetBuild(p);
                 Profile              = p;
 

@@ -47,7 +47,7 @@ namespace OphiussaFramework.ServerUtils {
             OphiussaLogger.Logger.Error(e.Message);
             ProcessError?.Invoke(null, e);
         }
-         
+
         public static void InstallServerClick(object sender, OphiussaEventArgs e) {
             OphiussaLogger.Logger.Debug("InstallServerClick");
             try {
@@ -55,21 +55,25 @@ namespace OphiussaFramework.ServerUtils {
                 if (!ConnectionController.Plugins.ContainsKey(e.Profile.Type)) return;
                 var nCtrl = new PluginController(ConnectionController.Plugins[e.Profile.Type].PluginLocation());
                 e.Profile.AdditionalSettings = JsonConvert.SerializeObject(e.Profile, Formatting.Indented);
-                nCtrl.SetProfile(e.Profile);
+                Message m = nCtrl.SetProfile(e.Profile);
+                if (!m.Success) {
+                    throw m.Exception;
+                }
+                else {
+                    OnProgressChanged(new ProcessEventArg { Message = "New Plugin Controller Initialized" });
 
-                OnProgressChanged(new ProcessEventArg { Message = "New Plugin Controller Initialized" });
+                    OnProgressChanged(new ProcessEventArg { Message = "Updating Cache" });
+                    if (e.InstallFromCache) NetworkTools.UpdateCacheFolder(nCtrl, e.ShowSteamCMD);
+                    else NetworkTools.UpdateGameFolder(e.Profile);
 
-                OnProgressChanged(new ProcessEventArg { Message = "Updating Cache" });
-                if (e.InstallFromCache) NetworkTools.UpdateCacheFolder(nCtrl, e.ShowSteamCMD);
-                else NetworkTools.UpdateGameFolder(e.Profile);
+                    OnProgressChanged(new ProcessEventArg { Message = "Cache Updated" });
+                    if (e.InstallFromCache) UpdateServerFromCache(nCtrl);
+                    OnProcessCompleted(new ProcessEventArg { Message = "Installed server " + e.Profile.Key, Sucessful = true });
 
-                OnProgressChanged(new ProcessEventArg { Message = "Cache Updated" });
-                if (e.InstallFromCache) UpdateServerFromCache(nCtrl);
-                OnProcessCompleted(new ProcessEventArg { Message = "Installed server " + e.Profile.Key, Sucessful = true });
-
-                if(e.StartServerAtEnd) nCtrl.StartServer();
+                    if (e.StartServerAtEnd) nCtrl.StartServer();
+                }
             }
-            catch (Exception ex) { 
+            catch (Exception ex) {
                 OnProcessError(new ProcessEventArg { Message = ex.Message, Sucessful = false, IsError = true });
             }
         }
@@ -79,50 +83,54 @@ namespace OphiussaFramework.ServerUtils {
 
             try {
 
-                PluginController nCtrl       = new PluginController(ConnectionController.Plugins[e.Profile.Type].PluginLocation());
-                nCtrl.SetProfile(e.Profile);
+                PluginController nCtrl = new PluginController(ConnectionController.Plugins[e.Profile.Type].PluginLocation());
+                Message m= nCtrl.SetProfile(e.Profile);
+                if (!m.Success) {
+                    throw m.Exception;
+                }
+                else { 
+                    if (!Directory.Exists(ConnectionController.Settings.BackupFolder)) Directory.CreateDirectory(ConnectionController.Settings.BackupFolder);
+                    if (!Directory.Exists(Path.Combine(ConnectionController.Settings.BackupFolder, "servers", e.Profile.Key))) Directory.CreateDirectory(Path.Combine(ConnectionController.Settings.BackupFolder, "servers", e.Profile.Key));
+                    if (!Directory.Exists(Path.Combine(ConnectionController.Settings.BackupFolder, "servers", e.Profile.Key, "temp"))) Directory.CreateDirectory(Path.Combine(ConnectionController.Settings.BackupFolder, "servers", e.Profile.Key, "temp"));
 
+                    string zipFileName = Path.Combine(ConnectionController.Settings.BackupFolder, "servers", e.Profile.Key) + $"\\{e.Profile.Type}_{e.Profile.Key}_{DateTime.Now.ToString("yyyyMMddHHmmssfff", CultureInfo.InvariantCulture)}.zip";
+                    string tempFolder = Path.Combine(ConnectionController.Settings.BackupFolder, "servers", e.Profile.Key, "temp");
 
-                if (!Directory.Exists(ConnectionController.Settings.BackupFolder)) Directory.CreateDirectory(ConnectionController.Settings.BackupFolder);
-                if (!Directory.Exists(Path.Combine(ConnectionController.Settings.BackupFolder, "servers", e.Profile.Key))) Directory.CreateDirectory(Path.Combine(ConnectionController.Settings.BackupFolder, "servers", e.Profile.Key));
-                if (!Directory.Exists(Path.Combine(ConnectionController.Settings.BackupFolder, "servers", e.Profile.Key, "temp"))) Directory.CreateDirectory(Path.Combine(ConnectionController.Settings.BackupFolder, "servers", e.Profile.Key, "temp"));
+                    using (var zip = ZipFile.Open(zipFileName, ZipArchiveMode.Create)) {
+                        foreach (var file in nCtrl.FilesToBackup) {
+                            string fileName = file.File.FullName;
+                            string tempFileName = Path.Combine(tempFolder, System.IO.Path.GetFileName(file.File.FullName));
+                            bool copied = false;
+                            int ntry = 0;
+                            do {
+                                try {
+                                    File.Copy(fileName, tempFileName, true);
+                                    copied = true;
+                                    ntry = 99;
+                                }
+                                catch (Exception exception) {
+                                    OphiussaLogger.Logger.Error(exception);
+                                    Thread.Sleep(1000);
+                                }
+                                ntry++;
+                            } while (!copied || ntry < 5);
 
-                string zipFileName = Path.Combine(ConnectionController.Settings.BackupFolder,  "servers", e.Profile.Key) + $"\\{e.Profile.Type}_{e.Profile.Key}_{DateTime.Now.ToString("yyyyMMddHHmmssfff", CultureInfo.InvariantCulture)}.zip";
-                string tempFolder  = Path.Combine(ConnectionController.Settings.BackupFolder, "servers", e.Profile.Key, "temp");
+                            zip.CreateEntryFromFile(tempFileName, file.EntryName);
+                            System.IO.File.Delete(tempFileName);
+                        }
+                    }
 
-                using (var zip = ZipFile.Open(zipFileName, ZipArchiveMode.Create)) {
-                    foreach (var file in nCtrl.FilesToBackup) {
-                        string fileName     = file.File.FullName;
-                        string tempFileName = Path.Combine(tempFolder , System.IO.Path.GetFileName(file.File.FullName));
-                        bool   copied       = false;
-                        int    ntry         = 0;
-                        do {
-                            try {
-                                File.Copy(fileName,tempFileName,true);
-                                copied = true;
-                                ntry   = 99;
-                            }
-                            catch (Exception exception) {
-                                OphiussaLogger.Logger.Error(exception);
-                                Thread.Sleep(1000);
-                            }
-                            ntry++;
-                        } while (!copied || ntry<5);
-
-                        zip.CreateEntryFromFile(tempFileName, file.EntryName);
-                        System.IO.File.Delete(tempFileName);
+                    //Delete Old Backups
+                    DirectoryInfo info = new DirectoryInfo(tempFolder);
+                    List<FileInfo> files = info.GetFiles().OrderBy(p => p.CreationTime).ToList();
+                    foreach (FileInfo file in files) {
+                        var threshold = DateTime.Now.AddDays(-ConnectionController.Settings.DaysToKeep);
+                        if (file.CreationTime <= threshold) {
+                            System.IO.File.Delete(file.FullName);
+                        }
                     }
                 }
-                
-                //Delete Old Backups
-                DirectoryInfo info  = new DirectoryInfo(tempFolder);
-                List<FileInfo>    files = info.GetFiles().OrderBy(p => p.CreationTime).ToList();
-                foreach (FileInfo file in files) {
-                    var threshold = DateTime.Now.AddDays(-ConnectionController.Settings.DaysToKeep);
-                    if (file.CreationTime <= threshold) {
-                        System.IO.File.Delete(file.FullName);
-                    }
-                }
+
             }
             catch (Exception exception) {
                 OphiussaLogger.Logger.Error(exception);
@@ -159,10 +167,10 @@ namespace OphiussaFramework.ServerUtils {
         public static void SaveServerClick(object sender, OphiussaEventArgs e) {
             OphiussaLogger.Logger.Debug("SaveServerClick");
             var profile = e.Profile;
-            profile.Type               = e.Plugin.GameType;
+            profile.Type = e.Plugin.GameType;
             profile.AdditionalSettings = null;
             profile.AdditionalCommands = null;
-            profile.AdditionalSettings = JsonConvert.SerializeObject(e.Profile,                Formatting.Indented);
+            profile.AdditionalSettings = JsonConvert.SerializeObject(e.Profile, Formatting.Indented);
             profile.AdditionalCommands = JsonConvert.SerializeObject(e.Plugin.DefaultCommands, Formatting.Indented);
             ConnectionController.SqlLite.Upsert<IProfile>(profile);
             foreach (var opt in profile.AutoManagement) {
@@ -178,8 +186,8 @@ namespace OphiussaFramework.ServerUtils {
 
             if (plugin.Profile.AutoStartServer) {
                 string fileName = ConnectionController.Settings.DataFolder + $"StartServer\\Run_{plugin.Profile.Key.Replace("-", "")}.bat";
-                string taskName = "OphiussaServerManager\\AutoStart_"      + plugin.Profile.Key;
-                var    task     = TaskService.Instance.GetTask(taskName);
+                string taskName = "OphiussaServerManager\\AutoStart_" + plugin.Profile.Key;
+                var task = TaskService.Instance.GetTask(taskName);
                 if (task != null) {
                     task.Definition.Triggers.Clear();
                     if (plugin.Profile.StartOnBoot) {
@@ -192,13 +200,13 @@ namespace OphiussaFramework.ServerUtils {
                     }
 
                     task.Definition.Principal.RunLevel = TaskRunLevel.Highest;
-                    task.Definition.Settings.Priority  = ProcessPriorityClass.Normal;
+                    task.Definition.Settings.Priority = ProcessPriorityClass.Normal;
                     task.RegisterChanges();
                 }
                 else {
                     var td = TaskService.Instance.NewTask();
                     td.RegistrationInfo.Description = "Server Auto-Start - " + plugin.Profile.Name;
-                    td.Principal.LogonType          = TaskLogonType.InteractiveToken;
+                    td.Principal.LogonType = TaskLogonType.InteractiveToken;
                     if (plugin.Profile.StartOnBoot) {
                         var bt1 = new BootTrigger { Delay = TimeSpan.FromMinutes(1) };
                         td.Triggers.Add(bt1);
@@ -210,13 +218,13 @@ namespace OphiussaFramework.ServerUtils {
 
                     td.Actions.Add(fileName);
                     td.Principal.RunLevel = TaskRunLevel.Highest;
-                    td.Settings.Priority  = ProcessPriorityClass.Normal;
+                    td.Settings.Priority = ProcessPriorityClass.Normal;
                     TaskService.Instance.RootFolder.RegisterTaskDefinition(taskName, td);
                 }
             }
             else {
                 string taskName = "OphiussaServerManager\\AutoStart_" + plugin.Profile.Key;
-                var    task     = TaskService.Instance.GetTask(taskName);
+                var task = TaskService.Instance.GetTask(taskName);
                 if (task != null) TaskService.Instance.RootFolder.DeleteTask(taskName);
             }
 
@@ -227,7 +235,7 @@ namespace OphiussaFramework.ServerUtils {
             foreach (var am in plugin.Profile.AutoManagement) {
                 string fileName = Assembly.GetEntryAssembly()?.Location;
                 string taskName = $"OphiussaServerManager\\AutoShutDown_{am.Id:000}_" + plugin.Profile.Key;
-                var    task     = TaskService.Instance.GetTask(taskName);
+                var task = TaskService.Instance.GetTask(taskName);
 
                 if (task != null) {
                     task.Definition.Triggers.Clear();
@@ -241,21 +249,21 @@ namespace OphiussaFramework.ServerUtils {
                     if (am.ShutdownFri) daysofweek += 32;
                     if (am.ShutdownSat) daysofweek += 64;
                     if (am.ShutdownSun) daysofweek += 1;
-                    var tt                         = new WeeklyTrigger();
+                    var tt = new WeeklyTrigger();
 
-                    int hour   = short.Parse(am.ShutdownHour.Split(':')[0]);
+                    int hour = short.Parse(am.ShutdownHour.Split(':')[0]);
                     int minute = short.Parse(am.ShutdownHour.Split(':')[1]);
                     tt.StartBoundary = DateTime.Today + TimeSpan.FromHours(hour) + TimeSpan.FromMinutes(minute);
-                    tt.DaysOfWeek    = daysofweek;
+                    tt.DaysOfWeek = daysofweek;
                     task.Definition.Triggers.Add(tt);
                     task.Definition.Principal.RunLevel = TaskRunLevel.Highest;
-                    task.Definition.Settings.Priority  = ProcessPriorityClass.Normal;
+                    task.Definition.Settings.Priority = ProcessPriorityClass.Normal;
                     task.RegisterChanges();
                 }
                 else {
                     var td = TaskService.Instance.NewTask();
                     td.RegistrationInfo.Description = $"Server Auto-ShutDown {am.Id:000} - " + plugin.Profile.Name;
-                    td.Principal.LogonType          = TaskLogonType.InteractiveToken;
+                    td.Principal.LogonType = TaskLogonType.InteractiveToken;
                     DaysOfTheWeek daysofweek = 0;
 
                     if (am.ShutdownMon) daysofweek += 2;
@@ -265,16 +273,16 @@ namespace OphiussaFramework.ServerUtils {
                     if (am.ShutdownFri) daysofweek += 32;
                     if (am.ShutdownSat) daysofweek += 64;
                     if (am.ShutdownSun) daysofweek += 1;
-                    var tt                         = new WeeklyTrigger();
+                    var tt = new WeeklyTrigger();
 
-                    int hour   = short.Parse(am.ShutdownHour.Split(':')[0]);
+                    int hour = short.Parse(am.ShutdownHour.Split(':')[0]);
                     int minute = short.Parse(am.ShutdownHour.Split(':')[1]);
                     tt.StartBoundary = DateTime.Today + TimeSpan.FromHours(hour) + TimeSpan.FromMinutes(minute);
-                    tt.DaysOfWeek    = daysofweek;
+                    tt.DaysOfWeek = daysofweek;
                     td.Triggers.Add(tt);
                     td.Actions.Add(fileName, $" -as_{am.Id:000}_" + plugin.Profile.Key);
                     td.Principal.RunLevel = TaskRunLevel.Highest;
-                    td.Settings.Priority  = ProcessPriorityClass.Normal;
+                    td.Settings.Priority = ProcessPriorityClass.Normal;
 
                     TaskService.Instance.RootFolder.RegisterTaskDefinition(taskName, td);
                 }
@@ -302,52 +310,57 @@ namespace OphiussaFramework.ServerUtils {
         public static async void RestartServerSingleServer(string serverKey, bool IsTheAutoUpdateTask = false) {
             try {
                 OphiussaLogger.Logger.Debug("RestartServerSingleServer");
-                string[] args = serverKey.Split('_'); 
-                OnProcessStarted(new ProcessEventArg { Message = $"Restarting server : {serverKey}", Sucessful      = true });
-                var am      =!IsTheAutoUpdateTask ? ConnectionController.SqlLite.GetRecord<AutoManagement>($"Id={args[1]}") : null;
+                string[] args = serverKey.Split('_');
+                OnProcessStarted(new ProcessEventArg { Message = $"Restarting server : {serverKey}", Sucessful = true });
+                var am = !IsTheAutoUpdateTask ? ConnectionController.SqlLite.GetRecord<AutoManagement>($"Id={args[1]}") : null;
                 var profile = ConnectionController.SqlLite.GetRecord<IProfile>($"Key='{serverKey}'");
                 if (profile != null && (am != null || IsTheAutoUpdateTask)) {
                     if (!ConnectionController.Plugins.ContainsKey(profile.Type)) return;
                     var nCtrl = new PluginController(ConnectionController.Plugins[profile.Type].PluginLocation());
-                    nCtrl.SetProfile(profile);
-                    if (IsTheAutoUpdateTask) { 
-                        string currentServerBuild = Utils.GetBuild(profile);
-                        string currentCacheBuild  = Utils.GetCacheBuild(profile, nCtrl.CacheFolder);
-                        if (currentServerBuild == currentCacheBuild) return;
+                    Message m = nCtrl.SetProfile(profile);
+                    if (!m.Success) {
+                        throw m.Exception;
                     }
-                    bool isRunning = nCtrl.InternalIsServerRunning;
+                    else {
+                        if (IsTheAutoUpdateTask) {
+                            string currentServerBuild = Utils.GetBuild(profile);
+                            string currentCacheBuild = Utils.GetCacheBuild(profile, nCtrl.CacheFolder);
+                            if (currentServerBuild == currentCacheBuild) return;
+                        }
+                        bool isRunning = nCtrl.InternalIsServerRunning;
 
-                    var tasks = new List<Task>();
-                    if (isRunning) {
-                        var t = Task.Run(async () => { await nCtrl.StopServer(); });
-                        tasks.Add(t);
+                        var tasks = new List<Task>();
+                        if (isRunning) {
+                            var t = Task.Run(async () => { await nCtrl.StopServer(); });
+                            tasks.Add(t);
+                        }
+
+                        Task.WaitAll(tasks.ToArray());
+                        OnProgressChanged(new ProcessEventArg { Message = $"Stopped server : {serverKey}", Sucessful = true });
+
+                        var startDate = DateTime.Now;
+                        while (nCtrl.InternalIsServerRunning) {
+                            var ts = DateTime.Now - startDate;
+                            if (ts.TotalMinutes > 5) await nCtrl.StopServer(true);
+                            Thread.Sleep(5000);
+                        }
+
+                        if ((am != null && am.UpdateServer) || IsTheAutoUpdateTask) {
+                            UpdateServerFromCache(nCtrl);
+                            OnProgressChanged(new ProcessEventArg { Message = $"Updated server : {serverKey}", Sucessful = true });
+                        }
+
+                        if ((isRunning && (am != null && am.RestartServer)) || (profile.RestartIfShutdown && IsTheAutoUpdateTask)) {
+                            nCtrl.StartServer();
+
+                            OnProgressChanged(new ProcessEventArg { Message = $"Started server : {serverKey}", Sucessful = true });
+                        }
+
+                        OnProcessCompleted(new ProcessEventArg { Message = $"Auto Restarted server : {serverKey}", Sucessful = true });
                     }
-
-                    Task.WaitAll(tasks.ToArray()); 
-                    OnProgressChanged( new ProcessEventArg { Message = $"Stopped server : {serverKey}", Sucessful = true });
-
-                    var startDate = DateTime.Now;
-                    while (nCtrl.InternalIsServerRunning) {
-                        var ts = DateTime.Now - startDate;
-                        if (ts.TotalMinutes > 5) await nCtrl.StopServer(true);
-                        Thread.Sleep(5000);
-                    }
-
-                    if ((am!= null && am.UpdateServer) || IsTheAutoUpdateTask) { 
-                       UpdateServerFromCache(nCtrl); 
-                       OnProgressChanged(new ProcessEventArg { Message = $"Updated server : {serverKey}", Sucessful = true });
-                    }
-
-                    if ((isRunning && (am != null &&  am.RestartServer)) || (profile.RestartIfShutdown && IsTheAutoUpdateTask)) {
-                        nCtrl.StartServer();
-                         
-                        OnProgressChanged(new ProcessEventArg { Message = $"Started server : {serverKey}", Sucessful = true });
-                    }
-                     
-                    OnProcessCompleted(new ProcessEventArg { Message = $"Auto Restarted server : {serverKey}", Sucessful = true });
                 }
-                else { 
-                    OnProcessError( new ProcessEventArg { Message = $"Invalid Server : {serverKey}", Sucessful = false, IsError = true });
+                else {
+                    OnProcessError(new ProcessEventArg { Message = $"Invalid Server : {serverKey}", Sucessful = false, IsError = true });
                 }
             }
             catch (Exception e) {
@@ -357,14 +370,14 @@ namespace OphiussaFramework.ServerUtils {
 
         public static void UpdateServerFromCache(PluginController controller) {
             OphiussaLogger.Logger.Debug("UpdateServerFromCache");
-            IProfile profile            = controller.GetProfile();
-            string   cacheFolder        = controller.CacheFolder;
-            string   currentServerBuild = Utils.GetBuild(profile);
-            string   currentCacheBuild  = Utils.GetCacheBuild(profile, cacheFolder);
-            bool     needToUpdate       = false;
-            var      changedFiles       = new List<FileInfo>();
+            IProfile profile = controller.GetProfile();
+            string cacheFolder = controller.CacheFolder;
+            string currentServerBuild = Utils.GetBuild(profile);
+            string currentCacheBuild = Utils.GetCacheBuild(profile, cacheFolder);
+            bool needToUpdate = false;
+            var changedFiles = new List<FileInfo>();
 
-            OnProgressChanged(new ProcessEventArg { Message = "Cache Build : "  + currentCacheBuild, IsStarting  = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
+            OnProgressChanged(new ProcessEventArg { Message = "Cache Build : " + currentCacheBuild, IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
             OnProgressChanged(new ProcessEventArg { Message = "Server Build : " + currentServerBuild, IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
 
             if (currentServerBuild != currentCacheBuild) {
@@ -390,8 +403,8 @@ namespace OphiussaFramework.ServerUtils {
                 changedFiles = new List<FileInfo>();
             }
 
-            if (changedFiles.Count == 0) OnProgressChanged(new ProcessEventArg { Message = "No changed detected", IsStarting                                                 = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles  = 0 });
-            else OnProgressChanged(new ProcessEventArg { Message                         = $"Detected changes in {changedFiles.Count} files for server {profile.Name}", IsStarting = true, ProcessedFileCount  = 0, Sucessful = false, TotalFiles = changedFiles.Count, SendToDiscord = true });
+            if (changedFiles.Count == 0) OnProgressChanged(new ProcessEventArg { Message = "No changed detected", IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0 });
+            else OnProgressChanged(new ProcessEventArg { Message = $"Detected changes in {changedFiles.Count} files for server {profile.Name}", IsStarting = true, ProcessedFileCount = 0, Sucessful = false, TotalFiles = changedFiles.Count, SendToDiscord = true });
 
             if (changedFiles.Count > 0) needToUpdate = true;
 
@@ -405,10 +418,10 @@ namespace OphiussaFramework.ServerUtils {
 
                 if (!Directory.Exists(file1.DirectoryName)) Directory.CreateDirectory(file1.DirectoryName);
                 bool notCopied = true;
-                int  attempt   = 1;
+                int attempt = 1;
                 while (notCopied) {
                     try {
-                     //   OnProgressChanged(new ProcessEventArg { Message = $"Copying files {i}/{changedFiles.Count} => {file.FullName}", IsStarting = false, ProcessedFileCount = i, Sucessful = false, TotalFiles = changedFiles.Count });
+                        //   OnProgressChanged(new ProcessEventArg { Message = $"Copying files {i}/{changedFiles.Count} => {file.FullName}", IsStarting = false, ProcessedFileCount = i, Sucessful = false, TotalFiles = changedFiles.Count });
                         File.Copy(file.FullName, file.FullName.Replace(cacheFolder, profile.InstallationFolder), true);
                         notCopied = false;
                     }
@@ -429,27 +442,39 @@ namespace OphiussaFramework.ServerUtils {
 
         public static void UpdateAllServers() {
             OphiussaLogger.Logger.Debug("UpdateAllServers");
-            var                                  servers     = new List<ServerCache>();
+            var servers = new List<ServerCache>();
             Dictionary<string, PluginController> controllers = new Dictionary<string, PluginController>();
 
             var profiles = ConnectionController.SqlLite.GetRecords<IProfile>();
             profiles.ForEach(prf => {
-                                 if (!prf.IncludeAutoUpdate) return;
-                                 if (servers.Find(x => x.SteamServerId == prf.SteamServerId) != null) return;
-                                 controllers.Add(prf.Key, new PluginController(ConnectionController.Plugins[prf.Type].PluginLocation()));
-                                 controllers[prf.Key].SetProfile(prf);
-                                 servers.Add(new ServerCache {
-                                                                 Branch        = prf.Branch,
-                                                                 SteamServerId = prf.SteamServerId,
-                                                                 Type          = prf.Type,
-                                                                 CacheFolder   = controllers[prf.Key].CacheFolder
-                                });
-                             });
+                try {
+                    if (!prf.IncludeAutoUpdate) return;
+                    if (servers.Find(x => x.SteamServerId == prf.SteamServerId) != null) return;
+                    controllers.Add(prf.Key, new PluginController(ConnectionController.Plugins[prf.Type].PluginLocation()));
+                    controllers[prf.Key].SetProfile(prf);
+                    Message m = controllers[prf.Key].SetProfile(prf);
+                    if (!m.Success) {
+                        throw m.Exception;
+                    }
+                    else {
+                        servers.Add(new ServerCache {
+                            Branch = prf.Branch,
+                            SteamServerId = prf.SteamServerId,
+                            Type = prf.Type,
+                            CacheFolder = controllers[prf.Key].CacheFolder
+                        });
+                    }
+
+                }
+                catch (Exception e) {
+                    OphiussaLogger.Logger.Error(e);
+                }
+            });
 
 
             var tasks = new List<Task>();
             foreach (var server in servers) {
-                var t = Task.Run(() => { NetworkTools.UpdateCacheFolder(server,false); });
+                var t = Task.Run(() => { NetworkTools.UpdateCacheFolder(server, false); });
 
                 tasks.Add(t);
             }
@@ -458,16 +483,16 @@ namespace OphiussaFramework.ServerUtils {
 
             if (ConnectionController.Settings.UpdateSequencial)
                 foreach (var key in controllers.Keys) {
-                    RestartServerSingleServer(key,true);
+                    RestartServerSingleServer(key, true);
                 }
             else {
                 tasks = new List<Task>();
 
                 foreach (var key in controllers.Keys) {
-                    var t = Task.Run(() => { RestartServerSingleServer(key,true); });
+                    var t = Task.Run(() => { RestartServerSingleServer(key, true); });
 
                     tasks.Add(t);
-                } 
+                }
                 Task.WaitAll(tasks.ToArray());
 
             }
@@ -477,18 +502,23 @@ namespace OphiussaFramework.ServerUtils {
 
             OphiussaLogger.Logger.Debug("BackupAllServers");
             var profiles = ConnectionController.SqlLite.GetRecords<IProfile>();
-             
+
             profiles.ForEach(prf => {
-                                 try {
-                                     if (!prf.IncludeAutoBackup) return;
-                                     var ctrl = new PluginController(ConnectionController.Plugins[prf.Type].PluginLocation());
-                                     ctrl.SetProfile(prf);
-                                     ctrl.BackupServer(); 
-                                 }
-                                 catch (Exception e) {
-                                     OphiussaLogger.Logger.Error(e);
-                                 }
-                             });
+                try {
+                    if (!prf.IncludeAutoBackup) return;
+                    var ctrl = new PluginController(ConnectionController.Plugins[prf.Type].PluginLocation());
+                    Message m = ctrl.SetProfile(prf);
+                    if (!m.Success) {
+                        throw m.Exception;
+                    }
+                    else {
+                        ctrl.BackupServer();
+                    }
+                }
+                catch (Exception e) {
+                    OphiussaLogger.Logger.Error(e);
+                }
+            });
         }
     }
 }
