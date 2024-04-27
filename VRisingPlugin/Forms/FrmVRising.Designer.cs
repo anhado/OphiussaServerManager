@@ -42,6 +42,8 @@
             this.label33 = new System.Windows.Forms.Label();
             this.cboPriority = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.exTrackBar5 = new OphiussaFramework.Components.exTrackBar();
             this.exTrackBar4 = new OphiussaFramework.Components.exTrackBar();
@@ -52,6 +54,11 @@
             this.chkListOnEOS = new System.Windows.Forms.CheckBox();
             this.chkListOnSteam = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.txtLocalIP = new System.Windows.Forms.ComboBox();
             this.txtPeerPort = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -63,13 +70,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtServerName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.LBLSTART = new System.Windows.Forms.Label();
             this.expandCollapsePanel1.SuspendLayout();
             this.groupBox12.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -90,7 +91,7 @@
             // automaticManagement1
             // 
             this.automaticManagement1.ForeColor = System.Drawing.Color.SteelBlue;
-            this.automaticManagement1.Location = new System.Drawing.Point(5, 793);
+            this.automaticManagement1.Location = new System.Drawing.Point(379, 793);
             this.automaticManagement1.Name = "automaticManagement1";
             this.automaticManagement1.Size = new System.Drawing.Size(800, 347);
             this.automaticManagement1.TabIndex = 2;
@@ -238,6 +239,26 @@
             this.groupBox3.TabIndex = 18;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Server Settings";
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(12, 255);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(93, 19);
+            this.checkBox3.TabIndex = 27;
+            this.checkBox3.Text = "API Enabled";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(12, 230);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(167, 19);
+            this.checkBox2.TabIndex = 26;
+            this.checkBox2.Text = "Admin Only Debug Events";
+            this.checkBox2.UseVisualStyleBackColor = true;
             // 
             // checkBox1
             // 
@@ -393,6 +414,50 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Networking";
             // 
+            // textBox2
+            // 
+            this.textBox2.Enabled = false;
+            this.textBox2.Location = new System.Drawing.Point(952, 20);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(93, 21);
+            this.textBox2.TabIndex = 17;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(860, 23);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(86, 15);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "Password Port";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Enabled = false;
+            this.textBox1.Location = new System.Drawing.Point(761, 19);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(93, 21);
+            this.textBox1.TabIndex = 15;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(697, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(61, 15);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Rcon Port";
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Location = new System.Drawing.Point(636, 19);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(55, 19);
+            this.checkBox4.TabIndex = 13;
+            this.checkBox4.Text = "Rcon";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            // 
             // txtLocalIP
             // 
             this.txtLocalIP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -496,75 +561,21 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "Server Name";
             // 
-            // checkBox2
+            // LBLSTART
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(13, 230);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(167, 19);
-            this.checkBox2.TabIndex = 26;
-            this.checkBox2.Text = "Admin Only Debug Events";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(12, 255);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(93, 19);
-            this.checkBox3.TabIndex = 27;
-            this.checkBox3.Text = "API Enabled";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(636, 19);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(55, 19);
-            this.checkBox4.TabIndex = 13;
-            this.checkBox4.Text = "Rcon";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(761, 19);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(93, 21);
-            this.textBox1.TabIndex = 15;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(697, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 15);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "Rcon Port";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(952, 20);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(93, 21);
-            this.textBox2.TabIndex = 17;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(860, 23);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(86, 15);
-            this.label2.TabIndex = 16;
-            this.label2.Text = "Password Port";
+            this.LBLSTART.AutoSize = true;
+            this.LBLSTART.Location = new System.Drawing.Point(7, 793);
+            this.LBLSTART.Name = "LBLSTART";
+            this.LBLSTART.Size = new System.Drawing.Size(62, 13);
+            this.LBLSTART.TabIndex = 5;
+            this.LBLSTART.Text = "LBLSTART";
             // 
             // FrmVRising
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1279, 1146);
+            this.Controls.Add(this.LBLSTART);
             this.Controls.Add(this.expandCollapsePanel1);
             this.Controls.Add(this.automaticManagement1);
             this.Controls.Add(this.button1);
@@ -585,6 +596,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -631,5 +643,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label LBLSTART;
     }
 }
