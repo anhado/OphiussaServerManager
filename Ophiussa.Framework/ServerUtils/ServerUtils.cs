@@ -311,6 +311,7 @@ namespace OphiussaFramework.ServerUtils {
             try {
                 OphiussaLogger.Logger.Debug("RestartServerSingleServer");
                 string[] args = serverKey.Split('_');
+                if (!IsTheAutoUpdateTask) serverKey = args[2];
                 OnProcessStarted(new ProcessEventArg { Message = $"Restarting server : {serverKey}", Sucessful = true });
                 var am = !IsTheAutoUpdateTask ? ConnectionController.SqlLite.GetRecord<AutoManagement>($"Id={args[1]}") : null;
                 var profile = ConnectionController.SqlLite.GetRecord<IProfile>($"Key='{serverKey}'");
@@ -325,7 +326,15 @@ namespace OphiussaFramework.ServerUtils {
                         if (IsTheAutoUpdateTask) {
                             string currentServerBuild = Utils.GetBuild(profile);
                             string currentCacheBuild = Utils.GetCacheBuild(profile, nCtrl.CacheFolder);
-                            if (currentServerBuild == currentCacheBuild) return;
+
+
+                            OnProgressChanged(new ProcessEventArg { Message = "Cache Build : " + currentCacheBuild, IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
+                            OnProgressChanged(new ProcessEventArg { Message = "Server Build : " + currentServerBuild, IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
+
+                            if (currentServerBuild == currentCacheBuild) {
+                                OnProgressChanged(new ProcessEventArg { Message = "No update needed " , IsStarting = false, ProcessedFileCount = 0, Sucessful = true, TotalFiles = 0, SendToDiscord = true });
+                                return;
+                            }
                         }
                         bool isRunning = nCtrl.InternalIsServerRunning;
 
