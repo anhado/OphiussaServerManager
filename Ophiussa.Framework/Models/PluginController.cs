@@ -63,6 +63,7 @@ namespace OphiussaFramework.Models {
 
         public   string                            GameType      => _plugin.GetInfo().GameType;
         public   string                            GameName      => _plugin.GetInfo().Name;
+        public string Name => _plugin.GetProfile().Name;
         internal object                            Version       => _plugin.PluginVersion;
         internal object                            PluginName    => _plugin.PluginName;
         internal object                            Loaded        { get; set; } = true;
