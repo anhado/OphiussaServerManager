@@ -8,12 +8,14 @@ using OphiussaFramework.Models;
 namespace VRisingPlugin.Forms {
     public partial class FrmVRising : Form {
         private readonly IPlugin _plugin;
+        private readonly Profile Profile;
         private          TabPage _tabPage;
 
         public FrmVRising(IPlugin plugin, TabPage tab) {
             _plugin = plugin;
             InitializeComponent();
             profileHeader1.Profile       = _plugin.Profile;
+            Profile                      = (Profile)_plugin.Profile;
             profileHeader1.Plugin        = _plugin;
             automaticManagement1.Profile = _plugin.Profile;
             automaticManagement1.Plugin  = _plugin;
@@ -51,11 +53,17 @@ namespace VRisingPlugin.Forms {
         }
 
         private void profileHeader1_ClickUpgrade(object sender, EventArgs e) {
-            _plugin.InstallServer();
+            try {
+
+                ConnectionController.ServerControllers[Profile.Key].ShowServerInstallationOptions();
+            }
+            catch (Exception exception) {
+                MessageBox.Show(exception.Message);
+            }
         }
 
         private void profileHeader1_ClickStartStop(object sender, EventArgs e) {
-            if (profileHeader1.IsRunning)
+            if (!profileHeader1.IsRunning)
                 _plugin.StartServer();
             else
                 _plugin.StopServer();

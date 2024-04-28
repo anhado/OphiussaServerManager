@@ -459,29 +459,29 @@ namespace OphiussaFramework.ServerUtils {
 
             var profiles = ConnectionController.SqlLite.GetRecords<IProfile>();
             profiles.ForEach(prf => {
-                try {
-                    if (!prf.IncludeAutoUpdate) return;
-                    if (servers.Find(x => x.SteamServerId == prf.SteamServerId) != null) return;
-                    controllers.Add(prf.Key, new PluginController(ConnectionController.Plugins[prf.Type].PluginLocation()));
-                    controllers[prf.Key].SetProfile(prf);
-                    Message m = controllers[prf.Key].SetProfile(prf);
-                    if (!m.Success) {
-                        throw m.Exception;
-                    }
-                    else {
-                        servers.Add(new ServerCache {
-                            Branch = prf.Branch,
-                            SteamServerId = prf.SteamServerId,
-                            Type = prf.Type,
-                            CacheFolder = controllers[prf.Key].CacheFolder
-                        });
-                    }
+                                    try {
+                                        if (!prf.IncludeAutoUpdate) return;
+                                        if (servers.Find(x => x.SteamServerId == prf.SteamServerId) != null) return;
+                                        controllers.Add(prf.Key, new PluginController(ConnectionController.Plugins[prf.Type].PluginLocation()));
+                                        controllers[prf.Key].SetProfile(prf);
+                                        Message m = controllers[prf.Key].SetProfile(prf);
+                                        if (!m.Success) {
+                                            throw m.Exception;
+                                        }
+                                        else {
+                                            servers.Add(new ServerCache {
+                                                Branch = prf.Branch,
+                                                SteamServerId = prf.SteamServerId,
+                                                Type = prf.Type,
+                                                CacheFolder = controllers[prf.Key].CacheFolder
+                                            });
+                                        }
 
-                }
-                catch (Exception e) {
-                    OphiussaLogger.Logger.Error(e);
-                }
-            });
+                                    }
+                                    catch (Exception e) {
+                                        OphiussaLogger.Logger.Error(e);
+                                    }
+                             });
 
 
             var tasks = new List<Task>();
