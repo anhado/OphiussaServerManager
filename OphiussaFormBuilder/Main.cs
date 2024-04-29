@@ -50,13 +50,13 @@ namespace OphiussaFormBuilder {
 
             //IList<PropertyInfo> props = new List<PropertyInfo>(myType.GetProperties());
 
-            GenerateObjectList(pp, j, ref list, "Main Settings");
+            GenerateObjectList(pp, ref list, "Main Settings");
 
             (new FrmAnalyzedData(list)).ShowDialog();
 
         }
 
-        private void GenerateObjectList(IEnumerable<JProperty> pp, JObject j, ref List<ListOfObjects> list, string Group) {
+        private void GenerateObjectList(IEnumerable<JProperty> pp, ref List<ListOfObjects> list, string group) {
 
             foreach (JProperty prop in pp) {
 
@@ -76,23 +76,23 @@ namespace OphiussaFormBuilder {
                         throw new NotImplementedException();
                         break;
                     case JTokenType.Property when prop1.Type == JTokenType.Integer:
-                        list.Add(new ListOfObjects() { Group = Group, ObjectType = ObjectType.ExTrackBar, PropertyName = prop.Name, Description = Regex.Replace(prop.Name, "(\\B[A-Z])", " $1"), Value = prop.Value });
+                        list.Add(new ListOfObjects() { Group = Regex.Replace(group.Replace("_",""), "(\\B[A-Z])", " $1")  , ObjectType = ObjectType.ExTrackBar, PropertyName = prop.Name, Description = Regex.Replace(prop.Name, "(\\B[A-Z])", " $1"), Value = prop.Value,Minimum = (int.Parse(prop.Value.ToString()) == 0 ? 0 :1), Maximum = int.Parse( prop.Value.ToString()) * 10, BindingLocation = "Profile" });
                         break;
                     case JTokenType.Property when prop1.Type == JTokenType.Boolean:
-                        list.Add(new ListOfObjects() { Group = Group, ObjectType = ObjectType.CheckBox, PropertyName = prop.Name, Description = Regex.Replace(prop.Name, "(\\B[A-Z])", " $1"), Value = prop.Value });
+                        list.Add(new ListOfObjects() { Group = Regex.Replace(group.Replace("_", ""), "(\\B[A-Z])", " $1"), ObjectType = ObjectType.CheckBox, PropertyName = prop.Name, Description = Regex.Replace(prop.Name, "(\\B[A-Z])", " $1"), Value = prop.Value, BindingLocation = "Profile" });
                         break;
                     case JTokenType.Property when prop1.Type == JTokenType.Float:
-                        list.Add(new ListOfObjects() { Group = Group, ObjectType = ObjectType.ExTrackBar, PropertyName = prop.Name, Description = Regex.Replace(prop.Name, "(\\B[A-Z])", " $1") , Value = prop.Value });
+                        list.Add(new ListOfObjects() { Group = Regex.Replace(group.Replace("_", ""), "(\\B[A-Z])", " $1"), ObjectType = ObjectType.ExTrackBar, PropertyName = prop.Name, Description = Regex.Replace(prop.Name, "(\\B[A-Z])", " $1") , Value = prop.Value, Minimum = (double.Parse(prop.Value.ToString()) == 0 ? 0 : 1), Maximum = double.Parse(prop.Value.ToString()) * 10, BindingLocation = "Profile" });
                         break;
                     case JTokenType.Property when prop1.Type == JTokenType.String:
-                        list.Add(new ListOfObjects() { Group = Group, ObjectType = ObjectType.TextBox, PropertyName = prop.Name, Description = Regex.Replace(prop.Name, "(\\B[A-Z])", " $1"), Value = prop.Value });
+                        list.Add(new ListOfObjects() { Group = Regex.Replace(group.Replace("_", ""), "(\\B[A-Z])", " $1"), ObjectType = ObjectType.TextBox, PropertyName = prop.Name, Description = Regex.Replace(prop.Name, "(\\B[A-Z])", " $1"), Value = prop.Value, BindingLocation = "Profile" });
 
                         break;
                     case JTokenType.Property when prop1.Type == JTokenType.Array:
                         //GenerateObjectList(pp, prop.ToObject(), ref list, prop.Name);
                         break;
                     case JTokenType.Property when prop1.Type == JTokenType.Object:
-                        GenerateObjectListParent(pp, prop.Value, ref list, Regex.Replace(prop.Name, "(\\B[A-Z])", " $1"));
+                        GenerateObjectListParent(prop.Value, ref list, prop.Name);
                         break;
                     case JTokenType.Comment:
                         throw new NotImplementedException();
@@ -140,7 +140,7 @@ namespace OphiussaFormBuilder {
             }
         }
 
-        private void GenerateObjectListParent(IEnumerable<JProperty> pp, JToken value, ref List<ListOfObjects> list, string name) {
+        private void GenerateObjectListParent(JToken value, ref List<ListOfObjects> list, string group) {
 
             foreach (JProperty prop in value) {
 
@@ -160,22 +160,22 @@ namespace OphiussaFormBuilder {
                         throw new NotImplementedException();
                         break;
                     case JTokenType.Property when prop1.Type == JTokenType.Integer:
-                        list.Add(new ListOfObjects() { Group = name, ObjectType = ObjectType.ExTrackBar, PropertyName = prop.Name, Description = Regex.Replace(prop.Name, "(\\B[A-Z])", " $1"), Value = prop.Value });
+                        list.Add(new ListOfObjects() { Group = Regex.Replace(group.Replace("_", ""), "(\\B[A-Z])", " $1"), ObjectType = ObjectType.ExTrackBar, PropertyName = prop.Name, Description = Regex.Replace(prop.Name.Replace("_", ""), "(\\B[A-Z])", " $1"), Value = prop.Value, Minimum = (int.Parse(prop.Value.ToString()) == 0 ? 0 : 1), Maximum = int.Parse(prop.Value.ToString()) * 10, BindingLocation = $"Profile.{group.Replace("-", ".")}" });
                         break;
                     case JTokenType.Property when prop1.Type == JTokenType.Boolean:
-                        list.Add(new ListOfObjects() { Group = name, ObjectType = ObjectType.CheckBox, PropertyName = prop.Name , Description = Regex.Replace(prop.Name, "(\\B[A-Z])", " $1") , Value = prop.Value });
+                        list.Add(new ListOfObjects() { Group = Regex.Replace(group.Replace("_", ""), "(\\B[A-Z])", " $1"), ObjectType = ObjectType.CheckBox, PropertyName = prop.Name, Description = Regex.Replace(prop.Name.Replace("_", ""), "(\\B[A-Z])", " $1") , Value = prop.Value, BindingLocation = $"Profile.{group.Replace("-", ".")}" });
                         break;
                     case JTokenType.Property when prop1.Type == JTokenType.Float:
-                        list.Add(new ListOfObjects() { Group = name, ObjectType = ObjectType.ExTrackBar, PropertyName = prop.Name, Description = Regex.Replace(prop.Name, "(\\B[A-Z])", " $1") , Value = prop.Value });
+                        list.Add(new ListOfObjects() { Group = Regex.Replace(group.Replace("_", ""), "(\\B[A-Z])", " $1"), ObjectType = ObjectType.ExTrackBar, PropertyName = prop.Name, Description = Regex.Replace(prop.Name.Replace("_", ""), "(\\B[A-Z])", " $1") , Value = prop.Value, Minimum = (double.Parse(prop.Value.ToString()) == 0 ? 0 : 1), Maximum = double.Parse(prop.Value.ToString()) * 10, BindingLocation = $"Profile.{group.Replace("-", ".")}" });
                         break;
                     case JTokenType.Property when prop1.Type == JTokenType.String:
-                        list.Add(new ListOfObjects() { Group = name, ObjectType = ObjectType.TextBox, PropertyName = prop.Name , Description = Regex.Replace(prop.Name, "(\\B[A-Z])", " $1") , Value = prop.Value });
+                        list.Add(new ListOfObjects() { Group = Regex.Replace(group.Replace("_", ""), "(\\B[A-Z])", " $1"), ObjectType = ObjectType.TextBox, PropertyName = prop.Name, Description = Regex.Replace(prop.Name.Replace("_", ""), "(\\B[A-Z])", " $1") , Value = prop.Value, BindingLocation =  $"Profile.{group.Replace("-", ".")}" });
                         break;
                     case JTokenType.Property when prop1.Type == JTokenType.Array:
                         //GenerateObjectList(pp, prop.ToObject(), ref list, prop.Name);
                         break;
                     case JTokenType.Property when prop1.Type == JTokenType.Object:
-                        GenerateObjectListParent(pp, prop.Value, ref list, name + " - " + Regex.Replace(prop.Name, "(\\B[A-Z])", " $1"));
+                        GenerateObjectListParent(prop.Value, ref list, group + "-" + prop.Name);
                         break;
                     case JTokenType.Comment:
                         throw new NotImplementedException();

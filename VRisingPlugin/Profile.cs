@@ -167,7 +167,8 @@ namespace VRisingPlugin {
         public float          SpellPowerModifier    { get; set; } = 1.0f;
         public float          SiegePowerModifier    { get; set; } = 1.0f;
         public float          MovementSpeedModifier { get; set; } = 1.0f;
-        public FloorPenalties PylonPenalties        { get; set; } = new FloorPenalties();
+        public PylonPenalties PylonPenalties        { get; set; } = new PylonPenalties();
+        public FloorPenalties FloorPenalties        { get; set; } = new FloorPenalties();
         public HeartLimits    HeartLimits           { get; set; } = new HeartLimits();
         public int            CastleLimit           { get; set; } = 2;
     }

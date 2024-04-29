@@ -17,6 +17,7 @@ namespace OphiussaFormBuilder.Models {
     public class ListOfObjects {
         public string Group        { get; set; }
         public string PropertyName { get; set; }
+        public string BindingLocation { get; set; }
         public string ObjectName {
             get {
                 string name = "";
@@ -37,9 +38,9 @@ namespace OphiussaFormBuilder.Models {
                         throw new ArgumentOutOfRangeException();
                 }
 
-                name += Group.Replace(" ", "") + PropertyName;
+                name += Group+ PropertyName;
 
-                return name;
+                return name.Replace("-", "").Replace("_", "").Replace(" ", "");
             }
         }
         public string     Description { get; set; }
@@ -53,8 +54,8 @@ namespace OphiussaFormBuilder.Models {
                 ObjectType = myStatus;
             }
         }
-        public float  Minimum { get; set; }
-        public float  Maximum { get; set; }
+        public JToken Minimum { get; set; } 
+        public JToken Maximum { get; set; }
         public JToken Value   { get; set; }
     }
 }

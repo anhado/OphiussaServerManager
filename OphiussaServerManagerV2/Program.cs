@@ -24,7 +24,7 @@ namespace OphiussaServerManagerV2 {
                 ConnectionController.Initialize();
                 OphiussaLogger.ReconfigureLogging();
 
-                OphiussaLogger.Logger.Info("\nApplication Started");
+                OphiussaLogger.Logger.Info("Application Started");
 
                 foreach (string arg in args)
                     if (arg.StartsWith("-as")) {

@@ -27,16 +27,19 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
+            this.listOfObjectsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.objectNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.propertyNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BindingLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.objectTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.minimumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.maximumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.listOfObjectsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listOfObjectsBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -50,6 +53,7 @@
             this.groupDataGridViewTextBoxColumn,
             this.objectNameDataGridViewTextBoxColumn,
             this.propertyNameDataGridViewTextBoxColumn,
+            this.BindingLocation,
             this.Description,
             this.objectTypeDataGridViewTextBoxColumn,
             this.minimumDataGridViewTextBoxColumn,
@@ -68,6 +72,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -83,12 +88,18 @@
             this.panel2.Size = new System.Drawing.Size(800, 414);
             this.panel2.TabIndex = 2;
             // 
-            // Description
+            // button1
             // 
-            this.Description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Description.DataPropertyName = "Description";
-            this.Description.HeaderText = "Description";
-            this.Description.Name = "Description";
+            this.button1.Location = new System.Drawing.Point(3, 7);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(105, 23);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Generate Code";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // listOfObjectsBindingSource
+            // 
+            this.listOfObjectsBindingSource.DataSource = typeof(OphiussaFormBuilder.Models.ListOfObjects);
             // 
             // groupDataGridViewTextBoxColumn
             // 
@@ -101,7 +112,7 @@
             // 
             this.objectNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.objectNameDataGridViewTextBoxColumn.DataPropertyName = "ObjectName";
-            this.objectNameDataGridViewTextBoxColumn.HeaderText = "ObjectName";
+            this.objectNameDataGridViewTextBoxColumn.HeaderText = "Object Name";
             this.objectNameDataGridViewTextBoxColumn.Name = "objectNameDataGridViewTextBoxColumn";
             this.objectNameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -109,17 +120,31 @@
             // 
             this.propertyNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.propertyNameDataGridViewTextBoxColumn.DataPropertyName = "PropertyName";
-            this.propertyNameDataGridViewTextBoxColumn.HeaderText = "PropertyName";
+            this.propertyNameDataGridViewTextBoxColumn.HeaderText = "Property Name";
             this.propertyNameDataGridViewTextBoxColumn.Name = "propertyNameDataGridViewTextBoxColumn";
+            // 
+            // BindingLocation
+            // 
+            this.BindingLocation.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.BindingLocation.DataPropertyName = "BindingLocation";
+            this.BindingLocation.HeaderText = "Binding Location";
+            this.BindingLocation.Name = "BindingLocation";
+            // 
+            // Description
+            // 
+            this.Description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Description.DataPropertyName = "Description";
+            this.Description.HeaderText = "Description";
+            this.Description.Name = "Description";
             // 
             // objectTypeDataGridViewTextBoxColumn
             // 
-            this.objectTypeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.objectTypeDataGridViewTextBoxColumn.DataPropertyName = "ObjectTypeColumn";
-            this.objectTypeDataGridViewTextBoxColumn.HeaderText = "ObjectType";
+            this.objectTypeDataGridViewTextBoxColumn.HeaderText = "Object Type";
             this.objectTypeDataGridViewTextBoxColumn.Name = "objectTypeDataGridViewTextBoxColumn";
             this.objectTypeDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.objectTypeDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.objectTypeDataGridViewTextBoxColumn.Width = 91;
             // 
             // minimumDataGridViewTextBoxColumn
             // 
@@ -139,10 +164,6 @@
             this.valueDataGridViewTextBoxColumn.HeaderText = "Value";
             this.valueDataGridViewTextBoxColumn.Name = "valueDataGridViewTextBoxColumn";
             // 
-            // listOfObjectsBindingSource
-            // 
-            this.listOfObjectsBindingSource.DataSource = typeof(OphiussaFormBuilder.Models.ListOfObjects);
-            // 
             // FrmAnalyzedData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -154,6 +175,7 @@
             this.Text = "Analyzed Data";
             this.Load += new System.EventHandler(this.FrmAnalyzedData_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.listOfObjectsBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -166,9 +188,11 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.BindingSource listOfObjectsBindingSource;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridViewTextBoxColumn groupDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn objectNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn propertyNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BindingLocation;
         private System.Windows.Forms.DataGridViewTextBoxColumn Description;
         private System.Windows.Forms.DataGridViewComboBoxColumn objectTypeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn minimumDataGridViewTextBoxColumn;
