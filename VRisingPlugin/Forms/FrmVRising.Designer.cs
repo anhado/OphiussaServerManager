@@ -29,9 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmVRising));
-            this.button1 = new System.Windows.Forms.Button();
-            this.automaticManagement1 = new OphiussaServerManager.Components.AutomaticManagement();
-            this.profileHeader1 = new OphiussaFramework.Components.ProfileHeader();
+            this.pContainer = new System.Windows.Forms.Panel();
             this.expandCollapsePanel1 = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.button4 = new System.Windows.Forms.Button();
@@ -70,7 +68,10 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtServerName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.LBLSTART = new System.Windows.Forms.Label();
+            this.automaticManagement1 = new OphiussaServerManager.Components.AutomaticManagement();
+            this.button1 = new System.Windows.Forms.Button();
+            this.profileHeader1 = new OphiussaFramework.Components.ProfileHeader();
+            this.pContainer.SuspendLayout();
             this.expandCollapsePanel1.SuspendLayout();
             this.groupBox12.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -78,39 +79,15 @@
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // pContainer
             // 
-            this.button1.Location = new System.Drawing.Point(1192, 135);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Open Command Builder";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // automaticManagement1
-            // 
-            this.automaticManagement1.ForeColor = System.Drawing.Color.SteelBlue;
-            this.automaticManagement1.Location = new System.Drawing.Point(379, 793);
-            this.automaticManagement1.Name = "automaticManagement1";
-            this.automaticManagement1.Size = new System.Drawing.Size(800, 347);
-            this.automaticManagement1.TabIndex = 2;
-            // 
-            // profileHeader1
-            // 
-            this.profileHeader1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.profileHeader1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.profileHeader1.Location = new System.Drawing.Point(0, 0);
-            this.profileHeader1.Name = "profileHeader1";
-            this.profileHeader1.RconEnabled = true;
-            this.profileHeader1.Size = new System.Drawing.Size(1279, 168);
-            this.profileHeader1.TabIndex = 0;
-            this.profileHeader1.ClickReload += new System.EventHandler(this.profileHeader1_ClickReload);
-            this.profileHeader1.ClickSync += new System.EventHandler(this.profileHeader1_ClickSync);
-            this.profileHeader1.ClickSave += new System.EventHandler(this.profileHeader1_ClickSave);
-            this.profileHeader1.ClickUpgrade += new System.EventHandler(this.profileHeader1_ClickUpgrade);
-            this.profileHeader1.ClickStartStop += new System.EventHandler(this.profileHeader1_ClickStartStop);
-            this.profileHeader1.ClickRCON += new System.EventHandler(this.profileHeader1_ClickRCON);
+            this.pContainer.AutoScroll = true;
+            this.pContainer.Controls.Add(this.expandCollapsePanel1);
+            this.pContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pContainer.Location = new System.Drawing.Point(0, 168);
+            this.pContainer.Name = "pContainer";
+            this.pContainer.Size = new System.Drawing.Size(1279, 978);
+            this.pContainer.TabIndex = 24;
             // 
             // expandCollapsePanel1
             // 
@@ -124,7 +101,7 @@
             this.expandCollapsePanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.expandCollapsePanel1.ExpandedHeight = 511;
             this.expandCollapsePanel1.IsExpanded = true;
-            this.expandCollapsePanel1.Location = new System.Drawing.Point(0, 168);
+            this.expandCollapsePanel1.Location = new System.Drawing.Point(0, 0);
             this.expandCollapsePanel1.Name = "expandCollapsePanel1";
             this.expandCollapsePanel1.Size = new System.Drawing.Size(1279, 619);
             this.expandCollapsePanel1.TabIndex = 4;
@@ -146,7 +123,7 @@
             this.groupBox12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
             this.groupBox12.Location = new System.Drawing.Point(4, 483);
             this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(1287, 127);
+            this.groupBox12.Size = new System.Drawing.Size(1270, 127);
             this.groupBox12.TabIndex = 23;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "Command Line";
@@ -154,7 +131,7 @@
             // button4
             // 
             this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(1199, 46);
+            this.button4.Location = new System.Drawing.Point(1165, 46);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(61, 23);
             this.button4.TabIndex = 72;
@@ -169,7 +146,7 @@
             this.txtCommand.Location = new System.Drawing.Point(5, 46);
             this.txtCommand.Multiline = true;
             this.txtCommand.Name = "txtCommand";
-            this.txtCommand.Size = new System.Drawing.Size(1188, 72);
+            this.txtCommand.Size = new System.Drawing.Size(1154, 72);
             this.txtCommand.TabIndex = 71;
             // 
             // btProcessorAffinity
@@ -221,6 +198,7 @@
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox3.Controls.Add(this.automaticManagement1);
             this.groupBox3.Controls.Add(this.checkBox3);
             this.groupBox3.Controls.Add(this.checkBox2);
             this.groupBox3.Controls.Add(this.checkBox1);
@@ -235,7 +213,7 @@
             this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
             this.groupBox3.Location = new System.Drawing.Point(4, 196);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1270, 281);
+            this.groupBox3.Size = new System.Drawing.Size(1253, 281);
             this.groupBox3.TabIndex = 18;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Server Settings";
@@ -281,7 +259,7 @@
             this.exTrackBar5.Minimum = 1;
             this.exTrackBar5.Name = "exTrackBar5";
             this.exTrackBar5.Scale = 1F;
-            this.exTrackBar5.Size = new System.Drawing.Size(1248, 26);
+            this.exTrackBar5.Size = new System.Drawing.Size(1214, 26);
             this.exTrackBar5.TabIndex = 24;
             this.exTrackBar5.Text = "Auto Save Interval";
             this.exTrackBar5.TickFrequency = 1;
@@ -299,7 +277,7 @@
             this.exTrackBar4.Minimum = 1;
             this.exTrackBar4.Name = "exTrackBar4";
             this.exTrackBar4.Scale = 1F;
-            this.exTrackBar4.Size = new System.Drawing.Size(1248, 26);
+            this.exTrackBar4.Size = new System.Drawing.Size(1214, 26);
             this.exTrackBar4.TabIndex = 23;
             this.exTrackBar4.Text = "Auto Save Count";
             this.exTrackBar4.TickFrequency = 1;
@@ -317,7 +295,7 @@
             this.exTrackBar3.Minimum = 1;
             this.exTrackBar3.Name = "exTrackBar3";
             this.exTrackBar3.Scale = 1F;
-            this.exTrackBar3.Size = new System.Drawing.Size(1248, 26);
+            this.exTrackBar3.Size = new System.Drawing.Size(1214, 26);
             this.exTrackBar3.TabIndex = 22;
             this.exTrackBar3.Text = "Server FPS";
             this.exTrackBar3.TickFrequency = 1;
@@ -335,7 +313,7 @@
             this.exTrackBar2.Minimum = 1;
             this.exTrackBar2.Name = "exTrackBar2";
             this.exTrackBar2.Scale = 1F;
-            this.exTrackBar2.Size = new System.Drawing.Size(1248, 26);
+            this.exTrackBar2.Size = new System.Drawing.Size(1214, 26);
             this.exTrackBar2.TabIndex = 21;
             this.exTrackBar2.Text = "Max Admins";
             this.exTrackBar2.TickFrequency = 1;
@@ -353,7 +331,7 @@
             this.exTrackBar1.Minimum = 1;
             this.exTrackBar1.Name = "exTrackBar1";
             this.exTrackBar1.Scale = 1F;
-            this.exTrackBar1.Size = new System.Drawing.Size(1248, 26);
+            this.exTrackBar1.Size = new System.Drawing.Size(1214, 26);
             this.exTrackBar1.TabIndex = 20;
             this.exTrackBar1.Text = "Max Users";
             this.exTrackBar1.TickFrequency = 1;
@@ -409,7 +387,7 @@
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
             this.groupBox2.Location = new System.Drawing.Point(4, 112);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1270, 78);
+            this.groupBox2.Size = new System.Drawing.Size(1253, 78);
             this.groupBox2.TabIndex = 17;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Networking";
@@ -521,7 +499,7 @@
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
             this.groupBox1.Location = new System.Drawing.Point(4, 29);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1270, 77);
+            this.groupBox1.Size = new System.Drawing.Size(1253, 77);
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Name and Password";
@@ -549,7 +527,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtServerName.Location = new System.Drawing.Point(115, 20);
             this.txtServerName.Name = "txtServerName";
-            this.txtServerName.Size = new System.Drawing.Size(1143, 21);
+            this.txtServerName.Size = new System.Drawing.Size(1109, 21);
             this.txtServerName.TabIndex = 5;
             // 
             // label5
@@ -561,30 +539,54 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "Server Name";
             // 
-            // LBLSTART
+            // automaticManagement1
             // 
-            this.LBLSTART.AutoSize = true;
-            this.LBLSTART.Location = new System.Drawing.Point(7, 793);
-            this.LBLSTART.Name = "LBLSTART";
-            this.LBLSTART.Size = new System.Drawing.Size(62, 13);
-            this.LBLSTART.TabIndex = 5;
-            this.LBLSTART.Text = "LBLSTART";
+            this.automaticManagement1.ForeColor = System.Drawing.Color.SteelBlue;
+            this.automaticManagement1.Location = new System.Drawing.Point(350, 9);
+            this.automaticManagement1.Name = "automaticManagement1";
+            this.automaticManagement1.Size = new System.Drawing.Size(800, 347);
+            this.automaticManagement1.TabIndex = 2;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(1192, 135);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Open Command Builder";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // profileHeader1
+            // 
+            this.profileHeader1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.profileHeader1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.profileHeader1.Location = new System.Drawing.Point(0, 0);
+            this.profileHeader1.Name = "profileHeader1";
+            this.profileHeader1.RconEnabled = true;
+            this.profileHeader1.Size = new System.Drawing.Size(1279, 168);
+            this.profileHeader1.TabIndex = 0;
+            this.profileHeader1.ClickReload += new System.EventHandler(this.profileHeader1_ClickReload);
+            this.profileHeader1.ClickSync += new System.EventHandler(this.profileHeader1_ClickSync);
+            this.profileHeader1.ClickSave += new System.EventHandler(this.profileHeader1_ClickSave);
+            this.profileHeader1.ClickUpgrade += new System.EventHandler(this.profileHeader1_ClickUpgrade);
+            this.profileHeader1.ClickStartStop += new System.EventHandler(this.profileHeader1_ClickStartStop);
+            this.profileHeader1.ClickRCON += new System.EventHandler(this.profileHeader1_ClickRCON);
             // 
             // FrmVRising
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1279, 1146);
-            this.Controls.Add(this.LBLSTART);
-            this.Controls.Add(this.expandCollapsePanel1);
-            this.Controls.Add(this.automaticManagement1);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.pContainer);
             this.Controls.Add(this.profileHeader1);
             this.ForeColor = System.Drawing.Color.SteelBlue;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmVRising";
             this.Text = "VRising";
             this.Load += new System.EventHandler(this.FrmConfigurationForm_Load);
+            this.pContainer.ResumeLayout(false);
             this.expandCollapsePanel1.ResumeLayout(false);
             this.expandCollapsePanel1.PerformLayout();
             this.groupBox12.ResumeLayout(false);
@@ -596,53 +598,52 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private OphiussaFramework.Components.ProfileHeader profileHeader1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel                           pContainer;
+        private OphiussaFramework.Components.ProfileHeader           profileHeader1;
+        private System.Windows.Forms.Button                          button1;
         private OphiussaServerManager.Components.AutomaticManagement automaticManagement1; 
-        private MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel expandCollapsePanel1;
-        private System.Windows.Forms.GroupBox groupBox12;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox txtCommand;
-        private System.Windows.Forms.Button btProcessorAffinity;
-        private System.Windows.Forms.TextBox txtAffinity;
-        private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.ComboBox cboPriority;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.CheckBox chkListOnEOS;
-        private System.Windows.Forms.CheckBox chkListOnSteam;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ComboBox txtLocalIP;
-        private System.Windows.Forms.TextBox txtPeerPort;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txtServerPort;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox txtServerPWD;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtServerName;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.CheckBox chkSecure;
-        private OphiussaFramework.Components.exTrackBar exTrackBar2;
-        private OphiussaFramework.Components.exTrackBar exTrackBar1;
-        private OphiussaFramework.Components.exTrackBar exTrackBar3;
-        private OphiussaFramework.Components.exTrackBar exTrackBar4;
-        private OphiussaFramework.Components.exTrackBar exTrackBar5;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label LBLSTART;
+        private MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel   expandCollapsePanel1;
+        private System.Windows.Forms.GroupBox                        groupBox12;
+        private System.Windows.Forms.Button                          button4;
+        private System.Windows.Forms.TextBox                         txtCommand;
+        private System.Windows.Forms.Button                          btProcessorAffinity;
+        private System.Windows.Forms.TextBox                         txtAffinity;
+        private System.Windows.Forms.Label                           label34;
+        private System.Windows.Forms.Label                           label33;
+        private System.Windows.Forms.ComboBox                        cboPriority;
+        private System.Windows.Forms.GroupBox                        groupBox3;
+        private System.Windows.Forms.CheckBox                        chkListOnEOS;
+        private System.Windows.Forms.CheckBox                        chkListOnSteam;
+        private System.Windows.Forms.GroupBox                        groupBox2;
+        private System.Windows.Forms.ComboBox                        txtLocalIP;
+        private System.Windows.Forms.TextBox                         txtPeerPort;
+        private System.Windows.Forms.Label                           label10;
+        private System.Windows.Forms.TextBox                         txtServerPort;
+        private System.Windows.Forms.Label                           label11;
+        private System.Windows.Forms.Label                           label12;
+        private System.Windows.Forms.GroupBox                        groupBox1;
+        private System.Windows.Forms.TextBox                         txtServerPWD;
+        private System.Windows.Forms.Label                           label6;
+        private System.Windows.Forms.TextBox                         txtServerName;
+        private System.Windows.Forms.Label                           label5;
+        private System.Windows.Forms.CheckBox                        chkSecure;
+        private OphiussaFramework.Components.exTrackBar              exTrackBar2;
+        private OphiussaFramework.Components.exTrackBar              exTrackBar1;
+        private OphiussaFramework.Components.exTrackBar              exTrackBar3;
+        private OphiussaFramework.Components.exTrackBar              exTrackBar4;
+        private OphiussaFramework.Components.exTrackBar              exTrackBar5;
+        private System.Windows.Forms.CheckBox                        checkBox1;
+        private System.Windows.Forms.CheckBox                        checkBox2;
+        private System.Windows.Forms.CheckBox                        checkBox3;
+        private System.Windows.Forms.CheckBox                        checkBox4;
+        private System.Windows.Forms.TextBox                         textBox1;
+        private System.Windows.Forms.Label                           label1;
+        private System.Windows.Forms.TextBox                         textBox2;
+        private System.Windows.Forms.Label                           label2;
     }
 }
