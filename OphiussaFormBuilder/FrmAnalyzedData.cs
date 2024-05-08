@@ -11,7 +11,11 @@ using OphiussaFormBuilder.Models;
 
 namespace OphiussaFormBuilder {
     public partial class FrmAnalyzedData : Form {
-        public FrmAnalyzedData(List<ListOfObjects> AnalyzedList) {
+
+        public  Action<List<ObjectDefinition>> GenerateCode { get; set; }
+        private List<ObjectDefinition>         AnalyzedList;
+
+        public FrmAnalyzedData(List<ObjectDefinition> analyzedList) {
             InitializeComponent();
 
             List<CboTypes> lst = new List<CboTypes>();
@@ -22,11 +26,11 @@ namespace OphiussaFormBuilder {
                                                                                         });
                                                                });
             DataGridViewComboBoxColumn categoryColumn = (DataGridViewComboBoxColumn)dataGridView1.Columns["objectTypeDataGridViewTextBoxColumn"];
-            categoryColumn.DataSource  = lst;
-            categoryColumn.ValueMember = "Code";
+            categoryColumn.DataSource    = lst;
+            categoryColumn.ValueMember   = "Code";
             categoryColumn.DisplayMember = "Name";
-
-            dataGridView1.DataSource  = AnalyzedList;
+            AnalyzedList                 = analyzedList;
+            dataGridView1.DataSource     = AnalyzedList;
             dataGridView1.AutoResizeColumns(); 
         }
 
@@ -44,6 +48,10 @@ namespace OphiussaFormBuilder {
 
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e) {
             dataGridView1.Refresh();
+        }
+
+        private void button1_Click(object sender, EventArgs e) {
+            GenerateCode.Invoke(AnalyzedList);
         }
     }
 }

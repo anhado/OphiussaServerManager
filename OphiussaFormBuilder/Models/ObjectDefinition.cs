@@ -14,7 +14,7 @@ namespace OphiussaFormBuilder.Models {
         ComboBox
     }
 
-    public class ListOfObjects {
+    public class ObjectDefinition {
         public string Group        { get; set; }
         public string PropertyName { get; set; }
         public string BindingLocation { get; set; }
@@ -38,9 +38,9 @@ namespace OphiussaFormBuilder.Models {
                         throw new ArgumentOutOfRangeException();
                 }
 
-                name += Group+ PropertyName;
+                name += BindingLocation + PropertyName;
 
-                return name.Replace("-", "").Replace("_", "").Replace(" ", "");
+                return name.Replace("-", "").Replace("_", "").Replace(" ", "").Replace(".", "");
             }
         }
         public string     Description { get; set; }

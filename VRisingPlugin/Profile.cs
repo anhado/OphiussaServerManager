@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Web.Security;
 using OphiussaFramework.Interfaces;
 using OphiussaFramework.Models;
 
 namespace VRisingPlugin {
-    public class Profile : IProfile { 
+    public class Profile : IProfile {
         public string                  Key                { get; set; } = Guid.NewGuid().ToString();
         public string                  Name               { get; set; } = "New Server";
         public string                  Type               { get; set; }
@@ -24,7 +26,10 @@ namespace VRisingPlugin {
         public int                     ServerPort         { get; set; } = 9876;
         public int                     PeerPort           { get; set; } = 0;
         public int                     QueryPort          { get; set; } = 9877;
-        public int                     RCONPort           { get; set; } = 25575;
+        public int RCONPort {
+            get => Rcon.Port;
+            set => Rcon.Port = value;
+        }
         public string                  ServerVersion      { get; set; } = "";
         public string                  ServerBuildVersion { get; set; } = "";
         public bool                    AutoStartServer    { get; set; } = false;
@@ -32,8 +37,14 @@ namespace VRisingPlugin {
         public bool                    IncludeAutoBackup  { get; set; } = false;
         public bool                    IncludeAutoUpdate  { get; set; } = false;
         public bool                    RestartIfShutdown  { get; set; } = false;
-        public string                  RCONPassword       { get; set; } = Membership.GeneratePassword(10, 2);
-        public bool                    UseRCON            { get; set; } = false;
+        public string RCONPassword {
+            get => Rcon.Password;
+            set => Rcon.Password = value;
+        }
+        public bool UseRCON {
+            get => Rcon.Enabled;
+            set => Rcon.Enabled = value;
+        }
         public string                  ExecutablePath     { get; set; } = "VRisingServer.exe";
         public string                  ServerPassword     { get; set; }
         public ProcessPriority         CpuPriority        { get; set; } = ProcessPriority.Normal;
@@ -42,6 +53,7 @@ namespace VRisingPlugin {
         public List<AutoManagement>    AutoManagement     { get; set; } = new List<AutoManagement>();
 
         //ServerHostSettings
+        public string ServerName           { get; set; } = "";
         public string Description          { get; set; } = "";
         public int    MaxConnectedUsers    { get; set; } = 40;
         public int    MaxConnectedAdmins   { get; set; } = 4;
@@ -56,7 +68,10 @@ namespace VRisingPlugin {
         public string GameSettingsPreset   { get; set; } = "";
         public bool   AdminOnlyDebugEvents { get; set; } = true;
         public bool   DisableDebugEvents   { get; set; } = false;
-        public bool   APIEnabled           { get; set; } = false;
+        public bool   APIEnabled           {
+            get => API.Enabled;
+            set => API.Enabled = value;
+        }
 
         //ServerGameSettings
         public GameModeType                  GameModeType                          { get; set; } = GameModeType.PvP;
@@ -124,27 +139,41 @@ namespace VRisingPlugin {
         public UnitStatModifiers             UnitStatModifiers_Global              { get; set; } = new UnitStatModifiers();
         public UnitStatModifiers             UnitStatModifiers_VBlood              { get; set; } = new UnitStatModifiers();
         public EquipmentStatModifiers_Global EquipmentStatModifiers_Global         { get; set; } = new EquipmentStatModifiers_Global();
+        public CastleStatModifiers_Global    CastleStatModifiers_Global            { get; set; } = new CastleStatModifiers_Global();
+        public PlayerInteractionSettings     PlayerInteractionSettings             { get; set; } = new PlayerInteractionSettings();
+
+        public API  API  { get; set; } = new API();
+        public Rcon Rcon { get; set; } = new Rcon();
     }
 
+    public class Rcon {
+        public bool   Enabled  { get; set; } = false;
+        public int    Port     { get; set; } = 25575;
+        public string Password { get; set; } = Membership.GeneratePassword(10, 2);
+    }
+
+    public class API {
+        public bool Enabled { get; set; } = false;
+    }
     public class VBloodUnitSettings {
-        public Int64 UnitId          { get; set; }
-        public int   UnitLevel       { get; set; }
-        public bool  DefaultUnlocked { get; set; }
+        public Int64 UnitId { get; set; }
+        public int UnitLevel { get; set; }
+        public bool DefaultUnlocked { get; set; }
     }
 
     public class GameTimeModifiers {
-        public float DayDurationInSeconds   { get; set; } = 1080.0f;
-        public int   DayStartHour           { get; set; } = 9;
-        public int   DayStartMinute         { get; set; } = 0;
-        public int   DayEndHour             { get; set; } = 17;
-        public int   DayEndMinute           { get; set; } = 0;
-        public int   BloodMoonFrequency_Min { get; set; } = 10;
-        public int   BloodMoonFrequency_Max { get; set; } = 18;
-        public float BloodMoonBuff          { get; set; } = 0.2f;
+        public float DayDurationInSeconds { get; set; } = 1080.0f;
+        public int DayStartHour { get; set; } = 9;
+        public int DayStartMinute { get; set; } = 0;
+        public int DayEndHour { get; set; } = 17;
+        public int DayEndMinute { get; set; } = 0;
+        public int BloodMoonFrequency_Min { get; set; } = 10;
+        public int BloodMoonFrequency_Max { get; set; } = 18;
+        public float BloodMoonBuff { get; set; } = 0.2f;
     }
 
-    public class VampireStatModifiers {
-        public float DayDurationInSeconds   { get; set; } = 1.0f;
+    public class VampireStatModifiers { 
+        public float MaxHealthModifier      { get; set; } = 1.0f; 
         public float MaxEnergyModifier      { get; set; } = 1.0f;
         public float PhysicalPowerModifier  { get; set; } = 1.0f;
         public float SpellPowerModifier     { get; set; } = 1.0f;
@@ -156,27 +185,36 @@ namespace VRisingPlugin {
 
     public class UnitStatModifiers {
         public float MaxHealthModifier { get; set; } = 1.0f;
-        public float PowerModifier     { get; set; } = 1.0f;
+        public float PowerModifier { get; set; } = 1.0f;
     }
 
     public class EquipmentStatModifiers_Global {
-        public float          MaxEnergyModifier     { get; set; } = 1.0f;
-        public float          MaxHealthModifier     { get; set; } = 1.0f;
-        public float          ResourceYieldModifier { get; set; } = 1.0f;
-        public float          PhysicalPowerModifier { get; set; } = 1.0f;
-        public float          SpellPowerModifier    { get; set; } = 1.0f;
-        public float          SiegePowerModifier    { get; set; } = 1.0f;
-        public float          MovementSpeedModifier { get; set; } = 1.0f;
-        public PylonPenalties PylonPenalties        { get; set; } = new PylonPenalties();
-        public FloorPenalties FloorPenalties        { get; set; } = new FloorPenalties();
-        public HeartLimits    HeartLimits           { get; set; } = new HeartLimits();
-        public int            CastleLimit           { get; set; } = 2;
+        public float MaxEnergyModifier { get; set; } = 1.0f;
+        public float MaxHealthModifier { get; set; } = 1.0f;
+        public float ResourceYieldModifier { get; set; } = 1.0f;
+        public float PhysicalPowerModifier { get; set; } = 1.0f;
+        public float SpellPowerModifier { get; set; } = 1.0f;
+        public float SiegePowerModifier { get; set; } = 1.0f;
+        public float MovementSpeedModifier { get; set; } = 1.0f;   
+    }
+
+    public class CastleStatModifiers_Global {
+        public float          TickPeriod       { get; set; } = 5.0f;
+        public float          DamageResistance { get; set; } = 0.0f;
+        public int            SafetyBoxLimit   { get; set; } = 1;
+        public int            TombLimit        { get; set; } = 12;
+        public int            VerminNestLimit  { get; set; } = 4;
+        public int            PrisonCellLimit  { get; set; } = 16;
+        public PylonPenalties PylonPenalties   { get; set; } = new PylonPenalties();
+        public FloorPenalties FloorPenalties   { get; set; } = new FloorPenalties();
+        public HeartLimits    HeartLimits      { get; set; } = new HeartLimits();
+        public int            CastleLimit      { get; set; } = 2;
     }
 
     public class Range {
         public float Percentage { get; set; } = 0.0f;
-        public int   Lower      { get; set; } = 0;
-        public int   Higher     { get; set; } = 0;
+        public int Lower { get; set; } = 0;
+        public int Higher { get; set; } = 0;
     }
 
     public class PylonPenalties {
@@ -196,20 +234,21 @@ namespace VRisingPlugin {
     }
 
     public class Level {
-        public int level        { get; set; } = 0;
-        public int FloorLimit   { get; set; } = 0;
+        public int level { get; set; } = 0;
+        public int FloorLimit { get; set; } = 0;
         public int ServantLimit { get; set; } = 0;
     }
 
     public class HeartLimits {
-        public Level Level1 { get; set; } = new Level() { level = 1, FloorLimit = 40, ServantLimit   = 4 };
-        public Level Level2 { get; set; } = new Level() { level = 2, FloorLimit = 100, ServantLimit  = 5 };
-        public Level Level3 { get; set; } = new Level() { level = 3, FloorLimit = 180, ServantLimit  = 6 };
-        public Level Level4 { get; set; } = new Level() { level = 4, FloorLimit = 260, ServantLimit  = 7 };
-        public Level Level5 { get; set; } = new Level() { level = 6, FloorLimit = 420, ServantLimit  = 8 };
+        public Level Level1 { get; set; } = new Level() { level = 1, FloorLimit = 40, ServantLimit = 4 };
+        public Level Level2 { get; set; } = new Level() { level = 2, FloorLimit = 100, ServantLimit = 5 };
+        public Level Level3 { get; set; } = new Level() { level = 3, FloorLimit = 180, ServantLimit = 6 };
+        public Level Level4 { get; set; } = new Level() { level = 4, FloorLimit = 260, ServantLimit = 7 };
+        public Level Level5 { get; set; } = new Level() { level = 6, FloorLimit = 420, ServantLimit = 8 };
     }
-    public class Playerinteractionsettings {
-        public string TimeZone            { get; set; } = "Local";
+
+    public class PlayerInteractionSettings {
+        public string TimeZone { get; set; } = "Local";
         public Vstime VSPlayerWeekdayTime { get; set; } = new Vstime() { StartHour = 20, StartMinute = 0, EndHour = 22, EndMinute = 0 };
         public Vstime VSPlayerWeekendTime { get; set; } = new Vstime() { StartHour = 20, StartMinute = 0, EndHour = 22, EndMinute = 0 };
         public Vstime VSCastleWeekdayTime { get; set; } = new Vstime() { StartHour = 20, StartMinute = 0, EndHour = 22, EndMinute = 0 };
@@ -217,10 +256,11 @@ namespace VRisingPlugin {
     }
 
     public class Vstime {
-        public int StartHour   { get; set; }
+        public int StartHour { get; set; }
         public int StartMinute { get; set; }
-        public int EndHour     { get; set; }
-        public int EndMinute   { get; set; }
+        public int EndHour { get; set; }
+        public int EndMinute { get; set; }
     }
 }
 
+ 

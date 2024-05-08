@@ -8,11 +8,39 @@ using OphiussaFramework.CommonUtils;
 namespace OphiussaFramework.Extensions {
     public static class CommonExtensions {
 
+        public static T ParseEnum<T>(this string value) {
+            return (T)Enum.Parse(typeof(T), value, true);
+        }
+
+        public static void RefreshBindings(this Form frm) {
+            foreach (Control obs in frm.Controls) {
+                var binding  = obs.DataBindings;
+                if (binding.Count > 0) {
+                    binding[0].ReadValue();
+                }
+                else {
+                    obs.RefreshBindings();
+                }
+            }
+        }
+
+        public static void RefreshBindings(this Control ctrControl) {
+            foreach (Control obs in ctrControl.Controls) {
+                var binding = obs.DataBindings;
+                if (binding.Count > 0) {
+                    binding[0].ReadValue();
+                }
+                else {
+                    obs.RefreshBindings();
+                }
+            }
+        }
+
         public static void RefreshBindings(this BindingContext context, object dataSource) {
             foreach (var binding in context[dataSource].Bindings.Cast<Binding>())
                 binding.ReadValue();
         }
-
+         
         public static float ToFloat(this string prop) {
             if (float.TryParse(prop, NumberStyles.Any, CultureInfo.InvariantCulture, out float val)) return val;
             return 0;

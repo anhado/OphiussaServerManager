@@ -240,7 +240,7 @@ namespace OphiussaFramework.CommonUtils {
 
             FileInfo CompareFiles(FileInfo f1, FileInfo f2) {
                 if (f2 == null) return f1;
-                if (ignorePaths.Count > 0) {
+                if (ignorePaths?.Count > 0) {
                     string pathName = Path.GetDirectoryName(f1.FullName);
                     foreach (string item in ignorePaths)
                         if (pathName.Contains(item))

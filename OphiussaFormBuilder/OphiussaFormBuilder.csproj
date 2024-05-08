@@ -75,6 +75,12 @@
     <Compile Include="FrmAnalyzedData.Designer.cs">
       <DependentUpon>FrmAnalyzedData.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmResult.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmResult.Designer.cs">
+      <DependentUpon>FrmResult.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,11 +88,14 @@
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\CboTypes.cs" />
-    <Compile Include="Models\ListOfObjects.cs" />
+    <Compile Include="Models\ObjectDefinition.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmAnalyzedData.resx">
       <DependentUpon>FrmAnalyzedData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmResult.resx">
+      <DependentUpon>FrmResult.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
@@ -115,6 +124,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\tabcontrol-extra\TabControlExtra\TabControlExtra.csproj">
+      <Project>{4dbfe2cf-45e4-4594-8e6a-5ebc2eef85ae}</Project>
+      <Name>TabControlExtra</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
