@@ -476,7 +476,7 @@ namespace VRisingPlugin {
         }
 
         public string GetCommandLinesArguments() {
-            throw new NotImplementedException();
+            return "";
         }
 
         public string GetServerName() => Profile.Name;
