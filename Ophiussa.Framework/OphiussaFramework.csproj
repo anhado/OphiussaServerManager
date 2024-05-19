@@ -160,6 +160,7 @@
     </Compile>
     <Compile Include="Models\AutoManagement.cs" />
     <Compile Include="Models\Branches.cs" />
+    <Compile Include="Models\ComboBoxValues.cs" />
     <Compile Include="Models\FilesToBackup.cs" />
     <Compile Include="Models\LinkProfileForm.cs" />
     <Compile Include="Models\ServerEventArgs.cs" />

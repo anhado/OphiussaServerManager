@@ -15,7 +15,7 @@ namespace OphiussaFramework.Models {
             DataFolder           = drive + $"{pFoldernName}\\";
             DefaultInstallFolder = drive + $"{pFoldernName}\\Servers\\";
             SteamCMDFolder       = drive + $"{pFoldernName}\\steamcmd\\";
-            BackupFolder         = drive + $"{pFoldernName}\\osmBackups\\";
+            BackupFolder         = drive + $"{pFoldernName}\\osmBackups\\"; 
             GUID                 = Guid.NewGuid().ToString();
         }
 
@@ -23,6 +23,8 @@ namespace OphiussaFramework.Models {
         [FieldAttributes(PrimaryKey = true, DataType = "Varchar(100)")]
         public string GUID { get; set; }
 
+        [FieldAttributes(Ignore = true)] public string LogsFolder           { get => $"{DataFolder}Logs\\"; }
+        [FieldAttributes(Ignore = true)] public string CacheFolder          { get => $"{DataFolder}cache\\"; }
         public                                  string DataFolder           { get; set; }
         public                                  string DefaultInstallFolder { get; set; }
         public                                  string SteamCMDFolder       { get; set; }

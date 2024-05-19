@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using OphiussaFramework.CommonUtils;
 using OphiussaFramework.Extensions;
 using OphiussaFramework.Models;
 
@@ -33,7 +34,13 @@ namespace OphiussaFramework.Forms {
             _isUpdating = true;
 
             Task.Factory.StartNew(async _ => {
-                                      await Controller.InstallServer(chkUpdateCache.Checked, chkShowSteam.Checked, chkStartServer.Checked);
+                                      try {
+                                          await Controller.InstallServer(chkUpdateCache.Checked, chkShowSteam.Checked, chkStartServer.Checked);
+                                      }
+                                      catch (Exception exception) {
+                                          OphiussaLogger.Logger.Error(exception);
+                                          _myQueue.Enqueue(new ProcessEventArg() { IsError = true, Message = exception.Message, Sucessful = false });
+                                      }
                                       _isUpdating = false;
             }, null);
         } 

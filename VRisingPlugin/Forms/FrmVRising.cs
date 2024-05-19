@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using OphiussaFramework;
 using OphiussaFramework.CommonUtils;
@@ -11,26 +13,128 @@ namespace VRisingPlugin.Forms {
         private readonly IPlugin _plugin;
         private readonly Profile Profile;
         private TabPage _tabPage;
+        private List<ComboBoxValues> GameModeType = new List<ComboBoxValues>();
+        private List<ComboBoxValues> CastleDamageMode = new List<ComboBoxValues>();
+        private List<ComboBoxValues> SiegeWeaponHealth = new List<ComboBoxValues>();
+        private List<ComboBoxValues> PlayerDamageMode = new List<ComboBoxValues>();
+        private List<ComboBoxValues> CastleHeartDamageMode = new List<ComboBoxValues>();
+        private List<ComboBoxValues> PvPProtectionMode = new List<ComboBoxValues>();
+        private List<ComboBoxValues> DeathContainerPermission = new List<ComboBoxValues>();
+        private List<ComboBoxValues> RelicSpawnType = new List<ComboBoxValues>();
 
         public FrmVRising(IPlugin plugin, TabPage tab) {
             try {
                 _plugin = plugin;
                 InitializeComponent();
-                profileHeader1.Profile       = _plugin.Profile;
-                Profile                      = (Profile)_plugin.Profile;
-                profileHeader1.Plugin        = _plugin;
+                profileHeader1.Profile = _plugin.Profile;
+                Profile = (Profile)_plugin.Profile;
+                profileHeader1.Plugin = _plugin;
                 automaticManagement1.Profile = _plugin.Profile;
-                automaticManagement1.Plugin  = _plugin;
-                profileHeader1.Tab           = tab;
-                _tabPage                     = tab; 
+                automaticManagement1.Plugin = _plugin;
+                profileHeader1.Tab = tab;
+                _tabPage = tab;
 
                 if (_plugin.Profile.CpuAffinityList.Count == 0) Profile.CpuAffinityList = ConnectionController.ProcessorList;
 
+                FillObjectsDefaultData();
                 AddBindings();
             }
             catch (Exception e) {
                 OphiussaLogger.Logger.Error(e);
             }
+        }
+
+        private void FillObjectsDefaultData() {
+
+            GameModeType.Clear();
+            Enum.GetNames(typeof(GameModeType)).ToList().ForEach(e => {
+                GameModeType.Add(new ComboBoxValues() {
+                    Code = e,
+                    Name = e
+                });
+            });
+            cboProfileGameModeType.DataSource = GameModeType;
+            cboProfileGameModeType.DisplayMember = "Name";
+            cboProfileGameModeType.ValueMember = "Code";
+
+
+            CastleDamageMode.Clear();
+            Enum.GetNames(typeof(CastleDamageMode)).ToList().ForEach(e => {
+                CastleDamageMode.Add(new ComboBoxValues() {
+                    Code = e,
+                    Name = e
+                });
+            });
+            cboProfileCastleDamageMode.DataSource = CastleDamageMode;
+            cboProfileCastleDamageMode.DisplayMember = "Name";
+            cboProfileCastleDamageMode.ValueMember = "Code";
+
+            SiegeWeaponHealth.Clear();
+            Enum.GetNames(typeof(SiegeWeaponHealth)).ToList().ForEach(e => {
+                SiegeWeaponHealth.Add(new ComboBoxValues() {
+                    Code = e,
+                    Name = e
+                });
+            });
+            cboProfileSiegeWeaponHealth.DataSource = SiegeWeaponHealth;
+            cboProfileSiegeWeaponHealth.DisplayMember = "Name";
+            cboProfileSiegeWeaponHealth.ValueMember = "Code";
+
+            PlayerDamageMode.Clear();
+            Enum.GetNames(typeof(PlayerDamageMode)).ToList().ForEach(e => {
+                PlayerDamageMode.Add(new ComboBoxValues() {
+                    Code = e,
+                    Name = e
+                });
+            });
+            cboProfilePlayerDamageMode.DataSource = PlayerDamageMode;
+            cboProfilePlayerDamageMode.DisplayMember = "Name";
+            cboProfilePlayerDamageMode.ValueMember = "Code";
+
+            CastleHeartDamageMode.Clear();
+            Enum.GetNames(typeof(CastleHeartDamageMode)).ToList().ForEach(e => {
+                CastleHeartDamageMode.Add(new ComboBoxValues() {
+                    Code = e,
+                    Name = e
+                });
+            });
+            cboProfileCastleHeartDamageMode.DataSource = CastleHeartDamageMode;
+            cboProfileCastleHeartDamageMode.DisplayMember = "Name";
+            cboProfileCastleHeartDamageMode.ValueMember = "Code";
+
+            PvPProtectionMode.Clear();
+            Enum.GetNames(typeof(PvPProtectionMode)).ToList().ForEach(e => {
+                PvPProtectionMode.Add(new ComboBoxValues() {
+                    Code = e,
+                    Name = e
+                });
+            });
+            cboProfilePvPProtectionMode.DataSource = PvPProtectionMode;
+            cboProfilePvPProtectionMode.DisplayMember = "Name";
+            cboProfilePvPProtectionMode.ValueMember = "Code";
+
+            DeathContainerPermission.Clear();
+            Enum.GetNames(typeof(DeathContainerPermission)).ToList().ForEach(e => {
+                DeathContainerPermission.Add(new ComboBoxValues() {
+                    Code = e,
+                    Name = e
+                });
+            });
+            cboProfileDeathContainerPermission.DataSource = DeathContainerPermission;
+            cboProfileDeathContainerPermission.DisplayMember = "Name";
+            cboProfileDeathContainerPermission.ValueMember = "Code";
+
+            RelicSpawnType.Clear();
+            Enum.GetNames(typeof(RelicSpawnType)).ToList().ForEach(e => {
+                RelicSpawnType.Add(new ComboBoxValues() {
+                    Code = e,
+                    Name = e
+                });
+            });
+            cboProfileRelicSpawnType.DataSource = RelicSpawnType;
+            cboProfileRelicSpawnType.DisplayMember = "Name";
+            cboProfileRelicSpawnType.ValueMember = "Code";
+
         }
 
         private void AddBindings() {
@@ -154,15 +258,6 @@ namespace VRisingPlugin.Forms {
             tbProfileGameTimeModifiersBloodMoonFrequencyMin.DataBindings.Add("Value", Profile.GameTimeModifiers, "BloodMoonFrequency_Min", true, DataSourceUpdateMode.OnPropertyChanged);
             tbProfileGameTimeModifiersBloodMoonFrequencyMax.DataBindings.Add("Value", Profile.GameTimeModifiers, "BloodMoonFrequency_Max", true, DataSourceUpdateMode.OnPropertyChanged);
             tbProfileGameTimeModifiersBloodMoonBuff.DataBindings.Add("Value", Profile.GameTimeModifiers, "BloodMoonBuff", true, DataSourceUpdateMode.OnPropertyChanged);
-            cboProfileGameModeType.DataBindings.Add("SelectedValue", Profile, "GameModeType", true, DataSourceUpdateMode.OnPropertyChanged);
-            cboProfileCastleDamageMode.DataBindings.Add("SelectedValue", Profile, "CastleDamageMode", true, DataSourceUpdateMode.OnPropertyChanged);
-            cboProfileSiegeWeaponHealth.DataBindings.Add("SelectedValue", Profile, "SiegeWeaponHealth", true, DataSourceUpdateMode.OnPropertyChanged);
-            cboProfilePlayerDamageMode.DataBindings.Add("SelectedValue", Profile, "PlayerDamageMode", true, DataSourceUpdateMode.OnPropertyChanged);
-            cboProfileCastleHeartDamageMode.DataBindings.Add("SelectedValue", Profile, "CastleHeartDamageMode", true, DataSourceUpdateMode.OnPropertyChanged);
-            cboProfilePvPProtectionMode.DataBindings.Add("SelectedValue", Profile, "PvPProtectionMode", true, DataSourceUpdateMode.OnPropertyChanged);
-            cboProfileDeathContainerPermission.DataBindings.Add("SelectedValue", Profile, "DeathContainerPermission", true, DataSourceUpdateMode.OnPropertyChanged);
-            cboProfileRelicSpawnType.DataBindings.Add("SelectedValue", Profile, "RelicSpawnType", true, DataSourceUpdateMode.OnPropertyChanged);
-            chkProfileCanLootEnemyContainers.DataBindings.Add("Checked", Profile, "CanLootEnemyContainers", true, DataSourceUpdateMode.OnPropertyChanged);
             chkProfileBloodBoundEquipment.DataBindings.Add("Checked", Profile, "BloodBoundEquipment", true, DataSourceUpdateMode.OnPropertyChanged);
             chkProfileTeleportBoundItems.DataBindings.Add("Checked", Profile, "TeleportBoundItems", true, DataSourceUpdateMode.OnPropertyChanged);
             chkProfileAllowGlobalChat.DataBindings.Add("Checked", Profile, "AllowGlobalChat", true, DataSourceUpdateMode.OnPropertyChanged);
@@ -211,12 +306,41 @@ namespace VRisingPlugin.Forms {
             tbProfileDeathDurabilityLossFactorAsResources.DataBindings.Add("Value", Profile, "Death_DurabilityLossFactorAsResources", true, DataSourceUpdateMode.OnPropertyChanged);
             cboProfileStarterEquipmentId.DataBindings.Add("SelectedValue", Profile, "StarterEquipmentId", true, DataSourceUpdateMode.OnPropertyChanged);
             cboProfileStarterResourcesId.DataBindings.Add("SelectedValue", Profile, "StarterResourcesId", true, DataSourceUpdateMode.OnPropertyChanged);
+            chkProfileCanLootEnemyContainers.DataBindings.Add("Checked", Profile, "CanLootEnemyContainers", true, DataSourceUpdateMode.OnPropertyChanged);
 
-            
+            cboProfileGameModeType.SelectedValue = Profile.GameModeType.ToString();
+            cboProfileCastleDamageMode.SelectedValue = Profile.CastleDamageMode.ToString();
+            cboProfileSiegeWeaponHealth.SelectedValue = Profile.SiegeWeaponHealth.ToString();
+            cboProfilePlayerDamageMode.SelectedValue = Profile.PlayerDamageMode.ToString();
+            cboProfileCastleHeartDamageMode.SelectedValue = Profile.CastleHeartDamageMode.ToString();
+            cboProfilePvPProtectionMode.SelectedValue = Profile.PvPProtectionMode.ToString();
+            cboProfileDeathContainerPermission.SelectedValue = Profile.DeathContainerPermission.ToString();
+            cboProfileRelicSpawnType.SelectedValue = Profile.RelicSpawnType.ToString();
+
+            //cboProfileGameModeType.DataBindings.Add("SelectedValue", Profile, "GameModeType", true, DataSourceUpdateMode.OnPropertyChanged);
+            //cboProfileCastleDamageMode.DataBindings.Add("SelectedValue", Profile, "CastleDamageMode", true, DataSourceUpdateMode.OnPropertyChanged);
+            //cboProfileSiegeWeaponHealth.DataBindings.Add("SelectedValue", Profile, "SiegeWeaponHealth", true, DataSourceUpdateMode.OnPropertyChanged);
+            //cboProfilePlayerDamageMode.DataBindings.Add("SelectedValue", Profile, "PlayerDamageMode", true, DataSourceUpdateMode.OnPropertyChanged);
+            //cboProfileCastleHeartDamageMode.DataBindings.Add("SelectedValue", Profile, "CastleHeartDamageMode", true, DataSourceUpdateMode.OnPropertyChanged);
+            //cboProfilePvPProtectionMode.DataBindings.Add("SelectedValue", Profile, "PvPProtectionMode", true, DataSourceUpdateMode.OnPropertyChanged);
+            //cboProfileDeathContainerPermission.DataBindings.Add("SelectedValue", Profile, "DeathContainerPermission", true, DataSourceUpdateMode.OnPropertyChanged);
+            //cboProfileRelicSpawnType.DataBindings.Add("SelectedValue", Profile, "RelicSpawnType", true, DataSourceUpdateMode.OnPropertyChanged);
         }
 
         private void profileHeader1_ClickSave(object sender, EventArgs e) {
             try {
+
+
+                Profile.GameModeType = cboProfileGameModeType.SelectedValue.ToString().ParseEnum<GameModeType>();
+                Profile.CastleDamageMode = cboProfileCastleDamageMode.SelectedValue.ToString().ParseEnum<CastleDamageMode>();
+                Profile.SiegeWeaponHealth = cboProfileSiegeWeaponHealth.SelectedValue.ToString().ParseEnum<SiegeWeaponHealth>();
+                Profile.PlayerDamageMode = cboProfilePlayerDamageMode.SelectedValue.ToString().ParseEnum<PlayerDamageMode>();
+                Profile.CastleHeartDamageMode = cboProfileCastleHeartDamageMode.SelectedValue.ToString().ParseEnum<CastleHeartDamageMode>();
+                Profile.PvPProtectionMode = cboProfilePvPProtectionMode.SelectedValue.ToString().ParseEnum<PvPProtectionMode>();
+                Profile.DeathContainerPermission = cboProfileDeathContainerPermission.SelectedValue.ToString().ParseEnum<DeathContainerPermission>();
+                Profile.RelicSpawnType = cboProfileRelicSpawnType.SelectedValue.ToString().ParseEnum<RelicSpawnType>();
+
+
                 Profile.AutoManagement = automaticManagement1.GetRestartSettings();
                 _plugin.Save();
                 automaticManagement1.LoadGrid();
@@ -262,7 +386,7 @@ namespace VRisingPlugin.Forms {
         }
 
         private void FrmConfigurationForm_Load(object sender, EventArgs e) {
-             
+
         }
 
         private void profileHeader1_TabHeaderChange(object sender, OphiussaEventArgs e) {

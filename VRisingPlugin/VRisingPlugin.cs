@@ -21,6 +21,7 @@ using OphiussaFramework.Models;
 using OphiussaFramework.Extensions;
 using VRisingPlugin.Forms;
 using Message = OphiussaFramework.Models.Message;
+using System.Runtime;
 
 namespace VRisingPlugin {
     public class VRisingPlugin : IPlugin {
@@ -31,25 +32,25 @@ namespace VRisingPlugin {
         public string ExecutablePath { get; set; } = "VRisingServer.exe"; //THIS WILL OVERWRITE THE PROFILE, I JUST NEED THAT IN PROFILE TO AVOID Deserialize THE ADDITIONAL SETTINGS
 
         // internal static readonly PluginType              Info = new PluginType { GameType = "Game1", Name = "Game 1 Name" };
-        public IProfile Profile { get; set; } = new Profile();
-        public string GameType { get; set; } = "VRising";
-        public string GameName { get; set; } = "VRising";
-        public TabPage TabPage { get; set; }
-        public string PluginVersion { get; set; } = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
-        public string PluginName { get; set; } = Path.GetFileName(FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileName);
-        public int ServerProcessID { get; set; }
-        public bool IsRunning { get; set; }
-        public bool IsInstalled { get; set; }
-        public List<string> IgnoredFoldersInComparision { get; set; }
-        public string CacheFolder { get; set; }
-        public List<FilesToBackup> FilesToBackup => throw new NotImplementedException();
-        public List<CommandDefinition> DefaultCommands { get; set; }
-        public List<CommandDefinition> CustomCommands { get; set; }
-        public ModProvider ModProvider { get; set; } = ModProvider.None;
-        public bool Loaded { get; set; } = true;
-        public ServerStatus ServerStatus { get; internal set; }
-        public string ServerGameSettingsLocation { get; set; } = "VRisingServer_Data\\StreamingAssets\\Settings\\ServerGameSettings.json";
-        public string ServerHostSettingsLocation { get; set; } = "VRisingServer_Data\\StreamingAssets\\Settings\\ServerHostSettings.json";
+        public IProfile                              Profile                     { get; set; } = new Profile();
+        public string                                GameType                    { get; set; } = "VRising";
+        public string                                GameName                    { get; set; } = "VRising";
+        public TabPage                               TabPage                     { get; set; }
+        public string                                PluginVersion               { get; set; } = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
+        public string                                PluginName                  { get; set; } = Path.GetFileName(FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileName);
+        public int                                   ServerProcessID             { get; set; }
+        public bool                                  IsRunning                   { get; set; }
+        public bool                                  IsInstalled                 { get; set; }
+        public List<string>                          IgnoredFoldersInComparision { get; set; }
+        public string                                CacheFolder                 { get; set; }
+        public List<FilesToBackup>                   FilesToBackup               => throw new NotImplementedException();
+        public List<CommandDefinition>               DefaultCommands             { get; set; }
+        public List<CommandDefinition>               CustomCommands              { get; set; }
+        public ModProvider                           ModProvider                 { get; set; } = ModProvider.None;
+        public bool                                  Loaded                      { get; set; } = true;
+        public ServerStatus                          ServerStatus                { get; internal set; }
+        public string                                ServerGameSettingsLocation  { get; set; } = "VRisingServer_Data\\StreamingAssets\\Settings\\ServerGameSettings.json";
+        public string                                ServerHostSettingsLocation  { get; set; } = "VRisingServer_Data\\StreamingAssets\\Settings\\ServerHostSettings.json";
         public event EventHandler<OphiussaEventArgs> BackupServerClick;
         public event EventHandler<OphiussaEventArgs> StopServerClick;
         public event EventHandler<OphiussaEventArgs> StartServerClick;
@@ -139,6 +140,8 @@ namespace VRisingPlugin {
         }
 
         public void Save() {
+            Profile p = (Profile)Profile;
+
             SaveClick?.Invoke(this, new OphiussaEventArgs { Profile = Profile, Plugin = this });
 
             string priorityV = Profile.CpuPriority.ToString().ToLower();
@@ -149,11 +152,13 @@ namespace VRisingPlugin {
 
             var stringBuilder = new StringBuilder();
             stringBuilder.AppendLine("@echo off");
-            stringBuilder.AppendLine("set SteamAppId=1829350");
+            stringBuilder.AppendLine("set SteamAppId=1604030");
             stringBuilder.AppendLine("");
-            stringBuilder.AppendLine("echo \"Starting server PRESS CTRL-C to exit\"");
+            stringBuilder.AppendLine("echo \"Starting V Rising Dedicated Server - PRESS CTRL-C to exit\"");
             stringBuilder.AppendLine("");
-            stringBuilder.AppendLine($"start \"{Profile.Name}\" /{priorityV} {affinityV} \"{Path.Combine(Profile.InstallationFolder, Profile.ExecutablePath)}\" {GetCommandLinesArguments()}");
+            stringBuilder.AppendLine("@echo on");
+            //TODO:Define settings for save folder and log folder, with full path
+            stringBuilder.AppendLine($"start \"{Profile.Name}\" /{priorityV} {affinityV} \"{Path.Combine(Profile.InstallationFolder, Profile.ExecutablePath)}\" -persistentDataPath {Profile.InstallationFolder}save-data -serverName \"{p.ServerName}\" -saveName \"{p.SaveName}\" -logFile \"{ConnectionController.Settings.LogsFolder}VRisingServer_{p.Key}.log\"");
 
             File.WriteAllText(ConnectionController.Settings.DataFolder + $"StartServer\\Run_{Profile.Key.Replace("-", "")}.bat", stringBuilder.ToString());
         }
@@ -444,8 +449,7 @@ namespace VRisingPlugin {
             }
         }
 
-        public bool IsValidFolder(string path) {
-            //TODO:(New Games)Valid folder installation 
+        public bool IsValidFolder(string path) { 
             return Utils.IsAValidFolder(Profile.InstallationFolder, new List<string> { "VRisingServer_Data" });
         }
 

@@ -719,6 +719,13 @@
             this.cboProfilePlayerInteractionSettingsTimeZone.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboProfilePlayerInteractionSettingsTimeZone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cboProfilePlayerInteractionSettingsTimeZone.FormattingEnabled = true;
+            this.cboProfilePlayerInteractionSettingsTimeZone.Items.AddRange(new object[] {
+            "Local",
+            "UTC",
+            "PST",
+            "EST",
+            "CET",
+            "CST"});
             this.cboProfilePlayerInteractionSettingsTimeZone.Location = new System.Drawing.Point(193, 40);
             this.cboProfilePlayerInteractionSettingsTimeZone.Name = "cboProfilePlayerInteractionSettingsTimeZone";
             this.cboProfilePlayerInteractionSettingsTimeZone.Size = new System.Drawing.Size(132, 21);

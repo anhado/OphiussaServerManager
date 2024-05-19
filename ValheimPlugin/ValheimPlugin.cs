@@ -161,7 +161,8 @@ namespace ValheimPlugin {
             stringBuilder.AppendLine("set SteamAppId=892970");
             stringBuilder.AppendLine("");
             stringBuilder.AppendLine("echo \"Starting server PRESS CTRL-C to exit\"");
-            stringBuilder.AppendLine("");
+            stringBuilder.AppendLine(""); 
+            stringBuilder.AppendLine("@echo on");
             stringBuilder.AppendLine($"start \"{Profile.Name}\" /{priorityV} {affinityV} \"{Path.Combine(Profile.InstallationFolder, Profile.ExecutablePath)}\" {GetCommandLinesArguments()}");
 
             File.WriteAllText(ConnectionController.Settings.DataFolder + $"StartServer\\Run_{Profile.Key.Replace("-", "")}.bat", stringBuilder.ToString());
