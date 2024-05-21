@@ -320,6 +320,30 @@ namespace VRisingPlugin.Forms {
             cboProfileStarterResourcesId.DataBindings.Add("SelectedValue", Profile, "StarterResourcesId", true, DataSourceUpdateMode.OnPropertyChanged);
             chkProfileCanLootEnemyContainers.DataBindings.Add("Checked", Profile, "CanLootEnemyContainers", true, DataSourceUpdateMode.OnPropertyChanged);
 
+
+            tbProfileWarEventGameSettingsScalingPlayers4PointsModifier.DataBindings.Add("Value", Profile.WarEventGameSettings.ScalingPlayers4, "PointsModifier", true, DataSourceUpdateMode.OnPropertyChanged);
+            tbProfileWarEventGameSettingsScalingPlayers4DropModifier.DataBindings.Add("Value", Profile.WarEventGameSettings.ScalingPlayers4, "DropModifier", true, DataSourceUpdateMode.OnPropertyChanged);
+            tbProfileWarEventGameSettingsScalingPlayers3PointsModifier.DataBindings.Add("Value", Profile.WarEventGameSettings.ScalingPlayers3, "PointsModifier", true, DataSourceUpdateMode.OnPropertyChanged);
+            tbProfileWarEventGameSettingsScalingPlayers3DropModifier.DataBindings.Add("Value", Profile.WarEventGameSettings.ScalingPlayers3, "DropModifier", true, DataSourceUpdateMode.OnPropertyChanged);
+            tbProfileWarEventGameSettingsScalingPlayers2PointsModifier.DataBindings.Add("Value", Profile.WarEventGameSettings.ScalingPlayers2, "PointsModifier", true, DataSourceUpdateMode.OnPropertyChanged);
+            tbProfileWarEventGameSettingsScalingPlayers2DropModifier.DataBindings.Add("Value", Profile.WarEventGameSettings.ScalingPlayers2, "DropModifier", true, DataSourceUpdateMode.OnPropertyChanged);
+            tbProfileWarEventGameSettingsScalingPlayers1PointsModifier.DataBindings.Add("Value", Profile.WarEventGameSettings.ScalingPlayers1, "PointsModifier", true, DataSourceUpdateMode.OnPropertyChanged);
+            tbProfileWarEventGameSettingsScalingPlayers1DropModifier.DataBindings.Add("Value", Profile.WarEventGameSettings.ScalingPlayers1, "DropModifier", true, DataSourceUpdateMode.OnPropertyChanged);
+            tbProfileWarEventGameSettingsWeekendTimeStartHour.DataBindings.Add("Value", Profile.WarEventGameSettings.WeekendTime, "StartHour", true, DataSourceUpdateMode.OnPropertyChanged);
+            tbProfileWarEventGameSettingsWeekendTimeStartMinute.DataBindings.Add("Value", Profile.WarEventGameSettings.WeekendTime, "StartMinute", true, DataSourceUpdateMode.OnPropertyChanged);
+            tbProfileWarEventGameSettingsWeekendTimeEndHour.DataBindings.Add("Value", Profile.WarEventGameSettings.WeekendTime, "EndHour", true, DataSourceUpdateMode.OnPropertyChanged);
+            tbProfileWarEventGameSettingsWeekendTimeEndMinute.DataBindings.Add("Value", Profile.WarEventGameSettings.WeekendTime, "EndMinute", true, DataSourceUpdateMode.OnPropertyChanged);
+            tbProfileWarEventGameSettingsWeekdayTimeStartHour.DataBindings.Add("Value", Profile.WarEventGameSettings.WeekdayTime, "StartHour", true, DataSourceUpdateMode.OnPropertyChanged);
+            tbProfileWarEventGameSettingsWeekdayTimeStartMinute.DataBindings.Add("Value", Profile.WarEventGameSettings.WeekdayTime, "StartMinute", true, DataSourceUpdateMode.OnPropertyChanged);
+            tbProfileWarEventGameSettingsWeekdayTimeEndHour.DataBindings.Add("Value", Profile.WarEventGameSettings.WeekdayTime, "EndHour", true, DataSourceUpdateMode.OnPropertyChanged);
+            tbProfileWarEventGameSettingsWeekdayTimeEndMinute.DataBindings.Add("Value", Profile.WarEventGameSettings.WeekdayTime, "EndMinute", true, DataSourceUpdateMode.OnPropertyChanged);
+            tbProfileWarEventGameSettingsInterval.DataBindings.Add("Value", Profile.WarEventGameSettings, "Interval", true, DataSourceUpdateMode.OnPropertyChanged);
+            tbProfileWarEventGameSettingsMajorDuration.DataBindings.Add("Value", Profile.WarEventGameSettings, "MajorDuration", true, DataSourceUpdateMode.OnPropertyChanged);
+            tbProfileWarEventGameSettingsMinorDuration.DataBindings.Add("Value", Profile.WarEventGameSettings, "MinorDuration", true, DataSourceUpdateMode.OnPropertyChanged);
+            tbProfileTraderModifiersStockModifier.DataBindings.Add("Value", Profile.TraderModifiers, "StockModifier", true, DataSourceUpdateMode.OnPropertyChanged);
+            tbProfileTraderModifiersPriceModifier.DataBindings.Add("Value", Profile.TraderModifiers, "PriceModifier", true, DataSourceUpdateMode.OnPropertyChanged);
+            tbProfileTraderModifiersRestockTimerModifier.DataBindings.Add("Value", Profile.TraderModifiers, "RestockTimerModifier", true, DataSourceUpdateMode.OnPropertyChanged);
+
             cboGameDifficult.SelectedValue                   = Profile.GameDifficulty.ToString();
             cboProfileGameModeType.SelectedValue             = Profile.GameModeType.ToString();
             cboProfileCastleDamageMode.SelectedValue         = Profile.CastleDamageMode.ToString();

@@ -515,12 +515,10 @@ namespace VRisingPlugin {
             bool WritedServerGameGameSettings = WriteServerGameSettings();
             bool WritedServerHostSettings = WriteServerHostSettings();
             if (WritedServerGameGameSettings && WritedServerHostSettings)
-                MessageBox.Show("Reloaded from files completed");
+                return new Message { Exception = null, MessageText = "Save Successful", Success = true };
             else
-                MessageBox.Show("Reloaded from files completed with errors");
+                return new Message { Exception = new Exception("Save Successful with errors"), MessageText = "Save Successful with errors", Success = false };
 
-            //TODO:(New Games)Save settings to disc
-            return new Message { Exception = new NotImplementedException(), MessageText = "NOT IMPLEMENTED", Success = false };
         }
 
         private bool WriteServerHostSettings() {
@@ -548,9 +546,9 @@ namespace VRisingPlugin {
                 var ServerGameSettingsTMP = JsonConvert.DeserializeObject(System.IO.File.ReadAllText(Path.Combine(Profile.InstallationFolder, ServerGameSettingsLocation)));
 
                 JObject ServerGameSettingsObj = JObject.FromObject(ServerGameSettingsTMP);
-                 
+
                 SetProperties(ServerGameSettingsObj);
-                 
+
                 string jsonString = JsonConvert.SerializeObject(ServerGameSettingsObj, Formatting.Indented);
                 File.WriteAllText(Path.Combine(Profile.InstallationFolder, ServerGameSettingsLocation), jsonString);
                 return true;
@@ -566,7 +564,7 @@ namespace VRisingPlugin {
 
             var sgsProperties = jObj.Properties();
 
-            var myObjType       = typeof(Profile);
+            var myObjType = typeof(Profile);
             var myObjProperties = myObjType.GetProperties().ToList();
 
             foreach (JProperty prop in sgsProperties) {
@@ -620,7 +618,7 @@ namespace VRisingPlugin {
 
             foreach (JProperty prop in value) {
                 object myValue = null;
-                var    prop1   = prop.Value;
+                var prop1 = prop.Value;
 
                 var p2 = myObjProperties.Find(x => x.Name == prop.Name);
                 if (p2 != null) {

@@ -30,6 +30,36 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmVRising));
             this.pContainer = new System.Windows.Forms.Panel();
+            this.ecp02WarEventGameSettings = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
+            this.groupBox32 = new System.Windows.Forms.GroupBox();
+            this.tbProfileWarEventGameSettingsScalingPlayers4PointsModifier = new OphiussaFramework.Components.exTrackBar();
+            this.tbProfileWarEventGameSettingsScalingPlayers4DropModifier = new OphiussaFramework.Components.exTrackBar();
+            this.groupBox31 = new System.Windows.Forms.GroupBox();
+            this.tbProfileWarEventGameSettingsScalingPlayers3PointsModifier = new OphiussaFramework.Components.exTrackBar();
+            this.tbProfileWarEventGameSettingsScalingPlayers3DropModifier = new OphiussaFramework.Components.exTrackBar();
+            this.groupBox30 = new System.Windows.Forms.GroupBox();
+            this.tbProfileWarEventGameSettingsScalingPlayers2PointsModifier = new OphiussaFramework.Components.exTrackBar();
+            this.tbProfileWarEventGameSettingsScalingPlayers2DropModifier = new OphiussaFramework.Components.exTrackBar();
+            this.groupBox29 = new System.Windows.Forms.GroupBox();
+            this.tbProfileWarEventGameSettingsScalingPlayers1PointsModifier = new OphiussaFramework.Components.exTrackBar();
+            this.tbProfileWarEventGameSettingsScalingPlayers1DropModifier = new OphiussaFramework.Components.exTrackBar();
+            this.groupBox28 = new System.Windows.Forms.GroupBox();
+            this.tbProfileWarEventGameSettingsWeekendTimeStartHour = new OphiussaFramework.Components.exTrackBar();
+            this.tbProfileWarEventGameSettingsWeekendTimeEndMinute = new OphiussaFramework.Components.exTrackBar();
+            this.tbProfileWarEventGameSettingsWeekendTimeStartMinute = new OphiussaFramework.Components.exTrackBar();
+            this.tbProfileWarEventGameSettingsWeekendTimeEndHour = new OphiussaFramework.Components.exTrackBar();
+            this.groupBox27 = new System.Windows.Forms.GroupBox();
+            this.tbProfileWarEventGameSettingsWeekdayTimeStartHour = new OphiussaFramework.Components.exTrackBar();
+            this.tbProfileWarEventGameSettingsWeekdayTimeEndMinute = new OphiussaFramework.Components.exTrackBar();
+            this.tbProfileWarEventGameSettingsWeekdayTimeStartMinute = new OphiussaFramework.Components.exTrackBar();
+            this.tbProfileWarEventGameSettingsWeekdayTimeEndHour = new OphiussaFramework.Components.exTrackBar();
+            this.tbProfileWarEventGameSettingsInterval = new OphiussaFramework.Components.exTrackBar();
+            this.tbProfileWarEventGameSettingsMajorDuration = new OphiussaFramework.Components.exTrackBar();
+            this.tbProfileWarEventGameSettingsMinorDuration = new OphiussaFramework.Components.exTrackBar();
+            this.ecp01TraderModifiers = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
+            this.tbProfileTraderModifiersStockModifier = new OphiussaFramework.Components.exTrackBar();
+            this.tbProfileTraderModifiersPriceModifier = new OphiussaFramework.Components.exTrackBar();
+            this.tbProfileTraderModifiersRestockTimerModifier = new OphiussaFramework.Components.exTrackBar();
             this.ecp23PlayerInteractionSettings = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
             this.groupBox26 = new System.Windows.Forms.GroupBox();
             this.tbProfilePlayerInteractionSettingsVSCastleWeekendTimeStartHour = new OphiussaFramework.Components.exTrackBar();
@@ -157,6 +187,8 @@
             this.tbProfileGameTimeModifiersBloodMoonFrequencyMax = new OphiussaFramework.Components.exTrackBar();
             this.tbProfileGameTimeModifiersBloodMoonBuff = new OphiussaFramework.Components.exTrackBar();
             this.ecp01MainSettings = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.cboGameDifficult = new System.Windows.Forms.ComboBox();
             this.cboProfileStarterResourcesId = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.cboProfileStarterEquipmentId = new System.Windows.Forms.ComboBox();
@@ -267,9 +299,15 @@
             this.txtServerName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.profileHeader1 = new OphiussaFramework.Components.ProfileHeader();
-            this.label8 = new System.Windows.Forms.Label();
-            this.cboGameDifficult = new System.Windows.Forms.ComboBox();
             this.pContainer.SuspendLayout();
+            this.ecp02WarEventGameSettings.SuspendLayout();
+            this.groupBox32.SuspendLayout();
+            this.groupBox31.SuspendLayout();
+            this.groupBox30.SuspendLayout();
+            this.groupBox29.SuspendLayout();
+            this.groupBox28.SuspendLayout();
+            this.groupBox27.SuspendLayout();
+            this.ecp01TraderModifiers.SuspendLayout();
             this.ecp23PlayerInteractionSettings.SuspendLayout();
             this.groupBox26.SuspendLayout();
             this.groupBox25.SuspendLayout();
@@ -311,6 +349,8 @@
             // pContainer
             // 
             this.pContainer.AutoScroll = true;
+            this.pContainer.Controls.Add(this.ecp02WarEventGameSettings);
+            this.pContainer.Controls.Add(this.ecp01TraderModifiers);
             this.pContainer.Controls.Add(this.ecp23PlayerInteractionSettings);
             this.pContainer.Controls.Add(this.ecp07CastleStatModifiersGlobal);
             this.pContainer.Controls.Add(this.ecp06EquipmentStatModifiersGlobal);
@@ -326,6 +366,532 @@
             this.pContainer.Name = "pContainer";
             this.pContainer.Size = new System.Drawing.Size(1279, 978);
             this.pContainer.TabIndex = 24;
+            // 
+            // ecp02WarEventGameSettings
+            // 
+            this.ecp02WarEventGameSettings.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ecp02WarEventGameSettings.ButtonSize = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonSize.Small;
+            this.ecp02WarEventGameSettings.ButtonStyle = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonStyle.Classic;
+            this.ecp02WarEventGameSettings.Controls.Add(this.groupBox32);
+            this.ecp02WarEventGameSettings.Controls.Add(this.groupBox31);
+            this.ecp02WarEventGameSettings.Controls.Add(this.groupBox30);
+            this.ecp02WarEventGameSettings.Controls.Add(this.groupBox29);
+            this.ecp02WarEventGameSettings.Controls.Add(this.groupBox28);
+            this.ecp02WarEventGameSettings.Controls.Add(this.groupBox27);
+            this.ecp02WarEventGameSettings.Controls.Add(this.tbProfileWarEventGameSettingsInterval);
+            this.ecp02WarEventGameSettings.Controls.Add(this.tbProfileWarEventGameSettingsMajorDuration);
+            this.ecp02WarEventGameSettings.Controls.Add(this.tbProfileWarEventGameSettingsMinorDuration);
+            this.ecp02WarEventGameSettings.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ecp02WarEventGameSettings.ExpandedHeight = 511;
+            this.ecp02WarEventGameSettings.IsExpanded = true;
+            this.ecp02WarEventGameSettings.Location = new System.Drawing.Point(0, 5995);
+            this.ecp02WarEventGameSettings.Name = "ecp02WarEventGameSettings";
+            this.ecp02WarEventGameSettings.Size = new System.Drawing.Size(1262, 715);
+            this.ecp02WarEventGameSettings.TabIndex = 4;
+            this.ecp02WarEventGameSettings.Text = "War Event Game Settings";
+            this.ecp02WarEventGameSettings.UseAnimation = false;
+            // 
+            // groupBox32
+            // 
+            this.groupBox32.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox32.Controls.Add(this.tbProfileWarEventGameSettingsScalingPlayers4PointsModifier);
+            this.groupBox32.Controls.Add(this.tbProfileWarEventGameSettingsScalingPlayers4DropModifier);
+            this.groupBox32.ForeColor = System.Drawing.Color.SteelBlue;
+            this.groupBox32.Location = new System.Drawing.Point(13, 622);
+            this.groupBox32.Name = "groupBox32";
+            this.groupBox32.Size = new System.Drawing.Size(1245, 77);
+            this.groupBox32.TabIndex = 26;
+            this.groupBox32.TabStop = false;
+            this.groupBox32.Text = "Scaling Players 4";
+            // 
+            // tbProfileWarEventGameSettingsScalingPlayers4PointsModifier
+            // 
+            this.tbProfileWarEventGameSettingsScalingPlayers4PointsModifier.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbProfileWarEventGameSettingsScalingPlayers4PointsModifier.DisableTextBox = false;
+            this.tbProfileWarEventGameSettingsScalingPlayers4PointsModifier.DisableTrackBar = false;
+            this.tbProfileWarEventGameSettingsScalingPlayers4PointsModifier.Location = new System.Drawing.Point(5, 20);
+            this.tbProfileWarEventGameSettingsScalingPlayers4PointsModifier.Maximum = 100;
+            this.tbProfileWarEventGameSettingsScalingPlayers4PointsModifier.Minimum = 1;
+            this.tbProfileWarEventGameSettingsScalingPlayers4PointsModifier.Name = "tbProfileWarEventGameSettingsScalingPlayers4PointsModifier";
+            this.tbProfileWarEventGameSettingsScalingPlayers4PointsModifier.Scale = 100F;
+            this.tbProfileWarEventGameSettingsScalingPlayers4PointsModifier.Size = new System.Drawing.Size(1231, 26);
+            this.tbProfileWarEventGameSettingsScalingPlayers4PointsModifier.TabIndex = 20;
+            this.tbProfileWarEventGameSettingsScalingPlayers4PointsModifier.Text = "Points Modifier";
+            this.tbProfileWarEventGameSettingsScalingPlayers4PointsModifier.TickFrequency = 1;
+            this.tbProfileWarEventGameSettingsScalingPlayers4PointsModifier.Units = "";
+            this.tbProfileWarEventGameSettingsScalingPlayers4PointsModifier.Value = 0F;
+            // 
+            // tbProfileWarEventGameSettingsScalingPlayers4DropModifier
+            // 
+            this.tbProfileWarEventGameSettingsScalingPlayers4DropModifier.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbProfileWarEventGameSettingsScalingPlayers4DropModifier.DisableTextBox = false;
+            this.tbProfileWarEventGameSettingsScalingPlayers4DropModifier.DisableTrackBar = false;
+            this.tbProfileWarEventGameSettingsScalingPlayers4DropModifier.Location = new System.Drawing.Point(5, 43);
+            this.tbProfileWarEventGameSettingsScalingPlayers4DropModifier.Maximum = 100;
+            this.tbProfileWarEventGameSettingsScalingPlayers4DropModifier.Minimum = 1;
+            this.tbProfileWarEventGameSettingsScalingPlayers4DropModifier.Name = "tbProfileWarEventGameSettingsScalingPlayers4DropModifier";
+            this.tbProfileWarEventGameSettingsScalingPlayers4DropModifier.Scale = 100F;
+            this.tbProfileWarEventGameSettingsScalingPlayers4DropModifier.Size = new System.Drawing.Size(1231, 26);
+            this.tbProfileWarEventGameSettingsScalingPlayers4DropModifier.TabIndex = 20;
+            this.tbProfileWarEventGameSettingsScalingPlayers4DropModifier.Text = "Drop Modifier";
+            this.tbProfileWarEventGameSettingsScalingPlayers4DropModifier.TickFrequency = 1;
+            this.tbProfileWarEventGameSettingsScalingPlayers4DropModifier.Units = "";
+            this.tbProfileWarEventGameSettingsScalingPlayers4DropModifier.Value = 0F;
+            // 
+            // groupBox31
+            // 
+            this.groupBox31.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox31.Controls.Add(this.tbProfileWarEventGameSettingsScalingPlayers3PointsModifier);
+            this.groupBox31.Controls.Add(this.tbProfileWarEventGameSettingsScalingPlayers3DropModifier);
+            this.groupBox31.ForeColor = System.Drawing.Color.SteelBlue;
+            this.groupBox31.Location = new System.Drawing.Point(13, 540);
+            this.groupBox31.Name = "groupBox31";
+            this.groupBox31.Size = new System.Drawing.Size(1245, 76);
+            this.groupBox31.TabIndex = 25;
+            this.groupBox31.TabStop = false;
+            this.groupBox31.Text = "Scaling Players 3";
+            // 
+            // tbProfileWarEventGameSettingsScalingPlayers3PointsModifier
+            // 
+            this.tbProfileWarEventGameSettingsScalingPlayers3PointsModifier.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbProfileWarEventGameSettingsScalingPlayers3PointsModifier.DisableTextBox = false;
+            this.tbProfileWarEventGameSettingsScalingPlayers3PointsModifier.DisableTrackBar = false;
+            this.tbProfileWarEventGameSettingsScalingPlayers3PointsModifier.Location = new System.Drawing.Point(8, 20);
+            this.tbProfileWarEventGameSettingsScalingPlayers3PointsModifier.Maximum = 100;
+            this.tbProfileWarEventGameSettingsScalingPlayers3PointsModifier.Minimum = 1;
+            this.tbProfileWarEventGameSettingsScalingPlayers3PointsModifier.Name = "tbProfileWarEventGameSettingsScalingPlayers3PointsModifier";
+            this.tbProfileWarEventGameSettingsScalingPlayers3PointsModifier.Scale = 100F;
+            this.tbProfileWarEventGameSettingsScalingPlayers3PointsModifier.Size = new System.Drawing.Size(1231, 26);
+            this.tbProfileWarEventGameSettingsScalingPlayers3PointsModifier.TabIndex = 20;
+            this.tbProfileWarEventGameSettingsScalingPlayers3PointsModifier.Text = "Points Modifier";
+            this.tbProfileWarEventGameSettingsScalingPlayers3PointsModifier.TickFrequency = 1;
+            this.tbProfileWarEventGameSettingsScalingPlayers3PointsModifier.Units = "";
+            this.tbProfileWarEventGameSettingsScalingPlayers3PointsModifier.Value = 0F;
+            // 
+            // tbProfileWarEventGameSettingsScalingPlayers3DropModifier
+            // 
+            this.tbProfileWarEventGameSettingsScalingPlayers3DropModifier.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbProfileWarEventGameSettingsScalingPlayers3DropModifier.DisableTextBox = false;
+            this.tbProfileWarEventGameSettingsScalingPlayers3DropModifier.DisableTrackBar = false;
+            this.tbProfileWarEventGameSettingsScalingPlayers3DropModifier.Location = new System.Drawing.Point(8, 43);
+            this.tbProfileWarEventGameSettingsScalingPlayers3DropModifier.Maximum = 100;
+            this.tbProfileWarEventGameSettingsScalingPlayers3DropModifier.Minimum = 1;
+            this.tbProfileWarEventGameSettingsScalingPlayers3DropModifier.Name = "tbProfileWarEventGameSettingsScalingPlayers3DropModifier";
+            this.tbProfileWarEventGameSettingsScalingPlayers3DropModifier.Scale = 100F;
+            this.tbProfileWarEventGameSettingsScalingPlayers3DropModifier.Size = new System.Drawing.Size(1231, 26);
+            this.tbProfileWarEventGameSettingsScalingPlayers3DropModifier.TabIndex = 20;
+            this.tbProfileWarEventGameSettingsScalingPlayers3DropModifier.Text = "Drop Modifier";
+            this.tbProfileWarEventGameSettingsScalingPlayers3DropModifier.TickFrequency = 1;
+            this.tbProfileWarEventGameSettingsScalingPlayers3DropModifier.Units = "";
+            this.tbProfileWarEventGameSettingsScalingPlayers3DropModifier.Value = 0F;
+            // 
+            // groupBox30
+            // 
+            this.groupBox30.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox30.Controls.Add(this.tbProfileWarEventGameSettingsScalingPlayers2PointsModifier);
+            this.groupBox30.Controls.Add(this.tbProfileWarEventGameSettingsScalingPlayers2DropModifier);
+            this.groupBox30.ForeColor = System.Drawing.Color.SteelBlue;
+            this.groupBox30.Location = new System.Drawing.Point(12, 460);
+            this.groupBox30.Name = "groupBox30";
+            this.groupBox30.Size = new System.Drawing.Size(1245, 74);
+            this.groupBox30.TabIndex = 24;
+            this.groupBox30.TabStop = false;
+            this.groupBox30.Text = "Scaling Players 2";
+            // 
+            // tbProfileWarEventGameSettingsScalingPlayers2PointsModifier
+            // 
+            this.tbProfileWarEventGameSettingsScalingPlayers2PointsModifier.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbProfileWarEventGameSettingsScalingPlayers2PointsModifier.DisableTextBox = false;
+            this.tbProfileWarEventGameSettingsScalingPlayers2PointsModifier.DisableTrackBar = false;
+            this.tbProfileWarEventGameSettingsScalingPlayers2PointsModifier.Location = new System.Drawing.Point(8, 20);
+            this.tbProfileWarEventGameSettingsScalingPlayers2PointsModifier.Maximum = 100;
+            this.tbProfileWarEventGameSettingsScalingPlayers2PointsModifier.Minimum = 1;
+            this.tbProfileWarEventGameSettingsScalingPlayers2PointsModifier.Name = "tbProfileWarEventGameSettingsScalingPlayers2PointsModifier";
+            this.tbProfileWarEventGameSettingsScalingPlayers2PointsModifier.Scale = 100F;
+            this.tbProfileWarEventGameSettingsScalingPlayers2PointsModifier.Size = new System.Drawing.Size(1231, 26);
+            this.tbProfileWarEventGameSettingsScalingPlayers2PointsModifier.TabIndex = 20;
+            this.tbProfileWarEventGameSettingsScalingPlayers2PointsModifier.Text = "Points Modifier";
+            this.tbProfileWarEventGameSettingsScalingPlayers2PointsModifier.TickFrequency = 1;
+            this.tbProfileWarEventGameSettingsScalingPlayers2PointsModifier.Units = "";
+            this.tbProfileWarEventGameSettingsScalingPlayers2PointsModifier.Value = 0F;
+            // 
+            // tbProfileWarEventGameSettingsScalingPlayers2DropModifier
+            // 
+            this.tbProfileWarEventGameSettingsScalingPlayers2DropModifier.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbProfileWarEventGameSettingsScalingPlayers2DropModifier.DisableTextBox = false;
+            this.tbProfileWarEventGameSettingsScalingPlayers2DropModifier.DisableTrackBar = false;
+            this.tbProfileWarEventGameSettingsScalingPlayers2DropModifier.Location = new System.Drawing.Point(8, 43);
+            this.tbProfileWarEventGameSettingsScalingPlayers2DropModifier.Maximum = 100;
+            this.tbProfileWarEventGameSettingsScalingPlayers2DropModifier.Minimum = 1;
+            this.tbProfileWarEventGameSettingsScalingPlayers2DropModifier.Name = "tbProfileWarEventGameSettingsScalingPlayers2DropModifier";
+            this.tbProfileWarEventGameSettingsScalingPlayers2DropModifier.Scale = 100F;
+            this.tbProfileWarEventGameSettingsScalingPlayers2DropModifier.Size = new System.Drawing.Size(1231, 26);
+            this.tbProfileWarEventGameSettingsScalingPlayers2DropModifier.TabIndex = 20;
+            this.tbProfileWarEventGameSettingsScalingPlayers2DropModifier.Text = "Drop Modifier";
+            this.tbProfileWarEventGameSettingsScalingPlayers2DropModifier.TickFrequency = 1;
+            this.tbProfileWarEventGameSettingsScalingPlayers2DropModifier.Units = "";
+            this.tbProfileWarEventGameSettingsScalingPlayers2DropModifier.Value = 0F;
+            // 
+            // groupBox29
+            // 
+            this.groupBox29.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox29.Controls.Add(this.tbProfileWarEventGameSettingsScalingPlayers1PointsModifier);
+            this.groupBox29.Controls.Add(this.tbProfileWarEventGameSettingsScalingPlayers1DropModifier);
+            this.groupBox29.ForeColor = System.Drawing.Color.SteelBlue;
+            this.groupBox29.Location = new System.Drawing.Point(11, 376);
+            this.groupBox29.Name = "groupBox29";
+            this.groupBox29.Size = new System.Drawing.Size(1245, 78);
+            this.groupBox29.TabIndex = 23;
+            this.groupBox29.TabStop = false;
+            this.groupBox29.Text = "Scaling Players 1";
+            // 
+            // tbProfileWarEventGameSettingsScalingPlayers1PointsModifier
+            // 
+            this.tbProfileWarEventGameSettingsScalingPlayers1PointsModifier.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbProfileWarEventGameSettingsScalingPlayers1PointsModifier.DisableTextBox = false;
+            this.tbProfileWarEventGameSettingsScalingPlayers1PointsModifier.DisableTrackBar = false;
+            this.tbProfileWarEventGameSettingsScalingPlayers1PointsModifier.Location = new System.Drawing.Point(7, 20);
+            this.tbProfileWarEventGameSettingsScalingPlayers1PointsModifier.Maximum = 100;
+            this.tbProfileWarEventGameSettingsScalingPlayers1PointsModifier.Minimum = 1;
+            this.tbProfileWarEventGameSettingsScalingPlayers1PointsModifier.Name = "tbProfileWarEventGameSettingsScalingPlayers1PointsModifier";
+            this.tbProfileWarEventGameSettingsScalingPlayers1PointsModifier.Scale = 100F;
+            this.tbProfileWarEventGameSettingsScalingPlayers1PointsModifier.Size = new System.Drawing.Size(1231, 26);
+            this.tbProfileWarEventGameSettingsScalingPlayers1PointsModifier.TabIndex = 20;
+            this.tbProfileWarEventGameSettingsScalingPlayers1PointsModifier.Text = "Points Modifier";
+            this.tbProfileWarEventGameSettingsScalingPlayers1PointsModifier.TickFrequency = 1;
+            this.tbProfileWarEventGameSettingsScalingPlayers1PointsModifier.Units = "";
+            this.tbProfileWarEventGameSettingsScalingPlayers1PointsModifier.Value = 1F;
+            // 
+            // tbProfileWarEventGameSettingsScalingPlayers1DropModifier
+            // 
+            this.tbProfileWarEventGameSettingsScalingPlayers1DropModifier.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbProfileWarEventGameSettingsScalingPlayers1DropModifier.DisableTextBox = false;
+            this.tbProfileWarEventGameSettingsScalingPlayers1DropModifier.DisableTrackBar = false;
+            this.tbProfileWarEventGameSettingsScalingPlayers1DropModifier.Location = new System.Drawing.Point(7, 43);
+            this.tbProfileWarEventGameSettingsScalingPlayers1DropModifier.Maximum = 100;
+            this.tbProfileWarEventGameSettingsScalingPlayers1DropModifier.Minimum = 1;
+            this.tbProfileWarEventGameSettingsScalingPlayers1DropModifier.Name = "tbProfileWarEventGameSettingsScalingPlayers1DropModifier";
+            this.tbProfileWarEventGameSettingsScalingPlayers1DropModifier.Scale = 100F;
+            this.tbProfileWarEventGameSettingsScalingPlayers1DropModifier.Size = new System.Drawing.Size(1231, 26);
+            this.tbProfileWarEventGameSettingsScalingPlayers1DropModifier.TabIndex = 20;
+            this.tbProfileWarEventGameSettingsScalingPlayers1DropModifier.Text = "Drop Modifier";
+            this.tbProfileWarEventGameSettingsScalingPlayers1DropModifier.TickFrequency = 1;
+            this.tbProfileWarEventGameSettingsScalingPlayers1DropModifier.Units = "";
+            this.tbProfileWarEventGameSettingsScalingPlayers1DropModifier.Value = 1F;
+            // 
+            // groupBox28
+            // 
+            this.groupBox28.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox28.Controls.Add(this.tbProfileWarEventGameSettingsWeekendTimeStartHour);
+            this.groupBox28.Controls.Add(this.tbProfileWarEventGameSettingsWeekendTimeEndMinute);
+            this.groupBox28.Controls.Add(this.tbProfileWarEventGameSettingsWeekendTimeStartMinute);
+            this.groupBox28.Controls.Add(this.tbProfileWarEventGameSettingsWeekendTimeEndHour);
+            this.groupBox28.ForeColor = System.Drawing.Color.SteelBlue;
+            this.groupBox28.Location = new System.Drawing.Point(11, 247);
+            this.groupBox28.Name = "groupBox28";
+            this.groupBox28.Size = new System.Drawing.Size(1245, 123);
+            this.groupBox28.TabIndex = 22;
+            this.groupBox28.TabStop = false;
+            this.groupBox28.Text = "Weekend Time";
+            // 
+            // tbProfileWarEventGameSettingsWeekendTimeStartHour
+            // 
+            this.tbProfileWarEventGameSettingsWeekendTimeStartHour.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbProfileWarEventGameSettingsWeekendTimeStartHour.DisableTextBox = false;
+            this.tbProfileWarEventGameSettingsWeekendTimeStartHour.DisableTrackBar = false;
+            this.tbProfileWarEventGameSettingsWeekendTimeStartHour.Location = new System.Drawing.Point(7, 20);
+            this.tbProfileWarEventGameSettingsWeekendTimeStartHour.Maximum = 23;
+            this.tbProfileWarEventGameSettingsWeekendTimeStartHour.Minimum = 0;
+            this.tbProfileWarEventGameSettingsWeekendTimeStartHour.Name = "tbProfileWarEventGameSettingsWeekendTimeStartHour";
+            this.tbProfileWarEventGameSettingsWeekendTimeStartHour.Scale = 1F;
+            this.tbProfileWarEventGameSettingsWeekendTimeStartHour.Size = new System.Drawing.Size(1231, 26);
+            this.tbProfileWarEventGameSettingsWeekendTimeStartHour.TabIndex = 20;
+            this.tbProfileWarEventGameSettingsWeekendTimeStartHour.Text = "Start Hour";
+            this.tbProfileWarEventGameSettingsWeekendTimeStartHour.TickFrequency = 1;
+            this.tbProfileWarEventGameSettingsWeekendTimeStartHour.Units = "";
+            this.tbProfileWarEventGameSettingsWeekendTimeStartHour.Value = 0F;
+            // 
+            // tbProfileWarEventGameSettingsWeekendTimeEndMinute
+            // 
+            this.tbProfileWarEventGameSettingsWeekendTimeEndMinute.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbProfileWarEventGameSettingsWeekendTimeEndMinute.DisableTextBox = false;
+            this.tbProfileWarEventGameSettingsWeekendTimeEndMinute.DisableTrackBar = false;
+            this.tbProfileWarEventGameSettingsWeekendTimeEndMinute.Location = new System.Drawing.Point(7, 89);
+            this.tbProfileWarEventGameSettingsWeekendTimeEndMinute.Maximum = 59;
+            this.tbProfileWarEventGameSettingsWeekendTimeEndMinute.Minimum = 1;
+            this.tbProfileWarEventGameSettingsWeekendTimeEndMinute.Name = "tbProfileWarEventGameSettingsWeekendTimeEndMinute";
+            this.tbProfileWarEventGameSettingsWeekendTimeEndMinute.Scale = 1F;
+            this.tbProfileWarEventGameSettingsWeekendTimeEndMinute.Size = new System.Drawing.Size(1231, 26);
+            this.tbProfileWarEventGameSettingsWeekendTimeEndMinute.TabIndex = 20;
+            this.tbProfileWarEventGameSettingsWeekendTimeEndMinute.Text = "End Minute";
+            this.tbProfileWarEventGameSettingsWeekendTimeEndMinute.TickFrequency = 1;
+            this.tbProfileWarEventGameSettingsWeekendTimeEndMinute.Units = "";
+            this.tbProfileWarEventGameSettingsWeekendTimeEndMinute.Value = 59F;
+            // 
+            // tbProfileWarEventGameSettingsWeekendTimeStartMinute
+            // 
+            this.tbProfileWarEventGameSettingsWeekendTimeStartMinute.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbProfileWarEventGameSettingsWeekendTimeStartMinute.DisableTextBox = false;
+            this.tbProfileWarEventGameSettingsWeekendTimeStartMinute.DisableTrackBar = false;
+            this.tbProfileWarEventGameSettingsWeekendTimeStartMinute.Location = new System.Drawing.Point(7, 43);
+            this.tbProfileWarEventGameSettingsWeekendTimeStartMinute.Maximum = 59;
+            this.tbProfileWarEventGameSettingsWeekendTimeStartMinute.Minimum = 0;
+            this.tbProfileWarEventGameSettingsWeekendTimeStartMinute.Name = "tbProfileWarEventGameSettingsWeekendTimeStartMinute";
+            this.tbProfileWarEventGameSettingsWeekendTimeStartMinute.Scale = 1F;
+            this.tbProfileWarEventGameSettingsWeekendTimeStartMinute.Size = new System.Drawing.Size(1231, 26);
+            this.tbProfileWarEventGameSettingsWeekendTimeStartMinute.TabIndex = 20;
+            this.tbProfileWarEventGameSettingsWeekendTimeStartMinute.Text = "Start Minute";
+            this.tbProfileWarEventGameSettingsWeekendTimeStartMinute.TickFrequency = 1;
+            this.tbProfileWarEventGameSettingsWeekendTimeStartMinute.Units = "";
+            this.tbProfileWarEventGameSettingsWeekendTimeStartMinute.Value = 0F;
+            // 
+            // tbProfileWarEventGameSettingsWeekendTimeEndHour
+            // 
+            this.tbProfileWarEventGameSettingsWeekendTimeEndHour.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbProfileWarEventGameSettingsWeekendTimeEndHour.DisableTextBox = false;
+            this.tbProfileWarEventGameSettingsWeekendTimeEndHour.DisableTrackBar = false;
+            this.tbProfileWarEventGameSettingsWeekendTimeEndHour.Location = new System.Drawing.Point(7, 66);
+            this.tbProfileWarEventGameSettingsWeekendTimeEndHour.Maximum = 23;
+            this.tbProfileWarEventGameSettingsWeekendTimeEndHour.Minimum = 1;
+            this.tbProfileWarEventGameSettingsWeekendTimeEndHour.Name = "tbProfileWarEventGameSettingsWeekendTimeEndHour";
+            this.tbProfileWarEventGameSettingsWeekendTimeEndHour.Scale = 1F;
+            this.tbProfileWarEventGameSettingsWeekendTimeEndHour.Size = new System.Drawing.Size(1231, 26);
+            this.tbProfileWarEventGameSettingsWeekendTimeEndHour.TabIndex = 20;
+            this.tbProfileWarEventGameSettingsWeekendTimeEndHour.Text = "End Hour";
+            this.tbProfileWarEventGameSettingsWeekendTimeEndHour.TickFrequency = 1;
+            this.tbProfileWarEventGameSettingsWeekendTimeEndHour.Units = "";
+            this.tbProfileWarEventGameSettingsWeekendTimeEndHour.Value = 23F;
+            // 
+            // groupBox27
+            // 
+            this.groupBox27.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox27.Controls.Add(this.tbProfileWarEventGameSettingsWeekdayTimeStartHour);
+            this.groupBox27.Controls.Add(this.tbProfileWarEventGameSettingsWeekdayTimeEndMinute);
+            this.groupBox27.Controls.Add(this.tbProfileWarEventGameSettingsWeekdayTimeStartMinute);
+            this.groupBox27.Controls.Add(this.tbProfileWarEventGameSettingsWeekdayTimeEndHour);
+            this.groupBox27.ForeColor = System.Drawing.Color.SteelBlue;
+            this.groupBox27.Location = new System.Drawing.Point(12, 118);
+            this.groupBox27.Name = "groupBox27";
+            this.groupBox27.Size = new System.Drawing.Size(1245, 123);
+            this.groupBox27.TabIndex = 21;
+            this.groupBox27.TabStop = false;
+            this.groupBox27.Text = "Weekday Time";
+            // 
+            // tbProfileWarEventGameSettingsWeekdayTimeStartHour
+            // 
+            this.tbProfileWarEventGameSettingsWeekdayTimeStartHour.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbProfileWarEventGameSettingsWeekdayTimeStartHour.DisableTextBox = false;
+            this.tbProfileWarEventGameSettingsWeekdayTimeStartHour.DisableTrackBar = false;
+            this.tbProfileWarEventGameSettingsWeekdayTimeStartHour.Location = new System.Drawing.Point(6, 20);
+            this.tbProfileWarEventGameSettingsWeekdayTimeStartHour.Maximum = 23;
+            this.tbProfileWarEventGameSettingsWeekdayTimeStartHour.Minimum = 0;
+            this.tbProfileWarEventGameSettingsWeekdayTimeStartHour.Name = "tbProfileWarEventGameSettingsWeekdayTimeStartHour";
+            this.tbProfileWarEventGameSettingsWeekdayTimeStartHour.Scale = 1F;
+            this.tbProfileWarEventGameSettingsWeekdayTimeStartHour.Size = new System.Drawing.Size(1231, 26);
+            this.tbProfileWarEventGameSettingsWeekdayTimeStartHour.TabIndex = 20;
+            this.tbProfileWarEventGameSettingsWeekdayTimeStartHour.Text = "Start Hour";
+            this.tbProfileWarEventGameSettingsWeekdayTimeStartHour.TickFrequency = 1;
+            this.tbProfileWarEventGameSettingsWeekdayTimeStartHour.Units = "";
+            this.tbProfileWarEventGameSettingsWeekdayTimeStartHour.Value = 0F;
+            // 
+            // tbProfileWarEventGameSettingsWeekdayTimeEndMinute
+            // 
+            this.tbProfileWarEventGameSettingsWeekdayTimeEndMinute.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbProfileWarEventGameSettingsWeekdayTimeEndMinute.DisableTextBox = false;
+            this.tbProfileWarEventGameSettingsWeekdayTimeEndMinute.DisableTrackBar = false;
+            this.tbProfileWarEventGameSettingsWeekdayTimeEndMinute.Location = new System.Drawing.Point(6, 89);
+            this.tbProfileWarEventGameSettingsWeekdayTimeEndMinute.Maximum = 59;
+            this.tbProfileWarEventGameSettingsWeekdayTimeEndMinute.Minimum = 1;
+            this.tbProfileWarEventGameSettingsWeekdayTimeEndMinute.Name = "tbProfileWarEventGameSettingsWeekdayTimeEndMinute";
+            this.tbProfileWarEventGameSettingsWeekdayTimeEndMinute.Scale = 1F;
+            this.tbProfileWarEventGameSettingsWeekdayTimeEndMinute.Size = new System.Drawing.Size(1231, 26);
+            this.tbProfileWarEventGameSettingsWeekdayTimeEndMinute.TabIndex = 20;
+            this.tbProfileWarEventGameSettingsWeekdayTimeEndMinute.Text = "End Minute";
+            this.tbProfileWarEventGameSettingsWeekdayTimeEndMinute.TickFrequency = 1;
+            this.tbProfileWarEventGameSettingsWeekdayTimeEndMinute.Units = "";
+            this.tbProfileWarEventGameSettingsWeekdayTimeEndMinute.Value = 59F;
+            // 
+            // tbProfileWarEventGameSettingsWeekdayTimeStartMinute
+            // 
+            this.tbProfileWarEventGameSettingsWeekdayTimeStartMinute.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbProfileWarEventGameSettingsWeekdayTimeStartMinute.DisableTextBox = false;
+            this.tbProfileWarEventGameSettingsWeekdayTimeStartMinute.DisableTrackBar = false;
+            this.tbProfileWarEventGameSettingsWeekdayTimeStartMinute.Location = new System.Drawing.Point(6, 43);
+            this.tbProfileWarEventGameSettingsWeekdayTimeStartMinute.Maximum = 59;
+            this.tbProfileWarEventGameSettingsWeekdayTimeStartMinute.Minimum = 0;
+            this.tbProfileWarEventGameSettingsWeekdayTimeStartMinute.Name = "tbProfileWarEventGameSettingsWeekdayTimeStartMinute";
+            this.tbProfileWarEventGameSettingsWeekdayTimeStartMinute.Scale = 1F;
+            this.tbProfileWarEventGameSettingsWeekdayTimeStartMinute.Size = new System.Drawing.Size(1231, 26);
+            this.tbProfileWarEventGameSettingsWeekdayTimeStartMinute.TabIndex = 20;
+            this.tbProfileWarEventGameSettingsWeekdayTimeStartMinute.Text = "Start Minute";
+            this.tbProfileWarEventGameSettingsWeekdayTimeStartMinute.TickFrequency = 1;
+            this.tbProfileWarEventGameSettingsWeekdayTimeStartMinute.Units = "";
+            this.tbProfileWarEventGameSettingsWeekdayTimeStartMinute.Value = 0F;
+            // 
+            // tbProfileWarEventGameSettingsWeekdayTimeEndHour
+            // 
+            this.tbProfileWarEventGameSettingsWeekdayTimeEndHour.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbProfileWarEventGameSettingsWeekdayTimeEndHour.DisableTextBox = false;
+            this.tbProfileWarEventGameSettingsWeekdayTimeEndHour.DisableTrackBar = false;
+            this.tbProfileWarEventGameSettingsWeekdayTimeEndHour.Location = new System.Drawing.Point(6, 66);
+            this.tbProfileWarEventGameSettingsWeekdayTimeEndHour.Maximum = 24;
+            this.tbProfileWarEventGameSettingsWeekdayTimeEndHour.Minimum = 1;
+            this.tbProfileWarEventGameSettingsWeekdayTimeEndHour.Name = "tbProfileWarEventGameSettingsWeekdayTimeEndHour";
+            this.tbProfileWarEventGameSettingsWeekdayTimeEndHour.Scale = 1F;
+            this.tbProfileWarEventGameSettingsWeekdayTimeEndHour.Size = new System.Drawing.Size(1231, 26);
+            this.tbProfileWarEventGameSettingsWeekdayTimeEndHour.TabIndex = 20;
+            this.tbProfileWarEventGameSettingsWeekdayTimeEndHour.Text = "End Hour";
+            this.tbProfileWarEventGameSettingsWeekdayTimeEndHour.TickFrequency = 1;
+            this.tbProfileWarEventGameSettingsWeekdayTimeEndHour.Units = "";
+            this.tbProfileWarEventGameSettingsWeekdayTimeEndHour.Value = 23F;
+            // 
+            // tbProfileWarEventGameSettingsInterval
+            // 
+            this.tbProfileWarEventGameSettingsInterval.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbProfileWarEventGameSettingsInterval.DisableTextBox = false;
+            this.tbProfileWarEventGameSettingsInterval.DisableTrackBar = false;
+            this.tbProfileWarEventGameSettingsInterval.Location = new System.Drawing.Point(12, 40);
+            this.tbProfileWarEventGameSettingsInterval.Maximum = 10;
+            this.tbProfileWarEventGameSettingsInterval.Minimum = 1;
+            this.tbProfileWarEventGameSettingsInterval.Name = "tbProfileWarEventGameSettingsInterval";
+            this.tbProfileWarEventGameSettingsInterval.Scale = 1F;
+            this.tbProfileWarEventGameSettingsInterval.Size = new System.Drawing.Size(1231, 26);
+            this.tbProfileWarEventGameSettingsInterval.TabIndex = 20;
+            this.tbProfileWarEventGameSettingsInterval.Text = "Interval";
+            this.tbProfileWarEventGameSettingsInterval.TickFrequency = 1;
+            this.tbProfileWarEventGameSettingsInterval.Units = "";
+            this.tbProfileWarEventGameSettingsInterval.Value = 1F;
+            // 
+            // tbProfileWarEventGameSettingsMajorDuration
+            // 
+            this.tbProfileWarEventGameSettingsMajorDuration.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbProfileWarEventGameSettingsMajorDuration.DisableTextBox = false;
+            this.tbProfileWarEventGameSettingsMajorDuration.DisableTrackBar = false;
+            this.tbProfileWarEventGameSettingsMajorDuration.Location = new System.Drawing.Point(12, 63);
+            this.tbProfileWarEventGameSettingsMajorDuration.Maximum = 10;
+            this.tbProfileWarEventGameSettingsMajorDuration.Minimum = 1;
+            this.tbProfileWarEventGameSettingsMajorDuration.Name = "tbProfileWarEventGameSettingsMajorDuration";
+            this.tbProfileWarEventGameSettingsMajorDuration.Scale = 1F;
+            this.tbProfileWarEventGameSettingsMajorDuration.Size = new System.Drawing.Size(1231, 26);
+            this.tbProfileWarEventGameSettingsMajorDuration.TabIndex = 20;
+            this.tbProfileWarEventGameSettingsMajorDuration.Text = "Major Duration";
+            this.tbProfileWarEventGameSettingsMajorDuration.TickFrequency = 1;
+            this.tbProfileWarEventGameSettingsMajorDuration.Units = "";
+            this.tbProfileWarEventGameSettingsMajorDuration.Value = 1F;
+            // 
+            // tbProfileWarEventGameSettingsMinorDuration
+            // 
+            this.tbProfileWarEventGameSettingsMinorDuration.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbProfileWarEventGameSettingsMinorDuration.DisableTextBox = false;
+            this.tbProfileWarEventGameSettingsMinorDuration.DisableTrackBar = false;
+            this.tbProfileWarEventGameSettingsMinorDuration.Location = new System.Drawing.Point(12, 86);
+            this.tbProfileWarEventGameSettingsMinorDuration.Maximum = 10;
+            this.tbProfileWarEventGameSettingsMinorDuration.Minimum = 1;
+            this.tbProfileWarEventGameSettingsMinorDuration.Name = "tbProfileWarEventGameSettingsMinorDuration";
+            this.tbProfileWarEventGameSettingsMinorDuration.Scale = 1F;
+            this.tbProfileWarEventGameSettingsMinorDuration.Size = new System.Drawing.Size(1231, 26);
+            this.tbProfileWarEventGameSettingsMinorDuration.TabIndex = 20;
+            this.tbProfileWarEventGameSettingsMinorDuration.Text = "Minor Duration";
+            this.tbProfileWarEventGameSettingsMinorDuration.TickFrequency = 1;
+            this.tbProfileWarEventGameSettingsMinorDuration.Units = "";
+            this.tbProfileWarEventGameSettingsMinorDuration.Value = 1F;
+            // 
+            // ecp01TraderModifiers
+            // 
+            this.ecp01TraderModifiers.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ecp01TraderModifiers.ButtonSize = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonSize.Small;
+            this.ecp01TraderModifiers.ButtonStyle = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonStyle.Classic;
+            this.ecp01TraderModifiers.Controls.Add(this.tbProfileTraderModifiersStockModifier);
+            this.ecp01TraderModifiers.Controls.Add(this.tbProfileTraderModifiersPriceModifier);
+            this.ecp01TraderModifiers.Controls.Add(this.tbProfileTraderModifiersRestockTimerModifier);
+            this.ecp01TraderModifiers.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ecp01TraderModifiers.ExpandedHeight = 511;
+            this.ecp01TraderModifiers.IsExpanded = true;
+            this.ecp01TraderModifiers.Location = new System.Drawing.Point(0, 5871);
+            this.ecp01TraderModifiers.Name = "ecp01TraderModifiers";
+            this.ecp01TraderModifiers.Size = new System.Drawing.Size(1262, 124);
+            this.ecp01TraderModifiers.TabIndex = 4;
+            this.ecp01TraderModifiers.Text = "Trader Modifiers";
+            this.ecp01TraderModifiers.UseAnimation = false;
+            // 
+            // tbProfileTraderModifiersStockModifier
+            // 
+            this.tbProfileTraderModifiersStockModifier.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbProfileTraderModifiersStockModifier.DisableTextBox = false;
+            this.tbProfileTraderModifiersStockModifier.DisableTrackBar = false;
+            this.tbProfileTraderModifiersStockModifier.Location = new System.Drawing.Point(12, 40);
+            this.tbProfileTraderModifiersStockModifier.Maximum = 100;
+            this.tbProfileTraderModifiersStockModifier.Minimum = 1;
+            this.tbProfileTraderModifiersStockModifier.Name = "tbProfileTraderModifiersStockModifier";
+            this.tbProfileTraderModifiersStockModifier.Scale = 1F;
+            this.tbProfileTraderModifiersStockModifier.Size = new System.Drawing.Size(1231, 26);
+            this.tbProfileTraderModifiersStockModifier.TabIndex = 20;
+            this.tbProfileTraderModifiersStockModifier.Text = "Stock Modifier";
+            this.tbProfileTraderModifiersStockModifier.TickFrequency = 1;
+            this.tbProfileTraderModifiersStockModifier.Units = "";
+            this.tbProfileTraderModifiersStockModifier.Value = 1F;
+            // 
+            // tbProfileTraderModifiersPriceModifier
+            // 
+            this.tbProfileTraderModifiersPriceModifier.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbProfileTraderModifiersPriceModifier.DisableTextBox = false;
+            this.tbProfileTraderModifiersPriceModifier.DisableTrackBar = false;
+            this.tbProfileTraderModifiersPriceModifier.Location = new System.Drawing.Point(12, 63);
+            this.tbProfileTraderModifiersPriceModifier.Maximum = 100;
+            this.tbProfileTraderModifiersPriceModifier.Minimum = 1;
+            this.tbProfileTraderModifiersPriceModifier.Name = "tbProfileTraderModifiersPriceModifier";
+            this.tbProfileTraderModifiersPriceModifier.Scale = 1F;
+            this.tbProfileTraderModifiersPriceModifier.Size = new System.Drawing.Size(1231, 26);
+            this.tbProfileTraderModifiersPriceModifier.TabIndex = 20;
+            this.tbProfileTraderModifiersPriceModifier.Text = "Price Modifier";
+            this.tbProfileTraderModifiersPriceModifier.TickFrequency = 1;
+            this.tbProfileTraderModifiersPriceModifier.Units = "";
+            this.tbProfileTraderModifiersPriceModifier.Value = 1F;
+            // 
+            // tbProfileTraderModifiersRestockTimerModifier
+            // 
+            this.tbProfileTraderModifiersRestockTimerModifier.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbProfileTraderModifiersRestockTimerModifier.DisableTextBox = false;
+            this.tbProfileTraderModifiersRestockTimerModifier.DisableTrackBar = false;
+            this.tbProfileTraderModifiersRestockTimerModifier.Location = new System.Drawing.Point(12, 86);
+            this.tbProfileTraderModifiersRestockTimerModifier.Maximum = 100;
+            this.tbProfileTraderModifiersRestockTimerModifier.Minimum = 1;
+            this.tbProfileTraderModifiersRestockTimerModifier.Name = "tbProfileTraderModifiersRestockTimerModifier";
+            this.tbProfileTraderModifiersRestockTimerModifier.Scale = 1F;
+            this.tbProfileTraderModifiersRestockTimerModifier.Size = new System.Drawing.Size(1231, 26);
+            this.tbProfileTraderModifiersRestockTimerModifier.TabIndex = 20;
+            this.tbProfileTraderModifiersRestockTimerModifier.Text = "Restock Timer Modifier";
+            this.tbProfileTraderModifiersRestockTimerModifier.TickFrequency = 1;
+            this.tbProfileTraderModifiersRestockTimerModifier.Units = "";
+            this.tbProfileTraderModifiersRestockTimerModifier.Value = 1F;
             // 
             // ecp23PlayerInteractionSettings
             // 
@@ -2698,6 +3264,28 @@
             this.ecp01MainSettings.Text = "Main Settings";
             this.ecp01MainSettings.UseAnimation = false;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
+            this.label8.Location = new System.Drawing.Point(9, 48);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(84, 15);
+            this.label8.TabIndex = 30;
+            this.label8.Text = "Game Difficult";
+            // 
+            // cboGameDifficult
+            // 
+            this.cboGameDifficult.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.cboGameDifficult.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboGameDifficult.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.cboGameDifficult.FormattingEnabled = true;
+            this.cboGameDifficult.Location = new System.Drawing.Point(193, 48);
+            this.cboGameDifficult.Name = "cboGameDifficult";
+            this.cboGameDifficult.Size = new System.Drawing.Size(132, 21);
+            this.cboGameDifficult.TabIndex = 31;
+            // 
             // cboProfileStarterResourcesId
             // 
             this.cboProfileStarterResourcesId.FormattingEnabled = true;
@@ -4280,28 +4868,6 @@
             this.profileHeader1.ClickStartStop += new System.EventHandler(this.profileHeader1_ClickStartStop);
             this.profileHeader1.ClickRCON += new System.EventHandler(this.profileHeader1_ClickRCON);
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
-            this.label8.Location = new System.Drawing.Point(9, 48);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(84, 15);
-            this.label8.TabIndex = 30;
-            this.label8.Text = "Game Difficult";
-            // 
-            // cboGameDifficult
-            // 
-            this.cboGameDifficult.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.cboGameDifficult.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboGameDifficult.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.cboGameDifficult.FormattingEnabled = true;
-            this.cboGameDifficult.Location = new System.Drawing.Point(193, 48);
-            this.cboGameDifficult.Name = "cboGameDifficult";
-            this.cboGameDifficult.Size = new System.Drawing.Size(132, 21);
-            this.cboGameDifficult.TabIndex = 31;
-            // 
             // FrmVRising
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4315,6 +4881,16 @@
             this.Text = "VRising";
             this.Load += new System.EventHandler(this.FrmConfigurationForm_Load);
             this.pContainer.ResumeLayout(false);
+            this.ecp02WarEventGameSettings.ResumeLayout(false);
+            this.ecp02WarEventGameSettings.PerformLayout();
+            this.groupBox32.ResumeLayout(false);
+            this.groupBox31.ResumeLayout(false);
+            this.groupBox30.ResumeLayout(false);
+            this.groupBox29.ResumeLayout(false);
+            this.groupBox28.ResumeLayout(false);
+            this.groupBox27.ResumeLayout(false);
+            this.ecp01TraderModifiers.ResumeLayout(false);
+            this.ecp01TraderModifiers.PerformLayout();
             this.ecp23PlayerInteractionSettings.ResumeLayout(false);
             this.ecp23PlayerInteractionSettings.PerformLayout();
             this.groupBox26.ResumeLayout(false);
@@ -4610,6 +5186,36 @@
         private System.Windows.Forms.ComboBox cboProfileStarterEquipmentId;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox cboGameDifficult;
+        private System.Windows.Forms.ComboBox cboGameDifficult; 
+        private OphiussaFramework.Components.exTrackBar tbProfileWarEventGameSettingsScalingPlayers4PointsModifier;
+        private OphiussaFramework.Components.exTrackBar tbProfileWarEventGameSettingsScalingPlayers4DropModifier;
+        private OphiussaFramework.Components.exTrackBar tbProfileWarEventGameSettingsScalingPlayers3PointsModifier;
+        private OphiussaFramework.Components.exTrackBar tbProfileWarEventGameSettingsScalingPlayers3DropModifier;
+        private OphiussaFramework.Components.exTrackBar tbProfileWarEventGameSettingsScalingPlayers2PointsModifier;
+        private OphiussaFramework.Components.exTrackBar tbProfileWarEventGameSettingsScalingPlayers2DropModifier;
+        private OphiussaFramework.Components.exTrackBar tbProfileWarEventGameSettingsScalingPlayers1PointsModifier;
+        private OphiussaFramework.Components.exTrackBar tbProfileWarEventGameSettingsScalingPlayers1DropModifier;
+        private OphiussaFramework.Components.exTrackBar tbProfileWarEventGameSettingsWeekendTimeStartHour;
+        private OphiussaFramework.Components.exTrackBar tbProfileWarEventGameSettingsWeekendTimeStartMinute;
+        private OphiussaFramework.Components.exTrackBar tbProfileWarEventGameSettingsWeekendTimeEndHour;
+        private OphiussaFramework.Components.exTrackBar tbProfileWarEventGameSettingsWeekendTimeEndMinute;
+        private OphiussaFramework.Components.exTrackBar tbProfileWarEventGameSettingsWeekdayTimeStartHour;
+        private OphiussaFramework.Components.exTrackBar tbProfileWarEventGameSettingsWeekdayTimeStartMinute;
+        private OphiussaFramework.Components.exTrackBar tbProfileWarEventGameSettingsWeekdayTimeEndHour;
+        private OphiussaFramework.Components.exTrackBar tbProfileWarEventGameSettingsWeekdayTimeEndMinute;
+        private MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel ecp02WarEventGameSettings;
+        private OphiussaFramework.Components.exTrackBar tbProfileWarEventGameSettingsInterval;
+        private OphiussaFramework.Components.exTrackBar tbProfileWarEventGameSettingsMajorDuration;
+        private OphiussaFramework.Components.exTrackBar tbProfileWarEventGameSettingsMinorDuration;
+        private MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel ecp01TraderModifiers;
+        private OphiussaFramework.Components.exTrackBar tbProfileTraderModifiersStockModifier;
+        private OphiussaFramework.Components.exTrackBar tbProfileTraderModifiersPriceModifier;
+        private OphiussaFramework.Components.exTrackBar tbProfileTraderModifiersRestockTimerModifier;
+        private System.Windows.Forms.GroupBox groupBox28;
+        private System.Windows.Forms.GroupBox groupBox27;
+        private System.Windows.Forms.GroupBox groupBox32;
+        private System.Windows.Forms.GroupBox groupBox31;
+        private System.Windows.Forms.GroupBox groupBox30;
+        private System.Windows.Forms.GroupBox groupBox29;
     }
 }
