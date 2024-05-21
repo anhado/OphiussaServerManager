@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -32,25 +33,25 @@ namespace VRisingPlugin {
         public string ExecutablePath { get; set; } = "VRisingServer.exe"; //THIS WILL OVERWRITE THE PROFILE, I JUST NEED THAT IN PROFILE TO AVOID Deserialize THE ADDITIONAL SETTINGS
 
         // internal static readonly PluginType              Info = new PluginType { GameType = "Game1", Name = "Game 1 Name" };
-        public IProfile                              Profile                     { get; set; } = new Profile();
-        public string                                GameType                    { get; set; } = "VRising";
-        public string                                GameName                    { get; set; } = "VRising";
-        public TabPage                               TabPage                     { get; set; }
-        public string                                PluginVersion               { get; set; } = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
-        public string                                PluginName                  { get; set; } = Path.GetFileName(FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileName);
-        public int                                   ServerProcessID             { get; set; }
-        public bool                                  IsRunning                   { get; set; }
-        public bool                                  IsInstalled                 { get; set; }
-        public List<string>                          IgnoredFoldersInComparision { get; set; }
-        public string                                CacheFolder                 { get; set; }
-        public List<FilesToBackup>                   FilesToBackup               => throw new NotImplementedException();
-        public List<CommandDefinition>               DefaultCommands             { get; set; }
-        public List<CommandDefinition>               CustomCommands              { get; set; }
-        public ModProvider                           ModProvider                 { get; set; } = ModProvider.None;
-        public bool                                  Loaded                      { get; set; } = true;
-        public ServerStatus                          ServerStatus                { get; internal set; }
-        public string                                ServerGameSettingsLocation  { get; set; } = "VRisingServer_Data\\StreamingAssets\\Settings\\ServerGameSettings.json";
-        public string                                ServerHostSettingsLocation  { get; set; } = "VRisingServer_Data\\StreamingAssets\\Settings\\ServerHostSettings.json";
+        public IProfile Profile { get; set; } = new Profile();
+        public string GameType { get; set; } = "VRising";
+        public string GameName { get; set; } = "VRising";
+        public TabPage TabPage { get; set; }
+        public string PluginVersion { get; set; } = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
+        public string PluginName { get; set; } = Path.GetFileName(FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileName);
+        public int ServerProcessID { get; set; }
+        public bool IsRunning { get; set; }
+        public bool IsInstalled { get; set; }
+        public List<string> IgnoredFoldersInComparision { get; set; }
+        public string CacheFolder { get; set; }
+        public List<FilesToBackup> FilesToBackup => throw new NotImplementedException();
+        public List<CommandDefinition> DefaultCommands { get; set; }
+        public List<CommandDefinition> CustomCommands { get; set; }
+        public ModProvider ModProvider { get; set; } = ModProvider.None;
+        public bool Loaded { get; set; } = true;
+        public ServerStatus ServerStatus { get; internal set; }
+        public string ServerGameSettingsLocation { get; set; } = "VRisingServer_Data\\StreamingAssets\\Settings\\ServerGameSettings.json";
+        public string ServerHostSettingsLocation { get; set; } = "VRisingServer_Data\\StreamingAssets\\Settings\\ServerHostSettings.json";
         public event EventHandler<OphiussaEventArgs> BackupServerClick;
         public event EventHandler<OphiussaEventArgs> StopServerClick;
         public event EventHandler<OphiussaEventArgs> StartServerClick;
@@ -180,70 +181,7 @@ namespace VRisingPlugin {
 
                 JObject ServerHoistSettingsObj = JObject.FromObject(ServerHostSettingsTMP);
 
-                var sgsProperties = ServerHoistSettingsObj.Properties();
-
-                var myObjType = typeof(Profile);
-                var myObjProperties = myObjType.GetProperties().ToList();
-                //foreach (DataColumn column in dr.Table.Columns)
-                //foreach (var pro in temp.GetProperties())
-
-                foreach (JProperty prop in sgsProperties) {
-                    Console.WriteLine(prop.Name);
-                    var propName = prop.Name;
-                    switch (propName) {
-                        case "Port":
-                            propName = "ServerPort";
-                            break;
-                        case "Name":
-                            propName = "ServerName";
-                            break;
-                        case "Password":
-                            propName = "ServerPassword";
-                            break;
-                    }
-
-                    var p = myObjProperties.Find(x => x.Name == propName);
-                    if (p != null) {
-
-                        try {
-                            object myValue = null;
-                            var prop1 = prop.Value;
-
-                            switch (prop.Type) {
-                                case JTokenType.Property when prop1.Type == JTokenType.Integer:
-                                    myValue = Convert.ChangeType(prop.Value, TypeCode.Int32);
-                                    break;
-                                case JTokenType.Property when prop1.Type == JTokenType.Boolean:
-                                    myValue = Convert.ChangeType(prop.Value, TypeCode.Boolean);
-                                    break;
-                                case JTokenType.Property when prop1.Type == JTokenType.Float:
-                                    myValue = Convert.ChangeType(prop.Value, TypeCode.Single);
-                                    break;
-                                case JTokenType.Property when prop1.Type == JTokenType.String:
-                                    myValue = Convert.ChangeType(prop.Value, TypeCode.String);
-                                    break;
-                                case JTokenType.Property when prop1.Type == JTokenType.Array:
-                                    var col = p.GetValue(Profile);
-                                    SetPropertyRecursive(prop1, p, col);
-                                    break;
-                                case JTokenType.Property when prop1.Type == JTokenType.Object:
-                                    var col2 = p.GetValue(Profile);
-                                    SetPropertyRecursive(prop1, p, col2);
-                                    break;
-                                default:
-                                    throw new ArgumentOutOfRangeException();
-                            }
-
-                            if (myValue != null) p.SetValue(Profile, myValue);
-                        }
-                        catch (Exception e) {
-                            OphiussaLogger.Logger.Error(e);
-                        }
-                    }
-                    else {
-                        OphiussaLogger.Logger.Error($"Could not find  property in plugin profile {prop.Name}");
-                    }
-                }
+                ReadJObject(ServerHoistSettingsObj);
 
                 return true;
             }
@@ -253,6 +191,107 @@ namespace VRisingPlugin {
             }
         }
 
+        private void ReadJObject(JObject ServerHoistSettingsObj) {
+            var sgsProperties = ServerHoistSettingsObj.Properties();
+
+            var myObjType = typeof(Profile);
+            var myObjProperties = myObjType.GetProperties().ToList();
+            //foreach (DataColumn column in dr.Table.Columns)
+            //foreach (var pro in temp.GetProperties())
+
+            foreach (JProperty prop in sgsProperties) {
+                Console.WriteLine(prop.Name);
+                var propName = prop.Name;
+                switch (propName) {
+                    case "Port":
+                        propName = "ServerPort";
+                        break;
+                    case "Name":
+                        propName = "ServerName";
+                        break;
+                    case "Password":
+                        propName = "ServerPassword";
+                        break;
+                }
+
+                var p = myObjProperties.Find(x => x.Name == propName);
+                if (p != null) {
+
+                    try {
+                        object myValue = null;
+                        var prop1 = prop.Value;
+
+                        switch (prop.Type) {
+                            case JTokenType.Property when prop1.Type == JTokenType.Integer:
+                                myValue = Convert.ChangeType(prop.Value, TypeCode.Int32);
+                                break;
+                            case JTokenType.Property when prop1.Type == JTokenType.Boolean:
+                                myValue = Convert.ChangeType(prop.Value, TypeCode.Boolean);
+                                break;
+                            case JTokenType.Property when prop1.Type == JTokenType.Float:
+                                myValue = Convert.ChangeType(prop.Value, TypeCode.Single);
+                                break;
+                            case JTokenType.Property when prop1.Type == JTokenType.String:
+                                myValue = Convert.ChangeType(prop.Value, TypeCode.String);
+                                if (p.PropertyType.IsEnum) {
+                                    string str = myValue.ToString();
+
+                                    switch (p.Name) {
+                                        case "GameDifficulty":
+                                            myValue = str.ParseEnum<GameDifficulty>();
+                                            break;
+                                        case "GameModeType":
+                                            myValue = str.ParseEnum<GameModeType>();
+                                            break;
+                                        case "CastleDamageMode":
+                                            myValue = str.ParseEnum<CastleDamageMode>();
+                                            break;
+                                        case "SiegeWeaponHealth":
+                                            myValue = str.ParseEnum<SiegeWeaponHealth>();
+                                            break;
+                                        case "PlayerDamageMode":
+                                            myValue = str.ParseEnum<PlayerDamageMode>();
+                                            break;
+                                        case "CastleHeartDamageMode":
+                                            myValue = str.ParseEnum<CastleHeartDamageMode>();
+                                            break;
+                                        case "PvPProtectionMode":
+                                            myValue = str.ParseEnum<PvPProtectionMode>();
+                                            break;
+                                        case "DeathContainerPermission":
+                                            myValue = str.ParseEnum<DeathContainerPermission>();
+                                            break;
+                                        case "RelicSpawnType":
+                                            myValue = str.ParseEnum<RelicSpawnType>();
+                                            break;
+                                    }
+                                }
+                                break;
+                            case JTokenType.Property when prop1.Type == JTokenType.Array:
+                                var col = p.GetValue(Profile);
+                                SetPropertyRecursive(prop1, p, col);
+                                break;
+                            case JTokenType.Property when prop1.Type == JTokenType.Object:
+                                var col2 = p.GetValue(Profile);
+                                SetPropertyRecursive(prop1, p, col2);
+                                break;
+                            default:
+                                throw new ArgumentOutOfRangeException();
+                        }
+
+                        if (myValue != null) p.SetValue(Profile, myValue);
+                    }
+                    catch (Exception e) {
+                        OphiussaLogger.Logger.Error(e);
+                    }
+                }
+                else {
+                    OphiussaLogger.Logger.Error($"Could not find  property in plugin profile {prop.Name}");
+                }
+            }
+        }
+
+
         private bool ReadServerGameSettings() {
 
             try {
@@ -260,6 +299,8 @@ namespace VRisingPlugin {
 
                 JObject ServerGameSettingsObj = JObject.FromObject(ServerGameSettingsTMP);
 
+                ReadJObject(ServerGameSettingsObj);
+                /*
                 var sgsProperties = ServerGameSettingsObj.Properties();
 
                 var myObjType = typeof(Profile);
@@ -289,6 +330,9 @@ namespace VRisingPlugin {
                                         string str = myValue.ToString();
 
                                         switch (p.Name) {
+                                            case "GameDifficulty":
+                                                myValue = str.ParseEnum<GameDifficulty>();
+                                                break;
                                             case "GameModeType":
                                                 myValue = str.ParseEnum<GameModeType>();
                                                 break;
@@ -338,7 +382,7 @@ namespace VRisingPlugin {
                     else {
                         OphiussaLogger.Logger.Error($"Could not find  property in plugin profile {prop.Name}");
                     }
-                }
+                }*/
 
                 return true;
             }
@@ -449,7 +493,7 @@ namespace VRisingPlugin {
             }
         }
 
-        public bool IsValidFolder(string path) { 
+        public bool IsValidFolder(string path) {
             return Utils.IsAValidFolder(Profile.InstallationFolder, new List<string> { "VRisingServer_Data" });
         }
 
@@ -467,8 +511,148 @@ namespace VRisingPlugin {
         }
 
         public Message SaveSettingsToDisk() {
+
+            bool WritedServerGameGameSettings = WriteServerGameSettings();
+            bool WritedServerHostSettings = WriteServerHostSettings();
+            if (WritedServerGameGameSettings && WritedServerHostSettings)
+                MessageBox.Show("Reloaded from files completed");
+            else
+                MessageBox.Show("Reloaded from files completed with errors");
+
             //TODO:(New Games)Save settings to disc
             return new Message { Exception = new NotImplementedException(), MessageText = "NOT IMPLEMENTED", Success = false };
+        }
+
+        private bool WriteServerHostSettings() {
+            try {
+                var ServerHostSettingsTMP = JsonConvert.DeserializeObject(System.IO.File.ReadAllText(Path.Combine(Profile.InstallationFolder, ServerHostSettingsLocation)));
+
+                JObject ServerHoistSettingsObj = JObject.FromObject(ServerHostSettingsTMP);
+
+                SetProperties(ServerHoistSettingsObj);
+
+                string jsonString = JsonConvert.SerializeObject(ServerHoistSettingsObj, Formatting.Indented);
+                File.WriteAllText(Path.Combine(Profile.InstallationFolder, ServerHostSettingsLocation), jsonString);
+
+                return true;
+            }
+            catch (Exception e) {
+                OphiussaLogger.Logger.Error(e);
+                return false;
+            }
+        }
+
+        private bool WriteServerGameSettings() {
+
+            try {
+                var ServerGameSettingsTMP = JsonConvert.DeserializeObject(System.IO.File.ReadAllText(Path.Combine(Profile.InstallationFolder, ServerGameSettingsLocation)));
+
+                JObject ServerGameSettingsObj = JObject.FromObject(ServerGameSettingsTMP);
+                 
+                SetProperties(ServerGameSettingsObj);
+                 
+                string jsonString = JsonConvert.SerializeObject(ServerGameSettingsObj, Formatting.Indented);
+                File.WriteAllText(Path.Combine(Profile.InstallationFolder, ServerGameSettingsLocation), jsonString);
+                return true;
+            }
+            catch (Exception e) {
+                OphiussaLogger.Logger.Error(e);
+                return false;
+            }
+        }
+
+
+        private void SetProperties(JObject jObj) {
+
+            var sgsProperties = jObj.Properties();
+
+            var myObjType       = typeof(Profile);
+            var myObjProperties = myObjType.GetProperties().ToList();
+
+            foreach (JProperty prop in sgsProperties) {
+                var p = myObjProperties.Find(x => x.Name == prop.Name);
+                if (p != null) {
+
+                    try {
+                        object myValue = null;
+                        var prop1 = prop.Value;
+
+                        switch (prop.Type) {
+                            case JTokenType.Property when prop1.Type == JTokenType.Integer:
+                                prop.Value = JToken.Parse(p.GetValue(this.Profile).ToString());
+                                break;
+                            case JTokenType.Property when prop1.Type == JTokenType.Boolean:
+                                prop.Value = JToken.Parse(p.GetValue(this.Profile).ToString().ToLower());
+                                break;
+                            case JTokenType.Property when prop1.Type == JTokenType.Float:
+                                prop.Value = JToken.Parse(float.Parse(p.GetValue(this.Profile).ToString()).ToString(CultureInfo.InvariantCulture));
+                                break;
+                            case JTokenType.Property when prop1.Type == JTokenType.String:
+                                prop.Value = p.GetValue(this.Profile).ToString();
+                                break;
+
+                            case JTokenType.Property when prop1.Type == JTokenType.Array:
+                                var col = p.GetValue(Profile);
+                                SetJTokenPropertyRecursive(prop1, p, col);
+                                break;
+                            case JTokenType.Property when prop1.Type == JTokenType.Object:
+                                var col2 = p.GetValue(Profile);
+                                SetJTokenPropertyRecursive(prop1, p, col2);
+                                break;
+                            default:
+                                throw new ArgumentOutOfRangeException();
+                        }
+
+                        //   if (myValue != null) p.SetValue(Profile, myValue);
+                    }
+                    catch (Exception e) {
+                        OphiussaLogger.Logger.Error(e);
+                    }
+                }
+                else {
+                    OphiussaLogger.Logger.Error($"Could not find  property in plugin profile {prop.Name}");
+                }
+            }
+        }
+
+        private void SetJTokenPropertyRecursive(JToken value, PropertyInfo p, object collection) {
+            var myObjProperties = p.PropertyType.GetProperties().ToList();
+
+            foreach (JProperty prop in value) {
+                object myValue = null;
+                var    prop1   = prop.Value;
+
+                var p2 = myObjProperties.Find(x => x.Name == prop.Name);
+                if (p2 != null) {
+                    try {
+                        switch (prop.Type) {
+                            case JTokenType.Property when prop1.Type == JTokenType.Integer:
+                                prop.Value = JToken.Parse(p2.GetValue(collection).ToString());
+                                break;
+                            case JTokenType.Property when prop1.Type == JTokenType.Boolean:
+                                prop.Value = JToken.Parse(p2.GetValue(collection).ToString().ToLower());
+                                break;
+                            case JTokenType.Property when prop1.Type == JTokenType.Float:
+                                prop.Value = JToken.Parse(float.Parse(p2.GetValue(collection).ToString()).ToString(CultureInfo.InvariantCulture));
+                                break;
+                            case JTokenType.Property when prop1.Type == JTokenType.String:
+                                prop.Value = p2.GetValue(collection).ToString();
+                                break;
+                            case JTokenType.Property when prop1.Type == JTokenType.Object:
+                                var col2 = p2.GetValue(collection);
+                                SetJTokenPropertyRecursive(prop1, p2, col2);
+                                break;
+                            default:
+                                throw new ArgumentOutOfRangeException();
+                        }
+
+                        if (myValue != null) p2.SetValue(collection, myValue);
+                    }
+                    catch (Exception e) {
+                        OphiussaLogger.Logger.Error(e);
+                    }
+                }
+            }
         }
 
         public string GetVersion() {

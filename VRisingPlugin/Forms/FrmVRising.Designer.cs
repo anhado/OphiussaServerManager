@@ -267,6 +267,8 @@
             this.txtServerName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.profileHeader1 = new OphiussaFramework.Components.ProfileHeader();
+            this.label8 = new System.Windows.Forms.Label();
+            this.cboGameDifficult = new System.Windows.Forms.ComboBox();
             this.pContainer.SuspendLayout();
             this.ecp23PlayerInteractionSettings.SuspendLayout();
             this.groupBox26.SuspendLayout();
@@ -2617,6 +2619,8 @@
             this.ecp01MainSettings.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ecp01MainSettings.ButtonSize = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonSize.Small;
             this.ecp01MainSettings.ButtonStyle = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonStyle.Classic;
+            this.ecp01MainSettings.Controls.Add(this.label8);
+            this.ecp01MainSettings.Controls.Add(this.cboGameDifficult);
             this.ecp01MainSettings.Controls.Add(this.cboProfileStarterResourcesId);
             this.ecp01MainSettings.Controls.Add(this.label7);
             this.ecp01MainSettings.Controls.Add(this.cboProfileStarterEquipmentId);
@@ -2743,7 +2747,7 @@
             this.lblProfileGameModeType.AutoSize = true;
             this.lblProfileGameModeType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.lblProfileGameModeType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
-            this.lblProfileGameModeType.Location = new System.Drawing.Point(9, 40);
+            this.lblProfileGameModeType.Location = new System.Drawing.Point(9, 75);
             this.lblProfileGameModeType.Name = "lblProfileGameModeType";
             this.lblProfileGameModeType.Size = new System.Drawing.Size(105, 15);
             this.lblProfileGameModeType.TabIndex = 4;
@@ -2755,7 +2759,7 @@
             this.cboProfileGameModeType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboProfileGameModeType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cboProfileGameModeType.FormattingEnabled = true;
-            this.cboProfileGameModeType.Location = new System.Drawing.Point(193, 40);
+            this.cboProfileGameModeType.Location = new System.Drawing.Point(193, 75);
             this.cboProfileGameModeType.Name = "cboProfileGameModeType";
             this.cboProfileGameModeType.Size = new System.Drawing.Size(132, 21);
             this.cboProfileGameModeType.TabIndex = 15;
@@ -2765,7 +2769,7 @@
             this.lblProfileCastleDamageMode.AutoSize = true;
             this.lblProfileCastleDamageMode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.lblProfileCastleDamageMode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
-            this.lblProfileCastleDamageMode.Location = new System.Drawing.Point(9, 63);
+            this.lblProfileCastleDamageMode.Location = new System.Drawing.Point(9, 98);
             this.lblProfileCastleDamageMode.Name = "lblProfileCastleDamageMode";
             this.lblProfileCastleDamageMode.Size = new System.Drawing.Size(127, 15);
             this.lblProfileCastleDamageMode.TabIndex = 4;
@@ -2777,7 +2781,7 @@
             this.cboProfileCastleDamageMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboProfileCastleDamageMode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cboProfileCastleDamageMode.FormattingEnabled = true;
-            this.cboProfileCastleDamageMode.Location = new System.Drawing.Point(193, 63);
+            this.cboProfileCastleDamageMode.Location = new System.Drawing.Point(193, 98);
             this.cboProfileCastleDamageMode.Name = "cboProfileCastleDamageMode";
             this.cboProfileCastleDamageMode.Size = new System.Drawing.Size(132, 21);
             this.cboProfileCastleDamageMode.TabIndex = 15;
@@ -2787,7 +2791,7 @@
             this.lblProfileSiegeWeaponHealth.AutoSize = true;
             this.lblProfileSiegeWeaponHealth.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.lblProfileSiegeWeaponHealth.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
-            this.lblProfileSiegeWeaponHealth.Location = new System.Drawing.Point(9, 86);
+            this.lblProfileSiegeWeaponHealth.Location = new System.Drawing.Point(9, 121);
             this.lblProfileSiegeWeaponHealth.Name = "lblProfileSiegeWeaponHealth";
             this.lblProfileSiegeWeaponHealth.Size = new System.Drawing.Size(127, 15);
             this.lblProfileSiegeWeaponHealth.TabIndex = 4;
@@ -2799,7 +2803,7 @@
             this.cboProfileSiegeWeaponHealth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboProfileSiegeWeaponHealth.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cboProfileSiegeWeaponHealth.FormattingEnabled = true;
-            this.cboProfileSiegeWeaponHealth.Location = new System.Drawing.Point(193, 86);
+            this.cboProfileSiegeWeaponHealth.Location = new System.Drawing.Point(193, 121);
             this.cboProfileSiegeWeaponHealth.Name = "cboProfileSiegeWeaponHealth";
             this.cboProfileSiegeWeaponHealth.Size = new System.Drawing.Size(132, 21);
             this.cboProfileSiegeWeaponHealth.TabIndex = 15;
@@ -2809,7 +2813,7 @@
             this.lblProfilePlayerDamageMode.AutoSize = true;
             this.lblProfilePlayerDamageMode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.lblProfilePlayerDamageMode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
-            this.lblProfilePlayerDamageMode.Location = new System.Drawing.Point(9, 109);
+            this.lblProfilePlayerDamageMode.Location = new System.Drawing.Point(9, 144);
             this.lblProfilePlayerDamageMode.Name = "lblProfilePlayerDamageMode";
             this.lblProfilePlayerDamageMode.Size = new System.Drawing.Size(127, 15);
             this.lblProfilePlayerDamageMode.TabIndex = 4;
@@ -2821,7 +2825,7 @@
             this.cboProfilePlayerDamageMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboProfilePlayerDamageMode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cboProfilePlayerDamageMode.FormattingEnabled = true;
-            this.cboProfilePlayerDamageMode.Location = new System.Drawing.Point(193, 109);
+            this.cboProfilePlayerDamageMode.Location = new System.Drawing.Point(193, 144);
             this.cboProfilePlayerDamageMode.Name = "cboProfilePlayerDamageMode";
             this.cboProfilePlayerDamageMode.Size = new System.Drawing.Size(132, 21);
             this.cboProfilePlayerDamageMode.TabIndex = 15;
@@ -2831,7 +2835,7 @@
             this.lblProfileCastleHeartDamageMode.AutoSize = true;
             this.lblProfileCastleHeartDamageMode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.lblProfileCastleHeartDamageMode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
-            this.lblProfileCastleHeartDamageMode.Location = new System.Drawing.Point(9, 132);
+            this.lblProfileCastleHeartDamageMode.Location = new System.Drawing.Point(9, 167);
             this.lblProfileCastleHeartDamageMode.Name = "lblProfileCastleHeartDamageMode";
             this.lblProfileCastleHeartDamageMode.Size = new System.Drawing.Size(160, 15);
             this.lblProfileCastleHeartDamageMode.TabIndex = 4;
@@ -2843,7 +2847,7 @@
             this.cboProfileCastleHeartDamageMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboProfileCastleHeartDamageMode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cboProfileCastleHeartDamageMode.FormattingEnabled = true;
-            this.cboProfileCastleHeartDamageMode.Location = new System.Drawing.Point(193, 132);
+            this.cboProfileCastleHeartDamageMode.Location = new System.Drawing.Point(193, 167);
             this.cboProfileCastleHeartDamageMode.Name = "cboProfileCastleHeartDamageMode";
             this.cboProfileCastleHeartDamageMode.Size = new System.Drawing.Size(132, 21);
             this.cboProfileCastleHeartDamageMode.TabIndex = 15;
@@ -2853,7 +2857,7 @@
             this.lblProfilePvPProtectionMode.AutoSize = true;
             this.lblProfilePvPProtectionMode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.lblProfilePvPProtectionMode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
-            this.lblProfilePvPProtectionMode.Location = new System.Drawing.Point(9, 155);
+            this.lblProfilePvPProtectionMode.Location = new System.Drawing.Point(9, 190);
             this.lblProfilePvPProtectionMode.Name = "lblProfilePvPProtectionMode";
             this.lblProfilePvPProtectionMode.Size = new System.Drawing.Size(124, 15);
             this.lblProfilePvPProtectionMode.TabIndex = 4;
@@ -2865,7 +2869,7 @@
             this.cboProfilePvPProtectionMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboProfilePvPProtectionMode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cboProfilePvPProtectionMode.FormattingEnabled = true;
-            this.cboProfilePvPProtectionMode.Location = new System.Drawing.Point(193, 155);
+            this.cboProfilePvPProtectionMode.Location = new System.Drawing.Point(193, 190);
             this.cboProfilePvPProtectionMode.Name = "cboProfilePvPProtectionMode";
             this.cboProfilePvPProtectionMode.Size = new System.Drawing.Size(132, 21);
             this.cboProfilePvPProtectionMode.TabIndex = 15;
@@ -2875,7 +2879,7 @@
             this.lblProfileDeathContainerPermission.AutoSize = true;
             this.lblProfileDeathContainerPermission.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.lblProfileDeathContainerPermission.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
-            this.lblProfileDeathContainerPermission.Location = new System.Drawing.Point(9, 178);
+            this.lblProfileDeathContainerPermission.Location = new System.Drawing.Point(9, 213);
             this.lblProfileDeathContainerPermission.Name = "lblProfileDeathContainerPermission";
             this.lblProfileDeathContainerPermission.Size = new System.Drawing.Size(161, 15);
             this.lblProfileDeathContainerPermission.TabIndex = 4;
@@ -2887,7 +2891,7 @@
             this.cboProfileDeathContainerPermission.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboProfileDeathContainerPermission.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cboProfileDeathContainerPermission.FormattingEnabled = true;
-            this.cboProfileDeathContainerPermission.Location = new System.Drawing.Point(193, 178);
+            this.cboProfileDeathContainerPermission.Location = new System.Drawing.Point(193, 213);
             this.cboProfileDeathContainerPermission.Name = "cboProfileDeathContainerPermission";
             this.cboProfileDeathContainerPermission.Size = new System.Drawing.Size(132, 21);
             this.cboProfileDeathContainerPermission.TabIndex = 15;
@@ -2897,7 +2901,7 @@
             this.lblProfileRelicSpawnType.AutoSize = true;
             this.lblProfileRelicSpawnType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.lblProfileRelicSpawnType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
-            this.lblProfileRelicSpawnType.Location = new System.Drawing.Point(9, 201);
+            this.lblProfileRelicSpawnType.Location = new System.Drawing.Point(9, 236);
             this.lblProfileRelicSpawnType.Name = "lblProfileRelicSpawnType";
             this.lblProfileRelicSpawnType.Size = new System.Drawing.Size(105, 15);
             this.lblProfileRelicSpawnType.TabIndex = 4;
@@ -2909,7 +2913,7 @@
             this.cboProfileRelicSpawnType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboProfileRelicSpawnType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cboProfileRelicSpawnType.FormattingEnabled = true;
-            this.cboProfileRelicSpawnType.Location = new System.Drawing.Point(193, 201);
+            this.cboProfileRelicSpawnType.Location = new System.Drawing.Point(193, 236);
             this.cboProfileRelicSpawnType.Name = "cboProfileRelicSpawnType";
             this.cboProfileRelicSpawnType.Size = new System.Drawing.Size(132, 21);
             this.cboProfileRelicSpawnType.TabIndex = 15;
@@ -2919,7 +2923,7 @@
             this.chkProfileCanLootEnemyContainers.AutoSize = true;
             this.chkProfileCanLootEnemyContainers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.chkProfileCanLootEnemyContainers.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
-            this.chkProfileCanLootEnemyContainers.Location = new System.Drawing.Point(12, 224);
+            this.chkProfileCanLootEnemyContainers.Location = new System.Drawing.Point(193, 270);
             this.chkProfileCanLootEnemyContainers.Name = "chkProfileCanLootEnemyContainers";
             this.chkProfileCanLootEnemyContainers.Size = new System.Drawing.Size(178, 19);
             this.chkProfileCanLootEnemyContainers.TabIndex = 25;
@@ -2931,7 +2935,7 @@
             this.chkProfileBloodBoundEquipment.AutoSize = true;
             this.chkProfileBloodBoundEquipment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.chkProfileBloodBoundEquipment.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
-            this.chkProfileBloodBoundEquipment.Location = new System.Drawing.Point(12, 247);
+            this.chkProfileBloodBoundEquipment.Location = new System.Drawing.Point(193, 295);
             this.chkProfileBloodBoundEquipment.Name = "chkProfileBloodBoundEquipment";
             this.chkProfileBloodBoundEquipment.Size = new System.Drawing.Size(160, 19);
             this.chkProfileBloodBoundEquipment.TabIndex = 25;
@@ -4276,6 +4280,28 @@
             this.profileHeader1.ClickStartStop += new System.EventHandler(this.profileHeader1_ClickStartStop);
             this.profileHeader1.ClickRCON += new System.EventHandler(this.profileHeader1_ClickRCON);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
+            this.label8.Location = new System.Drawing.Point(9, 48);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(84, 15);
+            this.label8.TabIndex = 30;
+            this.label8.Text = "Game Difficult";
+            // 
+            // cboGameDifficult
+            // 
+            this.cboGameDifficult.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.cboGameDifficult.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboGameDifficult.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.cboGameDifficult.FormattingEnabled = true;
+            this.cboGameDifficult.Location = new System.Drawing.Point(193, 48);
+            this.cboGameDifficult.Name = "cboGameDifficult";
+            this.cboGameDifficult.Size = new System.Drawing.Size(132, 21);
+            this.cboGameDifficult.TabIndex = 31;
+            // 
             // FrmVRising
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4583,5 +4609,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cboProfileStarterEquipmentId;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox cboGameDifficult;
     }
 }

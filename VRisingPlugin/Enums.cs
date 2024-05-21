@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace VRisingPlugin {
     
+    public enum GameDifficulty {
+        Easy,
+        Normal,
+        Brutal
+    }
     public enum GameModeType {
         PvP,
         PvE

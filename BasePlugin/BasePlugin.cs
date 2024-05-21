@@ -55,7 +55,7 @@ namespace VRisingPlugin {
 
 
         public void SetServerStatus(ServerStatus status, int serverProcessId) {
-            throw new NotImplementedException();
+           // throw new NotImplementedException();
         }
 
         public Process GetExeProcess() {

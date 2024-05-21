@@ -10,33 +10,33 @@ using OphiussaFramework.Models;
 
 namespace VRisingPlugin {
     public class Profile : IProfile {
-        public string                  Key                { get; set; } = Guid.NewGuid().ToString();
-        public string                  Name               { get; set; } = "New Server";
-        public string                  Type               { get; set; }
-        public string                  PluginVersion      { get; set; } = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
-        public string                  InstallationFolder { get; set; } = "";
-        public string                  AdditionalSettings { get; set; } = "";
-        public string                  AdditionalCommands { get; set; } = "";
-        public string                  Branch             { get; set; }
-        public string                  BetaName           { get; set; }
-        public string                  BetaPassword       { get; set; }
-        public int                     SteamServerId      { get; set; } = 1829350;
-        public int                     SteamApplicationID { get; set; } = 1604030;
-        public int                     CurseForgeId       { get; set; } = 0;
-        public int                     ServerPort         { get; set; } = 9876;
-        public int                     PeerPort           { get; set; } = 0;
-        public int                     QueryPort          { get; set; } = 9877;
+        public string Key                { get; set; } = Guid.NewGuid().ToString();
+        public string Name               { get; set; } = "New Server";
+        public string Type               { get; set; }
+        public string PluginVersion      { get; set; } = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
+        public string InstallationFolder { get; set; } = "";
+        public string AdditionalSettings { get; set; } = "";
+        public string AdditionalCommands { get; set; } = "";
+        public string Branch             { get; set; }
+        public string BetaName           { get; set; }
+        public string BetaPassword       { get; set; }
+        public int    SteamServerId      { get; set; } = 1829350;
+        public int    SteamApplicationID { get; set; } = 1604030;
+        public int    CurseForgeId       { get; set; } = 0;
+        public int    ServerPort         { get; set; } = 9876;
+        public int    PeerPort           { get; set; } = 0;
+        public int    QueryPort          { get; set; } = 9877;
         public int RCONPort {
             get => Rcon.Port;
             set => Rcon.Port = value;
         }
-        public string                  ServerVersion      { get; set; } = "";
-        public string                  ServerBuildVersion { get; set; } = "";
-        public bool                    AutoStartServer    { get; set; } = false;
-        public bool                    StartOnBoot        { get; set; } = false;
-        public bool                    IncludeAutoBackup  { get; set; } = false;
-        public bool                    IncludeAutoUpdate  { get; set; } = false;
-        public bool                    RestartIfShutdown  { get; set; } = false;
+        public string ServerVersion      { get; set; } = "";
+        public string ServerBuildVersion { get; set; } = "";
+        public bool   AutoStartServer    { get; set; } = false;
+        public bool   StartOnBoot        { get; set; } = false;
+        public bool   IncludeAutoBackup  { get; set; } = false;
+        public bool   IncludeAutoUpdate  { get; set; } = false;
+        public bool   RestartIfShutdown  { get; set; } = false;
         public string RCONPassword {
             get => Rcon.Password;
             set => Rcon.Password = value;
@@ -45,12 +45,12 @@ namespace VRisingPlugin {
             get => Rcon.Enabled;
             set => Rcon.Enabled = value;
         }
-        public string                  ExecutablePath     { get; set; } = "VRisingServer.exe";
-        public string                  ServerPassword     { get; set; }
-        public ProcessPriority         CpuPriority        { get; set; } = ProcessPriority.Normal;
-        public string                  CpuAffinity        { get; set; } = "All";
-        public List<ProcessorAffinity> CpuAffinityList    { get; set; } = new List<ProcessorAffinity>();
-        public List<AutoManagement>    AutoManagement     { get; set; } = new List<AutoManagement>();
+        public string                  ExecutablePath  { get; set; } = "VRisingServer.exe";
+        public string                  ServerPassword  { get; set; }
+        public ProcessPriority         CpuPriority     { get; set; } = ProcessPriority.Normal;
+        public string                  CpuAffinity     { get; set; } = "All";
+        public List<ProcessorAffinity> CpuAffinityList { get; set; } = new List<ProcessorAffinity>();
+        public List<AutoManagement>    AutoManagement  { get; set; } = new List<AutoManagement>();
 
         //ServerHostSettings
         public string ServerName           { get; set; } = "";
@@ -68,12 +68,13 @@ namespace VRisingPlugin {
         public string GameSettingsPreset   { get; set; } = "";
         public bool   AdminOnlyDebugEvents { get; set; } = true;
         public bool   DisableDebugEvents   { get; set; } = false;
-        public bool   APIEnabled           {
+        public bool APIEnabled {
             get => API.Enabled;
             set => API.Enabled = value;
         }
 
         //ServerGameSettings
+        public GameDifficulty                GameDifficulty                        { get; set; } = GameDifficulty.Normal;
         public GameModeType                  GameModeType                          { get; set; } = GameModeType.PvP;
         public CastleDamageMode              CastleDamageMode                      { get; set; } = CastleDamageMode.Always;
         public SiegeWeaponHealth             SiegeWeaponHealth                     { get; set; } = SiegeWeaponHealth.Normal;
@@ -85,8 +86,10 @@ namespace VRisingPlugin {
         public bool                          CanLootEnemyContainers                { get; set; } = false;
         public bool                          BloodBoundEquipment                   { get; set; } = true;
         public bool                          TeleportBoundItems                    { get; set; } = false;
+        public bool                          BatBoundItems                         { get; set; } = false;
         public bool                          AllowGlobalChat                       { get; set; } = true;
         public bool                          AllWaypointsUnlocked                  { get; set; } = false;
+        public bool                          FreeCastleRaid                        { get; set; } = false;
         public bool                          FreeCastleClaim                       { get; set; } = false;
         public bool                          FreeCastleDestroy                     { get; set; } = false;
         public bool                          InactivityKillEnabled                 { get; set; } = true;
@@ -94,8 +97,10 @@ namespace VRisingPlugin {
         public int                           InactivityKillTimeMax                 { get; set; } = 604800;
         public int                           InactivityKillSafeTimeAddition        { get; set; } = 172800;
         public int                           InactivityKillTimerMaxItemLevel       { get; set; } = 84;
+        public int                           StartingProgressionLevel              { get; set; } = 0;
         public bool                          DisableDisconnectedDeadEnabled        { get; set; } = true;
         public int                           DisableDisconnectedDeadTimer          { get; set; } = 60;
+        public int                           DisconnectedSunImmunityTime           { get; set; } = 300;
         public float                         InventoryStacksModifier               { get; set; } = 1.0f;
         public float                         DropTableModifier_General             { get; set; } = 1.0f;
         public float                         DropTableModifier_Missions            { get; set; } = 1.0f;
@@ -115,6 +120,11 @@ namespace VRisingPlugin {
         public float                         CastleBloodEssenceDrainModifier       { get; set; } = 0.5f;
         public float                         CastleSiegeTimer                      { get; set; } = 420.0f;
         public float                         CastleUnderAttackTimer                { get; set; } = 60.0f;
+        public float                         CastleRaidTimer                       { get; set; } = 600.0f;
+        public float                         CastleRaidProtectionTime              { get; set; } = 1800.0f;
+        public float                         CastleExposedFreeClaimTimer           { get; set; } = 300.0f;
+        public float                         CastleRelocationCooldown              { get; set; } = 10800.0f;
+        public bool                          CastleRelocationEnabled               { get; set; } = true;
         public bool                          AnnounceSiegeWeaponSpawn              { get; set; } = true;
         public bool                          ShowSiegeWeaponMapIcon                { get; set; } = false;
         public float                         BuildCostModifier                     { get; set; } = 1.0f;
@@ -141,9 +151,10 @@ namespace VRisingPlugin {
         public EquipmentStatModifiers_Global EquipmentStatModifiers_Global         { get; set; } = new EquipmentStatModifiers_Global();
         public CastleStatModifiers_Global    CastleStatModifiers_Global            { get; set; } = new CastleStatModifiers_Global();
         public PlayerInteractionSettings     PlayerInteractionSettings             { get; set; } = new PlayerInteractionSettings();
-
-        public API  API  { get; set; } = new API();
-        public Rcon Rcon { get; set; } = new Rcon();
+        public TraderModifiers               TraderModifiers                       { get; set; } = new TraderModifiers();
+        public Wareventgamesettings          WarEventGameSettings                  { get; set; } = new Wareventgamesettings();
+        public API                           API                                   { get; set; } = new API();
+        public Rcon                          Rcon                                  { get; set; } = new Rcon();
     }
 
     public class Rcon {
@@ -156,24 +167,24 @@ namespace VRisingPlugin {
         public bool Enabled { get; set; } = false;
     }
     public class VBloodUnitSettings {
-        public Int64 UnitId { get; set; }
-        public int UnitLevel { get; set; }
-        public bool DefaultUnlocked { get; set; }
+        public Int64 UnitId          { get; set; }
+        public int   UnitLevel       { get; set; }
+        public bool  DefaultUnlocked { get; set; }
     }
 
     public class GameTimeModifiers {
-        public float DayDurationInSeconds { get; set; } = 1080.0f;
-        public int DayStartHour { get; set; } = 9;
-        public int DayStartMinute { get; set; } = 0;
-        public int DayEndHour { get; set; } = 17;
-        public int DayEndMinute { get; set; } = 0;
-        public int BloodMoonFrequency_Min { get; set; } = 10;
-        public int BloodMoonFrequency_Max { get; set; } = 18;
-        public float BloodMoonBuff { get; set; } = 0.2f;
+        public float DayDurationInSeconds   { get; set; } = 1080.0f;
+        public int   DayStartHour           { get; set; } = 9;
+        public int   DayStartMinute         { get; set; } = 0;
+        public int   DayEndHour             { get; set; } = 17;
+        public int   DayEndMinute           { get; set; } = 0;
+        public int   BloodMoonFrequency_Min { get; set; } = 10;
+        public int   BloodMoonFrequency_Max { get; set; } = 18;
+        public float BloodMoonBuff          { get; set; } = 0.2f;
     }
 
-    public class VampireStatModifiers { 
-        public float MaxHealthModifier      { get; set; } = 1.0f; 
+    public class VampireStatModifiers {
+        public float MaxHealthModifier      { get; set; } = 1.0f;
         public float MaxEnergyModifier      { get; set; } = 1.0f;
         public float PhysicalPowerModifier  { get; set; } = 1.0f;
         public float SpellPowerModifier     { get; set; } = 1.0f;
@@ -185,17 +196,17 @@ namespace VRisingPlugin {
 
     public class UnitStatModifiers {
         public float MaxHealthModifier { get; set; } = 1.0f;
-        public float PowerModifier { get; set; } = 1.0f;
+        public float PowerModifier     { get; set; } = 1.0f;
     }
 
     public class EquipmentStatModifiers_Global {
-        public float MaxEnergyModifier { get; set; } = 1.0f;
-        public float MaxHealthModifier { get; set; } = 1.0f;
+        public float MaxEnergyModifier     { get; set; } = 1.0f;
+        public float MaxHealthModifier     { get; set; } = 1.0f;
         public float ResourceYieldModifier { get; set; } = 1.0f;
         public float PhysicalPowerModifier { get; set; } = 1.0f;
-        public float SpellPowerModifier { get; set; } = 1.0f;
-        public float SiegePowerModifier { get; set; } = 1.0f;
-        public float MovementSpeedModifier { get; set; } = 1.0f;   
+        public float SpellPowerModifier    { get; set; } = 1.0f;
+        public float SiegePowerModifier    { get; set; } = 1.0f;
+        public float MovementSpeedModifier { get; set; } = 1.0f;
     }
 
     public class CastleStatModifiers_Global {
@@ -213,54 +224,75 @@ namespace VRisingPlugin {
 
     public class Range {
         public float Percentage { get; set; } = 0.0f;
-        public int Lower { get; set; } = 0;
-        public int Higher { get; set; } = 0;
+        public int   Lower      { get; set; } = 0;
+        public int   Higher     { get; set; } = 0;
     }
 
     public class PylonPenalties {
-        public Range Range1 { get; set; } = new Range() { Percentage = 0, Lower = 0, Higher = 2 };
-        public Range Range2 { get; set; } = new Range() { Percentage = 0, Lower = 3, Higher = 3 };
-        public Range Range3 { get; set; } = new Range() { Percentage = 0, Lower = 4, Higher = 4 };
-        public Range Range4 { get; set; } = new Range() { Percentage = 0, Lower = 5, Higher = 5 };
-        public Range Range5 { get; set; } = new Range() { Percentage = 0, Lower = 6, Higher = 254 };
-    }
-
-    public class FloorPenalties {
-        public Range Range1 { get; set; } = new Range() { Percentage = 0, Lower = 0, Higher = 20 };
-        public Range Range2 { get; set; } = new Range() { Percentage = 0, Lower = 21, Higher = 50 };
-        public Range Range3 { get; set; } = new Range() { Percentage = 0, Lower = 51, Higher = 80 };
-        public Range Range4 { get; set; } = new Range() { Percentage = 0, Lower = 81, Higher = 160 };
-        public Range Range5 { get; set; } = new Range() { Percentage = 0, Lower = 161, Higher = 254 };
+        public Range Range1 { get; set; } = new Range { Percentage = 0, Lower = 0, Higher = 2 };
+        public Range Range2 { get; set; } = new Range { Percentage = 0, Lower = 3, Higher = 3 };
+        public Range Range3 { get; set; } = new Range { Percentage = 0, Lower = 4, Higher = 4 };
+        public Range Range4 { get; set; } = new Range { Percentage = 0, Lower = 5, Higher = 5 };
+        public Range Range5 { get; set; } = new Range { Percentage = 0, Lower = 6, Higher = 254 };
+    }                                                 
+                                                      
+    public class FloorPenalties {                     
+        public Range Range1 { get; set; } = new Range { Percentage = 0, Lower = 0, Higher = 20 };
+        public Range Range2 { get; set; } = new Range { Percentage = 0, Lower = 21, Higher = 50 };
+        public Range Range3 { get; set; } = new Range { Percentage = 0, Lower = 51, Higher = 80 };
+        public Range Range4 { get; set; } = new Range { Percentage = 0, Lower = 81, Higher = 160 };
+        public Range Range5 { get; set; } = new Range { Percentage = 0, Lower = 161, Higher = 254 };
     }
 
     public class Level {
-        public int level { get; set; } = 0;
-        public int FloorLimit { get; set; } = 0;
+        public int level        { get; set; } = 0;
+        public int FloorLimit   { get; set; } = 0;
         public int ServantLimit { get; set; } = 0;
     }
 
     public class HeartLimits {
-        public Level Level1 { get; set; } = new Level() { level = 1, FloorLimit = 40, ServantLimit = 4 };
-        public Level Level2 { get; set; } = new Level() { level = 2, FloorLimit = 100, ServantLimit = 5 };
-        public Level Level3 { get; set; } = new Level() { level = 3, FloorLimit = 180, ServantLimit = 6 };
-        public Level Level4 { get; set; } = new Level() { level = 4, FloorLimit = 260, ServantLimit = 7 };
-        public Level Level5 { get; set; } = new Level() { level = 6, FloorLimit = 420, ServantLimit = 8 };
+        public Level Level1 { get; set; } = new Level { level = 1, FloorLimit = 40, ServantLimit = 4 };
+        public Level Level2 { get; set; } = new Level { level = 2, FloorLimit = 100, ServantLimit = 5 };
+        public Level Level3 { get; set; } = new Level { level = 3, FloorLimit = 180, ServantLimit = 6 };
+        public Level Level4 { get; set; } = new Level { level = 4, FloorLimit = 260, ServantLimit = 7 };
+        public Level Level5 { get; set; } = new Level { level = 6, FloorLimit = 420, ServantLimit = 8 };
     }
 
     public class PlayerInteractionSettings {
         public string TimeZone { get; set; } = "Local";
-        public Vstime VSPlayerWeekdayTime { get; set; } = new Vstime() { StartHour = 20, StartMinute = 0, EndHour = 22, EndMinute = 0 };
-        public Vstime VSPlayerWeekendTime { get; set; } = new Vstime() { StartHour = 20, StartMinute = 0, EndHour = 22, EndMinute = 0 };
-        public Vstime VSCastleWeekdayTime { get; set; } = new Vstime() { StartHour = 20, StartMinute = 0, EndHour = 22, EndMinute = 0 };
-        public Vstime VSCastleWeekendTime { get; set; } = new Vstime() { StartHour = 20, StartMinute = 0, EndHour = 22, EndMinute = 0 };
+        public Vstime VSPlayerWeekdayTime { get; set; } = new Vstime { StartHour = 20, StartMinute = 0, EndHour = 22, EndMinute = 0 };
+        public Vstime VSPlayerWeekendTime { get; set; } = new Vstime { StartHour = 20, StartMinute = 0, EndHour = 22, EndMinute = 0 };
+        public Vstime VSCastleWeekdayTime { get; set; } = new Vstime { StartHour = 20, StartMinute = 0, EndHour = 22, EndMinute = 0 };
+        public Vstime VSCastleWeekendTime { get; set; } = new Vstime { StartHour = 20, StartMinute = 0, EndHour = 22, EndMinute = 0 };
     }
 
     public class Vstime {
-        public int StartHour { get; set; }
+        public int StartHour   { get; set; }
         public int StartMinute { get; set; }
-        public int EndHour { get; set; }
-        public int EndMinute { get; set; }
+        public int EndHour     { get; set; }
+        public int EndMinute   { get; set; }
     }
+
+    public class TraderModifiers {
+        public float StockModifier        { get; set; } = 1.0f;
+        public float PriceModifier        { get; set; } = 1.0f;
+        public float RestockTimerModifier { get; set; } = 1.0f;
+    } 
+    public class Wareventgamesettings {
+        public int            Interval        { get; set; } = 1;
+        public int            MajorDuration   { get; set; } = 1;
+        public int            MinorDuration   { get; set; } = 1;
+        public Vstime         WeekdayTime     { get; set; } = new Vstime { StartHour              = 0, StartMinute      = 0, EndHour = 23, EndMinute = 59 };
+        public Vstime         WeekendTime     { get; set; } = new Vstime { StartHour              = 0, StartMinute      = 0, EndHour = 23, EndMinute = 59 };
+        public Scalingplayers ScalingPlayers1 { get; set; } = new Scalingplayers { PointsModifier = 1.0f, DropModifier  = 1.0f };
+        public Scalingplayers ScalingPlayers2 { get; set; } = new Scalingplayers { PointsModifier = 0.5f, DropModifier  = 0.5f };
+        public Scalingplayers ScalingPlayers3 { get; set; } = new Scalingplayers { PointsModifier = 0.25f, DropModifier = 0.25f };
+        public Scalingplayers ScalingPlayers4 { get; set; } = new Scalingplayers { PointsModifier = 0.25f, DropModifier = 0.25f };
+    }  
+
+    public class Scalingplayers {
+        public float PointsModifier { get; set; }
+        public float DropModifier   { get; set; }
+    } 
 }
 
- 
