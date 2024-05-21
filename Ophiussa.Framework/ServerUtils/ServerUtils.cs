@@ -61,11 +61,17 @@ namespace OphiussaFramework.ServerUtils {
                 else {
                     OnProgressChanged(new ProcessEventArg { Message = "New Plugin Controller Initialized" });
 
-                    OnProgressChanged(new ProcessEventArg { Message = "Updating Cache" });
-                    if (e.InstallFromCache) NetworkTools.UpdateCacheFolder(nCtrl, e.ShowSteamCMD);
-                    else NetworkTools.UpdateGameFolder(e.Profile);
+                    if (e.InstallFromCache) {
+                        OnProgressChanged(new ProcessEventArg { Message = "Updating Cache" });
+                        NetworkTools.UpdateCacheFolder(nCtrl, e.ShowSteamCMD);
+                        OnProgressChanged(new ProcessEventArg { Message = "Cache Updated" });
+                    }
+                    else {
+                        OnProgressChanged(new ProcessEventArg { Message = "Updating game folder" });
+                        NetworkTools.UpdateGameFolder(e.Profile, e.ShowSteamCMD);
+                        OnProgressChanged(new ProcessEventArg { Message = "Game Folder Updated" });
+                    }
 
-                    OnProgressChanged(new ProcessEventArg { Message = "Cache Updated" });
                     if (e.InstallFromCache) UpdateServerFromCache(nCtrl);
                     OnProcessCompleted(new ProcessEventArg { Message = "Installed server " + e.Profile.Key, Sucessful = true });
 
