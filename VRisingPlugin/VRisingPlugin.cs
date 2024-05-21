@@ -159,7 +159,7 @@ namespace VRisingPlugin {
             stringBuilder.AppendLine("");
             stringBuilder.AppendLine("@echo on");
             //TODO:Define settings for save folder and log folder, with full path
-            stringBuilder.AppendLine($"start \"{Profile.Name}\" /{priorityV} {affinityV} \"{Path.Combine(Profile.InstallationFolder, Profile.ExecutablePath)}\" -persistentDataPath {Profile.InstallationFolder}save-data -serverName \"{p.ServerName}\" -saveName \"{p.SaveName}\" -logFile \"{ConnectionController.Settings.LogsFolder}VRisingServer_{p.Key}.log\"");
+            stringBuilder.AppendLine($"start \"{Profile.Name}\" /{priorityV} {affinityV} \"{Path.Combine(Profile.InstallationFolder, Profile.ExecutablePath)}\" -persistentDataPath {Path.Combine(Profile.InstallationFolder, "save-data")} -serverName \"{p.ServerName}\" -saveName \"{p.SaveName}\" -logFile \"{ConnectionController.Settings.LogsFolder}VRisingServer_{p.Key}.log\"");
 
             File.WriteAllText(ConnectionController.Settings.DataFolder + $"StartServer\\Run_{Profile.Key.Replace("-", "")}.bat", stringBuilder.ToString());
         }
