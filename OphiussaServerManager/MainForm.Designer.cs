@@ -92,6 +92,7 @@
             // 
             this.txtPublicIP.Location = new System.Drawing.Point(84, 32);
             this.txtPublicIP.Name = "txtPublicIP";
+            this.txtPublicIP.PasswordChar = '*';
             this.txtPublicIP.ReadOnly = true;
             this.txtPublicIP.Size = new System.Drawing.Size(100, 20);
             this.txtPublicIP.TabIndex = 1;

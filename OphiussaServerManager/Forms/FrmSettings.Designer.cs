@@ -73,6 +73,13 @@
             this.chkPerform = new System.Windows.Forms.CheckBox();
             this.chkValidate = new System.Windows.Forms.CheckBox();
             this.expandCollapsePanel1 = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
+            this.button6 = new System.Windows.Forms.Button();
+            this.txtCurseForgeKey = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
+            this.txtSteamKey = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.lblWarningSteam = new System.Windows.Forms.Label();
             this.chkUpdateOnStart = new System.Windows.Forms.CheckBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -87,13 +94,6 @@
             this.txtMaxDays = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.chkEnableLogs = new System.Windows.Forms.CheckBox();
-            this.lblWarningSteam = new System.Windows.Forms.Label();
-            this.txtSteamKey = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.txtCurseForgeKey = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.expandCollapsePanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbGracePeriod)).BeginInit();
@@ -605,6 +605,70 @@
             this.expandCollapsePanel1.Text = "Steam && Curseforge Settings";
             this.expandCollapsePanel1.UseAnimation = false;
             // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(418, 136);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(99, 23);
+            this.button6.TabIndex = 16;
+            this.button6.Text = "GetApi Key";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // txtCurseForgeKey
+            // 
+            this.txtCurseForgeKey.Location = new System.Drawing.Point(131, 137);
+            this.txtCurseForgeKey.Name = "txtCurseForgeKey";
+            this.txtCurseForgeKey.PasswordChar = '*';
+            this.txtCurseForgeKey.Size = new System.Drawing.Size(281, 21);
+            this.txtCurseForgeKey.TabIndex = 15;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(16, 140);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(115, 15);
+            this.label18.TabIndex = 14;
+            this.label18.Text = "CurseForge API Key";
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(418, 109);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(99, 23);
+            this.button5.TabIndex = 13;
+            this.button5.Text = "Get WebApi Key";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // txtSteamKey
+            // 
+            this.txtSteamKey.Location = new System.Drawing.Point(131, 110);
+            this.txtSteamKey.Name = "txtSteamKey";
+            this.txtSteamKey.PasswordChar = '*';
+            this.txtSteamKey.Size = new System.Drawing.Size(281, 21);
+            this.txtSteamKey.TabIndex = 9;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(16, 113);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(109, 15);
+            this.label19.TabIndex = 8;
+            this.label19.Text = "Steam WebKeyAPI";
+            // 
+            // lblWarningSteam
+            // 
+            this.lblWarningSteam.AutoSize = true;
+            this.lblWarningSteam.ForeColor = System.Drawing.Color.Crimson;
+            this.lblWarningSteam.Location = new System.Drawing.Point(11, 65);
+            this.lblWarningSteam.Name = "lblWarningSteam";
+            this.lblWarningSteam.Size = new System.Drawing.Size(398, 15);
+            this.lblWarningSteam.TabIndex = 7;
+            this.lblWarningSteam.Text = "ATTENTION: THIS DO NOT SUPPORT TWO FACTOR AUTHENTICATOR";
+            // 
             // chkUpdateOnStart
             // 
             this.chkUpdateOnStart.AutoSize = true;
@@ -638,6 +702,7 @@
             // 
             this.txtUserName.Location = new System.Drawing.Point(131, 83);
             this.txtUserName.Name = "txtUserName";
+            this.txtUserName.PasswordChar = '*';
             this.txtUserName.Size = new System.Drawing.Size(100, 21);
             this.txtUserName.TabIndex = 3;
             // 
@@ -747,68 +812,6 @@
             this.chkEnableLogs.TabIndex = 2;
             this.chkEnableLogs.Text = "Enable Logs";
             this.chkEnableLogs.UseVisualStyleBackColor = true;
-            // 
-            // lblWarningSteam
-            // 
-            this.lblWarningSteam.AutoSize = true;
-            this.lblWarningSteam.ForeColor = System.Drawing.Color.Crimson;
-            this.lblWarningSteam.Location = new System.Drawing.Point(11, 65);
-            this.lblWarningSteam.Name = "lblWarningSteam";
-            this.lblWarningSteam.Size = new System.Drawing.Size(398, 15);
-            this.lblWarningSteam.TabIndex = 7;
-            this.lblWarningSteam.Text = "ATTENTION: THIS DO NOT SUPPORT TWO FACTOR AUTHENTICATOR";
-            // 
-            // txtSteamKey
-            // 
-            this.txtSteamKey.Location = new System.Drawing.Point(131, 110);
-            this.txtSteamKey.Name = "txtSteamKey";
-            this.txtSteamKey.Size = new System.Drawing.Size(281, 21);
-            this.txtSteamKey.TabIndex = 9;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(16, 113);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(109, 15);
-            this.label19.TabIndex = 8;
-            this.label19.Text = "Steam WebKeyAPI";
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(418, 109);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(99, 23);
-            this.button5.TabIndex = 13;
-            this.button5.Text = "Get WebApi Key";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(418, 136);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(99, 23);
-            this.button6.TabIndex = 16;
-            this.button6.Text = "GetApi Key";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // txtCurseForgeKey
-            // 
-            this.txtCurseForgeKey.Location = new System.Drawing.Point(131, 137);
-            this.txtCurseForgeKey.Name = "txtCurseForgeKey";
-            this.txtCurseForgeKey.Size = new System.Drawing.Size(281, 21);
-            this.txtCurseForgeKey.TabIndex = 15;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(16, 140);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(115, 15);
-            this.label18.TabIndex = 14;
-            this.label18.Text = "CurseForge API Key";
             // 
             // FrmSettings
             // 
